@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="include/header.jsp" %>
+<%@ include file="include/middle_header.jsp" %>
 
     <!-- Categories Section Begin -->
     <section class="categories">
