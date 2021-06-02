@@ -70,7 +70,7 @@
 						</span>
 
 						<a href="join.jsp" class="txt3">
-							회원가입
+							회원가입 
 						</a>
 					</div>
 				</form>

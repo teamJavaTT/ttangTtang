@@ -1,4 +1,4 @@
-/* �젅�씠�븘�썐 �� */
+/* 레이아웃 틀 */
 html {
     height: 100%;
 }
@@ -7,7 +7,7 @@ body {
     margin: 0;
     height: 100%;
     background: #f5f6f7;
-    font-family: Dotum,'�룍��',Helvetica,sans-serif;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;  
 }
 #logo {
     width: 240px;
@@ -35,7 +35,7 @@ body {
 
 
 
-/* �엯�젰�뤌 */
+/* 입력폼 */
 
 input:focus {
     outline: none;
@@ -71,7 +71,7 @@ h3 {
 }
 
 input {
-    font-family: Dotum,'�룍��',Helvetica,sans-serif;    
+    font-family: Dotum,'돋움',Helvetica,sans-serif;  
 }
 
 .box.int_id {
@@ -143,10 +143,10 @@ select {
     text-align: start;
     border: none;
     cursor: default;
-    font-family: Dotum,'�룍��',Helvetica,sans-serif;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 
-/* �뿉�윭硫붿꽭吏� */
+/* 에러메세지 */
 
 .error_next_box {
     margin-top: 9px;
@@ -164,7 +164,7 @@ select {
     display: none;
 }
 
-/* 踰꾪듉 */
+/* 버튼 */
 
 .btn_area {
     margin: 30px 0 91px;
@@ -179,5 +179,5 @@ select {
     background-color: #EC0000;
     font-size: 20px;
     font-weight: 400;
-    font-family: Dotum,'�룍��',Helvetica,sans-serif;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
