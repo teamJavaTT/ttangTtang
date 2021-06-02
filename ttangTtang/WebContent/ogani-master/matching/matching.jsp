@@ -40,10 +40,22 @@ $("input[type='text']").keypress(function(e){
 		var _val = $(this).val();
 		var _class = $(this).attr("class");
 		$(this).val('');
-		var _tar = $(".chat_wrap .inner").append("");
+		var _tar = $(".chat_wrap .inner").append('<div class="item '+class+'"><div class="box"><p class="msg">'+_val+'</p><span class="time">'+currentTime()+'</span></div></div>');
 	}
 })
+});
+
+var currentTime = function(){
+	var date = new Date();
+	var hh = date.getHours();
+	var mm = date.getMinutes();
+	var apm = hh > 12 ? "오후" : "오전";
+	var ct = apm + " " + hh + ":" + mm + "";
+	return ct;
+}
+
 </script>
+
 </head>
 <body>
 	<div class="chat_wrap">
