@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>로그인</title>
+	<title>TTang TTang Market</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -30,7 +30,9 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
+			 
 			<div class="wrap-login100">
+			<a href="#"><img src="../img/logo_red.png" width="536" height="185" alt=""></a>
 				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
 					<span class="login100-form-title">
 						로그인
