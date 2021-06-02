@@ -38,12 +38,12 @@
 						로그인
 					</span>
 
-					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+					<div class="wrap-input100 validate-input m-b-16" data-validate="사용자 이름을 입력하십시오.">
 						<input class="input100" type="text" name="username" placeholder="아이디를 입력하세요.">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
+					<div class="wrap-input100 validate-input" data-validate = "비밀번호를 입력하십시오.">
 						<input class="input100" type="password" name="pass" placeholder="비밀번호를 입력하세요.">
 						<span class="focus-input100"></span>
 					</div>
