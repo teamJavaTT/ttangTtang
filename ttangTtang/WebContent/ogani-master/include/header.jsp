@@ -151,6 +151,7 @@
                             <li><a href="/ttangTtang/ogani-master/mypage.jsp">MYPAGE</a></li>
                             <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
                             <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
+              				<li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
                         </ul>
                     </nav>
                 </div>
