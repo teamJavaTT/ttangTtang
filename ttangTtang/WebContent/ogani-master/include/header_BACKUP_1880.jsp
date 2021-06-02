@@ -54,7 +54,7 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="login/login.jsp"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -120,7 +120,11 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
+<<<<<<< HEAD
+                                <a href="login/login.jsp"><i class="fa fa-user"></i> Login</a>
+=======
                                 <a href="../ogani-master/Login/login.jsp"><i class="fa fa-user"></i> Login</a>
+>>>>>>> 8b6fd019cbb74b735d4c0b4246ac96684b0c0d13
                             </div>
                         </div>
                     </div>
@@ -147,9 +151,14 @@
                                     <li><a href="/ttangTtang/ogani-master/blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/ttangTtang/ogani-master/mypage.jsp">MYPAGE</a></li>
+<<<<<<< HEAD
+                            <li><a href="./mypage.jsp">mypage</a></li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
+=======
                             <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
                             <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
+>>>>>>> 8b6fd019cbb74b735d4c0b4246ac96684b0c0d13
                         </ul>
                     </nav>
                 </div>
