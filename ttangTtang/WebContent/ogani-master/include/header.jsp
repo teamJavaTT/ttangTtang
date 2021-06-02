@@ -71,7 +71,7 @@
                 </li>
                 <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
                 <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
-                <li><a href="/ttangTtang/ogani-master/adminmain.html">Service</a></li>
+                <li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
