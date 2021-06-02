@@ -42,6 +42,11 @@ $("input[type='text']").keypress(function(e){
 		$(this).val('');
 		var _tar = $(".chat_wrap .inner").append('<div class="item '+class+'"><div class="box"><p class="msg">'+_val+'</p><span class="time">'+currentTime()+'</span></div></div>');
 	}
+	
+	setTimeout(function(){
+		$(".chat_wrap .inner").append('<div class="item '+_class+'")
+	})
+	
 })
 });
 
