@@ -69,7 +69,7 @@
 							계정이 없으십니까?
 						</span>
 
-						<a href="#" class="txt3">
+						<a href="join.jsp" class="txt3">
 							회원가입
 						</a>
 					</div>
