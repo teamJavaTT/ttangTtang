@@ -33,7 +33,7 @@
 			<div class="col-lg-9">
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h2>공지사항</h2>
+					<h2>Q&A</h2>
 					<p>
 				</section>
 				<!-- list -->
