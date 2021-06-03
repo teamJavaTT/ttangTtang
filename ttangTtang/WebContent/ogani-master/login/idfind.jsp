@@ -15,7 +15,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>아이디 찾기</title>
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <style>
         @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 	
