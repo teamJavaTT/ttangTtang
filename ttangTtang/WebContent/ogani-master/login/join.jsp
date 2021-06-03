@@ -162,7 +162,7 @@
 
 	</div>
 	<!-- wrapper -->
-	<script src="/js/joinmain.js"></script>
+	<script src="js/joinmain.js"></script>
 </body>
 </html>
 						
