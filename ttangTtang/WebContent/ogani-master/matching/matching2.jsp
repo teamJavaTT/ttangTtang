@@ -206,10 +206,3 @@ input[type="text"]::placeholder {
 
 
 
-
-
-
-
-
-
-
