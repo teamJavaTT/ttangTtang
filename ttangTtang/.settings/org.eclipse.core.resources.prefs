@@ -1,4 +1,8 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
-encoding//WebContent/ogani-master/Login/css/joinmain.css=UTF-8
-encoding//WebContent/ogani-master/Login/join.jsp=UTF-8
-encoding//WebContent/ogani-master/Login/login.jsp=UTF-8
+encoding//WebContent/ogani-master/login/css/joinmain.css=UTF-8
+encoding//WebContent/ogani-master/login/join.jsp=UTF-8
+encoding//WebContent/ogani-master/login/login.jsp=UTF-8
+encoding//WebContent/ogani-master/matching/matching2.jsp=UTF-8

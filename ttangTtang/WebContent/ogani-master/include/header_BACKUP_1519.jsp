@@ -105,7 +105,6 @@
                 <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
                 <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
                 <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
-                <li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -154,8 +153,16 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
+<<<<<<< HEAD
                             <div class="header__top__right__auth">
                                 <a href="../ogani-master/login/login.jsp"><i class="fa fa-user"></i> Login</a>
+=======
+                            <div class="header__top__right__social">
+                                <a href="../ogani-master/Login/login.jsp"><i class="fa fa-user"></i> Login</a>
+>>>>>>> d6e751b36a1c5161117a6d4727d4fea3bfca1238
+                            </div>
+                            <div class="header__top__right__auth">
+                               	<a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Admin</a>
                             </div>
                         </div>
                     </div>
@@ -185,7 +192,7 @@
                             <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
                             <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
                             <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
-              				<li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
+              				<li><a href="/ttangTtang/ogani-master/admin/userversion/uvadminmain.jsp">Services</a></li>
                         </ul>
                     </nav>
                 </div>
