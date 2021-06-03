@@ -23,9 +23,9 @@ border-right:8px solid #fff;}
 .chat_wrap .item .box .msg{background:#fff; border-radius:10px; padding:8px; text-align:left}
 .chat_wrap .item .box .time{font-size:11px; color:#999; position:absolute; right:-75px; bottom:0; width:70px}
 .chat_wrap .item.mymsg{text-align:right}
-.chat_wrap .item.mymsg .box:before{left:auto; right:-8px; border-left:8px solid #fee600; border-right:0}
+.chat_wrap .item.mymsg .box:before{left:auto; right:-8px; border-left:8px solid tomato ; border-right:0}
 .chat_wrap .item.mymsg .box .time{right:auto; left:-75px}
-.chat_wrap .item.mymsg .box .msg{background:#fee600}
+.chat_wrap .item.mymsg .box .msg{background:tomato ;}
 .chat_wrap .item .box{transition:all .3s ease-out; margin:0 0 0 20px; opacity:0}
 .chat_wrap .item.mymsg .box{margin:0 20px 0 0;}
 .chat_wrap .item.on .box{margin:0; opacity:1}
