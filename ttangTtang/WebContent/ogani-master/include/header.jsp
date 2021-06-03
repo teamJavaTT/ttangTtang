@@ -43,7 +43,7 @@
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                 <li><a href="/ttangTtang/ogani-master/product/productWrite.jsp"><i class="btn-group"></i> <span>상품등록</span></a></li>
+               
             </ul>
 
 
@@ -173,7 +173,7 @@
                         </ul>
                     
                         <div class="header__cart__price">item: <span>$150.00</span></div>
-                        	<button type="button" class="btn btn-primary">상품등록</button>
+                        	<button type="button" class="btn btn-primary"><a href="/ttangTtang/ogani-master/product/productWrite.jsp">상품등록</a></button>
                     </div>
                 </div>
             </div>
