@@ -18,12 +18,12 @@
 .chat_wrap .item{margin-top:15px}
 .chat_wrap .item:first-child{margin-top:0}
 .chat_wrap .item .box{display:inline-block; max-width:180px; position:relative}
-.chat_wrap .item .box:before{content:""; position:absolute; left:-8px; top:9px; border-top:0px solid transparent; 
+.chat_wrap .item .box:before{content:""; position:absolute; left:-8px; top:9px; border-top:0px solid transparent; border-bottom:8px solid transparent;
 border-right:8px solid #fff;}
 .chat_wrap .item .box .msg{background:#fff; border-radius:10px; padding:8px; text-align:left}
 .chat_wrap .item .box .time{font-size:11px; color:#999; position:absolute; right:-75px; bottom:0; width:70px}
 .chat_wrap .item.mymsg{text-align:right}
-.chat_wrap .item.mymsg .box:before{left:auto; right:-8px; border-left:8px solid #fee600; border-right:0;}
+.chat_wrap .item.mymsg .box:before{left:auto; right:-8px; border-left:8px solid #fee600; border-right:0}
 .chat_wrap .item.mymsg .box .time{right:auto; left:-75px}
 .chat_wrap .item.mymsg .box .msg{background:#fee600}
 .chat_wrap .item .box{transition:all .3s ease-out; margin:0 0 0 20px; opacity:0}
@@ -77,16 +77,11 @@ var currentTime = function(){
 					<p class="msg">안녕하세요</p>
 					<span class="time ">오전 10:05</span>
 				</div>
-			</div>
-			
-		
-		
-			
 			
 			
 		</div>
-		<input type="text" class"" placeholder="내용 입력" >
 	</div>
+		<input class="item mymsg"; type="text" class placeholder="내용 입력" >
 		
 	</div>
 </body>

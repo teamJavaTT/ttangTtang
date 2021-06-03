@@ -25,6 +25,31 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="js/bootstrap.js"></script>
 
+<style>
+.btn-group button {
+  border: 3px solid black;
+  color: black;
+  padding: 5px 10px;
+  cursor: pointer;
+ 
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* 테두리중복제거*/
+.btn-group button:not(:last-child) {
+  border-right: none;
+}
+
+.btn-group button:hover {
+  background-color: tomato;
+}
+</style>
 </head>
 
 <body>
@@ -43,7 +68,7 @@
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-               
+                 <li><a href="#"><i class="btn-group"></i> <span>상품등록</span></a></li>
             </ul>
 
 
@@ -80,7 +105,6 @@
                 <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
                 <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
                 <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
-                <li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -129,8 +153,11 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
+                            <div class="header__top__right__social">
+                                <a href="../ogani-master/Login/login.jsp"><i class="fa fa-user"></i> Login</a>
+                            </div>
                             <div class="header__top__right__auth">
-                                <a href="../ogani-master/login/login.jsp"><i class="fa fa-user"></i> Login</a>
+                               	<a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Admin</a>
                             </div>
                         </div>
                     </div>
@@ -160,7 +187,7 @@
                             <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
                             <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
                             <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
-              				<li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
+              				<li><a href="/ttangTtang/ogani-master/admin/userversion/uvadminmain.jsp">Services</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -171,9 +198,9 @@
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                             
                         </ul>
-                    
+                        <div class="btn-group"><button>상품등록</button><a href="#"></a></div>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
-                        	<button type="button" class="btn btn-primary"><a href="/ttangTtang/ogani-master/product/productWrite.jsp">상품등록</a></button>
+                        	<button type="button" class="btn btn-primary">상품등록</button>
                     </div>
                 </div>
             </div>
