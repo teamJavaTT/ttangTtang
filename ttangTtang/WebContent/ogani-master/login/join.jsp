@@ -40,7 +40,7 @@
 				</h3>
 				<span class="box int_pass"> <input type="text" id="pswd1"
 					class="int" maxlength="20"> <span id="alertTxt">사용불가</span>
-					<img src="../Login/images/m_icon_pass.png" id="pswd1_img1"
+					<img src="../login/images/m_icon_pass.png" id="pswd1_img1"
 					class="pswdImg">
 				</span> <span class="error_next_box"></span>
 			</div>
@@ -52,7 +52,7 @@
 				</h3>
 				<span class="box int_pass_check"> <input type="text"
 					id="pswd2" class="int" maxlength="20"> <img
-					src="../Login/images/m_icon_check_disable.png" id="pswd2_img1"
+					src="../login/images/m_icon_check_disable.png" id="pswd2_img1"
 					class="pswdImg">
 				</span> <span class="error_next_box"></span>
 			</div>
