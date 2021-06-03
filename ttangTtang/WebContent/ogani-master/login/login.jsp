@@ -53,7 +53,7 @@
 							
 						</span>
 
-						<a href="#" class="txt2">
+						<a href="idfind.jsp" class="txt2">
 							아이디 찾기 / 비밀번호 찾기
 						</a>
 					</div>
