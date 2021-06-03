@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
      pageEncoding="UTF-8"%>
  <%@ include file="../include/header.jsp"%>
+ <%@ include file="../include/middle_header.jsp"%>
  <!DOCTYPE html>
  <html>
  <head>
  <meta charset="UTF-8">
- <title>Insert title here</title>
+ <title>상품 등록</title>
  <div class="form-group" style="text-align: center;">
                   <div class="btn-group" data-toggle="buttons">
                      <label class="btn btn-primary active">
@@ -53,8 +54,8 @@
  <body>
      <!-- 관리자용 메뉴는 일반 회원의 메뉴와 다르기 때문에 일부러 관리자용 메뉴를 만들고 그 메뉴를 출력한다. -->
     <h2>상품 등록</h2>
-    <form id="form1" name="form1" method="post"
-        enctype="multipart/form-data">
+<!--     <form id="form1" name="form1" method="post"
+        enctype="multipart/form-data"> -->
         <!-- 파일업로드를 위해 추가하는 타입 -->
  
         <table>
@@ -73,7 +74,24 @@
             </tr>
             <tr>
                 <td>상품이미지</td>
-                <td><input type="file" name="file1"></td>
+      	      <tr>
+	       <tr><td><input type="file" name="file1" multiple accept="image/*"/ ></td></tr>	
+			<td><input name="image" id="image" placeholder="정면"
+				 onchange="filePreview()"></td>
+		<tr>
+			<td><input name="image" id="image" placeholder="후면" 
+				onchange="filePreview()" style="margin-left: 48px;">
+		</tr>
+		</td>
+		<tr>
+			<td><input name="image" id="image" placeholder="측면" 
+				onchange="filePreview()" style="margin-left: 48px;">
+		</tr>
+		</td>
+			<td><input name="image" id="image" placeholder="측면" 
+				onchange="filePreview()" style="margin-left: 48px;">
+		</tr>
+		</td>
             </tr>
             <tr>
  

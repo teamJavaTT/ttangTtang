@@ -8,10 +8,18 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Organi Shop</h2>
+                        <h2>상품</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
+                            <a href="../index.jsp">Home</a>
                             <span>Shop</span>
+                             <div class="btn-group" data-toggle="buttons">
+                     <label class="btn btn-primary active">
+                        <input type="radio" name="saleSet" autocomplete="off" value="일반" checkde   >일반
+                     </label>
+                     <label  class="btn btn-primary">
+                        <input type="radio" name="saleSet" autocomplete="off" value="경매" checkde   >경매
+                     </label>
+                  </div>
                         </div>
                     </div>
                 </div>
