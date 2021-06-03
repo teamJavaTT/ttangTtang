@@ -17,13 +17,13 @@
 						<li><a href="/ttangTtang/ogani-master/admin/notice.jsp">공지사항</a></li>
                         <li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의 소리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/userlist">사용자 게시글 관리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/userinfo">사용자 회원정보 관리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/service">고객센터</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/blacklist">블랙리스트관리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/declaration">신고 관리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/outuser">탈퇴회원 관리</a></li>
+						<li><a href="/ttangTtang/ogani-master/admin/customersound.jsp">고객의 소리</a></li>
+						<li><a href="/ttangTtang/ogani-master/admin/userlist.jsp">사용자 게시글 관리</a></li>
+						<li><a href="/ttangTtang/ogani-master/admin/userinfo.jsp">사용자 회원정보 관리</a></li>
+						<li><a href="/ttangTtang/ogani-master/admin/service.jsp">고객센터</a></li>
+						<li><a href="/ttangTtang/ogani-master/admin/blacklist.jsp">블랙리스트관리</a></li>
+						<li><a href="/ttangTtang/ogani-master/admin/declaration.jsp">신고 관리</a></li>
+						<li><a href="/ttangTtang/ogani-master/admin/outuser.jsp">탈퇴회원 관리</a></li>
 					</ul>
 				</div>
 			</div>
