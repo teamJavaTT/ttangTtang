@@ -103,6 +103,7 @@
                     </ul>
                 </li>
                 <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
+                <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
                 <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
                 <li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
             </ul>
@@ -181,7 +182,7 @@
                                     <li><a href="/ttangTtang/ogani-master/blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/ttangTtang/ogani-master/mypage.jsp">MYPAGE</a></li>
+                            <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
                             <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
                             <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
               				<li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>

@@ -13,12 +13,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <style>
 
-.chat_wrap{border:1px solid #999; width:300px; padding:5px; font-size:13px; color:#333;}
+.chat_wrap{border:1px solid #999; width:300px; padding:5px; font-size:13px; color:#333}
 .chat_wrap .inner{background-color:#acc2d2; border-radius:5px; padding:10px; overflow-y:scroll; height:400px}
-.chat_wrap .item{margin-top:0}
+.chat_wrap .item{margin-top:15px}
 .chat_wrap .item:first-child{margin-top:0}
 .chat_wrap .item .box{display:inline-block; max-width:180px; position:relative}
-.chat_wrap .item .box:before{content:""; position:absolute; left:-8px; top:9px; border-top:0px solid transparent; border-bottom:8px solid transparent
+.chat_wrap .item .box:before{content:""; position:absolute; left:-8px; top:9px; border-top:0px solid transparent; 
 border-right:8px solid #fff;}
 .chat_wrap .item .box .msg{background:#fff; border-radius:10px; padding:8px; text-align:left}
 .chat_wrap .item .box .time{font-size:11px; color:#999; position:absolute; right:-75px; bottom:0; width:70px}
@@ -31,23 +31,28 @@ border-right:8px solid #fff;}
 .chat_wrap .item.on .box{margin:0; opacity:1}
 
 
+
 input[type="text"]{border:0; width:100%; background:#ddd; border-radius:5px; height:30px; padding-left:5px; box-sizing:border-box; margin-top:5px}
 input[type="text"]::placeholder{color:#999}
 
 </style>
+
 <script>
+$(function(){
 $("input[type='text']").keypress(function(e){
 	if(e.keyCode == 13 && $(this).val().length){
 		var _val = $(this).val();
 		var _class = $(this).attr("class");
 		$(this).val('');
-		var _tar = $(".chat_wrap .inner").append('<div class="item '+class+'"><div class="box"><p class="msg">'+_val+'</p><span class="time">'+currentTime()+'</span></div></div>');
+		var _tar = $(".chat_wrap .inner").append('<div class="item '+_class+'"><div class="box"><p class="msg">'+_val+'</p><span class="time">'+currentTime()+'</span></div></div>');
 	}
 	
 	setTimeout(function(){
-		$(".chat_wrap .inner").find(".item:;ast").addClass("on");
+		$(".chat_wrap .inner").find(".item:last").addClass("on");
 	},10)
 	
+	$(".chat_wrap .inner").stop().animate({scrollTop:$(".chat_wrap .inner").height()}, 500);
+
 })
 });
 
@@ -58,7 +63,7 @@ var currentTime = function(){
 	var apm = hh > 12 ? "오후" : "오전";
 	var ct = apm + " " + hh + ":" + mm + "";
 	return ct;
-}
+};
 
 </script>
 
@@ -73,14 +78,15 @@ var currentTime = function(){
 					<span class="time ">오전 10:05</span>
 				</div>
 			</div>
+			
 		
 		
 			
 			
 			
 		</div>
-	</div>
 		<input type="text" class"" placeholder="내용 입력" >
+	</div>
 		
 	</div>
 </body>

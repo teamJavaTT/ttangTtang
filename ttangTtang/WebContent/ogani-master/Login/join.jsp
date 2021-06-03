@@ -126,21 +126,17 @@
 				</span> <span class="error_next_box">필수 정보입니다.</span>
 			</div>
 
-			<!-- ADDRESS-->
-			<div>
-				<h3 class="join_title">
-					<label for="address">주소</label>
-				</h3>
-				<span class="box int_mobile"> <input type="tel" id="mobile"
-					class="int" maxlength="16" placeholder="주소 입력">
-				</span> 
 
-
-
-
-
-			</div>
-
+			  <!-- EMAIL -->
+                <div>
+                    <h3 class="join_title"><label for="email">본인확인 이메일<span class="optional">(선택사항)</span></label></h3>
+                    <span class="box int_email">
+                        <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
+                    </span>
+                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
+                </div>
+                
+                
 			<!-- MOBILE -->
 			<div>
 				<h3 class="join_title">
@@ -169,3 +165,12 @@
 	<script src="/js/joinmain.js"></script>
 </body>
 </html>
+						
+				
+			
+
+
+
+
+
+			
