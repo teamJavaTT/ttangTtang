@@ -22,6 +22,34 @@
     <link rel="stylesheet" href="/ttangTtang/ogani-master/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/ttangTtang/ogani-master/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/ttangTtang/ogani-master/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="js/bootstrap.js"></script>
+
+<style>
+.btn-group button {
+  border: 3px solid black;
+  color: black;
+  padding: 5px 10px;
+  cursor: pointer;
+ 
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* 테두리중복제거*/
+.btn-group button:not(:last-child) {
+  border-right: none;
+}
+
+.btn-group button:hover {
+  background-color: tomato;
+}
+</style>
 </head>
 
 <body>
@@ -40,8 +68,13 @@
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                 <li><a href="#"><i class="btn-group"></i> <span>상품등록</span></a></li>
             </ul>
+
+
             <div class="header__cart__price">item: <span>$150.00</span></div>
+
+
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -138,7 +171,7 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="/ttangTtang/ogani-master/index.jsp">Home</a></li>
+                            <li class><a href="/ttangTtang/ogani-master/index.jsp">Home</a></li>
                             <li><a href="./shop-grid.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
@@ -160,8 +193,11 @@
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            
                         </ul>
+                        <div class="btn-group"><button>상품등록</button><a href="#"></a></div>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
+                        	<button type="button" class="btn btn-primary">상품등록</button>
                     </div>
                 </div>
             </div>
