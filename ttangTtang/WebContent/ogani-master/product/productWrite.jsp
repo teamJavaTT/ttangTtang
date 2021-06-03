@@ -5,7 +5,7 @@
  <html>
  <head>
  <meta charset="UTF-8">
- <title>Insert title here</title>
+ <title>상품 등록</title>
  <div class="form-group" style="text-align: center;">
                   <div class="btn-group" data-toggle="buttons">
                      <label class="btn btn-primary active">
@@ -73,7 +73,24 @@
             </tr>
             <tr>
                 <td>상품이미지</td>
-                <td><input type="file" name="file1"></td>
+      	      <tr>
+	       <tr><td><input type="file" name="file1" multiple accept="image/*"/ ></td></tr>	
+			<td><input name="image" id="image" placeholder="정면"
+				 onchange="filePreview()"></td>
+		<tr>
+			<td><input name="image" id="image" placeholder="후면" 
+				onchange="filePreview()" style="margin-left: 48px;">
+		</tr>
+		</td>
+		<tr>
+			<td><input name="image" id="image" placeholder="측면" 
+				onchange="filePreview()" style="margin-left: 48px;">
+		</tr>
+		</td>
+			<td><input name="image" id="image" placeholder="측면" 
+				onchange="filePreview()" style="margin-left: 48px;">
+		</tr>
+		</td>
             </tr>
             <tr>
  
