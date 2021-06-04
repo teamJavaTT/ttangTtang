@@ -40,7 +40,22 @@
 				<section class="content">
 					<div class="col-lg-9">
 						<!-- Default box -->
-						<div class="box">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<%-- <div class="box">
 							<table border="1">
 								<tr>
 									<td>번호</td>
@@ -79,7 +94,7 @@
 									</tr>
 								</c:if>
 							</table>
-						</div>
+						</div> --%>
 						<!-- /.box -->
 					</div>
 				</section>

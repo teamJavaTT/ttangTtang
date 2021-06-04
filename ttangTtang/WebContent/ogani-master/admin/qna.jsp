@@ -44,7 +44,6 @@
 								게시글 관리</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/userinfo.jsp">사용자
 								회원정보 관리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/service.jsp">고객센터</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/blacklist.jsp">블랙리스트관리</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/declaration.jsp">신고
 								관리</a></li>

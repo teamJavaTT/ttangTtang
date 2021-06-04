@@ -19,9 +19,12 @@
 	box-sizing: border-box;
 }
 
-body, html {
+html,
+body {
 	height: 100%;
-	font-family: sans-serif;
+	font-family: "Cairo", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
 }
 
 /* ------------------------------------ */
@@ -215,7 +218,6 @@ tbody tr:hover {
 .column5 {
   width: 10%;
   text-align: center;
-  padding-right: 1px;
 }
 
 .column6 {
