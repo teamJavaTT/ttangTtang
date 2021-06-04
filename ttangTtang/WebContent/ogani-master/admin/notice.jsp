@@ -71,33 +71,28 @@
 									<table border="1">
 										<thead>
 											<tr class="table100-head">
-												<td class="column5">번호</td>
-												<td class="column1" colspan="2">제목</td>
-												<td class="column5">작성일자</td>
+												<td class="column5" style="padding-left: 0px;">번호</td>
+												<td class="column1" colspan="2" style="padding-left: 0px;">제목</td>
+												<td class="column5" style="padding-left: 0px;">작성일자</td>
 												<!-- <td class="column5">조회수</td> -->
 											</tr>
 										</thead>
-										<%-- <c:if test="${articlePage.hasNoArticles()}">
-											<tr>
-												<td colspan="4">게시글이 없습니다.</td>
-											</tr>
-										</c:if> --%>
+										<tbody>
 										<c:forEach var="article" items="${articlePage.content}">
 											<tr>
 												<!-- 번호 -->
-												<td>${article.number}</td>
+												<td style="padding-left: 0px;">${article.number}</td>
 												<!-- 내용 -->
-												<td colspan="2"><a
-													href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"><c:out
+												<td colspan="2" style="padding-left: 0px;"><a href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"><c:out
 															value="${article.title}" /></a></td>
 												<!--  작성일자  -->
-												<td>${article.writer.name}</td>
+												<td style="padding-left: 0px;">${article.writer.name}</td>
 												<%-- <td>${article.readCount}</td> --%>
 											</tr>
 										</c:forEach>
 										<c:if test="${articlePage.hasArticles()}">
 											<tr>
-												<td colspan="4"><c:if
+												<td colspan="4" style="padding-left: 0px;"><c:if
 														test="${articlePage.startPage > 5}">
 														<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
 													</c:if> <c:forEach var="pNo" begin="${articlePage.startPage}"
@@ -109,10 +104,11 @@
 													</c:if></td>
 											</tr>
 										</c:if>
+										</tbody>
 									</table>
 									<table style:text-align="center">
 										<tr>
-											<td class="column4" colspan="1"><a href="write.do">[게시글쓰기]</a></td>
+											<td class="column4" colspan="1"><a href="/ttangTtang/ogani-master/admin/noticewrite.jsp">[게시글쓰기]</a></td>
 										</tr>
 									</table>
 								</div>

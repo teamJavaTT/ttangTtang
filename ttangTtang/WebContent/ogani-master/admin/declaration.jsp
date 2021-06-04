@@ -70,9 +70,9 @@
 									<table border="1">
 										<thead>
 											<tr class="table100-head">
-												<td class="column5">신고자</td>
-												<td class="column1"  colspan="2">신고대상자</td>
-												<td class="column5">작성일자</td>
+												<td class="column5" style="padding-left: 0px;">신고자</td>
+												<td class="column1" colspan="2" style="padding-left: 0px;">신고대상자</td>
+												<td class="column5" style="padding-left: 0px;">작성일자</td>
 												<!-- <td class="column5">조회수</td> -->
 											</tr>
 										</thead>
@@ -84,18 +84,18 @@
 										<c:forEach var="article" items="${articlePage.content}">
 											<tr>
 												<!-- 번호 -->
-												<td>${article.number}</td>
+												<td style="padding-left: 0px;">${article.number}</td>
 												<!--  작성자  -->
-												<td colspan="2">${article.writer.name}</td>
+												<td colspan="2" style="padding-left: 0px;">${article.writer.name}</td>
 												<!-- 내용 -->
-												<td><a
+												<td style="padding-left: 0px;"><a
 													href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"><c:out
 															value="${article.title}" /></a></td>
 											</tr>
 										</c:forEach>
 										<c:if test="${articlePage.hasArticles()}">
 											<tr>
-												<td colspan="4"><c:if
+												<td colspan="4" style="padding-left: 0px;"><c:if
 														test="${articlePage.startPage > 5}">
 														<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
 													</c:if> <c:forEach var="pNo" begin="${articlePage.startPage}"
