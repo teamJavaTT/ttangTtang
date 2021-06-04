@@ -113,13 +113,14 @@
 input[type="text"] {
 	border: 0;
 	align: right;
-	width: 100%;
+	width: 88%;
 	background: #ddd;
 	border-radius: 5px;
 	height: 30px;
 	padding-left: 5px;
 	box-sizing: border-box;
 	margin-top: 5px;
+	margin-left: 35px;
 }
 
 input[type="text"]::placeholder {
@@ -180,19 +181,17 @@ input[type="text"]::placeholder {
 
 			</div>
 		</div>
-		<tb> <input class="item mymsg" ; type="text" class
-			placeholder="내용 입력">
-
-
-		<ul>
-
-			<a href="../img/logo_hammer.png"><input class="item mymsg" ; type="button" class value="사진"></a>
-			<a href="#"><input class="item mymsg" ; type="button" class value="동영상"></a>
-			<a href="#"><input class="item mymsg" ; type="button" class value="카메라"></a>
-			<a href="#"><input class="item mymsg" ; type="button" class value="위치"></a>
-			<a href="#"><input class="item mymsg" ; type="button" class value="음성메시지"></a>
+			<a href="#"><input class="item mymsg" ; type="button" class value="사진 전송">
+			<a href="#"><input class="item mymsg" ; type="button" class value="동영상 전송">
+			<a href="#"><input class="item mymsg" ; type="button" class value="카메라 촬영">
+			<a href="#"><input class="item mymsg" ; type="button" class value="음성 메시지">
+			<a href="#"><input class="item mymsg" ; type="button" class value="위치 전송">
 			
-		</ul>
+		
+		
+				</select> <a href="buttom" role="button" class="btn_more" data-clk="svc.more">더보기</a>
+		<tb> <input class="item mymsg" ; type="text" 
+		class placeholder="내용 입력">
 	</div>
 </body>
 </html>
