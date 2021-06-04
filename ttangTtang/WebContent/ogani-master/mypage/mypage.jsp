@@ -193,7 +193,7 @@
                             <li><a href="../mypage/review.jsp">칭찬&불만 후기</a></li>
                             <li><a href="../mypage/sellerReview.jsp">판매자 거래 리뷰</a></li>
                             <li><a href="../mypage/withdrawal.jsp">회원탈퇴</a></li>
-                            <li><a href="../mypage/serviceCenter.jsp">고객센터</a></li>
+                            <li><a href="../admin/adminmain.jsp">고객센터</a></li>
                         </ul>
                     </div>
                 </div>
@@ -224,48 +224,9 @@
             
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-7">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-2.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-3.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-1.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-4.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-4.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12">
-                        </div>
-                    </div>
-                </div>
+                
+                
+                
             </div>
         </div>
     </section>

@@ -193,7 +193,7 @@
                             <li><a href="../mypage/review.jsp">칭찬&불만 후기</a></li>
                             <li><a href="../mypage/sellerReview.jsp">판매자 거래 리뷰</a></li>
                             <li><a href="../mypage/withdrawal.jsp">회원탈퇴</a></li>
-                            <li><a href="../mypage/serviceCenter.jsp">고객센터</a></li>
+                            <li><a href="../admin/adminmain.jsp">고객센터</a></li>
                         </ul>
                     </div>
                 </div>
@@ -219,54 +219,29 @@
 
     <!-- Blog Section Begin -->
     <section class="blog spad">
-        <div class="container">
-            <div class="row">
-            
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-7">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-2.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-3.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-1.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-4.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-4.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
+        <div class="container" style="text-align: center;">
+        <img src="../img/logo_red.png" width="300" height="120" alt="">
+            <div class="container" style="text-align: center;">
 
-                        <div class="col-lg-12">
-                        </div>
-                    </div>
-                </div>
-            </div>
+						 <div class="jumbotron" style="background-color:red" "text-align: center;" "padding-top: 20px;">
+				<form method="post" action="mypage.jsp">
+					<h3 style="text-align: center;">회원탈퇴</h3>
+					
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="비밀번호확인" name="userPassword" maxlength="20">
+					<input style="background-color:black" type="submit" class="btn btn-primary form-control" value="회원탈퇴">
+				</form>
+			</div>
+
+
+            
+           	</div>
         </div>
     </section>
     <!-- Blog Section End -->

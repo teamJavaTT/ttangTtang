@@ -183,7 +183,7 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                        <ul>
+                         <ul>
                             <li><a href="../mypage/editProfile.jsp">회원 정보 수정</a></li>
                             <li><a href="../mypage/interestedItems.jsp">관심 상품</a></li>
                             <li><a href="../mypage/user.jsp">사용자차단&신고</a></li>
@@ -193,7 +193,7 @@
                             <li><a href="../mypage/review.jsp">칭찬&불만 후기</a></li>
                             <li><a href="../mypage/sellerReview.jsp">판매자 거래 리뷰</a></li>
                             <li><a href="../mypage/withdrawal.jsp">회원탈퇴</a></li>
-                            <li><a href="../mypage/serviceCenter.jsp">고객센터</a></li>
+                            <li><a href="../admin/adminmain.jsp">고객센터</a></li>
                         </ul>
                     </div>
                 </div>
