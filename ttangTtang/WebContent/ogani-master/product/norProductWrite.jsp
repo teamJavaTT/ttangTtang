@@ -7,7 +7,13 @@
  <head>
  <meta charset="UTF-8">
  <title>상품 등록</title>
- 
+ <style>
+#test textarea {
+ width: 200px; 
+ height: 100px;
+ border: 3px solid #ff0000;
+  }
+</style>
  <script>
     //상품을 추가하기위한 정보를 담아 insert.do로 보내는 자바스크립트 함수
     function product_write() {
@@ -39,14 +45,51 @@
 
         document.form1.action = "${path}/shop/product/insert.do"; //insert.do 페이지로 form1에 저장된 자료를 전송함
         document.form1.submit();
-    }
+    };
+    
+    (function () {
+    	  var autoSave = new Object();
+    	  (function (obj) {
+    	    obj.configuration = {
+    	      interval: 60 // second(s)
+    	    };
+    	    obj.bindTimer = function() {
+    	      var textEle = document.querySelector('#test');
+    	      var textVal = textEle.value;
+    	      var ref1, ref2, ref3; // Newer -&gt; Older
+
+    	      // Save to localStorage
+    	      var encodedTextVal = btoa(textVal);
+    	      ref1 = window.localStorage.getItem('textval-01');
+    	      ref2 = window.localStorage.getItem('textval-02');
+
+    	      if ((window.localStorage) && (encodedTextVal != ref1)){
+    	        window.localStorage.setItem('textval-01', encodedTextVal);
+    	        window.localStorage.setItem('textval-02', ref1);
+    	        window.localStorage.setItem('textval-03', ref2);
+    	      }
+    	      else if (!window.localStorage) {
+    	        console.log('Error' + ': Your browser not support')
+    	        return false;
+    	      }
+    	    };
+
+    	    obj.start = function() {
+    	      obj.bindTimer();
+    	      setTimeout(function() {
+    	        obj.start();
+    	      }, obj.configuration.interval * 1000);
+    	    };
+    	    obj.start();
+    	  })(autoSave);
+    	})();
  </script>
  </head>
  <body>
      <!-- 관리자용 메뉴는 일반 회원의 메뉴와 다르기 때문에 일부러 관리자용 메뉴를 만들고 그 메뉴를 출력한다. -->
     <h3>일반 상품 등록</h3>
-<!--     <form id="form1" name="form1" method="post"
-        enctype="multipart/form-data"> -->
+        <form id="form1" name="form1" method="post"
+        enctype="multipart/form-data">
         <!-- 파일업로드를 위해 추가하는 타입 -->
  
         <table>
@@ -54,21 +97,20 @@
                 <td>상품명</td>
                 <td><input name="product_name"></td>
             </tr>
+           
             <tr>
                 <td>가격</td>
                 <td><input name="price"></td>
             </tr>
             <tr>
                 <td>상품설명</td>
-                <td><textarea rows="5" cols="60" name="description"
-                        id="description"></textarea></td>
+                <td><textarea id="test"></textarea></td>
             </tr>
             </table>
             <table>
-                <td>상품이미지
-                <span style=opacity:0.6 ; font-size=12px >(최대 10개의 이미지를 선택하실 수 있습니다.)</span></td>
+                <td>상품이미지<span style=opacity:0.6 ; font-size=12px >(최대 10개의 이미지를 선택하실 수 있습니다.)</span></td>
       	      
-	       <tr><td><input type="file" name="file1" multiple accept="image/*"/ ></td></tr>	
+	       <tr><td><input type="file" name="file1" multiple accept="image/*"></td></tr>	
 			<td><input name="image" id="image" placeholder="정면"
 				 onchange="filePreview()" style="margin-left: 48px;"></td>
 		<tr>
@@ -94,6 +136,7 @@
                 </td>
             </tr>
         </table>
-    </form>
+ </form>
+    
 
  <%@ include file="../include/footer.jsp"%>
