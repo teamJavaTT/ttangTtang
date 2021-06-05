@@ -185,15 +185,12 @@ input[type="text"]::placeholder {
 
 
 		<ul>
-		
-		
-		<form name="fileForm" action="requestupload2" method="post" enctype="multipart/form-data">
-        <input multiple="multiple" type="file" name="file">
-        <input class="item mymsg"  type="submit" value="전송">
-        </form>
-        
-        
-			
+
+			<a href="../img/logo_hammer.png"><input class="item mymsg" ; type="button" class value="사진"></a>
+			<a href="#"><input class="item mymsg" ; type="button" class value="동영상"></a>
+			<a href="#"><input class="item mymsg" ; type="button" class value="카메라"></a>
+			<a href="#"><input class="item mymsg" ; type="button" class value="위치"></a>
+			<a href="#"><input class="item mymsg" ; type="button" class value="음성메시지"></a>
 			
 		</ul>
 	</div>
