@@ -70,7 +70,7 @@
 								<td class="contents" colspan="4" style="padding-left: 0px;"><input type="text" placeholder="글 제목" name="title" maxlength="200"></td>
 							</tr>
 							<tr>
-								<td class="contents" colspan="4" style="padding-left: 0px;"><textarea rows="10" cols="100%" placeholder="내용" name="content"></textarea></td>
+								<td class="contents" colspan="4" style="padding-left: 0px; "><textarea rows="10" cols="100%" placeholder="내용" name="content"></textarea></td>
 							</tr>
 							<tr>
 								<td class="column4"><a href="#">[글 올리기]</a></td>
