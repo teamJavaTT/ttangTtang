@@ -59,7 +59,7 @@ ul, li {
 input {
   display: block;
 	border: 1px solid #444444;
-	width: 100%;
+	width: 95%;
 	padding: 10px;
 	border-collapse: collapse;
 }
@@ -74,7 +74,7 @@ textarea {
 
 textarea:focus, input:focus {
   border-color: transparent !important;
-  outline:2px solid #d50000;
+  outline:1px solid #000000;
 }
 
 /* ------------------------------------ */

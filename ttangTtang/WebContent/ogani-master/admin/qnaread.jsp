@@ -55,7 +55,6 @@
 			</div>
 			<!-- admin list end -->
 
-
 			<div class="col-lg-9">
 				<section class="content-header">
 					<h2>Q&A</h2>
@@ -93,11 +92,16 @@
 									<!-- 댓글 테이블 -->
 									<table>
 										<c:forEach var="article" items="${articlePage.content}">
+											<tr>
+												<td></td>
+											</tr>
 											<!-- 댓글들 -->
-											<tr style="padding-left: 0px; border-bottom: 1px solid #444444; border-top: 1px solid #444444;">
-												<td>댓글나오는곳<a
+											<tr
+												style="padding-left: 0px; border-bottom: 1px solid #444444; border-top: 1px solid #444444;">
+												<td style="text-align: left;">댓글나오는곳<a
 													href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"><c:out
 															value="${article.title}" /></a></td>
+												<td><input type="submit" value="수정"></input></td>
 											</tr>
 										</c:forEach>
 										<c:if test="${articlePage.hasArticles()}">
