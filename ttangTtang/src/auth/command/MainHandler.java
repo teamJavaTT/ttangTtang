@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
 import auth.service.MainService;
-import auth.service.ArticlePage;
+import auth.service.MainPage;
 
 public class MainHandler implements CommandHandler {
 	
@@ -13,8 +13,8 @@ public class MainHandler implements CommandHandler {
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		ArticlePage articlePage = mainService.getMainPage();
-		req.setAttribute("articlePage", articlePage);
+		MainPage mainPage = mainService.getMainPage();
+		req.setAttribute("mainPage", mainPage);
 		return "/WEB-INF/ogani-master/index.jsp";
 	}
 

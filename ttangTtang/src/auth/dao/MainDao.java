@@ -10,20 +10,42 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import auth.model.Article;
+import auth.model.Category;
+import auth.model.Product;
 import jdbc.JdbcUtil;
 
 public class MainDao {
-
-	public List<Article> select(Connection conn) throws SQLException {
+	//카테고리 select
+	public List<Category> selectCategory(Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement("select * from category order by maincategory");
 			rs = pstmt.executeQuery();
-			List<Article> result = new ArrayList<>();
+			List<Category> result = new ArrayList<>();
 			while (rs.next()) {
-				result.add(convertArticle(rs));
+				result.add(convertCategory(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}	
+	private Category convertCategory(ResultSet rs) throws SQLException {
+		return new Category(rs.getString("ccode"), rs.getString("cname"), rs.getString("maincategory"), rs.getString("middlecategory"));
+	}
+	
+	//상품 select
+	public List<Product> selectProduct(Connection conn) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from product order by ino desc");
+			rs = pstmt.executeQuery();
+			List<Product> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertProduct(rs));
 			}
 			return result;
 		} finally {
@@ -31,12 +53,10 @@ public class MainDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
-	
-	private Article convertArticle(ResultSet rs) throws SQLException {
-		return new Article(rs.getString("ccode"),
-							rs.getString("cname"),
-							rs.getString("maincategory"),
-							rs.getString("middlecategory"));
+	private Product convertProduct(ResultSet rs) throws SQLException {
+		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("cname"), rs.getString("auctioncheck")
+				,rs.getString("uad"), rs.getString("iname"), rs.getString("price"), rs.getString("minprice")
+				,rs.getString("maxprice"), rs.getString("pricetext"), rs.getString("imageface"), rs.getString("redate"));
 	}
 
 }

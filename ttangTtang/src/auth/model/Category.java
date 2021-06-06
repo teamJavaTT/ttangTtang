@@ -1,13 +1,13 @@
 package auth.model;
 
-public class Article {
+public class Category {
 
 	private String ccode;
 	private String cname;
 	private String maincategory;
 	private String middlecategory;
 
-	public Article(String ccode, String cname, String maincategory, String middlecategory) {
+	public Category(String ccode, String cname, String maincategory, String middlecategory) {
 		this.ccode = ccode;
 		this.cname = cname;
 		this.maincategory = maincategory;

@@ -15,14 +15,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="/ttangTtang/ogani-master/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/ttangTtang/ogani-master/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/ttangTtang/ogani-master/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="/ttangTtang/ogani-master/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="/ttangTtang/ogani-master/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="/ttangTtang/ogani-master/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="/ttangTtang/ogani-master/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="/ttangTtang/ogani-master/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/ttangTtang/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/ttangTtang/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/ttangTtang/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/ttangTtang/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/ttangTtang/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/ttangTtang/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/ttangTtang/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/ttangTtang/css/style.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="js/bootstrap.js"></script>
 
@@ -38,7 +38,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="/ttangTtang/ogani-master/img/logo_red.png" alt=""></a>
+            <a href="#"><img src="/ttangTtang/img/logo_red.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -54,7 +54,7 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-                <img src="/ttangTtang/ogani-master/img/language.png" alt="">
+                <img src="/ttangTtang/img/language.png" alt="">
                 <div>English</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
@@ -68,7 +68,7 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="/ttangTtang/ogani-master/index.jsp">Home</a></li>
+                <li class="active"><a href="index.do">Home</a></li>
                 <li><a href="./shop-grid.jsp">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
@@ -122,7 +122,7 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="/ttangTtang/ogani-master/img/language.png" alt="">
+                                <img src="/ttangTtang/img/language.png" alt="">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
@@ -142,13 +142,13 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="/ttangTtang/ogani-master/index.jsp"><img src="/ttangTtang/ogani-master/img/logo_red.png" alt=""></a>
+                        <a href="index.do"><img src="/ttangTtang/img/logo_red.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class><a href="/ttangTtang/ogani-master/index.jsp">Home</a></li>
+                            <li class><a href="index.do">Home</a></li>
                             <li><a href="./shop-grid.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">

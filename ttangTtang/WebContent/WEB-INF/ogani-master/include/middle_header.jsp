@@ -12,8 +12,8 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-	                        <c:forEach var="article" items="${articlePage.content}">
-	                        	<li><a href="#">${article.cname}</a></li>
+	                        <c:forEach var="category" items="${mainPage.category}">
+	                        	<li><a href="#">${category.cname}</a></li>
 							</c:forEach>
                         </ul>
                     </div>
