@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
-<!-- Hero Section Begin -->
+
 <section class="hero">
 	<div class="container">
 		<div class="row">
@@ -57,77 +57,37 @@
 
 
 			<div class="col-lg-9">
-				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h2>FAQ</h2>
+					<h2>공지사항</h2>
 				</section>
-				<!-- list -->
 				<section class="content">
-					<div class="limiter">
-						<div class="wrap-table100">
-							<div class="table100">
-								<!-- Default box -->
-								<div class="box">
-									<table border="1">
-										<thead>
-											<tr class="table100-head">
-												<td class="column5" style="padding-left: 0px;">번호</td>
-												<td class="column1" colspan="2" style="padding-left: 0px;">제목</td>
-												<td class="column5" style="padding-left: 0px;">작성일자</td>
-												<!-- <td class="column5">조회수</td> -->
-											</tr>
-										</thead>
-										<%-- <c:if test="${articlePage.hasNoArticles()}">
-											<tr>
-												<td colspan="4">게시글이 없습니다.</td>
-											</tr>
-										</c:if> --%>
-										<c:forEach var="article" items="${articlePage.content}">
-											<tr>
-												<!-- 번호 -->
-												<td style="padding-left: 0px;">${article.number}</td>
-												<!-- 내용 -->
-												<td colspan="2" style="padding-left: 0px;"><a
-													href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"><c:out
-															value="${article.title}" /></a></td>
-												<!--  작성일자  -->
-												<td style="padding-left: 0px;">${article.writer.name}</td>
-												<%-- <td>${article.readCount}</td> --%>
-											</tr>
-										</c:forEach>
-										<c:if test="${articlePage.hasArticles()}">
-											<tr>
-												<td colspan="4" style="padding-left: 0px;"><c:if
-														test="${articlePage.startPage > 5}">
-														<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
-													</c:if> <c:forEach var="pNo" begin="${articlePage.startPage}"
-														end="${articlePage.endPage}">
-														<a href="list.do?pageNo=${pNo}">[${pNo}]</a>
-													</c:forEach> <c:if
-														test="${articlePage.endPage < articlePage.totalPages}">
-														<a href="list.do?pageNo=${articlePage.startPage + 5}">[다음]</a>
-													</c:if></td>
-											</tr>
-										</c:if>
-									</table>
-									<table style:text-align="center">
-										<tr>
-											<td class="column4" colspan="1"><a href="/ttangTtang/ogani-master/admin/faqwrite.jsp">[게시글쓰기]</a></td>
-										</tr>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /.box -->
+					<form action="noticewrite.do" method="post">
+						<table>
+							<thead>
+								<tr>
+									<th colspan="4" style="text-align: center;">공지사항 글쓰기 양식</th>
+								</tr>
+							</thead>
+							</tbody>
+							<tr>
+								<td class="contents" colspan="4" style="padding-left: 0px;"><input
+									type="text" placeholder="글 제목" name="title" maxlength="200"></td>
+							</tr>
+							<tr>
+								<td class="contents" colspan="4" style="padding-left: 0px;"><textarea
+										rows="10" cols="100%" placeholder="내용" name="content"></textarea></td>
+							</tr>
+							<tr>
+								<td class="column4"><input type="submit" value="글 등록"></a></td>
+							</tr>
+							</tbody>
+						</table>
+					</form>
 				</section>
-				<!-- /.content -->
 			</div>
 		</div>
 	</div>
-	<!-- /.content-wrapper -->
 </section>
-<!-- Hero Section End -->
 
 
 
