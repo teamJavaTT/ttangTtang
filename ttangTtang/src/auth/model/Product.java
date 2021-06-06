@@ -18,15 +18,15 @@ public class Product {
 	public Product(String ino, String userid, String cname, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String pricetext, String imageface, String redate) {
 		this.ino = ino;
 		this.userid = userid;
-		this.cname =  cname;  
+		this.cname = cname;
 		this.auctioncheck = auctioncheck;
 		this.uad = uad;
-		this.iname =  iname;  
+		this.iname = iname;
 		this.price = price;
 		this.minprice = minprice;
 		this.maxprice = maxprice;
 		this.pricetext = pricetext;
-		this.imageface =  imageface;  
+		this.imageface = imageface;
 		this.redate = redate;
 	}
 
