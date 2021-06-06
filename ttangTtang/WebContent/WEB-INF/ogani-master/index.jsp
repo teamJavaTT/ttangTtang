@@ -79,11 +79,14 @@
 	                        <div class="featured__item__text">
 	                            <h6><a href="#">${product.iname}</a></h6>
 	                            <c:choose>
+	                            	<c:when test="${product.auctioncheck == '0'}">
+		                            	<h5>${product.price}원</h5>
+		                            </c:when>
 		                            <c:when test="${product.auctioncheck == '1'}">
-		                            	<h5>${product.price}</h5>
+		                            	<h5>${product.price}원</h5>
 		                            </c:when>
 		                            <c:when test="${product.auctioncheck == '2'}">
-		                            	<h5>${product.minprice}</h5>
+		                            	<h5>${product.minprice}원</h5>
 		                            </c:when>
 	                            </c:choose>
 	                        </div>

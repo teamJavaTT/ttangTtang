@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="/ttangTtang/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/ttangTtang/css/style.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="js/bootstrap.js"></script>
-
 </head>
 
 <body>
