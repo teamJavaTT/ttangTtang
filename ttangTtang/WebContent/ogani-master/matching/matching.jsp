@@ -179,6 +179,36 @@ input[type="text"]::placeholder {
 		<input class="item mymsg" ; type="text" class placeholder="내용 입력">
 
 	</div>
+	
+	<div class="navbar-header">
+			<button type="button" class="navbar-toggle cooapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expanded="false">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="matching4.jsp">채팅창</a>
+			
+			
+			
+			
+			<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="../index.jsp">메인</a>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expand="false">접속하기<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="../login/login.jsp">로그인</a>
+						<li><a href="../login/join.jsp">회원가입</a>
+					</ul></li>
+			</ul>
+			
+			</div>
 </body>
 </html>
 
