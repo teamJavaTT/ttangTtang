@@ -59,8 +59,8 @@ public class NoticeService {
 	// 글 목록에 읽어오기
 	public NoticePage getNoticePage() throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {
-			List<Notice> notice = adminDao.selectNotice(conn);
-			return new NoticePage(notice);
+			List<Noticecolumn> noticecolumn = adminDao.selectNotice(conn);
+			return new NoticePage(noticecolumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

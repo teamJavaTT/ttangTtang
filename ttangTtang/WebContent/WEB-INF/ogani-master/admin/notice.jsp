@@ -76,15 +76,15 @@
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="article" items="${articlePage.content}">
+											<c:forEach var="notice" items="${noticePage.notice}">
 												<tr>
 													<!-- 번호 -->
 													<td style="padding-left: 0px;">${notice.mno}</td>
 													<!-- 내용 -->
-													<td colspan="2" style="padding-left: 0px;"><a href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}">
-													<c:out value="${notice.mtit}" /></a></td>
+													<td colspan="2" style="padding-left: 0px;"><%-- <a href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"></a> --%>
+													${notice.mtit}</td>
 													<!--  작성일자  -->
-													<td style="padding-left: 0px;">${notice.ndate}</td>
+													<td style="padding-left: 0px;">${notice.mdate}</td>
 													<%-- <td>${article.readCount}</td> --%>
 												</tr>
 											</c:forEach>

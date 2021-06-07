@@ -50,13 +50,13 @@ public class AdminDao {
 	}
 	// insert 부분 구문끝
 	// select 부분 시작
-	public List<Notice> selectNotice(Connection conn) throws SQLException {
+	public List<Noticecolumn> selectNotice(Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement("select * from notice order by mno");
 			rs = pstmt.executeQuery();
-			List<Notice> result = new ArrayList<>();
+			List<Noticecolumn> result = new ArrayList<>();
 			while (rs.next()) {
 				result.add(convertNotice(rs));
 			}
@@ -66,8 +66,8 @@ public class AdminDao {
 			JdbcUtil.close(pstmt);
 		}
 	}	
-	private Notice convertNotice(ResultSet rs) throws SQLException {
-		return new Notice(rs.getString("mtit"), rs.getString("mtext"));
+	private Noticecolumn convertNotice(ResultSet rs) throws SQLException {
+		return new Noticecolumn(rs.getInt("mno"), rs.getString("mtit"), rs.getString("mtext"), rs.getDate("mdate"));
 	}
 	// select 부분 끝
 	
