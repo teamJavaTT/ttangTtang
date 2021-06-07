@@ -1,56 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+<%@ include file="../include/middle_header.jsp"%>
 
-<link rel="stylesheet" href="css/style.css" type="text/css">
 <!-- Hero Section Begin -->
-<section class="hero hero-normal">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3">
-				<div class="hero__categories">
-					<div class="hero__categories__all">
-						<i class="fa fa-bars"></i> <span>All departments</span>
-					</div>
-					<ul>
-						<li><a href="#">Fresh Meat</a></li>
-						<li><a href="#">Vegetables</a></li>
-						<li><a href="#">Fruit & Nut Gifts</a></li>
-						<li><a href="#">Fresh Berries</a></li>
-						<li><a href="#">Ocean Foods</a></li>
-						<li><a href="#">Butter & Eggs</a></li>
-						<li><a href="#">Fastfood</a></li>
-						<li><a href="#">Fresh Onion</a></li>
-						<li><a href="#">Papayaya & Crisps</a></li>
-						<li><a href="#">Oatmeal</a></li>
-						<li><a href="#">Fresh Bananas</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-9">
-				<div class="hero__search">
-					<div class="hero__search__form">
-						<form action="#">
-							<div class="hero__search__categories">
-								All Categories <span class="arrow_carrot-down"></span>
-							</div>
-							<input type="text" placeholder="What do yo u need?">
-							<button type="submit" class="site-btn">SEARCH</button>
-						</form>
-					</div>
 
-					<div class="hero__search__phone">
-						<div class="hero__search__phone__icon">
-							<i class="fa fa-phone"></i>
-						</div>
-						<div class="hero__search__phone__text">
-							<h5>+65 11.188.888</h5>
-							<span>support 24/7 time</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<section>
 	<h3>일반 상품 등록</h3>
 <div class="col-lg-12">
@@ -73,11 +27,11 @@
 				<td><textarea id="description" style="resize: none;"></textarea></td>
 			</tr>
 		</table>
-			<div class="filebox">
 			<table>
 			<tr><span style="opacity: 0.6" ; font-size=12px>(최대
 					10개의 이미지를 선택하실 수 있습니다.※정면,측면,후면 필수!)</span></tr>
 
+			<div class="filebox">
 				<tr>
 				<td><input class="upload-name" value="파일선택" disabled="disabled" multiple accept="image/*">
 				<label for="ex_filename">업로드</label> <input type="file"
@@ -94,10 +48,9 @@
 			</tr>
 			</table> 	
 			</div>
+	</div>
 	</form>
-	</div>
 </section>
-	</div>
 
 
 
@@ -105,7 +58,6 @@
         enctype="multipart/form-data"> -->
 	<!-- 파일업로드를 위해 추가하는 타입 -->
 
-</section>
 <!-- Hero Section End -->
 <!DOCTYPE html>
 <html>
