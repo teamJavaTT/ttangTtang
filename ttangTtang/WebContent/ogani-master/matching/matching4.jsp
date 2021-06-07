@@ -18,7 +18,7 @@
 <style>
 .chat_wrap {
 	border: 1px solid #999;
-	width: 300px;
+	width: 550px;
 	padding: 5px;
 	font-size: 13px;
 	color: #333
@@ -127,6 +127,13 @@ input[type="text"]::placeholder {
 }
 </style>
 
+<a href="/ttangTtang/ogani-master/index.jsp"><img
+	src="/ttangTtang/img/logo_red.png" alt=""></a>
+
+
+
+<br>
+
 <script>
 	$(function() {
 		$("input[type='text']").keypress(
@@ -179,24 +186,23 @@ input[type="text"]::placeholder {
 
 
 			</div>
-		</div><td>
-		<form name="fileForm" action="requestupload2" method="post" enctype="multipart/form-data">
-        <input multiple="multiple" type="file" name="file">
-        
-        <input class="item mymsg"  type="submit" value="전송">
-    </form>
-    
-		 <input class="item mymsg" ; type="text" class
-			placeholder="내용 입력">
-
-
-		
+		</div>
+		<td>
+			<form name="fileForm" action="requestupload2" method="post"
+				enctype="multipart/form-data">
+				<input multiple="multiple" type="file" name="file"> 
+				
+				<input class="item mymsg" type="submit" value="전송">
+			</form> <input class="item mymsg" ; type="text" class placeholder="내용 입력">
 
 
 
 
-			
-		</ul>
+
+
+
+
+			</ul>
 	</div>
 </body>
 
