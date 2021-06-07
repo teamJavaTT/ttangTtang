@@ -13,15 +13,19 @@ import java.util.List;
 import admin.dao.AdminDao;
 import admin.model.Notice;
 import admin.model.Noticecolumn;
+import auth.model.Category;
+import auth.model.Product;
+import auth.service.MainPage;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 
 public class NoticeService {
 	
-	private static AdminDao adminDao = new AdminDao();
-
-	public static Integer noticewrite(Notice writeReq) throws Exception {
+	private AdminDao adminDao = new AdminDao();
+	
+	// 글 입력하기
+	public Integer noticewrite(Notice writeReq) throws Exception {
 		Connection conn = null;
 		try {
 			conn = DBConnection.getConnection();
@@ -46,9 +50,21 @@ public class NoticeService {
 		}
 	}
 
-	private static Noticecolumn toArticle(Notice req) {
+	private Noticecolumn toArticle(Notice req) {
 		Date now = new Date();
 		return new Noticecolumn(null, req.getmtit(), req.getmtext(), now);
 	}
+	// 글 입력하기 끝
+	
+	// 글 목록에 읽어오기
+	public NoticePage getNoticePage() throws Exception {
+		try (Connection conn = DBConnection.getConnection()) {
+			List<Notice> notice = adminDao.selectNotice(conn);
+			return new NoticePage(notice);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	// 글 목록에 읽어오기 끝
 
 }

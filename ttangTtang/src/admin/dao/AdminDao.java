@@ -12,6 +12,8 @@ import java.util.List;
 
 import admin.model.Notice;
 import admin.model.Noticecolumn;
+import auth.model.Category;
+import auth.model.Product;
 import jdbc.JdbcUtil;
 
 public class AdminDao {
@@ -19,6 +21,7 @@ public class AdminDao {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
+		// insert 부분 구문
 		try {
 			pstmt = conn.prepareStatement("insert into Notice values (notice_seq.NEXTVAL,?,?,sysdate)");
 			
@@ -45,65 +48,28 @@ public class AdminDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
-
-	public int selectCount(Connection conn) throws SQLException {
-		Statement stmt = null;
-		ResultSet rs = null;
-		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select count(*) from article");
-			if (rs.next()) {
-				return rs.getInt(1);
-			}
-			return 0;
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(stmt);
-		}
-	}
-
-	public List<Notice> select(Connection conn, int startRow, int size) throws SQLException {
+	// insert 부분 구문끝
+	// select 부분 시작
+	public List<Notice> selectNotice(Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from article " +
-					"order by article_no desc limit ?, ?");
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, size);
+			pstmt = conn.prepareStatement("select * from notice order by mno");
 			rs = pstmt.executeQuery();
 			List<Notice> result = new ArrayList<>();
 			while (rs.next()) {
-				result.add(convertArticle(rs));
+				result.add(convertNotice(rs));
 			}
 			return result;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
+	}	
+	private Notice convertNotice(ResultSet rs) throws SQLException {
+		return new Notice(rs.getString("mtit"), rs.getString("mtext"));
 	}
-
-	private Notice convertArticle(ResultSet rs) throws SQLException {
-		return new Notice(rs.getString("mtit"), rs.getString("title"));
-	}
-	
-	public Notice selectById(Connection conn, int no) throws SQLException {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			pstmt = conn.prepareStatement(
-					"select * from article where article_no = ?");
-			pstmt.setInt(1, no);
-			rs = pstmt.executeQuery();
-			Notice article = null;
-			if (rs.next()) {
-				article = convertArticle(rs);
-			}
-			return article;
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
-		}
-	}
+	// select 부분 끝
 	
 	public void increaseReadCount(Connection conn, int no) throws SQLException {
 		try (PreparedStatement pstmt = 

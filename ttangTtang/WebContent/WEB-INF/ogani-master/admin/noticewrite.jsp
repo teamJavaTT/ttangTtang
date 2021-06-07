@@ -36,7 +36,7 @@
 						<i class="fa fa-bars"></i> <span>All departments</span>
 					</div>
 					<ul>
-						<li><a href="/ttangTtang/ogani-master/admin/notice.jsp">공지사항</a></li>
+						<li><a href="noticelist.do">공지사항</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의

@@ -36,7 +36,7 @@
 						<i class="fa fa-bars"></i> <span>All departments</span>
 					</div>
 					<ul>
-						<li><a href="/ttangTtang/ogani-master/admin/notice.jsp">공지사항</a></li>
+						<li><a href="noticelist.do">공지사항</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의
@@ -57,60 +57,59 @@
 
 
 			<div class="col-lg-9">
-				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h2>공지사항</h2>
 				</section>
-				<!-- list -->
 				<section class="content">
 					<div class="limiter">
 						<div class="wrap-table100">
 							<div class="table100">
-								<!-- Default box -->
 								<div class="box">
-									<table border="1">
-										<thead>
-											<tr class="table100-head">
-												<td class="column5" style="padding-left: 0px;">번호</td>
-												<td class="column1" colspan="2" style="padding-left: 0px;">제목</td>
-												<td class="column5" style="padding-left: 0px;">작성일자</td>
-												<!-- <td class="column5">조회수</td> -->
-											</tr>
-										</thead>
-										<tbody>
-										<c:forEach var="article" items="${articlePage.content}">
+									<form action="noticelist.do" method="post">
+										<table border="1">
+											<thead>
+												<tr class="table100-head">
+													<td class="column5" style="padding-left: 0px;">번호</td>
+													<td class="column1" colspan="2" style="padding-left: 0px;">제목</td>
+													<td class="column5" style="padding-left: 0px;">작성일자</td>
+													<!-- <td class="column5">조회수</td> -->
+												</tr>
+											</thead>
+											<tbody>
+											<c:forEach var="article" items="${articlePage.content}">
+												<tr>
+													<!-- 번호 -->
+													<td style="padding-left: 0px;">${notice.mno}</td>
+													<!-- 내용 -->
+													<td colspan="2" style="padding-left: 0px;"><a href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}">
+													<c:out value="${notice.mtit}" /></a></td>
+													<!--  작성일자  -->
+													<td style="padding-left: 0px;">${notice.ndate}</td>
+													<%-- <td>${article.readCount}</td> --%>
+												</tr>
+											</c:forEach>
+											<c:if test="${articlePage.hasArticles()}">
+												<tr>
+													<td colspan="4" style="padding-left: 0px;"><c:if
+															test="${articlePage.startPage > 5}">
+															<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
+														</c:if> <c:forEach var="pNo" begin="${articlePage.startPage}"
+															end="${articlePage.endPage}">
+															<a href="list.do?pageNo=${pNo}">[${pNo}]</a>
+														</c:forEach> <c:if
+															test="${articlePage.endPage < articlePage.totalPages}">
+															<a href="list.do?pageNo=${articlePage.startPage + 5}">[다음]</a>
+														</c:if></td>
+												</tr>
+											</c:if>
+											</tbody>
+										</table>
+										<table style:text-align="center">
 											<tr>
-												<!-- 번호 -->
-												<td style="padding-left: 0px;">${article.number}</td>
-												<!-- 내용 -->
-												<td colspan="2" style="padding-left: 0px;"><a href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"><c:out
-															value="${article.title}" /></a></td>
-												<!--  작성일자  -->
-												<td style="padding-left: 0px;">${article.writer.name}</td>
-												<%-- <td>${article.readCount}</td> --%>
+												<td class="column4" colspan="1"><a href="noticewrite.do">[게시글쓰기]</a></td>
 											</tr>
-										</c:forEach>
-										<c:if test="${articlePage.hasArticles()}">
-											<tr>
-												<td colspan="4" style="padding-left: 0px;"><c:if
-														test="${articlePage.startPage > 5}">
-														<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
-													</c:if> <c:forEach var="pNo" begin="${articlePage.startPage}"
-														end="${articlePage.endPage}">
-														<a href="list.do?pageNo=${pNo}">[${pNo}]</a>
-													</c:forEach> <c:if
-														test="${articlePage.endPage < articlePage.totalPages}">
-														<a href="list.do?pageNo=${articlePage.startPage + 5}">[다음]</a>
-													</c:if></td>
-											</tr>
-										</c:if>
-										</tbody>
-									</table>
-									<table style:text-align="center">
-										<tr>
-											<td class="column4" colspan="1"><a href="/ttangTtang/ogani-master/admin/noticewrite.jsp">[게시글쓰기]</a></td>
-										</tr>
-									</table>
+										</table>
+									</form>
 								</div>
 							</div>
 						</div>

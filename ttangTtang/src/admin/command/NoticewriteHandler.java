@@ -46,10 +46,10 @@ public class NoticewriteHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 
-		int newArticleNo = NoticeService.noticewrite(writeReq);
+		int newArticleNo = noticeService.noticewrite(writeReq);
 		req.setAttribute("newArticleNo", newArticleNo);
 
-		return "/WEB-INF/view/examples/noticesuccess.jsp";
+		return "/WEB-INF/ogani-master/admin/noticesuccess.jsp";
 	}
 
 	/*
