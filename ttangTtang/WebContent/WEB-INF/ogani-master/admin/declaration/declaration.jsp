@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp"%>
-
+<%@ include file="../../include/header.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
@@ -57,65 +56,72 @@
 
 
 			<div class="col-lg-9">
+				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h2>고객의 소리</h2>
+					<h2>신고 관리</h2>
 				</section>
+				<!-- list -->
 				<section class="content">
 					<div class="limiter">
 						<div class="wrap-table100">
 							<div class="table100">
+								<!-- Default box -->
 								<div class="box">
-									<table border="1" width="100%">
+									<table border="1">
 										<thead>
-											<tr>
-												<th colspan="4" style="text-align: center; padding-left: 0px;">게시물</th>
+											<tr class="table100-head">
+												<td class="column5" style="padding-left: 0px;">신고자</td>
+												<td class="column1" colspan="2" style="padding-left: 0px;">신고대상자</td>
+												<td class="column5" style="padding-left: 0px;">작성일자</td>
+												<!-- <td class="column5">조회수</td> -->
 											</tr>
 										</thead>
-										<tbody>
-											<tr style="border-bottom: 1px solid #444444;">
-												<td style="text-align: left;">
-													번호 : ${articleData.article.number}
-												</td>
-												<td style="text-align: left;">
-													작성일자 : ${articleData.article.number}
-												</td>
+										<%-- <c:if test="${articlePage.hasNoArticles()}">
+											<tr>
+												<td colspan="4">게시글이 없습니다.</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
-												<td colspan="4" style="text-align: left;">
-													작성자 : ${articleData.article.number}
-												</td>
+										</c:if> --%>
+										<c:forEach var="article" items="${articlePage.content}">
+											<tr>
+												<!-- 번호 -->
+												<td style="padding-left: 0px;">${article.number}</td>
+												<!--  작성자  -->
+												<td colspan="2" style="padding-left: 0px;">${article.writer.name}</td>
+												<!-- 내용 -->
+												<td style="padding-left: 0px;"><a
+													href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"><c:out
+															value="${article.title}" /></a></td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
-												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													제목 : ${articleData.article.number}
-												</td>
+										</c:forEach>
+										<c:if test="${articlePage.hasArticles()}">
+											<tr>
+												<td colspan="4" style="padding-left: 0px;"><c:if
+														test="${articlePage.startPage > 5}">
+														<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
+													</c:if> <c:forEach var="pNo" begin="${articlePage.startPage}"
+														end="${articlePage.endPage}">
+														<a href="list.do?pageNo=${pNo}">[${pNo}]</a>
+													</c:forEach> <c:if
+														test="${articlePage.endPage < articlePage.totalPages}">
+														<a href="list.do?pageNo=${articlePage.startPage + 5}">[다음]</a>
+													</c:if></td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
-												<td style="text-align: left;">
-													내용 : ${articleData.article.number}
-												</td>
-											</tr>
-										</tbody>
-										<tr>
-											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
-													value="${empty param.pageNo ? '1' : param.pageNo}" /> <a
-												href="list.do?pageNo=${pageNo}">[목록]</a> <c:if
-													test="${authUser.id == articleData.article.writer.id}">
-													<a href="modify.do?no=${articleData.article.number}">[게시글수정]</a>
-													<a href="delete.do?no=${articleData.article.number}">[게시글삭제]</a>
-												</c:if></td>
-										</tr>
+										</c:if>
 									</table>
 								</div>
 							</div>
 						</div>
 					</div>
+					<!-- /.box -->
 				</section>
+				<!-- /.content -->
 			</div>
 		</div>
 	</div>
+	<!-- /.content-wrapper -->
 </section>
+<!-- Hero Section End -->
 
 
 
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../../include/footer.jsp"%>

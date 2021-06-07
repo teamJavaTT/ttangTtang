@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../../include/header.jsp"%>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -58,7 +58,7 @@
 
 			<div class="col-lg-9">
 				<section class="content-header">
-					<h2>FAQ</h2>
+					<h2>블랙리스트 관리</h2>
 				</section>
 				<section class="content">
 					<div class="limiter">
@@ -74,7 +74,7 @@
 										<tbody>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td style="text-align: left;">
-													번호 : ${articleData.article.number}
+													사용자 : ${articleData.article.number}
 												</td>
 												<td style="text-align: left;">
 													작성일자 : ${articleData.article.number}
@@ -82,12 +82,12 @@
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													제목 : ${articleData.article.number}
+													차단된 사용자 : ${articleData.article.number}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td style="text-align: left;">
-													내용 : ${articleData.article.number}
+													차단사유 : ${articleData.article.number}
 												</td>
 											</tr>
 										</tbody>
@@ -96,7 +96,6 @@
 													value="${empty param.pageNo ? '1' : param.pageNo}" /> <a
 												href="list.do?pageNo=${pageNo}">[목록]</a> <c:if
 													test="${authUser.id == articleData.article.writer.id}">
-													<a href="modify.do?no=${articleData.article.number}">[게시글수정]</a>
 													<a href="delete.do?no=${articleData.article.number}">[게시글삭제]</a>
 												</c:if></td>
 										</tr>
@@ -113,4 +112,4 @@
 
 
 
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../../include/footer.jsp"%>

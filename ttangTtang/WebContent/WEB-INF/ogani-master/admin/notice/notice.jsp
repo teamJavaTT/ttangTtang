@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../../include/header.jsp"%>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -81,27 +81,26 @@
 													<!-- 번호 -->
 													<td style="padding-left: 0px;">${notice.mno}</td>
 													<!-- 내용 -->
-													<td colspan="2" style="padding-left: 0px;"><%-- <a href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"></a> --%>
-													${notice.mtit}</td>
+													<td colspan="2" style="padding-left: 0px;"><a href="read.do?no=${notice.mno}">
+													${notice.mtit}</a></td>
 													<!--  작성일자  -->
 													<td style="padding-left: 0px;">${notice.mdate}</td>
 													<%-- <td>${article.readCount}</td> --%>
 												</tr>
 											</c:forEach>
-											<c:if test="${articlePage.hasArticles()}">
 												<tr>
-													<td colspan="4" style="padding-left: 0px;"><c:if
-															test="${articlePage.startPage > 5}">
-															<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
-														</c:if> <c:forEach var="pNo" begin="${articlePage.startPage}"
-															end="${articlePage.endPage}">
-															<a href="list.do?pageNo=${pNo}">[${pNo}]</a>
-														</c:forEach> <c:if
-															test="${articlePage.endPage < articlePage.totalPages}">
-															<a href="list.do?pageNo=${articlePage.startPage + 5}">[다음]</a>
-														</c:if></td>
+													<td colspan="4" style="padding-left: 0px;">
+														<c:if test="${noticePage.startPage > 5}">
+															<a href="noticelist.do?pageNo=${noticePage.startPage - 5}">[이전]</a>
+														</c:if>
+														<c:forEach var="pNo" begin="${noticePage.startPage}" end="${noticePage.endPage}">
+															<a href="noticelist.do?pageNo=${pNo}">[${pNo}]</a>
+														</c:forEach>
+														<c:if test="${noticePage.endPage < noticePage.totalPages}">
+															<a href="noticelist.do?pageNo=${noticePage.startPage + 5}">[다음]</a>
+														</c:if>
+													</td>
 												</tr>
-											</c:if>
 											</tbody>
 										</table>
 										<table style:text-align="center">
@@ -126,4 +125,4 @@
 
 
 
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../../include/footer.jsp"%>

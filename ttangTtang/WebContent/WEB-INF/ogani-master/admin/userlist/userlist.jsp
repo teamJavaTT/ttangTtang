@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../../include/header.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
@@ -128,4 +128,4 @@
 
 
 
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../../include/footer.jsp"%>

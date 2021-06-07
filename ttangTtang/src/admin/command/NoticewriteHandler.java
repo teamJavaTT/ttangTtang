@@ -14,7 +14,7 @@ import admin.service.NoticePage;
 import admin.service.NoticeRequest;
 
 public class NoticewriteHandler implements CommandHandler {
-	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/noticewrite.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticewrite.jsp";
 	private NoticeService noticeService = new NoticeService();
 
 	@Override
@@ -49,7 +49,7 @@ public class NoticewriteHandler implements CommandHandler {
 		int newArticleNo = noticeService.noticewrite(writeReq);
 		req.setAttribute("newArticleNo", newArticleNo);
 
-		return "/WEB-INF/ogani-master/admin/noticesuccess.jsp";
+		return "/WEB-INF/ogani-master/admin/notice/noticesuccess.jsp";
 	}
 
 	/*

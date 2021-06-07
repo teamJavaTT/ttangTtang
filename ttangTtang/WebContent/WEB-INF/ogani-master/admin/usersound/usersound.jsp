@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../../include/header.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
@@ -58,7 +58,7 @@
 			<div class="col-lg-9">
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h2>사용자 회원정보 관리</h2>
+					<h2>고객의 소리</h2>
 				</section>
 				<!-- list -->
 				<section class="content">
@@ -70,10 +70,10 @@
 									<table border="1">
 										<thead>
 											<tr class="table100-head">
-												<td class="column5" style="padding-left: 0px;">사용자</td>
-												<td class="column5" style="padding-left: 0px;">닉네임</td>
-												<td class="column5" style="padding-left: 0px;">가입일자</td>
-												<td class="column5" style="padding-left: 0px;">회원구분</td>
+												<td class="column5" style="padding-left: 0px;">번호</td>
+												<td class="column5" style="padding-left: 0px;">작성자</td>
+												<td class="column1" style="padding-left: 0px;">제목</td>
+												<td class="column5" style="padding-left: 0px;">작성일자</td>
 												<!-- <td class="column5">조회수</td> -->
 											</tr>
 										</thead>
@@ -111,6 +111,11 @@
 											</tr>
 										</c:if>
 									</table>
+									<table style:text-align="center">
+										<tr>
+											<td class="column4" colspan="1"><a href="write.do">[게시글쓰기]</a></td>
+										</tr>
+									</table>
 								</div>
 							</div>
 						</div>
@@ -127,4 +132,4 @@
 
 
 
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../../include/footer.jsp"%>

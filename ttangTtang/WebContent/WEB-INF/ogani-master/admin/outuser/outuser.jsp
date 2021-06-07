@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../../include/header.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
@@ -58,7 +58,7 @@
 			<div class="col-lg-9">
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h2>블랙리스트 관리</h2>
+					<h2>탈퇴회원 관리</h2>
 				</section>
 				<!-- list -->
 				<section class="content">
@@ -70,9 +70,9 @@
 									<table border="1">
 										<thead>
 											<tr class="table100-head">
-												<td class="column5" style="padding-left: 0px;">사용자</td>
-												<td class="column1"  colspan="2" style="padding-left: 0px;">차단된 사용자</td>
-												<td class="column5" style="padding-left: 0px;">작성일자</td>
+												<td class="column5" style="padding-left: 0px;">번호</td>
+												<td class="column1" colspan="2" style="padding-left: 0px;">사용자</td>
+												<td class="column5" style="padding-left: 0px;">신청일자</td>
 												<!-- <td class="column5">조회수</td> -->
 											</tr>
 										</thead>
@@ -124,4 +124,4 @@
 
 
 
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../../include/footer.jsp"%>

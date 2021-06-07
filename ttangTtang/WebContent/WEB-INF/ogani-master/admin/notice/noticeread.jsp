@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../../include/header.jsp"%>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -36,7 +36,7 @@
 						<i class="fa fa-bars"></i> <span>All departments</span>
 					</div>
 					<ul>
-						<li><a href="/ttangTtang/ogani-master/admin/notice.jsp">공지사항</a></li>
+						<li><a href="noticelist.do">공지사항</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의
@@ -59,7 +59,7 @@
 			<div class="col-lg-9">
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h2>FAQ</h2>
+					<h2>공지사항</h2>
 				</section>
 				<!-- list -->
 				<section class="content">
@@ -68,51 +68,58 @@
 							<div class="table100">
 								<!-- Default box -->
 								<div class="box">
-									<table border="1">
+									<table border="1" width="100%">
 										<thead>
-											<tr class="table100-head">
-												<td class="column5" style="padding-left: 0px;">번호</td>
-												<td class="column1" colspan="2" style="padding-left: 0px;">제목</td>
-												<td class="column5" style="padding-left: 0px;">작성일자</td>
-												<!-- <td class="column5">조회수</td> -->
+											<tr>
+												<th colspan="4" style="text-align: center; padding-left: 0px;">게시물</th>
 											</tr>
 										</thead>
-										<%-- <c:if test="${articlePage.hasNoArticles()}">
-											<tr>
-												<td colspan="4">게시글이 없습니다.</td>
+										<tbody>
+											<tr style="border-bottom: 1px solid #444444;">
+												<td style="text-align: left;">
+													번호 : ${notice.mno}
+												</td>
+												<td style="text-align: left;">
+													작성일자 : ${notice.mdate}
+												</td>
 											</tr>
-										</c:if> --%>
-										<c:forEach var="article" items="${articlePage.content}">
-											<tr>
-												<!-- 번호 -->
-												<td style="padding-left: 0px;">${article.number}</td>
-												<!-- 내용 -->
-												<td colspan="2" style="padding-left: 0px;"><a
-													href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"><c:out
-															value="${article.title}" /></a></td>
-												<!--  작성일자  -->
-												<td style="padding-left: 0px;">${article.writer.name}</td>
-												<%-- <td>${article.readCount}</td> --%>
+											<tr style="border-bottom: 1px solid #444444;">
+												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
+													제목 : ${notice.mtit}
+												</td>
 											</tr>
-										</c:forEach>
-										<c:if test="${articlePage.hasArticles()}">
-											<tr>
-												<td colspan="4" style="padding-left: 0px;"><c:if
-														test="${articlePage.startPage > 5}">
-														<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
-													</c:if> <c:forEach var="pNo" begin="${articlePage.startPage}"
-														end="${articlePage.endPage}">
-														<a href="list.do?pageNo=${pNo}">[${pNo}]</a>
-													</c:forEach> <c:if
-														test="${articlePage.endPage < articlePage.totalPages}">
-														<a href="list.do?pageNo=${articlePage.startPage + 5}">[다음]</a>
-													</c:if></td>
+											<tr style="border-bottom: 1px solid #444444;">
+												<td style="text-align: left;">
+													내용 : ${notice.mtext}
+												</td>
 											</tr>
-										</c:if>
-									</table>
-									<table style:text-align="center">
+										</tbody>
+										
+										
+										<%-- <tr>
+											<td colspan="1">번호</td>
+											<td>${articleData.article.number}</td>
+										</tr>
 										<tr>
-											<td class="column4" colspan="1"><a href="/ttangTtang/ogani-master/admin/faqwrite.jsp">[게시글쓰기]</a></td>
+											<td colspan="1">작성자</td>
+											<td>${articleData.article.writer.name}</td>
+										</tr>
+										<tr>
+											<td colspan="1">제목</td>
+											<td><c:out value='${articleData.article.title}' /></td>
+										</tr>
+										<tr>
+											<td colspan="1">내용</td>
+											<td><u:pre value='${articleData.content}' /></td>
+										</tr> --%>
+										<tr>
+											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
+													value="${empty param.pageNo ? '1' : param.pageNo}" /> <a
+												href="list.do?pageNo=${pageNo}">[목록]</a> <c:if
+													test="${authUser.id == articleData.article.writer.id}">
+													<a href="modify.do?no=${articleData.article.number}">[게시글수정]</a>
+													<a href="/ttangTtang/ogani-master/admin/noticedelete.jsp<%-- delete.do?no=${articleData.article.number} --%>">[게시글삭제]</a>
+												</c:if></td>
 										</tr>
 									</table>
 								</div>
@@ -131,4 +138,4 @@
 
 
 
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../../include/footer.jsp"%>

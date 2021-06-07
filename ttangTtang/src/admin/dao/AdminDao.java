@@ -50,11 +50,32 @@ public class AdminDao {
 	}
 	// insert 부분 구문끝
 	// select 부분 시작
-	public List<Noticecolumn> selectNotice(Connection conn) throws SQLException {
+	
+	public int selectCount(Connection conn) throws SQLException{
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select count(*) from notice");
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+		}
+		
+	}
+	
+	
+	public List<Noticecolumn> selectNotice(Connection conn, int startPage, int endPage) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from notice order by mno");
+			pstmt = conn.prepareStatement("select * from notice where mno BETWEEN ? and ? order by mno desc");
+			pstmt.setInt(1, startPage);
+			pstmt.setInt(2, endPage);
 			rs = pstmt.executeQuery();
 			List<Noticecolumn> result = new ArrayList<>();
 			while (rs.next()) {
@@ -65,7 +86,16 @@ public class AdminDao {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
-	}	
+	}
+	
+	/*
+	 * public List<Noticecolumn> selectNotice(Connection conn) throws SQLException {
+	 * PreparedStatement pstmt = null; ResultSet rs = null; try { pstmt =
+	 * conn.prepareStatement("select * from notice order by mno"); rs =
+	 * pstmt.executeQuery(); List<Noticecolumn> result = new ArrayList<>(); while
+	 * (rs.next()) { result.add(convertNotice(rs)); } return result; } finally {
+	 * JdbcUtil.close(rs); JdbcUtil.close(pstmt); } }
+	 */	
 	private Noticecolumn convertNotice(ResultSet rs) throws SQLException {
 		return new Noticecolumn(rs.getInt("mno"), rs.getString("mtit"), rs.getString("mtext"), rs.getDate("mdate"));
 	}
@@ -74,8 +104,7 @@ public class AdminDao {
 	public void increaseReadCount(Connection conn, int no) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement(
-						"update article set read_cnt = read_cnt + 1 "+
-						"where article_no = ?")) {
+						"update article set read_cnt = read_cnt + 1 where article_no = ?")) {
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
 		}
@@ -84,8 +113,7 @@ public class AdminDao {
 	public int update(Connection conn, int no, String title) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement(
-						"update article set title = ?, moddate = now() "+
-						"where article_no = ?")) {
+						"update article set title = ?, moddate = now() where article_no = ?")) {
 			pstmt.setString(1, title);
 			pstmt.setInt(2, no);
 			return pstmt.executeUpdate();
