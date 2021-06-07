@@ -1,7 +1,95 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
- <%@ include file="../include/middle_header.jsp" %>
 
+
+<%@page import="java.util.List"%>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+
+ <!-- category Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>카테고리</span>
+                        </div>
+                        <ul>
+                            <li><a href="./GoodsList.go?item=best">디지털기기</a></li>
+                            <li><a href="./GoodsList.go?item=outwear">생활가전</a></li>
+                            <li><a href="./GoodsList.go?item=fulldress">가구/인테리어</a></li>
+                            <li><a href="./GoodsList.go?item=Tshirts">유아동</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">유아도서</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">생활/가공식품</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">스포츠/레저</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">여성잡화</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">여성의류</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">남성패션/잡화</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">게임/취미</a></li>
+                                                                                          
+							<li><a href="./GoodsList.go?item=best">     뷰티/미용 </a></li>          
+							<li><a href="./GoodsList.go?item=outwear">  반려동물용품 </a></li>        
+							<li><a href="./GoodsList.go?item=fulldress">도서/티켓/음반 </a></li>   
+							<li><a href="./GoodsList.go?item=Tshirts">  식물 </a></li>         
+							<li><a href="./GoodsList.go?item=shirts">   기타 중고물품 </a></li>         
+							<li><a href="./GoodsList.go?item=shirts">   삽니다  </a></li>      
+                            
+                            
+                            
+                            
+                        </ul>                                       
+                    </div>                                          
+                </div>                                              
+                <div class="col-lg-9">                              
+                    <div class="hero__search">                      
+                        <div class="hero__search__form">            
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    All Categories
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="What do yo u need?">
+                                <button type="submit" class="site-btn">SEARCH</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+65 11.188.888</h5>
+                                <span>support 24/7 time</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- category section end -->
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="/ttangTtang/ogani-master/img/breadcrumb.jpg">
         <div class="container">
@@ -28,18 +116,28 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>Department</h4>
+                            <h4>카테고리</h4>
                             <ul>
-                                <li><a href="#">Fresh Meat</a></li>
-                                <li><a href="#">Vegetables</a></li>
-                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                <li><a href="#">Fresh Berries</a></li>
-                                <li><a href="#">Ocean Foods</a></li>
-                                <li><a href="#">Butter & Eggs</a></li>
-                                <li><a href="#">Fastfood</a></li>
-                                <li><a href="#">Fresh Onion</a></li>
-                                <li><a href="#">Papayaya & Crisps</a></li>
-                                <li><a href="#">Oatmeal</a></li>
+                               <li><a href="./GoodsList.go?item=best">디지털기기</a></li>
+                            <li><a href="./GoodsList.go?item=outwear">생활가전</a></li>
+                            <li><a href="./GoodsList.go?item=fulldress">가구/인테리어</a></li>
+                            <li><a href="./GoodsList.go?item=Tshirts">유아동</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">유아도서</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">생활/가공식품</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">스포츠/레저</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">여성잡화</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">여성의류</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">남성패션/잡화</a></li>
+                            <li><a href="./GoodsList.go?item=shirts">게임/취미</a></li>
+                                                                                          
+							<li><a href="./GoodsList.go?item=best">     뷰티/미용 </a></li>          
+							<li><a href="./GoodsList.go?item=outwear">  반려동물용품 </a></li>        
+							<li><a href="./GoodsList.go?item=fulldress">도서/티켓/음반 </a></li>   
+							<li><a href="./GoodsList.go?item=Tshirts">  식물 </a></li>         
+							<li><a href="./GoodsList.go?item=shirts">   기타 중고물품 </a></li>         
+							<li><a href="./GoodsList.go?item=shirts">   삽니다  </a></li>      
+                            
+                            
                             </ul>
                         </div>
                         <div class="sidebar__item">
@@ -59,72 +157,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sidebar__item sidebar__item__color--option">
-                            <h4>Colors</h4>
-                            <div class="sidebar__item__color sidebar__item__color--white">
-                                <label for="white">
-                                    White
-                                    <input type="radio" id="white">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--gray">
-                                <label for="gray">
-                                    Gray
-                                    <input type="radio" id="gray">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--red">
-                                <label for="red">
-                                    Red
-                                    <input type="radio" id="red">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--black">
-                                <label for="black">
-                                    Black
-                                    <input type="radio" id="black">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--blue">
-                                <label for="blue">
-                                    Blue
-                                    <input type="radio" id="blue">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--green">
-                                <label for="green">
-                                    Green
-                                    <input type="radio" id="green">
-                                </label>
-                            </div> 
-                        </div>
-                        <div class="sidebar__item">
-                            <h4>Popular Size</h4>
-                            <div class="sidebar__item__size">
-                                <label for="large">
-                                    Large
-                                    <input type="radio" id="large">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__size">
-                                <label for="medium">
-                                    Medium
-                                    <input type="radio" id="medium">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__size">
-                                <label for="small">
-                                    Small
-                                    <input type="radio" id="small">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__size">
-                                <label for="tiny">
-                                    Tiny
-                                    <input type="radio" id="tiny">
-                                </label>
-                            </div>
-                        </div>
+                      
+                       
                         <div class="sidebar__item">
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>
@@ -195,7 +229,7 @@
                 <div class="col-lg-9 col-md-7">
                     <div class="product__discount">
                         <div class="section-title product__discount__title">
-                            <h2>Sale Off</h2>
+                            <h2>인기 상품</h2>
                         </div>
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
