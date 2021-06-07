@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>TTang TTang Market : 회원가입</title>
 <link rel="stylesheet" type="text/css" href="css/joinmain.css">
-
 </head>
 <body>
 	<!-- header -->
