@@ -72,7 +72,6 @@
 													<td class="column5" style="padding-left: 0px;">번호</td>
 													<td class="column1" colspan="2" style="padding-left: 0px;">제목</td>
 													<td class="column5" style="padding-left: 0px;">작성일자</td>
-													<!-- <td class="column5">조회수</td> -->
 												</tr>
 											</thead>
 											<tbody>
@@ -81,8 +80,8 @@
 													<!-- 번호 -->
 													<td style="padding-left: 0px;">${notice.mno}</td>
 													<!-- 내용 -->
-													<td colspan="2" style="padding-left: 0px;"><a href="read.do?no=${notice.mno}">
-													${notice.mtit}</a></td>
+													<td colspan="2" style="padding-left: 0px;"><a href="noticeread.do?no=${notice.mno}<%-- &pageNo=${noticePage.currentPage} --%>">
+													<c:out value="${notice.mtit}" /></a></td>
 													<!--  작성일자  -->
 													<td style="padding-left: 0px;">${notice.mdate}</td>
 													<%-- <td>${article.readCount}</td> --%>
@@ -103,7 +102,7 @@
 												</tr>
 											</tbody>
 										</table>
-										<table style:text-align="center">
+										<table style="text-align: center;">
 											<tr>
 												<td class="column4" colspan="1"><a href="noticewrite.do">[게시글쓰기]</a></td>
 											</tr>

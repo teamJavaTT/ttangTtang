@@ -77,48 +77,30 @@
 										<tbody>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td style="text-align: left;">
-													번호 : ${notice.mno}
+													번호 : ${noticeData.notice.mno}
 												</td>
 												<td style="text-align: left;">
-													작성일자 : ${notice.mdate}
+													작성일자 : ${noticeData.notice.mdate}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													제목 : ${notice.mtit}
+													제목 : ${noticeData.notice.mtit}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td style="text-align: left;">
-													내용 : ${notice.mtext}
+													내용 : ${noticeData.notice.mtext}
 												</td>
 											</tr>
 										</tbody>
-										
-										
-										<%-- <tr>
-											<td colspan="1">번호</td>
-											<td>${articleData.article.number}</td>
-										</tr>
-										<tr>
-											<td colspan="1">작성자</td>
-											<td>${articleData.article.writer.name}</td>
-										</tr>
-										<tr>
-											<td colspan="1">제목</td>
-											<td><c:out value='${articleData.article.title}' /></td>
-										</tr>
-										<tr>
-											<td colspan="1">내용</td>
-											<td><u:pre value='${articleData.content}' /></td>
-										</tr> --%>
 										<tr>
 											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
 													value="${empty param.pageNo ? '1' : param.pageNo}" /> <a
-												href="list.do?pageNo=${pageNo}">[목록]</a> <c:if
+												href="noticelist.do?pageNo=${pageNo}">[목록]</a> <c:if
 													test="${authUser.id == articleData.article.writer.id}">
-													<a href="modify.do?no=${articleData.article.number}">[게시글수정]</a>
-													<a href="/ttangTtang/ogani-master/admin/noticedelete.jsp<%-- delete.do?no=${articleData.article.number} --%>">[게시글삭제]</a>
+													<a href="noticemodify.do?no=${noticeData.notice.mno}">[게시글수정]</a>
+													<a href="noticedelete.do?no=${noticeData.notice.mno}">[게시글삭제]</a>
 												</c:if></td>
 										</tr>
 									</table>

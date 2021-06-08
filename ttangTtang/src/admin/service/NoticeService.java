@@ -10,12 +10,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import admin.service.NoticeData;
 import admin.dao.AdminDao;
 import admin.model.Notice;
 import admin.model.Noticecolumn;
-import auth.model.Category;
-import auth.model.Product;
-import auth.service.MainPage;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -71,4 +69,21 @@ public class NoticeService {
 	}
 	// 글 목록에 읽어오기 끝
 
+	public NoticeData getNoticeRead(int noticeNum) throws Exception {
+		try (Connection conn = DBConnection.getConnection()){
+			Noticecolumn noticecolumn = adminDao.selectById(conn, noticeNum);
+			if (noticecolumn == null) {
+				throw new ArticleNotFoundException();
+			}
+			return new NoticeData(noticecolumn);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void getNoticeDelete(int delNo) throws SQLException, Exception {
+		try(Connection conn = DBConnection.getConnection()){
+			adminDao.deleteNotice(conn, delNo);
+		}
+	}
 }

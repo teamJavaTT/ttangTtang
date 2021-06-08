@@ -88,6 +88,25 @@ public class AdminDao {
 		}
 	}
 	
+	public Noticecolumn selectById(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(
+					"select * from notice where mno = ?");
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			Noticecolumn noticecolumn = null;
+			if (rs.next()) {
+				noticecolumn = convertNotice(rs);
+			}
+			return noticecolumn;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
 	/*
 	 * public List<Noticecolumn> selectNotice(Connection conn) throws SQLException {
 	 * PreparedStatement pstmt = null; ResultSet rs = null; try { pstmt =
@@ -101,14 +120,14 @@ public class AdminDao {
 	}
 	// select 부분 끝
 	
-	public void increaseReadCount(Connection conn, int no) throws SQLException {
-		try (PreparedStatement pstmt = 
-				conn.prepareStatement(
-						"update article set read_cnt = read_cnt + 1 where article_no = ?")) {
-			pstmt.setInt(1, no);
-			pstmt.executeUpdate();
-		}
-	}
+	
+	// 조회수 올리는 것
+	/*
+	 * public void increaseReadCount(Connection conn, int no) throws SQLException {
+	 * try (PreparedStatement pstmt = conn.
+	 * prepareStatement("update notice set read_cnt = read_cnt + 1 where mno = ?"))
+	 * { pstmt.setInt(1, no); pstmt.executeUpdate(); } }
+	 */
 	
 	public int update(Connection conn, int no, String title) throws SQLException {
 		try (PreparedStatement pstmt = 
@@ -119,11 +138,11 @@ public class AdminDao {
 			return pstmt.executeUpdate();
 		}
 	}
-	public int delete(Connection conn, int no) throws SQLException {
+	public int deleteNotice(Connection conn, int delNo) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement(
-						"delete from article where article_no = ?")) {
-			pstmt.setInt(1, no);
+						"delete from notice where mno = ?")) {
+			pstmt.setInt(1, delNo);
 			return pstmt.executeUpdate();
 		}
 	}

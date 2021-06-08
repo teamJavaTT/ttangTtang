@@ -8,7 +8,6 @@ public class Noticecolumn {
 	private String mtit;
 	private String mtext;
 	private Date mdate;
-
 	public Noticecolumn(Integer mno, String mtit, String mtext, Date mdate) {
 		this.mno = mno;
 		this.mtit = mtit;
@@ -31,5 +30,4 @@ public class Noticecolumn {
 	public Date getmdate() {
 		return mdate;
 	}
-
 }
