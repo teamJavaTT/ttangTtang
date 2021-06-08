@@ -105,16 +105,7 @@ label {
 		var product_name = document.form1.product_name.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품이름을 반환해서 name에 저장함
 		var price = document.form1.price.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
 		var description = document.form1.description.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 정보를 반환해서 description에 저장함
-		var today = new Date();
-		var end_time=new today();
-		var end_time=document.form1.end_time.value;
-		 document.write(end_time.getYear() + "년<br/>");
-	       document.write(end_time.getFullYear() + "년<br/>");
-	       document.write( (end_time.getMonth() +1 )+ "월<br/>"); //0월 부터 시작
-	       document.write(end_time.getDate() + "일<br/>");
-	       document.write(end_time.getHours() + "시<br/>");
-	       document.write(end_time.getMinutes() + "분<br/>");
-	       document.write("<hr />");
+	
 	
 		//document.form.은 폼페이지에 있는 값을 반환한다는 뜻.
 
@@ -209,11 +200,19 @@ label {
 				<td><input name="min_price"></td>
 			</tr>
 			<tr>
-				<td>종료시간:</td>
+				<td>경매기간:</td>
 				
 			<label for="end_time"></label>
-				<td><input type="datetime-local" value="end_time"
-       min="2018-06-07T00:00" max="2030-01-01T00:00" name="end_time"></td>
+				<td>
+					<select name="end_time">
+						<option val="1">1시간</option>	
+						<option val="3">3시간</option>
+						<option val="5">5시간</option>
+						<option val="10">10시간</option>
+						<option val="24">24시간</option>
+						<option val="72">3일</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td style="float: left;">상품설명:</td>

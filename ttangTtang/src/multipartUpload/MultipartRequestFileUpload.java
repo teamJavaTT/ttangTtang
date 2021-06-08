@@ -10,7 +10,7 @@ public class MultipartRequestFileUpload {
 		boolean b = false;
 		try {
 			//저장할 위치 설정
-			String uploadDir = "C:/sou/000_tip/java/multipartRequestFileUpload";
+			String uploadDir = "D:/dev/workspace/git/ttangTtang/ttangTtang/WebContent/ogani-master/product/preview";
 			
 			//multipartRequest객체 생성
 			MultipartRequest multi = new MultipartRequest(
