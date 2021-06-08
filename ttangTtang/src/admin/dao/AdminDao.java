@@ -69,13 +69,13 @@ public class AdminDao {
 	}
 	
 	
-	public List<Noticecolumn> selectNotice(Connection conn, int startPage, int endPage) throws SQLException {
+	public List<Noticecolumn> selectNotice(Connection conn, int startNo, int endNo) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from notice where mno BETWEEN ? and ? order by mno desc");
-			pstmt.setInt(1, startPage);
-			pstmt.setInt(2, endPage);
+			pstmt = conn.prepareStatement("select * from(select  row_number() over (order by mno desc) num, A.* from notice A order by mno desc) where num between ? and ?");
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
 			rs = pstmt.executeQuery();
 			List<Noticecolumn> result = new ArrayList<>();
 			while (rs.next()) {

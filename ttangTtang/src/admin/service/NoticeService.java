@@ -59,11 +59,11 @@ public class NoticeService {
 	// 글 목록에 읽어오기
 	public NoticePage getNoticePage(int pageNo) throws Exception {
 		int size = 5;
-		int startPage = (pageNo - 1) * size + 1;
-		int endPage = startPage + 4;
+		int startNo = (pageNo - 1) * size + 1;
+		int endNo = startNo + 4;
 		try (Connection conn = DBConnection.getConnection()) {
 			int total = adminDao.selectCount(conn);
-			List<Noticecolumn> noticecolumn = adminDao.selectNotice(conn, startPage, endPage);
+			List<Noticecolumn> noticecolumn = adminDao.selectNotice(conn, startNo, endNo);
 			return new NoticePage(total, pageNo, size, noticecolumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

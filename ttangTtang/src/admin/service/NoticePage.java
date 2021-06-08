@@ -30,7 +30,7 @@ public class NoticePage {
 				totalPages++;
 			}
 			int modVal = pageNo % 5;
-			startPage = (pageNo - 1) * size + 1;
+			startPage = pageNo / 5 * 5 + 1;
 			if (modVal == 0) startPage -= 5;
 			
 			endPage = startPage + 4;
