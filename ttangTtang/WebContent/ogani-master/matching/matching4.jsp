@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -120,11 +121,27 @@ input[type="text"] {
 	padding-left: 5px;
 	box-sizing: border-box;
 	margin-top: 5px;
+	
 }
 
 input[type="text"]::placeholder {
 	color: #999
 }
+#preview img {
+    width: 100px;
+    height: 100px;
+}
+#preview p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+ preview-box {
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+
 </style>
 
 <a href="/ttangTtang/ogani-master/index.jsp"><img
@@ -163,6 +180,7 @@ input[type="text"]::placeholder {
 				})
 	});
 
+
 	var currentTime = function() {
 		var date = new Date();
 		var hh = date.getHours();
@@ -171,6 +189,40 @@ input[type="text"]::placeholder {
 		var ct = apm + " " + hh + ":" + mm + "";
 		return ct;
 	};
+	
+	
+	$(document).ready(
+		    function() {
+		        // 태그에 onchange를 부여한다.
+		        $('#imagepre').change(function() {
+		                addPreview($(this)); //preview form 추가하기
+		        });
+		    });
+		 
+		    // image preview 기능 구현
+		    // input = file object[]
+		    function addPreview(input) {
+		        if (input[0].files) {
+		            //파일 선택이 여러개였을 시의 대응
+		            for (var fileIndex = 0 ; fileIndex < input[0].files.length ; fileIndex++) {
+		                var file = input[0].files[fileIndex];
+		                var reader = new FileReader();
+		 
+		                reader.onload = function (img) {
+		                    //div id="preview" 내에 동적코드추가.
+		                    //이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
+		                    $("#preview").append(
+		                        "<img src=\"" + img.target.result + "\"\/>"
+		                    );
+		                };
+		                
+		                reader.readAsDataURL(file);
+		            }
+		        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
+		    }
+		    
+		   
+
 </script>
 
 </head>
@@ -183,19 +235,42 @@ input[type="text"]::placeholder {
 					<p class="msg">놀아줘요</p>
 					<span class="time ">오전 10:05</span>
 				</div>
-
-
+ 				
 			</div>
+				
+
+
+			
 		</div>
 		<td>
-			<form name="fileForm" action="requestupload2" method="post"
+		
+		
+		
+			
+			
+			
+			<!-- <form name="fileForm" action="requestupload2" method="post"
 				enctype="multipart/form-data">
-				<input multiple="multiple" type="file" name="file"> 
+				<input multiple="multiple" type="file" name="file" style="width: 500px;">
 				
-				
-				<input class="item mymsg" type="submit" value="전송">
-			</form> <input class="item mymsg" ; type="text" class placeholder="내용 입력">
+				<input class="item mymsg" type="submit" value="전송" >
+			</form>  -->
+			
+			
+			<input class="item mymsg" ; type="text" class placeholder="내용 입력">
+			
+	<body>
+			
+				<br />
+				<form action="multipartRequestFileUpload/multipartRequestFileUpload_action.jsp"
+					enctype="multipart/form-data" method="post">
+	
+					<input type="file" id="imagepre"name="image" size="30" style="width: 470px;">
 
+					<input type="submit" value="파일 전송">	
+			<div id="preview">  </div>
+				</form>
+			</body>
 
 
 
