@@ -9,3 +9,4 @@ ${param.name}님, 경매 성공했습니다.
 <br/>
 </body>
 </html>
+

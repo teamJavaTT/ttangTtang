@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
+import product.service.AucProRequest;
 
 public class aucProductHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/product/aucProductWrite.jsp";
@@ -25,9 +26,15 @@ public class aucProductHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		return null;
+	AucProRequest aucReq= new AucProRequest();
+	aucReq.setProduct_name(req.getParameter("product_name"));
+	aucReq.setMax_price(req.getParameter("max_price"));
+	aucReq.setMin_price(req.getParameter("min_price"));
+	aucReq.setDescription(req.getParameter("description"));
+
+	return FORM_VIEW;
 		
 	}
-	
+	//상품 수정,상품 삭제 
 	
 }
