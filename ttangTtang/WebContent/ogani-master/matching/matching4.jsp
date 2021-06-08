@@ -180,7 +180,7 @@ input[type="text"]::placeholder {
 
 			<div class="item on">
 				<div class="box">
-					<p class="msg">안녕하세요</p>
+					<p class="msg">놀아줘요</p>
 					<span class="time ">오전 10:05</span>
 				</div>
 
@@ -191,6 +191,7 @@ input[type="text"]::placeholder {
 			<form name="fileForm" action="requestupload2" method="post"
 				enctype="multipart/form-data">
 				<input multiple="multiple" type="file" name="file"> 
+				
 				
 				<input class="item mymsg" type="submit" value="전송">
 			</form> <input class="item mymsg" ; type="text" class placeholder="내용 입력">

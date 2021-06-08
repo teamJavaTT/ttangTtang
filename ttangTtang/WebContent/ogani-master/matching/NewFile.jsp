@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<title>�ǽð� �͸� ä�� ����Ʈ</title>
+<title>실시간 익명 채팅 사이트</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
 </head>
@@ -20,7 +20,7 @@
 						<div class="portlet-heading">
 							<div class="portlet-title">
 								<h4>
-									<i class="fa-fa-circle text-green"></i>�ǽð� ä�ù�
+									<i class="fa-fa-circle text-green"></i>실시간 채팅방
 								</h4>
 							</div>
 							<div class="clearfix"></div>
@@ -30,7 +30,7 @@
 								style="overflow-y: auto; width: auto; height: 300px;">
 								<div class="row">
 									<div class="col-lg-12">
-										<p class="text-center text-muted small">2021��6��4��</p>
+										<p class="text-center text-muted small">2021년6월4일</p>
 									</div>
 								</div>
 							</div>
@@ -41,11 +41,11 @@
 										
 									</a>
 									<div class="media-body">
-										<h4 class="media-heading">ȫ�浿
-											<span class="small pull-right">���� 2��33��</span>
+										<h4 class="media-heading">홍길동
+											<span class="small pull-right">오후 2시33분</span>
 										</h4>
 									</div>
-									<p>�ȳ��ϼ��� ����ּ���</p>
+									<p>안녕하세요 놀아주세요</p>
 									
 								</div>
 							</div>
@@ -57,11 +57,11 @@
 										
 									</a>
 									<div class="media-body">
-										<h4 class="media-heading">ȫ�浿
-											<span class="small pull-right">���� 2��33��</span>
+										<h4 class="media-heading">홍길동
+											<span class="small pull-right">오후 2시33분</span>
 										</h4>
 									</div>
-									<p>�ȳ��ϼ��� ����ּ���</p>
+									<p>안녕하세요 심심해요</p>
 									
 								</div>
 							</div>
