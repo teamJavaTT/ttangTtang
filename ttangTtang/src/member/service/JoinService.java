@@ -14,10 +14,10 @@ public class JoinService {
 
 	private MemberDao memberDao = new MemberDao();
 
-	public void join(JoinRequest joinReq) {
+	public void join(JoinRequest joinReq) throws Exception {
 		Connection conn = null;
 		try {
-			conn = DBConnection.getConnection("board");
+			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
 
 			Member member = memberDao.selectById(conn, joinReq.getUserid());
