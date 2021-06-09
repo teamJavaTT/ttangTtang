@@ -7,8 +7,8 @@ MultipartRequestFileUpload upload = new MultipartRequestFileUpload();
 if(upload.fileUpload(request)){
 %>
 <script>
-   alert("저장성공");
-   location.href="multipartRequestFileUpload_form.jsp";
+	alert("저장성공");
+	location.href="multipartRequestFileUpload_form.jsp";
 </script>
 <% 
 }

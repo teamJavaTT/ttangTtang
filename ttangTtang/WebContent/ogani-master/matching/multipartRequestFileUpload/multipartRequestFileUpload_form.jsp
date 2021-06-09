@@ -14,5 +14,6 @@
 	<br/>
 	<input type="submit" value="파일 전송">
 </form>
+<img src="/ttangTtang/ogani-master/matching/preview/untitled.png" />
 </body>
 </html>
