@@ -1,6 +1,6 @@
-package admin.service;
+package admin.notice.service;
 
-import admin.model.Noticecolumn;
+import admin.notice.model.Noticecolumn;
 
 public class NoticeData {
 	private Noticecolumn notice;

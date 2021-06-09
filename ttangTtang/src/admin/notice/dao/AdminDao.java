@@ -1,4 +1,4 @@
-package admin.dao;
+package admin.notice.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,10 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import admin.model.Notice;
-import admin.model.Noticecolumn;
-import auth.model.Category;
-import auth.model.Product;
+import admin.notice.model.Notice;
+import admin.notice.model.Noticecolumn;
 import jdbc.JdbcUtil;
 
 public class AdminDao {

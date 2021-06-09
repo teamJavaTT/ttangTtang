@@ -1,4 +1,4 @@
-package admin.model;
+package admin.notice.model;
 
 public class Notice {
 

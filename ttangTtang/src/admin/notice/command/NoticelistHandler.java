@@ -1,10 +1,10 @@
-package admin.command;
+package admin.notice.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.service.NoticePage;
-import admin.service.NoticeService;
+import admin.notice.service.NoticePage;
+import admin.notice.service.NoticeService;
 import mvc.command.CommandHandler;
 
 public class NoticelistHandler implements CommandHandler {

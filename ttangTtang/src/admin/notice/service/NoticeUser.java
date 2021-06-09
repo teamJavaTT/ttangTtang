@@ -1,21 +1,19 @@
-package admin.model;
+package admin.notice.service;
 
-import java.util.Date;
-
-public class Noticecolumn {
-
-	private Integer mno;
+public class NoticeUser {
+	private String mno;
 	private String mtit;
 	private String mtext;
-	private Date mdate;
-	public Noticecolumn(Integer mno, String mtit, String mtext, Date mdate) {
+	private String mdate;
+
+	public NoticeUser(String mno, String mtit, String mtext, String mdate) {
 		this.mno = mno;
 		this.mtit = mtit;
 		this.mtext = mtext;
 		this.mdate = mdate;
 	}
 
-	public Integer getmno() {
+	public String getmno() {
 		return mno;
 	}
 
@@ -27,7 +25,7 @@ public class Noticecolumn {
 		return mtext;
 	}
 
-	public Date getmdate() {
+	public String getmdate() {
 		return mdate;
 	}
 }

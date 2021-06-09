@@ -90,13 +90,13 @@
 												<tr>
 													<td colspan="4" style="padding-left: 0px; text-align: center;">
 														<c:if test="${noticePage.startPage > 5}">
-															<a href="noticelist.do?pageNo=${noticePage.startPage - 5}">[이전]</a>
+															<a href="noticelist.do?pageNo=${noticePage.startPage - 10}">[이전]</a>
 														</c:if>
 														<c:forEach var="pNo" begin="${noticePage.startPage}" end="${noticePage.endPage}">
 															<a href="noticelist.do?pageNo=${pNo}">[${pNo}]</a>
 														</c:forEach>
 														<c:if test="${noticePage.endPage < noticePage.totalPages}">
-															<a href="noticelist.do?pageNo=${noticePage.startPage + 5}">[다음]</a>
+															<a href="noticelist.do?pageNo=${noticePage.startPage + 10}">[다음]</a>
 														</c:if>
 													</td>
 												</tr>

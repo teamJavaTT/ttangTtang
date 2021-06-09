@@ -1,4 +1,4 @@
-package admin.service;
+package admin.qna.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import admin.service.NoticeData;
-import admin.dao.AdminDao;
-import admin.model.Notice;
-import admin.model.Noticecolumn;
+import admin.notice.service.NoticeData;
+import admin.notice.dao.AdminDao;
+import admin.notice.model.Notice;
+import admin.notice.model.Noticecolumn;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 
-public class NoticeService {
+public class QnaService {
 	
 	private AdminDao adminDao = new AdminDao();
 	
@@ -55,14 +55,14 @@ public class NoticeService {
 	// 글 입력하기 끝
 	
 	// 글 목록에 읽어오기
-	public NoticePage getNoticePage(int pageNo) throws Exception {
+	public QnaPage getNoticePage(int pageNo) throws Exception {
 		int size = 5;
 		int startNo = (pageNo - 1) * size + 1;
 		int endNo = startNo + 4;
 		try (Connection conn = DBConnection.getConnection()) {
 			int total = adminDao.selectCount(conn);
 			List<Noticecolumn> noticecolumn = adminDao.selectNotice(conn, startNo, endNo);
-			return new NoticePage(total, pageNo, size, noticecolumn);
+			return new QnaPage(total, pageNo, size, noticecolumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

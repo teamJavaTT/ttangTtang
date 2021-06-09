@@ -1,12 +1,12 @@
-package admin.service;
+package admin.qna.service;
 
-public class NoticeUser {
+public class QnaUser {
 	private String mno;
 	private String mtit;
 	private String mtext;
 	private String mdate;
 
-	public NoticeUser(String mno, String mtit, String mtext, String mdate) {
+	public QnaUser(String mno, String mtit, String mtext, String mdate) {
 		this.mno = mno;
 		this.mtit = mtit;
 		this.mtext = mtext;
