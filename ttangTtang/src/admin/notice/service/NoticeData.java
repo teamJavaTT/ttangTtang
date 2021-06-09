@@ -12,5 +12,4 @@ public class NoticeData {
 	public Noticecolumn getNotice() {
 		return notice;
 	}
-
 }

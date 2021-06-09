@@ -2,7 +2,7 @@ package member.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
+
 
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;

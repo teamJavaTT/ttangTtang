@@ -66,11 +66,11 @@
 							<div class="table100">
 								<div class="box">
 									<form action="noticelist.do" method="post">
-										<table border="1" style="width: 100%; text-align: center;">
+										<table border="1">
 											<thead>
 												<tr class="table100-head">
 													<td class="column5" style="padding-left: 0px;">번호</td>
-													<td class="column1" colspan="2" style="padding-left: 0px; width: 70%;">제목</td>
+													<td class="column1" colspan="2" style="padding-left: 0px;">제목</td>
 													<td class="column5" style="padding-left: 0px;">작성일자</td>
 												</tr>
 											</thead>
@@ -88,7 +88,7 @@
 												</tr>
 											</c:forEach>
 												<tr>
-													<td colspan="4" style="padding-left: 0px; text-align: center;">
+													<td colspan="4" style="padding-left: 0px;">
 														<c:if test="${noticePage.startPage > 5}">
 															<a href="noticelist.do?pageNo=${noticePage.startPage - 10}">[이전]</a>
 														</c:if>
@@ -102,9 +102,9 @@
 												</tr>
 											</tbody>
 										</table>
-										<table>
+										<table style="text-align: center;">
 											<tr>
-												<td style="text-align: right;" class="column4" colspan="1"><a href="noticewrite.do">[게시글쓰기]</a></td>
+												<td class="column4" colspan="1"><a href="noticewrite.do">[게시글쓰기]</a></td>
 											</tr>
 										</table>
 									</form>

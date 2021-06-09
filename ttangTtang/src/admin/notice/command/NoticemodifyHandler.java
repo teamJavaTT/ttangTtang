@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
+<<<<<<< HEAD:ttangTtang/src/admin/notice/command/NoticemodifyHandler.java
 import admin.notice.service.NoticeService;
 import admin.notice.model.Notice;
 import admin.notice.model.Noticecolumn;
@@ -15,14 +16,20 @@ import admin.notice.service.ArticleNotFoundException;
 import admin.notice.service.NoticeData;
 import admin.notice.service.NoticePage;
 import admin.notice.service.NoticeRequest;
+=======
+import admin.service.NoticeService;
+import admin.model.Notice;
+import admin.service.NoticeUser;
+import admin.service.NoticePage;
+import admin.service.NoticeRequest;
+>>>>>>> parent of 48417b6 (0609 admin notice 기능 완성):ttangTtang/src/admin/command/NoticemodifyHandler.java
 
 public class NoticemodifyHandler implements CommandHandler {
-	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticewrite.jsp";
 	private NoticeService noticeService = new NoticeService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		
 		if (req.getMethod().equalsIgnoreCase("GET")) {
 			return processForm(req, res);
 		} else if (req.getMethod().equalsIgnoreCase("POST")) {
@@ -32,39 +39,26 @@ public class NoticemodifyHandler implements CommandHandler {
 			return null;
 		}
 	}
-	
-	// 데이터를 가져오는것
-	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception{
-		String noVal = req.getParameter("no");
-		int noticeNum = Integer.parseInt(noVal);
-		try {
-			NoticeData noticeData = noticeService.getNoticeMod(noticeNum);
-			req.setAttribute("noticeData", noticeData);
-			return "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
-		} catch (ArticleNotFoundException e) {
-			req.getServletContext().log("no article", e);
-			res.sendError(HttpServletResponse.SC_NOT_FOUND);
-			return null;
-		}
+
+	private String processForm(HttpServletRequest req, HttpServletResponse res) {
+		return FORM_VIEW;
 	}
-	
-	
-	// 데이터를 보내는 것
+
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
-		String requestNo = req.getParameter("no");
-		int delNo = Integer.parseInt(requestNo);
+
 		// NoticeRequest writeReq =new NoticeRequest(new Notice(noticeuser.getmno(),
 		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
-		Notice modReq = new Notice(req.getParameter("title"), req.getParameter("content"));
+		Notice writeReq = new Notice(req.getParameter("title"), req.getParameter("content"));
 		
+
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
 
-		int noticeModno = noticeService.noticemod(delNo, modReq);
-		req.setAttribute("noticeModno", noticeModno);
+		int newArticleNo = noticeService.noticewrite(writeReq);
+		req.setAttribute("newArticleNo", newArticleNo);
 
 		return "/WEB-INF/ogani-master/admin/notice/noticesuccess.jsp";
 	}

@@ -41,6 +41,7 @@ public class NoticewriteHandler implements CommandHandler {
 		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
 		Notice writeReq = new Notice(req.getParameter("title"), req.getParameter("content"));
 		
+
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
