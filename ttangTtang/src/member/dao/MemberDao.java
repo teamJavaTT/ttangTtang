@@ -38,7 +38,7 @@ public class MemberDao {
 	}
 
 
-	public void insert(Connection conn, Member mem) throws SQLException {
+	public void insert(Connection conn, Membr mem) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement("insert into board.member values(?,?,?,?,?,?,?)")) {
 			pstmt.setString(1, mem.getUserid());

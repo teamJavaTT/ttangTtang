@@ -5,8 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
 import product.service.AucProRequest;
+import product.service.AucProService;
 
 public class aucProductHandler implements CommandHandler {
+	private AucProService aucproService = new AucProService();
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/product/aucProductWrite.jsp";
 
 	@Override

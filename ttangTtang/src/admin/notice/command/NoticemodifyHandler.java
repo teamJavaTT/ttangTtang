@@ -6,23 +6,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mvc.command.CommandHandler;
-<<<<<<< HEAD:ttangTtang/src/admin/notice/command/NoticemodifyHandler.java
-import admin.notice.service.NoticeService;
 import admin.notice.model.Notice;
-import admin.notice.model.Noticecolumn;
-import admin.notice.service.NoticeUser;
-import admin.notice.service.ArticleNotFoundException;
-import admin.notice.service.NoticeData;
-import admin.notice.service.NoticePage;
-import admin.notice.service.NoticeRequest;
-=======
-import admin.service.NoticeService;
-import admin.model.Notice;
-import admin.service.NoticeUser;
-import admin.service.NoticePage;
-import admin.service.NoticeRequest;
->>>>>>> parent of 48417b6 (0609 admin notice 기능 완성):ttangTtang/src/admin/command/NoticemodifyHandler.java
+import admin.notice.service.NoticeService;
+import mvc.command.CommandHandler;
+//>>>>>>> parent of 48417b6 (0609 admin notice 기능 완성):ttangTtang/src/admin/command/NoticemodifyHandler.java
 
 public class NoticemodifyHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticewrite.jsp";

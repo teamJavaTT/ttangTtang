@@ -103,7 +103,9 @@ label {
 	function product_write() {
 
 		var product_name = document.form1.product_name.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품이름을 반환해서 name에 저장함
-		var price = document.form1.price.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
+		var category = document.form1.categry.value; 
+		var max_price = document.form1.max_price.value; 
+		var min_price = document.form1.min_price.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
 		var description = document.form1.description.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 정보를 반환해서 description에 저장함
 	
 	
@@ -113,6 +115,12 @@ label {
 			alert("상품명을 입력하세요");
 			document.form1.product_name.focus(); //form1페이지에 있는 "상품명을 입력하세요" 에 커서를 올려둔다.
 			return;
+			}
+		if (category == "") { //상품가격이 입력되어 있지 않으면
+			alert("카테고리를 선택하세요");
+			document.form1.category.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
+			return;
+		
 		}
 		if (max_price == "") { //상품가격이 입력되어 있지 않으면
 			alert("최대가격을 입력하세요");
@@ -188,6 +196,15 @@ label {
 			<tr>
 				<td>상품명:</td>
 				<td><input name="product_name"></td>
+			</tr>
+			<tr>
+				<td>카테고리:</td>
+				<td><select name="category">
+				<option>디지털기기</option>
+				<option>빙수</option>
+				<option>코코</option>
+				<option>제리</option>
+				</select>
 			</tr>
 
 			<tr>

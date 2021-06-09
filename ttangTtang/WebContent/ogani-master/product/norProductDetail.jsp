@@ -22,59 +22,45 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Product Details Section Begin -->
-    <section class="product-details spad">
+<section class="product-details spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="/ttangTtang/ogani-master/img/product/details/product-details-1.jpg" alt="">
+                            <img class="product__details__pic__item--large" src="/ttangTtang/ogani-master/img/product/details/product-details-1.jpg" alt="">
                         </div>
-                        <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
-                                src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
-                                src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
-                                src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
-                                src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg" alt="">
-                        </div>
+                        <div class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
+                            
+                            
+                            
+                            
+                        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;"><div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg" alt=""></div><div class="owl-item" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item active" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg" alt=""></div><div class="owl-item cloned active" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item cloned active" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item cloned active" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;"><img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg" alt=""></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div></div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h3>제목</h3>
-                        <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
-                        </div>
+                        
                         <div class="product__details__price">$50.00</div>
                         <p>제품 설명</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
+                                
                             </div>
                         </div>
                         <a href="#" class="primary-btn">ADD TO CARD</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
-                            <li><b>상품 상태 </b> <span>예약중</span></li>
+                            <li><b>상품 상태 </b> <span id="state">예약중</span></li>
                             <li><b>거래방법</b> <span>직거래</span></li>
-                            <li><b>상점</b> </li>
+                            <li><b>판매자</b> </li>
                             <li><b>공유</b>
                                 <div class="share">
                                     <a href="#"><i class="fa fa-link"></i></a>
-                                
                                 </div>
                             </li>
+                            <li><b>조회수</b> <div id="view_count"> <!--  ${Product.readCount}--></div></li>
                         </ul>
                     </div>
                 </div>
@@ -82,17 +68,9 @@
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Description</a>
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">상세설명</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                    aria-selected="false">Information</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
-                            </li>
+                         
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
@@ -152,7 +130,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title related__product__title">
-                        <h2>Related Product</h2>
+                        <h2>판매자의 다른 판매 상품</h2>
                     </div>
                 </div>
             </div>
