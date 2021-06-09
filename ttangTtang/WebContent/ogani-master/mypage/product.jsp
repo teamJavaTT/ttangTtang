@@ -192,7 +192,7 @@
                             <li><a href="../mypage/product.jsp">상품</a></li>
                             <li><a href="../mypage/review.jsp">칭찬&불만 후기</a></li>
                             <li><a href="../mypage/sellerReview.jsp">판매자 거래 리뷰</a></li>
-                            <li><a href="../mypage/withdrawal.jsp">회원탈퇴</a></li>
+                            <li><a href="../login/deleteFrom.jsp">회원탈퇴</a></li>
                             <li><a href="../admin/adminmain.jsp">고객센터</a></li>
                         </ul>
                     </div>
