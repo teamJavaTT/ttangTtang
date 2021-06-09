@@ -61,24 +61,13 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="#"><i class="fa fa-user"></i> 로그인</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="index.do">Home</a></li>
-                <li><a href="./shop-grid.jsp">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="/ttangTtang/ogani-master/shop-details.jsp">Shop Details</a></li>
-                        <li><a href="/ttangTtang/ogani-master/shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="/ttangTtang/ogani-master/checkout.html">Check Out</a></li>
-                        <li><a href="/ttangTtang/ogani-master/blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
                 <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
-                <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
                 <li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
             </ul>
         </nav>
@@ -129,7 +118,7 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="../ogani-master/login/login.jsp"><i class="fa fa-user"></i> Login</a>
+                                <a href="../ogani-master/login/login.jsp"><i class="fa fa-user"></i> 로그인</a>
                             </div>
                         </div>
                     </div>
@@ -146,19 +135,8 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class><a href="index.do">Home</a></li>
-                            <li><a href="./shop-grid.jsp">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="/ttangTtang/ogani-master/shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="/ttangTtang/ogani-master/shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="/ttangTtang/ogani-master/checkout.html">Check Out</a></li>
-                                    <li><a href="/ttangTtang/ogani-master/blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
+                            <li class="active"><a href="index.do">Home</a></li>
                             <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
-                            <li><a href="/ttangTtang/ogani-master/blog.html">Blog</a></li>
-                            <li><a href="/ttangTtang/ogani-master/contact.html">Contact</a></li>
               				<li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
                         </ul>
                     </nav>
