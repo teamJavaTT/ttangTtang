@@ -35,10 +35,7 @@ public class AdminDao {
 				rs = stmt.executeQuery("select max(mno) from Notice");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Noticecolumn(newNo,
-							article.getmtit(),
-							article.getmtext(),
-							article.getmdate());
+					return new Noticecolumn(newNo, article.getmtit(), article.getmtext(), article.getmdate());
 				}
 			}
 			return null;
@@ -128,16 +125,35 @@ public class AdminDao {
 	 * prepareStatement("update notice set read_cnt = read_cnt + 1 where mno = ?"))
 	 * { pstmt.setInt(1, no); pstmt.executeUpdate(); } }
 	 */
-	
-	public int update(Connection conn, int no, String title) throws SQLException {
-		try (PreparedStatement pstmt = 
-				conn.prepareStatement(
-						"update article set title = ?, moddate = now() where article_no = ?")) {
-			pstmt.setString(1, title);
-			pstmt.setInt(2, no);
-			return pstmt.executeUpdate();
+	//업데이트
+	public Noticecolumn updateNotice(Connection conn, Noticecolumn notice) throws SQLException {
+		PreparedStatement pstmt = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("update notice set mtit = ?, mtext = ? where mno = ?");
+			pstmt.setString(1, notice.getmtit());
+			pstmt.setString(2, notice.getmtext());
+			pstmt.setInt(3, notice.getmno());
+			int insertedCount = pstmt.executeUpdate();
+
+			if (insertedCount > 0) {
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery("select max(mno) from Notice");
+				if (rs.next()) {
+					Integer newNo = rs.getInt(1);
+					return new Noticecolumn(newNo, notice.getmtit(), notice.getmtext(), notice.getmdate());
+				}
+			}
+		return null;
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+			JdbcUtil.close(pstmt);
 		}
 	}
+	
+	// 삭제
 	public int deleteNotice(Connection conn, int delNo) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement(

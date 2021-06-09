@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
-<!-- Hero Section Begin -->
+
 <section class="hero">
 	<div class="container">
 		<div class="row">
@@ -61,66 +61,37 @@
 					<h2>공지사항</h2>
 				</section>
 				<section class="content">
-					<div class="limiter">
-						<div class="wrap-table100">
-							<div class="table100">
-								<div class="box">
-									<form action="noticelist.do" method="post">
-										<table border="1" style="width: 100%; text-align: center;">
-											<thead>
-												<tr class="table100-head">
-													<td class="column5" style="padding-left: 0px;">번호</td>
-													<td class="column1" colspan="2" style="padding-left: 0px; width: 70%;">제목</td>
-													<td class="column5" style="padding-left: 0px;">작성일자</td>
-												</tr>
-											</thead>
-											<tbody>
-											<c:forEach var="notice" items="${noticePage.notice}">
-												<tr>
-													<!-- 번호 -->
-													<td style="padding-left: 0px;">${notice.mno}</td>
-													<!-- 내용 -->
-													<td colspan="2" style="padding-left: 0px;"><a href="noticeread.do?no=${notice.mno}<%-- &pageNo=${noticePage.currentPage} --%>">
-													<c:out value="${notice.mtit}" /></a></td>
-													<!--  작성일자  -->
-													<td style="padding-left: 0px;">${notice.mdate}</td>
-													<%-- <td>${article.readCount}</td> --%>
-												</tr>
-											</c:forEach>
-												<tr>
-													<td colspan="4" style="padding-left: 0px; text-align: center;">
-														<c:if test="${noticePage.startPage > 5}">
-															<a href="noticelist.do?pageNo=${noticePage.startPage - 5}">[이전]</a>
-														</c:if>
-														<c:forEach var="pNo" begin="${noticePage.startPage}" end="${noticePage.endPage}">
-															<a href="noticelist.do?pageNo=${pNo}">[${pNo}]</a>
-														</c:forEach>
-														<c:if test="${noticePage.endPage < noticePage.totalPages}">
-															<a href="noticelist.do?pageNo=${noticePage.startPage + 5}">[다음]</a>
-														</c:if>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table>
-											<tr>
-												<td style="text-align: right;" class="column4" colspan="1"><a href="noticewrite.do">[게시글쓰기]</a></td>
-											</tr>
-										</table>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /.box -->
+					<form action="noticemodify.do" method="post">
+						<table>
+							<thead>
+								<tr>
+									<th colspan="4" style="text-align: center;">공지사항 글수정 양식</th>
+								</tr>
+							</thead>
+							</tbody>
+							<tr>
+								<td class="contents" colspan="4" style="padding-left: 0px;">
+								번호 : <input style="border:0px;" type="text" placeholder="번호" name="no" value="${noticeData.notice.mno}" maxlength="200" readonly></td>
+							</tr>
+							<tr>
+								<td class="contents" colspan="4" style="padding-left: 0px;">
+								<input type="text" placeholder="글 제목" name="title" value="${noticeData.notice.mtit}" maxlength="200"></td>
+							</tr>
+							<tr>
+								<td class="contents" colspan="4" style="padding-left: 0px;"><textarea
+										rows="10" cols="100%" placeholder="내용" name="content">${noticeData.notice.mtext}</textarea></td>
+							</tr>
+							<tr>
+								<td class="column4"><input type="submit" value="글 등록"></td>
+							</tr>
+							</tbody>
+						</table>
+					</form>
 				</section>
-				<!-- /.content -->
 			</div>
 		</div>
 	</div>
-	<!-- /.content-wrapper -->
 </section>
-<!-- Hero Section End -->
 
 
 
