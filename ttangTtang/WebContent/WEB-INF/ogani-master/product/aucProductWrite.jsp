@@ -187,6 +187,16 @@ label {
 
 		<table>
 			<tr>
+				<td>카테고리:</td>
+				<td>
+					<select name="category">
+                        <c:forEach var="category" items="${mainPage.category}">
+                   			<option val="">${category.cname}</option>
+						</c:forEach>
+					</select>
+				</td>
+			</tr>
+			<tr>
 				<td>상품명:</td>
 				<td><input name="product_name"></td>
 			</tr>
