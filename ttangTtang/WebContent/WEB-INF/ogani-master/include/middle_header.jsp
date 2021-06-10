@@ -11,7 +11,7 @@
                             <span>카테고리</span>
                         </div>
                         <ul>
-	                        <c:forEach var="category" items="${mainPage.category}">
+	                        <c:forEach var="category" items="${category}">
 	                        	<li><a href="#">${category.cname}</a></li>
 							</c:forEach>
                         </ul>
