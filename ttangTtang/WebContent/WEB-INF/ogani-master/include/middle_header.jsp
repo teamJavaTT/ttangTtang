@@ -20,8 +20,8 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
-                                <input type="text" placeholder="상품명,지역명 입력">
+                            <form action="searchProduct.do">
+                                <input type="text" placeholder="상품명,지역명 입력" name="searchProduct">
                                 <button type="submit" class="site-btn">검색</button>
                             </form>
                         </div>
