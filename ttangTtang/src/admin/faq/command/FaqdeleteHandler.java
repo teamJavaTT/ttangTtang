@@ -1,22 +1,22 @@
-package admin.qna.command;
+package admin.faq.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.qna.service.QnaService;
+import admin.faq.service.FaqService;
 import mvc.command.CommandHandler;
 
-public class QnadeleteHandler implements CommandHandler {
+public class FaqdeleteHandler implements CommandHandler {
 	
-	private QnaService qnaService = new QnaService();
+	private FaqService faqService = new FaqService();
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String requestNo = req.getParameter("no");
 		int delNo = Integer.parseInt(requestNo);
 		
-		qnaService.getQnaDelete(delNo);
-		return "/WEB-INF/ogani-master/admin/notice/noticedeletesuccess.jsp";
+		faqService.getFaqDelete(delNo);
+		return "/WEB-INF/ogani-master/admin/notice/faqdeletesuccess.jsp";
 	}
 
 }

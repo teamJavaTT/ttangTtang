@@ -36,9 +36,9 @@
 						<i class="fa fa-bars"></i> <span>All departments</span>
 					</div>
 					<ul>
-						<li><a href="/ttangTtang/ogani-master/admin/notice.jsp">공지사항</a></li>
+						<li><a href="noticelist.do">공지사항</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
+						<li><a href="faqlist.do">FAQ</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의
 								소리</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/userlist.jsp">사용자
@@ -68,6 +68,7 @@
 							<div class="table100">
 								<!-- Default box -->
 								<div class="box">
+								<form action="faqlist.do" method="post">
 									<table border="1">
 										<thead>
 											<tr class="table100-head">
@@ -77,44 +78,40 @@
 												<!-- <td class="column5">조회수</td> -->
 											</tr>
 										</thead>
-										<%-- <c:if test="${articlePage.hasNoArticles()}">
+										<tbody>
+										<c:forEach var="faq" items="${faqPage.faq}">
 											<tr>
-												<td colspan="4">게시글이 없습니다.</td>
-											</tr>
-										</c:if> --%>
-										<c:forEach var="article" items="${articlePage.content}">
-											<tr>
-												<!-- 번호 -->
-												<td style="padding-left: 0px;">${article.number}</td>
-												<!-- 내용 -->
-												<td colspan="2" style="padding-left: 0px;"><a
-													href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"><c:out
-															value="${article.title}" /></a></td>
-												<!--  작성일자  -->
-												<td style="padding-left: 0px;">${article.writer.name}</td>
-												<%-- <td>${article.readCount}</td> --%>
-											</tr>
+													<!-- 번호 -->
+													<td style="padding-left: 0px;">${faq.fno}</td>
+													<!-- 내용 -->
+													<td colspan="2" style="padding-left: 0px;"><a href="faqread.do?no=${faq.fno}">
+													<c:out value="${faq.ftit}" /></a></td>
+													<!--  작성일자  -->
+													<td style="padding-left: 0px;">${faq.fdate}</td>
+													<%-- <td>${article.readCount}</td> --%>
+												</tr>
 										</c:forEach>
-										<c:if test="${articlePage.hasArticles()}">
 											<tr>
-												<td colspan="4" style="padding-left: 0px;"><c:if
-														test="${articlePage.startPage > 5}">
-														<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
-													</c:if> <c:forEach var="pNo" begin="${articlePage.startPage}"
-														end="${articlePage.endPage}">
-														<a href="list.do?pageNo=${pNo}">[${pNo}]</a>
-													</c:forEach> <c:if
-														test="${articlePage.endPage < articlePage.totalPages}">
-														<a href="list.do?pageNo=${articlePage.startPage + 5}">[다음]</a>
-													</c:if></td>
+													<td colspan="4" style="padding-left: 0px;">
+														<c:if test="${faqPage.startPage > 10}">
+															<a href="faqlist.do?pageNo=${faqPage.startPage - 10}">[이전]</a>
+														</c:if>
+														<c:forEach var="pNo" begin="${faqPage.startPage}" end="${faqPage.endPage}">
+															<a href="faqlist.do?pageNo=${pNo}">[${pNo}]</a>
+														</c:forEach>
+														<c:if test="${faqPage.endPage < faqPage.totalPages}">
+															<a href="faqlist.do?pageNo=${faqPage.startPage + 10}">[다음]</a>
+														</c:if>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table style="text-align: center;">
+											<tr>
+												<td class="column4" colspan="1"><a href="faqwrite.do">[게시글쓰기]</a></td>
 											</tr>
-										</c:if>
-									</table>
-									<table style:text-align="center">
-										<tr>
-											<td class="column4" colspan="1"><a href="/ttangTtang/ogani-master/admin/faqwrite.jsp">[게시글쓰기]</a></td>
-										</tr>
-									</table>
+										</table>
+									</form>
 								</div>
 							</div>
 						</div>

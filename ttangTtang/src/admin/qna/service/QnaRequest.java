@@ -1,18 +1,16 @@
 package admin.qna.service;
 
-import java.util.Map;
-
-import admin.notice.model.Notice;
+import admin.qna.model.Qna;
 
 public class QnaRequest {
-	private Notice notice;
+	private Qna qna;
 
-	public QnaRequest(Notice notice) {
-		this.notice = notice;
+	public QnaRequest(Qna qna) {
+		this.qna = qna;
 	}
 
-	public Notice getnotice() {
-		return notice;
+	public Qna getqna() {
+		return qna;
 	}
 
 }

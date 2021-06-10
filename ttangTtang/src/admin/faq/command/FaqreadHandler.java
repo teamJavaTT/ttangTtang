@@ -1,27 +1,27 @@
-package admin.qna.command;
+package admin.faq.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.qna.service.ArticleNotFoundException;
-import admin.qna.service.QnaData;
-import admin.qna.service.QnaService;
+import admin.faq.service.ArticleNotFoundException;
+import admin.faq.service.FaqData;
+import admin.faq.service.FaqService;
 import mvc.command.CommandHandler;
 
-public class QnareadHandler implements CommandHandler {
+public class FaqreadHandler implements CommandHandler {
 	
-private QnaService qnaService = new QnaService();
+private FaqService faqService = new FaqService();
 	
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) 
 			throws Exception {
 		String noVal = req.getParameter("no");
-		int qnaNum = Integer.parseInt(noVal);
+		int faqNum = Integer.parseInt(noVal);
 		try {
-			QnaData qnaData = qnaService.getNoticeRead(qnaNum);
-			req.setAttribute("qnaData", qnaData);
-			return "/WEB-INF/ogani-master/admin/notice/noticeread.jsp";
+			FaqData faqData = faqService.getFaqRead(faqNum);
+			req.setAttribute("faqData", faqData);
+			return "/WEB-INF/ogani-master/admin/faq/faqread.jsp";
 		} catch (ArticleNotFoundException e) {
 			req.getServletContext().log("no article", e);
 			res.sendError(HttpServletResponse.SC_NOT_FOUND);

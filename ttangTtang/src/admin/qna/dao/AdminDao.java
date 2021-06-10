@@ -5,35 +5,32 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import admin.notice.model.Notice;
-import admin.notice.model.Noticecolumn;
+import admin.qna.model.Qnacolumn;
 import jdbc.JdbcUtil;
 
 public class AdminDao {
-	public Noticecolumn insert(Connection conn, Noticecolumn article) throws SQLException {
+	public Qnacolumn insert(Connection conn, Qnacolumn article) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		// insert 부분 구문
 		try {
-			pstmt = conn.prepareStatement("insert into Notice values (notice_seq.NEXTVAL,?,?,sysdate)");
+			pstmt = conn.prepareStatement("insert into Qna values (qna_seq.NEXTVAL,?,?,sysdate)");
 			
-			pstmt.setString(1, article.getmtit());
-			pstmt.setString(2, article.getmtext());
+			pstmt.setString(1, article.getqtit());
+			pstmt.setString(2, article.getqtext());
 			/* pstmt.setTimestamp(4, toTimestamp(article.getmdate())); */
 			int insertedCount = pstmt.executeUpdate();
 
 			if (insertedCount > 0) {
 				stmt = conn.createStatement();
-				rs = stmt.executeQuery("select max(mno) from Notice");
+				rs = stmt.executeQuery("select max(qno) from Qna");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Noticecolumn(newNo, article.getmtit(), article.getmtext(), article.getmdate());
+					return new Qnacolumn(newNo, null, article.getqtit(), article.getqtext(), article.getqdate()); // null에 아이디 추가
 				}
 			}
 			return null;
@@ -51,7 +48,7 @@ public class AdminDao {
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select count(*) from notice");
+			rs = stmt.executeQuery("select count(*) from qna");
 			if(rs.next()) {
 				return rs.getInt(1);
 			}
@@ -64,17 +61,17 @@ public class AdminDao {
 	}
 	
 	
-	public List<Noticecolumn> selectNotice(Connection conn, int startNo, int endNo) throws SQLException {
+	public List<Qnacolumn> selectQna(Connection conn, int startNo, int endNo) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from(select  row_number() over (order by mno desc) num, A.* from notice A order by mno desc) where num between ? and ?");
+			pstmt = conn.prepareStatement("select * from(select  row_number() over (order by mno desc) num, A.* from qna A order by mno desc) where num between ? and ?");
 			pstmt.setInt(1, startNo);
 			pstmt.setInt(2, endNo);
 			rs = pstmt.executeQuery();
-			List<Noticecolumn> result = new ArrayList<>();
+			List<Qnacolumn> result = new ArrayList<>();
 			while (rs.next()) {
-				result.add(convertNotice(rs));
+				result.add(convertQna(rs));
 			}
 			return result;
 		} finally {
@@ -83,17 +80,17 @@ public class AdminDao {
 		}
 	}
 	
-	public Noticecolumn selectById(Connection conn, int no) throws SQLException {
+	public Qnacolumn selectById(Connection conn, int no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(
-					"select * from notice where mno = ?");
+					"select * from qna where qno = ?");
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			Noticecolumn noticecolumn = null;
+			Qnacolumn noticecolumn = null;
 			if (rs.next()) {
-				noticecolumn = convertNotice(rs);
+				noticecolumn = convertQna(rs);
 			}
 			return noticecolumn;
 		} finally {
@@ -110,8 +107,8 @@ public class AdminDao {
 	 * (rs.next()) { result.add(convertNotice(rs)); } return result; } finally {
 	 * JdbcUtil.close(rs); JdbcUtil.close(pstmt); } }
 	 */	
-	private Noticecolumn convertNotice(ResultSet rs) throws SQLException {
-		return new Noticecolumn(rs.getInt("mno"), rs.getString("mtit"), rs.getString("mtext"), rs.getDate("mdate"));
+	private Qnacolumn convertQna(ResultSet rs) throws SQLException {
+		return new Qnacolumn(rs.getInt("mno"), null, rs.getString("mtit"), rs.getString("mtext"), rs.getDate("mdate")); // null에 아이디 추가
 	}
 	// select 부분 끝
 	
@@ -124,23 +121,23 @@ public class AdminDao {
 	 * { pstmt.setInt(1, no); pstmt.executeUpdate(); } }
 	 */
 	//업데이트
-	public Noticecolumn updateNotice(Connection conn, Noticecolumn notice) throws SQLException {
+	public Qnacolumn updateQna(Connection conn, Qnacolumn qna) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("update notice set mtit = ?, mtext = ? where mno = ?");
-			pstmt.setString(1, notice.getmtit());
-			pstmt.setString(2, notice.getmtext());
-			pstmt.setInt(3, notice.getmno());
+			pstmt = conn.prepareStatement("update qna set mtit = ?, mtext = ? where mno = ?");
+			pstmt.setString(1, qna.getqtit());
+			pstmt.setString(2, qna.getqtext());
+			pstmt.setInt(3, qna.getqno());
 			int insertedCount = pstmt.executeUpdate();
 
 			if (insertedCount > 0) {
 				stmt = conn.createStatement();
-				rs = stmt.executeQuery("select max(mno) from Notice");
+				rs = stmt.executeQuery("select max(mno) from qna");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Noticecolumn(newNo, notice.getmtit(), notice.getmtext(), notice.getmdate());
+					return new Qnacolumn(newNo, null, qna.getqtit(), qna.getqtext(), qna.getqdate()); // null에 아이디 추가
 				}
 			}
 		return null;
@@ -152,10 +149,10 @@ public class AdminDao {
 	}
 	
 	// 삭제
-	public int deleteNotice(Connection conn, int delNo) throws SQLException {
+	public int deleteQna(Connection conn, int delNo) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement(
-						"delete from notice where mno = ?")) {
+						"delete from qna where qno = ?")) {
 			pstmt.setInt(1, delNo);
 			return pstmt.executeUpdate();
 		}

@@ -2,21 +2,21 @@ package admin.qna.model;
 
 public class Qna {
 
-	private String mtit;
-	private String mtext;
+	private String qtit;
+	private String qtext;
 
-	public Qna(String mtit, String mtext) {
+	public Qna(String qtit, String qtext) {
 
-		this.mtit = mtit;
-		this.mtext = mtext;
+		this.qtit = qtit;
+		this.qtext = qtext;
 	}
 
-	public String getmtit() {
-		return mtit;
+	public String getqtit() {
+		return qtit;
 	}
 
-	public String getmtext() {
-		return mtext;
+	public String getqtext() {
+		return qtext;
 	}
 
 }

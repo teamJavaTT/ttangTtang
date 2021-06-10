@@ -38,7 +38,7 @@
 					<ul>
 						<li><a href="noticelist.do">공지사항</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
+						<li><a href="faqlist.do">FAQ</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의
 								소리</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/userlist.jsp">사용자
@@ -89,7 +89,7 @@
 											</c:forEach>
 												<tr>
 													<td colspan="4" style="padding-left: 0px;">
-														<c:if test="${noticePage.startPage > 5}">
+														<c:if test="${noticePage.startPage > 10}">
 															<a href="noticelist.do?pageNo=${noticePage.startPage - 10}">[이전]</a>
 														</c:if>
 														<c:forEach var="pNo" begin="${noticePage.startPage}" end="${noticePage.endPage}">

@@ -36,9 +36,9 @@
 						<i class="fa fa-bars"></i> <span>All departments</span>
 					</div>
 					<ul>
-						<li><a href="/ttangTtang/ogani-master/admin/notice.jsp">공지사항</a></li>
+						<li><a href="noticelist.do">공지사항</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
+						<li><a href="faqlist.do">FAQ</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의
 								소리</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/userlist.jsp">사용자
@@ -74,31 +74,33 @@
 										<tbody>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td style="text-align: left;">
-													번호 : ${articleData.article.number}
+													번호 : ${faqData.faq.fno}
 												</td>
 												<td style="text-align: left;">
-													작성일자 : ${articleData.article.number}
+													작성일자 : ${faqData.faq.fdate}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													제목 : ${articleData.article.number}
+													제목 : ${faqData.faq.ftit}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td style="text-align: left;">
-													내용 : ${articleData.article.number}
+													내용 : ${faqData.faq.ftext}
 												</td>
 											</tr>
 										</tbody>
 										<tr>
 											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
-													value="${empty param.pageNo ? '1' : param.pageNo}" /> <a
-												href="list.do?pageNo=${pageNo}">[목록]</a> <c:if
-													test="${authUser.id == articleData.article.writer.id}">
-													<a href="modify.do?no=${articleData.article.number}">[게시글수정]</a>
-													<a href="delete.do?no=${articleData.article.number}">[게시글삭제]</a>
-												</c:if></td>
+												value="${empty param.pageNo ? '1' : param.pageNo}" />
+												<input type="button" value="목록" onclick="location.href='faqlist.do?pageNo=${pageNo}'">
+												<c:if test="${authUser.id == articleData.article.writer.id}">
+													<input type="button" value="게시글수정" onclick="location.href='faqmodify.do?no=${faqData.faq.fno}'">
+													<input type="hidden" value="${faqData.faq.fno}" id="delNo">
+													<input type="button" value="게시글삭제" id="faqDel">
+												</c:if>
+											</td>
 										</tr>
 									</table>
 								</div>
@@ -111,6 +113,6 @@
 	</div>
 </section>
 
-
+<script src="/ttangTtang/js/admin/main.js" ></script>
 
 <%@ include file="../../include/footer.jsp"%>

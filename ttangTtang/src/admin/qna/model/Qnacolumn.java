@@ -4,30 +4,34 @@ import java.util.Date;
 
 public class Qnacolumn {
 
-	private Integer mno;
-	private String mtit;
-	private String mtext;
-	private Date mdate;
-	public Qnacolumn(Integer mno, String mtit, String mtext, Date mdate) {
-		this.mno = mno;
-		this.mtit = mtit;
-		this.mtext = mtext;
-		this.mdate = mdate;
+	private Integer qno;
+	private String userid;
+	private String qtit;
+	private String qtext;
+	private Date qdate;
+	public Qnacolumn(Integer qno, String userid, String qtit, String qtext, Date qdate) {
+		this.qno = qno;
+		this.qtit = qtit;
+		this.qtext = qtext;
+		this.qdate = qdate;
 	}
 
-	public Integer getmno() {
-		return mno;
+	public Integer getqno() {
+		return qno;
+	}
+	
+	public String getuserid() {
+		return qtit;
+	}
+	public String getqtit() {
+		return qtit;
 	}
 
-	public String getmtit() {
-		return mtit;
+	public String getqtext() {
+		return qtext;
 	}
 
-	public String getmtext() {
-		return mtext;
-	}
-
-	public Date getmdate() {
-		return mdate;
+	public Date getqdate() {
+		return qdate;
 	}
 }

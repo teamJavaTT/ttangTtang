@@ -1,15 +1,15 @@
-package admin.qna.command;
+package admin.faq.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.qna.service.QnaPage;
-import admin.qna.service.QnaService;
+import admin.faq.service.FaqPage;
+import admin.faq.service.FaqService;
 import mvc.command.CommandHandler;
 
-public class QnalistHandler implements CommandHandler {
+public class FaqlistHandler implements CommandHandler {
 	
-	private QnaService qnaService = new QnaService();
+	private FaqService faqService = new FaqService();
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -18,9 +18,9 @@ public class QnalistHandler implements CommandHandler {
 		if(pageVal != null) {
 			pageNo = Integer.parseInt(pageVal);
 		}
-		QnaPage qnaPage = qnaService.getQnaPage(pageNo);
-		req.setAttribute("qnaPage", qnaPage);
-		return "/WEB-INF/ogani-master/admin/qna/qna.jsp";
+		FaqPage faqPage = faqService.getFaqPage(pageNo);
+		req.setAttribute("faqPage", faqPage);
+		return "/WEB-INF/ogani-master/admin/faq/faq.jsp";
 	}
 
 }

@@ -1,4 +1,4 @@
-package admin.qna.command;
+package admin.faq.command;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
-import admin.qna.service.QnaService;
-import admin.qna.model.Qna;
-import admin.qna.service.ArticleNotFoundException;
-import admin.qna.service.QnaData;
+import admin.faq.service.FaqService;
+import admin.faq.model.Faq;
+import admin.faq.service.ArticleNotFoundException;
+import admin.faq.service.FaqData;
 
-public class QnamodifyHandler implements CommandHandler {
+public class FaqmodifyHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
-	private QnaService qnaService = new QnaService();
+	private FaqService faqService = new FaqService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -32,10 +32,10 @@ public class QnamodifyHandler implements CommandHandler {
 	// 데이터를 가져오는것
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		String noVal = req.getParameter("no");
-		int qnaNum = Integer.parseInt(noVal);
+		int faqNum = Integer.parseInt(noVal);
 		try {
-			QnaData qnaData = qnaService.getQnaMod(qnaNum);
-			req.setAttribute("QnaData", qnaData);
+			FaqData faqData = faqService.getFaqMod(faqNum);
+			req.setAttribute("faqData", faqData);
 			return "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
 		} catch (ArticleNotFoundException e) {
 			req.getServletContext().log("no article", e);
@@ -51,27 +51,15 @@ public class QnamodifyHandler implements CommandHandler {
 		req.setAttribute("errors", errors);
 		String requestNo = req.getParameter("no");
 		int delNo = Integer.parseInt(requestNo);
-		// NoticeRequest writeReq =new NoticeRequest(new Notice(noticeuser.getmno(),
-		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
-		Qna modReq = new Qna(req.getParameter("title"), req.getParameter("content"));
+		Faq modReq = new Faq(req.getParameter("title"), req.getParameter("content"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
 
-		int qnaModno = qnaService.qnamod(delNo, modReq);
-		req.setAttribute("noticeModno", qnaModno);
+		int faqModno = faqService.faqmod(delNo, modReq);
+		req.setAttribute("faqModno", faqModno);
 
 		return "/WEB-INF/ogani-master/admin/notice/noticesuccess.jsp";
 	}
-
-	/*
-	 * //값을 가져오는 거
-	 * 
-	 * @Override public String process(HttpServletRequest req, HttpServletResponse
-	 * res) throws Exception { NoticewritePage noticewritePage =
-	 * noticewriteService.getNoticewritePage(); req.setAttribute("noticewritePage",
-	 * noticewritePage); return "/WEB-INF/ogani-master/index.jsp"; }
-	 */
-
 }

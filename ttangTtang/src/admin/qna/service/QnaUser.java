@@ -1,31 +1,32 @@
 package admin.qna.service;
 
 public class QnaUser {
-	private String mno;
-	private String mtit;
-	private String mtext;
-	private String mdate;
+	private String qno;
+	private String userid;
+	private String qtit;
+	private String qtext;
+	private String qdate;
 
-	public QnaUser(String mno, String mtit, String mtext, String mdate) {
-		this.mno = mno;
-		this.mtit = mtit;
-		this.mtext = mtext;
-		this.mdate = mdate;
+	public QnaUser(String qno, String userid, String qtit, String qtext, String qdate) {
+		this.qno = qno;
+		this.qtit = qtit;
+		this.qtext = qtext;
+		this.qdate = qdate;
 	}
 
-	public String getmno() {
-		return mno;
+	public String getqno() {
+		return qno;
 	}
 
-	public String getmtit() {
-		return mtit;
+	public String getqtit() {
+		return qtit;
 	}
 
-	public String getmtext() {
-		return mtext;
+	public String getqtext() {
+		return qtext;
 	}
 
-	public String getmdate() {
-		return mdate;
+	public String getqdate() {
+		return qdate;
 	}
 }

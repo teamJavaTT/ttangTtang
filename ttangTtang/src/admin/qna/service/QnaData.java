@@ -1,16 +1,16 @@
 package admin.qna.service;
 
-import admin.notice.model.Noticecolumn;
+import admin.qna.model.Qnacolumn;
 
 public class QnaData {
-	private Noticecolumn notice;
+	private Qnacolumn qna;
 
-	public QnaData(Noticecolumn notice) {
-		this.notice = notice;
+	public QnaData(Qnacolumn qna) {
+		this.qna = qna;
 	}
 
-	public Noticecolumn getNotice() {
-		return notice;
+	public Qnacolumn getQna() {
+		return qna;
 	}
 
 }

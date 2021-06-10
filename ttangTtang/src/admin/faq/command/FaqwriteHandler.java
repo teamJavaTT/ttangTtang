@@ -1,4 +1,4 @@
-package admin.qna.command;
+package admin.faq.command;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
-import admin.qna.service.QnaService;
-import admin.qna.model.Qna;
+import admin.faq.service.FaqService;
+import admin.faq.model.Faq;
 
-public class QnawriteHandler implements CommandHandler {
-	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/qna/qnawrite.jsp";
-	private QnaService qnaService = new QnaService();
+public class FaqwriteHandler implements CommandHandler {
+	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/faq/faqwrite.jsp";
+	private FaqService faqService = new FaqService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -33,18 +33,15 @@ public class QnawriteHandler implements CommandHandler {
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
-
-		// NoticeRequest writeReq =new NoticeRequest(new Notice(noticeuser.getmno(),
-		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
-		Qna writeReq = new Qna(req.getParameter("title"), req.getParameter("content"));
+		Faq writeReq = new Faq(req.getParameter("title"), req.getParameter("content"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
 
-		int newArticleNo = qnaService.qnawrite(writeReq);
+		int newArticleNo = faqService.faqwrite(writeReq);
 		req.setAttribute("newArticleNo", newArticleNo);
 
-		return "/WEB-INF/ogani-master/admin/qna/qnasuccess.jsp";
+		return "/WEB-INF/ogani-master/admin/faq/faqsuccess.jsp";
 	}
 }

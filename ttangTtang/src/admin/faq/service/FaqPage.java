@@ -1,12 +1,12 @@
-package admin.qna.service;
+package admin.faq.service;
 
 import java.util.List;
 
-import admin.qna.model.Qnacolumn;
+import admin.faq.model.Faqcolumn;
 
-public class QnaPage {
+public class FaqPage {
 
-	private List<Qnacolumn> qna;
+	private List<Faqcolumn> faq;
 	
 	private int total;
 	private int currentPage;
@@ -16,10 +16,10 @@ public class QnaPage {
 	private int countupPage;
 	private int countdownPage;
 	
-	public QnaPage(int total, int pageNo, int size, List<Qnacolumn> qna) {
+	public FaqPage(int total, int pageNo, int size, List<Faqcolumn> faq) {
 		this.total = total;
 		this.currentPage = pageNo;
-		this.qna = qna;
+		this.faq = faq;
 		if (total == 0) {
 			totalPages = 0;
 			startPage = 0;
@@ -29,22 +29,22 @@ public class QnaPage {
 			if (total % size > 0) {
 				totalPages++;
 			}
-			int modVal = pageNo % 5;
-			startPage = pageNo / 5 * 5 + 1;
-			if (modVal == 0) startPage -= 5;
+			int modVal = pageNo % 10;
+			startPage = pageNo / 10 * 10 + 1;
+			if (modVal == 0) startPage -= 10;
 			
-			endPage = startPage + 4;
+			endPage = startPage + 9;
 			if (endPage > totalPages) endPage = totalPages;
 		}
 	}
-	public QnaPage(int total, int currentPage, int size) {
+	public FaqPage(int total, int currentPage, int size) {
 		/*
 		 * // 이전, 다음 클릭버튼 사이에 있는 숫자들 this.pageNo = pageNo; // 시작하는 숫자 startPage =
 		 * (pageNo - 1) * 5 + 1; // 끝나는 숫자 endPage = startPage + 4;
 		 */
 	}
-	public List<Qnacolumn> getNotice() {
-		return qna;
+	public List<Faqcolumn> getFaq() {
+		return faq;
 	}
 	
 	// page 분할
