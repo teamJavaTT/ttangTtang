@@ -47,9 +47,9 @@ public class NoticeService {
 			JdbcUtil.close(conn);
 		}
 	}
-
 	private Noticecolumn toArticle(Notice req) {
 		Date now = new Date();
+				
 		return new Noticecolumn(null, req.getmtit(), req.getmtext(), now);
 	}
 	// 글 입력하기 끝
@@ -67,7 +67,6 @@ public class NoticeService {
 			throw new RuntimeException(e);
 		}
 	}
-	// 글 목록에 읽어오기 끝
 
 	public NoticeData getNoticeRead(int noticeNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
@@ -80,10 +79,56 @@ public class NoticeService {
 			throw new RuntimeException(e);
 		}
 	}
+	// 글 목록에 읽어오기 끝
 
+	// 글 삭제
 	public void getNoticeDelete(int delNo) throws SQLException, Exception {
 		try(Connection conn = DBConnection.getConnection()){
 			adminDao.deleteNotice(conn, delNo);
 		}
+	}
+	// 글 끝
+	
+	// 수정
+	public NoticeData getNoticeMod(int noticeNum) throws Exception {
+		try (Connection conn = DBConnection.getConnection()){
+			Noticecolumn noticecolumn = adminDao.selectById(conn, noticeNum);
+			if (noticecolumn == null) {
+				throw new ArticleNotFoundException();
+			}
+			return new NoticeData(noticecolumn);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public Integer noticemod(int delNo, Notice modReq) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+
+			Noticecolumn notice = toNoticeMod(delNo, modReq);
+			Noticecolumn savedArticle = adminDao.updateNotice(conn, notice);
+			if (savedArticle == null) {
+				throw new RuntimeException("fail to update");
+			}
+			conn.commit();
+
+			return savedArticle.getmno();
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} catch (RuntimeException e) {
+			JdbcUtil.rollback(conn);
+			throw e; 
+		} finally {
+			JdbcUtil.close(conn);
+		}
+	}
+	// 수정 끝
+	private Noticecolumn toNoticeMod(int delNo, Notice req) {
+		Date now = new Date();
+		return new Noticecolumn(delNo, req.getmtit(), req.getmtext(), now);
 	}
 }
