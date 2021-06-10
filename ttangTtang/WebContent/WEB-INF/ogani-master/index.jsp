@@ -7,10 +7,10 @@
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
-					<c:forEach var="product" items="${mainPage.product}">
+					<c:forEach var="productToday" items="${mainPage.productToday}">
 						<div class="col-lg-3">
-	                        <div class="categories__item set-bg" data-setbg="${product.imageface}">
-	                            <h5><a href="#">${product.iname}</a></h5>
+	                        <div class="categories__item set-bg" data-setbg="${productToday.imageface}">
+	                            <h5><a href="#">${productToday.iname}</a></h5>
 	                        </div>
 	                    </div>
 					</c:forEach>
@@ -30,19 +30,19 @@
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li class="active" data-filter="*">전체</li>
-                            <li data-filter=".oranges">일반거래</li>
-                            <li data-filter=".fresh-meat">경매</li>
-                            <li data-filter=".vegetables">삽니다</li>
+                            <li data-filter=".allProduct" class="active">전체</li>
+                            <li data-filter=".norProduct">일반거래</li>
+                            <li data-filter=".aucProduct">경매</li>
+                            <li data-filter=".buyProduct">삽니다</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="row featured__filter">
-    			<c:forEach var="product" items="${mainPage.product}">
-	    			<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+    			<c:forEach var="allProduct" items="${mainPage.product}">
+	    			<div class="col-lg-3 col-md-4 col-sm-6 mix allProduct">
 	                    <div class="featured__item">
-	                        <div class="featured__item__pic set-bg" data-setbg="${product.imageface}">
+	                        <div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface}">
 	                            <ul class="featured__item__pic__hover">
 	                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
 	                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
@@ -50,21 +50,78 @@
 	                            </ul>
 	                        </div>
 	                        <div class="featured__item__text">
-	                            <h6><a href="#">${product.iname}</a></h6>
+	                            <h6><a href="#">${allProduct.iname}</a></h6>
 	                            <c:choose>
-	                            	<c:when test="${product.auctioncheck == '0'}">
-		                            	<h5>${product.price}원</h5>
+	                            	<c:when test="${allProduct.auctioncheck == 'B'}">
+		                            	<h5>${allProduct.price}원</h5>
 		                            </c:when>
-		                            <c:when test="${product.auctioncheck == '1'}">
-		                            	<h5>${product.price}원</h5>
+		                            <c:when test="${allProduct.auctioncheck == 'N'}">
+		                            	<h5>${allProduct.price}원</h5>
 		                            </c:when>
-		                            <c:when test="${product.auctioncheck == '2'}">
-		                            	<h5>${product.minprice}원</h5>
+		                            <c:when test="${allProduct.auctioncheck == 'Y'}">
+		                            	<h5>${allProduct.minprice}원</h5>
 		                            </c:when>
 	                            </c:choose>
 	                        </div>
 	                    </div>
 	                </div>
+				</c:forEach>
+				<c:forEach var="norProduct" items="${mainPage.product}">
+	                <c:if test="${norProduct.auctioncheck == 'N'}">
+		    			<div class="col-lg-3 col-md-4 col-sm-6 mix norProduct" style="display: none;">
+		                    <div class="featured__item">
+		                        <div class="featured__item__pic set-bg" data-setbg="${norProduct.imageface}">
+		                            <ul class="featured__item__pic__hover">
+		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+		                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
+		                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+		                            </ul>
+		                        </div>
+		                        <div class="featured__item__text">
+		                            <h6><a href="#">${norProduct.iname}</a></h6>
+		                            <h5>${norProduct.price}원</h5>
+		                        </div>
+		                    </div>
+		                </div>
+	                </c:if>
+				</c:forEach>
+				<c:forEach var="aucProduct" items="${mainPage.product}">
+	                <c:if test="${aucProduct.auctioncheck == 'Y'}">
+		    			<div class="col-lg-3 col-md-4 col-sm-6 mix aucProduct" style="display: none;">
+		                    <div class="featured__item">
+		                        <div class="featured__item__pic set-bg" data-setbg="${aucProduct.imageface}">
+		                            <ul class="featured__item__pic__hover">
+		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+		                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
+		                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+		                            </ul>
+		                        </div>
+		                        <div class="featured__item__text">
+		                            <h6><a href="#">${aucProduct.iname}</a></h6>
+		                            <h5>${aucProduct.price}원</h5>
+		                        </div>
+		                    </div>
+		                </div>
+	                </c:if>
+				</c:forEach>
+				<c:forEach var="buyProduct" items="${mainPage.product}">
+	                <c:if test="${buyProduct.auctioncheck == 'B'}">
+		    			<div class="col-lg-3 col-md-4 col-sm-6 mix buyProduct" style="display: none;">
+		                    <div class="featured__item">
+		                        <div class="featured__item__pic set-bg" data-setbg="${buyProduct.imageface}">
+		                            <ul class="featured__item__pic__hover">
+		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+		                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
+		                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+		                            </ul>
+		                        </div>
+		                        <div class="featured__item__text">
+		                            <h6><a href="#">${buyProduct.iname}</a></h6>
+		                            <h5>${buyProduct.price}원</h5>
+		                        </div>
+		                    </div>
+		                </div>
+	                </c:if>
 				</c:forEach>
             </div>
         </div>
