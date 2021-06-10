@@ -8,7 +8,7 @@ if(upload.fileUpload(request)){
 %>
 <script>
 	alert("저장성공");
-	location.href="multipartRequestFileUpload_form.jsp";
+	location.href="http://localhost:8082/ttangTtang/ogani-master/matching/matching4.jsp";
 </script>
 <% 
 }

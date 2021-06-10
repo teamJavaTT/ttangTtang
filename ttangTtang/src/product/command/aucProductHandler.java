@@ -3,12 +3,17 @@ package product.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import auth.service.MainService;
+import auth.service.MainPage;
 import mvc.command.CommandHandler;
 import product.service.AucProRequest;
 import product.service.AucProService;
 
 public class aucProductHandler implements CommandHandler {
 	private AucProService aucproService = new AucProService();
+	private MainService mainService = new MainService();
+	
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/product/aucProductWrite.jsp";
 
 	@Override
@@ -23,13 +28,16 @@ public class aucProductHandler implements CommandHandler {
 		}
 	}
 
-	private String processForm(HttpServletRequest req, HttpServletResponse res) {
+	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		MainPage mainPage = mainService.getMainPage();
+		req.setAttribute("mainPage", mainPage);
 		return FORM_VIEW;
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 	AucProRequest aucReq= new AucProRequest();
 	aucReq.setProduct_name(req.getParameter("product_name"));
+	aucReq.setProduct_name(req.getParameter("category"));
 	aucReq.setMax_price(req.getParameter("max_price"));
 	aucReq.setMin_price(req.getParameter("min_price"));
 	aucReq.setDescription(req.getParameter("description"));

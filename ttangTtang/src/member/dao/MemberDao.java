@@ -27,7 +27,8 @@ public class MemberDao {
 						rs.getString("upw2"),
 						rs.getString("uemail"),
 						rs.getString("phone"),
-						rs.getString("sex")
+						rs.getString("sex"),
+						rs.getString("birth")
 						);
 			}
 			return member;
@@ -38,16 +39,17 @@ public class MemberDao {
 	}
 
 
-	public void insert(Connection conn, Membr mem) throws SQLException {
+	public void insert(Connection conn, Member mem) throws SQLException {
 		try (PreparedStatement pstmt = 
-				conn.prepareStatement("insert into board.member values(?,?,?,?,?,?,?)")) {
+				conn.prepareStatement("insert into board.member values(?,?,?,?,?,?,?,?)")) {
 			pstmt.setString(1, mem.getUserid());
 			pstmt.setString(2, mem.getUname());
 			pstmt.setString(3, mem.getUpw());
 			pstmt.setString(4, mem.getUpw2());
 			pstmt.setString(5, mem.getUemail());	
 			pstmt.setString(6, mem.getPhone());
-			pstmt.setString(67, mem.getSex());		
+			pstmt.setString(7, mem.getSex());
+			pstmt.setString(8, mem.getBirth());
 			
 		}
 	}

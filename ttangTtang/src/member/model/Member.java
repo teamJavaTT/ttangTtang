@@ -9,8 +9,9 @@ public class Member {
 	private String uemail;
 	private String phone;
 	private String sex;
+	private String birth;
 
-	public Member(String userid, String uname, String upw, String upw2, String uemail, String phone, String sex) {
+	public Member(String userid, String uname, String upw, String upw2, String uemail, String phone, String sex, String birth) {
 		this.userid = userid;
 		this.uname = uname;
 		this.upw = upw;
@@ -18,6 +19,7 @@ public class Member {
 		this.uemail = uemail;
 		this.phone = phone;
 		this.sex = sex;
+		this.sex = birth;
 
 	}
 
@@ -47,6 +49,10 @@ public class Member {
 
 	public String getSex() {
 		return sex;
+	}
+	
+	public String getBirth() {
+		return birth;
 	}
 
 	public boolean matchPassword(String upw) {

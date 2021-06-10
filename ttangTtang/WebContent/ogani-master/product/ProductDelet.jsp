@@ -6,7 +6,7 @@
 	var delpost = confirm("삭제하겠습니까?");
 	if (delpost == true){
 		alert("삭제했습니다.");
-		location.href = "list.do"
+		location.href = "shop-grid.jsp"
 	}else if(delpost == false){
 		alert("삭제를 취소했습니다.");
 		history.back();

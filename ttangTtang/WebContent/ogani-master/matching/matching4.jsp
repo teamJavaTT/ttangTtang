@@ -35,8 +35,8 @@
 	background-size: 200px;
 	background-repeat: no-repeat;
 	background-width: 3000px;
-  background-height: 160px;
-  background-border: 2px solid;
+	background-height: 160px;
+	background-border: 2px solid;
 }
 
 .chat_wrap .item {
@@ -192,6 +192,15 @@ preview-box {
 		var ct = apm + " " + hh + ":" + mm + "";
 		return ct;
 	};
+	
+	/* var delpost = confirm("삭제하겠습니까?");
+	if (delpost == true) {
+		alert("게시글을 삭제했습니다.");
+		location.href = "/ttangTtang/ogani-master/index.jsp"
+	} else if (delpost == false) {
+		alert("삭제를 취소했습니다.");
+		history.back();
+	} */
 
 	$(document).ready(function() {
 		// 태그에 onchange를 부여한다.
@@ -221,12 +230,16 @@ preview-box {
 		} else
 			alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
 	}
+	
+	
 </script>
 
 </head>
 <body>
+
 	<div class="chat_wrap">
-		<div class="inner" style="background-position-x: center;background-position-y: center;">
+		<div class="inner"
+			style="background-position-x: center; background-position-y: center;">
 
 			<div class="item on">
 				<div class="box">
@@ -237,42 +250,37 @@ preview-box {
 			</div>
 
 
-
-
 		</div>
+
+
 		<td>
 			<!-- <form name="fileForm" action="requestupload2" method="post"
 				enctype="multipart/form-data">
 				<input multiple="multiple" type="file" name="file" style="width: 500px;">
 				
 				<input class="item mymsg" type="submit" value="전송" >
-			</form>  --> 
-			
-			<input class="item mymsg" ;="" type="text"
+			</form>  --> <input class="item mymsg" ; type="text"
 			placeholder="내용 입력" style="margin-top: 10px;">
 
-			<body>
-
-
-				<form
-					action="multipartRequestFileUpload/multipartRequestFileUpload_action.jsp"
-					enctype="multipart/form-data" method="post"
-					style="margin-top: 10px; margin-bottom: 4px;">
-
-
-					<input type="file" id="imagepre" name="image" size="30"
-						style="width: 470px;"> <input type="submit" value="파일 전송">
-					<div id="preview"></div>
-				</form>
 
 
 
+			<form
+				action="multipartRequestFileUpload/multipartRequestFileUpload_action.jsp"
+				enctype="multipart/form-data" method="post"
+				style="margin-top: 10px; margin-bottom: 4px;">
 
 
-
-
-			</body>
-
+				<input type="file" id="imagepre" name="image" size="30"
+					style="width: 470px;"> <input type="submit" value="파일 전송">
+					
+				<div id="preview"></div>
+			</form> 
+			
+			
+			<input type="BUTTON" value=" 창닫기" onclick="window.close()"
+			
+			style="margin-left: 487px; margin-top: 10px;">
 
 
 
@@ -282,6 +290,7 @@ preview-box {
 			</ul>
 	</div>
 </body>
+
 
 </html>
 
