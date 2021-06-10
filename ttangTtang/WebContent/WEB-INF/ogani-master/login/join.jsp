@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>TTang TTang Market : 회원가입</title>
-<link rel="stylesheet" type="text/css" href="css/joinmain.css">
+<link rel="stylesheet" type="text/css" href="/ttangTtang/css/login/joinmain.css">
 
 </head>
 <body>
 	<!-- header -->
 	<div id="header">
-		<a href="#"><img src="../img/logo_red.png" width="500"
+		<a href="#"><img src="/ttangTtang/img/logo_red.png" width="500"
 			height="172" alt=""></a>
 	</div>
 
@@ -40,7 +40,7 @@
 				</h3>
 				<span class="box int_pass"> <input type="text" id="pswd1"
 					class="int" maxlength="20"> <span id="alertTxt">사용불가</span>
-					<img src="../login/images/m_icon_pass.png" id="pswd1_img1"
+					<img src="/ttangTtang/img/login/m_icon_pass.png" id="pswd1_img1"
 					class="pswdImg">
 				</span> <span class="error_next_box"></span>
 			</div>
@@ -52,7 +52,7 @@
 				</h3>
 				<span class="box int_pass_check"> <input type="text"
 					id="pswd2" class="int" maxlength="20"> <img
-					src="../login/images/m_icon_check_disable.png" id="pswd2_img1"
+					src="/ttangTtang/img/login/m_icon_check_disable.png" id="pswd2_img1"
 					class="pswdImg">
 				</span> <span class="error_next_box"></span>
 			</div>
@@ -162,7 +162,7 @@
 
 	</div>
 	<!-- wrapper -->
-	<script src="js/joinmain.js"></script>
+	<script src="/ttangTtang/js/login/joinmain.js"></script>
 </body>
 </html>
 						
