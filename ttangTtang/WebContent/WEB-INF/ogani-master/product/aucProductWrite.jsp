@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import ="java.sql.DriverManager" %>
-<%@ page import = "java.sql.Connection" %>
-<%@ page import = "java.sql.Statement" %>
-<%@ page import = "java.sql.ResultSet" %>
-<%@ page import = "java.sql.SQLException" %>
+
 <%@ include file="../include/header.jsp"%>
 
 <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -179,43 +175,7 @@ label {
 	
 </script>
 </head>
-<%
-Class.forName("oracle.jdbc.driver.OracleDriver");
 
-Connection conn= null;
-Statement stmt= null;
-ResultSet rs= null;
-
-try{
-String jdbcDriver="jdbc:oracle:thin:@localhost:1521:xe";
-String dbUser="auction";
-String dbPass="auc";
-
-String query="select* from category order by cname";
-conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-
-stmt = conn.createStatement();
-
-rs = stmt.executeQuery(query);
-
-while(rs.next())
-{
-%>
-<%
-}
-   }catch(SQLException ex){
-            out.println(ex.getMessage());
-            ex.printStackTrace();
-      }finally{
-            // 6. 사용한 Statement 종료
-            if(rs != null) try { rs.close(); } catch(SQLException ex) {}
-            if(stmt != null) try { stmt.close(); } catch(SQLException ex) {}
-   
-            // 7. 커넥션 종료
-            if(conn != null) try { conn.close(); } catch(SQLException ex) {}
-      }
-
-%>
 <!-- 상품 등록 section begin -->
 <section>
 	<h3 style="
@@ -230,9 +190,6 @@ while(rs.next())
 				<td>상품명:</td>
 				<td><input name="product_name"></td>
 			</tr>
-<tr>
-            <td><%= rs.getString("cname") %></td>
-            </tr>
 			<tr>
 				<td>최대가격:</td>
 				<td><input name="max_price"></td>

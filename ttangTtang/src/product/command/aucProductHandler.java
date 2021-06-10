@@ -30,6 +30,7 @@ public class aucProductHandler implements CommandHandler {
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 	AucProRequest aucReq= new AucProRequest();
 	aucReq.setProduct_name(req.getParameter("product_name"));
+	aucReq.setProduct_name(req.getParameter("category"));
 	aucReq.setMax_price(req.getParameter("max_price"));
 	aucReq.setMin_price(req.getParameter("min_price"));
 	aucReq.setDescription(req.getParameter("description"));

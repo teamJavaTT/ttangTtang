@@ -2,6 +2,7 @@ package product.service;
 
 public class AucProRequest {
 	private String product_name;
+	private String category;
 	private String max_price;
 	private String min_price;
 	private String end_time;
@@ -14,6 +15,13 @@ public class AucProRequest {
 	}
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public String getMax_price() {
 		return max_price;
