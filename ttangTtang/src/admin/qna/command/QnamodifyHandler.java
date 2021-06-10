@@ -16,7 +16,7 @@ import admin.notice.service.NoticeData;
 import admin.notice.service.NoticePage;
 import admin.notice.service.NoticeRequest;
 
-public class OnamodifyHandler implements CommandHandler {
+public class QnamodifyHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
 	private NoticeService noticeService = new NoticeService();
 

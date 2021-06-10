@@ -20,7 +20,7 @@ public class QnalistHandler implements CommandHandler {
 		}
 		NoticePage noticePage = noticeService.getNoticePage(pageNo);
 		req.setAttribute("noticePage", noticePage);
-		return "/WEB-INF/ogani-master/admin/notice/notice.jsp";
+		return "/WEB-INF/ogani-master/admin/qna/qna.jsp";
 	}
 
 }

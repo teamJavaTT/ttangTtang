@@ -2,27 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/header.jsp"%>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="css/util.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <!-- Hero Section Begin -->
 <section class="hero">
@@ -96,12 +76,14 @@
 										</tbody>
 										<tr>
 											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
-													value="${empty param.pageNo ? '1' : param.pageNo}" /> <a
-												href="noticelist.do?pageNo=${pageNo}">[목록]</a> <c:if
-													test="${authUser.id == articleData.article.writer.id}">
-													<a href="noticemodify.do?no=${noticeData.notice.mno}">[게시글수정]</a>
-													<a href="noticedelete.do?no=${noticeData.notice.mno}">[게시글삭제]</a>
-												</c:if></td>
+												value="${empty param.pageNo ? '1' : param.pageNo}" />
+												<input type="button" value="목록" onclick="location.href='noticelist.do?pageNo=${pageNo}'">
+												<c:if test="${authUser.id == articleData.article.writer.id}">
+													<input type="button" value="게시글수정" onclick="location.href='noticemodify.do?no=${noticeData.notice.mno}'">
+													<input type="hidden" value="${noticeData.notice.mno}" id="delNo">
+													<input type="button" value="게시글삭제" id="noticeDel">
+												</c:if>
+											</td>
 										</tr>
 									</table>
 								</div>
@@ -118,6 +100,6 @@
 </section>
 <!-- Hero Section End -->
 
-
+<script src="/ttangTtang/js/admin/main.js" ></script>
 
 <%@ include file="../../include/footer.jsp"%>
