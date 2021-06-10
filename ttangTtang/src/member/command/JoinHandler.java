@@ -41,6 +41,7 @@ public class JoinHandler implements CommandHandler {
 		joinReq.setUemail(req.getParameter("uemail"));
 		joinReq.setPhone(req.getParameter("phone"));
 		joinReq.setSex(req.getParameter("sex"));
+		joinReq.setBirth(req.getParameter("yyyy")+req.getParameter("mm")+req.getParameter("dd"));
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
 		

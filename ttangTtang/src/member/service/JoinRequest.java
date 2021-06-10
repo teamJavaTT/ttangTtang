@@ -10,6 +10,7 @@ public class JoinRequest {
 	private String uemail;
 	private String phone;
 	private String sex;
+	private String birth;
 
 
 
@@ -69,8 +70,18 @@ public class JoinRequest {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+	
+	public String getBirth() {
+		return birth;
+	}
+	
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	
 
 	
+
 
 	public boolean isPasswordEqualToConfirm() {
 		return upw != null && upw.equals(upw2);
@@ -84,6 +95,7 @@ public class JoinRequest {
 		checkEmpty(errors, uemail, "email");
 		checkEmpty(errors, phone, "phone");
 		checkEmpty(errors, sex, "sex");
+		checkEmpty(errors, birth, "birth");
 		if (!errors.containsKey("confirmPassword")) {
 			if (!isPasswordEqualToConfirm()) {
 				errors.put("notMatch", Boolean.TRUE);
