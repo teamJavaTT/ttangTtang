@@ -65,13 +65,17 @@
 					<button type="button" id="btnJoin">
 						<span>회원탈퇴</span>
 					</button>
-				</div> <!-- WITHDRAWAL BTN--> <a
-				href="/ttangTtang/ogani-master/mypage/mypage.jsp">
-					<div class="btn_area">
-						<button type="button" id="btnJoin">
-							<span>취소</span>
-						</button>
-					</div>
+				</div>
+			</a>
+			
+			
+			<!-- WITHDRAWAL BTN-->
+			<a href="/ttangTtang/ogani-master/mypage/mypage.jsp">
+				<div class="btn_area">
+					<button type="button" id="btnJoin" onclick="goBack()">
+						<span>취소</span>
+					</button>
+				</div>
 			</a>
 		</div>
 		<!-- content-->
