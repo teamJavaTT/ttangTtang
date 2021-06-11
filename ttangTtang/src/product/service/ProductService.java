@@ -15,13 +15,13 @@ public class ProductService {
 	//일반상품
 	private NorProDao norproDao = new NorProDao();
 	
-	public String NorPro (NorProRequeste writeReq) throws Exception{
+	public String NorPro (NorProRequeste norwriteReq) throws Exception{
 		Connection conn = null;
 		try{
 			conn= DBConnection.getConnection();
 			conn.setAutoCommit(false);
 			
-			NorPro norProduct = toNorProWrite(writeReq);
+			NorPro norProduct = toNorProWrite(norwriteReq);
 			NorPro savedNorProduct = NorProDao.insert(conn , norProduct);
 			if (savedNorProduct == null) {
 				throw new RuntimeException("fail to insert article");
@@ -43,7 +43,7 @@ public class ProductService {
 	
 	
 	
-	private NorPro toNorProWrite(NorProRequeste writeReq) {
+	private NorPro toNorProWrite(NorProRequeste norwriteReq) {
 		return null;
 	}
 
@@ -62,13 +62,13 @@ public class ProductService {
 	
 	private AucProDao aucproDao = new AucProDao();
 
-	public String AucPro (AucProRequest writeReq) throws Exception{
+	public String AucPro (AucProRequest aucwriteReq) throws Exception{
 		Connection conn = null;
 		try{
 			conn= DBConnection.getConnection();
 			conn.setAutoCommit(false);
 			
-			AucPro aucProduct =toAucProWrite(writeReq);
+			AucPro aucProduct =toAucProWrite(aucwriteReq);
 			AucPro savedAucProduct = AucProDao.insert(conn , aucProduct);
 			if (savedAucProduct == null) {
 				throw new RuntimeException("fail to insert article");
@@ -87,11 +87,12 @@ public class ProductService {
 		}
 	}
 
-	private AucPro toAucProWrite(AucProRequest writeReq) {
+	private AucPro toAucProWrite(AucProRequest aucwriteReq) {
 		
 		return null;
 	}
 
 
-	}
+}
+
 

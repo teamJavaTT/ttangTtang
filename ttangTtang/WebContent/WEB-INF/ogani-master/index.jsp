@@ -28,7 +28,7 @@
                     <div class="section-title">
                         <h2>상품보기</h2>
                     </div>
-                    <div class="featured__controls">
+                    <div class="featured__contro	ls">
                         <ul>
                             <li data-filter=".allProduct" class="active">전체</li>
                             <li data-filter=".norProduct">일반거래</li>

@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 
-import auth.service.MainService;
 import auth.model.Category;
+import auth.service.MainService;
 import mvc.command.CommandHandler;
 import product.service.AucProRequest;
-import product.service.AucProService;
+import product.service.ProductService;
 
 public class aucProductHandler implements CommandHandler {
-	private AucProService aucproService = new AucProService();
+	private ProductService ProductService = new ProductService();
 	private MainService mainService = new MainService();
 	
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/product/aucProductWrite.jsp";

@@ -7,10 +7,10 @@ import auth.service.MainPage;
 import auth.service.MainService;
 import mvc.command.CommandHandler;
 import product.service.NorProRequeste;
-import product.service.NorProService;
+import product.service.ProductService;
 
 public class norProductHandler implements CommandHandler {
-	private NorProService norproService = new NorProService();
+	private ProductService norproService = new ProductService();
 	private MainService mainService = new MainService();
 	
 	
