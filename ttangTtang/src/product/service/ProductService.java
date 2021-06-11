@@ -2,19 +2,20 @@ package product.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
+import auth.model.Product;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
 import product.dao.ProductDao;
-import product.dao.NorProDao;
 import product.model.AucPro;
 import product.model.NorPro;
 
 public class ProductService {
 	
-	//일반상품
-	private NorProDao norproDao = new NorProDao();
+	private ProductDao productDao = new ProductDao();
 	
+	//일반상품
 	public String NorPro (NorProRequeste norwriteReq) throws Exception{
 		Connection conn = null;
 		try{
@@ -22,7 +23,7 @@ public class ProductService {
 			conn.setAutoCommit(false);
 			
 			NorPro norProduct = toNorProWrite(norwriteReq);
-			NorPro savedNorProduct = NorProDao.insert(conn , norProduct);
+			NorPro savedNorProduct = productDao.insert(conn , norProduct);
 			if (savedNorProduct == null) {
 				throw new RuntimeException("fail to insert article");
 			}
@@ -39,29 +40,11 @@ public class ProductService {
 			JdbcUtil.close(conn);
 		}
 	}
-
-	
-	
-	
 	private NorPro toNorProWrite(NorProRequeste norwriteReq) {
 		return null;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-//경매상품 
-	
-	private ProductDao aucproDao = new ProductDao();
-
+	//경매상품 
 	public String AucPro (AucProRequest aucwriteReq) throws Exception{
 		Connection conn = null;
 		try{
@@ -69,7 +52,7 @@ public class ProductService {
 			conn.setAutoCommit(false);
 			
 			AucPro aucProduct =toAucProWrite(aucwriteReq);
-			AucPro savedAucProduct = ProductDao.insert(conn , aucProduct);
+			AucPro savedAucProduct = productDao.insert(conn , aucProduct);
 			if (savedAucProduct == null) {
 				throw new RuntimeException("fail to insert article");
 			}
@@ -86,10 +69,20 @@ public class ProductService {
 			JdbcUtil.close(conn);
 		}
 	}
-
-	private AucPro toAucProWrite(AucProRequest aucwriteReq) {
-		
+	private AucPro toAucProWrite(AucProRequest aucwriteReq) {	
 		return null;
+	}
+	
+	//검색
+	public List<Product> getSearchPage(String search) throws Exception {
+		try (Connection conn = DBConnection.getConnection()) {
+			String[] searchArr = search.trim().split("");
+
+			List<Product> searchProduct = productDao.selectSearchProduct(conn, searchArr);
+			return searchProduct;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 

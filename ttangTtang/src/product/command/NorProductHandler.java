@@ -9,7 +9,7 @@ import mvc.command.CommandHandler;
 import product.service.NorProRequeste;
 import product.service.ProductService;
 
-public class norProductHandler implements CommandHandler {
+public class NorProductHandler implements CommandHandler {
 	private ProductService norproService = new ProductService();
 	private MainService mainService = new MainService();
 	

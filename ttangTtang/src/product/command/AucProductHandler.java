@@ -14,7 +14,7 @@ import mvc.command.CommandHandler;
 import product.service.AucProRequest;
 import product.service.ProductService;
 
-public class aucProductHandler implements CommandHandler {
+public class AucProductHandler implements CommandHandler {
 	private ProductService ProductService = new ProductService();
 	private MainService mainService = new MainService();
 	
