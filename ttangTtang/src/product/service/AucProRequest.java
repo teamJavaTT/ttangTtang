@@ -7,6 +7,7 @@ public class AucProRequest {
 	private String min_price;
 	private String end_time;
 	private String description;
+	private String imageface;
 
 	
 	
@@ -47,6 +48,13 @@ public class AucProRequest {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getImageface() {
+		return imageface;
+	}
+	public void setImageface(String imageface) {
+		this.imageface = imageface;
+	}
+	
 	
 	
 }
