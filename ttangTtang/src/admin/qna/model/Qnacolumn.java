@@ -11,6 +11,7 @@ public class Qnacolumn {
 	private Date qdate;
 	public Qnacolumn(Integer qno, String userid, String qtit, String qtext, Date qdate) {
 		this.qno = qno;
+		this.userid = userid;
 		this.qtit = qtit;
 		this.qtext = qtext;
 		this.qdate = qdate;
@@ -21,7 +22,7 @@ public class Qnacolumn {
 	}
 	
 	public String getuserid() {
-		return qtit;
+		return userid;
 	}
 	public String getqtit() {
 		return qtit;

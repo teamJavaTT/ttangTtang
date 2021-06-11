@@ -134,7 +134,7 @@ public class AdminDao {
 	public int deleteFaq(Connection conn, int delNo) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement(
-						"delete from faq where mno = ?")) {
+						"delete from faq where fno = ?")) {
 			pstmt.setInt(1, delNo);
 			return pstmt.executeUpdate();
 		}

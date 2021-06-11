@@ -16,7 +16,7 @@ public class FaqdeleteHandler implements CommandHandler {
 		int delNo = Integer.parseInt(requestNo);
 		
 		faqService.getFaqDelete(delNo);
-		return "/WEB-INF/ogani-master/admin/notice/faqdeletesuccess.jsp";
+		return "/WEB-INF/ogani-master/admin/faq/faqdeletesuccess.jsp";
 	}
 
 }
