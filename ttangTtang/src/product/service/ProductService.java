@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
-import product.dao.AucProDao;
+import product.dao.ProductDao;
 import product.dao.NorProDao;
 import product.model.AucPro;
 import product.model.NorPro;
@@ -60,7 +60,7 @@ public class ProductService {
 
 //경매상품 
 	
-	private AucProDao aucproDao = new AucProDao();
+	private ProductDao aucproDao = new ProductDao();
 
 	public String AucPro (AucProRequest aucwriteReq) throws Exception{
 		Connection conn = null;
@@ -69,7 +69,7 @@ public class ProductService {
 			conn.setAutoCommit(false);
 			
 			AucPro aucProduct =toAucProWrite(aucwriteReq);
-			AucPro savedAucProduct = AucProDao.insert(conn , aucProduct);
+			AucPro savedAucProduct = ProductDao.insert(conn , aucProduct);
 			if (savedAucProduct == null) {
 				throw new RuntimeException("fail to insert article");
 			}
