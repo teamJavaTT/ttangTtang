@@ -65,7 +65,7 @@ public class AdminDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from(select  row_number() over (order by qno desc) num, A.* from qna A order by qno desc) where num between ? and ?");
+			pstmt = conn.prepareStatement("select * from (select  row_number() over (order by qno desc) num, A.* from qna A order by qno desc) where num between ? and ?");
 			pstmt.setInt(1, startNo);
 			pstmt.setInt(2, endNo);
 			rs = pstmt.executeQuery();
