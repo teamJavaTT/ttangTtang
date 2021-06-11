@@ -6,21 +6,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
-import product.service.SearchService;
+import product.service.ProductService;
 
 import auth.service.MainService;
 import auth.model.Category;
 import auth.model.Product;
 
 public class SearchHandler implements CommandHandler {
-	
-	private SearchService searchService = new SearchService();
+	private ProductService productService = new ProductService();
 	private MainService mainService = new MainService();
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String search = req.getParameter("searchProduct");
-		List<Product> searchProduct = searchService.getSearchPage(search);
+		List<Product> searchProduct = productService.getSearchPage(search);
 		List<Category> category = mainService.getCategory();
 		req.setAttribute("searchProduct", searchProduct);
 		req.setAttribute("category", category);

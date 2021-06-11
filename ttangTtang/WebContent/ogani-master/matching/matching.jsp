@@ -124,6 +124,10 @@ input[type="text"]::placeholder {
 </style>
 
 <script>
+
+
+
+
 	$(function() {
 		$("input[type='text']").keypress(
 				function(e) {
@@ -151,6 +155,17 @@ input[type="text"]::placeholder {
 
 				})
 	});
+	 $(".chat").on({
+	        "click" : function() {
+	            if ($(this).attr("src") == "./img/chat.png") {
+	                $(".chat").attr("src", "./img/chathide.png");
+	                $("#_chatbox").css("display", "block");
+	            } else if ($(this).attr("src") == "./img/chathide.png") {
+	                $(".chat").attr("src", "./img/chat.png");
+	                $("#_chatbox").css("display", "none");
+	            }
+	        }
+	    });
 
 	var currentTime = function() {
 		var date = new Date();
