@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -192,7 +191,7 @@ preview-box {
 		var ct = apm + " " + hh + ":" + mm + "";
 		return ct;
 	};
-	
+
 	/* var delpost = confirm("삭제하겠습니까?");
 	if (delpost == true) {
 		alert("게시글을 삭제했습니다.");
@@ -230,8 +229,20 @@ preview-box {
 		} else
 			alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
 	}
-	
-	
+
+	/* (function ($) {
+	    "use strict";
+
+		$("#noticeDel").on('click', function () {
+			var mno = $("#delNo").val();
+			var result = confirm("나가기");
+			if (result) {
+				location.href = 'noticedelete.do?no='+mno;
+			} else {
+				alert("취소");
+			}
+		}); 
+	 */
 </script>
 
 </head>
@@ -272,16 +283,12 @@ preview-box {
 
 
 				<input type="file" id="imagepre" name="image" size="30"
-					style="width: 470px;"> <input type="submit" value="파일 전송">
-					
-				<div id="preview"></div>
-			</form> 
-			
-			
-			<input type="BUTTON" value=" 창닫기" onclick="window.close()"
-			
-			style="margin-left: 487px; margin-top: 10px;">
+					style="width: 470px;"> <input type="submit" value="파일 전송"
+					style="cursor: pointer;">
 
+				<div id="preview"></div>
+			</form> <input type="button" id="matchingout" value="창닫기"
+			style="margin-left: 491px; margin-top: 10px; cursor: pointer;">
 
 
 
@@ -289,7 +296,12 @@ preview-box {
 
 			</ul>
 	</div>
+
+
 </body>
+<script src="/ttangTtang/js/matching/matching.js">
+	
+</script>
 
 
 </html>
