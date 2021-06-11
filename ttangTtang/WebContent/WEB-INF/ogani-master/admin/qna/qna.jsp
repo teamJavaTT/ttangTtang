@@ -66,7 +66,7 @@
 						<div class="wrap-table100">
 							<div class="table100">
 								<div class="box">
-									<form action="noticelist.do" method="post">
+									<form action="qnalist.do" method="post">
 										<table border="1">
 											<thead>
 												<tr class="table100-head">
@@ -96,7 +96,7 @@
 														<c:if test="${qnaPage.startPage > 10}">
 															<a href="qnalist.do?pageNo=${qnaPage.startPage - 10}">[이전]</a>
 														</c:if>
-														<c:forEach var="pNo" begin="${qnaPage.startPage}" end="${noticePage.endPage}">
+														<c:forEach var="pNo" begin="${qnaPage.startPage}" end="${qnaPage.endPage}">
 															<a href="qnalist.do?pageNo=${pNo}">[${pNo}]</a>
 														</c:forEach>
 														<c:if test="${qnaPage.endPage < qnaPage.totalPages}">

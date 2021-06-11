@@ -37,7 +37,7 @@ public class QnaPage {
 			if (endPage > totalPages) endPage = totalPages;
 		}
 	}
-	public List<Qnacolumn> getQna() {
+	public List<Qnacolumn> getNotice() {
 		return qna;
 	}
 	
