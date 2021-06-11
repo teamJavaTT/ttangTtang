@@ -192,14 +192,7 @@ preview-box {
 		return ct;
 	};
 
-	/* var delpost = confirm("삭제하겠습니까?");
-	if (delpost == true) {
-		alert("게시글을 삭제했습니다.");
-		location.href = "/ttangTtang/ogani-master/index.jsp"
-	} else if (delpost == false) {
-		alert("삭제를 취소했습니다.");
-		history.back();
-	} */
+	
 
 	$(document).ready(function() {
 		// 태그에 onchange를 부여한다.

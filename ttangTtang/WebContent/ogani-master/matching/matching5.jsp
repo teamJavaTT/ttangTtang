@@ -35,8 +35,8 @@
 	background-size: 200px;
 	background-repeat: no-repeat;
 	background-width: 3000px;
-  background-height: 160px;
-  background-border: 2px solid;
+	background-height: 160px;
+	background-border: 2px solid;
 }
 
 .chat_wrap .item {
@@ -193,6 +193,15 @@ preview-box {
 		return ct;
 	};
 
+	/*  var delpost = confirm("나가시겠습니까?");
+	if (delpost == true) {
+		alert("나가기.");
+		location.href = "/ttangTtang/ogani-master/index.jsp"
+	} else if (delpost == false) {
+		alert("취소.");
+		history.back();
+	} */ 
+
 	$(document).ready(function() {
 		// 태그에 onchange를 부여한다.
 		$('#imagepre').change(function() {
@@ -225,8 +234,10 @@ preview-box {
 
 </head>
 <body>
+
 	<div class="chat_wrap">
-		<div class="inner" style="background-position-x: center;background-position-y: center;">
+		<div class="inner"
+			style="background-position-x: center; background-position-y: center;">
 
 			<div class="item on">
 				<div class="box">
@@ -237,44 +248,48 @@ preview-box {
 			</div>
 
 
-
-
 		</div>
+
+
 		<td>
 			<!-- <form name="fileForm" action="requestupload2" method="post"
 				enctype="multipart/form-data">
 				<input multiple="multiple" type="file" name="file" style="width: 500px;">
 				
 				<input class="item mymsg" type="submit" value="전송" >
-			</form>  --> 
-			
-			<input class="item mymsg" ; type="text"
+			</form>  --> <input class="item mymsg" ; type="text"
 			placeholder="내용 입력" style="margin-top: 10px;">
 
-			<body>
-
-
-				<form
-					action="multipartRequestFileUpload/multipartRequestFileUpload_action.jsp"
-					enctype="multipart/form-data" method="post"
-					style="margin-top: 10px; margin-bottom: 4px;">
-
-
-					<input type="file" id="imagepre" name="image" size="30"
-						style="width: 470px;"> <input type="submit" value="파일 전송"
-						>
-					<div id="preview"></div>
-				</form>
 
 
 
-			</body>
+			<form
+				action="multipartRequestFileUpload/multipartRequestFileUpload_action.jsp"
+				enctype="multipart/form-data" method="post"
+				style="margin-top: 10px; margin-bottom: 4px;">
+
+
+				<input type="file" id="imagepre" name="image" size="30"
+					style="width: 470px;"> <input type="submit" value="파일 전송">
+
+				<div id="preview"></div>
+			</form> 
+			<form
+				action="matchingout.jsp"
+				enctype="multipart/form-data" method="post"
+				style="margin-top: 10px; margin-bottom: 4px;">
+			<input action="matchingout.jsp" type="BUTTON" value=" 창닫기" 
+			style="margin-left: 487px; margin-top: 10px;">
+
+</form>
+
 
 
 
 			</ul>
 	</div>
 </body>
+
 
 </html>
 
