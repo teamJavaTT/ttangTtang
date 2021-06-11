@@ -12,10 +12,13 @@
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li data-filter=".allProduct" class="active">전체</li>
-                            <li data-filter=".norProduct">일반거래</li>
-                            <li data-filter=".aucProduct">경매</li>
-                            <li data-filter=".buyProduct">삽니다</li>
+                        	<c:forEach var="categories" items="${param.categories}">
+                            	<c:if test="${categories != 'BUY'}">
+	                            	<li data-filter=".allProduct" class="active">전체</li>
+		                            <li data-filter=".norProduct">일반거래</li>
+		                            <li data-filter=".aucProduct">경매</li>
+	                            </c:if>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
