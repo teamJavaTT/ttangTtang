@@ -80,7 +80,7 @@
 		                        </div>
 		                        <div class="featured__item__text">
 		                            <h6><a href="#">${aucProduct.iname}</a></h6>
-		                            <h5>${aucProduct.price}원</h5>
+		                            <h5>${aucProduct.minprice}원</h5>
 		                        </div>
 		                    </div>
 		                </div>
