@@ -1,6 +1,5 @@
 package member.command;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,14 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.service.DuplicateIdException;
-import member.service.JoinRequest;
-import member.service.JoinService;
+import member.service.MemberRequest;
+import member.service.MemberService;
 import mvc.command.CommandHandler;
 
 public class JoinHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/login/join.jsp";
-	private JoinService joinService = new JoinService();
-	
+	private MemberService memberService = new MemberService();
+
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if (req.getMethod().equalsIgnoreCase("GET")) {
@@ -33,26 +32,26 @@ public class JoinHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		JoinRequest joinReq = new JoinRequest();
-		joinReq.setUserid(req.getParameter("userid"));
-		joinReq.setUname(req.getParameter("uname"));
-		joinReq.setUpw(req.getParameter("upw"));
-		joinReq.setUpw2(req.getParameter("upw2"));
-		joinReq.setUemail(req.getParameter("uemail"));
-		joinReq.setPhone(req.getParameter("phone"));
-		joinReq.setSex(req.getParameter("sex"));
-		joinReq.setBirth(req.getParameter("yyyy")+req.getParameter("mm")+req.getParameter("dd"));
+		MemberRequest memberReq = new MemberRequest();
+		memberReq.setUserid(req.getParameter("userid"));
+		memberReq.setUname(req.getParameter("uname"));
+		memberReq.setUpw(req.getParameter("upw"));
+		memberReq.setUpw2(req.getParameter("upw2"));
+		memberReq.setUemail(req.getParameter("uemail"));
+		memberReq.setPhone(req.getParameter("phone"));
+		memberReq.setSex(req.getParameter("sex"));
+		memberReq.setBirth(req.getParameter("yyyy") + req.getParameter("mm") + req.getParameter("dd"));
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
-		
-		joinReq.validate(errors);
-		
+
+		memberReq.validate(errors);
+
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
 
 		try {
-			joinService.join(joinReq);
+			memberService.member(memberReq);
 			res.sendRedirect(req.getContextPath() + "/login.do");
 			return null;
 		} catch (DuplicateIdException e) {

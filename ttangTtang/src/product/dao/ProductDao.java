@@ -149,6 +149,24 @@ public class ProductDao {
 		}
 	}
 
+	//카테고리 검색 상품 select
+	public List<Product> selectCategoryProduct(Connection conn, String categories) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from product where ccode='"+categories+"' order by ino desc");
+			rs = pstmt.executeQuery();
+			List<Product> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertProduct(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
 	private Product convertProduct(ResultSet rs) throws SQLException {
 		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("cname"),
 				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),

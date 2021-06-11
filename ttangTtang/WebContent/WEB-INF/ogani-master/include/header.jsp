@@ -150,7 +150,7 @@
                         </ul>
                     
                         <div class="header__cart__price">item: <span>$150.00</span></div>
-                        	<button type="button" class="btn btn-primary"><a href="/ttangTtang/ogani-master/product/productWrite.jsp">상품등록</a></button>
+                        	
                     </div>
                 </div>
             </div>

@@ -12,16 +12,19 @@
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li data-filter=".allProduct" class="active">전체</li>
-                            <li data-filter=".norProduct">일반거래</li>
-                            <li data-filter=".aucProduct">경매</li>
-                            <li data-filter=".buyProduct">삽니다</li>
+                        	<c:forEach var="categories" items="${param.categories}">
+                            	<c:if test="${categories != 'BUY'}">
+	                            	<li data-filter=".allProduct" class="active">전체</li>
+		                            <li data-filter=".norProduct">일반거래</li>
+		                            <li data-filter=".aucProduct">경매</li>
+	                            </c:if>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="row featured__filter">
-				<c:forEach var="allProduct" items="${searchProduct}">
+				<c:forEach var="allProduct" items="${categoryProduct}">
 	    			<div class="col-lg-3 col-md-4 col-sm-6 mix allProduct">
 	                    <div class="featured__item">
 	                        <div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface}">
@@ -48,7 +51,7 @@
 	                    </div>
 	                </div>
 				</c:forEach>
-				<c:forEach var="norProduct" items="${searchProduct}">
+				<c:forEach var="norProduct" items="${categoryProduct}">
 	                <c:if test="${norProduct.auctioncheck == 'N'}">
 		    			<div class="col-lg-3 col-md-4 col-sm-6 mix norProduct" style="display: none;">
 		                    <div class="featured__item">
@@ -67,7 +70,7 @@
 		                </div>
 	                </c:if>
 				</c:forEach>
-				<c:forEach var="aucProduct" items="${searchProduct}">
+				<c:forEach var="aucProduct" items="${categoryProduct}">
 	                <c:if test="${aucProduct.auctioncheck == 'Y'}">
 		    			<div class="col-lg-3 col-md-4 col-sm-6 mix aucProduct" style="display: none;">
 		                    <div class="featured__item">
@@ -86,7 +89,7 @@
 		                </div>
 	                </c:if>
 				</c:forEach>
-				<c:forEach var="buyProduct" items="${searchProduct}">
+				<c:forEach var="buyProduct" items="${categoryProduct}">
 	                <c:if test="${buyProduct.auctioncheck == 'B'}">
 		    			<div class="col-lg-3 col-md-4 col-sm-6 mix buyProduct" style="display: none;">
 		                    <div class="featured__item">
