@@ -2,7 +2,7 @@ package member.service;
 
 import java.util.Map;
 
-public class JoinRequest {
+public class MemberRequest {
 	private String userid;
 	private String uname;
 	private String upw;
