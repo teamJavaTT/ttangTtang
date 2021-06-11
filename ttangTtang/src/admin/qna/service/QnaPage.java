@@ -37,13 +37,7 @@ public class QnaPage {
 			if (endPage > totalPages) endPage = totalPages;
 		}
 	}
-	public QnaPage(int total, int currentPage, int size) {
-		/*
-		 * // 이전, 다음 클릭버튼 사이에 있는 숫자들 this.pageNo = pageNo; // 시작하는 숫자 startPage =
-		 * (pageNo - 1) * 5 + 1; // 끝나는 숫자 endPage = startPage + 4;
-		 */
-	}
-	public List<Qnacolumn> getNotice() {
+	public List<Qnacolumn> getQna() {
 		return qna;
 	}
 	

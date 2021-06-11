@@ -54,14 +54,14 @@ public class QnaService {
 		int endNo = startNo + 4;
 		try (Connection conn = DBConnection.getConnection()) {
 			int total = adminDao.selectCount(conn);
-			List<Qnacolumn> noticecolumn = adminDao.selectQna(conn, startNo, endNo);
-			return new QnaPage(total, pageNo, size, noticecolumn);
+			List<Qnacolumn> qnacolumn = adminDao.selectQna(conn, startNo, endNo);
+			return new QnaPage(total, pageNo, size, qnacolumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public QnaData getNoticeRead(int qnaNum) throws Exception {
+	public QnaData getQnaRead(int qnaNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
 			Qnacolumn qnacolumn = adminDao.selectById(conn, qnaNum);
 			if (qnacolumn == null) {

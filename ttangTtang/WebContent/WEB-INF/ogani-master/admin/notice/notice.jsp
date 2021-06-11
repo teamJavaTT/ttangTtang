@@ -37,7 +37,7 @@
 					</div>
 					<ul>
 						<li><a href="noticelist.do">공지사항</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
+						<li><a href="qnalist.do">Q&A</a></li>
 						<li><a href="faqlist.do">FAQ</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의
 								소리</a></li>

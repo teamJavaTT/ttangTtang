@@ -19,7 +19,7 @@ private QnaService qnaService = new QnaService();
 		String noVal = req.getParameter("no");
 		int qnaNum = Integer.parseInt(noVal);
 		try {
-			QnaData qnaData = qnaService.getNoticeRead(qnaNum);
+			QnaData qnaData = qnaService.getQnaRead(qnaNum);
 			req.setAttribute("qnaData", qnaData);
 			return "/WEB-INF/ogani-master/admin/notice/noticeread.jsp";
 		} catch (ArticleNotFoundException e) {

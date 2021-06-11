@@ -91,19 +91,30 @@
 	//상품을 추가하기위한 정보를 담아 insert.do로 보내는 자바스크립트 함수
 	function product_write() {
 
+		var category = document.form1.category.value;
 		var product_name = document.form1.product_name.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품이름을 반환해서 name에 저장함
 		var price = document.form1.price.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
 		var description = document.form1.description.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 정보를 반환해서 description에 저장함
 
 		//document.form.은 폼페이지에 있는 값을 반환한다는 뜻.
 
+		if (category == "") { //상품가격이 입력되어 있지 않으면
+			alert("카테고리를 선택하세요");
+			document.form1.category.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
+			return;
+		}
 		if (product_name == "") { //상품 이름이 입력되어 있지 않으면
-			alert("상품명을 입력하세요");
+			alert("제목을 입력하세요");
 			document.form1.product_name.focus(); //form1페이지에 있는 "상품명을 입력하세요" 에 커서를 올려둔다.
 			return;
 		}
 		if (price == "") { //상품가격이 입력되어 있지 않으면
 			alert("가격을 입력하세요");
+			document.form1.price.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
+			return;
+		}
+		if (tradarea == "") { //상품가격이 입력되어 있지 않으면
+			alert("지역을 선택해주세요");
 			document.form1.price.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
 			return;
 		}
@@ -165,13 +176,33 @@
 
 		<table>
 			<tr>
-				<td>상품명:</td>
+				<td>카테고리:</td>
+				<td>
+					<select name="category">
+                        <c:forEach var="category" items="${mainPage.category}">
+                   			<option val="">${category.cname}</option>
+						</c:forEach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>제목:</td>
 				<td><input name="product_name"></td>
 			</tr>
 
 			<tr>
 				<td>가격:</td>
 				<td><input name="price"></td>
+			</tr>
+			<tr>
+				<td>거래지역:</td>
+				<td><select name="tradarea">
+				<option>경기도</option>
+				<option>서울</option>
+				<option>부산</option>
+				<option>제주도</option>
+					<option>내 맘속</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td style="float: left;">상품설명:</td>

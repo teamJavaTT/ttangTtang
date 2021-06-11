@@ -65,7 +65,7 @@ public class AdminDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from(select  row_number() over (order by mno desc) num, A.* from qna A order by mno desc) where num between ? and ?");
+			pstmt = conn.prepareStatement("select * from (select  row_number() over (order by qno desc) num, A.* from qna A order by qno desc) where num between ? and ?");
 			pstmt.setInt(1, startNo);
 			pstmt.setInt(2, endNo);
 			rs = pstmt.executeQuery();
@@ -108,7 +108,7 @@ public class AdminDao {
 	 * JdbcUtil.close(rs); JdbcUtil.close(pstmt); } }
 	 */	
 	private Qnacolumn convertQna(ResultSet rs) throws SQLException {
-		return new Qnacolumn(rs.getInt("mno"), null, rs.getString("mtit"), rs.getString("mtext"), rs.getDate("mdate")); // null에 아이디 추가
+		return new Qnacolumn(rs.getInt("qno"), rs.getString("userid"), rs.getString("qtit"), rs.getString("qtext"), rs.getDate("qdate")); // null에 아이디 추가
 	}
 	// select 부분 끝
 	
