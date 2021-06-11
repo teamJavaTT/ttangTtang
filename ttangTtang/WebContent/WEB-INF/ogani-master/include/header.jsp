@@ -68,7 +68,7 @@
             <ul>
                 <li class="active"><a href="index.do">Home</a></li>
                 <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
-                <li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
+                <li><a href="adminmain.do"">Service</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -118,7 +118,7 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="../ogani-master/login/login.jsp"><i class="fa fa-user"></i> 로그인</a>
+                                <a href="login.do"><i class="fa fa-user"></i> 로그인</a>
                             </div>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                         <ul>
                             <li class="active"><a href="index.do">Home</a></li>
                             <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
-              				<li><a href="/ttangTtang/ogani-master/admin/adminmain.jsp">Service</a></li>
+              				<li><a href="adminmain.do">Service</a></li>
                         </ul>
                     </nav>
                 </div>
