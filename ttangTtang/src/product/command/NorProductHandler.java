@@ -10,7 +10,7 @@ import product.service.NorProRequeste;
 import product.service.ProductService;
 
 public class NorProductHandler implements CommandHandler {
-	private ProductService norproService = new ProductService();
+	private ProductService productService = new ProductService();
 	private MainService mainService = new MainService();
 	
 	
