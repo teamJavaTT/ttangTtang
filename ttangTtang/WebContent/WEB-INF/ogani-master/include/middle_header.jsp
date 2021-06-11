@@ -21,7 +21,7 @@
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="searchProduct.do">
-                            	<input type="text" placeholder="상품명,지역명 입력" name="searchProduct" value="${param.searchProduct}" style="font-weight:bold;color:#8C8C8C;">
+                            	<input type="text" placeholder="상품명,지역명 입력" name="searchProduct" value="${param.searchProduct}">
                                 <button type="submit" class="site-btn">검색</button>
                             </form>
                         </div>
