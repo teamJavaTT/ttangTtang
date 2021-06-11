@@ -9,7 +9,6 @@ import auth.service.MainPage;
 import auth.model.Product;
 import jdbc.DBConnection;
 import product.dao.SearchDao;
-import product.model.SearchProduct;
 
 public class SearchService {
 
