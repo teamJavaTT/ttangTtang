@@ -77,7 +77,7 @@
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="qna" items="${qnaPage.qnacolumn}">
+											<c:forEach var="qna" items="${qnaPage.qna}">
 												<tr>
 													<!-- 번호 -->
 													<td style="padding-left: 0px;">${qna.qno}</td>
