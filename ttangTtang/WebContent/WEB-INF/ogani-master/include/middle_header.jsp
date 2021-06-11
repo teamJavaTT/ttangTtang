@@ -12,7 +12,7 @@
                         </div>
                         <ul>
 	                        <c:forEach var="category" items="${category}">
-	                        	<li><a href="#">${category.cname}</a></li>
+	                        	<li><a href="categories.do?categories=${category.ccode}">${category.cname}</a></li>
 							</c:forEach>
                         </ul>
                     </div>

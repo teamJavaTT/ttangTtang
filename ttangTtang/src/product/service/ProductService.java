@@ -84,6 +84,16 @@ public class ProductService {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	//카테고리 검색
+	public List<Product> getCategoryPage(String categories) throws Exception {
+		try (Connection conn = DBConnection.getConnection()) {
+			List<Product> searchProduct = productDao.selectCategoryProduct(conn, categories);
+			return searchProduct;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 
 }
