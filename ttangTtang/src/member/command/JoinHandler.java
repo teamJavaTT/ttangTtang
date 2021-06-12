@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import AES256.AES256Util;
 import member.service.DuplicateIdException;
 import member.service.MemberRequest;
 import member.service.MemberService;
@@ -32,17 +33,16 @@ public class JoinHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		AES256Util aes256Util = new AES256Util();
 		MemberRequest memberReq = new MemberRequest();
 		req.setCharacterEncoding("utf-8");
 		memberReq.setUserid(req.getParameter("userid"));
-		memberReq.setUpw(req.getParameter("upw"));
-		memberReq.setUpw2(req.getParameter("upw2"));
+		memberReq.setUpw(aes256Util.encrypt(req.getParameter("upw")));
+		memberReq.setUpw2(aes256Util.encrypt(req.getParameter("upw2")));
 		memberReq.setUemail(req.getParameter("uemail"));
 		memberReq.setUname(req.getParameter("uname"));
 		memberReq.setPhone(req.getParameter("phone"));
 		memberReq.setSex(req.getParameter("sex"));
-		
-		System.out.println(req.getParameter("uname"));
 		
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);

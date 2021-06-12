@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import AES256.AES256Util;
 import member.service.LoginFailException;
 import member.service.MemberService;
 import member.service.User;
@@ -33,8 +34,9 @@ public class LoginHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		String id = trim(req.getParameter("userid"));
-		String password = trim(req.getParameter("upw"));
+		AES256Util aes256Util = new AES256Util();
+		String id = req.getParameter("userid");
+		String password = aes256Util.encrypt(req.getParameter("upw"));
 
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);

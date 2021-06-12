@@ -42,8 +42,8 @@ public class Member {
 		return phone;
 	}
 
-	public boolean matchPassword(String upw) {
-		return upw.equals(upw);
+	public boolean matchPassword(String inputUpw) {
+		return upw.equals(inputUpw);
 	}
 
 	public void changePassword(String newPwd) {
