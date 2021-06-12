@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.service.LoginFailException;
 import member.service.LoginService;
+import member.service.MemberService;
 import member.service.User;
 import mvc.command.CommandHandler;
 
 public class LoginHandler implements CommandHandler {
 
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/login/login.jsp";
-	private LoginService loginService = new LoginService();
+	private MemberService memberService = new MemberService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -33,8 +34,8 @@ public class LoginHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		String id = trim(req.getParameter("id"));
-		String password = trim(req.getParameter("password"));
+		String id = trim(req.getParameter("userid"));
+		String password = trim(req.getParameter("upw"));
 
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
@@ -49,7 +50,7 @@ public class LoginHandler implements CommandHandler {
 		}
 
 		try {
-			User user = loginService.login(id, password);
+			User user = memberService.login(id, password);
 			req.getSession().setAttribute("memberUser", user);
 			res.sendRedirect(req.getContextPath() + "/index.do");
 			return null;

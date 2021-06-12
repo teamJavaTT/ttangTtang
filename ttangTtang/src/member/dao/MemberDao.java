@@ -15,20 +15,18 @@ public class MemberDao {
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(
-					"select * from board.member where memberid = ?");
+					"select * from member where userid = ?");
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			Member member = null;
 			if (rs.next()) {
 				member = new Member(
 						rs.getString("userid"), 
-						rs.getString("uname"), 
 						rs.getString("upw"),
-						rs.getString("upw2"),
 						rs.getString("uemail"),
+						rs.getString("uname"),
 						rs.getString("phone"),
-						rs.getString("sex"),
-						rs.getString("birth")
+						rs.getString("sex")
 						);
 			}
 			return member;
@@ -41,22 +39,20 @@ public class MemberDao {
 
 	public void insert(Connection conn, Member mem) throws SQLException {
 		try (PreparedStatement pstmt = 
-				conn.prepareStatement("insert into board.member values(?,?,?,?,?,?,?,?)")) {
+				conn.prepareStatement("insert into member values(?,?,?,?,?,?,null,null,null,sysdate,sysdate,null,1)")) {
 			pstmt.setString(1, mem.getUserid());
-			pstmt.setString(2, mem.getUname());
-			pstmt.setString(3, mem.getUpw());
-			pstmt.setString(4, mem.getUpw2());
-			pstmt.setString(5, mem.getUemail());	
-			pstmt.setString(6, mem.getPhone());
-			pstmt.setString(7, mem.getSex());
-			pstmt.setString(8, mem.getBirth());
-			
+			pstmt.setString(2, mem.getUpw());
+			pstmt.setString(3, mem.getUemail());
+			pstmt.setString(4, mem.getUname());	
+			pstmt.setString(5, mem.getPhone());
+			pstmt.setString(6, mem.getSex());
+			pstmt.executeUpdate();
 		}
 	}
 
 	public void update(Connection conn, Member member) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement(
-				"update board.member set name = ?, password = ? where memberid = ?")) {
+				"update member set name = ?, password = ? where memberid = ?")) {
 			pstmt.setString(1, member.getUname());
 			pstmt.setString(2, member.getUpw());
 			pstmt.setString(3, member.getUserid());

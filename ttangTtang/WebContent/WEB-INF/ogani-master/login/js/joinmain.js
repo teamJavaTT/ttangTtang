@@ -13,10 +13,6 @@ var pwMsgArea = document.querySelector('.int_pass');
 
 var userName = document.querySelector('#name');
 
-var yy = document.querySelector('#yy');
-var mm = document.querySelector('#mm');
-var dd = document.querySelector('#dd');
-
 var gender = document.querySelector('#gender');
 
 var email = document.querySelector('#email');
@@ -34,9 +30,6 @@ id.addEventListener("focusout", checkId);
 pw1.addEventListener("focusout", checkPw);
 pw2.addEventListener("focusout", comparePw);
 userName.addEventListener("focusout", checkName);
-yy.addEventListener("focusout", isBirthCompleted);
-mm.addEventListener("focusout", isBirthCompleted);
-dd.addEventListener("focusout", isBirthCompleted);
 gender.addEventListener("focusout", function() {
     if(gender.value === "성별") {
         error[5].style.display = "block";
@@ -117,61 +110,6 @@ function checkName() {
         error[3].style.display = "block";
     } else {
         error[3].style.display = "none";
-    }
-}
-
-
-function isBirthCompleted() {
-    var yearPattern = /[0-9]{4}/;
-
-    if(!yearPattern.test(yy.value)) {
-        error[4].innerHTML = "태어난 년도 4자리를 정확하게 입력하세요.";
-        error[4].style.display = "block";
-    } else {
-        isMonthSelected();
-    }
-
-
-    function isMonthSelected() {
-        if(mm.value === "월") {
-            error[4].innerHTML = "태어난 월을 선택하세요.";
-        } else {
-            isDateCompleted();
-        }
-    }
-
-    function isDateCompleted() {
-        if(dd.value === "") {
-            error[4].innerHTML = "태어난 일(날짜) 2자리를 정확하게 입력하세요.";
-        } else {
-            isBirthRight();
-        }
-    }
-}
-
-
-
-function isBirthRight() {
-    var datePattern = /\d{1,2}/;
-    if(!datePattern.test(dd.value) || Number(dd.value)<1 || Number(dd.value)>31) {
-        error[4].innerHTML = "생년월일을 다시 확인해주세요.";
-    } else {
-        checkAge();
-    }
-}
-
-function checkAge() {
-    if(Number(yy.value) < 1920) {
-        error[4].innerHTML = "정말이세요?";
-        error[4].style.display = "block";
-    } else if(Number(yy.value) > 2020) {
-        error[4].innerHTML = "미래에서 오셨군요. ^^";
-        error[4].style.display = "block";
-    } else if(Number(yy.value) > 2005) {
-        error[4].innerHTML = "만 14세 미만의 어린이는 보호자 동의가 필요합니다.";
-        error[4].style.display = "block";
-    } else {
-        error[4].style.display = "none";
     }
 }
 

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -102,23 +103,15 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <div class="header__top__right__language">
-                                <img src="/ttangTtang/img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
                             <div class="header__top__right__auth">
-                                <a href="login.do"><i class="fa fa-user"></i> 로그인</a>
+                            	<c:choose>
+	                            	<c:when test="${empty memberUser.uname}">
+		                                <a href="login.do"><i class="fa fa-user"></i> 로그인</a>
+	                                </c:when>
+	                                <c:when test="${!empty memberUser.uname}">
+	                                	<a>${memberUser.uname}님 </a><a href="logout.do"><i class="fa fa-user"></i> 로그아웃</a>
+	                                </c:when>
+                                </c:choose>
                             </div>
                         </div>
                     </div>

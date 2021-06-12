@@ -23,42 +23,40 @@
 			</div>
 		</header> 
 		<section class="login-input-section-wrap">
-			<div class="login-input-wrap">	
-				<input placeholder="아이디를 입력하세요." type="text"></input>
-			</div>
-			<div class="login-input-wrap password-wrap">	
-				<input placeholder="비밀번호를 입력하세요." type="password"></input>
-			</div>
-			
+			<form action="login.do" method="post">
+				<div class="login-input-wrap">
+					<input placeholder="아이디를 입력하세요." name="userid" type="text"></input>
+				</div>
+				<div class="login-input-wrap password-wrap">	
+					<input placeholder="비밀번호를 입력하세요." name="upw" type="password"></input>
+				</div>
+	
 				<div class="login-button-wrap">
-				<button type="button">
-					<span>로그인</span>
-				</button>
-			
-			</div>
-			<!-- <div class="login-stay-sign-in">
-				<i class="far fa-check-circle"></i>
-				<span>로그인 상태 유지</span>
-			</div> 
-				로그인 상태 유지 버튼 구현 어려워 주석 처리함--> 
-			
-				<br>
+					<button type="submit"><span>로그인</span></button>
+				</div>
+			</form>
+<!-- <div class="login-stay-sign-in">
+	<i class="far fa-check-circle"></i>
+	<span>로그인 상태 유지</span>
+</div> 
+	로그인 상태 유지 버튼 구현 어려워 주석 처리함--> 
+
+			<br>
 			<div class="text-right p-t-13 p-b-23" >
-						<span class="txt1"> </span> <a href="idfind.jsp" class="txt2">
-							아이디 찾기 / 비밀번호 찾기 </a>
-					</div>
-				
-					<div class="flex-col-c p-t-170 p-b-40">
-						<span class="txt1 p-b-9"> 계정이 없으십니까? </span>
-						 <a href="join.do"
-							class="txt3"> 회원가입 </a>
-					</div>
+				<span class="txt1"> </span> <a href="idfind.jsp" class="txt2">아이디 찾기 / 비밀번호 찾기 </a>
+			</div>
+
+			<div class="flex-col-c p-t-170 p-b-40">
+				<span class="txt1 p-b-9"> 계정이 없으십니까? </span>
+				<a href="join.do" class="txt3"> 회원가입 </a>
+			</div>
 		</section>
-		
 		
 		<footer>
 			<div class="copyright-wrap">
-			<span>	<img src="/ttangTtang/img/logo_red.png" > Copyright © TTang TTang Corp. All Rights Reserved.</span>
+				<span>
+					<img src="/ttangTtang/img/logo_red.png" > Copyright © TTang TTang Corp. All Rights Reserved.
+				</span>
 			</div>
 		</footer>
 		</div>

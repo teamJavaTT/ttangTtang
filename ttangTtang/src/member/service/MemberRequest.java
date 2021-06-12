@@ -4,17 +4,13 @@ import java.util.Map;
 
 public class MemberRequest {
 	private String userid;
-	private String uname;
 	private String upw;
 	private String upw2;
 	private String uemail;
+	private String uname;
 	private String phone;
 	private String sex;
-	private String birth;
-
-
-
-	
+		
 	public String getUserid() {
 		return userid;
 	}
@@ -22,15 +18,7 @@ public class MemberRequest {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-
-	public String getUname() {
-		return uname;
-	}
-
-	public void setUname(String uname) {
-		this.uname = uname;
-	}
-
+	
 	public String getUpw() {
 		return upw;
 	}
@@ -46,13 +34,21 @@ public class MemberRequest {
 	public void setUpw2(String upw2) {
 		this.upw2 = upw2;
 	}
-
+	
 	public String getUemail() {
 		return uemail;
 	}
 
 	public void setUemail(String uemail) {
 		this.uemail = uemail;
+	}
+
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 	
 	public String getPhone() {
@@ -62,7 +58,7 @@ public class MemberRequest {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
+	
 	public String getSex() {
 		return sex;
 	}
@@ -70,17 +66,6 @@ public class MemberRequest {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	
-	public String getBirth() {
-		return birth;
-	}
-	
-	public void setBirth(String birth) {
-		this.birth = birth;
-	}
-	
-
-	
 
 
 	public boolean isPasswordEqualToConfirm() {
@@ -88,23 +73,21 @@ public class MemberRequest {
 	}
 
 	public void validate(Map<String, Boolean> errors) {
-		checkEmpty(errors, userid, "id");
-		checkEmpty(errors, uname, "name");
-		checkEmpty(errors, upw, "password");
-		checkEmpty(errors, upw2, "confirmPassword");
-		checkEmpty(errors, uemail, "email");
+		checkEmpty(errors, userid, "userid");
+		checkEmpty(errors, upw, "upw");
+		checkEmpty(errors, upw2, "upw2");
+		checkEmpty(errors, uname, "uname");
 		checkEmpty(errors, phone, "phone");
 		checkEmpty(errors, sex, "sex");
-		checkEmpty(errors, birth, "birth");
-		if (!errors.containsKey("confirmPassword")) {
+				
+		if (!errors.containsKey("upw2")) {
 			if (!isPasswordEqualToConfirm()) {
 				errors.put("notMatch", Boolean.TRUE);
 			}
 		}
 	}
 
-	private void checkEmpty(Map<String, Boolean> errors, 
-			String value, String fieldName) {
+	private void checkEmpty(Map<String, Boolean> errors, String value, String fieldName) {
 		if (value == null || value.isEmpty())
 			errors.put(fieldName, Boolean.TRUE);
 	}

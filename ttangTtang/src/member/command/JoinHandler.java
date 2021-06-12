@@ -33,14 +33,17 @@ public class JoinHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		MemberRequest memberReq = new MemberRequest();
+		req.setCharacterEncoding("utf-8");
 		memberReq.setUserid(req.getParameter("userid"));
-		memberReq.setUname(req.getParameter("uname"));
 		memberReq.setUpw(req.getParameter("upw"));
 		memberReq.setUpw2(req.getParameter("upw2"));
 		memberReq.setUemail(req.getParameter("uemail"));
+		memberReq.setUname(req.getParameter("uname"));
 		memberReq.setPhone(req.getParameter("phone"));
 		memberReq.setSex(req.getParameter("sex"));
-		memberReq.setBirth(req.getParameter("yyyy") + req.getParameter("mm") + req.getParameter("dd"));
+		
+		System.out.println(req.getParameter("uname"));
+		
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
 
@@ -51,7 +54,7 @@ public class JoinHandler implements CommandHandler {
 		}
 
 		try {
-			memberService.member(memberReq);
+			memberService.memberInsert(memberReq);
 			res.sendRedirect(req.getContextPath() + "/login.do");
 			return null;
 		} catch (DuplicateIdException e) {
