@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.service.LoginFailException;
-import member.service.LoginService;
 import member.service.MemberService;
 import member.service.User;
 import mvc.command.CommandHandler;
