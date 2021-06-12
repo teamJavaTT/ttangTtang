@@ -27,7 +27,7 @@ public class MemberService {
 				throw new DuplicateIdException();
 			}
 
-			memberDao.insert(conn, new Member(memberReq.getUserid(), memberReq.getUpw(), memberReq.getUemail(), memberReq.getUname(), memberReq.getPhone(), memberReq.getSex()));
+			memberDao.memberInsert(conn, new Member(memberReq.getUserid(), memberReq.getUpw(), memberReq.getUemail(), memberReq.getUname(), memberReq.getPhone(), memberReq.getSex()));
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);

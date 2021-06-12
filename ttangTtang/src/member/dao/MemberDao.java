@@ -37,7 +37,7 @@ public class MemberDao {
 	}
 
 
-	public void insert(Connection conn, Member mem) throws SQLException {
+	public void memberInsert(Connection conn, Member mem) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement("insert into member values(?,?,?,?,?,?,null,null,null,sysdate,sysdate,null,1)")) {
 			pstmt.setString(1, mem.getUserid());
@@ -50,9 +50,9 @@ public class MemberDao {
 		}
 	}
 
-	public void update(Connection conn, Member member) throws SQLException {
+	public void memberUpdate(Connection conn, Member member) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement(
-				"update member set name = ?, password = ? where memberid = ?")) {
+				"update member set uname = ?, upw = ? where userid = ?")) {
 			pstmt.setString(1, member.getUname());
 			pstmt.setString(2, member.getUpw());
 			pstmt.setString(3, member.getUserid());
