@@ -2,21 +2,21 @@ package admin.faq.model;
 
 public class Faq {
 
-	private String ftit;
-	private String ftext;
+	private String fTit;
+	private String fText;
 
-	public Faq(String ftit, String ftext) {
+	public Faq(String fTit, String fText) {
 
-		this.ftit = ftit;
-		this.ftext = ftext;
+		this.fTit = fTit;
+		this.fText = fText;
 	}
 
-	public String getftit() {
-		return ftit;
+	public String getFtit() {
+		return fTit;
 	}
 
-	public String getftext() {
-		return ftext;
+	public String getFtext() {
+		return fText;
 	}
 
 }

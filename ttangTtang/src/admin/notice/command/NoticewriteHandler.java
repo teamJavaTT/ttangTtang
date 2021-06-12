@@ -46,19 +46,9 @@ public class NoticewriteHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 
-		int newArticleNo = noticeService.noticewrite(writeReq);
+		int newArticleNo = noticeService.noticeWrite(writeReq);
 		req.setAttribute("newArticleNo", newArticleNo);
 
 		return "/WEB-INF/ogani-master/admin/notice/noticesuccess.jsp";
 	}
-
-	/*
-	 * //값을 가져오는 거
-	 * 
-	 * @Override public String process(HttpServletRequest req, HttpServletResponse
-	 * res) throws Exception { NoticewritePage noticewritePage =
-	 * noticewriteService.getNoticewritePage(); req.setAttribute("noticewritePage",
-	 * noticewritePage); return "/WEB-INF/ogani-master/index.jsp"; }
-	 */
-
 }

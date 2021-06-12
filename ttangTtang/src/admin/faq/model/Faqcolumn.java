@@ -4,30 +4,30 @@ import java.util.Date;
 
 public class Faqcolumn {
 
-	private Integer fno;
-	private String ftit;
-	private String ftext;
-	private Date fdate;
-	public Faqcolumn(Integer fno, String ftit, String ftext, Date fdate) {
-		this.fno = fno;
-		this.ftit = ftit;
-		this.ftext = ftext;
-		this.fdate = fdate;
+	private Integer fNo;
+	private String fTit;
+	private String fText;
+	private Date fDate;
+	public Faqcolumn(Integer fNo, String fTit, String fText, Date fDate) {
+		this.fNo = fNo;
+		this.fTit = fTit;
+		this.fText = fText;
+		this.fDate = fDate;
 	}
 
-	public Integer getfno() {
-		return fno;
+	public Integer getFno() {
+		return fNo;
 	}
 
-	public String getftit() {
-		return ftit;
+	public String getFtit() {
+		return fTit;
 	}
 
-	public String getftext() {
-		return ftext;
+	public String getFtext() {
+		return fText;
 	}
 
-	public Date getfdate() {
-		return fdate;
+	public Date getFdate() {
+		return fDate;
 	}
 }

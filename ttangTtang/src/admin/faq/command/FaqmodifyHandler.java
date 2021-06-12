@@ -13,7 +13,7 @@ import admin.faq.service.ArticleNotFoundException;
 import admin.faq.service.FaqData;
 
 public class FaqmodifyHandler implements CommandHandler {
-	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/faq/faqmodify.jsp";
 	private FaqService faqService = new FaqService();
 
 	@Override
@@ -34,9 +34,9 @@ public class FaqmodifyHandler implements CommandHandler {
 		String noVal = req.getParameter("no");
 		int faqNum = Integer.parseInt(noVal);
 		try {
-			FaqData faqData = faqService.getFaqMod(faqNum);
+			FaqData faqData = faqService.getFaqRead(faqNum);
 			req.setAttribute("faqData", faqData);
-			return "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
+			return "/WEB-INF/ogani-master/admin/faq/faqmodify.jsp";
 		} catch (ArticleNotFoundException e) {
 			req.getServletContext().log("no article", e);
 			res.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -58,9 +58,9 @@ public class FaqmodifyHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 
-		int faqModno = faqService.faqmod(delNo, modReq);
+		int faqModno = faqService.faqMod(delNo, modReq);
 		req.setAttribute("faqModno", faqModno);
 
-		return "/WEB-INF/ogani-master/admin/notice/noticesuccess.jsp";
+		return "/WEB-INF/ogani-master/admin/faq/faqsuccess.jsp";
 	}
 }

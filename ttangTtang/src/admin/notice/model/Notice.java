@@ -2,21 +2,21 @@ package admin.notice.model;
 
 public class Notice {
 
-	private String mtit;
-	private String mtext;
+	private String mTit;
+	private String mText;
 
-	public Notice(String mtit, String mtext) {
+	public Notice(String mTit, String mText) {
 
-		this.mtit = mtit;
-		this.mtext = mtext;
+		this.mTit = mTit;
+		this.mText = mText;
 	}
 
-	public String getmtit() {
-		return mtit;
+	public String getMtit() {
+		return mTit;
 	}
 
-	public String getmtext() {
-		return mtext;
+	public String getMtext() {
+		return mText;
 	}
 
 }

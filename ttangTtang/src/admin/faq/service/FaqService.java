@@ -16,20 +16,20 @@ public class FaqService {
 	private AdminDao adminDao = new AdminDao();
 	
 	// 글 입력하기
-	public Integer faqwrite(Faq writeReq) throws Exception {
+	public Integer faqWrite(Faq writeReq) throws Exception {
 		Connection conn = null;
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
 
-			Faqcolumn article = toArticle(writeReq);
-			Faqcolumn savedArticle = adminDao.insert(conn, article);
+			Faqcolumn faqColumn = toColumn(writeReq);
+			Faqcolumn savedArticle = adminDao.faqInsert(conn, faqColumn);
 			if (savedArticle == null) {
 				throw new RuntimeException("fail to insert article");
 			}
 			conn.commit();
 
-			return savedArticle.getfno();
+			return savedArticle.getFno();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
@@ -40,10 +40,10 @@ public class FaqService {
 			JdbcUtil.close(conn);
 		}
 	}
-	private Faqcolumn toArticle(Faq req) {
+	private Faqcolumn toColumn(Faq req) {
 		Date now = new Date();
 				
-		return new Faqcolumn(null, req.getftit(), req.getftext(), now);
+		return new Faqcolumn(null, req.getFtit(), req.getFtext(), now);
 	}
 	// 글 입력하기 끝
 	
@@ -54,8 +54,8 @@ public class FaqService {
 		int endNo = startNo + 9;
 		try (Connection conn = DBConnection.getConnection()) {
 			int total = adminDao.selectCount(conn);
-			List<Faqcolumn> faqcolumn = adminDao.selectFaq(conn, startNo, endNo);
-			return new FaqPage(total, pageNo, size, faqcolumn);
+			List<Faqcolumn> faqColumn = adminDao.faqSelect(conn, startNo, endNo);
+			return new FaqPage(total, pageNo, size, faqColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -63,11 +63,11 @@ public class FaqService {
 
 	public FaqData getFaqRead(int faqNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
-			Faqcolumn faqcolumn = adminDao.selectById(conn, faqNum);
-			if (faqcolumn == null) {
+			Faqcolumn faqColumn = adminDao.faqReadSelect(conn, faqNum);
+			if (faqColumn == null) {
 				throw new ArticleNotFoundException();
 			}
-			return new FaqData(faqcolumn);
+			return new FaqData(faqColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -77,25 +77,13 @@ public class FaqService {
 	// 글 삭제
 	public void getFaqDelete(int delNo) throws SQLException, Exception {
 		try(Connection conn = DBConnection.getConnection()){
-			adminDao.deleteFaq(conn, delNo);
+			adminDao.faqDelete(conn, delNo);
 		}
 	}
 	// 글 끝
 	
-	
-	public FaqData getFaqMod(int faqNum) throws Exception {
-		try (Connection conn = DBConnection.getConnection()){
-			Faqcolumn faqcolumn = adminDao.selectById(conn, faqNum);
-			if (faqcolumn == null) {
-				throw new ArticleNotFoundException();
-			}
-			return new FaqData(faqcolumn);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
 	// 수정
-	public Integer faqmod(int delNo, Faq modReq) throws Exception {
+	public Integer faqMod(int delNo, Faq modReq) throws Exception {
 		Connection conn = null;
 		try {
 			conn = DBConnection.getConnection();
@@ -108,7 +96,7 @@ public class FaqService {
 			}
 			conn.commit();
 
-			return savedArticle.getfno();
+			return savedArticle.getFno();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
@@ -122,6 +110,6 @@ public class FaqService {
 	// 수정 끝
 	private Faqcolumn toFaqMod(int delNo, Faq req) {
 		Date now = new Date();
-		return new Faqcolumn(delNo, req.getftit(), req.getftext(), now);
+		return new Faqcolumn(delNo, req.getFtit(), req.getFtext(), now);
 	}
 }

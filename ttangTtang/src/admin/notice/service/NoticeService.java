@@ -1,42 +1,35 @@
 package admin.notice.service;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import admin.notice.service.NoticeData;
 import admin.notice.dao.AdminDao;
 import admin.notice.model.Notice;
 import admin.notice.model.Noticecolumn;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
-import jdbc.connection.ConnectionProvider;
 
 public class NoticeService {
 	
 	private AdminDao adminDao = new AdminDao();
 	
 	// 글 입력하기
-	public Integer noticewrite(Notice writeReq) throws Exception {
+	public Integer noticeWrite(Notice writeReq) throws Exception {
 		Connection conn = null;
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
 
-			Noticecolumn article = toArticle(writeReq);
-			Noticecolumn savedArticle = adminDao.insert(conn, article);
+			Noticecolumn noticeColumn = toColumn(writeReq);
+			Noticecolumn savedArticle = adminDao.noticeInsert(conn, noticeColumn);
 			if (savedArticle == null) {
 				throw new RuntimeException("fail to insert article");
 			}
 			conn.commit();
 
-			return savedArticle.getmno();
+			return savedArticle.getMno();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
@@ -47,10 +40,10 @@ public class NoticeService {
 			JdbcUtil.close(conn);
 		}
 	}
-	private Noticecolumn toArticle(Notice req) {
+	private Noticecolumn toColumn(Notice req) {
 		Date now = new Date();
 				
-		return new Noticecolumn(null, req.getmtit(), req.getmtext(), now);
+		return new Noticecolumn(null, req.getMtit(), req.getMtext(), now);
 	}
 	// 글 입력하기 끝
 	
@@ -61,8 +54,8 @@ public class NoticeService {
 		int endNo = startNo + 9;
 		try (Connection conn = DBConnection.getConnection()) {
 			int total = adminDao.selectCount(conn);
-			List<Noticecolumn> noticecolumn = adminDao.selectNotice(conn, startNo, endNo);
-			return new NoticePage(total, pageNo, size, noticecolumn);
+			List<Noticecolumn> noticeColumn = adminDao.noticeSelect(conn, startNo, endNo);
+			return new NoticePage(total, pageNo, size, noticeColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -70,11 +63,11 @@ public class NoticeService {
 
 	public NoticeData getNoticeRead(int noticeNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
-			Noticecolumn noticecolumn = adminDao.selectById(conn, noticeNum);
-			if (noticecolumn == null) {
+			Noticecolumn noticeColumn = adminDao.noticeReadSelect(conn, noticeNum);
+			if (noticeColumn == null) {
 				throw new ArticleNotFoundException();
 			}
-			return new NoticeData(noticecolumn);
+			return new NoticeData(noticeColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -84,38 +77,27 @@ public class NoticeService {
 	// 글 삭제
 	public void getNoticeDelete(int delNo) throws SQLException, Exception {
 		try(Connection conn = DBConnection.getConnection()){
-			adminDao.deleteNotice(conn, delNo);
+			adminDao.noticeDelete(conn, delNo);
 		}
 	}
 	// 글 끝
 	
 	// 수정
-	public NoticeData getNoticeMod(int noticeNum) throws Exception {
-		try (Connection conn = DBConnection.getConnection()){
-			Noticecolumn noticecolumn = adminDao.selectById(conn, noticeNum);
-			if (noticecolumn == null) {
-				throw new ArticleNotFoundException();
-			}
-			return new NoticeData(noticecolumn);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
 	
-	public Integer noticemod(int delNo, Notice modReq) throws Exception {
+	public Integer noticeMod(int delNo, Notice modReq) throws Exception {
 		Connection conn = null;
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
 
 			Noticecolumn notice = toNoticeMod(delNo, modReq);
-			Noticecolumn savedArticle = adminDao.updateNotice(conn, notice);
+			Noticecolumn savedArticle = adminDao.noticeUpdate(conn, notice);
 			if (savedArticle == null) {
 				throw new RuntimeException("fail to update");
 			}
 			conn.commit();
 
-			return savedArticle.getmno();
+			return savedArticle.getMno();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
@@ -129,6 +111,6 @@ public class NoticeService {
 	// 수정 끝
 	private Noticecolumn toNoticeMod(int delNo, Notice req) {
 		Date now = new Date();
-		return new Noticecolumn(delNo, req.getmtit(), req.getmtext(), now);
+		return new Noticecolumn(delNo, req.getMtit(), req.getMtext(), now);
 	}
 }

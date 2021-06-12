@@ -4,30 +4,30 @@ import java.util.Date;
 
 public class Noticecolumn {
 
-	private Integer mno;
-	private String mtit;
-	private String mtext;
-	private Date mdate;
-	public Noticecolumn(Integer mno, String mtit, String mtext, Date mdate) {
-		this.mno = mno;
-		this.mtit = mtit;
-		this.mtext = mtext;
-		this.mdate = mdate;
+	private Integer mNo;
+	private String mTit;
+	private String mText;
+	private Date mDate;
+	public Noticecolumn(Integer mNo, String mTit, String mText, Date mDate) {
+		this.mNo = mNo;
+		this.mTit = mTit;
+		this.mText = mText;
+		this.mDate = mDate;
 	}
 
-	public Integer getmno() {
-		return mno;
+	public Integer getMno() {
+		return mNo;
 	}
 
-	public String getmtit() {
-		return mtit;
+	public String getMtit() {
+		return mTit;
 	}
 
-	public String getmtext() {
-		return mtext;
+	public String getMtext() {
+		return mText;
 	}
 
-	public Date getmdate() {
-		return mdate;
+	public Date getMdate() {
+		return mDate;
 	}
 }

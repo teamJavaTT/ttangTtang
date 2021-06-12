@@ -11,8 +11,7 @@ public class NoticeRequest {
 		this.notice = notice;
 	}
 
-	public Notice getnotice() {
+	public Notice getNotice() {
 		return notice;
 	}
-
 }

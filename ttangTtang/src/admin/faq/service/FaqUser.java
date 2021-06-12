@@ -1,31 +1,31 @@
 package admin.faq.service;
 
 public class FaqUser {
-	private String fno;
-	private String ftit;
-	private String ftext;
-	private String fdate;
+	private String fNo;
+	private String fTit;
+	private String fText;
+	private String fDate;
 
-	public FaqUser(String fno, String ftit, String ftext, String fdate) {
-		this.fno = fno;
-		this.ftit = ftit;
-		this.ftext = ftext;
-		this.fdate = fdate;
+	public FaqUser(String fNo, String fTit, String fText, String fDate) {
+		this.fNo = fNo;
+		this.fTit = fTit;
+		this.fText = fText;
+		this.fDate = fDate;
 	}
 
-	public String getfno() {
-		return fno;
+	public String getFno() {
+		return fNo;
 	}
 
-	public String getftit() {
-		return ftit;
+	public String getFtit() {
+		return fTit;
 	}
 
-	public String getftext() {
-		return ftext;
+	public String getFtext() {
+		return fText;
 	}
 
-	public String getfdate() {
-		return fdate;
+	public String getFdate() {
+		return fDate;
 	}
 }

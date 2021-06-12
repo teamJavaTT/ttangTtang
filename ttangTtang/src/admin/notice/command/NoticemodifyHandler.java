@@ -38,7 +38,7 @@ public class NoticemodifyHandler implements CommandHandler {
 		String noVal = req.getParameter("no");
 		int noticeNum = Integer.parseInt(noVal);
 		try {
-			NoticeData noticeData = noticeService.getNoticeMod(noticeNum);
+			NoticeData noticeData = noticeService.getNoticeRead(noticeNum);
 			req.setAttribute("noticeData", noticeData);
 			return "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
 		} catch (ArticleNotFoundException e) {
@@ -64,19 +64,9 @@ public class NoticemodifyHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 
-		int noticeModno = noticeService.noticemod(delNo, modReq);
+		int noticeModno = noticeService.noticeMod(delNo, modReq);
 		req.setAttribute("noticeModno", noticeModno);
 
 		return "/WEB-INF/ogani-master/admin/notice/noticesuccess.jsp";
 	}
-
-	/*
-	 * //값을 가져오는 거
-	 * 
-	 * @Override public String process(HttpServletRequest req, HttpServletResponse
-	 * res) throws Exception { NoticewritePage noticewritePage =
-	 * noticewriteService.getNoticewritePage(); req.setAttribute("noticewritePage",
-	 * noticewritePage); return "/WEB-INF/ogani-master/index.jsp"; }
-	 */
-
 }

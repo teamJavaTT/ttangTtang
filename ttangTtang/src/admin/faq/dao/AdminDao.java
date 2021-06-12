@@ -12,7 +12,7 @@ import admin.faq.model.Faqcolumn;
 import jdbc.JdbcUtil;
 
 public class AdminDao {
-	public Faqcolumn insert(Connection conn, Faqcolumn article) throws SQLException {
+	public Faqcolumn faqInsert(Connection conn, Faqcolumn faq) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -20,8 +20,8 @@ public class AdminDao {
 		try {
 			pstmt = conn.prepareStatement("insert into Faq values (faq_seq.NEXTVAL,?,?,sysdate)");
 			
-			pstmt.setString(1, article.getftit());
-			pstmt.setString(2, article.getftext());
+			pstmt.setString(1, faq.getFtit());
+			pstmt.setString(2, faq.getFtext());
 			int insertedCount = pstmt.executeUpdate();
 
 			if (insertedCount > 0) {
@@ -29,7 +29,7 @@ public class AdminDao {
 				rs = stmt.executeQuery("select max(fno) from Faq");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Faqcolumn(newNo, article.getftit(), article.getftext(), article.getfdate());
+					return new Faqcolumn(newNo, faq.getFtit(), faq.getFtext(), faq.getFdate());
 				}
 			}
 			return null;
@@ -60,7 +60,7 @@ public class AdminDao {
 	}
 	
 	
-	public List<Faqcolumn> selectFaq(Connection conn, int startNo, int endNo) throws SQLException {
+	public List<Faqcolumn> faqSelect(Connection conn, int startNo, int endNo) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -70,7 +70,7 @@ public class AdminDao {
 			rs = pstmt.executeQuery();
 			List<Faqcolumn> result = new ArrayList<>();
 			while (rs.next()) {
-				result.add(convertFaq(rs));
+				result.add(faqConvert(rs));
 			}
 			return result;
 		} finally {
@@ -79,7 +79,7 @@ public class AdminDao {
 		}
 	}
 	
-	public Faqcolumn selectById(Connection conn, int no) throws SQLException {
+	public Faqcolumn faqReadSelect(Connection conn, int no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -87,17 +87,17 @@ public class AdminDao {
 					"select * from faq where fno = ?");
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			Faqcolumn faqcolumn = null;
+			Faqcolumn faqColumn = null;
 			if (rs.next()) {
-				faqcolumn = convertFaq(rs);
+				faqColumn = faqConvert(rs);
 			}
-			return faqcolumn;
+			return faqColumn;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
 	}
-	private Faqcolumn convertFaq(ResultSet rs) throws SQLException {
+	private Faqcolumn faqConvert(ResultSet rs) throws SQLException {
 		return new Faqcolumn(rs.getInt("fno"), rs.getString("ftit"), rs.getString("ftext"), rs.getDate("fdate"));
 	}
 	// select 부분 끝
@@ -109,9 +109,9 @@ public class AdminDao {
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement("update faq set ftit = ?, ftext = ? where fno = ?");
-			pstmt.setString(1, notice.getftit());
-			pstmt.setString(2, notice.getftext());
-			pstmt.setInt(3, notice.getfno());
+			pstmt.setString(1, notice.getFtit());
+			pstmt.setString(2, notice.getFtext());
+			pstmt.setInt(3, notice.getFno());
 			int insertedCount = pstmt.executeUpdate();
 
 			if (insertedCount > 0) {
@@ -119,7 +119,7 @@ public class AdminDao {
 				rs = stmt.executeQuery("select max(fno) from Faq");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Faqcolumn(newNo, notice.getftit(), notice.getftext(), notice.getfdate());
+					return new Faqcolumn(newNo, notice.getFtit(), notice.getFtext(), notice.getFdate());
 				}
 			}
 		return null;
@@ -131,7 +131,7 @@ public class AdminDao {
 	}
 	
 	// 삭제
-	public int deleteFaq(Connection conn, int delNo) throws SQLException {
+	public int faqDelete(Connection conn, int delNo) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement(
 						"delete from faq where fno = ?")) {

@@ -10,12 +10,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import admin.notice.model.Notice;
 import admin.notice.model.Noticecolumn;
 import jdbc.JdbcUtil;
 
 public class AdminDao {
-	public Noticecolumn insert(Connection conn, Noticecolumn article) throws SQLException {
+	public Noticecolumn noticeInsert(Connection conn, Noticecolumn notice) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -23,8 +22,8 @@ public class AdminDao {
 		try {
 			pstmt = conn.prepareStatement("insert into Notice values (notice_seq.NEXTVAL,?,?,sysdate)");
 			
-			pstmt.setString(1, article.getmtit());
-			pstmt.setString(2, article.getmtext());
+			pstmt.setString(1, notice.getMtit());
+			pstmt.setString(2, notice.getMtext());
 			/* pstmt.setTimestamp(4, toTimestamp(article.getmdate())); */
 			int insertedCount = pstmt.executeUpdate();
 
@@ -33,7 +32,7 @@ public class AdminDao {
 				rs = stmt.executeQuery("select max(mno) from Notice");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Noticecolumn(newNo, article.getmtit(), article.getmtext(), article.getmdate());
+					return new Noticecolumn(newNo, notice.getMtit(), notice.getMtext(), notice.getMdate());
 				}
 			}
 			return null;
@@ -63,8 +62,7 @@ public class AdminDao {
 		
 	}
 	
-	
-	public List<Noticecolumn> selectNotice(Connection conn, int startNo, int endNo) throws SQLException {
+	public List<Noticecolumn> noticeSelect(Connection conn, int startNo, int endNo) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -74,7 +72,7 @@ public class AdminDao {
 			rs = pstmt.executeQuery();
 			List<Noticecolumn> result = new ArrayList<>();
 			while (rs.next()) {
-				result.add(convertNotice(rs));
+				result.add(noticeConvert(rs));
 			}
 			return result;
 		} finally {
@@ -83,7 +81,7 @@ public class AdminDao {
 		}
 	}
 	
-	public Noticecolumn selectById(Connection conn, int no) throws SQLException {
+	public Noticecolumn noticeReadSelect(Connection conn, int no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -91,48 +89,31 @@ public class AdminDao {
 					"select * from notice where mno = ?");
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			Noticecolumn noticecolumn = null;
+			Noticecolumn noticeColumn = null;
 			if (rs.next()) {
-				noticecolumn = convertNotice(rs);
+				noticeColumn = noticeConvert(rs);
 			}
-			return noticecolumn;
+			return noticeColumn;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
 	}
-	
-	/*
-	 * public List<Noticecolumn> selectNotice(Connection conn) throws SQLException {
-	 * PreparedStatement pstmt = null; ResultSet rs = null; try { pstmt =
-	 * conn.prepareStatement("select * from notice order by mno"); rs =
-	 * pstmt.executeQuery(); List<Noticecolumn> result = new ArrayList<>(); while
-	 * (rs.next()) { result.add(convertNotice(rs)); } return result; } finally {
-	 * JdbcUtil.close(rs); JdbcUtil.close(pstmt); } }
-	 */	
-	private Noticecolumn convertNotice(ResultSet rs) throws SQLException {
+	private Noticecolumn noticeConvert(ResultSet rs) throws SQLException {
 		return new Noticecolumn(rs.getInt("mno"), rs.getString("mtit"), rs.getString("mtext"), rs.getDate("mdate"));
 	}
 	// select 부분 끝
 	
-	
-	// 조회수 올리는 것
-	/*
-	 * public void increaseReadCount(Connection conn, int no) throws SQLException {
-	 * try (PreparedStatement pstmt = conn.
-	 * prepareStatement("update notice set read_cnt = read_cnt + 1 where mno = ?"))
-	 * { pstmt.setInt(1, no); pstmt.executeUpdate(); } }
-	 */
 	//업데이트
-	public Noticecolumn updateNotice(Connection conn, Noticecolumn notice) throws SQLException {
+	public Noticecolumn noticeUpdate(Connection conn, Noticecolumn notice) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement("update notice set mtit = ?, mtext = ? where mno = ?");
-			pstmt.setString(1, notice.getmtit());
-			pstmt.setString(2, notice.getmtext());
-			pstmt.setInt(3, notice.getmno());
+			pstmt.setString(1, notice.getMtit());
+			pstmt.setString(2, notice.getMtext());
+			pstmt.setInt(3, notice.getMno());
 			int insertedCount = pstmt.executeUpdate();
 
 			if (insertedCount > 0) {
@@ -140,7 +121,7 @@ public class AdminDao {
 				rs = stmt.executeQuery("select max(mno) from Notice");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Noticecolumn(newNo, notice.getmtit(), notice.getmtext(), notice.getmdate());
+					return new Noticecolumn(newNo, notice.getMtit(), notice.getMtext(), notice.getMdate());
 				}
 			}
 		return null;
@@ -152,10 +133,8 @@ public class AdminDao {
 	}
 	
 	// 삭제
-	public int deleteNotice(Connection conn, int delNo) throws SQLException {
-		try (PreparedStatement pstmt = 
-				conn.prepareStatement(
-						"delete from notice where mno = ?")) {
+	public int noticeDelete(Connection conn, int delNo) throws SQLException {
+		try (PreparedStatement pstmt = conn.prepareStatement("delete from notice where mno = ?")) {
 			pstmt.setInt(1, delNo);
 			return pstmt.executeUpdate();
 		}

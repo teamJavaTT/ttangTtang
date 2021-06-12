@@ -14,8 +14,7 @@ private NoticeService noticeService = new NoticeService();
 	
 
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) 
-			throws Exception {
+	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String noVal = req.getParameter("no");
 		int noticeNum = Integer.parseInt(noVal);
 		try {
@@ -28,17 +27,4 @@ private NoticeService noticeService = new NoticeService();
 			return null;
 		}
 	}
-/*
-	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		String pageVal = req.getParameter("pageNo");
-		int pageNo = 1;
-		if(pageVal != null) {
-			pageNo = Integer.parseInt(pageVal);
-		}
-		NoticePage noticePage = noticeService.getNoticePage(pageNo);
-		req.setAttribute("noticePage", noticePage);
-		return "/WEB-INF/ogani-master/admin/notice/notice.jsp";
-	}
-*/
 }

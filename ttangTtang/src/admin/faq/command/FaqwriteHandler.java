@@ -40,7 +40,7 @@ public class FaqwriteHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 
-		int newArticleNo = faqService.faqwrite(writeReq);
+		int newArticleNo = faqService.faqWrite(writeReq);
 		req.setAttribute("newArticleNo", newArticleNo);
 
 		return "/WEB-INF/ogani-master/admin/faq/faqsuccess.jsp";
