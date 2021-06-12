@@ -57,9 +57,6 @@
 
 </section>
 
-	<!--   <form id="form1" name="form1" method="post"
-        enctype="multipart/form-data"> -->
-	<!-- 파일업로드를 위해 추가하는 타입 -->
 <!-- Hero Section End -->
 
 <title>상품 등록</title>
@@ -129,6 +126,8 @@
 
 		document.form1.action = "${path}/shop/product/insert.do"; //insert.do 페이지로 form1에 저장된 자료를 전송함
 		document.form1.submit();
+
+	
 	};
 	
 	$(document).ready(
@@ -170,7 +169,7 @@
 	<h3 style="
     text-align: center;">일반 상품 등록</h3>
 <div class="container">
-	<form id="form1" name="form1" method="post"
+	<form name="productFrm" method="post" action="product_process.jsp?flag=insert"
 		enctype="multipart/form-data" style=margin-left:420px;margin-top:20px;margin-bottom:10px;>
 		<!-- 파일업로드를 위해 추가하는 타입 -->
 
@@ -206,7 +205,7 @@
 			</tr>
 			<tr>
 				<td style="float: left;">상품설명:</td>
-				<td><textarea id="description" style="resize: none;width: 306px;height: 176px;"></textarea></td>
+				<td><textarea name="description" id="description" style="resize: none;width: 306px;height: 176px;"></textarea></td>
 			</tr>
 		</table>
 		<div class="filebox">
@@ -216,7 +215,7 @@
 
 				<tr>
 				<td><input class="upload-name" value="파일선택" disabled="disabled" multiple/>
-				<label for="ex_filename">업로드</label> <input type="file"
+				<label for="ex_filename">업로드</label> <input type="file"  name="imageface"
 					id="ex_filename" class="upload-hidden">
 					</td>
 					</tr>	

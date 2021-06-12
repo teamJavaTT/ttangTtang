@@ -175,7 +175,7 @@
 				<td>
 					<select name="category">
                         <c:forEach var="category" items="${mainPage.category}">
-                   			<option val="">${category.cname}</option>
+                       <option val="${category.ccode}">${category.cname}</option>
 						</c:forEach>
 					</select>
 				</td>

@@ -15,6 +15,9 @@ public class NorPro {
 		this.description=description;
 	}
 
+
+
+
 	public String getProduct_name() {
 		return product_name;
 	}

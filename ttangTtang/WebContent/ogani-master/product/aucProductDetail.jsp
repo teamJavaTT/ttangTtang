@@ -144,7 +144,7 @@
 			<div class="col-lg-6 col-md-6">
 				<div class="product__details__text">
 					<h3>제목</h3>
-					<div class="product__details__price" id="now_price">50마넌~~</div>
+					<div class="product__details__price" id="now_price">현재 판매 금액</div>
 					<p>제품 설명</p>
 					<div class="product__details__quantity">
 						가격제시 <input type="text"><input type="button" value="등록">

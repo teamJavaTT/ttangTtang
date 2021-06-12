@@ -57,9 +57,7 @@
 
 </section>
 
-	<!--   <form id="form1" name="form1" method="post"
-        enctype="multipart/form-data"> -->
-	<!-- 파일업로드를 위해 추가하는 타입 -->
+	
 <!-- Hero Section End -->
 
 <title>상품 등록</title>
@@ -185,10 +183,9 @@ label {
 
 <!-- 상품 등록 section begin -->
 <section>
-	<h3 style="
-    text-align: center;">경매 상품 등록</h3>
+	<h3 style="text-align: center;">경매 상품 등록</h3>
 <div class="container">
-	<form id="form1" name="form1" method="post"
+	<form id="form1" name="form1" action="aucProductWrite.do"  method="post"
 		enctype="multipart/form-data" style=margin-left:420px;margin-top:20px;margin-bottom:10px;>
 		<!-- 파일업로드를 위해 추가하는 타입 -->
 
@@ -199,12 +196,13 @@ label {
 			</tr>
 			<tr>
 				<td>카테고리:</td>
-				<td><select name="category">
-				<option>디지털기기</option>
-				<option>빙수</option>
-				<option>코코</option>
-				<option>제리</option>
-				</select>
+					<td>
+					<select name="category">
+                        <c:forEach var="category" items="${mainPage.category}">
+                       <option val="${category.ccode}">${category.cname}</option>
+						</c:forEach>
+					</select>
+				</td>
 			</tr>
 
 			<tr>
@@ -218,22 +216,48 @@ label {
 			</tr>
 			<tr>
 				<td>경매기간:</td>
-				
-			<label for="end_time"></label>
 				<td>
-					<select name="end_time">
-						<option val="1">1시간</option>	
-						<option val="3">3시간</option>
-						<option val="5">5시간</option>
-						<option val="10">10시간</option>
-						<option val="24">24시간</option>
-						<option val="72">3일</option>
+				<select name="end_time">
+						<option value="1">1일</option>	
+						<option value="2">2일</option>
+						<option value="3">3일</option>
+						<option value="4">4일</option>
+						<option value="5">5일</option>
+						<option value="6">6일</option>	
+								</select>
+			
+					<select name="end_day">
+						<option value="1">1시간</option>	
+						<option value="2">2시간</option>
+						<option value="3">3시간</option>
+						<option value="4">4시간</option>
+						<option value="5">5시간</option>
+						<option value="6">6시간</option>
+						<option value="7">7시간</option>	
+						<option value="8">8시간</option>
+						<option value="9">9시간</option>
+						<option value="10">10시간</option>
+						<option value="11">11시간</option>
+						<option value="12">12시간</option>
+						<option value="13">13시간</option>	
+						<option value="14">14시간</option>
+						<option value="15">15시간</option>
+						<option value="16">16시간</option>
+						<option value="17">17시간</option>
+						<option value="18">18시간</option>
+						<option value="19">19시간</option>	
+						<option value="20">20시간</option>
+						<option value="21">21시간</option>
+						<option value="22">22시간</option>
+						<option value="23">23시간</option>
+						<option value="24">24시간</option>
 					</select>
+					
 				</td>
 			</tr>
 			<tr>
 				<td style="float: left;">상품설명:</td>
-				<td><textarea id="description" style="resize: none;width: 306px;height: 176px;"></textarea></td>
+				<td><textarea name="description" id="description" style="resize: none;width: 306px;height: 176px;"></textarea></td>
 			</tr>
 		</table>
 			<div class="filebox">
@@ -243,18 +267,17 @@ label {
 
 				<tr>
 				<td><input class="upload-name" value="파일선택" disabled="disabled" multiple/>
-				<label for="ex_filename">업로드</label> <input type="file"
+				<label for="ex_filename">업로드</label> <input type="file"  name="imageface"
 					id="ex_filename" class="upload-hidden">
 					</td>
 					</tr>	
-					 <div id="preview">
-    </div>
+					 <div id="preview"></div>
 			<tr>
 
-				<td colspan="2" align="center"><input type="button" value="등록"
-					onclick="norProductWrite"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+				<td colspan="2" align="center">
+					<input type="submit" value="등록"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
 					<input type="button" value="목록"
-					onclick="location.href='${path}/admin/product/list.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
+					onclick="location.href='${path}/../index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
 				</td>
 			</tr>
 			</table> 	

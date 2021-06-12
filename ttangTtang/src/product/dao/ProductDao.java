@@ -16,7 +16,7 @@ import product.model.NorPro;
 public class ProductDao {
 
 	// 경매 상품 등록
-	public AucPro insert(Connection conn, AucPro aucProduct) throws SQLException {
+	public AucPro insertAuc(Connection conn, AucPro aucProduct) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -43,7 +43,7 @@ public class ProductDao {
 	}
 
 	//일반 상품 등록
-	public NorPro insert(Connection conn, NorPro norProduct) throws SQLException {
+	public NorPro insertNor(Connection conn, NorPro norProduct) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;

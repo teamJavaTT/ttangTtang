@@ -23,7 +23,7 @@ public class ProductService {
 			conn.setAutoCommit(false);
 			
 			NorPro norProduct = toNorProWrite(norwriteReq);
-			NorPro savedNorProduct = productDao.insert(conn , norProduct);
+			NorPro savedNorProduct = productDao.insertNor(conn, norProduct);
 			if (savedNorProduct == null) {
 				throw new RuntimeException("fail to insert article");
 			}
@@ -52,7 +52,7 @@ public class ProductService {
 			conn.setAutoCommit(false);
 			
 			AucPro aucProduct =toAucProWrite(aucwriteReq);
-			AucPro savedAucProduct = productDao.insert(conn , aucProduct);
+			AucPro savedAucProduct = productDao.insertAuc(conn , aucProduct);
 			if (savedAucProduct == null) {
 				throw new RuntimeException("fail to insert article");
 			}

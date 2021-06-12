@@ -47,7 +47,8 @@ public class AucProductHandler implements CommandHandler {
 			String fileDir = context.getRealPath("/ttangTtang/ogani-master/product/preview");
 
 			// 파일 저장
-			MultipartRequest multi = new MultipartRequest(request, // 객체
+			MultipartRequest multi = new MultipartRequest(
+					request, // 객체
 					fileDir, // 저장경로
 					5 * 1024 * 1024, // 파일 최대 크기
 					"UTF-8" // 파일 인코딩

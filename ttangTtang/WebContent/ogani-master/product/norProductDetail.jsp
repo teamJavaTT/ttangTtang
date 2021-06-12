@@ -42,14 +42,14 @@
                     <div class="product__details__text">
                         <h3>제목</h3>
                         
-                        <div class="product__details__price">$50.00</div>
+                        <div class="product__details__price">가격</div>
                         <p>제품 설명</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
+                        <a href="#" class="primary-btn">판매자와 연락하기</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>상품 상태 </b> <span id="state">예약중</span></li>
