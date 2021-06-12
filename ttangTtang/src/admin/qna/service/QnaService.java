@@ -43,7 +43,7 @@ public class QnaService {
 	private Qnacolumn toArticle(Qna req) {
 		Date now = new Date();
 				
-		return new Qnacolumn(null, req.getuserid(), req.getqtit(), req.getqtext(), now); //null에 아이디 추가
+		return new Qnacolumn(null, req.getuserid(), req.getqtit(), req.getqtext(), now, "N", null, null); //null에 아이디 추가
 	}
 	// 글 입력하기 끝
 	
@@ -122,6 +122,28 @@ public class QnaService {
 	// 수정 끝
 	private Qnacolumn toQnaMod(int delNo, Qna req) {
 		Date now = new Date();
-		return new Qnacolumn(delNo, null, req.getqtit(), req.getqtext(), now);
+		return new Qnacolumn(delNo, null, req.getqtit(), req.getqtext(), now, "N", null, null);
+	}
+	
+	//댓글
+	public Integer qnaAnswerUpdate(int delNo, String answerContent) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+
+			adminDao.qnaAnswerUpdate(conn, delNo, answerContent);
+			conn.commit();
+
+			return null;
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} catch (RuntimeException e) {
+			JdbcUtil.rollback(conn);
+			throw e; 
+		} finally {
+			JdbcUtil.close(conn);
+		}
 	}
 }

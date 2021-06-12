@@ -18,7 +18,7 @@ public class AdminDao {
 		ResultSet rs = null;
 		// insert 부분 구문
 		try {
-			pstmt = conn.prepareStatement("insert into qna values (qna_seq.NEXTVAL,?,?,?,sysdate,null,null,null)");
+			pstmt = conn.prepareStatement("insert into qna values (qna_seq.NEXTVAL,?,?,?,sysdate,'N',null,null)");
 
 			pstmt.setString(1, article.getuserid());
 			pstmt.setString(2, article.getqtit());
@@ -30,7 +30,7 @@ public class AdminDao {
 				rs = stmt.executeQuery("select max(qno) from Qna");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Qnacolumn(newNo, article.getuserid(), article.getqtit(), article.getqtext(), article.getqdate());
+					return new Qnacolumn(newNo, article.getuserid(), article.getqtit(), article.getqtext(), article.getqdate(), "N", null, null);
 				}
 			}
 			return null;
@@ -108,7 +108,7 @@ public class AdminDao {
 	 * JdbcUtil.close(rs); JdbcUtil.close(pstmt); } }
 	 */	
 	private Qnacolumn convertQna(ResultSet rs) throws SQLException {
-		return new Qnacolumn(rs.getInt("qno"), rs.getString("userid"), rs.getString("qtit"), rs.getString("qtext"), rs.getDate("qdate")); // null에 아이디 추가
+		return new Qnacolumn(rs.getInt("qno"), rs.getString("userid"), rs.getString("qtit"), rs.getString("qtext"), rs.getDate("qdate"), rs.getString("patext"), rs.getString("qstext"), rs.getDate("qsdate")); // null에 아이디 추가
 	}
 	// select 부분 끝
 	
@@ -137,7 +137,7 @@ public class AdminDao {
 				rs = stmt.executeQuery("select max(qno) from qna");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Qnacolumn(newNo, qna.getuserid(), qna.getqtit(), qna.getqtext(), qna.getqdate()); // null에 아이디 추가
+					return new Qnacolumn(newNo, qna.getuserid(), qna.getqtit(), qna.getqtext(), qna.getqdate(), "N", null, null); // null에 아이디 추가
 				}
 			}
 		return null;
@@ -155,6 +155,25 @@ public class AdminDao {
 						"delete from qna where qno = ?")) {
 			pstmt.setInt(1, delNo);
 			return pstmt.executeUpdate();
+		}
+	}
+	
+	//댓글
+	public Qnacolumn qnaAnswerUpdate(Connection conn, int delNo, String answerContent) throws SQLException {
+		PreparedStatement pstmt = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("update qna set patext = 'Y', qstext = ?, qsdate = sysdate where qno = ?");
+			pstmt.setString(1, answerContent);
+			pstmt.setInt(2, delNo);
+			pstmt.executeUpdate();
+
+			return null;
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+			JdbcUtil.close(pstmt);
 		}
 	}
 }

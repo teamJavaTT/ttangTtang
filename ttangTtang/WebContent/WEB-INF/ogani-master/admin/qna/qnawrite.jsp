@@ -57,6 +57,7 @@
 				</section>
 				<section class="content">
 					<form action="qnawrite.do" method="post">
+					<input type="hidden" name="userid" value="${memberUser.userid}">
 						<table>
 							<thead>
 								<tr>
@@ -64,9 +65,6 @@
 								</tr>
 							</thead>
 							</tbody>
-								<tr>
-									<td class="contents" colspan="4" style="padding-left: 0px;"><input type="text" placeholder="아이디" name="userid" maxlength="200" ></td><!-- readonly -->
-								</tr>
 								<tr>
 									<td class="contents" colspan="4" style="padding-left: 0px;"><input type="text" placeholder="글 제목" name="title" maxlength="200"></td>
 								</tr>
