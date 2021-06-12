@@ -16,7 +16,7 @@ public class QnadeleteHandler implements CommandHandler {
 		int delNo = Integer.parseInt(requestNo);
 		
 		qnaService.getQnaDelete(delNo);
-		return "/WEB-INF/ogani-master/admin/notice/noticedeletesuccess.jsp";
+		return "/WEB-INF/ogani-master/admin/qna/qnadeletesuccess.jsp";
 	}
 
 }

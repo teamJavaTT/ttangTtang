@@ -21,7 +21,7 @@ private QnaService qnaService = new QnaService();
 		try {
 			QnaData qnaData = qnaService.getQnaRead(qnaNum);
 			req.setAttribute("qnaData", qnaData);
-			return "/WEB-INF/ogani-master/admin/notice/noticeread.jsp";
+			return "/WEB-INF/ogani-master/admin/qna/qnaread.jsp";
 		} catch (ArticleNotFoundException e) {
 			req.getServletContext().log("no article", e);
 			res.sendError(HttpServletResponse.SC_NOT_FOUND);

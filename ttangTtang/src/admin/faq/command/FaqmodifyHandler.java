@@ -47,6 +47,7 @@ public class FaqmodifyHandler implements CommandHandler {
 	
 	// 데이터를 보내는 것
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		req.setCharacterEncoding("utf-8");
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
 		String requestNo = req.getParameter("no");

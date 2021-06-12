@@ -34,6 +34,7 @@ public class NoticewriteHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		req.setCharacterEncoding("utf-8");
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
 

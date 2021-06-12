@@ -1,15 +1,14 @@
-package admin.qna.service;
+package admin.userproduct.service;
 
-public class QnaUser {
+public class UserProductUser {
 	private String qno;
 	private String userid;
 	private String qtit;
 	private String qtext;
 	private String qdate;
 
-	public QnaUser(String qno, String userid, String qtit, String qtext, String qdate) {
+	public UserProductUser(String qno, String userid, String qtit, String qtext, String qdate) {
 		this.qno = qno;
-		this.userid = userid;
 		this.qtit = qtit;
 		this.qtext = qtext;
 		this.qdate = qdate;
@@ -18,9 +17,7 @@ public class QnaUser {
 	public String getqno() {
 		return qno;
 	}
-	public String getuserid() {
-		return userid;
-	}
+
 	public String getqtit() {
 		return qtit;
 	}

@@ -1,12 +1,12 @@
-package admin.qna.service;
+package admin.userproduct.service;
 
 import java.util.List;
 
-import admin.qna.model.Qnacolumn;
+import admin.userproduct.model.UserProductcolumn;
 
-public class QnaPage {
+public class UserProductPage {
 
-	private List<Qnacolumn> qna;
+	private List<UserProductcolumn> userproduct;
 	
 	private int total;
 	private int currentPage;
@@ -16,10 +16,10 @@ public class QnaPage {
 	private int countupPage;
 	private int countdownPage;
 	
-	public QnaPage(int total, int pageNo, int size, List<Qnacolumn> qna) {
+	public UserProductPage(int total, int pageNo, int size, List<UserProductcolumn> userproduct) {
 		this.total = total;
 		this.currentPage = pageNo;
-		this.qna = qna;
+		this.userproduct = userproduct;
 		if (total == 0) {
 			totalPages = 0;
 			startPage = 0;
@@ -37,8 +37,8 @@ public class QnaPage {
 			if (endPage > totalPages) endPage = totalPages;
 		}
 	}
-	public List<Qnacolumn> getQna() {
-		return qna;
+	public List<UserProductcolumn> getUserProduct() {
+		return userproduct;
 	}
 	
 	// page 분할

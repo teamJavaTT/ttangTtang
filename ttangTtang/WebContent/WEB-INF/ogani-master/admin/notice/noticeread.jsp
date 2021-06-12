@@ -17,8 +17,8 @@
 					</div>
 					<ul>
 						<li><a href="noticelist.do">공지사항</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
+						<li><a href="qnalist.do">Q&A</a></li>
+						<li><a href="faqlist.do">FAQ</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의
 								소리</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/userlist.jsp">사용자
@@ -79,8 +79,8 @@
 												value="${empty param.pageNo ? '1' : param.pageNo}" />
 												<input type="button" value="목록" onclick="location.href='noticelist.do?pageNo=${pageNo}'">
 												<c:if test="${authUser.id == articleData.article.writer.id}">
-													<input type="button" value="게시글수정" onclick="location.href='noticemodify.do?no=${faqData.faq.fno}'">
-													<input type="hidden" value="${faqData.faq.fno}" id="delNo">
+													<input type="button" value="게시글수정" onclick="location.href='noticemodify.do?no=${noticeData.notice.mno}'">
+													<input type="hidden" value="${noticeData.notice.mno}" id="delNo">
 													<input type="button" value="게시글삭제" id="noticeDel">
 												</c:if>
 											</td>
@@ -100,6 +100,6 @@
 </section>
 <!-- Hero Section End -->
 
-<script src="/ttangTtang/js/admin/main.js" ></script>
+<script src="/ttangTtang/js/admin/main.js"></script>
 
 <%@ include file="../../include/footer.jsp"%>

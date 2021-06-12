@@ -92,7 +92,7 @@
 												</tr>
 											</c:forEach>
 												<tr>
-													<td colspan="4" style="padding-left: 0px;">
+													<td colspan="5" style="padding-left: 0px;">
 														<c:if test="${qnaPage.startPage > 10}">
 															<a href="qnalist.do?pageNo=${qnaPage.startPage - 10}">[이전]</a>
 														</c:if>
@@ -108,7 +108,7 @@
 										</table>
 										<table style="text-align: center;">
 											<tr>
-												<td class="column4" colspan="1"><a href="qnaewrite.do">[게시글쓰기]</a></td>
+												<td class="column4" colspan="1"><a href="qnawrite.do">[게시글쓰기]</a></td>
 											</tr>
 										</table>
 									</form>

@@ -43,7 +43,7 @@ public class QnaService {
 	private Qnacolumn toArticle(Qna req) {
 		Date now = new Date();
 				
-		return new Qnacolumn(null, null, req.getqtit(), req.getqtext(), now); //null에 아이디 추가
+		return new Qnacolumn(null, req.getuserid(), req.getqtit(), req.getqtext(), now); //null에 아이디 추가
 	}
 	// 글 입력하기 끝
 	

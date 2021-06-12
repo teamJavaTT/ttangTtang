@@ -31,12 +31,13 @@ public class QnawriteHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		req.setCharacterEncoding("utf-8");
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
 
 		// NoticeRequest writeReq =new NoticeRequest(new Notice(noticeuser.getmno(),
 		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
-		Qna writeReq = new Qna(req.getParameter("title"), req.getParameter("content"));
+		Qna writeReq = new Qna(req.getParameter("userid"), req.getParameter("title"), req.getParameter("content"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;

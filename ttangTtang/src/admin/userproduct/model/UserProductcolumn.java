@@ -1,8 +1,8 @@
- package admin.qna.model;
+ package admin.userproduct.model;
 
 import java.util.Date;
 
-public class Qnacolumn {
+public class UserProductcolumn {
 
 	private Integer qno;
 	private String userid;
@@ -10,7 +10,7 @@ public class Qnacolumn {
 	private String qtext;
 	private Date qdate;
 	
-	public Qnacolumn(Integer qno, String userid, String qtit, String qtext, Date qdate) {
+	public UserProductcolumn(Integer qno, String userid, String qtit, String qtext, Date qdate) {
 		this.qno = qno;
 		this.userid = userid;
 		this.qtit = qtit;

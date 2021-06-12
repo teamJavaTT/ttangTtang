@@ -36,9 +36,9 @@
 						<i class="fa fa-bars"></i> <span>All departments</span>
 					</div>
 					<ul>
-						<li><a href="/ttangTtang/ogani-master/admin/notice.jsp">공지사항</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
+						<li><a href="noticelist.do">공지사항</a></li>
+						<li><a href="qnalist.do">Q&A</a></li>
+						<li><a href="faqlist.do">FAQ</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의 소리</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/userlist.jsp">사용자 게시글 관리</a></li>
 						<li><a href="/ttangTtang/ogani-master/admin/userinfo.jsp">사용자 회원정보 관리</a></li>
@@ -56,27 +56,29 @@
 					<h2>Q&A</h2>
 				</section>
 				<section class="content">
-					<table>
-						<thead>
-							<tr>
-								<th colspan="4" style="text-align: center;">Q&A 글쓰기 양식</th>
-							</tr>
-						</thead>
-						</tbody>
-							<tr>
-								<td class="contents" colspan="4" style="padding-left: 0px;"><input type="text" placeholder="아이디" name="title" maxlength="200"></td>
-							</tr>
-							<tr>
-								<td class="contents" colspan="4" style="padding-left: 0px;"><input type="text" placeholder="글 제목" name="title" maxlength="200"></td>
-							</tr>
-							<tr>
-								<td class="contents" colspan="4" style="padding-left: 0px; "><textarea rows="10" cols="100%" placeholder="내용" name="content"></textarea></td>
-							</tr>
-							<tr>
-								<td class="column4"><a href="#">[글 올리기]</a></td>
-							</tr>
-						</tbody>
-					</table>
+					<form action="qnawrite.do" method="post">
+						<table>
+							<thead>
+								<tr>
+									<th colspan="4" style="text-align: center;">Q&A 글쓰기 양식</th>
+								</tr>
+							</thead>
+							</tbody>
+								<tr>
+									<td class="contents" colspan="4" style="padding-left: 0px;"><input type="text" placeholder="아이디" name="userid" maxlength="200" ></td><!-- readonly -->
+								</tr>
+								<tr>
+									<td class="contents" colspan="4" style="padding-left: 0px;"><input type="text" placeholder="글 제목" name="title" maxlength="200"></td>
+								</tr>
+								<tr>
+									<td class="contents" colspan="4" style="padding-left: 0px;"><textarea rows="10" cols="100%" placeholder="내용" name="content"></textarea></td>
+								</tr>
+								<tr>
+									<td class="column4"><input type="submit" value="글 등록"></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
 				</section>
 			</div>
 		</div>

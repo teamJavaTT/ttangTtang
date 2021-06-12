@@ -13,7 +13,7 @@ import admin.qna.service.ArticleNotFoundException;
 import admin.qna.service.QnaData;
 
 public class QnamodifyHandler implements CommandHandler {
-	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/qna/qnamodify.jsp";
 	private QnaService qnaService = new QnaService();
 
 	@Override
@@ -35,8 +35,8 @@ public class QnamodifyHandler implements CommandHandler {
 		int qnaNum = Integer.parseInt(noVal);
 		try {
 			QnaData qnaData = qnaService.getQnaMod(qnaNum);
-			req.setAttribute("QnaData", qnaData);
-			return "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
+			req.setAttribute("qnaData", qnaData);
+			return "/WEB-INF/ogani-master/admin/qna/qnamodify.jsp";
 		} catch (ArticleNotFoundException e) {
 			req.getServletContext().log("no article", e);
 			res.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -47,13 +47,14 @@ public class QnamodifyHandler implements CommandHandler {
 	
 	// 데이터를 보내는 것
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		req.setCharacterEncoding("utf-8");
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
 		String requestNo = req.getParameter("no");
 		int delNo = Integer.parseInt(requestNo);
 		// NoticeRequest writeReq =new NoticeRequest(new Notice(noticeuser.getmno(),
 		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
-		Qna modReq = new Qna(req.getParameter("title"), req.getParameter("content"));
+		Qna modReq = new Qna(req.getParameter("userid"),req.getParameter("title"), req.getParameter("content"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
@@ -62,7 +63,7 @@ public class QnamodifyHandler implements CommandHandler {
 		int qnaModno = qnaService.qnamod(delNo, modReq);
 		req.setAttribute("noticeModno", qnaModno);
 
-		return "/WEB-INF/ogani-master/admin/notice/noticesuccess.jsp";
+		return "/WEB-INF/ogani-master/admin/qna/qnasuccess.jsp";
 	}
 
 	/*

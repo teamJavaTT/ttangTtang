@@ -1,12 +1,12 @@
-package admin.qna.model;
+package admin.userproduct.model;
 
-public class Qna {
+public class UserProduct {
 
 	private String userid;
 	private String qtit;
 	private String qtext;
 
-	public Qna(String userid, String qtit, String qtext) {
+	public UserProduct(String userid, String qtit, String qtext) {
 		
 		this.userid = userid;
 		this.qtit = qtit;
