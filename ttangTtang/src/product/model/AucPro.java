@@ -4,13 +4,13 @@ public class AucPro {
 	
 	private String product_name;
 	private String category;
-	private int max_price;
-	private int min_price;
+	private String max_price;
+	private String min_price;
 	private String end_time;
 	private String description;
 	private String imageface;
 	
-	public AucPro(String product_name,String category, int max_price, int min_price, String end_time, String description,String imageface) {
+	public AucPro(String product_name,String category, String max_price, String min_price, String end_time, String description,String imageface) {
 	
 		this.product_name=product_name;
 		this.category=category;
@@ -24,14 +24,14 @@ public class AucPro {
 	public String getProduct_name() {
 		return product_name;
 	}
-	public String getCategory() {
+	public String category() {
 		return category;
 	}
 	
-	public int getMax_price() {
+	public String getMax_price() {
 		return max_price;
 	}
-	public int getMin_price() {
+	public String getMin_price() {
 		return min_price;
 	}
 	public String getEnd_time() {

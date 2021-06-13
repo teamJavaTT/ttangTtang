@@ -16,7 +16,7 @@ public class ProductService {
 	private ProductDao productDao = new ProductDao();
 	
 	//일반상품
-	public void NorProInsert (NorProRequeste norwriteReq) throws Exception{
+	public String NorPro (NorProRequeste norwriteReq) throws Exception{
 		Connection conn = null;
 		try{
 			conn= DBConnection.getConnection();
@@ -25,11 +25,11 @@ public class ProductService {
 			NorPro norProduct = toNorProWrite(norwriteReq);
 			NorPro savedNorProduct = productDao.insertNor(conn, norProduct);
 			if (savedNorProduct == null) {
-				throw new RuntimeException("실패");
+				throw new RuntimeException("fail to insert article");
 			}
 			conn.commit();
 			
-		
+		return savedNorProduct.getProduct_name();
 		}catch (SQLException e) {
 			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
@@ -45,7 +45,7 @@ public class ProductService {
 	}
 
 	//경매상품 
-	public String AucProInsert(AucProRequest aucwriteReq) throws Exception{
+	public String AucPro (AucProRequest aucwriteReq) throws Exception{
 		Connection conn = null;
 		try{
 			conn= DBConnection.getConnection();
@@ -54,7 +54,7 @@ public class ProductService {
 			AucPro aucProduct =toAucProWrite(aucwriteReq);
 			AucPro savedAucProduct = productDao.insertAuc(conn , aucProduct);
 			if (savedAucProduct == null) {
-				throw new RuntimeException("실패");
+				throw new RuntimeException("fail to insert article");
 			}
 			conn.commit();
 			

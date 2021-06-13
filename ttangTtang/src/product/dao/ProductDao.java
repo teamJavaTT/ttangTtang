@@ -25,23 +25,22 @@ public class ProductDao {
 			pstmt = conn.prepareStatement(
 					"INSERT INTO PRODUCT(INO, USERID, CCODE, CNAME, AUCTIONCHECK, UAD, INAME, PRICE,MINPRICE,MAXPRICE,APRICENOW,APRICEEND,PRICETEXT, IMAGEFACE, VIEWCOUNT, LIKECOUNT, PDATE,ENDTIME, REDATE, UDATE, SELLCHECK)"
 							+ "VALUES(product_seq.NEXTVAL, '?', '?', '?', '?', '?','?', '?', '?', '?', '?', '?', '?', '?', 0, 0, sysdate,sysdate, sysdate, '?', '?')");
-		
+
 			pstmt.setString(7, aucProduct.getProduct_name());
-			pstmt.setInt(9, aucProduct.getMin_price());
-			pstmt.setInt(10, aucProduct.getMax_price());
+			pstmt.setString(9, aucProduct.getMin_price());
+			pstmt.setString(10, aucProduct.getMax_price());
 			pstmt.setString(13, aucProduct.getDescription());
 			pstmt.setString(14, aucProduct.getImageface());
 			pstmt.setString(18, aucProduct.getEnd_time());
-			pstmt.executeUpdate();
-		}finally {
+
+			return null;
+
+		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(stmt);
 			JdbcUtil.close(pstmt);
 		}
-		return aucProduct;
 	}
-		
-
 
 	//일반 상품 등록
 	public NorPro insertNor(Connection conn, NorPro norProduct) throws SQLException {
@@ -77,8 +76,8 @@ public class ProductDao {
 			pstmt = conn.prepareStatement(
 					"update product set  product_name= ?, min_price = ?,max_price=?,description=? where ino = ?");
 			pstmt.setString(1, aucProduct.getProduct_name());
-			pstmt.setInt(2, aucProduct.getMin_price());
-			pstmt.setInt(3, aucProduct.getMax_price());
+			pstmt.setString(2, aucProduct.getMin_price());
+			pstmt.setString(3, aucProduct.getMax_price());
 			pstmt.setString(4, aucProduct.getDescription());
 			pstmt.setString(5, aucProduct.getDescription());
 			return null;

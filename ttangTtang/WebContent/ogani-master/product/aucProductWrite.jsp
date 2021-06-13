@@ -198,7 +198,7 @@ label {
 				<td>카테고리:</td>
 					<td>
 					<select name="category">
-                        <c:forEach var="category" items="${category}">
+                        <c:forEach var="category" items="${mainPage.category}">
                        <option val="${category.ccode}">${category.cname}</option>
 						</c:forEach>
 					</select>

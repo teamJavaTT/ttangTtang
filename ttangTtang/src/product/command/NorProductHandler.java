@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import auth.service.MainPage;
 import auth.service.MainService;
-import member.service.DuplicateIdException;
 import mvc.command.CommandHandler;
 import product.service.NorProRequeste;
 import product.service.ProductService;
@@ -36,21 +35,14 @@ public class NorProductHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		NorProRequeste norReq=new NorProRequeste();
-		req.setCharacterEncoding("utf-8");
 		norReq.setProduct_name(req.getParameter("product_name"));
 		norReq.setCategory(req.getParameter("category"));
 		norReq.setPrice(req.getParameter("price"));
 		norReq.setDescription(req.getParameter("description"));
 
-		try{
-			productService.NorProInsert(norReq);
-			res.sendRedirect(req.getContextPath()+"/norProductDetail.jsp");
-		return null;
-		}catch(DuplicateIdException e) {
-			
-		}
 		return FORM_VIEW;
-		}
 		
 	}
 	
+	
+}
