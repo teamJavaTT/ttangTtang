@@ -223,19 +223,7 @@ preview-box {
 			alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
 	}
 
-	/* (function ($) {
-	    "use strict";
-
-		$("#noticeDel").on('click', function () {
-			var mno = $("#delNo").val();
-			var result = confirm("나가기");
-			if (result) {
-				location.href = 'noticedelete.do?no='+mno;
-			} else {
-				alert("취소");
-			}
-		}); 
-	 */
+	
 </script>
 
 </head>
@@ -263,7 +251,9 @@ preview-box {
 				<input multiple="multiple" type="file" name="file" style="width: 500px;">
 				
 				<input class="item mymsg" type="submit" value="전송" >
-			</form>  --> <input class="item mymsg" ; type="text"
+			</form>  --> 
+			
+			<input class="item mymsg" ; type="text"
 			placeholder="내용 입력" style="margin-top: 10px;">
 
 
