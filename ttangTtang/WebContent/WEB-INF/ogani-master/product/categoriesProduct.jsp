@@ -8,7 +8,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>상품보기</h2>
+						<c:forEach var="category" items="${category}">
+							<c:if test="${category.ccode eq param.categories}">
+								<h2>${category.cname}</h2>
+							</c:if>
+						</c:forEach>
                     </div>
                     <div class="featured__controls">
                         <ul>
