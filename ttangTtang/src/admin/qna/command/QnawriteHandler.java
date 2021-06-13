@@ -43,7 +43,7 @@ public class QnawriteHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 
-		int newArticleNo = qnaService.qnawrite(writeReq);
+		int newArticleNo = qnaService.qnaWrite(writeReq);
 		req.setAttribute("newArticleNo", newArticleNo);
 
 		return "/WEB-INF/ogani-master/admin/qna/qnasuccess.jsp";

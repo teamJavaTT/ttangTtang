@@ -4,51 +4,51 @@ import java.util.Date;
 
 public class Qnacolumn {
 
-	private Integer qno;
-	private String userid;
-	private String qtit;
-	private String qtext;
-	private Date qdate;
-	private String patext;
-	private String qstext;
-	private Date qsdate;
+	private Integer qNo;
+	private String userId;
+	private String qTit;
+	private String qText;
+	private Date qDate;
+	private String paText;
+	private String qsText;
+	private Date qsDate;
 	
-	public Qnacolumn(Integer qno, String userid, String qtit, String qtext, Date qdate, String patext, String qstext, Date qsdate) {
-		this.qno = qno;
-		this.userid = userid;
-		this.qtit = qtit;
-		this.qtext = qtext;
-		this.qdate = qdate;
-		this.patext = patext;
-		this.qstext = qstext;
-		this.qsdate = qsdate;
+	public Qnacolumn(Integer qNo, String userId, String qTit, String qText, Date qDate, String paText, String qsText, Date qsDate) {
+		this.qNo = qNo;
+		this.userId = userId;
+		this.qTit = qTit;
+		this.qText = qText;
+		this.qDate = qDate;
+		this.paText = paText;
+		this.qsText = qsText;
+		this.qsDate = qsDate;
 	}
 
-	public Integer getqno() {
-		return qno;
+	public Integer getQno() {
+		return qNo;
 	}
 	
-	public String getuserid() {
-		return userid;
+	public String getUserId() {
+		return userId;
 	}
-	public String getqtit() {
-		return qtit;
+	public String getQtit() {
+		return qTit;
 	}
-	public String getqtext() {
-		return qtext;
+	public String getQtext() {
+		return qText;
 	}
-	public Date getqdate() {
-		return qdate;
+	public Date getQdate() {
+		return qDate;
 	}
 	
 	// 댓글
-	public String getpatext() {
-		return patext;
+	public String getPatext() {
+		return paText;
 	}
-	public String getqstext() {
-		return qstext;
+	public String getQstext() {
+		return qsText;
 	}
-	public Date getqsdate() {
-		return qsdate;
+	public Date getQsdate() {
+		return qsDate;
 	}
 }

@@ -2,26 +2,26 @@ package admin.qna.model;
 
 public class Qna {
 
-	private String userid;
-	private String qtit;
-	private String qtext;
+	private String userId;
+	private String qTit;
+	private String qText;
 
-	public Qna(String userid, String qtit, String qtext) {
+	public Qna(String userId, String qTit, String qText) {
 		
-		this.userid = userid;
-		this.qtit = qtit;
-		this.qtext = qtext;
+		this.userId = userId;
+		this.qTit = qTit;
+		this.qText = qText;
 	}
 	
-	public String getuserid() {
-		return userid;
+	public String getUserId() {
+		return userId;
 	}
-	public String getqtit() {
-		return qtit;
+	public String getQtit() {
+		return qTit;
 	}
 
-	public String getqtext() {
-		return qtext;
+	public String getQtext() {
+		return qText;
 	}
 
 }

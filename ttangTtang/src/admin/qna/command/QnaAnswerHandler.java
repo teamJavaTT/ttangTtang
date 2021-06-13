@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
 import admin.qna.service.QnaService;
-import admin.qna.model.Qna;
-import admin.qna.service.ArticleNotFoundException;
-import admin.qna.service.QnaData;
 
 public class QnaAnswerHandler implements CommandHandler {
 	private QnaService qnaService = new QnaService();

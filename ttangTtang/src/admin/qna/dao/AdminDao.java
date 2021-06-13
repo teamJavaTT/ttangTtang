@@ -12,7 +12,7 @@ import admin.qna.model.Qnacolumn;
 import jdbc.JdbcUtil;
 
 public class AdminDao {
-	public Qnacolumn insert(Connection conn, Qnacolumn article) throws SQLException {
+	public Qnacolumn qnaInsert(Connection conn, Qnacolumn qna) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -20,9 +20,9 @@ public class AdminDao {
 		try {
 			pstmt = conn.prepareStatement("insert into qna values (qna_seq.NEXTVAL,?,?,?,sysdate,'N',null,null)");
 
-			pstmt.setString(1, article.getuserid());
-			pstmt.setString(2, article.getqtit());
-			pstmt.setString(3, article.getqtext());
+			pstmt.setString(1, qna.getUserId());
+			pstmt.setString(2, qna.getQtit());
+			pstmt.setString(3, qna.getQtext());
 			int insertedCount = pstmt.executeUpdate();
 
 			if (insertedCount > 0) {
@@ -30,7 +30,7 @@ public class AdminDao {
 				rs = stmt.executeQuery("select max(qno) from Qna");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Qnacolumn(newNo, article.getuserid(), article.getqtit(), article.getqtext(), article.getqdate(), "N", null, null);
+					return new Qnacolumn(newNo, qna.getUserId(), qna.getQtit(), qna.getQtext(), qna.getQdate(), "N", null, null);
 				}
 			}
 			return null;
@@ -61,7 +61,7 @@ public class AdminDao {
 	}
 	
 	
-	public List<Qnacolumn> selectQna(Connection conn, int startNo, int endNo) throws SQLException {
+	public List<Qnacolumn> qnaSelect(Connection conn, int startNo, int endNo) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -71,7 +71,7 @@ public class AdminDao {
 			rs = pstmt.executeQuery();
 			List<Qnacolumn> result = new ArrayList<>();
 			while (rs.next()) {
-				result.add(convertQna(rs));
+				result.add(qnaConvert(rs));
 			}
 			return result;
 		} finally {
@@ -80,7 +80,7 @@ public class AdminDao {
 		}
 	}
 	
-	public Qnacolumn selectById(Connection conn, int no) throws SQLException {
+	public Qnacolumn qnaReadSelect(Connection conn, int no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -88,11 +88,11 @@ public class AdminDao {
 					"select * from qna where qno = ?");
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			Qnacolumn qnacolumn = null;
+			Qnacolumn qnaColumn = null;
 			if (rs.next()) {
-				qnacolumn = convertQna(rs);
+				qnaColumn = qnaConvert(rs);
 			}
-			return qnacolumn;
+			return qnaColumn;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
@@ -107,7 +107,7 @@ public class AdminDao {
 	 * (rs.next()) { result.add(convertNotice(rs)); } return result; } finally {
 	 * JdbcUtil.close(rs); JdbcUtil.close(pstmt); } }
 	 */	
-	private Qnacolumn convertQna(ResultSet rs) throws SQLException {
+	private Qnacolumn qnaConvert(ResultSet rs) throws SQLException {
 		return new Qnacolumn(rs.getInt("qno"), rs.getString("userid"), rs.getString("qtit"), rs.getString("qtext"), rs.getDate("qdate"), rs.getString("patext"), rs.getString("qstext"), rs.getDate("qsdate")); // null에 아이디 추가
 	}
 	// select 부분 끝
@@ -121,15 +121,15 @@ public class AdminDao {
 	 * { pstmt.setInt(1, no); pstmt.executeUpdate(); } }
 	 */
 	//업데이트
-	public Qnacolumn updateQna(Connection conn, Qnacolumn qna) throws SQLException {
+	public Qnacolumn qnaUpdate(Connection conn, Qnacolumn qna) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement("update qna set qtit = ?, qtext = ? where qno = ?");
-			pstmt.setString(1, qna.getqtit());
-			pstmt.setString(2, qna.getqtext());
-			pstmt.setInt(3, qna.getqno());
+			pstmt.setString(1, qna.getQtit());
+			pstmt.setString(2, qna.getQtext());
+			pstmt.setInt(3, qna.getQno());
 			int insertedCount = pstmt.executeUpdate();
 
 			if (insertedCount > 0) {
@@ -137,7 +137,7 @@ public class AdminDao {
 				rs = stmt.executeQuery("select max(qno) from qna");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Qnacolumn(newNo, qna.getuserid(), qna.getqtit(), qna.getqtext(), qna.getqdate(), "N", null, null); // null에 아이디 추가
+					return new Qnacolumn(newNo, qna.getUserId(), qna.getQtit(), qna.getQtext(), qna.getQdate(), "N", null, null); // null에 아이디 추가
 				}
 			}
 		return null;
@@ -149,10 +149,8 @@ public class AdminDao {
 	}
 	
 	// 삭제
-	public int deleteQna(Connection conn, int delNo) throws SQLException {
-		try (PreparedStatement pstmt = 
-				conn.prepareStatement(
-						"delete from qna where qno = ?")) {
+	public int qnaDelete(Connection conn, int delNo) throws SQLException {
+		try (PreparedStatement pstmt = conn.prepareStatement("delete from qna where qno = ?")) {
 			pstmt.setInt(1, delNo);
 			return pstmt.executeUpdate();
 		}

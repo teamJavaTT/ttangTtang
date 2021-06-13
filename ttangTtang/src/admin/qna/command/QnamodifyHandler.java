@@ -60,7 +60,7 @@ public class QnamodifyHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 
-		int qnaModno = qnaService.qnamod(delNo, modReq);
+		int qnaModno = qnaService.qnaMod(delNo, modReq);
 		req.setAttribute("noticeModno", qnaModno);
 
 		return "/WEB-INF/ogani-master/admin/qna/qnasuccess.jsp";
