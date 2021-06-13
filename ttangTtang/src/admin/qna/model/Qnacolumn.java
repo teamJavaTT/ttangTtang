@@ -5,7 +5,7 @@ import java.util.Date;
 public class Qnacolumn {
 
 	private Integer qNo;
-	private String userId;
+	private String userid;
 	private String qTit;
 	private String qText;
 	private Date qDate;
@@ -13,9 +13,9 @@ public class Qnacolumn {
 	private String qsText;
 	private Date qsDate;
 	
-	public Qnacolumn(Integer qNo, String userId, String qTit, String qText, Date qDate, String paText, String qsText, Date qsDate) {
+	public Qnacolumn(Integer qNo, String userid, String qTit, String qText, Date qDate, String paText, String qsText, Date qsDate) {
 		this.qNo = qNo;
-		this.userId = userId;
+		this.userid = userid;
 		this.qTit = qTit;
 		this.qText = qText;
 		this.qDate = qDate;
@@ -29,7 +29,7 @@ public class Qnacolumn {
 	}
 	
 	public String getUserId() {
-		return userId;
+		return userid;
 	}
 	public String getQtit() {
 		return qTit;

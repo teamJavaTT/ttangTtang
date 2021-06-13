@@ -82,7 +82,7 @@
 													<!-- 번호 -->
 													<td style="padding-left: 0px;">${qna.qno}</td>
 													<!-- 작성자 -->
-													<td style="padding-left: 0px;">${qna.userid}</td>
+													<td style="padding-left: 0px;">${qna.userId}</td>
 													<!-- 내용 -->
 													<td colspan="2" style="padding-left: 0px;"><a href="qnaread.do?no=${qna.qno}<%-- &pageNo=${noticePage.currentPage} --%>">
 													<c:out value="${qna.qtit}" /></a></td>
