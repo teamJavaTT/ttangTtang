@@ -45,4 +45,14 @@
     <servlet-name>aucProductWrite</servlet-name>
     <url-pattern>/aucProductWrite</url-pattern>
   </servlet-mapping>
+   <servlet>
+   <description></description>
+   <display-name>aucProductWrite</display-name>
+    <servlet-name>norProductWrite</servlet-name>
+    <jsp-file>/ogani-master/product/norProductWrite.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>norProductWrite</servlet-name>
+    <url-pattern>/norProductWrite</url-pattern>
+  </servlet-mapping>
 </web-app>

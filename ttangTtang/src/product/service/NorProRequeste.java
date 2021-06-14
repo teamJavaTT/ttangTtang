@@ -1,13 +1,19 @@
 package product.service;
 
 public class NorProRequeste {
+	private String userId;
 	private String product_name;
 	private String category;
 	private String price;
 	private String description;
 	
 	
-	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getProduct_name() {
 		return product_name;
 	}
