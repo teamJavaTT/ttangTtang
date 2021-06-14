@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import AES256.AES256Util;
+import member.service.IdFind;
 import member.service.LoginFailException;
 import member.service.MemberService;
 import member.service.User;
@@ -14,7 +15,7 @@ import mvc.command.CommandHandler;
 
 public class IdFindHandler implements CommandHandler {
 
-	private static final String FORM_VIEW = "/WEB-INF/ogani-master/login/login.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/ogani-master/login/idfind.jsp";
 	private MemberService memberService = new MemberService();
 
 	@Override
@@ -34,26 +35,26 @@ public class IdFindHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		AES256Util aes256Util = new AES256Util();
-		String id = req.getParameter("userid");
-		String password = aes256Util.encrypt(req.getParameter("upw"));
+		
+		String uname = req.getParameter("uname");
+		String uemail = req.getParameter("uemail");
 
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
 
-		if (id == null || id.isEmpty())
-			errors.put("id", Boolean.TRUE);
-		if (password == null || password.isEmpty())
-			errors.put("password", Boolean.TRUE);
+		if (uname == null || uname.isEmpty())
+			errors.put("uname", Boolean.TRUE);
+		if (uemail == null || uemail.isEmpty())
+			errors.put("uemail", Boolean.TRUE);
 
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
 
 		try {
-			User user = memberService.login(id, password);
-			req.getSession().setAttribute("memberUser", user);
-			res.sendRedirect(req.getContextPath() + "/index.do");
+			String idfind= memberService.memberidFind(uname, uemail);
+			req.getSession().setAttribute("memberUser", idfind);
+			res.sendRedirect(req.getContextPath() + "/idfind.do");
 			return null;
 		} catch (LoginFailException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);
