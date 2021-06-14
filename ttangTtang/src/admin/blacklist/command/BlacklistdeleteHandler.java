@@ -1,22 +1,22 @@
-package admin.notice.command;
+package admin.blacklist.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.notice.service.NoticeService;
+import admin.blacklist.service.BlacklistService;
 import mvc.command.CommandHandler;
 
-public class NoticedeleteHandler implements CommandHandler {
+public class BlacklistdeleteHandler implements CommandHandler {
 	
-	private NoticeService noticeService = new NoticeService();
+	private BlacklistService blacklistService = new BlacklistService();
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String requestNo = req.getParameter("no");
 		int delNo = Integer.parseInt(requestNo);
 		
-		noticeService.getNoticeDelete(delNo);
-		return "/WEB-INF/ogani-master/admin/notice/noticedeletesuccess.jsp";
+		blacklistService.getBlacklistDelete(delNo);
+		return "/WEB-INF/ogani-master/admin/userid/useridsuccess.jsp";
 	}
 
 }

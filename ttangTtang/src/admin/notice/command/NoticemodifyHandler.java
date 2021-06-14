@@ -9,12 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import admin.notice.service.NoticeService;
 import admin.notice.model.Notice;
-import admin.notice.model.Noticecolumn;
-import admin.notice.service.NoticeUser;
 import admin.notice.service.ArticleNotFoundException;
 import admin.notice.service.NoticeData;
-import admin.notice.service.NoticePage;
-import admin.notice.service.NoticeRequest;
 
 public class NoticemodifyHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
@@ -56,8 +52,6 @@ public class NoticemodifyHandler implements CommandHandler {
 		req.setAttribute("errors", errors);
 		String requestNo = req.getParameter("no");
 		int delNo = Integer.parseInt(requestNo);
-		// NoticeRequest writeReq =new NoticeRequest(new Notice(noticeuser.getmno(),
-		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
 		Notice modReq = new Notice(req.getParameter("title"), req.getParameter("content"));
 		
 		if (!errors.isEmpty()) {

@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/header.jsp"%>
 
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-
 <!-- Hero Section Begin -->
 <section class="hero">
 	<div class="container">
@@ -32,7 +29,7 @@
 
 			<div class="col-lg-9">
 				<section class="content-header">
-					<h2>사용자 회원정보 관리</h2>
+					<h2>블랙리스트 관리</h2>
 				</section>
 				<section class="content">
 					<div class="limiter">
@@ -48,29 +45,32 @@
 										<tbody>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td style="text-align: left;">
-													번호 : ${faqData.faq.fno}
+													번호 : ${blacklistData.blacklist.bNo}
 												</td>
 												<td style="text-align: left;">
-													작성일자 : ${faqData.faq.fdate}
+													작성일자 : ${blacklistData.blacklist.bDate}
+												</td>
+											</tr>
+											<tr style="border-bottom: 1px solid #444444;">
+												<td colspan="4" style="text-align: left;">
+													사용자 : ${blacklistData.blacklist.userId}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													제목 : ${faqData.faq.ftit}
+													차단된 사용자 : ${blacklistData.blacklist.bId}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
-												<td style="text-align: left;">
-													내용 : ${faqData.faq.ftext}
+												<td colspan="4" style="text-align: left;">
+													내용 : ${blacklistData.blacklist.bText}
 												</td>
 											</tr>
 										</tbody>
 										<tr>
 											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
 												value="${empty param.pageNo ? '1' : param.pageNo}" />
-												<input type="button" value="목록" onclick="location.href='faqlist.do?pageNo=${pageNo}'">
-												<input type="hidden" value="${faqData.faq.fno}" id="delNo">
-												<input type="button" value="게시글삭제" id="faqDel">
+												<input type="button" value="목록" onclick="location.href='blacklist.do?pageNo=${pageNo}'">
 											</td>
 										</tr>
 									</table>
@@ -84,6 +84,5 @@
 	</div>
 </section>
 
-<script src="/ttangTtang/js/admin/main.js"></script>
 
 <%@ include file="../../include/footer.jsp"%>

@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import admin.notice.service.NoticeService;
 import admin.notice.model.Notice;
-import admin.notice.service.NoticeUser;
-import admin.notice.service.NoticePage;
-import admin.notice.service.NoticeRequest;
 
 public class NoticewriteHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/admin/notice/noticewrite.jsp";
@@ -37,9 +34,6 @@ public class NoticewriteHandler implements CommandHandler {
 		req.setCharacterEncoding("utf-8");
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
-
-		// NoticeRequest writeReq =new NoticeRequest(new Notice(noticeuser.getmno(),
-		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
 		Notice writeReq = new Notice(req.getParameter("title"), req.getParameter("content"));
 		
 		if (!errors.isEmpty()) {
