@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import admin.faq.model.Faqcolumn;
 import auth.model.Product;
 import jdbc.JdbcUtil;
 import product.model.AucPro;
@@ -21,27 +22,26 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-
+		
 		try {
-			pstmt = conn.prepareStatement(
-					
-"INSERT INTO PRODUCT(INO,USERID,CCODE,CNAME,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME,REDATE,UDATE,SELLCHECK)"
-+ "VALUES(product_seq.NEXTVAL,?,null,?,'Y',null,?,?,?,?,?,0,0,sysdate,sysdate,?,sysdate,null,'N')");
+			pstmt = conn.prepareStatement("INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME,SELLCHECK)"
+										+ "VALUES(product_seq.NEXTVAL,?,?,'Y',null,?,?,?,?,?,0,0,sysdate,sysdate+"+aucProduct.getAuctionTime()+"/24,?,'N')");
 			pstmt.setString(1, aucProduct.getUserId()); //userId
 			pstmt.setString(2, aucProduct.getCategory());//cname
-			pstmt.setString(3, aucProduct.getProduct_name());//iname
-			pstmt.setString(4, aucProduct.getMin_price());//minPrice
-			pstmt.setString(5, aucProduct.getMax_price());//MaxPrice
-			pstmt.setString(6, aucProduct.getDescription());//PriceTexe
-			pstmt.setString(7, aucProduct.getImageface());//ImageFace
-			pstmt.setString(8,aucProduct.getEnd_day());//AuctionTime
+			pstmt.setString(3, aucProduct.getProductName());//iname
+			pstmt.setString(4, aucProduct.getMinPrice());//minPrice
+			pstmt.setString(5, aucProduct.getMaxPrice());//MaxPrice
+			pstmt.setString(6, aucProduct.getPriceText());//PriceTexe
+			pstmt.setString(7, aucProduct.getImageFace());//ImageFace
+			pstmt.setString(8,aucProduct.getAuctionTime());//AuctionTime
+			pstmt.executeUpdate();
 			
+			return null;
 		}finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(stmt);
 			JdbcUtil.close(pstmt);
 		}
-		return null;
 	}
 		
 
@@ -171,9 +171,9 @@ public class ProductDao {
 	}
 	
 	private Product convertProduct(ResultSet rs) throws SQLException {
-		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("cname"),
+		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"),
 				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
 				rs.getString("minprice"), rs.getString("maxprice"), rs.getString("pricetext"),
-				rs.getString("imageface"), rs.getString("redate"));
+				rs.getString("imageface"));
 	}
 }

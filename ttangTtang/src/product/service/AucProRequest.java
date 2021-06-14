@@ -1,76 +1,77 @@
 package product.service;
 
 public class AucProRequest {
-	
 	private String userId;
-	private String product_name;
 	private String category;
-	private String max_price;
-	private String min_price;
-	private String end_day;
-	private String end_time;
-	private String description;
-	private String imageface;
+	private String productName;
+	private String minPrice;
+	private String maxPrice;
+	private String priceText;
+	private String imageFace;
+	private String auctionTime;
 
-	
 	public String getUserId() {
 		return userId;
 	}
+
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-	
-	public String getProduct_name() {
-		return product_name;
-	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
 	}
 
 	public String getCategory() {
 		return category;
 	}
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getMax_price() {
-		return max_price;
-	}
-	public void setMax_price(String max_price) {
-		this.max_price = max_price;
-	}
-	public String getMin_price() {
-		return min_price;
-	}
-	public void setMin_price(String min_price) {
-		this.min_price = min_price;
+
+	public String getProductName() {
+		return productName;
 	}
 
-public String getEnd_day() {
-	return end_day;
-}
-public void setEnd_day(String end_day) {
-	this.end_day = end_day;
-}
-	public String getEnd_time() {
-		return end_time;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-	public void setEnd_time(String end_time) {
-		this.end_time = end_time;
+
+	public String getMinPrice() {
+		return minPrice;
 	}
-	public String getDescription() {
-		return description;
+
+	public void setMinPrice(String minPrice) {
+		this.minPrice = minPrice;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public String getMaxPrice() {
+		return maxPrice;
 	}
-	public String getImageface() {
-		return imageface;
+
+	public void setMaxPrice(String maxPrice) {
+		this.maxPrice = maxPrice;
 	}
-	public void setImageface(String imageface) {
-		this.imageface = imageface;
+
+	public String getPriceText() {
+		return priceText;
 	}
-	
-	
-	
+
+	public void setPriceText(String priceText) {
+		this.priceText = priceText;
+	}
+
+	public String getImageFace() {
+		return imageFace;
+	}
+
+	public void setImageFace(String imageFace) {
+		this.imageFace = imageFace;
+	}
+
+	public String getAuctionTime() {
+		return auctionTime;
+	}
+
+	public void setAuctionTime(String auctionTime) {
+		this.auctionTime = auctionTime;
+	}
+
 }

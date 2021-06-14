@@ -48,12 +48,8 @@ public class ProductService {
 		try{
 			conn= DBConnection.getConnection();
 			conn.setAutoCommit(false);
-			
 	
-			AucPro savedAucProduct = productDao.insertAuc(conn , aucwriteReq);
-			if (savedAucProduct == null) {
-				throw new RuntimeException("실패");
-			}
+			productDao.insertAuc(conn , aucwriteReq);
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);

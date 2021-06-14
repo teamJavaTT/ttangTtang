@@ -4,7 +4,7 @@ public class ProductToday {
 
 	private String ino;
 	private String userid;
-	private String cname;
+	private String ccode;
 	private String auctioncheck;
 	private String uad;
 	private String iname;
@@ -13,12 +13,11 @@ public class ProductToday {
 	private String maxprice;
 	private String pricetext;
 	private String imageface;
-	private String redate;
 
-	public ProductToday(String ino, String userid, String cname, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String pricetext, String imageface, String redate) {
+	public ProductToday(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String pricetext, String imageface) {
 		this.ino = ino;
 		this.userid = userid;
-		this.cname = cname;
+		this.ccode = ccode;
 		this.auctioncheck = auctioncheck;
 		this.uad = uad;
 		this.iname = iname;
@@ -27,7 +26,6 @@ public class ProductToday {
 		this.maxprice = maxprice;
 		this.pricetext = pricetext;
 		this.imageface = imageface;
-		this.redate = redate;
 	}
 
 	public String getIno() {
@@ -36,8 +34,8 @@ public class ProductToday {
 	public String getUserid() {
 		return userid;
 	}
-	public String getCname() {
-		return cname;
+	public String getCcode() {
+		return ccode;
 	}
 	public String getAuctioncheck() {
 		return auctioncheck;	
@@ -62,8 +60,5 @@ public class ProductToday {
 	}
 	public String getImageface() {
 		return imageface;
-	}
-	public String getRedate() {
-		return redate;
 	}
 }

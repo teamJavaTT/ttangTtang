@@ -1,10 +1,14 @@
 package product.command;
 
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import auth.model.Category;
 import auth.service.MainService;
@@ -47,19 +51,23 @@ public class AucProductHandler implements CommandHandler {
 		User user = (User) session.getAttribute("memberUser");
 		
 		req.setCharacterEncoding("utf-8");
+		
+		int endDay = Integer.parseInt(req.getParameter("end_day"));
+		int endTime = Integer.parseInt(req.getParameter("end_time"));
 			
-		aucReq.setProduct_name(user.getUserid());
-		aucReq.setProduct_name(req.getParameter("product_name"));
-		aucReq.setProduct_name(req.getParameter("category"));
-		aucReq.setMax_price(req.getParameter("max_price"));
-		aucReq.setMin_price(req.getParameter("min_price"));
-		aucReq.setDescription(req.getParameter("description"));
-		aucReq.setImageface(req.getParameter("imageface"));
+		//aucReq.setUserId(user.getUserid());
+		aucReq.setUserId("song127");
+		aucReq.setCategory(req.getParameter("category"));
+		aucReq.setProductName(req.getParameter("productName"));
+		aucReq.setMinPrice(req.getParameter("min_price"));
+		aucReq.setMaxPrice(req.getParameter("max_price"));
+		aucReq.setPriceText(req.getParameter("description"));
+		aucReq.setImageFace("/ttangTtang/file/"+req.getParameter("imageface"));
+		aucReq.setAuctionTime(Integer.toString(endDay+endTime));
 		
-
-		
-		try{
+		try{			
 			productService.AucProInsert(aucReq);
+			res.sendRedirect("index.do");
 		return null;
 		}catch(DuplicateIdException e) {
 			
