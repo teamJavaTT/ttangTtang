@@ -1,4 +1,20 @@
 
+/******************  guest/productlist.jsp ******************/
+
+
+
+function productDetail(no){
+
+	document.detailFrm.no.value=no;
+
+	document.detailFrm.submit();
+
+}
+
+
+
+
+
 /******************  admin/product_insert, product_update ******************/
 
 //이미지 프리뷰 를 위한 처리(ajax)

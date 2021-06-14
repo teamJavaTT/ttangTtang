@@ -77,6 +77,7 @@
 		}
 		obj.style.color = myColor;
 	}
+	
 </script>
 </head>
 

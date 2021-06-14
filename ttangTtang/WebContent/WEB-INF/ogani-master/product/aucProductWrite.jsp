@@ -57,9 +57,7 @@
 
 </section>
 
-	<!--   <form id="form1" name="form1" method="post"
-        enctype="multipart/form-data"> -->
-	<!-- 파일업로드를 위해 추가하는 타입 -->
+	
 <!-- Hero Section End -->
 
 <title>상품 등록</title>
@@ -145,7 +143,7 @@ label {
 		// input 태그를 마우스로 클릭하여 입력상태로 만든것을 포커스를 얻었다고 한다.
 		// 그리고 입력상태를 떠난 것을 포커스가 벗어났다고 한다.
 
-		document.form1.action = "${path}/shop/product/insert.do"; //insert.do 페이지로 form1에 저장된 자료를 전송함
+		document.form1.action = "${path}/product/aucProductWrite.do"; //insert.do 페이지로 form1에 저장된 자료를 전송함
 		document.form1.submit();
 	};
 	
@@ -187,7 +185,7 @@ label {
 <section>
 	<h3 style="text-align: center;">경매 상품 등록</h3>
 <div class="container">
-	<form name="form1" action="aucProductWrite.do"  method="post"
+	<form id="form1" name="form1" action="aucProductWrite.do"  method="post"
 		enctype="multipart/form-data" style=margin-left:420px;margin-top:20px;margin-bottom:10px;>
 		<!-- 파일업로드를 위해 추가하는 타입 -->
 
@@ -219,16 +217,17 @@ label {
 			<tr>
 				<td>경매기간:</td>
 				<td>
-				<select name="end_time">
-						<option value="1">1일</option>	
-						<option value="2">2일</option>
-						<option value="3">3일</option>
-						<option value="4">4일</option>
-						<option value="5">5일</option>
-						<option value="6">6일</option>	
+				<select name="end_day">
+						<option value="24">1일</option>	
+						<option value="48">2일</option>
+						<option value="72">3일</option>
+						<option value="96">4일</option>
+						<option value="120">5일</option>
+						<option value="144">6일</option>	
 								</select>
 			
-					<select name="end_day">
+					<select name="end_time">
+						<option value="0">0시간</option>	
 						<option value="1">1시간</option>	
 						<option value="2">2시간</option>
 						<option value="3">3시간</option>
@@ -252,7 +251,6 @@ label {
 						<option value="21">21시간</option>
 						<option value="22">22시간</option>
 						<option value="23">23시간</option>
-						<option value="24">24시간</option>
 					</select>
 					
 				</td>
