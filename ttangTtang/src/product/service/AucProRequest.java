@@ -1,15 +1,24 @@
 package product.service;
 
 public class AucProRequest {
+	
+	private String userId;
 	private String product_name;
 	private String category;
 	private String max_price;
 	private String min_price;
+	private String end_day;
 	private String end_time;
 	private String description;
 	private String imageface;
 
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	
 	public String getProduct_name() {
 		return product_name;
@@ -36,6 +45,13 @@ public class AucProRequest {
 	public void setMin_price(String min_price) {
 		this.min_price = min_price;
 	}
+
+public String getEnd_day() {
+	return end_day;
+}
+public void setEnd_day(String end_day) {
+	this.end_day = end_day;
+}
 	public String getEnd_time() {
 		return end_time;
 	}

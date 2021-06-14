@@ -12,33 +12,36 @@ import auth.model.Product;
 import jdbc.JdbcUtil;
 import product.model.AucPro;
 import product.model.NorPro;
+import product.service.AucProRequest;
 
 public class ProductDao {
 
 	// 경매 상품 등록
-	public AucPro insertAuc(Connection conn, AucPro aucProduct) throws SQLException {
+	public AucPro insertAuc(Connection conn, AucProRequest aucProduct) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 
 		try {
 			pstmt = conn.prepareStatement(
-					"INSERT INTO PRODUCT(INO, USERID, CCODE, CNAME, AUCTIONCHECK, UAD, INAME, PRICE,MINPRICE,MAXPRICE,APRICENOW,APRICEEND,PRICETEXT, IMAGEFACE, VIEWCOUNT, LIKECOUNT, PDATE,ENDTIME, REDATE, UDATE, SELLCHECK)"
-							+ "VALUES(product_seq.NEXTVAL, '?', '?', '?', '?', '?','?', '?', '?', '?', '?', '?', '?', '?', 0, 0, sysdate,sysdate, sysdate, '?', '?')");
-		
-			pstmt.setString(7, aucProduct.getProduct_name());
-			pstmt.setInt(9, aucProduct.getMin_price());
-			pstmt.setInt(10, aucProduct.getMax_price());
-			pstmt.setString(13, aucProduct.getDescription());
-			pstmt.setString(14, aucProduct.getImageface());
-			pstmt.setString(18, aucProduct.getEnd_time());
-			pstmt.executeUpdate();
+					
+"INSERT INTO PRODUCT(INO,USERID,CCODE,CNAME,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME,REDATE,UDATE,SELLCHECK)"
++ "VALUES(product_seq.NEXTVAL,?,null,?,'Y',null,?,?,?,?,?,0,0,sysdate,sysdate,?,sysdate,null,'N')");
+			pstmt.setString(1, aucProduct.getUserId()); //userId
+			pstmt.setString(2, aucProduct.getCategory());//cname
+			pstmt.setString(3, aucProduct.getProduct_name());//iname
+			pstmt.setString(4, aucProduct.getMin_price());//minPrice
+			pstmt.setString(5, aucProduct.getMax_price());//MaxPrice
+			pstmt.setString(6, aucProduct.getDescription());//PriceTexe
+			pstmt.setString(7, aucProduct.getImageface());//ImageFace
+			pstmt.setString(8,aucProduct.getEnd_day());//AuctionTime
+			
 		}finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(stmt);
 			JdbcUtil.close(pstmt);
 		}
-		return aucProduct;
+		return null;
 	}
 		
 
@@ -77,10 +80,9 @@ public class ProductDao {
 			pstmt = conn.prepareStatement(
 					"update product set  product_name= ?, min_price = ?,max_price=?,description=? where ino = ?");
 			pstmt.setString(1, aucProduct.getProduct_name());
-			pstmt.setInt(2, aucProduct.getMin_price());
-			pstmt.setInt(3, aucProduct.getMax_price());
+			pstmt.setString(2, aucProduct.getMin_price());
+			pstmt.setString(3, aucProduct.getMax_price());
 			pstmt.setString(4, aucProduct.getDescription());
-			pstmt.setString(5, aucProduct.getDescription());
 			return null;
 		} finally {
 			JdbcUtil.close(rs);

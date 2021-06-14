@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import auth.model.Category;
 import auth.service.MainService;
 import member.service.DuplicateIdException;
+import member.service.User;
 import mvc.command.CommandHandler;
 import product.service.AucProRequest;
 import product.service.ProductService;
@@ -38,20 +40,26 @@ public class AucProductHandler implements CommandHandler {
 
 
 
+	
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		AucProRequest aucReq = new AucProRequest();
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		
 		req.setCharacterEncoding("utf-8");
+			
+		aucReq.setProduct_name(user.getUserid());
 		aucReq.setProduct_name(req.getParameter("product_name"));
 		aucReq.setProduct_name(req.getParameter("category"));
 		aucReq.setMax_price(req.getParameter("max_price"));
 		aucReq.setMin_price(req.getParameter("min_price"));
 		aucReq.setDescription(req.getParameter("description"));
 		aucReq.setImageface(req.getParameter("imageface"));
+		
 
 		
 		try{
 			productService.AucProInsert(aucReq);
-			res.sendRedirect(req.getContextPath()+"/aucProductDetail.jsp");
 		return null;
 		}catch(DuplicateIdException e) {
 			

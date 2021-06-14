@@ -16,7 +16,7 @@ public class ProductService {
 	private ProductDao productDao = new ProductDao();
 	
 	//일반상품
-	public void NorProInsert (NorProRequeste norwriteReq) throws Exception{
+	public String NorProInsert (NorProRequeste norwriteReq) throws Exception{
 		Connection conn = null;
 		try{
 			conn= DBConnection.getConnection();
@@ -33,12 +33,10 @@ public class ProductService {
 		}catch (SQLException e) {
 			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
-		} catch (RuntimeException e) {
-			JdbcUtil.rollback(conn);
-			throw e; 
 		} finally {
 			JdbcUtil.close(conn);
 		}
+		return null;
 	}
 	private NorPro toNorProWrite(NorProRequeste norwriteReq) {
 		return null;
@@ -51,27 +49,22 @@ public class ProductService {
 			conn= DBConnection.getConnection();
 			conn.setAutoCommit(false);
 			
-			AucPro aucProduct =toAucProWrite(aucwriteReq);
-			AucPro savedAucProduct = productDao.insertAuc(conn , aucProduct);
+	
+			AucPro savedAucProduct = productDao.insertAuc(conn , aucwriteReq);
 			if (savedAucProduct == null) {
 				throw new RuntimeException("실패");
 			}
 			conn.commit();
-			
-		return savedAucProduct.getProduct_name();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
-		} catch (RuntimeException e) {
-			JdbcUtil.rollback(conn);
-			throw e; 
 		} finally {
 			JdbcUtil.close(conn);
 		}
-	}
-	private AucPro toAucProWrite(AucProRequest aucwriteReq) {	
 		return null;
 	}
+	
+	
 	
 	//검색
 	public List<Product> getSearchPage(String search) throws Exception {
