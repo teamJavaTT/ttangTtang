@@ -47,7 +47,7 @@
   </servlet-mapping>
    <servlet>
    <description></description>
-   <display-name>aucProductWrite</display-name>
+   <display-name>norProductWrite</display-name>
     <servlet-name>norProductWrite</servlet-name>
     <jsp-file>/ogani-master/product/norProductWrite.jsp</jsp-file>
   </servlet>
