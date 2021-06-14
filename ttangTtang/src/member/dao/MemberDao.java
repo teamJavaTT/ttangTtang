@@ -57,6 +57,33 @@ public class MemberDao {
 			pstmt.setString(2, member.getUpw());
 			pstmt.setString(3, member.getUserid());
 			pstmt.executeUpdate();
+			}
 		}
+	
+	public String memberidFind(Connection conn, String uname, String uemail) throws SQLException {
+		ResultSet rs = null;
+		String userId = null;
+
+	try(PreparedStatement pstmt = conn.prepareStatement( 
+			"selecct userid from member where uname=? and uemail=?")){
+		
+		pstmt.setString(1, uname);
+		pstmt.setString(2,uemail);
+		rs= pstmt.executeQuery();
+		
+		if(rs.next()) {
+			userId=rs.getString("userid");
+		}
+		return userId;
+		}finally{
+			JdbcUtil.close(rs);
+			
+		}
+	
 	}
 }
+
+			
+		
+
+

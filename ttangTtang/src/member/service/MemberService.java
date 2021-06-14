@@ -3,7 +3,6 @@ package member.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -14,7 +13,7 @@ public class MemberService {
 
 	private MemberDao memberDao = new MemberDao();
 
-	//회원가입
+	// �쉶�썝媛��엯
 	public void memberInsert(MemberRequest memberReq) throws Exception {
 		Connection conn = null;
 		try {
@@ -27,7 +26,8 @@ public class MemberService {
 				throw new DuplicateIdException();
 			}
 
-			memberDao.memberInsert(conn, new Member(memberReq.getUserid(), memberReq.getUpw(), memberReq.getUemail(), memberReq.getUname(), memberReq.getPhone(), memberReq.getSex()));
+			memberDao.memberInsert(conn, new Member(memberReq.getUserid(), memberReq.getUpw(), memberReq.getUemail(),
+					memberReq.getUname(), memberReq.getPhone(), memberReq.getSex()));
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
@@ -36,8 +36,8 @@ public class MemberService {
 			JdbcUtil.close(conn);
 		}
 	}
-	
-	// 로그인
+
+	// 濡쒓렇�씤
 	public User login(String id, String password) throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {
 			Member member = memberDao.selectById(conn, id);
@@ -51,5 +51,39 @@ public class MemberService {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public String memberidFind(String Uname, String Uemail) throws Exception {
+
+		Connection conn = null;
+
+		
+
+		try {
+
+		
+			conn = DBConnection.getConnection();
+
+			// DAO 객체를 생성 시 Connection 전달
+
+			MemberDao searchDao = new MemberDao();
+
+			String userId = searchDao.memberidFind(conn, Uname, Uemail);
+
+			return (userId);
+
+		}
+
+		finally {
+
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+			;
+
+		}
+
 	}
 }

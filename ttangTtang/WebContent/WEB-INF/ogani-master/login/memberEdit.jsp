@@ -10,6 +10,9 @@
 
 </head>
 <body>
+<!-- 헤뉴 메뉴  -->
+	MemberDAO dao = new MemberDAO();
+Member mb = mdao.getMember(id);
 	<!-- header -->
 	<div id="header">
 		<a href="#"><img src="/ttangTtang/img/logo_red.png" width="500"
@@ -27,10 +30,13 @@
 					<div>
 						<h3 class="join_title">
 							<label for="id">아이디</label>
+							
 						</h3>
 						<span class="box int_id"> 
 							<input type="text" id="id" name="userid" class="int" maxlength="20">
+							
 							</span> 
+							
 						<span class="error_next_box"></span>
 					</div>
 
@@ -62,7 +68,7 @@
 					<!-- EMAIL -->
 					<div>
 						<h3 class="join_title">
-							<label for="email">본인확인 이메일<span class="optional">(선택사항)</span></label>
+							<label for="email">본인확인 이메일<span class="optional"></span></label>
 						</h3>
 						<span class="box int_email"> 
 							<input type="text" id="email" name="uemail" class="int" maxlength="100" placeholder="선택입력">
