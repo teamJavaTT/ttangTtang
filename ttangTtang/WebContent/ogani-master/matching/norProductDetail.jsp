@@ -2,12 +2,17 @@
 <%@ include file="../include/header.jsp" %>
 <%@ include file="../include/middle_header.jsp"%>
  
- 
+ <!-- 판매자와 연락하기 -->
  <script>
-        function nwindow(){
+ 
+ 
+        function matchingwindow(){
             var url="matching4.jsp";
             window.open(url,"","width=600,height=800,left=800");
         }
+        
+        
+        
     </script>
     
     
@@ -59,8 +64,7 @@
                                 
                             </div>
                         </div>
-                        <input type="button" value="판매자와 연락하기" class="primary-btn"  onclick="nwindow()"/>
-                        <!-- <a href="/ttangTtang/ogani-master/matching/matching4.jsp" class="primary-btn">판매자와 연락하기</a> -->
+                        <input type="button" value="판매자와 연락하기" class="primary-btn"  onclick="matchingwindow()"/>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>상품 상태 </b> <span id="state">예약중</span></li>
