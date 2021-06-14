@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import admin.notice.dao.AdminDao;
+import admin.notice.dao.NoticeDao;
 import admin.notice.model.Notice;
 import admin.notice.model.Noticecolumn;
 import jdbc.DBConnection;
@@ -13,7 +13,7 @@ import jdbc.JdbcUtil;
 
 public class NoticeService {
 	
-	private AdminDao adminDao = new AdminDao();
+	private NoticeDao noticeDao = new NoticeDao();
 	
 	// 글 입력하기
 	public Integer noticeWrite(Notice writeReq) throws Exception {
@@ -23,7 +23,7 @@ public class NoticeService {
 			conn.setAutoCommit(false);
 
 			Noticecolumn noticeColumn = toColumn(writeReq);
-			Noticecolumn savedArticle = adminDao.noticeInsert(conn, noticeColumn);
+			Noticecolumn savedArticle = noticeDao.noticeInsert(conn, noticeColumn);
 			if (savedArticle == null) {
 				throw new RuntimeException("fail to insert article");
 			}
@@ -53,8 +53,8 @@ public class NoticeService {
 		int startNo = (pageNo - 1) * size + 1;
 		int endNo = startNo + 9;
 		try (Connection conn = DBConnection.getConnection()) {
-			int total = adminDao.selectCount(conn);
-			List<Noticecolumn> noticeColumn = adminDao.noticeSelect(conn, startNo, endNo);
+			int total = noticeDao.selectCount(conn);
+			List<Noticecolumn> noticeColumn = noticeDao.noticeSelect(conn, startNo, endNo);
 			return new NoticePage(total, pageNo, size, noticeColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -63,7 +63,7 @@ public class NoticeService {
 
 	public NoticeData getNoticeRead(int noticeNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
-			Noticecolumn noticeColumn = adminDao.noticeReadSelect(conn, noticeNum);
+			Noticecolumn noticeColumn = noticeDao.noticeReadSelect(conn, noticeNum);
 			if (noticeColumn == null) {
 				throw new ArticleNotFoundException();
 			}
@@ -77,7 +77,7 @@ public class NoticeService {
 	// 글 삭제
 	public void getNoticeDelete(int delNo) throws SQLException, Exception {
 		try(Connection conn = DBConnection.getConnection()){
-			adminDao.noticeDelete(conn, delNo);
+			noticeDao.noticeDelete(conn, delNo);
 		}
 	}
 	// 글 끝
@@ -91,7 +91,7 @@ public class NoticeService {
 			conn.setAutoCommit(false);
 
 			Noticecolumn notice = toNoticeMod(delNo, modReq);
-			Noticecolumn savedArticle = adminDao.noticeUpdate(conn, notice);
+			Noticecolumn savedArticle = noticeDao.noticeUpdate(conn, notice);
 			if (savedArticle == null) {
 				throw new RuntimeException("fail to update");
 			}

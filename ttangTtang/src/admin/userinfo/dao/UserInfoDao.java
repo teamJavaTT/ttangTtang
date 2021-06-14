@@ -11,7 +11,7 @@ import java.util.List;
 import admin.userinfo.model.Userinfocolumn;
 import jdbc.JdbcUtil;
 
-public class AdminDao {
+public class UserInfoDao {
 	
 	// select 부분 시작
 	
@@ -97,7 +97,7 @@ public class AdminDao {
 	public int userinfoDelete(Connection conn, int delNo) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement(
-						"delete from member where userid = ?")) {
+						"delete from member where bNo = ?")) {
 			pstmt.setInt(1, delNo);
 			return pstmt.executeUpdate();
 		}

@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import admin.userinfo.dao.AdminDao;
+import admin.userinfo.dao.UserInfoDao;
 import admin.userinfo.model.Userinfocolumn;
 import jdbc.DBConnection;
 
 public class UserinfoService {
 	
-	private AdminDao adminDao = new AdminDao();
+	private UserInfoDao userinfoDao = new UserInfoDao();
 	
 	// 글 목록에 읽어오기
 	public UserinfoPage getUserinfoPage(int pageNo) throws Exception {
@@ -18,8 +18,8 @@ public class UserinfoService {
 		int startNo = (pageNo - 1) * size + 1;
 		int endNo = startNo + 9;
 		try (Connection conn = DBConnection.getConnection()) {
-			int total = adminDao.selectCount(conn);
-			List<Userinfocolumn> userinfoColumn = adminDao.userinfoSelect(conn, startNo, endNo);
+			int total = userinfoDao.selectCount(conn);
+			List<Userinfocolumn> userinfoColumn = userinfoDao.userinfoSelect(conn, startNo, endNo);
 			return new UserinfoPage(total, pageNo, size, userinfoColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -28,7 +28,7 @@ public class UserinfoService {
 
 	public UserinfoData getUserinfoRead(String userinfoNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
-			Userinfocolumn userinfoColumn = adminDao.userinfoReadSelect(conn, userinfoNum);
+			Userinfocolumn userinfoColumn = userinfoDao.userinfoReadSelect(conn, userinfoNum);
 			if (userinfoColumn == null) {
 				throw new ArticleNotFoundException();
 			}
@@ -42,7 +42,7 @@ public class UserinfoService {
 	// 글 삭제
 	public void getUserinfoDelete(int delNo) throws SQLException, Exception {
 		try(Connection conn = DBConnection.getConnection()){
-			adminDao.userinfoDelete(conn, delNo);
+			userinfoDao.userinfoDelete(conn, delNo);
 		}
 	}
 	// 글 끝
@@ -54,7 +54,7 @@ public class UserinfoService {
 	 * conn.setAutoCommit(false);
 	 * 
 	 * Userinfocolumn userinfo = toUserinfoMod(delNo, modReq); Userinfocolumn
-	 * savedArticle = adminDao.userinfoUpdate(conn, userinfo); if (savedArticle ==
+	 * savedArticle = userinfoDao.userinfoUpdate(conn, userinfo); if (savedArticle ==
 	 * null) { throw new RuntimeException("fail to update"); } conn.commit();
 	 * 
 	 * return savedArticle.getFno(); } catch (SQLException e) {

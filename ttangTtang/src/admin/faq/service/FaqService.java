@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import admin.faq.dao.AdminDao;
+import admin.faq.dao.FaqDao;
 import admin.faq.model.Faq;
 import admin.faq.model.Faqcolumn;
 import jdbc.DBConnection;
@@ -13,7 +13,7 @@ import jdbc.JdbcUtil;
 
 public class FaqService {
 	
-	private AdminDao adminDao = new AdminDao();
+	private FaqDao faqDao = new FaqDao();
 	
 	// 글 입력하기
 	public Integer faqWrite(Faq writeReq) throws Exception {
@@ -23,7 +23,7 @@ public class FaqService {
 			conn.setAutoCommit(false);
 
 			Faqcolumn faqColumn = toColumn(writeReq);
-			Faqcolumn savedArticle = adminDao.faqInsert(conn, faqColumn);
+			Faqcolumn savedArticle = faqDao.faqInsert(conn, faqColumn);
 			if (savedArticle == null) {
 				throw new RuntimeException("fail to insert article");
 			}
@@ -53,8 +53,8 @@ public class FaqService {
 		int startNo = (pageNo - 1) * size + 1;
 		int endNo = startNo + 9;
 		try (Connection conn = DBConnection.getConnection()) {
-			int total = adminDao.selectCount(conn);
-			List<Faqcolumn> faqColumn = adminDao.faqSelect(conn, startNo, endNo);
+			int total = faqDao.selectCount(conn);
+			List<Faqcolumn> faqColumn = faqDao.faqSelect(conn, startNo, endNo);
 			return new FaqPage(total, pageNo, size, faqColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -63,7 +63,7 @@ public class FaqService {
 
 	public FaqData getFaqRead(int faqNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
-			Faqcolumn faqColumn = adminDao.faqReadSelect(conn, faqNum);
+			Faqcolumn faqColumn = faqDao.faqReadSelect(conn, faqNum);
 			if (faqColumn == null) {
 				throw new ArticleNotFoundException();
 			}
@@ -77,7 +77,7 @@ public class FaqService {
 	// 글 삭제
 	public void getFaqDelete(int delNo) throws SQLException, Exception {
 		try(Connection conn = DBConnection.getConnection()){
-			adminDao.faqDelete(conn, delNo);
+			faqDao.faqDelete(conn, delNo);
 		}
 	}
 	// 글 끝
@@ -90,7 +90,7 @@ public class FaqService {
 			conn.setAutoCommit(false);
 
 			Faqcolumn faq = toFaqMod(delNo, modReq);
-			Faqcolumn savedArticle = adminDao.updateFaq(conn, faq);
+			Faqcolumn savedArticle = faqDao.updateFaq(conn, faq);
 			if (savedArticle == null) {
 				throw new RuntimeException("fail to update");
 			}

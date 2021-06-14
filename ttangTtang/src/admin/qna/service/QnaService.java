@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import admin.qna.dao.AdminDao;
+import admin.qna.dao.QnaDao;
 import admin.qna.model.Qna;
 import admin.qna.model.Qnacolumn;
 import jdbc.DBConnection;
@@ -13,7 +13,7 @@ import jdbc.JdbcUtil;
 
 public class QnaService {
 	
-	private AdminDao adminDao = new AdminDao();
+	private QnaDao qnaDao = new QnaDao();
 	
 	// 글 입력하기
 	public Integer qnaWrite(Qna writeReq) throws Exception {
@@ -23,7 +23,7 @@ public class QnaService {
 			conn.setAutoCommit(false);
 
 			Qnacolumn article = toColumn(writeReq);
-			Qnacolumn savedArticle = adminDao.qnaInsert(conn, article);
+			Qnacolumn savedArticle = qnaDao.qnaInsert(conn, article);
 			if (savedArticle == null) {
 				throw new RuntimeException("fail to insert article");
 			}
@@ -53,8 +53,8 @@ public class QnaService {
 		int startNo = (pageNo - 1) * size + 1;
 		int endNo = startNo + 4;
 		try (Connection conn = DBConnection.getConnection()) {
-			int total = adminDao.selectCount(conn);
-			List<Qnacolumn> qnacolumn = adminDao.qnaSelect(conn, startNo, endNo);
+			int total = qnaDao.selectCount(conn);
+			List<Qnacolumn> qnacolumn = qnaDao.qnaSelect(conn, startNo, endNo);
 			return new QnaPage(total, pageNo, size, qnacolumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -63,7 +63,7 @@ public class QnaService {
 
 	public QnaData getQnaRead(int qnaNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
-			Qnacolumn qnacolumn = adminDao.qnaReadSelect(conn, qnaNum);
+			Qnacolumn qnacolumn = qnaDao.qnaReadSelect(conn, qnaNum);
 			if (qnacolumn == null) {
 				throw new ArticleNotFoundException();
 			}
@@ -77,7 +77,7 @@ public class QnaService {
 	// 글 삭제
 	public void getQnaDelete(int delNo) throws SQLException, Exception {
 		try(Connection conn = DBConnection.getConnection()){
-			adminDao.qnaDelete(conn, delNo);
+			qnaDao.qnaDelete(conn, delNo);
 		}
 	}
 	// 글 끝
@@ -85,7 +85,7 @@ public class QnaService {
 	// 수정
 	public QnaData getQnaMod(int qnaNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
-			Qnacolumn qnacolumn = adminDao.qnaReadSelect(conn, qnaNum);
+			Qnacolumn qnacolumn = qnaDao.qnaReadSelect(conn, qnaNum);
 			if (qnacolumn == null) {
 				throw new ArticleNotFoundException();
 			}
@@ -102,7 +102,7 @@ public class QnaService {
 			conn.setAutoCommit(false);
 
 			Qnacolumn qnacolumn = toQnaMod(delNo, modReq);
-			Qnacolumn savedArticle = adminDao.qnaUpdate(conn, qnacolumn);
+			Qnacolumn savedArticle = qnaDao.qnaUpdate(conn, qnacolumn);
 			if (savedArticle == null) {
 				throw new RuntimeException("fail to update");
 			}
@@ -132,7 +132,7 @@ public class QnaService {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
 
-			adminDao.qnaAnswerUpdate(conn, delNo, answerContent);
+			qnaDao.qnaAnswerUpdate(conn, delNo, answerContent);
 			conn.commit();
 
 			return null;

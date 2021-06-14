@@ -13,7 +13,7 @@ import java.util.List;
 import admin.notice.model.Noticecolumn;
 import jdbc.JdbcUtil;
 
-public class AdminDao {
+public class NoticeDao {
 	public Noticecolumn noticeInsert(Connection conn, Noticecolumn notice) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;

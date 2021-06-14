@@ -11,7 +11,7 @@ import java.util.List;
 import admin.qna.model.Qnacolumn;
 import jdbc.JdbcUtil;
 
-public class AdminDao {
+public class QnaDao {
 	public Qnacolumn qnaInsert(Connection conn, Qnacolumn qna) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;

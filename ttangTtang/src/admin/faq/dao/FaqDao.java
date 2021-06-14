@@ -11,7 +11,7 @@ import java.util.List;
 import admin.faq.model.Faqcolumn;
 import jdbc.JdbcUtil;
 
-public class AdminDao {
+public class FaqDao {
 	public Faqcolumn faqInsert(Connection conn, Faqcolumn faq) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
