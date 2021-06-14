@@ -50,12 +50,12 @@
 											<c:forEach var="userinfo" items="${userinfoPage.userinfo}">
 												<tr>
 													<!-- 사용자 ID -->
-													<td style="padding-left: 0px;"><a href="userinforead.do?id=${userinfo.userid}">
+													<td style="padding-left: 0px;"><a href="userinforead.do?id=${userinfo.userId}">
 													<c:out value="${userinfo.userId}"/></a></td>
 													<!-- 이름 -->
 													<td style="padding-left: 0px;">${userinfo.uName}</td>
 													<!-- 가입일자 -->
-													<td colspan="2" style="padding-left: 0px;">${userinfo.dateTime}"</td>
+													<td style="padding-left: 0px;">${userinfo.dateTime}</td>
 													<!--  회원구분  -->
 													<td style="padding-left: 0px;">${userinfo.memberChk}</td>
 												</tr>
@@ -63,13 +63,13 @@
 												<tr>
 													<td colspan="5" style="padding-left: 0px;">
 														<c:if test="${userinfoPage.startPage > 10}">
-															<a href="qnalist.do?pageNo=${userinfoPage.startPage - 10}">[이전]</a>
+															<a href="userinfolist.do?pageNo=${userinfoPage.startPage - 10}">[이전]</a>
 														</c:if>
 														<c:forEach var="pNo" begin="${userinfoPage.startPage}" end="${userinfoPage.endPage}">
-															<a href="qnalist.do?pageNo=${pNo}">[${pNo}]</a>
+															<a href="userinfolist.do?pageNo=${pNo}">[${pNo}]</a>
 														</c:forEach>
 														<c:if test="${userinfoPage.endPage < userinfoPage.totalPages}">
-															<a href="qnalist.do?pageNo=${userinfoPage.startPage + 10}">[다음]</a>
+															<a href="userinfolist.do?pageNo=${userinfoPage.startPage + 10}">[다음]</a>
 														</c:if>
 													</td>
 												</tr>
@@ -89,10 +89,5 @@
 	<!-- /.content-wrapper -->
 </section>
 <!-- Hero Section End -->
-
-												<td class="column5" style="padding-left: 0px;">사용자</td>
-												<td class="column5" style="padding-left: 0px;">닉네임</td>
-												<td class="column5" style="padding-left: 0px;">가입일자</td>
-												<td class="column5" style="padding-left: 0px;">회원구분</td>
 
 <%@ include file="../../include/footer.jsp"%>

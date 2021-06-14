@@ -26,10 +26,10 @@ public class Userinfocolumn {
 	public String getUserId() {
 		return userId;
 	}
-	public String getUEmail() {
+	public String getuEmail() {
 		return uEmail;
 	}
-	public String getUName() {
+	public String getuName() {
 		return uName;
 	}
 	public String getPhone() {
