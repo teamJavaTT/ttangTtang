@@ -147,13 +147,14 @@ preview-box {
 }
 </style>
 
+<!-- 땅땅로고 -->
 <a href="/ttangTtang/ogani-master/index.jsp"><img
 	src="/ttangTtang/img/logo_red.png" alt=""></a>
 
 
 
 <br>
-
+<!-- text보내기창 함수 -->
 <script>
 	$(function() {
 		$("input[type='text']").keypress(
@@ -258,18 +259,22 @@ preview-box {
 
 
 
-
+<!-- 사진첨부 -->
 			<form
 				action="multipartRequestFileUpload/multipartRequestFileUpload_action.jsp"
 				enctype="multipart/form-data" method="post"
 				style="margin-top: 10px; margin-bottom: 4px;">
 
+<!-- 파일전송 -->
 
 				<input type="file" id="imagepre" name="image" size="30"
 					style="width: 470px;"> <input type="submit" value="파일 전송"
 					style="cursor: pointer;">
 
 				<div id="preview"></div>
+				
+<!-- 창닫기 -->
+
 			</form> <input type="button" id="matchingout" value="창닫기"
 			style="margin-left: 491px; margin-top: 10px; cursor: pointer;">
 

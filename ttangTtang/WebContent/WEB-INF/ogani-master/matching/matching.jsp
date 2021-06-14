@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -193,14 +192,7 @@ preview-box {
 		return ct;
 	};
 
-	/* var delpost = confirm("삭제하겠습니까?");
-	if (delpost == true) {
-		alert("게시글을 삭제했습니다.");
-		location.href = "/ttangTtang/ogani-master/index.jsp"
-	} else if (delpost == false) {
-		alert("삭제를 취소했습니다.");
-		history.back();
-	} */
+	
 
 	$(document).ready(function() {
 		// 태그에 onchange를 부여한다.
@@ -230,6 +222,8 @@ preview-box {
 		} else
 			alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
 	}
+
+	
 </script>
 
 </head>
@@ -257,7 +251,9 @@ preview-box {
 				<input multiple="multiple" type="file" name="file" style="width: 500px;">
 				
 				<input class="item mymsg" type="submit" value="전송" >
-			</form>  --> <input class="item mymsg" ; type="text"
+			</form>  --> 
+			
+			<input class="item mymsg" ; type="text"
 			placeholder="내용 입력" style="margin-top: 10px;">
 
 
@@ -274,8 +270,8 @@ preview-box {
 					style="cursor: pointer;">
 
 				<div id="preview"></div>
-			</form> <input type="BUTTON" value=" 창닫기" onclick="window.close()"
-			style="margin-left: 487px; margin-top: 10px; cursor: pointer;">
+			</form> <input type="button" id="matchingout" value="창닫기"
+			style="margin-left: 491px; margin-top: 10px; cursor: pointer;">
 
 
 
@@ -283,7 +279,12 @@ preview-box {
 
 			</ul>
 	</div>
+
+
 </body>
+<script src="/ttangTtang/js/matching/matching.js">
+	
+</script>
 
 
 </html>
