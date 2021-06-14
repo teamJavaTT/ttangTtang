@@ -55,8 +55,7 @@ public class AucProductHandler implements CommandHandler {
 		int endDay = Integer.parseInt(req.getParameter("end_day"));
 		int endTime = Integer.parseInt(req.getParameter("end_time"));
 			
-		//aucReq.setUserId(user.getUserid());
-		aucReq.setUserId("song127");
+		aucReq.setUserId(user.getUserid());
 		aucReq.setCategory(req.getParameter("category"));
 		aucReq.setProductName(req.getParameter("productName"));
 		aucReq.setMinPrice(req.getParameter("min_price"));
