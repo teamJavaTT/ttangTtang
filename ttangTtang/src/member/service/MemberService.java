@@ -74,4 +74,27 @@ public class MemberService {
 		}
 
 	}
+	
+	public String memberpasswordFind(String Userid, String Uname, String Uemail) throws Exception {
+		Connection conn = null;
+		
+		try {
+			conn = DBConnection.getConnection();
+			// DAO 객체를 생성 시 Connection 전달
+			MemberDao memberDao = new MemberDao();
+			String upw = memberDao.memberpasswordFind(conn, Userid, Uname, Uemail);
+			return upw;
+		}
+
+		finally {
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+			;
+
+		}
+
+	}
 }

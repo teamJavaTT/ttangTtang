@@ -28,11 +28,12 @@
 		</div>
         
 		<div class="card-body">
-      <form action="findPw" class="form-signin" method="POST">
-        <input type="text" name="member_id" id="member_id" class="form-control" placeholder="아이디" required><br>
-        <input type="text" name="name" id="name" class="form-control" placeholder="이름" required><BR>
-        <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required><br>
-        <p class="checks" id="checks">${findpw_checkf}</p><br/>
+      <form action="passwordFind.do" class="form-signin" method="POST">
+      <p class="text2"> ${findpassword2}</p>
+        <input type="text" name="userid" id="userid" class="form-control" placeholder="아이디" required><br>
+        <input type="text" name="uname" id="uname" class="form-control" placeholder="이름" required><BR>
+        <input type="email" name="uemail" id="uemail" class="form-control" placeholder="이메일" required><br>
+        <p class="check" id="check">비밀번호 : ${passwordfind}</p><br/>
         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호 찾기</button>
       </form>
       

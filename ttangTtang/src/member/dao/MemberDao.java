@@ -81,6 +81,29 @@ public class MemberDao {
 		}
 	
 	}
+	
+	public String memberpasswordFind(Connection conn, String userid, String uname, String uemail) throws SQLException {
+		ResultSet rs = null;
+		String upw = null;
+
+	try(PreparedStatement pstmt = conn.prepareStatement( 
+			"select upw from member where userid=? and uname=? and uemail=?")){
+		
+		pstmt.setString(1, userid);
+		pstmt.setString(2, uname);
+		pstmt.setString(3,uemail);
+		rs= pstmt.executeQuery();
+		
+		if(rs.next()) {
+			upw=rs.getString("upw");
+		}
+		return upw;
+		}finally{
+			JdbcUtil.close(rs);
+			
+		}
+	
+	}
 }
 
 			
