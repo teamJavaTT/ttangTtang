@@ -63,7 +63,6 @@
 	</div>
 	<!-- /.content-wrapper -->
 </section>
-<!-- Hero Section End -->
 
 
 

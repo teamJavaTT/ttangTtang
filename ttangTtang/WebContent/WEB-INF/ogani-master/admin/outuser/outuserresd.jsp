@@ -1,64 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/header.jsp"%>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="css/util.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-
-<!-- Hero Section Begin -->
-<section class="hero">
-	<div class="container">
-		<div class="row">
-
-			<!-- admin list -->
-			<div class="col-lg-3">
-				<div class="hero__categories">
-					<div class="hero__categories__all">
-						<i class="fa fa-bars"></i> <span>All departments</span>
-					</div>
-					<ul>
-						<li><a href="/ttangTtang/ogani-master/admin/notice.jsp">공지사항</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/qna.jsp">Q&A</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/faq.jsp">FAQ</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/usersound.jsp">고객의
-								소리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/userlist.jsp">사용자
-								게시글 관리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/userinfo.jsp">사용자
-								회원정보 관리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/blacklist.jsp">블랙리스트관리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/declaration.jsp">신고
-								관리</a></li>
-						<li><a href="/ttangTtang/ogani-master/admin/outuser.jsp">탈퇴회원
-								관리</a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- admin list end -->
-
+<%@ include file="../../include/adminheader.jsp"%>
 
 			<div class="col-lg-9">
 				<section class="content-header">
-					<h2>탈퇴회원 관리</h2>
+					<h2>블랙리스트 관리</h2>
 				</section>
 				<section class="content">
 					<div class="limiter">
@@ -73,36 +20,35 @@
 										</thead>
 										<tbody>
 											<tr style="border-bottom: 1px solid #444444;">
-												<td colspan="4" style="text-align: left;">
-													번호 : ${articleData.article.number}
+												<td style="text-align: left;">
+													번호 : ${outuserData.outuser.sNo}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
-												<td style="text-align: left;">
-													탈퇴신청일자 : ${articleData.article.number}
+												<td colspan="2" style="text-align: left;">
+													탈퇴신청일자 : ${outuserData.outuser.sDate}
 												</td>
-												<td style="text-align: left;">
-													탈퇴확정일자 : ${articleData.article.number}
+											
+												<td colspan="2" style="text-align: left;">
+													탈퇴확정일자 : ${outuserData.outuser.scDate}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													사용자 : ${articleData.article.number}
+													탈퇴한 사용자 : ${outuserData.outuser.userId}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
-												<td style="text-align: left;">
-													신고사유 : ${articleData.article.number}
+												<td colspan="4" style="text-align: left;">
+													내용 : ${outuserData.outuser.sText}
 												</td>
 											</tr>
 										</tbody>
 										<tr>
 											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
-													value="${empty parablacklistresd.jspm.pageNo ? '1' : param.pageNo}" /> <a
-												href="list.do?pageNo=${pageNo}">[목록]</a> <c:if
-													test="${authUser.id == articleData.article.writer.id}">
-													<a href="delete.do?no=${articleData.article.number}">[회원정보수정]</a>
-												</c:if></td>
+												value="${empty param.pageNo ? '1' : param.pageNo}" />
+												<input type="button" value="목록" onclick="location.href='outuserlist.do?pageNo=${pageNo}'">
+											</td>
 										</tr>
 									</table>
 								</div>
