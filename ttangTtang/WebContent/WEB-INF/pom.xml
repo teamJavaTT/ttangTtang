@@ -1,0 +1,17 @@
+<dependency>
+	<groupId>org.springframwork</groupId>
+	<artifactId>spring-websocket</artifactId>
+	<version>${org.springframwork-version}</version>
+</dependency>
+
+<dependency>
+	<groupId>org.springframwork</groupId>
+	<artifactId>spring-messaging</artifactId>
+	<version>${org.springframwork-version}</version>
+</dependency>
+
+<dependency>
+	<groupId>org.json</groupId>
+	<artifactId>json</artifactId>
+	<version>20160810</version>
+</dependency>
