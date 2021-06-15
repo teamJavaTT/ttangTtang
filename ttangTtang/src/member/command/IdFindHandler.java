@@ -35,7 +35,7 @@ public class IdFindHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		
+		req.setCharacterEncoding("utf-8");
 		String uname = req.getParameter("uname");
 		String uemail = req.getParameter("uemail");
 
@@ -53,16 +53,12 @@ public class IdFindHandler implements CommandHandler {
 
 		try {
 			String idfind= memberService.memberidFind(uname, uemail);
-			req.getSession().setAttribute("memberUser", idfind);
-			res.sendRedirect(req.getContextPath() + "/idfind.do");
-			return null;
+			req.setAttribute("idfind", idfind);
+			return FORM_VIEW;
 		} catch (LoginFailException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);
 			return FORM_VIEW;
 		}
 	}
 
-	private String trim(String str) {
-		return str == null ? null : str.trim();
-	}
 }

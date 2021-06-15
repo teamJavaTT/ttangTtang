@@ -232,7 +232,7 @@ preview-box {
 
 	<div class="chat_wrap">
 		<div class="inner"
-			style="background-position-x: center; background-position-y: center;">
+			style="background-position-x: center; background-position-y: center;  cols:15;">
 
 			<div class="item on">
 				<div class="box">

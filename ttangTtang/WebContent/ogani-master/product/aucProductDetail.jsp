@@ -10,15 +10,17 @@
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<div class="breadcrumb__text">
-					<h2>제목</h2>
+				<c:forEach var="aucProduct" items="${mainPage.product}">
+					<h2>${aucProduct.iname}></h2>
 					<div class="breadcrumb__option">
 						<a href="/ttangTtang/ogani-master/index.jsp">Home</a> <a
-							href="./index.html">카테고리명</a> <span>경매 상품</span>
+							href="./index.html">${aucProduct.ccode}</a> <span>경매 상품</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	</c:forEach>
 </section>
 <!-- Breadcrumb Section End -->
 
@@ -142,18 +144,20 @@
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6">
+			<c:forEach var="aucProduct" items="${mainPage.product}">
+				 <c:if test="${aucProduct.auctioncheck == 'Y'}">
 				<div class="product__details__text">
-					<h3>제목</h3>
-					<div class="product__details__price" id="now_price">현재 판매 금액</div>
-					<p>제품 설명</p>
+					<h3>${aucProduct.iname }</h3>
+					<div class="product__details__price" id="now_price">${aucProduct.apricenow }</div>
+					<p>${aucPrice.pricetext}</p>
 					<div class="product__details__quantity">
 						가격제시 <input type="text"><input type="button" value="등록">
-
 					</div>
 					<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 					<ul>
-						<li><b>시작가격</b> <span id="min_price"> </span></li>
-						<li><b>남은시간</b> <span id="end_time">13일 6시간 13분</span></li>
+					
+						<li><b>시작가격</b> <span id="min_price">${aucProduct.minprice}</span></li>
+						<li><b>남은시간</b> <span id="end_time">13일 6시간 13분</span>${aucProduct.endtime }</li>
 						<li><b>상품 상태 </b> <span id="state">예약중</span></li>
 						<li><b>거래방법</b> <span>직거래</span></li>
 						<li><b>판매자</b></li>
@@ -168,6 +172,8 @@
 					</ul>
 				</div>
 			</div>
+			</c:if>
+			</c:forEach>
 			<div class="col-lg-12">
 				<div class="product__details__tab">
 					<ul class="nav nav-tabs" role="tablist">

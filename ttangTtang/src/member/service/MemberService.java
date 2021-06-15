@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
-import jdbc.connection.ConnectionProvider;
 import member.dao.MemberDao;
 import member.model.Member;
 
@@ -54,28 +53,17 @@ public class MemberService {
 	}
 
 	public String memberidFind(String Uname, String Uemail) throws Exception {
-
 		Connection conn = null;
-
 		
-
 		try {
-
-		
 			conn = DBConnection.getConnection();
-
 			// DAO 객체를 생성 시 Connection 전달
-
-			MemberDao searchDao = new MemberDao();
-
-			String userId = searchDao.memberidFind(conn, Uname, Uemail);
-
-			return (userId);
-
+			MemberDao memberDao = new MemberDao();
+			String userId = memberDao.memberidFind(conn, Uname, Uemail);
+			return userId;
 		}
 
 		finally {
-
 			if (conn != null)
 				try {
 					conn.close();
