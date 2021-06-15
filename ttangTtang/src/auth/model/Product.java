@@ -11,10 +11,12 @@ public class Product {
 	private String price;
 	private String minprice;
 	private String maxprice;
+	private String apricenow;
+	private String apriceend;
 	private String pricetext;
 	private String imageface;
 
-	public Product(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String pricetext, String imageface) {
+	public Product(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String apricenow, String apriceend,String pricetext, String imageface) {
 		this.ino = ino;
 		this.userid = userid;
 		this.ccode = ccode;
@@ -24,6 +26,8 @@ public class Product {
 		this.price = price;
 		this.minprice = minprice;
 		this.maxprice = maxprice;
+		this.apricenow = apricenow;
+		this.apriceend = apriceend;
 		this.pricetext = pricetext;
 		this.imageface = imageface;
 	}
@@ -54,6 +58,14 @@ public class Product {
 	}
 	public String getMaxprice() {
 		return maxprice;
+	}
+	public String getApricenow() {
+		return apricenow;
+		
+	}
+	public String getApriceend() {
+		return apriceend;
+		
 	}
 	public String getPricetext() {
 		return pricetext;
