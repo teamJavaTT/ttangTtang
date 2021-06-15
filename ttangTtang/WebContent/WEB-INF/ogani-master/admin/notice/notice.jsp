@@ -48,11 +48,13 @@
 									</tr>
 								</tbody>
 							</table>
-							<table style="text-align: center;">
-								<tr>
-									<td class="column4" colspan="1"><a href="noticewrite.do">[게시글쓰기]</a></td>
-								</tr>
-							</table>
+							<c:if test="${memberUser.userid eq 'admin'}">
+								<table style="text-align: center;">
+									<tr>
+										<td class="column4" colspan="1"><a href="noticewrite.do">[게시글쓰기]</a></td>
+									</tr>
+								</table>
+							</c:if>
 						</form>
 					</div>
 				</div>
