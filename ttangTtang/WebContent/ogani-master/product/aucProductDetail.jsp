@@ -144,12 +144,12 @@
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6">
-			<c:forEach var="aucProduct" items="${mainPage.product}">
+			<c:forEach var="aucProduct" items="${aucPro}">
 				 <c:if test="${aucProduct.auctioncheck == 'Y'}">
 				<div class="product__details__text">
 					<h3>${aucProduct.iname }</h3>
-					<div class="product__details__price" id="now_price">${aucProduct.apricenow }</div>
-					<p>${aucPrice.pricetext}</p>
+					<div class="product__details__price" id="now_price">${aucProduct.apricenow}</div>
+					<p>${aucProduct.pricetext}</p>
 					<div class="product__details__quantity">
 						가격제시 <input type="text"><input type="button" value="등록">
 					</div>
@@ -158,9 +158,8 @@
 					
 						<li><b>시작가격</b> <span id="min_price">${aucProduct.minprice}</span></li>
 						<li><b>남은시간</b> <span id="end_time">13일 6시간 13분</span>${aucProduct.endtime }</li>
-						<li><b>상품 상태 </b> <span id="state">예약중</span></li>
-						<li><b>거래방법</b> <span>직거래</span></li>
-						<li><b>판매자</b></li>
+						<li><b>상품 상태 </b> <span id="state">${aucPro.udate}</span></li>
+						<li><b>판매자</b></li> <span id="userid">${aucPro.userid}</span>
 						<li><b>공유</b>
 							<div class="share">
 								<a href="#"><i class="fa fa-link"></i></a>
@@ -192,44 +191,13 @@
 						<div class="tab-pane" id="tabs-2" role="tabpanel">
 							<div class="product__details__tab__desc">
 								<h6>Products Infomation</h6>
-								<p>Vestibulum ac diam sit amet quam vehicula elementum sed
-									sit amet dui. Pellentesque in ipsum id orci porta dapibus.
-									Proin eget tortor risus. Vivamus suscipit tortor eget felis
-									porttitor volutpat. Vestibulum ac diam sit amet quam vehicula
-									elementum sed sit amet dui. Donec rutrum congue leo eget
-									malesuada. Vivamus suscipit tortor eget felis porttitor
-									volutpat. Curabitur arcu erat, accumsan id imperdiet et,
-									porttitor at sem. Praesent sapien massa, convallis a
-									pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet
-									quam vehicula elementum sed sit amet dui. Vestibulum ante ipsum
-									primis in faucibus orci luctus et ultrices posuere cubilia
-									Curae; Donec velit neque, auctor sit amet aliquam vel,
-									ullamcorper sit amet ligula. Proin eget tortor risus.</p>
-								<p>Praesent sapien massa, convallis a pellentesque nec,
-									egestas non nisi. Lorem ipsum dolor sit amet, consectetur
-									adipiscing elit. Mauris blandit aliquet elit, eget tincidunt
-									nibh pulvinar a. Cras ultricies ligula sed magna dictum porta.
-									Cras ultricies ligula sed magna dictum porta. Sed porttitor
-									lectus nibh. Mauris blandit aliquet elit, eget tincidunt nibh
-									pulvinar a.</p>
+								<p>${aucPro.pricetext}</p>
 							</div>
 						</div>
 						<div class="tab-pane" id="tabs-3" role="tabpanel">
 							<div class="product__details__tab__desc">
 								<h6>Products Infomation</h6>
-								<p>Vestibulum ac diam sit amet quam vehicula elementum sed
-									sit amet dui. Pellentesque in ipsum id orci porta dapibus.
-									Proin eget tortor risus. Vivamus suscipit tortor eget felis
-									porttitor volutpat. Vestibulum ac diam sit amet quam vehicula
-									elementum sed sit amet dui. Donec rutrum congue leo eget
-									malesuada. Vivamus suscipit tortor eget felis porttitor
-									volutpat. Curabitur arcu erat, accumsan id imperdiet et,
-									porttitor at sem. Praesent sapien massa, convallis a
-									pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet
-									quam vehicula elementum sed sit amet dui. Vestibulum ante ipsum
-									primis in faucibus orci luctus et ultrices posuere cubilia
-									Curae; Donec velit neque, auctor sit amet aliquam vel,
-									ullamcorper sit amet ligula. Proin eget tortor risus.</p>
+								<p>${aucPro.pricetext }</p>
 							</div>
 						</div>
 					</div>

@@ -77,11 +77,11 @@ public class ProductDao {
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(
-					"update product set  product_name= ?, min_price = ?,max_price=?,description=? where ino = ?");
-			pstmt.setString(1, aucProduct.getProduct_name());
-			pstmt.setString(2, aucProduct.getMin_price());
-			pstmt.setString(3, aucProduct.getMax_price());
-			pstmt.setString(4, aucProduct.getDescription());
+					"update product set  iname= ?, minprice = ?,maxprice=?,pricetext=? where ino = ?");
+			pstmt.setString(1, aucProduct.getIname());
+			pstmt.setString(2, aucProduct.getMinprice());
+			pstmt.setString(3, aucProduct.getMaxprice());
+			pstmt.setString(4, aucProduct.getPricetext());
 			return null;
 		} finally {
 			JdbcUtil.close(rs);
@@ -174,5 +174,29 @@ public class ProductDao {
 				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
 				rs.getString("minprice"), rs.getString("maxprice"),rs.getString("apricenow"), rs.getString("apriceend"), rs.getString("pricetext"),
 				rs.getString("imageface"));
+	}
+// aucPro select
+
+	public List<AucPro> selecAucPro(Connection conn) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select*from product where ino=? ");
+			rs = pstmt.executeQuery();
+			List<AucPro> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertAucPro(rs));
+			}return result;
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+	}
+	private AucPro convertAucPro(ResultSet rs) throws SQLException{
+		return new AucPro(rs.getString("ino"),rs.getString("userid"), rs.getString("ccode"),
+				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
+				rs.getString("minprice"), rs.getString("maxprice"),rs.getString("apricenow"), rs.getString("apriceend"), rs.getString("pricetext"),
+				rs.getString("imageface"),rs.getString("endtime"),rs.getString("udate"));
 	}
 }

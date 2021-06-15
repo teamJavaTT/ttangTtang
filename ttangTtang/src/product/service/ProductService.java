@@ -59,9 +59,16 @@ public class ProductService {
 		}
 		return null;
 	}
-	
-	
-	
+	//aucPro 상품 불러오기 
+	public List<AucPro> getAucPro() throws Exception{
+		try(Connection conn = DBConnection.getConnection()){
+		List<AucPro> aucPro = productDao.selecAucPro(conn);
+		return aucPro;
+		}catch(SQLException e ){
+			throw new RuntimeException(e);
+		}
+	}
+
 	//검색
 	public List<Product> getSearchPage(String search) throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {

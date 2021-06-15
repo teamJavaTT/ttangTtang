@@ -2,56 +2,86 @@ package product.model;
 
 public class AucPro {
 	
-	private String userId;
-	private String product_name;
-	private String category;
-	private String max_price;
-	private String min_price;
-	private String end_day;
-	private String end_time;
-	private String description;
+	private String ino;
+	private String userid;
+	private String ccode;
+	private String auctioncheck;
+	private String uad;
+	private String iname;
+	private String price;
+	private String minprice;
+	private String maxprice;
+	private String apricenow;
+	private String apriceend;
+	private String pricetext;
 	private String imageface;
+	private String endtime;
+	private String udate;
 	
-	public AucPro(String userId, String product_name,String category, String max_price, String min_price,String end_day, String end_time, String description,String imageface) {
-		this.userId=userId;
-		this.product_name=product_name;
-		this.category=category;
-		this.max_price=max_price;
-		this.min_price=min_price;
-		this.end_day=end_day;
-		this.end_time=end_time;
-		this.description=description;
-		this.imageface=imageface;
+
+	public AucPro(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String apricenow, String apriceend,String pricetext, String imageface,String endtime,String udate) {
+		this.ino = ino;
+		this.userid = userid;
+		this.ccode = ccode;
+		this.auctioncheck = auctioncheck;
+		this.uad = uad;
+		this.iname = iname;
+		this.price = price;
+		this.minprice = minprice;
+		this.maxprice = maxprice;
+		this.apricenow = apricenow;
+		this.apriceend = apriceend;
+		this.pricetext = pricetext;
+		this.imageface = imageface;
+		this.endtime = endtime;
+		this.udate = udate;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getIno() {
+		return ino;
 	}
-	public String getProduct_name() {
-		return product_name;
+	public String getUserid() {
+		return userid;
 	}
-	public String getCategory() {
-		return category;
+	public String getCname() {
+		return ccode;
 	}
-	
-	public String getMax_price() {
-		return max_price;
+	public String getAuctioncheck() {
+		return auctioncheck;	
 	}
-	public String getMin_price() {
-		return min_price;
-		}
-	public String getEnd_day() {
-		return end_day;
+	public String getUad() {
+		return uad;
 	}
-	public String getEnd_time() {
-		return end_time;
+	public String getIname() {
+		return iname;
 	}
-	public String getDescription() {
-		return description;
+	public String getPrice() {
+		return price;
+	}
+	public String getMinprice() {
+		return minprice;
+	}
+	public String getMaxprice() {
+		return maxprice;
+	}
+	public String getApricenow() {
+		return apricenow;
+		
+	}
+	public String getApriceend() {
+		return apriceend;
+		
+	}
+	public String getPricetext() {
+		return pricetext;
 	}
 	public String getImageface() {
 		return imageface;
 	}
-
-
+	public String getEndtime() {
+		return endtime;
+	}
+	public String Udate() {
+		return udate;
+	}
 }
