@@ -32,11 +32,11 @@
 		</div>
         
 		<div class="card-body">
-      <form action="findId" class="form-signin" method="POST">
+      <form action="idFind.do" class="form-signin" method="POST">
   		 <p class="text2"> ${findid2}</p>
-        <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR>
-        <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required><br>
-        	<p class="check" id="check">${check}</p><br/>
+        <input type="text" name="uname" id="uname" class="form-control" placeholder="이름" required autofocus><BR>
+        <input type="email" name="uemail" id="uemail" class="form-control" placeholder="이메일" required><br>
+        	<p class="check" id="check">아이디 : ${idfind}</p><br/>
         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아 이 디 찾 기</button>
       
       </form>
@@ -44,7 +44,6 @@
 		</div>
         <div class="links">
             <a href="passwordfind.jsp">비밀번호 찾기</a> | <a href="login.jsp">로그인</a> | <a href="join.jsp">회원가입</a>
-
         </div>
 	</div>
    

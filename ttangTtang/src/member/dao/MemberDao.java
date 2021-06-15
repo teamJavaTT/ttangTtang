@@ -65,7 +65,7 @@ public class MemberDao {
 		String userId = null;
 
 	try(PreparedStatement pstmt = conn.prepareStatement( 
-			"selecct userid from member where uname=? and uemail=?")){
+			"select userid from member where uname=? and uemail=?")){
 		
 		pstmt.setString(1, uname);
 		pstmt.setString(2,uemail);
