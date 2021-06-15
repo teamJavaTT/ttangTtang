@@ -17,35 +17,52 @@
 									<table border="1" width="100%">
 										<thead>
 											<tr>
-												<th colspan="4" style="text-align: center; padding-left: 0px;">게시물</th>
+												<th colspan="4" style="text-align: center; padding-left: 0px;">회원 정보</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td style="text-align: left;">
-													번호 : ${faqData.faq.fno}
-												</td>
-												<td style="text-align: left;">
-													작성일자 : ${faqData.faq.fdate}
-												</td>
-											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
-												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													제목 : ${faqData.faq.ftit}
+													이름 : ${userinfoData.userinfo.uName}
 												</td>
 											</tr>
 											<tr style="border-bottom: 1px solid #444444;">
 												<td style="text-align: left;">
-													내용 : ${faqData.faq.ftext}
+													아이디 : ${userinfoData.userinfo.userId}
+												</td>
+											</tr>
+											<tr style="border-bottom: 1px solid #444444;">
+												<td style="text-align: left;">
+													이메일 : ${userinfoData.userinfo.uEmail}
+												</td>
+											</tr>
+											<tr style="border-bottom: 1px solid #444444;">
+												<td style="text-align: left;">
+													성별 : ${userinfoData.userinfo.sex}
+												</td>
+											</tr>
+											<tr style="border-bottom: 1px solid #444444;">
+												<td style="text-align: left;">
+													전화번호 : ${userinfoData.userinfo.phone}
+												</td>
+											</tr>
+											<tr style="border-bottom: 1px solid #444444;">
+												<td style="text-align: left;">
+													주소 : ${userinfoData.userinfo.uEmail}
+												</td>
+											</tr>
+											<tr style="border-bottom: 1px solid #444444;">
+												<td style="text-align: left;">
+													가입일자 : ${userinfoData.userinfo.dateTime}
 												</td>
 											</tr>
 										</tbody>
+										</table>
+										<table>
 										<tr>
 											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
 												value="${empty param.pageNo ? '1' : param.pageNo}" />
-												<input type="button" value="목록" onclick="location.href='faqlist.do?pageNo=${pageNo}'">
-												<input type="hidden" value="${faqData.faq.fno}" id="delNo">
-												<input type="button" value="게시글삭제" id="faqDel">
+												<input type="button" value="목록" onclick="location.href='userinfolist.do?pageNo=${pageNo}'">
 											</td>
 										</tr>
 									</table>
