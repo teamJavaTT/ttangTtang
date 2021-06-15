@@ -16,11 +16,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
    >
     <title>아이디 찾기</title>
-    <style>
-        @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
-	
-	
-    </style>
+    <link rel="stylesheet" type="text/css"
+	href="/ttangTtang/css/login/find.css">
+    
+    
   </head>
 
   <body cellpadding="0" cellspacing="0" width="100%" height="100%" align="">
@@ -28,7 +27,7 @@
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title" >
             
-			<h2 class="card-title" style="color:#f58b34; text-align: center;"><img src="../img/logo_red.png" width="420" height="185" alt=""/></h2>
+			<h2 class="card-title" style="color:#f58b34; text-align: center;"><img src="/ttangTtang/img/logo_red.png" width="100%" alt=""/></h2>
 		</div>
         
 		<div class="card-body">
@@ -43,7 +42,7 @@
         
 		</div>
         <div class="links">
-            <a href="passwordfind.jsp">비밀번호 찾기</a> | <a href="login.jsp">로그인</a> | <a href="join.jsp">회원가입</a>
+            <a href="passwordfind.do">비밀번호 찾기</a> | <a href="login.do">로그인</a> | <a href="join.do">회원가입</a>
         </div>
 	</div>
    
