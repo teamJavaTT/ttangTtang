@@ -174,4 +174,20 @@ public class QnaDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
+	public Qnacolumn qnaAnswerReUpdate(Connection conn, int qNo) throws SQLException {
+		PreparedStatement pstmt = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("update qna set patext = 'N' where qno = ?");
+			pstmt.setInt(1, qNo);
+			pstmt.executeUpdate();
+
+			return null;
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+			JdbcUtil.close(pstmt);
+		}
+	}
 }

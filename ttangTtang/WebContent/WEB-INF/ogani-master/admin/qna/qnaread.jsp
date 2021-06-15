@@ -51,6 +51,7 @@
 										<!-- 댓글 테이블 -->
 									<form action="qnaAnswer.do" method="post">
 										<input type="hidden" name="qno" value="${qnaData.qna.qno}">
+										<input type="hidden" name="patext" value="${qnaData.qna.patext}">
 											<table border="1" width="100%" id="answerTbl">
 												<%-- <c:forEach var="qna" items="${articlePage.content}"> --%>
 												<!-- 댓글들 -->
@@ -61,9 +62,11 @@
 													<!-- 댓글 불러오기 -->
 													<tr style="padding: 10px;">
 														<td align="center">${qnaData.qna.qstext}</td>
+														<c:if test="${memberUser.userid eq 'admin'}">
 														<td align="center">
-															<input type="submit" value="수정"></input>
+															<input type="submit" value="수정">
 														</td>
+														</c:if>
 													</tr>
 												</c:if>
 													<!-- 댓글달기 -->
@@ -71,7 +74,7 @@
 													<c:if test="${qnaData.qna.patext eq 'N'}">
 														<tr style="padding: 10px;">
 															<td align="center">
-																<textarea rows="1" style="height:300px" cols="100%" placeholder="댓글달기" name="answerContent"></textarea>
+																<textarea rows="1" style="height:300px" cols="100%" placeholder="댓글달기" name="answerContent">${qnaData.qna.qstext}</textarea>
 															</td>
 															<td align="center">
 																<input type="submit" value="댓글달기"></input>

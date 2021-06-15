@@ -126,13 +126,16 @@ public class QnaService {
 	}
 	
 	//댓글
-	public Integer qnaAnswerUpdate(int delNo, String answerContent) throws Exception {
+	public Integer qnaAnswerUpdate(int delNo, String answerContent, String answerPatext) throws Exception {
 		Connection conn = null;
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
-
-			qnaDao.qnaAnswerUpdate(conn, delNo, answerContent);
+			if(answerPatext.equals("Y") || answerPatext == "Y") {
+				qnaDao.qnaAnswerReUpdate(conn, delNo);
+			}else {
+				qnaDao.qnaAnswerUpdate(conn, delNo, answerContent);
+			}
 			conn.commit();
 
 			return null;
