@@ -36,9 +36,9 @@
 												<td colspan="4" style="text-align: left;">${qnaData.qna.qtext}</td>
 											</tr>
 											<tr>
-												<td align="center" colspan="2"><c:set var="pageNo" value="${empty param.pageNo ? '1' : param.pageNo}" /> 
+												<td colspan="2"><c:set var="pageNo" value="${empty param.pageNo ? '1' : param.pageNo}" /> 
 												<input type="button" value="목록" onclick="location.href='qnalist.do?pageNo=${pageNo}'">
-													<c:if test="${authUser.id == articleData.article.writer.id}">
+													<c:if test="${memberUser.userid eq 'admin'}">
 														<input type="button" value="게시글수정" onclick="location.href='qnamodify.do?no=${qnaData.qna.qno}'">
 														<input type="hidden" value="${qnaData.qna.qno}" id="delNo">
 														<input type="button" value="게시글삭제" id="qnaDel">

@@ -27,10 +27,10 @@
 									<td style="text-align: left;">작성일자 : ${noticeData.notice.mdate}</td>
 								</tr>
 								<tr style="border-bottom: 1px solid #444444;">
-									<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">제목 : ${noticeData.notice.mtit}</td>
+									<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">${noticeData.notice.mtit}</td>
 								</tr>
 								<tr style="border-bottom: 1px solid #444444;">
-									<td style="text-align: left;">내용 :	${noticeData.notice.mtext}</td>
+									<td colspan="4" style="text-align: left;">${noticeData.notice.mtext}</td>
 								</tr>
 							</tbody>
 							<tr>
@@ -39,7 +39,7 @@
 										value="${empty param.pageNo ? '1' : param.pageNo}" /> <input
 									type="button" value="목록"
 									onclick="location.href='noticelist.do?pageNo=${pageNo}'">
-									<c:if test="${authUser.id == articleData.article.writer.id}">
+									<c:if test="${memberUser.userid eq 'admin'}">
 										<input type="button" value="게시글수정"
 											onclick="location.href='noticemodify.do?no=${noticeData.notice.mno}'">
 										<input type="hidden" value="${noticeData.notice.mno}"
