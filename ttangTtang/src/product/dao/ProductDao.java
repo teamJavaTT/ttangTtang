@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import admin.faq.model.Faqcolumn;
 import auth.model.Product;
 import jdbc.JdbcUtil;
 import product.model.AucPro;
@@ -173,7 +172,7 @@ public class ProductDao {
 	private Product convertProduct(ResultSet rs) throws SQLException {
 		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"),
 				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
-				rs.getString("minprice"), rs.getString("maxprice"), rs.getString("pricetext"),
+				rs.getString("minprice"), rs.getString("maxprice"),rs.getString("apricenow"), rs.getString("apriceend"), rs.getString("pricetext"),
 				rs.getString("imageface"));
 	}
 }
