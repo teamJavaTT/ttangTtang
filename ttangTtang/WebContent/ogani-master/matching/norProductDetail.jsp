@@ -7,7 +7,7 @@
  
  
         function matchingwindow(){
-            var url="matching4.jsp";
+            var url="matching.jsp";
             window.open(url,"","width=600,height=800,left=800");
         }
         
