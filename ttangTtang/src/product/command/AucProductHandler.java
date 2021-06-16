@@ -48,16 +48,16 @@ public class AucProductHandler implements CommandHandler {
 		
 		req.setCharacterEncoding("utf-8");
 		
-		int endDay = Integer.parseInt(req.getParameter("end_day"));
-		int endTime = Integer.parseInt(req.getParameter("end_time"));
+		int endDay = Integer.parseInt(req.getParameter("endDay"));
+		int endTime = Integer.parseInt(req.getParameter("endTime"));
 			
 		aucReq.setUserId(user.getUserid());
 		aucReq.setCategory(req.getParameter("category"));
 		aucReq.setProductName(req.getParameter("productName"));
-		aucReq.setMinPrice(req.getParameter("minprice"));
-		aucReq.setMaxPrice(req.getParameter("maxprice"));
-		aucReq.setPriceText(req.getParameter("pricetext"));
-		aucReq.setImageFace("/ttangTtang/file/"+req.getParameter("imageface"));
+		aucReq.setMinPrice(req.getParameter("minPrice"));
+		aucReq.setMaxPrice(req.getParameter("maxPrice"));
+		aucReq.setPriceText(req.getParameter("priceText"));
+		aucReq.setImageFace("/ttangTtang/file/"+req.getParameter("imagefaceName"));
 		aucReq.setAuctionTime(Integer.toString(endDay+endTime));
 		
 		try{			

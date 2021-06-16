@@ -35,5 +35,12 @@
   <welcome-file-list>
     <welcome-file>index.do</welcome-file>
   </welcome-file-list>
- 
+ <servlet>
+  <servlet-name>ImageServlet</servlet-name>
+  <servlet-class>file.ImageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>ImageServlet</servlet-name>
+  <url-pattern>/ImageServlet</url-pattern>
+</servlet-mapping>
 </web-app>
