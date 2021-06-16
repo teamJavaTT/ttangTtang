@@ -69,8 +69,6 @@ function product_write() {
 		getFileUpload();
 	}
 	
-	
-
 };
 
 $(document).ready(function() {
@@ -100,3 +98,9 @@ function addPreview(input) {
 	} else
 		alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
 }
+
+function fnOpen(open) {
+	$('section.productInsert').hide();
+	$(open).show();
+}
+

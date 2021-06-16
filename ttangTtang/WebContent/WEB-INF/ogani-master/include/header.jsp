@@ -125,7 +125,7 @@
                         <a href="index.do"><img src="/ttangTtang/img/logo_red.png" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="index.do">Home</a></li>
@@ -134,9 +134,10 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-5">
                     <div class="header__cart">
                         <ul>
+                        	<li><a href="aucProductWrite.do" style="color: black;"><i class="fa fa-buysellads"></i> 판매하기</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                             
