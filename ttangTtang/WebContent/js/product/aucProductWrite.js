@@ -61,8 +61,15 @@ function product_write() {
 	}
 	// input 태그를 마우스로 클릭하여 입력상태로 만든것을 포커스를 얻었다고 한다.
 	// 그리고 입력상태를 떠난 것을 포커스가 벗어났다고 한다.
-
-	getFileUpload();
+	
+	//이미지 첨부 안했을때 바로 insert
+	if(document.fileUpload.imageface.value == null || document.fileUpload.imageface.value == ""){
+		document.form1.submit();
+	}else{// 이미지 첨부가 있으면 파일 등록 후 insert
+		getFileUpload();
+	}
+	
+	
 
 };
 
