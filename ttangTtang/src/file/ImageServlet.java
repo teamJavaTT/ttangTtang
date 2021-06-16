@@ -16,7 +16,7 @@ public class ImageServlet extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 
 		//파일이 저장되는 경로
-		String path = "C:/dev/workspace/git/ttangTtang/ttangTtang/WebContent/file";
+		String path = req.getSession().getServletContext().getRealPath("file");
 
 		int size = 1024 * 1024 * 10;//파일 용량 10M
 		String file = "";//업로드 한 파일의 이름

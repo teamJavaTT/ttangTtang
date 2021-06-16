@@ -20,12 +20,12 @@ input, label {
 	margin: .4rem 0;
 }
 
-#preview img {
+.preview img {
 	width: 100px;
 	height: 100px;
 }
 
-#preview p {
+.preview p {
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
@@ -49,21 +49,24 @@ preview-box {
 <!-- 상품 등록 section begin -->
 <section id="normal" class="productInsert" style="display:none">
 	<h3 style="text-align: center;">일반 상품 등록</h3>
-	<div class="container" style="padding-left: 420px;">
-		<form id="form1" name="form1" action="norProductWrite.do" method="post" enctype="multipart/form-data" style="margin-top: 20px; margin-bottom: 10px;">
+	<div class="container" style="padding-left: 34%;">
+		<form id="norForm" name="norForm" action="norProductWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
+			<input type="hidden" name="imagefaceNameNor"/>
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
 				<tr>
 					<td>상품명:</td>
-					<td><input name="producName"></td>
+					<td><input name="productNameNor"></td>
 				</tr>
 				<tr>
 					<td>카테고리:</td>
-					<td><select name="category">
+					<td>
+						<select name="categoryNor">
 							<c:forEach var="category" items="${category}">
 								<option value="${category.ccode}">${category.cname}</option>
 							</c:forEach>
-					</select></td>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>가격:</td>
@@ -71,51 +74,51 @@ preview-box {
 				</tr>
 				<tr>
 					<td style="float: left;">상품설명:</td>
-					<td><textarea name="priceText" id="priceText"
-							style="resize: none; width: 306px; height: 176px;"></textarea></td>
+					<td>
+						<textarea name="priceTextNor" id="priceTextNor" style="resize: none; width: 306px; height: 176px;"></textarea>
+					</td>
 				</tr>
 			</table>
-			<div class="filebox">
-				<table>
-					<tr>
-						<span style="opacity: 0.6;font-size:12px">(최대 10개의 이미지를 선택하실 수 있습니다.※정면,측면,후면 필수!)</span>
-					</tr>
-
-					<tr>
-						<td><input class="upload-name" value="파일선택"
-							disabled="disabled" multiple /> <label for="ex_filename">업로드</label>
-							<input type="file" name="imageface" id="ex_filename"
-							class="upload-hidden"></td>
-					</tr>
-					<div id="preview"></div>
-					<tr>
-
-						<td colspan="2" align="center"><input type="submit"
-							value="등록"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
-							<input type="button" value="목록"
-							onclick="location.href='${path}/admin/product/list.do'">
-							<!-- "목록 버튼을 누르면 list.do페이지로 이동" --></td>
-					</tr>
-				</table>
-			</div>
 		</form>
+		<div class="filebox">
+			<table>
+				<tr>
+					<td><span style=" opacity: 0.6; font-size: 12px;">(최대 10개의 이미지를 선택하실 수 있습니다.※정면,측면,후면 필수!)</span></td>
+				</tr>
+				<tr>
+					<td>
+						<div id="previewNor" class="preview"></div>
+						<input class="upload-name" value="이미지 등록" disabled="disabled" multiple /> <label for="imagefaceNor">업로드</label>
+						<form id="fileUploadNor" name="fileUploadNor"  method="post" enctype="multipart/form-data">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imagefaceNor" id="imagefaceNor" class="upload-hidden">
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<input type="button" value="등록" onclick="productWriteNor();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+						<input type="button" value="목록" onclick="location.href='index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
+					</td>
+				</tr>
+			</table>
+		</div>		
 	</div>
 </section>
 <section id="auction" class="productInsert" style="display:none">
 	<h3 style="text-align: center;">경매 상품 등록</h3>
-	<div class="container" style="padding-left: 420px;">
-		<form id="form1" name="form1" action="aucProductWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
-			<input type="hidden" name="imagefaceName"/>
+	<div class="container" style="padding-left: 34%;">
+		<form id="aucForm" name="aucForm" action="aucProductWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
+			<input type="hidden" name="imagefaceNameAuc"/>
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
 				<tr>
 					<td>상품명:</td>
-					<td colspan="2"><input type="text" name="productName"></td>
+					<td colspan="2"><input type="text" name="productNameAuc"></td>
 				</tr>
 				<tr>
 					<td>카테고리:</td>
 					<td colspan="2">
-						<select id="category" name="category">
+						<select id="categoryAuc" name="categoryAuc">
 							<c:forEach var="category" items="${category}">
 								<c:if test="${category.ccode != 'BUY'}">
 									<option value="${category.ccode}">${category.cname}</option>
@@ -178,7 +181,7 @@ preview-box {
 				<tr>
 					<td style="float: left;">상품설명:</td>
 					<td colspan="2">
-						<textarea name="priceText" id="priceText" style="resize: none; width: 306px; height: 176px;"></textarea>
+						<textarea name="priceTextAuc" id="priceTextAuc" style="resize: none; width: 306px; height: 176px;"></textarea>
 					</td>
 				</tr>
 			</table>
@@ -191,16 +194,16 @@ preview-box {
 				</tr>
 				<tr>
 					<td>
-						<div id="preview"></div>
-						<input class="upload-name" value="이미지 등록" disabled="disabled" multiple /> <label for="ex_filename">업로드</label>
-						<form id="fileUpload" name="fileUpload"  method="post" enctype="multipart/form-data">
-							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imageface" id="ex_filename" class="upload-hidden">
+						<div id="previewAuc" class="preview"></div>
+						<input class="upload-name" value="이미지 등록" disabled="disabled" multiple /> <label for="imagefaceAuc">업로드</label>
+						<form id="fileUploadAuc" name="fileUploadAuc"  method="post" enctype="multipart/form-data">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imagefaceAuc" id="imagefaceAuc" class="upload-hidden">
 						</form>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="button" value="등록" onclick="product_write();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+						<input type="button" value="등록" onclick="productWriteAuc();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
 						<input type="button" value="목록" onclick="location.href='index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
 					</td>
 				</tr>

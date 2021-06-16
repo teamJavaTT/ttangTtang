@@ -46,14 +46,20 @@ public class NorProductHandler implements CommandHandler {
 		
 		req.setCharacterEncoding("utf-8");
 		
-		norReq.setUserId(user.getUserid());
-		norReq.setCategory(req.getParameter("category"));
-		norReq.setProductName(req.getParameter("productname"));
-		norReq.setPrice(req.getParameter("price"));
-		norReq.setPriceText(req.getParameter("priceText"));
-		norReq.setImageFace("/ttangTtang/file/"+req.getParameter("imageface"));
+		String imageName = "";
+		if(req.getParameter("imagefaceNameNor") == null || req.getParameter("imagefaceNameNor").isEmpty()) {
+			imageName = "noimage.jpg";
+		}else {
+			imageName = req.getParameter("imagefaceNameNor");
+		}
 		
-
+		norReq.setUserId(user.getUserid());
+		norReq.setCategory(req.getParameter("categoryNor"));
+		norReq.setProductName(req.getParameter("productNameNor"));
+		norReq.setPrice(req.getParameter("price"));
+		norReq.setPriceText(req.getParameter("priceTextNor"));
+		norReq.setImageFace("/ttangTtang/file/"+imageName);
+		
 		try{
 			productService.NorProInsert(norReq);
 			res.sendRedirect("index.do");

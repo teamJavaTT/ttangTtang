@@ -33,7 +33,7 @@ public class ProductDao {
 			pstmt.setString(5, aucProduct.getMaxPrice());//MaxPrice
 			pstmt.setString(6, aucProduct.getPriceText());//PriceTexe
 			pstmt.setString(7, aucProduct.getImageFace());//ImageFace
-			pstmt.setString(8,aucProduct.getAuctionTime());//AuctionTime
+			pstmt.setString(8, aucProduct.getAuctionTime());//AuctionTime
 			pstmt.executeUpdate();
 			
 			return null;
@@ -51,17 +51,20 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-
+		String auctionCnk = "";
+		if(norProduct.getCategory() == "BUY" || norProduct.getCategory().equals("BUY")) auctionCnk="B";
+		else auctionCnk="N";		
+		
 		try {
-			pstmt = conn.prepareStatement(
-"INSERT INTO PRODUCT(INO,USERID,CCODE,UAD,INAME,PRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,REDATE,SELLCHECK)VALUES(product_seq.NEXTVAL,?,?,null,?,?,?,?,0,0,sysdate,sysdate,'N')");
-
+			pstmt = conn.prepareStatement("INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,PRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,SELLCHECK)VALUES(product_seq.NEXTVAL,?,?,?,null,?,?,?,?,0,0,sysdate,'N')");
+			
 			pstmt.setString(1, norProduct.getUserId()); //userId
 			pstmt.setString(2, norProduct.getCategory());
-			pstmt.setString(3, norProduct.getProductName());
-			pstmt.setString(4, norProduct.getPrice());
-			pstmt.setString(5, norProduct.getPriceText());
-			pstmt.setString(6, norProduct.getImageFace());//ImageFace
+			pstmt.setString(3, auctionCnk);
+			pstmt.setString(4, norProduct.getProductName());
+			pstmt.setString(5, norProduct.getPrice());
+			pstmt.setString(6, norProduct.getPriceText());
+			pstmt.setString(7, norProduct.getImageFace());//ImageFace
 			pstmt.executeUpdate();
 			
 			return null;
