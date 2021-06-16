@@ -64,9 +64,6 @@ public class FaqService {
 	public FaqData getFaqRead(int faqNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
 			Faqcolumn faqColumn = faqDao.faqReadSelect(conn, faqNum);
-			if (faqColumn == null) {
-				throw new ArticleNotFoundException();
-			}
 			return new FaqData(faqColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

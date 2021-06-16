@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import admin.faq.service.FaqService;
 import admin.faq.model.Faq;
-import admin.faq.service.ArticleNotFoundException;
 import admin.faq.service.FaqData;
 
 public class FaqmodifyHandler implements CommandHandler {
@@ -33,16 +32,10 @@ public class FaqmodifyHandler implements CommandHandler {
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		String noVal = req.getParameter("no");
 		int faqNum = Integer.parseInt(noVal);
-		try {
-			FaqData faqData = faqService.getFaqRead(faqNum);
-			req.setAttribute("faqData", faqData);
-			return "/WEB-INF/ogani-master/admin/faq/faqmodify.jsp";
-		} catch (ArticleNotFoundException e) {
-			req.getServletContext().log("no article", e);
-			res.sendError(HttpServletResponse.SC_NOT_FOUND);
-			return null;
+		FaqData faqData = faqService.getFaqRead(faqNum);
+		req.setAttribute("faqData", faqData);
+		return "/WEB-INF/ogani-master/admin/faq/faqmodify.jsp";
 		}
-	}
 	
 	
 	// 데이터를 보내는 것

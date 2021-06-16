@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import admin.qna.service.QnaService;
 import admin.qna.model.Qna;
-import admin.qna.service.ArticleNotFoundException;
 import admin.qna.service.QnaData;
 
 public class QnamodifyHandler implements CommandHandler {
@@ -33,15 +32,10 @@ public class QnamodifyHandler implements CommandHandler {
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		String noVal = req.getParameter("no");
 		int qnaNum = Integer.parseInt(noVal);
-		try {
-			QnaData qnaData = qnaService.getQnaMod(qnaNum);
-			req.setAttribute("qnaData", qnaData);
-			return "/WEB-INF/ogani-master/admin/qna/qnamodify.jsp";
-		} catch (ArticleNotFoundException e) {
-			req.getServletContext().log("no article", e);
-			res.sendError(HttpServletResponse.SC_NOT_FOUND);
-			return null;
-		}
+		QnaData qnaData = qnaService.getQnaMod(qnaNum);
+		req.setAttribute("qnaData", qnaData);
+		return "/WEB-INF/ogani-master/admin/qna/qnamodify.jsp";
+		
 	}
 	
 	

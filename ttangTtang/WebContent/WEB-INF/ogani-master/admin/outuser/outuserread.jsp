@@ -20,7 +20,7 @@
 										</thead>
 										<tbody>
 											<tr style="border-bottom: 1px solid #444444;">
-												<td style="text-align: left;">
+												<td colspan="4" style="text-align: left;">
 													번호 : ${outuserData.outuser.sNo}
 												</td>
 											</tr>
@@ -45,7 +45,7 @@
 											</tr>
 										</tbody>
 										<tr>
-											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
+											<td colspan="4" style="padding-left: 0px;"><c:set var="pageNo"
 												value="${empty param.pageNo ? '1' : param.pageNo}" />
 												<input type="button" value="목록" onclick="location.href='outuserlist.do?pageNo=${pageNo}'">
 											</td>

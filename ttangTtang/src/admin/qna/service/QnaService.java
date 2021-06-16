@@ -64,9 +64,6 @@ public class QnaService {
 	public QnaData getQnaRead(int qnaNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
 			Qnacolumn qnacolumn = qnaDao.qnaReadSelect(conn, qnaNum);
-			if (qnacolumn == null) {
-				throw new ArticleNotFoundException();
-			}
 			return new QnaData(qnacolumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -86,9 +83,6 @@ public class QnaService {
 	public QnaData getQnaMod(int qnaNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
 			Qnacolumn qnacolumn = qnaDao.qnaReadSelect(conn, qnaNum);
-			if (qnacolumn == null) {
-				throw new ArticleNotFoundException();
-			}
 			return new QnaData(qnacolumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

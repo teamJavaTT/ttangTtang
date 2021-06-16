@@ -29,9 +29,6 @@ public class UserinfoService {
 	public UserinfoData getUserinfoRead(String userinfoNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
 			Userinfocolumn userinfoColumn = userinfoDao.userinfoReadSelect(conn, userinfoNum);
-			if (userinfoColumn == null) {
-				throw new ArticleNotFoundException();
-			}
 			return new UserinfoData(userinfoColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

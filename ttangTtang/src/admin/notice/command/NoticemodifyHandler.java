@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import admin.notice.service.NoticeService;
 import admin.notice.model.Notice;
-import admin.notice.service.ArticleNotFoundException;
 import admin.notice.service.NoticeData;
 
 public class NoticemodifyHandler implements CommandHandler {
@@ -33,15 +32,9 @@ public class NoticemodifyHandler implements CommandHandler {
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		String noVal = req.getParameter("no");
 		int noticeNum = Integer.parseInt(noVal);
-		try {
-			NoticeData noticeData = noticeService.getNoticeRead(noticeNum);
-			req.setAttribute("noticeData", noticeData);
-			return "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
-		} catch (ArticleNotFoundException e) {
-			req.getServletContext().log("no article", e);
-			res.sendError(HttpServletResponse.SC_NOT_FOUND);
-			return null;
-		}
+		NoticeData noticeData = noticeService.getNoticeRead(noticeNum);
+		req.setAttribute("noticeData", noticeData);
+		return "/WEB-INF/ogani-master/admin/notice/noticemodify.jsp";
 	}
 	
 	

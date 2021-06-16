@@ -26,11 +26,11 @@
 											<tbody>
 											<c:forEach var="outuser" items="${outuserPage.outuser}">
 												<tr>
+													<!-- 사용자 -->
+													<td style="padding-left: 0px;">${outuser.sNo}</td>
 													<!-- 차단된 사용자 -->
 													<td colspan="2" style="padding-left: 0px;"><a href="outuserread.do?no=${outuser.sNo}">
-													<c:out value="${outuser.sNo}" /></a></td>
-													<!-- 사용자 -->
-													<td style="padding-left: 0px;">${outuser.userId}</td>
+													<c:out value="${outuser.userId}" /></a></td>
 													<!--  작성일자  -->
 													<td style="padding-left: 0px;">${outuser.sDate}</td>
 												</tr>

@@ -29,9 +29,6 @@ public class BlacklistService {
 	public BlacklistData getBlacklistRead(int blacklistNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
 			Blacklistcolumn blacklistColumn = blacklistDao.blacklistReadSelect(conn, blacklistNum);
-			if (blacklistColumn == null) {
-				throw new ArticleNotFoundException();
-			}
 			return new BlacklistData(blacklistColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

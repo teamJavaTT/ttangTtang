@@ -64,9 +64,6 @@ public class NoticeService {
 	public NoticeData getNoticeRead(int noticeNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
 			Noticecolumn noticeColumn = noticeDao.noticeReadSelect(conn, noticeNum);
-			if (noticeColumn == null) {
-				throw new ArticleNotFoundException();
-			}
 			return new NoticeData(noticeColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

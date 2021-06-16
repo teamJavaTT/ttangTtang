@@ -29,9 +29,6 @@ public class DeclarationService {
 	public DeclarationData getDeclarationRead(int declarationNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
 			Declarationcolumn declarationColumn = declarationDao.declarationReadSelect(conn, declarationNum);
-			if (declarationColumn == null) {
-				throw new ArticleNotFoundException();
-			}
 			return new DeclarationData(declarationColumn);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
