@@ -184,7 +184,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select*from product where ino = ?");
+			pstmt = conn.prepareStatement("select*from product where ino =?");
 			rs = pstmt.executeQuery();
 			List<AucPro> result = new ArrayList<>();
 			while (rs.next()) {

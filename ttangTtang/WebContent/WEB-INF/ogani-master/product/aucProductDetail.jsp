@@ -14,7 +14,7 @@
 					<h2>${aucProduct.iname}</h2>
 					<div class="breadcrumb__option">
 						<a href="/ttangTtang/ogani-master/index.jsp">Home</a> 
-						<a href="#">${aucProduct.ccode}</a> <span>경매 상품</span>
+					<%-- 	<a href="#">${aucProduct.ccode}</a> <span>경매 상품</span> --%>
 					</div>
 					</c:forEach>
 				</div>
@@ -191,13 +191,13 @@
 						<div class="tab-pane" id="tabs-2" role="tabpanel">
 							<div class="product__details__tab__desc">
 								<h6>Products Infomation</h6>
-								<p>${aucProduct.pricetext}</p>
+								<p>제품 설명</p>
 							</div>
 						</div>
 						<div class="tab-pane" id="tabs-3" role="tabpanel">
 							<div class="product__details__tab__desc">
 								<h6>Products Infomation</h6>
-								<p>${aucProduct.pricetext }</p>
+								<p>제품 설명</p>
 							</div>
 						</div>
 					</div>
