@@ -16,29 +16,20 @@ public class ProductService {
 	private ProductDao productDao = new ProductDao();
 	
 	//일반상품
-	public String NorProInsert (NorProRequeste norwriteReq) throws Exception{
+	public String NorProInsert(NorProRequest norwriteReq) throws Exception{
 		Connection conn = null;
 		try{
 			conn= DBConnection.getConnection();
 			conn.setAutoCommit(false);
-			
-			NorPro norProduct = toNorProWrite(norwriteReq);
-			NorPro savedNorProduct = productDao.insertNor(conn, norProduct);
-			if (savedNorProduct == null) {
-				throw new RuntimeException("실패");
-			}
+	
+			productDao.insertNor(conn , norwriteReq);
 			conn.commit();
-			
-		
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(conn);
 		}
-		return null;
-	}
-	private NorPro toNorProWrite(NorProRequeste norwriteReq) {
 		return null;
 	}
 
@@ -68,6 +59,17 @@ public class ProductService {
 			throw new RuntimeException(e);
 		}
 	}
+//norPro 상품 불러오기
+	public List<NorPro> getNorPro() throws Exception{
+		try(Connection conn = DBConnection.getConnection()){
+			List<NorPro> norPro = productDao.selecNorPro(conn);
+			return norPro;
+		}catch(SQLException e ){
+			throw new RuntimeException(e);
+		}
+		
+	}
+
 
 	//검색
 	public List<Product> getSearchPage(String search) throws Exception {
@@ -90,6 +92,8 @@ public class ProductService {
 			throw new RuntimeException(e);
 		}
 	}
+
+
 
 
 }

@@ -2,36 +2,45 @@ package product.model;
 
 public class NorPro {
 	
-	private String userId;
-	private String product_name;
-	private String category;
+	private String ino;
+	private String userid;
+	private String ccode;
+	private String iname;
 	private String price;
-	private String description;
+	private String pricetext;
+	private String imageface;
 	
-	public NorPro(String userId,String product_name, String category, String price, String end_time, String description) {
-		this.userId=userId;
-		this.product_name=product_name;
-		this.category= category;
-		this.price=price;
-		this.description=description;
+	public NorPro(String ino,String userid,String ccode,String iname,String price,String pricetext,	String imageface) {
+	this.ino = ino;
+	this.userid = userid;
+	this.ccode = ccode; 
+	this.iname = iname;
+	this.price = price; 
+	this.pricetext = pricetext;
+	this.imageface = imageface;
+	
+	
 	}
-
-
-	public String getUserId() {
-		return userId;
+	public String getIno() {
+		return ino;
 	}
-
-	public String getProduct_name() {
-		return product_name;
+	public String getUserid() {
+		return userid;
 	}
-	public String getCategory() {
-		return category;
+	public String getCcode() {
+		return ccode;
+	}
+	
+	public String getIname() {
+		return iname;
 	}
 	public String getPrice() {
 		return price;
 	}
-	public String getDescription() {
-		return description;
+	public String getPricetext() {
+		return pricetext;
 	}
-
+	public String getImageface() {
+		return imageface;
+	}
 }

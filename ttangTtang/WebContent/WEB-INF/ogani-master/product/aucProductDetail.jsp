@@ -10,17 +10,18 @@
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<div class="breadcrumb__text">
-				<c:forEach var="aucProduct" items="${aucPro.product}">
-					<h2>${aucPro.iname}</h2>
+				<c:forEach var="aucProduct" items="${aucPro}">
+					<h2>${aucProduct.iname}</h2>
 					<div class="breadcrumb__option">
-						<a href="/ttangTtang/ogani-master/index.jsp">Home</a> <a
-							href="./index.html">${aucPro.ccode}</a> <span>경매 상품</span>
+						<a href="/ttangTtang/ogani-master/index.jsp">Home</a> 
+						<a href="#">${aucProduct.ccode}</a> <span>경매 상품</span>
 					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 	</div>
-	</c:forEach>
+	
 </section>
 <!-- Breadcrumb Section End -->
 
@@ -145,21 +146,20 @@
 			</div>
 			<div class="col-lg-6 col-md-6">
 			<c:forEach var="aucProduct" items="${aucPro}">
-				 <c:if test="${aucPro.auctioncheck == 'Y'}">
+				 <c:if test="${aucProduct.auctioncheck == 'Y'}">
 				<div class="product__details__text">
-					<h3>${aucPro.iname }</h3>
-					<div class="product__details__price" id="now_price">${aucPro.apricenow}</div>
-					<p>${aucPro.pricetext}</p>
+					<h3>${aucProduct.iname }</h3>
+					<div class="product__details__price" id="now_price">${aucProduct.apricenow}</div>
+					<p>${aucProduct.pricetext}</p>
 					<div class="product__details__quantity">
 						가격제시 <input type="text"><input type="button" value="등록">
 					</div>
 					<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 					<ul>
 					
-						<li><b>시작가격</b> <span id="min_price">${aucPro.minprice}</span></li>
-						<li><b>남은시간</b> <span id="end_time">13일 6시간 13분</span>${aucPro.endtime }</li>
-						<li><b>상품 상태 </b> <span id="state">${aucPro.udate}</span></li>
-						<li><b>판매자</b></li> <span id="userid">${aucPro.userid}</span>
+						<li><b>시작가격</b> <span id="minprice">${aucProduct.minprice}</span></li>
+						<li><b>남은시간</b> <span id="endtime">${aucProduct.endtime }</span></li>
+						<li><b>판매자</b> <span>${aucProduct.userid}</span></li>
 						<li><b>공유</b>
 							<div class="share">
 								<a href="#"><i class="fa fa-link"></i></a>
@@ -170,9 +170,9 @@
 							</div></li>
 					</ul>
 				</div>
-			</div>
 			</c:if>
 			</c:forEach>
+			</div>
 			<div class="col-lg-12">
 				<div class="product__details__tab">
 					<ul class="nav nav-tabs" role="tablist">
@@ -191,13 +191,13 @@
 						<div class="tab-pane" id="tabs-2" role="tabpanel">
 							<div class="product__details__tab__desc">
 								<h6>Products Infomation</h6>
-								<p>${aucPro.pricetext}</p>
+								<p>${aucProduct.pricetext}</p>
 							</div>
 						</div>
 						<div class="tab-pane" id="tabs-3" role="tabpanel">
 							<div class="product__details__tab__desc">
 								<h6>Products Infomation</h6>
-								<p>${aucPro.pricetext }</p>
+								<p>${aucProduct.pricetext }</p>
 							</div>
 						</div>
 					</div>

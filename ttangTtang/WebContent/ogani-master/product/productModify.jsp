@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<td style="width:20%">상품명</td>
-				<td><input type="text" name="name" value="<%=dto.getName() %>"></td>
+				<td><input type="text" name="name" value="${ }"></td>
 			</tr>
 			<tr>
 				<td>가격</td>

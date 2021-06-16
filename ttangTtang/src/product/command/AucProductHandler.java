@@ -1,14 +1,10 @@
 package product.command;
 
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import auth.model.Category;
 import auth.service.MainService;
@@ -58,9 +54,9 @@ public class AucProductHandler implements CommandHandler {
 		aucReq.setUserId(user.getUserid());
 		aucReq.setCategory(req.getParameter("category"));
 		aucReq.setProductName(req.getParameter("productName"));
-		aucReq.setMinPrice(req.getParameter("min_price"));
-		aucReq.setMaxPrice(req.getParameter("max_price"));
-		aucReq.setPriceText(req.getParameter("description"));
+		aucReq.setMinPrice(req.getParameter("minprice"));
+		aucReq.setMaxPrice(req.getParameter("maxprice"));
+		aucReq.setPriceText(req.getParameter("pricetext"));
 		aucReq.setImageFace("/ttangTtang/file/"+req.getParameter("imageface"));
 		aucReq.setAuctionTime(Integer.toString(endDay+endTime));
 		

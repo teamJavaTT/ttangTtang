@@ -11,7 +11,7 @@ import auth.service.MainService;
 import member.service.DuplicateIdException;
 import member.service.User;
 import mvc.command.CommandHandler;
-import product.service.NorProRequeste;
+import product.service.NorProRequest;
 import product.service.ProductService;
 
 public class NorProductHandler implements CommandHandler {
@@ -40,21 +40,23 @@ public class NorProductHandler implements CommandHandler {
 
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		NorProRequeste norReq=new NorProRequeste();
+		NorProRequest norReq=new NorProRequest();
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		
 		req.setCharacterEncoding("utf-8");
 		
-		norReq.setProduct_name(user.getUserid());
-		norReq.setProduct_name(req.getParameter("product_name"));
+		norReq.setUserId(user.getUserid());
 		norReq.setCategory(req.getParameter("category"));
+		norReq.setProductName(req.getParameter("productname"));
 		norReq.setPrice(req.getParameter("price"));
-		norReq.setDescription(req.getParameter("description"));
+		norReq.setPriceText(req.getParameter("priceText"));
+		norReq.setImageFace("/ttangTtang/file/"+req.getParameter("imageface"));
+		
 
 		try{
 			productService.NorProInsert(norReq);
-			res.sendRedirect("/index.do");
+			res.sendRedirect("index.do");
 		return null;
 		}catch(DuplicateIdException e) {
 			

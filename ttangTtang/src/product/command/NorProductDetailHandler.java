@@ -6,23 +6,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
-import product.model.AucPro;
+import product.model.NorPro;
 import product.service.ProductService;
 
-public class AucProductDetailHandler implements CommandHandler{
+public class NorProductDetailHandler implements CommandHandler{
 	private ProductService productService = new ProductService();
-	
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception{
 	
-
-	List<AucPro> aucPro = productService.getAucPro();
-		req.setAttribute("aucPro", aucPro);
-		return "/WEB-INF/ogani-master/product/aucProductDetail.jsp";
+		List<NorPro> norPro = productService.getNorPro();
+		req.setAttribute("norPro",norPro);
+		return "/WEB-INF/ogani-master/product/norProductDetail.jsp";
+		
+		
 	}
-	
-	
-	
-	
+
 }

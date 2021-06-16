@@ -13,6 +13,7 @@ import jdbc.JdbcUtil;
 import product.model.AucPro;
 import product.model.NorPro;
 import product.service.AucProRequest;
+import product.service.NorProRequest;
 
 public class ProductDao {
 
@@ -46,27 +47,29 @@ public class ProductDao {
 
 
 	//일반 상품 등록
-	public NorPro insertNor(Connection conn, NorPro norProduct) throws SQLException {
+	public NorPro insertNor(Connection conn, NorProRequest norProduct) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 
 		try {
 			pstmt = conn.prepareStatement(
-					"INSERT INTO PRODUCT(INO, USERID, CCODE, CNAME, UAD, INAME, PRICE, PRICETEXT, IMAGEFACE, VIEWCOUNT, LIKECOUNT, PDATE, REDATE, UDATE, SELLCHECK)"
-							+ "VALUES(product_seq.NEXTVAL, '?', '?', '?', '?','?', '?', '?', '?', 0, 0, sysdate, sysdate, '?', '?')");
+"INSERT INTO PRODUCT(INO,USERID,CCODE,UAD,INAME,PRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,REDATE,SELLCHECK)VALUES(product_seq.NEXTVAL,?,?,null,?,?,?,?,0,0,sysdate,sysdate,'N')");
 
-			pstmt.setString(1, norProduct.getProduct_name());
+			pstmt.setString(1, norProduct.getUserId()); //userId
 			pstmt.setString(2, norProduct.getCategory());
-			pstmt.setString(3, norProduct.getPrice());
-			pstmt.setString(5, norProduct.getDescription());
-
+			pstmt.setString(3, norProduct.getProductName());
+			pstmt.setString(4, norProduct.getPrice());
+			pstmt.setString(5, norProduct.getPriceText());
+			pstmt.setString(6, norProduct.getImageFace());//ImageFace
+			pstmt.executeUpdate();
+			
 			return null;
 
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(stmt);
-
+			JdbcUtil.close(pstmt);
 		}
 	}
 
@@ -96,10 +99,10 @@ public class ProductDao {
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("update product set  product_name= ?, price = ?,description=? where ino = ?");
-			pstmt.setString(1, norProduct.getProduct_name());
+			pstmt = conn.prepareStatement("update product set iname= ?, price = ?, pricetext=? where ino = ?");
+			pstmt.setString(1, norProduct.getIname());
 			pstmt.setString(2, norProduct.getPrice());
-			pstmt.setString(3, norProduct.getDescription());
+			pstmt.setString(3, norProduct.getPricetext());
 			return null;
 		} finally {
 			JdbcUtil.close(rs);
@@ -181,7 +184,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select*from product where ino=? ");
+			pstmt = conn.prepareStatement("select*from product where ino = ?");
 			rs = pstmt.executeQuery();
 			List<AucPro> result = new ArrayList<>();
 			while (rs.next()) {
@@ -197,6 +200,30 @@ public class ProductDao {
 		return new AucPro(rs.getString("ino"),rs.getString("userid"), rs.getString("ccode"),
 				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
 				rs.getString("minprice"), rs.getString("maxprice"),rs.getString("apricenow"), rs.getString("apriceend"), rs.getString("pricetext"),
-				rs.getString("imageface"),rs.getString("endtime"),rs.getString("udate"));
+				rs.getString("imageface"),rs.getString("endtime"));
 	}
+//norPro select
+public List<NorPro> selecNorPro(Connection conn) throws SQLException{
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	try {
+		pstmt = conn.prepareStatement("select*from product where ino = ?");
+		rs = pstmt.executeQuery();
+		List<NorPro> result = new ArrayList<>();
+		while (rs.next()) {
+			result.add(converNorPro(rs));
+		}return result;
+	}finally {
+		JdbcUtil.close(rs);
+		JdbcUtil.close(pstmt);
+	}
+	
+}
+private NorPro converNorPro(ResultSet rs) throws SQLException{
+	return new NorPro(rs.getString("ino"),rs.getString("userid"),rs.getString("ccode"),rs.getString("iname"), rs.getString("price"),rs.getString("pricetext"),
+			rs.getString("imageface"));
+}
+
+
+
 }

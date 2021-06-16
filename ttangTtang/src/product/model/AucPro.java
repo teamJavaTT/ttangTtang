@@ -16,10 +16,9 @@ public class AucPro {
 	private String pricetext;
 	private String imageface;
 	private String endtime;
-	private String udate;
 	
 
-	public AucPro(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String apricenow, String apriceend,String pricetext, String imageface,String endtime,String udate) {
+	public AucPro(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String apricenow, String apriceend,String pricetext, String imageface,String endtime) {
 		this.ino = ino;
 		this.userid = userid;
 		this.ccode = ccode;
@@ -34,7 +33,6 @@ public class AucPro {
 		this.pricetext = pricetext;
 		this.imageface = imageface;
 		this.endtime = endtime;
-		this.udate = udate;
 	}
 
 	public String getIno() {
@@ -80,8 +78,5 @@ public class AucPro {
 	}
 	public String getEndtime() {
 		return endtime;
-	}
-	public String Udate() {
-		return udate;
 	}
 }

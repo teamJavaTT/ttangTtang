@@ -99,18 +99,18 @@ preview-box {
 	//상품을 추가하기위한 정보를 담아 insert.do로 보내는 자바스크립트 함수
 	function product_write() {
 
-		var product_name = document.form1.product_name.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품이름을 반환해서 name에 저장함
+		var productName = document.form1.productName.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품이름을 반환해서 name에 저장함
 		var cCode = $('#category option:selected').val();
 		var category = $('#category option:selected').text();
-		var max_price = document.form1.max_price.value;
-		var min_price = document.form1.min_price.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
-		var description = document.form1.description.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 정보를 반환해서 description에 저장함
+		var maxPrice = document.form1.maxPrice.value;
+		var minPrice = document.form1.minPrice.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
+		var priceText = document.form1.priceText.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 정보를 반환해서 description에 저장함
 
 		//document.form.은 폼페이지에 있는 값을 반환한다는 뜻.
 
-		if (product_name == "") { //상품 이름이 입력되어 있지 않으면
+		if (productName == "") { //상품 이름이 입력되어 있지 않으면
 			alert("상품명을 입력하세요");
-			document.form1.product_name.focus(); //form1페이지에 있는 "상품명을 입력하세요" 에 커서를 올려둔다.
+			document.form1.productName.focus(); //form1페이지에 있는 "상품명을 입력하세요" 에 커서를 올려둔다.
 			return;
 		}
 		if (category == "") { //상품가격이 입력되어 있지 않으면
@@ -119,14 +119,14 @@ preview-box {
 			return;
 
 		}
-		if (max_price == "") { //상품가격이 입력되어 있지 않으면
+		if (maxPrice == "") { //상품가격이 입력되어 있지 않으면
 			alert("최대가격을 입력하세요");
-			document.form1.max_price.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
+			document.form1.maxPrice.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
 			return;
 		}
-		if (min_price == "") { //상품가격이 입력되어 있지 않으면
+		if (minPrice == "") { //상품가격이 입력되어 있지 않으면
 			alert("최소가격을 입력하세요");
-			document.form1.min_price.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
+			document.form1.minPrice.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
 			return;
 		}
 		if (end_time == "") { //상품설명이 입력되어 있지 않으면
@@ -134,9 +134,9 @@ preview-box {
 			document.form1.end_time.focus(); //form1페이지에 있는 "상품설명을 입력하세요" 에 커서를 올려둔다.
 			return;
 		}
-		if (description == "") { //상품설명이 입력되어 있지 않으면
+		if (priceText == "") { //상품설명이 입력되어 있지 않으면
 			alert("상품설명을 입력하세요");
-			document.form1.description.focus(); //form1페이지에 있는 "상품설명을 입력하세요" 에 커서를 올려둔다.
+			document.form1.priceText.focus(); //form1페이지에 있는 "상품설명을 입력하세요" 에 커서를 올려둔다.
 			return;
 		}
 		// input 태그를 마우스로 클릭하여 입력상태로 만든것을 포커스를 얻었다고 한다.
@@ -203,12 +203,12 @@ preview-box {
 
 				<tr>
 					<td>최대가격:</td>
-					<td><input name="max_price"></td>
+					<td><input name="maxPrice"></td>
 				</tr>
 
 				<tr>
 					<td>최소가격:</td>
-					<td><input name="min_price"></td>
+					<td><input name="minPrice"></td>
 				</tr>
 				<tr>
 					<td>경매기간:</td>
@@ -251,7 +251,7 @@ preview-box {
 				<tr>
 					<td style="float: left;">상품설명:</td>
 					<td>
-						<textarea name="description" id="description" style="resize: none; width: 306px; height: 176px;"></textarea>
+						<textarea name="priceText" id="priceText" style="resize: none; width: 306px; height: 176px;"></textarea>
 					</td>
 				</tr>
 			</table>

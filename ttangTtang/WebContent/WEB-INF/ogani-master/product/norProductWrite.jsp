@@ -87,7 +87,7 @@
 
 </style>
  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script>
+<!-- <script>
 	//상품을 추가하기위한 정보를 담아 insert.do로 보내는 자바스크립트 함수
 	function product_write() {
 
@@ -126,7 +126,8 @@
 		document.form1.action = "${path}/product/norProductWrite.do"; //insert.do 페이지로 form1에 저장된 자료를 전송함
 		document.form1.submit();
 	};
-	
+	</script>-->
+	 <script>
 	$(document).ready(
 		    function() {
 		        // 태그에 onchange를 부여한다.
@@ -174,7 +175,7 @@
 			
 			<tr>
 				<td>상품명:</td>
-				<td><input name="product_name"></td>
+				<td><input name="producName"></td>
 			</tr>
 <tr>
 				<td>카테고리:</td>
@@ -192,7 +193,7 @@
 			</tr>
 			<tr>
 				<td style="float: left;">상품설명:</td>
-				<td><textarea id="description" style="resize: none;width: 306px;height: 176px;"></textarea></td>
+				<td><textarea name="priceText" id="priceText" style="resize: none;width: 306px;height: 176px;"></textarea></td>
 			</tr>
 		</table>
 		<div class="filebox">
@@ -202,7 +203,7 @@
 
 				<tr>
 				<td><input class="upload-name" value="파일선택" disabled="disabled" multiple/>
-				<label for="ex_filename">업로드</label> <input type="file"
+				<label for="ex_filename">업로드</label> <input type="file" name="imageface"
 					id="ex_filename" class="upload-hidden">
 					</td>
 					</tr>	
@@ -210,8 +211,8 @@
     </div>
 			<tr>
 
-				<td colspan="2" align="center"><input type="button" value="등록"
-					onclick="product_write()"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+				<td colspan="2" align="center">
+				<input type="submit" value="등록"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
 					<input type="button" value="목록"
 					onclick="location.href='${path}/admin/product/list.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
 				</td>
