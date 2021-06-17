@@ -29,7 +29,7 @@
 								<tr style="border-bottom: 1px solid #444444;">
 									<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">${noticeData.notice.mtit}</td>
 								</tr>
-								<tr style="border-bottom: 1px solid #444444;">
+								<tr style="border-bottom: 1px solid #444444;  height: 100px;">
 									<td colspan="4" style="text-align: left;">${noticeData.notice.mtext}</td>
 								</tr>
 							</tbody>

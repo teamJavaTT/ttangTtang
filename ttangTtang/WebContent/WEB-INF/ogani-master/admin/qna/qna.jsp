@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
+
+
 			<div class="col-lg-9">
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
