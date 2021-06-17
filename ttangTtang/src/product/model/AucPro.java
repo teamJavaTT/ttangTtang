@@ -5,6 +5,8 @@ public class AucPro {
 	private String ino;
 	private String userid;
 	private String ccode;
+	private String cname;
+	
 	private String auctioncheck;
 	private String uad;
 	private String iname;
@@ -18,10 +20,11 @@ public class AucPro {
 	private String endtime;
 	
 
-	public AucPro(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String apricenow, String apriceend,String pricetext, String imageface,String endtime) {
+	public AucPro(String ino, String userid, String ccode, String cname, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String apricenow, String apriceend,String pricetext, String imageface,String endtime) {
 		this.ino = ino;
 		this.userid = userid;
 		this.ccode = ccode;
+		this.cname = cname;
 		this.auctioncheck = auctioncheck;
 		this.uad = uad;
 		this.iname = iname;
@@ -41,8 +44,11 @@ public class AucPro {
 	public String getUserid() {
 		return userid;
 	}
-	public String getCname() {
+	public String getCcode() {
 		return ccode;
+	}
+	public String getCname() {
+		return cname;
 	}
 	public String getAuctioncheck() {
 		return auctioncheck;	

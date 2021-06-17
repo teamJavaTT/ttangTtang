@@ -38,7 +38,7 @@ public class Product {
 	public String getUserid() {
 		return userid;
 	}
-	public String getCname() {
+	public String getCcode() {
 		return ccode;
 	}
 	public String getAuctioncheck() {

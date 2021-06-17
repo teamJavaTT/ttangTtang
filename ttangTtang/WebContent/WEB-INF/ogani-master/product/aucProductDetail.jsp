@@ -11,10 +11,10 @@
 			<div class="col-lg-12 text-center">
 				<div class="breadcrumb__text">
 				<c:forEach var="aucProduct" items="${aucPro}">
-					<h2>${aucProduct.iname}</h2>
+					<h2>${aucProduct.cname}</h2>
 					<div class="breadcrumb__option">
 						<a href="/ttangTtang/ogani-master/index.jsp">Home</a> 
-					<%-- 	<a href="#">${aucProduct.ccode}</a> <span>경매 상품</span> --%>
+				 <span>경매 상품</span> 
 					</div>
 					</c:forEach>
 				</div>

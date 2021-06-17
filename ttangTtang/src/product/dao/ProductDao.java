@@ -187,11 +187,13 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select*from product where ino =?");
+			pstmt = conn.prepareStatement("select * from product where ino =?");
 			rs = pstmt.executeQuery();
 			List<AucPro> result = new ArrayList<>();
+			
 			while (rs.next()) {
-				result.add(convertAucPro(rs));
+				String categoryPro = selectCategory(conn, rs.getString("ccode"));
+				result.add(convertAucPro(rs,categoryPro));
 			}return result;
 		}finally {
 			JdbcUtil.close(rs);
@@ -199,8 +201,25 @@ public class ProductDao {
 		}
 		
 	}
-	private AucPro convertAucPro(ResultSet rs) throws SQLException{
-		return new AucPro(rs.getString("ino"),rs.getString("userid"), rs.getString("ccode"),
+	private String selectCategory(Connection conn, String category) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select cname from category where ccode=?");
+			pstmt.setString(1, category);
+			rs = pstmt.executeQuery(); 
+			rs.next();
+			return rs.getString("cname");
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+
+
+
+	private AucPro convertAucPro(ResultSet rs, String categoryPro) throws SQLException{
+		return new AucPro(rs.getString("ino"),rs.getString("userid"), rs.getString("ccode"),categoryPro,
 				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
 				rs.getString("minprice"), rs.getString("maxprice"),rs.getString("apricenow"), rs.getString("apriceend"), rs.getString("pricetext"),
 				rs.getString("imageface"),rs.getString("endtime"));
@@ -210,20 +229,39 @@ public List<NorPro> selecNorPro(Connection conn) throws SQLException{
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	try {
-		pstmt = conn.prepareStatement("select*from product where ino = ?");
+		pstmt = conn.prepareStatement("select * from product where ino =?");
 		rs = pstmt.executeQuery();
 		List<NorPro> result = new ArrayList<>();
+		
 		while (rs.next()) {
-			result.add(converNorPro(rs));
+			String categoryPro = selectCategoryNor(conn, rs.getString("ccode"));
+			result.add(converNorPro(rs,categoryPro));
 		}return result;
 	}finally {
 		JdbcUtil.close(rs);
 		JdbcUtil.close(pstmt);
 	}
-	
 }
-private NorPro converNorPro(ResultSet rs) throws SQLException{
-	return new NorPro(rs.getString("ino"),rs.getString("userid"),rs.getString("ccode"),rs.getString("iname"), rs.getString("price"),rs.getString("pricetext"),
+
+	private String selectCategoryNor(Connection conn, String category) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select cname from category where ccode=?");
+			pstmt.setString(1, category);
+			rs = pstmt.executeQuery(); 
+			rs.next();
+			return rs.getString("cname");
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+
+	
+
+private NorPro converNorPro(ResultSet rs , String categoryPro) throws SQLException{
+	return new NorPro(rs.getString("ino"),rs.getString("userid"),rs.getString("ccode"),categoryPro,rs.getString("iname"), rs.getString("price"),rs.getString("pricetext"),
 			rs.getString("imageface"));
 }
 
