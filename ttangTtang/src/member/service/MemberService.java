@@ -97,4 +97,28 @@ public class MemberService {
 		}
 
 	}
+	
+	public String memberEdit(String Userid, Member meber) throws Exception {
+		Connection conn = null;
+		
+		try {
+			conn = DBConnection.getConnection();
+			// DAO 객체를 생성 시 Connection 전달
+			MemberDao memberDao = new MemberDao();
+			String member = memberDao.memberEdit(conn, Userid);
+			return member;
+		}
+
+		finally {
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+			;
+
+		}
+
+	}
+	
 }

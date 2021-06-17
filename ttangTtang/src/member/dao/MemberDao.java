@@ -104,6 +104,29 @@ public class MemberDao {
 		}
 	
 	}
+	
+	public String memberEdit(Connection conn, String userid) throws SQLException {
+		ResultSet rs = null;
+		String member = null;
+
+	try(PreparedStatement pstmt = conn.prepareStatement( 
+			"select member from member where userid=?")){
+		
+		pstmt.setString(1, userid);
+		
+		rs= pstmt.executeQuery();
+		
+		if(rs.next()) {
+			member=rs.getString("member");
+		}
+		return member;
+		}finally{
+			JdbcUtil.close(rs);
+			
+		}
+	
+	}
+	
 }
 
 			
