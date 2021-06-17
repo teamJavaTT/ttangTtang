@@ -184,7 +184,7 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="../mypage/editProfile.jsp">회원 정보 수정</a></li>
+                            <li><a href="/ttangTtang/memberEdit.do">회원 정보 수정</a></li>
                             <li><a href="../mypage/interestedItems.jsp">관심 상품</a></li>
                             <li><a href="../mypage/user.jsp">사용자차단&신고</a></li>
                             <li><a href="../mypage/buySell.jsp">판매&구매내역</a></li>
