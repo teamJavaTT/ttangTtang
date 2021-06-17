@@ -25,7 +25,7 @@
 		<!-- content-->
 		<div id="content">
 			<section class="content">
-				<form action="deleteFrom.do" method="post">
+				<form action="/ttangTtang/deleteFrom.do" method="post">
 
 					<!-- ID -->
 					<div>
