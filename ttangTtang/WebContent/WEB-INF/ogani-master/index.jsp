@@ -10,8 +10,13 @@ var endTimeArr = new Array();
 		endTimeArr.push("<c:out value='${aucProduct.endtime}'/>");
 	</c:if>
 </c:forEach>
-
 </script>
+<style>
+.aucTimer{
+font-size:15px;
+}
+</style>
+
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container">
@@ -101,13 +106,13 @@ var endTimeArr = new Array();
 		                    <div class="featured__item">
 		                        <div class="featured__item__pic set-bg" data-setbg="${aucProduct.imageface}">
 		                            <ul class="featured__item__pic__hover">
+		                            	<h2 class="aucTimer" id="pro${aucProduct.ino}"></h2>
 		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
 		                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
 		                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
-		                        	<h2 id="pro${aucProduct.ino}"></h2>
 		                            <h6><a href="#">${aucProduct.iname}</a></h6>
 		                            <h5>${aucProduct.minprice}원</h5>
 		                        </div>

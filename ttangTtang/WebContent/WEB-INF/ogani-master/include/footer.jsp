@@ -68,7 +68,6 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="/ttangTtang/js/jquery-3.3.1.min.js"></script>
     <script src="/ttangTtang/js/bootstrap.min.js"></script>
     <script src="/ttangTtang/js/jquery.nice-select.min.js"></script>
     <script src="/ttangTtang/js/jquery-ui.min.js"></script>
