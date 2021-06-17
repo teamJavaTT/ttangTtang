@@ -12,7 +12,7 @@ public class UserinfoService {
 	
 	private UserInfoDao userinfoDao = new UserInfoDao();
 	
-	// 글 목록에 읽어오기
+	// 전체 회원 체크시 이동되는 곳
 	public UserinfoPage getUserinfoPage(int pageNo) throws Exception {
 		int size = 10;
 		int startNo = (pageNo - 1) * size + 1;
@@ -25,7 +25,24 @@ public class UserinfoService {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	// 정규 회원이랑 탈퇴회원 체크시 이동되는 곳
+	public UserinfoPage getUserinfoMemberChkPage(int pageNo, int memberChk) throws Exception {
+		int size = 10;
+		int startNo = (pageNo - 1) * size + 1;
+		int endNo = startNo + 9;
+		int memChk = memberChk;
+		try (Connection conn = DBConnection.getConnection()) {
+			int total = userinfoDao.selectCount(conn);
+			List<Userinfocolumn> userinfoColumn = userinfoDao.userinfoMemberChkSelect(conn, memChk, startNo, endNo);
+			return new UserinfoPage(total, pageNo, size, userinfoColumn);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	// 글 목록에 읽어오기 끝
 
+	// 회원정보 읽어오는 곳
 	public UserinfoData getUserinfoRead(String userinfoNum) throws Exception {
 		try (Connection conn = DBConnection.getConnection()){
 			Userinfocolumn userinfoColumn = userinfoDao.userinfoReadSelect(conn, userinfoNum);
@@ -34,7 +51,7 @@ public class UserinfoService {
 			throw new RuntimeException(e);
 		}
 	}
-	// 글 목록에 읽어오기 끝
+	
 
 	// 글 삭제
 	public void getUserinfoDelete(int delNo) throws SQLException, Exception {

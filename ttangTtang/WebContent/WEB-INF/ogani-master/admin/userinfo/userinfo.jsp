@@ -51,6 +51,17 @@
 														</c:if>
 													</td>
 												</tr>
+												
+												<tr>
+													<td colspan="5">
+														<select name="memberChk">
+															<option value="0" <c:if test="${param.memberChk == 0}">seleted</c:if>>전체회원</option>
+															<option value="1" <c:if test="${param.memberChk == 1}">seleted</c:if>>정규회원</option>
+															<option value="2" <c:if test="${param.memberChk == 2}">seleted</c:if>>탈퇴회원</option>														
+														</select>
+														<input type = "submit" value ="보기">
+													</td>
+												</tr>
 											</tbody>
 										</table>
 									</form>

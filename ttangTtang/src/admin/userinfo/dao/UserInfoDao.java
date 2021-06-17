@@ -52,6 +52,26 @@ public class UserInfoDao {
 		}
 	}
 	
+	public List<Userinfocolumn> userinfoMemberChkSelect(Connection conn, int memberChk, int startNo, int endNo) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from(select  row_number() over (order by datetime desc) num, A.* from member A where memberChk = ? order by datetime desc) where num between ? and ?");
+			pstmt.setInt(1, memberChk);
+			pstmt.setInt(2, startNo);
+			pstmt.setInt(3, endNo);
+			rs = pstmt.executeQuery();
+			List<Userinfocolumn> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(userinfoConvert(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
 	public Userinfocolumn userinfoReadSelect(Connection conn, String id) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
