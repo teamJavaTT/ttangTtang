@@ -127,19 +127,17 @@ preview-box {
 						</select>
 					</td>
 				</tr>
-
-				<tr>
-					<td>최대가격:</td>
-					<td colspan="2"><input name="maxPrice"></td>
-				</tr>
-
 				<tr>
 					<td>최소가격:</td>
 					<td colspan="2"><input name="minPrice"></td>
 				</tr>
 				<tr>
+					<td>최대가격:</td>
+					<td colspan="2"><input name="maxPrice"></td>
+				</tr>
+				<tr>
 					<td>경매기간:</td>
-					<td style="width: 80px;">
+					<td style="width: 74px;">
 						<select name="endDay">
 								<option value="0">0일</option>
 								<option value="24">1일</option>

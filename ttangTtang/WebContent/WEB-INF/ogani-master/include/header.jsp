@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="/ttangTtang/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/ttangTtang/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/ttangTtang/css/style.css" type="text/css">
+    
+    <script src="/ttangTtang/js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>

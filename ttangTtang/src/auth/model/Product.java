@@ -1,5 +1,8 @@
 package auth.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Product {
 
 	private String ino;
@@ -15,8 +18,9 @@ public class Product {
 	private String apriceend;
 	private String pricetext;
 	private String imageface;
+	private String endtime;
 
-	public Product(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String apricenow, String apriceend,String pricetext, String imageface) {
+	public Product(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String apricenow, String apriceend,String pricetext, String imageface, Date endtime) {
 		this.ino = ino;
 		this.userid = userid;
 		this.ccode = ccode;
@@ -30,6 +34,10 @@ public class Product {
 		this.apriceend = apriceend;
 		this.pricetext = pricetext;
 		this.imageface = imageface;
+		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		String strDate = simpleDateFormat.format(endtime);
+		this.endtime = strDate;
 	}
 
 	public String getIno() {
@@ -72,5 +80,8 @@ public class Product {
 	}
 	public String getImageface() {
 		return imageface;
+	}
+	public String getEndtime() {
+		return endtime;
 	}
 }

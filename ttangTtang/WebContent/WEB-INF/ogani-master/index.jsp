@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="include/header.jsp" %>
 <%@ include file="include/middle_header.jsp" %>
+<script>
+var iNoArr = new Array();
+var endTimeArr = new Array();
+<c:forEach var="aucProduct" items="${mainPage.product}">
+	<c:if test="${aucProduct.auctioncheck == 'Y'}">
+		iNoArr.push("<c:out value='${aucProduct.ino}'/>");
+		endTimeArr.push("<c:out value='${aucProduct.endtime}'/>");
+	</c:if>
+</c:forEach>
 
+</script>
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container">
@@ -97,6 +107,7 @@
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
+		                        	<h2 id="pro${aucProduct.ino}"></h2>
 		                            <h6><a href="#">${aucProduct.iname}</a></h6>
 		                            <h5>${aucProduct.minprice}원</h5>
 		                        </div>
@@ -411,5 +422,5 @@
         </div>
     </section>
     <!-- Blog Section End -->
-    
+<script src="/ttangTtang/js/product/index.js"></script>
 <%@ include file="include/footer.jsp" %>
