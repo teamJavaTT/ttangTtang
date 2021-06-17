@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.DBConnection;
-import member.dao.MemberDao;
+import member.service.LoginFailException;
+import member.service.User;
 import mypage.dao.DeleteFromDao;
+import mypage.model.DeleteFrom;
 
 public class DeleteFromService {
 
@@ -38,4 +40,20 @@ public class DeleteFromService {
 			deleteFromDao.outuserDelete(conn, delNo);
 		}
 	}
+	
+	public User delete(String id, String password) throws Exception {
+		try (Connection conn = DBConnection.getConnection()) {
+			DeleteFrom deleteFrom = deleteFromDao.selectById(conn, id);
+			if (deleteFrom == null) {
+				throw new LoginFailException();
+			}
+			if (!deleteFrom.matchPassword(password)) {
+				throw new LoginFailException();
+			}
+			return new User(deleteFrom.getUserid(), deleteFrom.getUserpassword());
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 }

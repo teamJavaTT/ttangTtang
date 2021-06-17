@@ -7,8 +7,7 @@ import java.sql.SQLException;
 
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
-import member.dao.MemberDao;
-import member.model.Member;
+import mypage.model.DeleteFrom;
 
 public class DeleteFromDao {
 
@@ -116,6 +115,28 @@ public class DeleteFromDao {
     } // end deleteMember
 
 
+    public DeleteFrom selectById(Connection conn, String userid) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(
+					"select * from member where userid = ?");
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			DeleteFrom deleteFrom = null;
+			if (rs.next()) {
+				deleteFrom = new DeleteFrom(
+						rs.getString("userid"), 
+						rs.getString("userpassword")
+						
+						);
+			}
+			return deleteFrom;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
 }
 
 			
