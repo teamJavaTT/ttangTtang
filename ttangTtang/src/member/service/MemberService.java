@@ -12,6 +12,23 @@ public class MemberService {
 
 	private MemberDao memberDao = new MemberDao();
 
+	//id로 member 테이블 select
+	public Member selectById(String Userid) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			// DAO 객체를 생성 시 Connection 전달
+			MemberDao memberDao = new MemberDao();
+			Member member = memberDao.selectById(conn, Userid);
+			return member;
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+	}
+	
 	// �쉶�썝媛��엯
 	public void memberInsert(MemberRequest memberReq) throws Exception {
 		Connection conn = null;
@@ -19,7 +36,7 @@ public class MemberService {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
 
-			Member member = memberDao.selectById(conn, memberReq.getUserid());
+			Member member = selectById(memberReq.getUserid());
 			if (member != null) {
 				JdbcUtil.rollback(conn);
 				throw new DuplicateIdException();
@@ -39,7 +56,7 @@ public class MemberService {
 	// 濡쒓렇�씤
 	public User login(String id, String password) throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {
-			Member member = memberDao.selectById(conn, id);
+			Member member = selectById(id);
 			if (member == null) {
 				throw new LoginFailException();
 			}
@@ -85,7 +102,6 @@ public class MemberService {
 			String upw = memberDao.memberpasswordFind(conn, Userid, Uname, Uemail);
 			return upw;
 		}
-
 		finally {
 			if (conn != null)
 				try {
@@ -98,7 +114,7 @@ public class MemberService {
 
 	}
 	
-	public String memberEdit(String Userid, Member meber) throws Exception {
+	public String memberEdit(String Userid) throws Exception {
 		Connection conn = null;
 		
 		try {

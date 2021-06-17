@@ -110,7 +110,7 @@ public class MemberDao {
 		String member = null;
 
 	try(PreparedStatement pstmt = conn.prepareStatement( 
-			"select member from member where userid=?")){
+			"select * from member where userid=?")){
 		
 		pstmt.setString(1, userid);
 		

@@ -108,7 +108,7 @@
 		                                <a href="login.do"><i class="fa fa-user"></i> 로그인</a>
 	                                </c:when>
 	                                <c:when test="${!empty memberUser.uname}">
-	                                	<a>${memberUser.uname}님 </a><a href="logout.do"><i class="fa fa-user"></i> 로그아웃</a>
+	                                	<a href="memberEdit.do">${memberUser.uname}님 </a><a href="logout.do"><i class="fa fa-user"></i> 로그아웃</a>
 	                                </c:when>
                                 </c:choose>
                             </div>

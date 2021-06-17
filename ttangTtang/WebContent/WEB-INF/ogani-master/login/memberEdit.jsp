@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -32,7 +33,7 @@
 							
 						</h3>
 						<span class="box int_id"> 
-							<input type="text" id="id" name="userid" class="int" maxlength="20"  disabled="disabled" >
+							<input type="text" id="id" name="userid" class="int" maxlength="20"  disabled="disabled" value="${member.userid}">
 							
 							</span> 
 							
@@ -58,7 +59,7 @@
 							<label for="email">본인확인 이메일<span class="optional"></span></label>
 						</h3>
 						<span class="box int_email"> 
-							<input type="text" id="email" name="uemail" class="int" maxlength="100" placeholder="선택입력">
+							<input type="text" id="email" name="uemail" class="int" maxlength="100" placeholder="선택입력" value="${member.uemail}">
 						</span> 
 						<span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
 					</div>
@@ -69,7 +70,7 @@
 							<label for="name">이름</label>
 						</h3>
 						<span class="box int_name"> 
-							<input type="text" id="name" name="uname" class="int" maxlength="20">
+							<input type="text" id="name" name="uname" class="int" maxlength="20" value="${member.uname}">
 						</span> 
 						<span class="error_next_box"></span>
 					</div>
@@ -80,7 +81,7 @@
 							<label for="phoneNo">휴대전화</label>
 						</h3>
 						<span class="box int_mobile"> 
-							<input type="tel" id="mobile" name="phone" class="int" maxlength="16" placeholder="전화번호 입력">
+							<input type="tel" id="mobile" name="phone" class="int" maxlength="16" placeholder="전화번호 입력" value="${member.phone}">
 						</span> 
 						<span class="error_next_box"></span>
 					</div>
@@ -92,9 +93,17 @@
 						</h3>
 						<span class="box gender_code"> 
 						<select id="gender" name="sex" class="sel">
-								<option>성별</option>
-								<option value="M">남자</option>
-								<option value="F">여자</option>
+							<option>성별</option>
+							<c:choose>
+                            	<c:when test="${member.sex == 'M'}">
+	                            	<option value="M" selected>남자</option>
+									<option value="F">여자</option>
+	                            </c:when>
+	                            <c:when test="${member.sex == 'F'}">
+	                            	<option value="M">남자</option>
+									<option value="F" selected>여자</option>
+	                            </c:when>
+                            </c:choose>
 						</select>
 						</span> <span class="error_next_box">필수 정보입니다.</span>
 					</div>

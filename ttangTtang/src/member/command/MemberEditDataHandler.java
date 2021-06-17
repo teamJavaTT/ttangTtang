@@ -5,12 +5,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import AES256.AES256Util;
+import member.model.Member;
 import member.service.DuplicateIdException;
 import member.service.LoginFailException;
 import member.service.MemberRequest;
 import member.service.MemberService;
+import member.service.User;
 import mvc.command.CommandHandler;
 
 public class MemberEditDataHandler implements CommandHandler {
@@ -29,7 +32,11 @@ public class MemberEditDataHandler implements CommandHandler {
 		}
 	}
 
-	private String processForm(HttpServletRequest req, HttpServletResponse res) {
+	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		Member member= memberService.selectById(user.getUserid());
+		req.setAttribute("member", member);
 		return FORM_VIEW;
 	}
 
@@ -50,8 +57,8 @@ public class MemberEditDataHandler implements CommandHandler {
 		}
 
 		try {
-			String memberEdit= memberService.memberEdit(userid, null);
-			req.setAttribute("memberEdit", memberEdit);
+			//String memberEdit= memberService.memberEdit(userid);
+			//req.setAttribute("memberEdit", memberEdit);
 			return FORM_VIEW;
 		} catch (LoginFailException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);
