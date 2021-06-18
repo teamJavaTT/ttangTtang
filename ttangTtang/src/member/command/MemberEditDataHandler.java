@@ -43,13 +43,16 @@ public class MemberEditDataHandler implements CommandHandler {
 		AES256Util aes256Util = new AES256Util();
 		MemberRequest memberEdit = new MemberRequest();
 		req.setCharacterEncoding("utf-8");
-		memberEdit.setUserid(req.getParameter("userid"));
+	
 		memberEdit.setUpw(aes256Util.encrypt(req.getParameter("upw")));
 		memberEdit.setUpw2(aes256Util.encrypt(req.getParameter("upw2")));
 		memberEdit.setUemail(req.getParameter("uemail"));
-		memberEdit.setUname(req.getParameter("uname"));
 		memberEdit.setPhone(req.getParameter("phone"));
-		memberEdit.setSex(req.getParameter("sex"));
+		memberEdit.setAddress1(req.getParameter("address1"));
+		memberEdit.setAddress2(req.getParameter("address2"));
+		memberEdit.setAddress3(req.getParameter("address3"));
+		
+		
 		
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
