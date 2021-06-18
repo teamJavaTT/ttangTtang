@@ -114,20 +114,21 @@ public class MemberService {
 
 	}
 	
-	public void memberEdit(Connection conn, Member mem) throws Exception {
-		
+	public void memberEdit(MemberRequest memberEdit) throws Exception {
+		Connection conn = null;
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
 
-			Member member = selectById(mem.getUserid());
+			Member member = selectById(memberEdit.getUserid());
 			if (member != null) {
 				JdbcUtil.rollback(conn);
 				throw new DuplicateIdException();
 			}
-
-			memberDao.memberEdit(conn, new Member(mem.getUserid(), mem.getUpw(), mem.getUemail(),
-					mem.getUname(), mem.getPhone(), mem.getSex(),mem.getAddress1(),mem.getAddress2(),mem.getAddress3()));
+		
+	
+			memberDao.memberEdit(conn, new Member(memberEdit.getUserid(), memberEdit.getUpw(), memberEdit.getUemail(),
+					memberEdit.getUname(), memberEdit.getPhone(), memberEdit.getSex(),memberEdit.getAddress1(),memberEdit.getAddress2(),memberEdit.getAddress3()));
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);

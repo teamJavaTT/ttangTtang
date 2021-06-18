@@ -70,4 +70,6 @@ public class Member {
 		this.upw = newPwd;
 	}
 
+	
+
 }

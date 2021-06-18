@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import jdbc.JdbcUtil;
 import member.model.Member;
 
@@ -124,8 +123,6 @@ public class MemberDao {
 	
 	}
 
-
-	
 }
 
 		
