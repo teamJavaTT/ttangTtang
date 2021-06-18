@@ -42,12 +42,24 @@
 					<!-- PW1 -->
 					<div>
 						<h3 class="join_title">
-							<label for="pswd1">비밀번호</label>
+							<label for="pswd1">새 비밀번호</label>
 						</h3>
 						<span class="box int_pass"> 
 							<input type="password" id="pswd1" name="upw" class="int" maxlength="20"> 
 							<span id="alertTxt">사용불가</span> 
 							<img src="/ttangTtang/img/login/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
+						</span> 
+						<span class="error_next_box"></span>
+					</div>
+					
+					<!-- PW2 -->
+					<div>
+						<h3 class="join_title">
+							<label for="pswd2">새 비밀번호 재확인</label>
+						</h3>
+						<span class="box int_pass_check"> 
+							<input type="password" id="pswd2" name="upw2" class="int" maxlength="20"> 
+							<img src="/ttangTtang/img/login/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
 						</span> 
 						<span class="error_next_box"></span>
 					</div>
@@ -97,6 +109,39 @@
 								<option value="F">여자</option>
 						</select>
 						</span> <span class="error_next_box">필수 정보입니다.</span>
+					</div>
+					
+					<!-- ADDRESS1-->
+					<div>
+						<h3 class="join_title">
+							<label for="address1">주소 1</label>
+						</h3>
+						<span class="box int_name"> 
+							<input type="text" id="address1" name="address1" class="int" maxlength="20">
+						</span> 
+						<span class="error_next_box"></span>
+					</div>
+					
+					<!-- ADDRESS2-->
+					<div>
+						<h3 class="join_title">
+							<label for="address2">주소 2(선택사항)</label>
+						</h3>
+						<span class="box int_name"> 
+							<input type="text" id="address2" name="address2" class="int" maxlength="20">
+						</span> 
+						<span class="error_next_box"></span>
+					</div>
+					
+					<!-- ADDRESS3-->
+					<div>
+						<h3 class="join_title">
+							<label for="address3">주소 3(선택사항)</label>
+						</h3>
+						<span class="box int_name"> 
+							<input type="text" id="address3" name="address3" class="int" maxlength="20">
+						</span> 
+						<span class="error_next_box"></span>
 					</div>
 
 					<!-- JOIN BTN-->

@@ -43,7 +43,7 @@ public class MemberService {
 			}
 
 			memberDao.memberInsert(conn, new Member(memberReq.getUserid(), memberReq.getUpw(), memberReq.getUemail(),
-					memberReq.getUname(), memberReq.getPhone(), memberReq.getSex()));
+					memberReq.getUname(), memberReq.getPhone(), memberReq.getSex(),memberReq.getAddress1(),memberReq.getAddress2(),memberReq.getAddress3()));
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
@@ -114,27 +114,27 @@ public class MemberService {
 
 	}
 	
-	public String memberEdit(String Userid) throws Exception {
-		Connection conn = null;
+	public void memberEdit(Connection conn, Member mem) throws Exception {
 		
 		try {
 			conn = DBConnection.getConnection();
-			// DAO 객체를 생성 시 Connection 전달
-			MemberDao memberDao = new MemberDao();
-			String member = memberDao.memberEdit(conn, Userid);
-			return member;
+			conn.setAutoCommit(false);
+
+			Member member = selectById(mem.getUserid());
+			if (member != null) {
+				JdbcUtil.rollback(conn);
+				throw new DuplicateIdException();
+			}
+
+			memberDao.memberEdit(conn, new Member(mem.getUserid(), mem.getUpw(), mem.getUemail(),
+					mem.getUname(), mem.getPhone(), mem.getSex(),mem.getAddress1(),mem.getAddress2(),mem.getAddress3()));
+			conn.commit();
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
 		}
-
-		finally {
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-				}
-			;
-
-		}
-
 	}
 	
 }

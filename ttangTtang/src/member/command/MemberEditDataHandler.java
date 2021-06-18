@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import AES256.AES256Util;
+import member.dao.MemberDao;
 import member.model.Member;
 import member.service.DuplicateIdException;
 import member.service.LoginFailException;
@@ -41,29 +42,38 @@ public class MemberEditDataHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		AES256Util aes256Util = new AES256Util();
+		MemberRequest memberReq = new MemberRequest();
 		req.setCharacterEncoding("utf-8");
-		String userid = req.getParameter("userid");
+		
+		memberReq.setUpw(aes256Util.encrypt(req.getParameter("upw")));
+		memberReq.setUpw2(aes256Util.encrypt(req.getParameter("upw2")));
+		memberReq.setUemail(req.getParameter("uemail"));
+		memberReq.setPhone(req.getParameter("phone"));
+		memberReq.setAddress1(req.getParameter("Address1"));
+		memberReq.setAddress2(req.getParameter("Address2"));
+		memberReq.setAddress3(req.getParameter("Address3"));
+		
 		
 
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
 
-		if (userid == null || userid.isEmpty())
-			errors.put("userid", Boolean.TRUE);
-		
+		memberReq.validate(errors);
 
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
 
 		try {
-			//String memberEdit= memberService.memberEdit(userid);
-			//req.setAttribute("memberEdit", memberEdit);
+			memberService.memberInsert(memberReq);
+			res.sendRedirect(req.getContextPath() + "/login.do");
+			return null;
+		} catch (DuplicateIdException e) {
+			errors.put("duplicateId", Boolean.TRUE);
 			return FORM_VIEW;
-		} catch (LoginFailException e) {
-			errors.put("idOrPwNotMatch", Boolean.TRUE);
-			return FORM_VIEW;
+		}
 		}
 	}
 
-}
+

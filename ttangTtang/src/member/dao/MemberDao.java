@@ -26,7 +26,10 @@ public class MemberDao {
 						rs.getString("uemail"),
 						rs.getString("uname"),
 						rs.getString("phone"),
-						rs.getString("sex")
+						rs.getString("sex"),
+						rs.getString("address1"),
+						rs.getString("address2"),
+						rs.getString("address3")
 						);
 			}
 			return member;
@@ -105,29 +108,30 @@ public class MemberDao {
 	
 	}
 	
-	public String memberEdit(Connection conn, String userid) throws SQLException {
-		ResultSet rs = null;
-		String member = null;
-
+	public void memberEdit(Connection conn, Member mem) throws SQLException {
+		
 	try(PreparedStatement pstmt = conn.prepareStatement( 
-			"select * from member where userid=?")){
-		
-		pstmt.setString(1, userid);
-		
-		rs= pstmt.executeQuery();
-		
-		if(rs.next()) {
-			member=rs.getString("member");
-		}
-		return member;
-		}finally{
-			JdbcUtil.close(rs);
-			
-		}
-	
+			"update member set upw=?, uemail=?, phone=?, address1=?, address2=?, address3=?, updatetime=sysdate where userid=?")){
+		pstmt.setString(1, mem.getUpw());
+		pstmt.setString(2, mem.getUemail());
+		pstmt.setString(3, mem.getPhone());
+		pstmt.setString(4, mem.getAddress1());
+		pstmt.setString(5, mem.getAddress2());
+		pstmt.setString(6, mem.getAddress3());
+		pstmt.setString(7, mem.getUserid());
+		pstmt.executeUpdate();
 	}
 	
+	}
+
+
+	
 }
+
+		
+		
+	
+
 
 			
 		
