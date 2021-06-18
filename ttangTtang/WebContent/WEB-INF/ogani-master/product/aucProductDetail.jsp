@@ -29,11 +29,13 @@
 <section class="product-details spad">
 	<div class="container">
 		<div class="row">
+			<c:forEach var="aucProduct" items="${aucPro}">
 			<div class="col-lg-6 col-md-6">
-				<div class="product__details__pic">
-					<div class="product__details__pic__item" data-setbg="${allProduct.imageface}">
+				<div class="product__details__pic"  data-setbg="${aucProduct.imageface}">
+					<div class="product__details__pic__item" data-setbg="${aucProduct.imageface}">
 						<img class="product__details__pic__item--large"
-							data-setbg="${allProduct.imageface}">
+							src="/ttangTtang/ogani-master/img/product/details/product-details-1.jpg"
+							alt="">
 					</div>
 					<div
 						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
@@ -143,6 +145,7 @@
 					</div>
 				</div>
 			</div>
+			</c:forEach>
 			<div class="col-lg-6 col-md-6">
 			<c:forEach var="aucProduct" items="${aucPro}">
 				 <c:if test="${aucProduct.auctioncheck == 'Y'}">

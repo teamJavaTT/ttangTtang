@@ -58,7 +58,6 @@ font-size:15px;
 	    			<div class="col-lg-3 col-md-4 col-sm-6 mix allProduct">
 	                    <div class="featured__item">
 	     						<div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface}">
-	                         	<a href="ProductDetail.do?=${ino}">[${ino}]</a>
 	                            <ul class="featured__item__pic__hover">
 	                            	<c:if test="${allProduct.auctioncheck == 'Y'}">
 	                            		<h2 class="aucTimer" id="all${allProduct.ino}"></h2>
@@ -98,7 +97,7 @@ font-size:15px;
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
-		                            <h6><a href="ProductDetail.do?ino=${norProduct.ino}">${norProduct.iname}</a></h6>
+		                            <h6><a href="productDetail.do?ino=${norProduct.ino}">${norProduct.iname}</a></h6>
 		                            <h5>${norProduct.price}원</h5>
 		                        </div>
 		                    </div>
@@ -118,7 +117,7 @@ font-size:15px;
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
-		                            <h6><a href="ProductDetail.do?ino=${aucProduct.ino}">${aucProduct.iname}</a></h6>
+		                            <h6><a href="productDetail.do?ino=${aucProduct.ino}">${aucProduct.iname}</a></h6>
 		                            <h5>${aucProduct.minprice}원</h5>
 		                        </div>
 		                    </div>
