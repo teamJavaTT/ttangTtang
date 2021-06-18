@@ -82,7 +82,7 @@
 							<label for="name">이름</label>
 						</h3>
 						<span class="box int_name"> 
-							<input type="text" id="name" name="uname" class="int" maxlength="20" value="${member.uname}">
+							<input type="text" id="name" name="uname" class="int" maxlength="20" value="${member.uname}" disabled="disabled"/>
 						</span> 
 						<span class="error_next_box"></span>
 					</div>

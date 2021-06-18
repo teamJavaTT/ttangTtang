@@ -34,7 +34,7 @@ public class MemberEditDataHandler implements CommandHandler {
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-		Member member= memberService.selectById(user.getUserid());
+		Member member = memberService.selectById(user.getUserid());
 		req.setAttribute("member", member);
 		return FORM_VIEW;
 	}
@@ -43,7 +43,11 @@ public class MemberEditDataHandler implements CommandHandler {
 		AES256Util aes256Util = new AES256Util();
 		MemberRequest memberEdit = new MemberRequest();
 		req.setCharacterEncoding("utf-8");
-	
+
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+
+		memberEdit.setUserid(user.getUserid());
 		memberEdit.setUpw(aes256Util.encrypt(req.getParameter("upw")));
 		memberEdit.setUpw2(aes256Util.encrypt(req.getParameter("upw2")));
 		memberEdit.setUemail(req.getParameter("uemail"));
@@ -51,27 +55,13 @@ public class MemberEditDataHandler implements CommandHandler {
 		memberEdit.setAddress1(req.getParameter("address1"));
 		memberEdit.setAddress2(req.getParameter("address2"));
 		memberEdit.setAddress3(req.getParameter("address3"));
-		
-		
-		
-		Map<String, Boolean> errors = new HashMap<>();
-		req.setAttribute("errors", errors);
-
-		memberEdit.validate(errors);
-
-		if (!errors.isEmpty()) {
-			return FORM_VIEW;
-		}
 
 		try {
-			memberService.memberInsert(memberEdit);
+			memberService.memberEdit(memberEdit);
 			res.sendRedirect(req.getContextPath() + "/login.do");
 			return null;
 		} catch (DuplicateIdException e) {
-			errors.put("duplicateId", Boolean.TRUE);
 			return FORM_VIEW;
 		}
 	}
-	}
-
-
+}
