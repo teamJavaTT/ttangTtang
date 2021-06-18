@@ -65,7 +65,7 @@ public class AucProductHandler implements CommandHandler {
 		aucReq.setProductName(req.getParameter("productNameAuc"));
 		aucReq.setMinPrice(req.getParameter("minPrice"));
 		aucReq.setMaxPrice(req.getParameter("maxPrice"));
-		aucReq.setPriceText(req.getParameter("priceTextAuc"));
+		aucReq.setPriceText(req.getParameter("priceTextAuc").replace("\r\n","<br>"));
 		aucReq.setImageFace("/ttangTtang/file/"+imageName);
 		aucReq.setAuctionTime(Integer.toString(endDay+endTime));
 		
