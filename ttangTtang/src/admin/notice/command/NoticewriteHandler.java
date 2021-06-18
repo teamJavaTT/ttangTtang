@@ -34,7 +34,7 @@ public class NoticewriteHandler implements CommandHandler {
 		req.setCharacterEncoding("utf-8");
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
-		Notice writeReq = new Notice(req.getParameter("title"), req.getParameter("content"));
+		Notice writeReq = new Notice(req.getParameter("title"), req.getParameter("content").replace("\r\n", "<br>"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;

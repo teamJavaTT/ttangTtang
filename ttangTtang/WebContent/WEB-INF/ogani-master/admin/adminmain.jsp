@@ -3,7 +3,7 @@
 <%@ include file="../include/adminheader.jsp" %>
 
                 <div class="col-lg-9">
-	                <h1>Services</h1>
+	                <h2>Services</h2>
 	                <div style="text-align : center;">
 	                	<img src="/ttangTtang/ogani-master/img/logo_red.png" width="50%" alt="">
 	                	<p>고객센터에서 궁금하신점을 찾아보세요.</p>

@@ -37,7 +37,7 @@ public class QnawriteHandler implements CommandHandler {
 
 		// NoticeRequest writeReq =new NoticeRequest(new Notice(noticeuser.getmno(),
 		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
-		Qna writeReq = new Qna(req.getParameter("userid"), req.getParameter("title"), req.getParameter("content"));
+		Qna writeReq = new Qna(req.getParameter("userid"), req.getParameter("title"), req.getParameter("content").replace("\r\n", "<br>"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
+
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <div class="col-lg-9">
 	<!-- Content Header (Page header) -->

@@ -1,5 +1,4 @@
 @charset "EUC-KR";
-@import "reset.css";
 
 table {
   border-spacing: 1;
@@ -30,3 +29,18 @@ table tbody tr {
 	color: white;
 	background:#EC0000;
 }
+
+.title{
+	width:100%;
+}
+
+textarea{
+	width:100%;
+	resize: none;
+}
+.submit{
+	width: auto;
+}
+
+
+

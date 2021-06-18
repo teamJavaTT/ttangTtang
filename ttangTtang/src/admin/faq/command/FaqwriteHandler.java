@@ -34,7 +34,7 @@ public class FaqwriteHandler implements CommandHandler {
 		req.setCharacterEncoding("utf-8");
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
-		Faq writeReq = new Faq(req.getParameter("title"), req.getParameter("content"));
+		Faq writeReq = new Faq(req.getParameter("title"), req.getParameter("content").replace("\r\n", "<br>"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
