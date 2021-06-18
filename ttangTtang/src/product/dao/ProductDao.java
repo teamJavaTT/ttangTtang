@@ -181,13 +181,16 @@ public class ProductDao {
 				rs.getString("minprice"), rs.getString("maxprice"),rs.getString("apricenow"), rs.getString("apriceend"), rs.getString("pricetext"),
 				rs.getString("imageface"), rs.getDate("endtime"));
 	}
-// aucPro select
 
-	public List<AucPro> selecAucPro(Connection conn) throws SQLException{
+	
+	
+// aucProDetail select
+	public List<AucPro> selecAucPro(Connection conn,int ino) throws SQLException{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement("select * from product where ino =?");
+			pstmt.setInt(1, ino);
 			rs = pstmt.executeQuery();
 			List<AucPro> result = new ArrayList<>();
 			
@@ -224,12 +227,13 @@ public class ProductDao {
 				rs.getString("minprice"), rs.getString("maxprice"),rs.getString("apricenow"), rs.getString("apriceend"), rs.getString("pricetext"),
 				rs.getString("imageface"),rs.getString("endtime"));
 	}
-//norPro select
-public List<NorPro> selecNorPro(Connection conn) throws SQLException{
+//norProDetail select
+public List<NorPro> selecNorPro(Connection conn,int ino) throws SQLException{
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	try {
 		pstmt = conn.prepareStatement("select * from product where ino =?");
+		pstmt.setInt(1, ino);
 		rs = pstmt.executeQuery();
 		List<NorPro> result = new ArrayList<>();
 		

@@ -31,10 +31,9 @@
 		<div class="row">
 			<div class="col-lg-6 col-md-6">
 				<div class="product__details__pic">
-					<div class="product__details__pic__item">
+					<div class="product__details__pic__item" data-setbg="${allProduct.imageface}">
 						<img class="product__details__pic__item--large"
-							src="/ttangTtang/ogani-master/img/product/details/product-details-1.jpg"
-							alt="">
+							data-setbg="${allProduct.imageface}">
 					</div>
 					<div
 						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">

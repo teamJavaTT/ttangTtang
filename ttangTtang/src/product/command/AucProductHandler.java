@@ -31,6 +31,7 @@ public class AucProductHandler implements CommandHandler {
 			return null;
 		}
 	}
+	
 
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		List<Category> category = mainService.getCategory();
@@ -45,7 +46,7 @@ public class AucProductHandler implements CommandHandler {
 		AucProRequest aucReq = new AucProRequest();
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-		
+	
 		req.setCharacterEncoding("utf-8");
 		
 		String imageName = "";
@@ -58,6 +59,7 @@ public class AucProductHandler implements CommandHandler {
 		int endDay = Integer.parseInt(req.getParameter("endDay"));
 		int endTime = Integer.parseInt(req.getParameter("endTime"));
 		
+		aucReq.setIno(req.getParameter("ino"));
 		aucReq.setUserId(user.getUserid());
 		aucReq.setCategory(req.getParameter("categoryAuc"));
 		aucReq.setProductName(req.getParameter("productNameAuc"));

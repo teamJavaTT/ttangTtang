@@ -1,6 +1,7 @@
 package product.service;
 
 public class AucProRequest {
+	private String ino;
 	private String userId;
 	private String category;
 	private String productName;
@@ -9,6 +10,14 @@ public class AucProRequest {
 	private String priceText;
 	private String imageFace;
 	private String auctionTime;
+
+public String getIno() {
+	return ino;
+	
+}
+	public void setIno(String ino) {
+			this.ino = ino;
+	}
 
 	public String getUserId() {
 		return userId;
@@ -73,5 +82,6 @@ public class AucProRequest {
 	public void setAuctionTime(String auctionTime) {
 		this.auctionTime = auctionTime;
 	}
+
 
 }

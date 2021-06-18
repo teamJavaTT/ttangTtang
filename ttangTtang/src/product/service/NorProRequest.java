@@ -1,6 +1,7 @@
 package product.service;
 
 public class NorProRequest {
+	private String ino;
 	private String userId;
 	private String category;
 	private String productName;
@@ -8,6 +9,12 @@ public class NorProRequest {
 	private String priceText;
 	private String imageFace;
 	
+	public String getIno() {
+		return ino;
+	}
+	public void setIno(String ino) {
+		this.ino = ino;
+	}
 	
 		
 	public String getUserId() {

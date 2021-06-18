@@ -54,4 +54,5 @@ function previewProcess(form){
 	form.preview.src = "../images/preview/"+previewName;
 }
 
+/******************  countdown ******************/
 

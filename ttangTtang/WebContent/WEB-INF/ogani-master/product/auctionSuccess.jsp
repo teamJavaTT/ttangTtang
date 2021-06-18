@@ -5,7 +5,7 @@
 <title>축하드립니다!</title>
 </head>
 <body>
-${param.name}님, 경매 성공했습니다.
+${aucProduct.uname}님, 경매 성공했습니다.
 <br/>
 </body>
 </html>
