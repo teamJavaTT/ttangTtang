@@ -57,7 +57,7 @@ public class NorProductHandler implements CommandHandler {
 		norReq.setCategory(req.getParameter("categoryNor"));
 		norReq.setProductName(req.getParameter("productNameNor"));
 		norReq.setPrice(req.getParameter("price"));
-		norReq.setPriceText(req.getParameter("priceTextNor"));
+		norReq.setPriceText(req.getParameter("priceTextNor").replace("\r\n","<br>"));
 		norReq.setImageFace("/ttangTtang/file/"+imageName);
 		
 		try{
