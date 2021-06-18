@@ -34,6 +34,7 @@ const countDownTimer = function (id, date) {
 }
 
 for(var i=0;i<endTimeArr.length;i++){
-	countDownTimer('pro'+iNoArr[i], endTimeArr[i]);	
+	countDownTimer('auc'+iNoArr[i], endTimeArr[i]);
+	countDownTimer('all'+iNoArr[i], endTimeArr[i]);		
 }
 

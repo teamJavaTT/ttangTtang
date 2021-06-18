@@ -31,9 +31,13 @@ public class ProductToday {
 		this.pricetext = pricetext;
 		this.imageface = imageface;
 		
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		String strDate = simpleDateFormat.format(endtime);
-		this.endtime = strDate;
+		if(endtime != null) {
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+			String strDate = simpleDateFormat.format(endtime);
+			this.endtime = strDate;
+		}else {
+			this.endtime = null;
+		}
 	}
 
 	public String getIno() {

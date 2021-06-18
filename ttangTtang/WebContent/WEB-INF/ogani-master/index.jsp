@@ -59,6 +59,9 @@ font-size:15px;
 	                    <div class="featured__item">
 	                        <div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface}">
 	                            <ul class="featured__item__pic__hover">
+	                            	<c:if test="${allProduct.auctioncheck == 'Y'}">
+	                            		<h2 class="aucTimer" id="all${allProduct.ino}"></h2>
+	                            	</c:if>
 	                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
 	                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
 	                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
@@ -106,7 +109,7 @@ font-size:15px;
 		                    <div class="featured__item">
 		                        <div class="featured__item__pic set-bg" data-setbg="${aucProduct.imageface}">
 		                            <ul class="featured__item__pic__hover">
-		                            	<h2 class="aucTimer" id="pro${aucProduct.ino}"></h2>
+		                            	<h2 class="aucTimer" id="auc${aucProduct.ino}"></h2>
 		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
 		                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
 		                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
