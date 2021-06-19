@@ -1,107 +1,214 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-     pageEncoding="UTF-8"%>
- <%@ include file="../include/header.jsp"%>
- <%@ include file="../include/middle_header.jsp"%>
- <!DOCTYPE html>
- <html>
- <head>
- <meta charset="UTF-8">
- <title>상품 등록</title>
- <div class="form-group" style="text-align: center;">
-                  <div class="btn-group" data-toggle="buttons">
-                     <label class="btn btn-primary active">
-                        <input type="radio" name="saleSet" autocomplete="off" value="일반" checkde   >일반
-                     </label>
-                     <label  class="btn btn-primary">
-                        <input type="radio" name="saleSet" autocomplete="off" value="경매" checkde   >경매
-                     </label>
-                  </div>
-               </div>
- <script>
-    //상품을 추가하기위한 정보를 담아 insert.do로 보내는 자바스크립트 함수
-    function product_write() {
- 
-        var product_name = document.form1.product_name.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품이름을 반환해서 name에 저장함
-        var price = document.form1.price.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
-        var description = document.form1.description.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 정보를 반환해서 description에 저장함
-        
-        //document.form.은 폼페이지에 있는 값을 반환한다는 뜻.
- 
-        if (product_name == "") { //상품 이름이 입력되어 있지 않으면
-            alert("상품명을 입력하세요");
-            document.form1.product_name.focus(); //form1페이지에 있는 "상품명을 입력하세요" 에 커서를 올려둔다.
-            return;
-        }
-        if (price == "") { //상품가격이 입력되어 있지 않으면
-            alert("가격을 입력하세요");
-            document.form1.price.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
-            return;
-        }
-        if (description == "") { //상품설명이 입력되어 있지 않으면
-            alert("상품설명을 입력하세요");
-            document.form1.description.focus(); //form1페이지에 있는 "상품설명을 입력하세요" 에 커서를 올려둔다.
-            return;
-        }
-        // input 태그를 마우스로 클릭하여 입력상태로 만든것을 포커스를 얻었다고 한다.
-       // 그리고 입력상태를 떠난 것을 포커스가 벗어났다고 한다.
-        
+	pageEncoding="UTF-8"%>
+<%@ include file="../include/header.jsp"%>
+<%@ include file="../include/middle_header.jsp"%>
 
-        document.form1.action = "${path}/shop/product/insert.do"; //insert.do 페이지로 form1에 저장된 자료를 전송함
-        document.form1.submit();
-    }
- </script>
- </head>
- <body>
-     <!-- 관리자용 메뉴는 일반 회원의 메뉴와 다르기 때문에 일부러 관리자용 메뉴를 만들고 그 메뉴를 출력한다. -->
-    <h2>상품 등록</h2>
-<!--     <form id="form1" name="form1" method="post"
-        enctype="multipart/form-data"> -->
-        <!-- 파일업로드를 위해 추가하는 타입 -->
- 
-        <table>
-            <tr>
-                <td>상품명</td>
-                <td><input name="product_name"></td>
-            </tr>
-            <tr>
-                <td>가격</td>
-                <td><input name="price"></td>
-            </tr>
-            <tr>
-                <td>상품설명</td>
-                <td><textarea rows="5" cols="60" name="description"
-                        id="description"></textarea></td>
-            </tr>
-            <tr>
-                <td>상품이미지</td>
-      	      <tr>
-	       <tr><td><input type="file" name="file1" multiple accept="image/*"/ ></td></tr>	
-			<td><input name="image" id="image" placeholder="정면"
-				 onchange="filePreview()"></td>
-		<tr>
-			<td><input name="image" id="image" placeholder="후면" 
-				onchange="filePreview()" style="margin-left: 48px;">
-		</tr>
-		</td>
-		<tr>
-			<td><input name="image" id="image" placeholder="측면" 
-				onchange="filePreview()" style="margin-left: 48px;">
-		</tr>
-		</td>
-			<td><input name="image" id="image" placeholder="측면" 
-				onchange="filePreview()" style="margin-left: 48px;">
-		</tr>
-		</td>
-            </tr>
-            <tr>
- 
-                <td colspan="2" align="center"><input type="button" value="등록"
-                    onclick="product_write()"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
-                    <input type="button" value="목록"
-                    onclick="location.href='${path}/admin/product/list.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
-                </td>
-            </tr>
-        </table>
-    </form>
+<title>상품 등록</title>
+<style>
+#test textarea {
+	width: 200px;
+	height: 100px;
+	border: 3px solid #ff0000;
+}
 
- <%@ include file="../include/footer.jsp"%>
+label {
+	display: block;
+	font: 1rem 'Fira Sans', sans-serif;
+}
+
+input, label {
+	margin: .4rem 0;
+}
+
+.preview img {
+	width: 100px;
+	height: 100px;
+}
+
+.preview p {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+preview-box {
+	border: 1px solid;
+	padding: 5px;
+	border-radius: 2px;
+	margin-bottom: 10px;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<div class="featured__controls">
+    <ul>
+        <li onclick="fnOpen('#normal')">판매하기</li>
+        <li onclick="fnOpen('#auction')">경매하기</li>
+    </ul>
+</div>
+<!-- 상품 등록 section begin -->
+<section id="normal" class="productInsert" style="display:none">
+	<h3 style="text-align: center;">일반 상품 등록</h3>
+	<div class="container" style="padding-left: 34%;">
+		<form id="norForm" name="norForm" action="norProductWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
+			<input type="hidden" name="imagefaceNameNor"/>
+			<!-- 파일업로드를 위해 추가하는 타입 -->
+			<table>
+				<tr>
+					<td>상품명:</td>
+					<td><input name="productNameNor"></td>
+				</tr>
+				<tr>
+					<td>카테고리:</td>
+					<td>
+						<select name="categoryNor">
+							<c:forEach var="category" items="${category}">
+								<option value="${category.ccode}">${category.cname}</option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>가격:</td>
+					<td><input name="price"></td>
+				</tr>
+				<tr>
+					<td style="float: left;">상품설명:</td>
+					<td>
+						<textarea name="priceTextNor" id="priceTextNor" style="resize: none; width: 306px; height: 176px;"></textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div class="filebox">
+			<table>
+				<tr>
+					<td><span style=" opacity: 0.6; font-size: 12px;">(최대 10개의 이미지를 선택하실 수 있습니다.※정면,측면,후면 필수!)</span></td>
+				</tr>
+				<tr>
+					<td>
+						<div id="previewNor" class="preview"></div>
+						<input class="upload-name" value="이미지 등록" disabled="disabled" multiple /> <label for="imagefaceNor">업로드</label>
+						<form id="fileUploadNor" name="fileUploadNor"  method="post" enctype="multipart/form-data">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imagefaceNor" id="imagefaceNor" class="upload-hidden">
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<input type="button" value="등록" onclick="productWriteNor();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+						<input type="button" value="목록" onclick="location.href='index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
+					</td>
+				</tr>
+			</table>
+		</div>		
+	</div>
+</section>
+<section id="auction" class="productInsert" style="display:none">
+	<h3 style="text-align: center;">경매 상품 등록</h3>
+	<div class="container" style="padding-left: 34%;">
+		<form id="aucForm" name="aucForm" action="aucProductWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
+			<input type="hidden" name="imagefaceNameAuc"/>
+			<!-- 파일업로드를 위해 추가하는 타입 -->
+			<table>
+				<tr>
+					<td>상품명:</td>
+					<td colspan="2"><input type="text" name="productNameAuc"></td>
+				</tr>
+				<tr>
+					<td>카테고리:</td>
+					<td colspan="2">
+						<select id="categoryAuc" name="categoryAuc">
+							<c:forEach var="category" items="${category}">
+								<c:if test="${category.ccode != 'BUY'}">
+									<option value="${category.ccode}">${category.cname}</option>
+								</c:if>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>최소가격:</td>
+					<td colspan="2"><input name="minPrice"></td>
+				</tr>
+				<tr>
+					<td>최대가격:</td>
+					<td colspan="2"><input name="maxPrice"></td>
+				</tr>
+				<tr>
+					<td>경매기간:</td>
+					<td style="width: 74px;">
+						<select name="endDay">
+								<option value="0">0일</option>
+								<option value="24">1일</option>
+								<option value="48">2일</option>
+								<option value="72">3일</option>
+								<option value="96">4일</option>
+								<option value="120">5일</option>
+								<option value="144">6일</option>
+						</select>
+						</td><td>
+						<select name="endTime">
+								<option value="0">0시간</option>
+								<option value="1">1시간</option>
+								<option value="2">2시간</option>
+								<option value="3">3시간</option>
+								<option value="4">4시간</option>
+								<option value="5">5시간</option>
+								<option value="6">6시간</option>
+								<option value="7">7시간</option>
+								<option value="8">8시간</option>
+								<option value="9">9시간</option>
+								<option value="10">10시간</option>
+								<option value="11">11시간</option>
+								<option value="12">12시간</option>
+								<option value="13">13시간</option>
+								<option value="14">14시간</option>
+								<option value="15">15시간</option>
+								<option value="16">16시간</option>
+								<option value="17">17시간</option>
+								<option value="18">18시간</option>
+								<option value="19">19시간</option>
+								<option value="20">20시간</option>
+								<option value="21">21시간</option>
+								<option value="22">22시간</option>
+								<option value="23">23시간</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="float: left;">상품설명:</td>
+					<td colspan="2">
+						<textarea name="priceTextAuc" id="priceTextAuc" style="resize: none; width: 306px; height: 176px;"></textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+		
+		<div class="filebox">
+			<table>
+				<tr>
+					<td><span style=" opacity: 0.6; font-size: 12px;">(최대 10개의 이미지를 선택하실 수 있습니다.※정면,측면,후면 필수!)</span></td>
+				</tr>
+				<tr>
+					<td>
+						<div id="previewAuc" class="preview"></div>
+						<input class="upload-name" value="이미지 등록" disabled="disabled" multiple /> <label for="imagefaceAuc">업로드</label>
+						<form id="fileUploadAuc" name="fileUploadAuc"  method="post" enctype="multipart/form-data">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imagefaceAuc" id="imagefaceAuc" class="upload-hidden">
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" value="등록" onclick="productWriteAuc();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+						<input type="button" value="목록" onclick="location.href='index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</section>
+
+<script src="/ttangTtang/js/product/aucProductWrite.js"></script>
+<%@ include file="../include/footer.jsp"%>

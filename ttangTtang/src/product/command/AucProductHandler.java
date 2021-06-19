@@ -18,7 +18,7 @@ public class AucProductHandler implements CommandHandler {
 	private ProductService productService = new ProductService();
 	private MainService mainService = new MainService();
 
-	private static final String FORM_VIEW = "/WEB-INF/ogani-master/product/aucProductWrite.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/ogani-master/product/productWrite.jsp";
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
