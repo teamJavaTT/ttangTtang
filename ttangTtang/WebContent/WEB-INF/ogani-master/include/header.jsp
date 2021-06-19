@@ -69,7 +69,7 @@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="index.do">Home</a></li>
-                <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
+                <li><a href="mypage.do">MYPAGE</a></li>
                 <li><a href="adminmain.do"">Service</a></li>
             </ul>
         </nav>
@@ -130,7 +130,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="index.do">Home</a></li>
-                            <li><a href="/ttangTtang/ogani-master/mypage/mypage.jsp">MYPAGE</a></li>
+                            <li><a href="mypage.do">MYPAGE</a></li>
               				<li><a href="adminmain.do">Service</a></li>
                         </ul>
                     </nav>
@@ -138,7 +138,7 @@
                 <div class="col-lg-5">
                     <div class="header__cart">
                         <ul>
-                        	<li><a href="aucProductWrite.do" style="color: black;"><i class="fa fa-buysellads"></i> 판매하기</a></li>
+                        	<li><a href="productWrite.do" style="color: black;"><i class="fa fa-buysellads"></i> 판매하기</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                             
