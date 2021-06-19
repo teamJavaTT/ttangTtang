@@ -1,17 +1,10 @@
 package member.command;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import AES256.AES256Util;
-import member.dao.MemberDao;
-import member.service.IdFind;
 import member.service.LoginFailException;
 import member.service.MemberService;
-import member.service.User;
 import mvc.command.CommandHandler;
 
 public class IdCheckHandler implements CommandHandler {
@@ -36,17 +29,24 @@ public class IdCheckHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		req.setCharacterEncoding("utf-8");
-		String userid = req.getParameter("userid");
-		
-		
-		int check = MemberDao.
-		logger.info(check + check); 
-		
-		req.setAttribute("check", check);
-		req.setAttribute("userid", userid);
-		
-		return "/WEB-INF/ogani-master/login/idCheck.jsp"
 
-}
+		req.setCharacterEncoding("utf-8");
+
+		String userid = req.getParameter("userid");
+
+		try {
+
+			int idCheck = memberService.idCheck(userid);
+
+			req.setAttribute("idCheck", idCheck);
+
+			return FORM_VIEW;
+
+		} catch (LoginFailException e) {
+
+			return FORM_VIEW;
+
+		}
+
+	}
 }

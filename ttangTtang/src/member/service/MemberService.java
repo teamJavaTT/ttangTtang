@@ -140,4 +140,34 @@ public class MemberService {
 		}
 	}
 
+	public int idCheck(String Userid) throws Exception {
+
+		Connection conn = null;
+
+		try {
+
+			conn = DBConnection.getConnection();
+
+			// DAO 객체를 생성 시 Connection 전달
+
+			MemberDao memberDao = new MemberDao();
+
+			int idCheck = memberDao.idCheck(conn, Userid);
+
+			return idCheck;
+
+		} catch (SQLException e) {
+
+			JdbcUtil.rollback(conn);
+
+			throw new RuntimeException(e);
+
+		} finally {
+
+			JdbcUtil.close(conn);
+
+		}
+
+	}
+
 }

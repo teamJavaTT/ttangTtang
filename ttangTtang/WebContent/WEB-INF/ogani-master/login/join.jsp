@@ -33,7 +33,7 @@
 						</h3>
 						<span class="box int_id"> <input type="text" id="id"
 							name="userid" class="int" maxlength="20">
-			<button type="button" onclick="idCheck(joinform, '${root}')">아이디 중복</button>
+			<button type="button" onclick="location.href='idCheck.do?'">아이디 중복</button>
 
 
 
