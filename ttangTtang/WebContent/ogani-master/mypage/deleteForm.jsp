@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>TTang TTang Market : 회원탈퇴</title>
 <link rel="stylesheet" type="text/css"
-	href="/ttangTtang/css/login/deleteFrom.css">
+	href="/ttangTtang/css/mypage/deleteForm.css">
 
 </head>
 <body>
@@ -25,8 +25,8 @@
 
 		<!-- content-->
 		<div id="content">
-			<section class="content">
-				<form action="deleteFrom.do" method="post">
+			<!-- <section class="content">
+				<form action="deleteForm.do" method="post"> -->
 
 
 					<!-- PW1 -->
@@ -60,7 +60,7 @@
 		</div>
 	</div>
 	<!-- wrapper -->
-	<script src="/ttangTtang/js/mypage/deleteFrom.js"></script>
+	<script src="/ttangTtang/js/mypage/deleteForm.js"></script>
 </body>
 </html>
 
