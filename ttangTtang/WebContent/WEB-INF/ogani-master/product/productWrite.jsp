@@ -51,6 +51,7 @@ preview-box {
 	<h3 style="text-align: center;">일반 상품 등록</h3>
 	<div class="container" style="padding-left: 34%;">
 		<form id="norForm" name="norForm" action="productWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
+			<input type="hidden" name="aucChk" value="N"/>
 			<input type="hidden" name="imagefaceNameNor"/>
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
@@ -108,6 +109,7 @@ preview-box {
 	<h3 style="text-align: center;">경매 상품 등록</h3>
 	<div class="container" style="padding-left: 34%;">
 		<form id="aucForm" name="aucForm" action="productWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
+			<input type="hidden" name="aucChk" value="Y"/>
 			<input type="hidden" name="imagefaceNameAuc"/>
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
