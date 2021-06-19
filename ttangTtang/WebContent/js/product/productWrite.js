@@ -149,14 +149,14 @@ function fnOpen(open) {
 	$(open).show();
 }
 //******************상품 삭제******************//
-function productDel(){
-	$(“#productDel”).on(‘click’, function(){
-		var ino = $(“delIno”).val();
-		var result = confirm(“상품을 삭제 하시겠습니까?”);
-		if(result){
-			location.herf = ‘ProductDelte.do?no=‘+mno;
-		} else{
-			alert(“취소 되었습니다.”)
+function productDel() {
+	$("#productDel").on('click', function() {
+		var ino = $("delIno").val();
+		var result = confirm("상품을 삭제 하시겠습니까 ?");
+		if (result) {
+			location.herf = 'productDelte.do?no ='+mno;
+		} else {
+			alert("취소 되었습니다.")
 		}
 	});
-	}
+}
