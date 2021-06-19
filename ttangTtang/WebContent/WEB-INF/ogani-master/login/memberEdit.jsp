@@ -126,7 +126,7 @@
 							<label for="address1">주소 1</label>
 						</h3>
 						<span class="box int_name"> 
-							<input type="text" id="address1" name="address1" class="int" maxlength="20">
+							<input type="text" id="address1" name="address1" class="int" maxlength="20" value="${member.address1}" >
 						</span> 
 						<span class="error_next_box"></span>
 					</div>
@@ -137,7 +137,7 @@
 							<label for="address2">주소 2(선택사항)</label>
 						</h3>
 						<span class="box int_name"> 
-							<input type="text" id="address2" name="address2" class="int" maxlength="20" placeholder="선택입력" >
+							<input type="text" id="address2" name="address2" class="int" maxlength="20" placeholder="선택입력" value="${member.address2}"  >
 						</span> 
 						<span class="error_next_box"></span>
 					</div>
@@ -148,7 +148,7 @@
 							<label for="address3">주소 3(선택사항)</label>
 						</h3>
 						<span class="box int_name"> 
-							<input type="text" id="address3" name="address3" class="int" maxlength="20" placeholder="선택입력" >
+							<input type="text" id="address3" name="address3" class="int" maxlength="20" placeholder="선택입력" value="${member.address3}" >
 						</span> 
 						<span class="error_next_box"></span>
 					</div>

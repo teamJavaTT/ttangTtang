@@ -9,6 +9,8 @@ import member.model.Member;
 
 public class MemberDao {
 
+	
+
 	public Member selectById(Connection conn, String id) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -110,5 +112,33 @@ public class MemberDao {
 		}
 
 	}
+
+	public int idCheck(Connection conn, String userid) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int value = 0;
+
+		try {
+			String sql = "select userid from member where userid = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+
+			if (rs.next())
+				value = 1;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return value;
+	}
+
+	
 
 }
