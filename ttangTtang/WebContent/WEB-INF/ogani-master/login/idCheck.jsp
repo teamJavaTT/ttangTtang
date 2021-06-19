@@ -28,6 +28,7 @@
 		</div>
 		<script type="text/javascript">
 			opener.joinform.userid.value="${param.userid}";
+			opener.joinform.idCheck.value="idCheck";
 		</script>	
 	</c:if>
 	
