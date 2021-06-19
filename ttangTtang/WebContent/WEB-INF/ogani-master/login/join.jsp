@@ -25,16 +25,14 @@
 		<!-- content-->
 		<div id="content">
 			<section class="content">
-				<form action="join.do" method="post">
+				<form name="joinform" action="join.do" method="post">
 					<!-- ID -->
 					<div>
 						<h3 class="join_title">
 							<label for="id">아이디</label>
 						</h3>
-						<span class="box int_id"> <input type="text" id="id"
-							name="userid" class="int" maxlength="20">
-			<button type="button" onclick="location.href='idCheck.do?'">아이디 중복</button>
-
+						<span class="box int_id"> <input type="text" id="userid" name="userid" class="int" maxlength="20">
+							<button type="button" onclick="window.open('idCheck.do', 100, 40)">아이디 중복</button>
 
 
 						</span> <span class="error_next_box"></span>

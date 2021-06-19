@@ -8,23 +8,26 @@
 <title>아이디 확인</title>
 </head>
 <body>
-	<c:set var="root" value="${pageContext.request.contextPath}"/>
-	<c:if test="${check != 0}">
+	<c:if test="${idCheck != 0}">
 		<div align="center"> 
-			이미 사용중인 아이디입니다.
-			<form action="${root}/member/idCheck.do" method="get">
-				<input type="text" name="id"/>
+			<c:if test="${empty idCheck}">
+				아이디를 입력하세요.
+			</c:if>
+			<c:if test="${idCheck == 1}">
+				사용중인 아이디입니다.
+			</c:if>
+			<form action="idCheck.do" method="post">
+				<input type="text" name="userid"/>
 				<input type="submit" value="확인"/>
 			</form>
 		</div>
 	</c:if>
-
-	<c:if test="${check == 0}">
+	<c:if test="${idCheck == 0}">
 		<div align="center"> 
 			사용 가능한 아이디입니다.
 		</div>
 		<script type="text/javascript">
-			opener.joinform.id.value="${id}";
+			opener.joinform.userid.value="${param.userid}";
 		</script>	
 	</c:if>
 	

@@ -53,6 +53,7 @@ public class LoginHandler implements CommandHandler {
 		try {
 			User user = memberService.login(id, password);
 			req.getSession().setAttribute("memberUser", user);
+			req.getSession().setAttribute("userid", user.getUserid());
 			res.sendRedirect(req.getContextPath() + "/index.do");
 			return null;
 		} catch (LoginFailException e) {

@@ -37,7 +37,7 @@ public class IdCheckHandler implements CommandHandler {
 		try {
 
 			int idCheck = memberService.idCheck(userid);
-
+			
 			req.setAttribute("idCheck", idCheck);
 
 			return FORM_VIEW;
