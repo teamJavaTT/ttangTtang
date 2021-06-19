@@ -50,7 +50,7 @@ preview-box {
 <section id="normal" class="productInsert" style="display:none">
 	<h3 style="text-align: center;">일반 상품 등록</h3>
 	<div class="container" style="padding-left: 34%;">
-		<form id="norForm" name="norForm" action="norProductWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
+		<form id="norForm" name="norForm" action="productWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
 			<input type="hidden" name="imagefaceNameNor"/>
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
@@ -107,7 +107,7 @@ preview-box {
 <section id="auction" class="productInsert" style="display:none">
 	<h3 style="text-align: center;">경매 상품 등록</h3>
 	<div class="container" style="padding-left: 34%;">
-		<form id="aucForm" name="aucForm" action="aucProductWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
+		<form id="aucForm" name="aucForm" action="productWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
 			<input type="hidden" name="imagefaceNameAuc"/>
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
@@ -210,5 +210,5 @@ preview-box {
 	</div>
 </section>
 
-<script src="/ttangTtang/js/product/aucProductWrite.js"></script>
+<script src="/ttangTtang/js/product/productWrite.js"></script>
 <%@ include file="../include/footer.jsp"%>
