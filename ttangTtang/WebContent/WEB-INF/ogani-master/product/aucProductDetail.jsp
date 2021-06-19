@@ -31,11 +31,10 @@
 		<div class="row">
 			<c:forEach var="aucProduct" items="${aucPro}">
 			<div class="col-lg-6 col-md-6">
-				<div class="product__details__pic"  data-setbg="${aucProduct.imageface}">
-					<div class="product__details__pic__item" data-setbg="${aucProduct.imageface}">
+				<div class="product__details__pic" >
+					<div class="product__details__pic__item" >
 						<img class="product__details__pic__item--large"
-							src="/ttangTtang/ogani-master/img/product/details/product-details-1.jpg"
-							alt="">
+							src="${aucProduct.imageface}"> 
 					</div>
 					<div
 						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
