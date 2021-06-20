@@ -21,7 +21,7 @@
 
 				<div class="logo-wrap">
 					<a href="index.do">
-						<img src="/ttangTtang/img/logo_red.png">
+						<img src="/ttangTtang/img/logo_red.png" style="height: auto;">
 					</a>
 				</div>
 			</header>
