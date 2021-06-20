@@ -14,17 +14,12 @@ import mvc.command.CommandHandler;
 import mypage.service.DeleteFormService;
 
 public class DeleteFormHandler implements CommandHandler {
+	
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/mypage/deleteForm.jsp";
 	private MemberService memberService = new MemberService();
-	private DeleteFormService deleteFromService = new DeleteFormService();
+	private DeleteFormService deleteFormService = new DeleteFormService();
 
-	/*
-	 * @Override public String process(HttpServletRequest req, HttpServletResponse
-	 * res) throws Exception { if (req.getMethod().equalsIgnoreCase("GET")) { return
-	 * processForm(req, res); } else if (req.getMethod().equalsIgnoreCase("POST")) {
-	 * return processSubmit(req, res); } else {
-	 * res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED); return null; } }
-	 */
+	
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -46,28 +41,9 @@ public class DeleteFormHandler implements CommandHandler {
 
 		String requestNo = req.getParameter("id");
 
-		DeleteFormService.getDeleteform(requestNo);
+		deleteFormService.getDeleteform(requestNo);
 		return "/WEB-INF/ogani-master/mypage/memberDeleteSuccess.jsp";
 	}
 
-	/*
-	 * AES256Util aes256Util = new AES256Util(); MemberRequest memberReq = new
-	 * MemberRequest(); req.setCharacterEncoding("utf-8");
-	 * memberReq.setUserid(req.getParameter("userid"));
-	 * memberReq.setUpw(aes256Util.encrypt(req.getParameter("upw")));
-	 * memberReq.setUpw2(aes256Util.encrypt(req.getParameter("upw2")));
-	 * 
-	 * 
-	 * Map<String, Boolean> errors = new HashMap<>(); req.setAttribute("errors",
-	 * errors);
-	 * 
-	 * memberReq.validate(errors);
-	 * 
-	 * if (!errors.isEmpty()) { return FORM_VIEW; }
-	 * 
-	 * try { memberService.memberInsert(memberReq);
-	 * res.sendRedirect(req.getContextPath() + "/deleteFrom.do"); return null; }
-	 * catch (DuplicateIdException e) { errors.put("duplicateId", Boolean.TRUE);
-	 * return FORM_VIEW; }
-	 */
+	
 }

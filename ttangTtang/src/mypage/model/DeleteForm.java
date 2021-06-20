@@ -1,11 +1,11 @@
 package mypage.model;
 
-public class DeleteFrom {
+public class DeleteForm {
 
 	private String userid;
 	private String userpassword;
 
-	public DeleteFrom(String userid, String userpassword) {
+	public DeleteForm(String userid, String userpassword) {
 		this.userid = userid;
 		this.userpassword = userpassword;
 

@@ -9,16 +9,16 @@ import java.sql.SQLException;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
 import mypage.dao.DeleteFormDao;
-import mypage.model.DeleteFromcolumn;
+import mypage.model.DeleteFormcolumn;
 
 public class DeleteFormService {
 
 	private DeleteFormDao deleteFormDao = new DeleteFormDao();
 
 	
-	public void getDeleteform(int delmember) throws SQLException, Exception {
+	public void getDeleteform(String delmember) throws SQLException, Exception {
 		try(Connection conn = DBConnection.getConnection()){
-			deleteFormDao.Delete(conn, delmember);
+			deleteFormDao.memberUpdate(conn, delmember);
 		}
 	}
 }
