@@ -3,14 +3,14 @@
 <%@ include file="include/header.jsp"%>
 <%@ include file="include/middle_header.jsp"%>
 <script>
-var iNoArr = new Array();
-var endTimeArr = new Array();
-<c:forEach var="aucProduct" items="${mainPage.product}">
+	var iNoArr = new Array();
+	var endTimeArr = new Array();
+	<c:forEach var="aucProduct" items="${mainPage.product}">
 	<c:if test="${aucProduct.auctioncheck == 'Y'}">
-		iNoArr.push("<c:out value='${aucProduct.ino}'/>");
-		endTimeArr.push("<c:out value='${aucProduct.endtime}'/>");
+	iNoArr.push("<c:out value='${aucProduct.ino}'/>");
+	endTimeArr.push("<c:out value='${aucProduct.endtime}'/>");
 	</c:if>
-</c:forEach>
+	</c:forEach>
 </script>
 <style>
 .aucTimer {
@@ -61,7 +61,8 @@ var endTimeArr = new Array();
 			<c:forEach var="allProduct" items="${mainPage.product}">
 				<div class="col-lg-3 col-md-4 col-sm-6 mix allProduct">
 					<div class="featured__item"
-						onclick="location.href='productDetail.do?ino=${allProduct.ino}'">
+						onclick="location.href='productDetail.do?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
+
 						<div class="featured__item__pic set-bg"
 							data-setbg="${allProduct.imageface}">
 							<ul class="featured__item__pic__hover">
@@ -96,8 +97,8 @@ var endTimeArr = new Array();
 				<c:if test="${norProduct.auctioncheck == 'N'}">
 					<div class="col-lg-3 col-md-4 col-sm-6 mix norProduct"
 						style="display: none;">
-					<div class="featured__item"
-						onclick="location.href='productDetail.do?ino=${norProduct.ino}'">
+						<div class="featured__item"
+							onclick="location.href='productDetail.do?ino=${norProduct.ino}&aucChk=${norProduct.auctioncheck}'">
 							<div class="featured__item__pic set-bg"
 								data-setbg="${norProduct.imageface}">
 
@@ -122,7 +123,7 @@ var endTimeArr = new Array();
 					<div class="col-lg-3 col-md-4 col-sm-6 mix aucProduct"
 						style="display: none;">
 						<div class="featured__item"
-						onclick="location.href='productDetail.do?ino=${aucProduct.ino}'">
+							onclick="location.href='productDetail.do?ino=${aucProduct.ino}&aucChk=${aucProduct.auctioncheck}'">
 							<div class="featured__item__pic set-bg"
 								data-setbg="${aucProduct.imageface}">
 								<ul class="featured__item__pic__hover">
@@ -146,8 +147,8 @@ var endTimeArr = new Array();
 				<c:if test="${buyProduct.auctioncheck == 'B'}">
 					<div class="col-lg-3 col-md-4 col-sm-6 mix buyProduct"
 						style="display: none;">
-<div class="featured__item"
-						onclick="location.href='productDetail.do?ino=${buyProduct.ino}'">
+						<div class="featured__item"
+							onclick="location.href='productDetail.do?ino=${buyProduct.ino}'">
 							<div class="featured__item__pic set-bg"
 								data-setbg="${buyProduct.imageface}">
 								<ul class="featured__item__pic__hover">

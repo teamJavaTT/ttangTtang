@@ -12,42 +12,34 @@ import product.model.AucPro;
 import product.model.NorPro;
 import product.service.ProductService;
 
-public class ProductDetailHandler implements CommandHandler{
+public class ProductDetailHandler implements CommandHandler {
 	private ProductService productService = new ProductService();
 	private MainService mainService = new MainService();
-	
+
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception{
-	String pageVal = req.getParameter("ino");
-    int ino =1;
-	if (pageVal!=null) {
-		ino = Integer.parseInt(pageVal);
-	}
-	List<Category> category = mainService.getCategory();
-	List<AucPro> aucPro = productService.getAucPro(ino);
-		req.setAttribute("category", category);
-		req.setAttribute("aucPro", aucPro);
-		return "/WEB-INF/ogani-master/product/aucProductDetail.jsp";
-	}
-	
-	
-	  
-	
+	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		List<Category> category = mainService.getCategory();
+		String aucChk = req.getParameter("aucChk");
 
+		String pageVal = req.getParameter("ino");
+		int ino = 1;
+		if (pageVal != null) {
+			ino = Integer.parseInt(pageVal);
+		}
+		if (aucChk.equals("Y") || aucChk == "Y") {
 
-public String processNor(HttpServletRequest req, HttpServletResponse res) throws Exception{
-	String pageVal = req.getParameter("ino");
-    int ino =1;
-	if (pageVal!=null) {
-		ino = Integer.parseInt(pageVal);
+			List<AucPro> aucPro = productService.getAucPro(ino);
+			req.setAttribute("category", category);
+			req.setAttribute("allPro", aucPro);
+			return "/WEB-INF/ogani-master/product/productDetail.jsp";
+
+		} else {
+
+			List<NorPro> norPro = productService.getNorPro(ino);
+			req.setAttribute("category", category);
+			req.setAttribute("allPro", norPro);
+			return "/WEB-INF/ogani-master/product/productDetail.jsp";
+		}
 	}
-	List<Category> category = mainService.getCategory();
-	List<NorPro> norPro = productService.getNorPro(ino);
-	req.setAttribute("category",category);
-	req.setAttribute("norPro",norPro);
-	return "/WEB-INF/ogani-master/product/norProductDetail.jsp";
-	
-	
-}
 
 }

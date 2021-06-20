@@ -4,6 +4,7 @@ public class NorProRequest {
 	private String ino;
 	private String userId;
 	private String category;
+	private String auctioncheck;
 	private String productName;
 	private String price;
 	private String priceText;
@@ -28,6 +29,13 @@ public class NorProRequest {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	
+	public String getAuctioncheck() {
+		return auctioncheck;
+	}
+	public void setAuctioncheck(String auctioncheck) {
+		this.auctioncheck = auctioncheck;
 	}
 	public String getProductName() {
 		return productName;

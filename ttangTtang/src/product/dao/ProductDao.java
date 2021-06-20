@@ -25,7 +25,7 @@ public class ProductDao {
 		
 		try {
 			pstmt = conn.prepareStatement("INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME,SELLCHECK)"
-										+ "VALUES(product_seq.NEXTVAL,?,?,'Y',null,?,?,?,?,?,0,0,sysdate,sysdate+"+aucProduct.getAuctionTime()+"/24,?,'N')");
+										+ "VALUES(product_seq.NEXTVAL,?,?,'Y',null,?,?,?,?,?,0,0,sysdate,sysdate+"+aucProduct.getAuctionTime()+"/24,?,'Y')");
 			pstmt.setString(1, aucProduct.getUserId()); //userId
 			pstmt.setString(2, aucProduct.getCategory());//cname
 			pstmt.setString(3, aucProduct.getProductName());//iname
@@ -115,17 +115,17 @@ public class ProductDao {
 	}
 
 	//경매 삭제 
-	public int deleteAucPro(Connection conn, int delAuc) throws SQLException {
+	public int deleteAucPro(Connection conn, int ino) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement("delete from product where ino = ?")) {
-			pstmt.setInt(1, delAuc);
+			pstmt.setInt(1, ino);
 			return pstmt.executeUpdate();
 		}
 	}
 
 	//일반 삭제 
-	public int deleteNorPro(Connection conn, int delNor) throws SQLException {
+	public int deleteNorPro(Connection conn, int ino) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement("delete from product where ino = ?")) {
-			pstmt.setInt(1, delNor);
+			pstmt.setInt(1, ino);
 			return pstmt.executeUpdate();
 		}
 	}
@@ -265,7 +265,7 @@ public List<NorPro> selecNorPro(Connection conn,int ino) throws SQLException{
 	
 
 private NorPro converNorPro(ResultSet rs , String categoryPro) throws SQLException{
-	return new NorPro(rs.getString("ino"),rs.getString("userid"),rs.getString("ccode"),categoryPro,rs.getString("iname"), rs.getString("price"),rs.getString("pricetext"),
+	return new NorPro(rs.getString("ino"),rs.getString("userid"),rs.getString("ccode"),categoryPro,rs.getString("auctioncheck"),rs.getString("iname"), rs.getString("price"),rs.getString("pricetext"),
 			rs.getString("imageface"));
 }
 
