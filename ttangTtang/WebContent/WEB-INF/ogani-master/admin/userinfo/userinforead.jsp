@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -14,53 +13,53 @@
 						<div class="wrap-table100">
 							<div class="table100">
 								<div class="box">
-									<table border="1" width="100%">
+									<table>
 										<thead>
 											<tr>
-												<th colspan="4" style="text-align: center; padding-left: 0px;">회원 정보</th>
+												<th colspan="4">회원 정보</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td style="text-align: left;">
 													이름 : ${userinfoData.userinfo.uName}
 												</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td style="text-align: left;">
 													아이디 : ${userinfoData.userinfo.userId}
 												</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td style="text-align: left;">
 													이메일 : ${userinfoData.userinfo.uEmail}
 												</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td style="text-align: left;">
 													성별 : ${userinfoData.userinfo.sex}
 												</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td style="text-align: left;">
 													전화번호 : ${userinfoData.userinfo.phone}
 												</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td style="text-align: left;">
 													주소 : ${userinfoData.userinfo.uEmail}
 												</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td style="text-align: left;">
 													가입일자 : ${userinfoData.userinfo.dateTime}
 												</td>
 											</tr>
 										</tbody>
-										</table>
-										<table>
+									</table>
+									<table>
 										<tr>
-											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
+											<td colspan="2"><c:set var="pageNo"
 												value="${empty param.pageNo ? '1' : param.pageNo}" />
 												<input type="button" value="목록" onclick="location.href='userinfolist.do?pageNo=${pageNo}'">
 											</td>

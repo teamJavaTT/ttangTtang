@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 			<div class="col-lg-9">
@@ -17,19 +16,19 @@
 							</thead>
 							</tbody>
 								<tr>
-									<td class="contents" colspan="4" style="padding-left: 0px;">
+									<td colspan="4" style="padding-left: 0px;">
 									아이디 : <input style="border:0px;" type="text" placeholder="아이디" name="id" value="${qnaData.qna.userid}" maxlength="200" readonly></td>
 								</tr>
 								<tr>
-									<td class="contents" colspan="4" style="padding-left: 0px;">
+									<td colspan="4" style="padding-left: 0px;">
 									번호 : <input style="border:0px;" type="text" placeholder="번호" name="no" value="${qnaData.qna.qno}" maxlength="200" readonly></td>
 								</tr>
 								<tr>
-									<td class="contents" colspan="4" style="padding-left: 0px;">
-									<input type="text" placeholder="글 제목" name="title" value="${qnaData.qna.qtit}" maxlength="200"></td>
+									<td colspan="4" style="padding-left: 0px;">
+									<input class="title" type="text" placeholder="글 제목" name="title" value="${qnaData.qna.qtit}" maxlength="200"></td>
 								</tr>
 								<tr>
-									<td class="contents" colspan="4" style="padding-left: 0px;"><textarea
+									<td colspan="4" style="padding-left: 0px;"><textarea
 											rows="10" cols="100%" placeholder="내용" name="content">${qnaData.qna.qtext}</textarea></td>
 								</tr>
 								<tr>

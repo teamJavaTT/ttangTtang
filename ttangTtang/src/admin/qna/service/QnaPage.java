@@ -29,11 +29,11 @@ public class QnaPage {
 			if (total % size > 0) {
 				totalPages++;
 			}
-			int modVal = pageNo % 5;
-			startPage = pageNo / 5 * 5 + 1;
-			if (modVal == 0) startPage -= 5;
+			int modVal = pageNo % 10;
+			startPage = pageNo / 10 * 10 + 1;
+			if (modVal == 0) startPage -= 10;
 			
-			endPage = startPage + 4;
+			endPage = startPage + 9;
 			if (endPage > totalPages) endPage = totalPages;
 		}
 	}

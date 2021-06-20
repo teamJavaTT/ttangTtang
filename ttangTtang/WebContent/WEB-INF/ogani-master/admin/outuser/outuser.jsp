@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 			<div class="col-lg-9">
@@ -18,9 +17,9 @@
 										<table border="1">
 											<thead>
 												<tr class="table100-head">
-													<td class="column5" style="padding-left: 0px;">번호</td>
-													<td class="column1" colspan="2" style="padding-left: 0px;">사용자</td>
-													<td class="column5" style="padding-left: 0px;">탈퇴일자</td>
+													<td>번호</td>
+													<td colspan="2">사용자</td>
+													<td>탈퇴일자</td>
 												</tr>
 											</thead>
 											<tbody>
@@ -29,14 +28,14 @@
 													<!-- 사용자 -->
 													<td style="padding-left: 0px;">${outuser.sNo}</td>
 													<!-- 차단된 사용자 -->
-													<td colspan="2" style="padding-left: 0px;"><a href="outuserread.do?no=${outuser.sNo}">
+													<td colspan="2"><a href="outuserread.do?no=${outuser.sNo}">
 													<c:out value="${outuser.userId}" /></a></td>
 													<!--  작성일자  -->
-													<td style="padding-left: 0px;">${outuser.sDate}</td>
+													<td>${outuser.sDate}</td>
 												</tr>
 											</c:forEach>
 												<tr>
-													<td colspan="5" style="padding-left: 0px;">
+													<td colspan="4">
 														<c:if test="${outuserPage.startPage > 10}">
 															<a href="outuserlist.do?pageNo=${outuserPage.startPage - 10}">[이전]</a>
 														</c:if>

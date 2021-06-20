@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 			<div class="col-lg-9">
 				<section class="content-header">
@@ -17,7 +16,7 @@
 							</tbody>
 							<tr>
 								<td>
-									<input type="text" placeholder="글 제목" name="title" maxlength="200">
+									<input type="text" class="title" placeholder="글 제목" name="title" maxlength="200">
 								</td>
 							</tr>
 							<tr>

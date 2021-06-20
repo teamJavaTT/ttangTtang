@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 
@@ -16,31 +15,30 @@
 							<div class="table100">
 								<div class="box">
 									<form action="qnalist.do" method="post">
-										<table border="1">
+										<table>
 											<thead>
-												<tr class="table100-head">
-													<td class="column5" style="padding-left: 0px;">번호</td>
-													<td class="column5" style="padding-left: 0px;">작성자</td>
-													<td class="column1" colspan="2" style="padding-left: 0px;">제목</td>
-													<td class="column5" style="padding-left: 0px;">작성일자</td>
+												<tr>
+													<td>번호</td>
+													<td>작성자</td>
+													<td>제목</td>
+													<td>작성일자</td>
 												</tr>
 											</thead>
 											<tbody>
 											<c:forEach var="qna" items="${qnaPage.qna}">
 												<tr>
 													<!-- 번호 -->
-													<td style="padding-left: 0px;">${qna.qno}</td>
+													<td>${qna.qno}</td>
 													<!-- 작성자 -->
-													<td style="padding-left: 0px;">${qna.userId}</td>
+													<td>${qna.userId}</td>
 													<!-- 내용 -->
-													<td colspan="2" style="padding-left: 0px;"><a href="qnaread.do?no=${qna.qno}">
-													<c:out value="${qna.qtit}" /></a></td>
+													<td><a href="qnaread.do?no=${qna.qno}"><c:out value="${qna.qtit}" /></a></td>
 													<!--  작성일자  -->
-													<td style="padding-left: 0px;">${qna.qdate}</td>
+													<td>${qna.qdate}</td>
 												</tr>
 											</c:forEach>
 												<tr>
-													<td colspan="5" style="padding-left: 0px;">
+													<td colspan="4">
 														<c:if test="${qnaPage.startPage > 10}">
 															<a href="qnalist.do?pageNo=${qnaPage.startPage - 10}">[이전]</a>
 														</c:if>
@@ -54,9 +52,9 @@
 												</tr>
 											</tbody>
 										</table>
-										<table style="text-align: center;">
+										<table>
 											<tr>
-												<td class="column4" colspan="1"><a href="qnawrite.do">[게시글쓰기]</a></td>
+												<td><a href="qnawrite.do">[게시글쓰기]</a></td>
 											</tr>
 										</table>
 									</form>

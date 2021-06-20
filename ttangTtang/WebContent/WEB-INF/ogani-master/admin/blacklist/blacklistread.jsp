@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 			<div class="col-lg-9">
@@ -12,14 +11,14 @@
 						<div class="wrap-table100">
 							<div class="table100">
 								<div class="box">
-									<table border="1" width="100%">
+									<table>
 										<thead>
 											<tr>
 												<th colspan="4" style="text-align: center; padding-left: 0px;">게시물</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td style="text-align: left;">
 													번호 : ${blacklistData.blacklist.bNo}
 												</td>
@@ -27,24 +26,24 @@
 													작성일자 : ${blacklistData.blacklist.bDate}
 												</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td colspan="4" style="text-align: left;">
 													사용자 : ${blacklistData.blacklist.userId}
 												</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
 													차단된 사용자 : ${blacklistData.blacklist.bId}
 												</td>
 											</tr>
-											<tr style="border-bottom: 1px solid #444444;">
+											<tr>
 												<td colspan="4" style="text-align: left;">
 													내용 : ${blacklistData.blacklist.bText}
 												</td>
 											</tr>
 										</tbody>
 										<tr>
-											<td colspan="2" style="padding-left: 0px;"><c:set var="pageNo"
+											<td colspan="4"><c:set var="pageNo"
 												value="${empty param.pageNo ? '1' : param.pageNo}" />
 												<input type="button" value="목록" onclick="location.href='blacklist.do?pageNo=${pageNo}'">
 											</td>

@@ -2,7 +2,7 @@
 <%request.setCharacterEncoding("UTF-8");%>
 
 <link rel="stylesheet" href="/ttangTtang/css/admin/adminmain.css">
-
+<%@ include file="header.jsp"%>
 <!-- Hero Section Begin -->
 <section class="hero">
    <div class="container">

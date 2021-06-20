@@ -1,6 +1,5 @@
-						<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 			<div class="col-lg-9">
@@ -18,25 +17,25 @@
 										<table border="1">
 											<thead>
 												<tr class="table100-head">
-													<td class="column5" style="padding-left: 0px;">사용자</td>
-													<td class="column1" colspan="2" style="padding-left: 0px;">신고된 사용자</td>
-													<td class="column5" style="padding-left: 0px;">작성일자</td>
+													<td>사용자</td>
+													<td colspan="2">신고된 사용자</td>
+													<td>작성일자</td>
 												</tr>
 											</thead>
 											<tbody>
 											<c:forEach var="declaration" items="${declarationPage.declaration}">
 												<tr>
 													<!-- 사용자 -->
-													<td style="padding-left: 0px;">${declaration.userId}</td>
+													<td>${declaration.userId}</td>
 													<!-- 차단된 사용자 -->
-													<td colspan="2" style="padding-left: 0px;"><a href="declarationread.do?no=${declaration.dNo}">
+													<td colspan="2"><a href="declarationread.do?no=${declaration.dNo}">
 													<c:out value="${declaration.duId}" /></a></td>
 													<!--  작성일자  -->
-													<td style="padding-left: 0px;">${declaration.dDate}</td>
+													<td>${declaration.dDate}</td>
 												</tr>
 											</c:forEach>
 												<tr>
-													<td colspan="5" style="padding-left: 0px;">
+													<td colspan="4" style="padding-left: 0px;">
 														<c:if test="${declarationPage.startPage > 10}">
 															<a href="declarationlist.do?pageNo=${declarationPage.startPage - 10}">[이전]</a>
 														</c:if>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -15,17 +14,16 @@
 							<div class="table100">
 								<!-- Default box -->
 								<div class="box">
-									<table border="1" width="100%">
+									<table>
 										<thead>
 											<tr>
-												<th colspan="4"
-													style="text-align: center; padding-left: 0px;">게시물</th>
+												<th colspan="4">게시물</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
-												<td>번호 : ${qnaData.qna.qno}</td>
-												<td>작성일자 : ${qnaData.qna.qdate}</td>
+												<td style="text-align: left;">번호 : ${qnaData.qna.qno}</td>
+												<td style="text-align: left;">작성일자 : ${qnaData.qna.qdate}</td>
 											</tr>
 											<tr>
 												<td colspan="4"
@@ -38,7 +36,7 @@
 											<tr>
 												<td colspan="2"><c:set var="pageNo" value="${empty param.pageNo ? '1' : param.pageNo}" /> 
 												<input type="button" value="목록" onclick="location.href='qnalist.do?pageNo=${pageNo}'">
-													<c:if test="${memberUser.userid eq 'admin'}">
+													<c:if test="${memberUser.userid eq qnaData.qna.userId}">
 														<input type="button" value="게시글수정" onclick="location.href='qnamodify.do?no=${qnaData.qna.qno}'">
 														<input type="hidden" value="${qnaData.qna.qno}" id="delNo">
 														<input type="button" value="게시글삭제" id="qnaDel">

@@ -49,9 +49,9 @@ public class QnaService {
 	
 	// 글 목록에 읽어오기
 	public QnaPage getQnaPage(int pageNo) throws Exception {
-		int size = 5;
+		int size = 10;
 		int startNo = (pageNo - 1) * size + 1;
-		int endNo = startNo + 4;
+		int endNo = startNo + 9;
 		try (Connection conn = DBConnection.getConnection()) {
 			int total = qnaDao.selectCount(conn);
 			List<Qnacolumn> qnacolumn = qnaDao.qnaSelect(conn, startNo, endNo);

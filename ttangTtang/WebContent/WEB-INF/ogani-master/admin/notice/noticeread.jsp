@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 
@@ -17,26 +16,26 @@
 				<div class="table100">
 					<!-- Default box -->
 					<div class="box">
-						<table border="1" width="100%">
+						<table>
 							<thead>
 								<tr>
-									<th colspan="4" style="text-align: center; padding-left: 0px;">게시물</th>
+									<th colspan="4">게시물</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr style="border-bottom: 1px solid #444444;">
+								<tr>
 									<td style="text-align: left;">번호 :	${noticeData.notice.mno}</td>
 									<td style="text-align: left;">작성일자 : ${noticeData.notice.mdate}</td>
 								</tr>
-								<tr style="border-bottom: 1px solid #444444;">
+								<tr>
 									<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">${noticeData.notice.mtit}</td>
 								</tr>
-								<tr style="border-bottom: 1px solid #444444;  height: 100px;">
+								<tr style="height: 100px;">
 									<td colspan="4" style="text-align: left;">${noticeData.notice.mtext}</td>
 								</tr>
 							</tbody>
 							<tr>
-								<td colspan="2" style="padding-left: 0px;"><c:set
+								<td colspan="2"><c:set
 										var="pageNo"
 										value="${empty param.pageNo ? '1' : param.pageNo}" /> <input
 									type="button" value="목록"
@@ -47,7 +46,8 @@
 										<input type="hidden" value="${noticeData.notice.mno}"
 											id="delNo">
 										<input type="button" value="게시글삭제" id="noticeDel">
-									</c:if></td>
+									</c:if>
+								</td>
 							</tr>
 						</table>
 					</div>

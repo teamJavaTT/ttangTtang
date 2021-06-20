@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 			<div class="col-lg-9">
@@ -12,20 +11,20 @@
 						<table>
 							<thead>
 								<tr>
-									<th colspan="4" style="text-align: center;">공지사항 글수정 양식</th>
+									<th colspan="4">공지사항 글수정 양식</th>
 								</tr>
 							</thead>
 							</tbody>
 							<tr>
-								<td class="contents" colspan="4" style="padding-left: 0px;">
+								<td class="contents" colspan="4">
 								번호 : <input style="border:0px;" type="text" placeholder="번호" name="no" value="${noticeData.notice.mno}" maxlength="200" readonly></td>
 							</tr>
 							<tr>
-								<td class="contents" colspan="4" style="padding-left: 0px;">
-								<input type="text" placeholder="글 제목" name="title" value="${noticeData.notice.mtit}" maxlength="200"></td>
+								<td class="contents" colspan="4">
+								<input class="title" type="text" placeholder="글 제목" name="title" value="${noticeData.notice.mtit}" maxlength="200"></td>
 							</tr>
 							<tr>
-								<td class="contents" colspan="4" style="padding-left: 0px;"><textarea
+								<td class="contents" colspan="4"><textarea
 										rows="10" cols="100%" placeholder="내용" name="content">${noticeData.notice.mtext}</textarea></td>
 							</tr>
 							<tr>

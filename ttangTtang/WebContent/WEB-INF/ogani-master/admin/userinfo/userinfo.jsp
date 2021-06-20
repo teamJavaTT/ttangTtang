@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../include/header.jsp"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
 <div class="col-lg-9">
@@ -24,9 +23,9 @@
 								<option value="2"
 									<c:if test="${param.memberChk == 2}">seleted</c:if>>탈퇴회원</option>
 							</select> <input type="submit" class="button" value="보기">
-							<table border="1">
+							<table>
 								<thead>
-									<tr class="table100-head">
+									<tr>
 										<td>사용자</td>
 										<td>이름</td>
 										<td>가입일자</td>
