@@ -3,6 +3,7 @@ package member.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import AES256.AES256Util;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
 import member.dao.MemberDao;
@@ -102,7 +103,10 @@ public class MemberService {
 			// DAO 객체를 생성 시 Connection 전달
 			MemberDao memberDao = new MemberDao();
 			String upw = memberDao.memberpasswordFind(conn, Userid, Uname, Uemail);
-			return upw;
+			
+			AES256Util aes256Util = new AES256Util();
+			String passwordfind = aes256Util.decrypt(upw);
+			return passwordfind;
 		} finally {
 			if (conn != null)
 				try {

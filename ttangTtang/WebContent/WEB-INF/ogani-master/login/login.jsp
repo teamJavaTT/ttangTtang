@@ -58,8 +58,7 @@
 
 				<br>
 				<div class="text-right p-t-13 p-b-23">
-					<span class="txt1"> </span> <a href="idfind.jsp" class="txt2">아이디
-						찾기 / 비밀번호 찾기 </a>
+					<span class="txt1"> </span> <a href="idFind.do" class="txt2">아이디찾기</a> / <a href="passwordFind.do" class="txt2">비밀번호 찾기 </a>
 				</div>
 
 				<div class="flex-col-c p-t-170 p-b-40">
