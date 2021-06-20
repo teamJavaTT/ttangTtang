@@ -6,6 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 확인</title>
+<script src="/ttangTtang/js/jquery-3.3.1.min.js"></script>
+<script>
+function checkId() {// 아이디 중복에서 하는 체크
+	var id = $('#id').val();
+	var idPattern = /[a-zA-Z0-9_-]{5,20}/;
+	if (id == "" || id == null) {
+		$('.error_next_box').text("필수 정보입니다.");
+		$('.error_next_box').css("display", "block");
+	}
+	else if (!idPattern.test(id)) {
+		$('.error_next_box').text("5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
+		$('.error_next_box').css("display", "block");
+	}else{
+		document.idChkform.submit();
+	}
+}
+</script>
 </head>
 <body>
 	<c:if test="${idCheck != 0}">
@@ -16,9 +33,10 @@
 			<c:if test="${idCheck == 1}">
 				사용중인 아이디입니다.
 			</c:if>
-			<form action="idCheck.do" method="post">
-				<input type="text" name="userid"/>
-				<input type="submit" value="확인"/>
+			<form action="idCheck.do" method="post" name="idChkform">
+				<input type="text" name="userid" id="id"/>
+				<span class="error_next_box"></span>
+				<input type="button" onclick="checkId()" value="확인"/>
 			</form>
 		</div>
 	</c:if>

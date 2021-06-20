@@ -14,24 +14,18 @@ public class IdCheckHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
 		req.setCharacterEncoding("utf-8");
 
 		String userid = req.getParameter("userid");
 
-		try {
-
-			int idCheck = memberService.idCheck(userid);
-
-			req.setAttribute("idCheck", idCheck);
-
+		if(userid == null || userid == "") {
+			req.setAttribute("idCheck", null);
 			return FORM_VIEW;
-
-		} catch (LoginFailException e) {
-
-			return FORM_VIEW;
-
 		}
+		
+		int idCheck = memberService.idCheck(userid);
+		req.setAttribute("idCheck", idCheck);
+		return FORM_VIEW;
 
 	}
 }

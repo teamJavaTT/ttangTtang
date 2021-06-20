@@ -113,7 +113,7 @@ public class MemberDao {
 
 	}
 
-	public int idCheck(Connection conn, String userid) {
+	public int idCheck(Connection conn, String userid) throws SQLException {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -129,8 +129,6 @@ public class MemberDao {
 			if (rs.next())
 				value = 1;
 
-		} catch (Exception e) {
-			e.printStackTrace();
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
