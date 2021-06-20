@@ -3,7 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
+<script>
 
+function sessionCheck(){
+     var userid = '<%=(String)session.getAttribute("userid")%>';
+
+      if(userid=='null'){ 
+         alert("로그인이 필요한 항목입니다.\n회원 가입 또는 로그인을 해주세요"); 
+      }else{
+    	  location.href = "productWrite.do"
+      }
+}   
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -104,13 +115,14 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__auth">
+                            <div class="header__top__right__auth" style="display: flex;">
                             	<c:choose>
 	                            	<c:when test="${empty memberUser.uname}">
-		                                <a href="login.do"><i class="fa fa-user"></i> 로그인</a>
+		                                <a href="login.do" style="flex: 1;"><i class="fa fa-user"></i> 로그인</a>
 	                                </c:when>
 	                                <c:when test="${!empty memberUser.uname}">
-	                                	<a href="memberEdit.do">${memberUser.uname}님 </a><a href="logout.do"><i class="fa fa-user"></i> 로그아웃</a>
+	                                	<a href="memberEdit.do" style="flex: 1;margin-right: 15px;">${memberUser.uname}님 </a>
+	                                	<a href="logout.do"><i class="fa fa-user"></i>로그아웃</a>
 	                                </c:when>
                                 </c:choose>
                             </div>
@@ -138,7 +150,7 @@
                 <div class="col-lg-5">
                     <div class="header__cart">
                         <ul>
-                        	<li><a href="productWrite.do" style="color: black;"><i class="fa fa-buysellads"></i> 판매하기</a></li>
+                        	<li><a onclick="sessionCheck()" style="color: black;cursor: pointer;"><i class="fa fa-buysellads"></i> 판매하기</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                             
