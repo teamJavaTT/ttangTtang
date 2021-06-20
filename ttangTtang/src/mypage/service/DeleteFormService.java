@@ -5,7 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
+import admin.notice.model.Notice;
+import admin.notice.model.Noticecolumn;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
 import mypage.dao.DeleteFormDao;
@@ -21,63 +24,71 @@ public class DeleteFormService {
 			deleteFormDao.memberUpdate(conn, delmember);
 		}
 	}
-}
-	/*public Integer delete(String id, String password) throws Exception {
-		try (Connection conn = DBConnection.getConnection()) {
-			DeleteFrom deleteFrom = deleteFromDao.selectById(conn, id);
-			if (deleteFrom == null) {
-				throw new LoginFailException();
+
+	
+//수정
+
+	public Integer noticeMod(int delMember, Notice modReq) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+
+			DeleteFormcolumn delete = todeleteMod(delMember, modReq);
+			DeleteFormcolumn savedArticle = deleteFormDao.deleteUpdate(conn, delete);
+			if (savedArticle == null) {
+				throw new RuntimeException("fail to update");
 			}
-			if (!deleteFrom.matchPassword(password)) {
-				throw new LoginFailException();
-			}
-			return new User(deleteFrom.getUserid(), deleteFrom.getUserpassword());
+			conn.commit();
+
+			return savedArticle.getMno();
 		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
 			throw new RuntimeException(e);
+		} catch (RuntimeException e) {
+			JdbcUtil.rollback(conn);
+			throw e; 
+		} finally {
+			JdbcUtil.close(conn);
 		}
 	}
-	
-	
-	
-	
-	
-		
-		/*
-		 * // 삭제 public int noticeDelete(Connection conn, int delNo) throws SQLException
-		 * { try (PreparedStatement pstmt =
-		 * conn.prepareStatement("delete from notice where mno = ?")) { pstmt.setInt(1,
-		 * delNo); return pstmt.executeUpdate(); } }
-		 */
-	
-	
-//	public String DeteleFrom(String userid, String userpassword) throws Exception {
-//		Connection conn = null;
-//
-//		try {
-//			conn = DBConnection.getConnection();
-//			// DAO 객체를 생성 시 Connection 전달
-//			DeleteFromDao deleteFromDao = new DeleteFromDao();
-//			String upw = deleteFromDao.DeteleFrom(conn, userid, userpassword);
-//			return upw;
-//		}
-//
-//		finally {
-//			if (conn != null)
-//				try {
-//					conn.close();
-//				} catch (SQLException ex) {
-//				}
-//			;
-//
-//		}
-//
-//	}
-//	public void getOutuserDelete(int delNo) throws SQLException, Exception {
-//		try(Connection conn = DBConnection.getConnection()){
-//			deleteFromDao.outuserDelete(conn, delNo);
-//		}
-//	}
-//	
-	
+	private DeleteFormcolumn todeleteMod(int delMember, Notice modReq) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
+	// 수정 끝
+	private DeleteFormcolumn toDeleteMod(String userId, String uEmail, String uName, String phone, String sex, Date dateTime, Integer memberChk) {
+		Date now = new Date();
+		return new DeleteFormcolumn(userId, req.getMtit(), req.getMtext(), now);
+	}
+
+	//업데이트
+		public DeleteFormcolumn deleteUpdate(Connection conn, DeleteFormcolumn delete) throws SQLException {
+			PreparedStatement pstmt = null;
+			Statement stmt = null;
+			ResultSet rs = null;
+			try {
+				pstmt = conn.prepareStatement("update delete set mtit = ?, mtext = ? where mno = ?");
+				pstmt.setString(1, delete.getMtit());
+				pstmt.setString(2, delete.getMtext());
+				pstmt.setInt(3, delete.getMno());
+				int insertedCount = pstmt.executeUpdate();
+
+				if (insertedCount > 0) {
+					stmt = conn.createStatement();
+					rs = stmt.executeQuery("select max(mno) from Notice");
+					if (rs.next()) {
+						Integer newNo = rs.getInt(1);
+						return new DeleteFormcolumn(newNo, delete.getMtit(), delete.getMtext(), delete.getMdate());
+					}
+				}
+			return null;
+			}finally {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(stmt);
+				JdbcUtil.close(pstmt);
+			}
+		}
+}
