@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype HTML>
 <head>
@@ -19,7 +20,9 @@
 				</div>
 
 				<div class="logo-wrap">
-					<img src="/ttangTtang/img/logo_red.png">
+					<a href="index.do">
+						<img src="/ttangTtang/img/logo_red.png">
+					</a>
 				</div>
 			</header>
 			<section class="login-input-section-wrap">
