@@ -63,7 +63,7 @@ public class MemberService {
 				throw new LoginFailException();
 			}
 			if (!member.matchPassword(password)) {
-				throw new LoginFailException();
+				throw new PasswordFailException();
 			}
 			return new User(member.getUserid(), member.getUname());
 		} catch (SQLException e) {

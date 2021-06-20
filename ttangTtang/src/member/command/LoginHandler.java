@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import AES256.AES256Util;
 import member.service.LoginFailException;
 import member.service.MemberService;
+import member.service.PasswordFailException;
 import member.service.User;
 import mvc.command.CommandHandler;
 
@@ -57,7 +58,10 @@ public class LoginHandler implements CommandHandler {
 			res.sendRedirect(req.getContextPath() + "/index.do");
 			return null;
 		} catch (LoginFailException e) {
-			errors.put("idOrPwNotMatch", Boolean.TRUE);
+			errors.put("idNotMatch", Boolean.TRUE);
+			return FORM_VIEW;
+		} catch (PasswordFailException e) {
+			errors.put("pwdNotMatch", Boolean.TRUE);
 			return FORM_VIEW;
 		}
 	}
