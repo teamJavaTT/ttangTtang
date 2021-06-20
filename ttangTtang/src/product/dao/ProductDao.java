@@ -115,17 +115,22 @@ public class ProductDao {
 	}
 
 	//경매 삭제 
-	public int deleteAucPro(Connection conn, int ino) throws SQLException {
-		try (PreparedStatement pstmt = conn.prepareStatement("delete from product where ino = ?")) {
-			pstmt.setInt(1, ino);
+	public int deleteAucPro(Connection conn, int delNo) throws SQLException {
+		try 
+			(PreparedStatement pstmt = conn.prepareStatement("delete from product where ino = ?")) {
+			pstmt.setInt(1, delNo);
+			
 			return pstmt.executeUpdate();
+			}
 		}
-	}
+	
+		
 
 	//일반 삭제 
-	public int deleteNorPro(Connection conn, int ino) throws SQLException {
+	public int deleteNorPro(Connection conn, int delNo ) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement("delete from product where ino = ?")) {
-			pstmt.setInt(1, ino);
+			pstmt.setInt(1, delNo);
+		
 			return pstmt.executeUpdate();
 		}
 	}

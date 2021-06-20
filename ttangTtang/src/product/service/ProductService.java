@@ -69,8 +69,17 @@ public class ProductService {
 		}
 		
 	}
-
-
+	//상품 삭제
+		public void getAucDel(int delNo) throws SQLException,Exception{
+			try(Connection conn = DBConnection.getConnection()){
+				productDao.deleteAucPro(conn, delNo);
+			}
+		}
+		public void getNorDel(int delNo)throws SQLException,Exception{
+			try(Connection conn = DBConnection.getConnection()){
+				productDao.deleteNorPro(conn, delNo);
+			}
+		}
 	//검색
 	public List<Product> getSearchPage(String search) throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {

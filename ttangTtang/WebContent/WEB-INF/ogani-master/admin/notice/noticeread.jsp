@@ -46,7 +46,7 @@
 										<input type="hidden" value="${noticeData.notice.mno}"
 											id="delNo">
 										<input type="button" value="게시글삭제" id="noticeDel">
-									</c:if>
+							</c:if>
 								</td>
 							</tr>
 						</table>

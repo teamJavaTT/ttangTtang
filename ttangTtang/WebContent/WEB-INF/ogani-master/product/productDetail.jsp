@@ -3,7 +3,6 @@
 
 <%@ include file="../include/header.jsp"%>
 <%@ include file="../include/middle_header.jsp"%>
-
 <!-- Breadcrumb Section Begin -->
 
 <section class="breadcrumb-section set-bg"
@@ -28,6 +27,7 @@
 <!-- Product Details Section Begin -->
 <section class="product-details spad">
 	<div class="container">
+
 		<div class="row">
 			<c:forEach var="allProduct" items="${allPro}">
 				<div class="col-lg-6 col-md-6">
@@ -177,11 +177,11 @@
 								</div>
 							</c:when>
 							<c:when test="${allProduct.auctioncheck == 'N'}">
-						<a href="#" class="primary-btn">판매자와 연락하기</a> <a href="#"
-							class="heart-icon"><span class="icon_heart_alt"></span></a>
+								<a href="#" class="primary-btn">판매자와 연락하기</a>
+								<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 							</c:when>
 						</c:choose>
-						
+
 						<ul>
 							<c:if test="${allProduct.auctioncheck=='Y' }">
 								<li><b>시작가격</b> <span id="minprice">${allProduct.minprice}</span></li>
@@ -197,6 +197,10 @@
 									<!--  ${Product.readCount}-->
 								</div></li>
 						</ul>
+						<%-- 					<c:if test="${memberUser.userid eq userid}"> --%>
+						<input type="hidden" value="${allProduct.ino}" id="delNo">
+						<input type="button" value="삭제" onclick="productDel()" id="productDel"	 style="float: right;">
+
 					</div>
 				</c:forEach>
 			</div>
@@ -322,5 +326,5 @@
 	</div>
 </section>
 <!-- Related Product Section End -->
-
+<script src="/ttangTtang/js/product/productDelete.js"></script>
 <%@ include file="../include/footer.jsp"%>
