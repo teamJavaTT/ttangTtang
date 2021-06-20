@@ -10,7 +10,7 @@
 <title>TTang TTang Market : 회원가입</title>
 <link rel="stylesheet" type="text/css"
 	href="/ttangTtang/css/login/joinmain.css">
-
+	<script src="/ttangTtang/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -26,16 +26,15 @@
 		<div id="content">
 			<section class="content">
 				<form name="joinform" action="join.do" method="post">
-					<input type="hidden" name="idCheck">
+				
+					<input type="hidden" name="idCheck" id="idCheck">
 					<!-- ID -->
 					<div>
 						<h3 class="join_title">
 							<label for="id">아이디</label>
 						</h3>
 						<span class="box int_id"> <input type="text" id="id" name="userid" class="int" maxlength="20">
-							<button type="button" style="position: absolute;right: 10px;top: 13px;" onclick="idCheckFunc()">아이디 중복</button>
-
-
+							<button type="button" id="idCheckBnt" style="position: absolute;right: 10px;top: 13px;display:none" onclick="idCheckFunc()">아이디 중복</button>
 						</span> <span class="error_next_box"></span>
 					</div>
 
@@ -67,11 +66,11 @@
 					<!-- EMAIL -->
 					<div>
 						<h3 class="join_title">
-							<label for="email">본인확인 이메일<span class="optional">(선택사항)</span></label>
+							<label for="email">이메일<span class="optional"></span></label>
 						</h3>
 						<span class="box int_email"> <input type="text" id="email"
-							name="uemail" class="int" maxlength="100" placeholder="선택입력">
-						</span> <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
+							name="uemail" class="int" maxlength="100">
+						</span> <span class="error_next_box"></span>
 					</div>
 
 					<!-- NAME -->
@@ -107,12 +106,10 @@
 						</select>
 						</span> <span class="error_next_box">필수 정보입니다.</span>
 					</div>
-
 					<!-- JOIN BTN-->
 					<div class="btn_area">
-						<button type="submit" id="btnJoin">가입하기</button>
+						<button type="button" id="btnJoin" onclick="joinFunc()">가입하기</button>
 					</div>
-
 				</form>
 			</section>
 		</div>
