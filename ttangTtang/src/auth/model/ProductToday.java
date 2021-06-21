@@ -1,5 +1,6 @@
 package auth.model;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,16 +19,17 @@ public class ProductToday {
 	private String imageface;
 	private String endtime;
 
-	public ProductToday(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String pricetext, String imageface, Date endtime) {
+	public ProductToday(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, int price, int minprice, int maxprice, String pricetext, String imageface, Date endtime) {
+		DecimalFormat df = new DecimalFormat("###,###");
 		this.ino = ino;
 		this.userid = userid;
 		this.ccode = ccode;
 		this.auctioncheck = auctioncheck;
 		this.uad = uad;
 		this.iname = iname;
-		this.price = price;
-		this.minprice = minprice;
-		this.maxprice = maxprice;
+		this.price = df.format(price);
+		this.minprice = df.format(minprice);
+		this.maxprice = df.format(maxprice);
 		this.pricetext = pricetext;
 		this.imageface = imageface;
 		

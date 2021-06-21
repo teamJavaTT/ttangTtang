@@ -56,8 +56,8 @@ public class MainDao {
 	}
 	private ProductToday convertProductToday(ResultSet rs) throws SQLException {
 		return new ProductToday(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"), rs.getString("auctioncheck")
-				,rs.getString("uad"), rs.getString("iname"), rs.getString("price"), rs.getString("minprice")
-				,rs.getString("maxprice"), rs.getString("pricetext"), rs.getString("imageface"), rs.getDate("endtime"));
+				,rs.getString("uad"), rs.getString("iname"), rs.getInt("price"), rs.getInt("minprice")
+				,rs.getInt("maxprice"), rs.getString("pricetext"), rs.getString("imageface"), rs.getDate("endtime"));
 	}
 	
 	//상품 select
@@ -79,8 +79,8 @@ public class MainDao {
 	}
 	private Product convertProduct(ResultSet rs) throws SQLException {
 		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"), rs.getString("auctioncheck")
-				,rs.getString("uad"), rs.getString("iname"), rs.getString("price"), rs.getString("minprice")
-				,rs.getString("maxprice"), rs.getString("apricenow"), rs.getString("apriceend"),rs.getString("pricetext"), rs.getString("imageface"), rs.getDate("endtime"));
+				,rs.getString("uad"), rs.getString("iname"), rs.getInt("price"), rs.getInt("minprice")
+				,rs.getInt("maxprice"), rs.getString("apricenow"), rs.getString("apriceend"),rs.getString("pricetext"), rs.getString("imageface"), rs.getDate("endtime"));
 	}
 	
 }
