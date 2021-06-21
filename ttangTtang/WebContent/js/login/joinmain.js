@@ -3,6 +3,8 @@ $(document).ready(function() {
 	$('#id').change(function() {
 		$('#idCheck').val("");
 	});
+
+	
 });
 
 /*변수 선언*/
@@ -29,11 +31,18 @@ email.addEventListener("focusout", isEmailCorrect);
 mobile.addEventListener("focusout", checkPhoneNum);
 gender.addEventListener("focusout", checkGender);
 
-function joinFunc(){
+$('#btnJoin').click(function() {
+	// 검색 버튼을 눌렀을때의 기능 구현
+});
+
+function joinFunc() {
+
 	checkId();
 	if (document.joinform.idCheck.value != "idCheck") {
 		alert("아이디 중복체크를 해주세요.");
 		return false;
+	} else {
+		alert("TTang TTang market 회원가입 성공");
 	}
 	checkPw();
 	comparePw();
@@ -50,18 +59,18 @@ function checkId() {
 		error[0].innerHTML = "필수 정보입니다.";
 		error[0].style.color = "red";
 		error[0].style.display = "block";
-		$('#idCheckBnt').css("display","none");
+		$('#idCheckBnt').css("display", "none");
 	}
 	else if (!idPattern.test(id.value)) {
 		error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
 		error[0].style.color = "red";
 		error[0].style.display = "block";
-		$('#idCheckBnt').css("display","none");
+		$('#idCheckBnt').css("display", "none");
 	} else {
 		error[0].innerHTML = "멋진 아이디네요!";
 		error[0].style.color = "#08A600";
 		error[0].style.display = "block";
-		$('#idCheckBnt').css("display","block");
+		$('#idCheckBnt').css("display", "block");
 	}
 }
 
@@ -151,15 +160,19 @@ function checkGender(cnk) {
 	} else {
 		error[6].style.display = "none";
 	}
-	
-	if(cnk=="joinGo"){
+
+	if (cnk == "joinGo") {
 		//회원가입
 		document.joinform.submit();
 	}
 }
 
-function idCheckFunc(){
+
+function idCheckFunc() {
 	var url = "idCheck.do?userid=" + document.joinform.userid.value;
 	//alert(url);
 	window.open(url, "", "width=400, height=200");
 }
+
+
+

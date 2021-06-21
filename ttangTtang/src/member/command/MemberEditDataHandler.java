@@ -43,13 +43,24 @@ public class MemberEditDataHandler implements CommandHandler {
 		AES256Util aes256Util = new AES256Util();
 		MemberRequest memberEdit = new MemberRequest();
 		req.setCharacterEncoding("utf-8");
-
+		
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-
+		Member member = memberService.selectById(user.getUserid());
+		
+		String upw = "";
+		String upw2 = "";
+		if(req.getParameter("upw") == null | req.getParameter("upw") == "") {
+			upw = aes256Util.decrypt(member.getUpw());
+			upw2 = aes256Util.decrypt(member.getUpw());
+		}else {
+			upw = req.getParameter("upw");
+			upw2 = req.getParameter("upw2");
+		}
+	
 		memberEdit.setUserid(user.getUserid());
-		memberEdit.setUpw(aes256Util.encrypt(req.getParameter("upw")));
-		memberEdit.setUpw2(aes256Util.encrypt(req.getParameter("upw2")));
+		memberEdit.setUpw(aes256Util.encrypt(upw));
+		memberEdit.setUpw2(aes256Util.encrypt(upw2));
 		memberEdit.setUemail(req.getParameter("uemail"));
 		memberEdit.setPhone(req.getParameter("phone"));
 		memberEdit.setAddress1(req.getParameter("address1"));
@@ -58,7 +69,7 @@ public class MemberEditDataHandler implements CommandHandler {
 
 		try {
 			memberService.memberEdit(memberEdit);
-			res.sendRedirect(req.getContextPath() + "/login.do");
+			res.sendRedirect(req.getContextPath() + "/index.do");
 			return null;
 		} catch (DuplicateIdException e) {
 			return FORM_VIEW;

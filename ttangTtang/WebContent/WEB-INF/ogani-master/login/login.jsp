@@ -7,15 +7,12 @@
 <title>TTang TTang 로그인</title>
 <link rel="stylesheet" type="text/css" href="/ttangTtang/css/login/main.css">
 <script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+<script src="/ttangTtang/js/jquery-3.3.1.min.js"></script>
+<script src="/ttangTtang/js/login/login.js"></script>
 </head>
 <body>
 	<div class="main-container">
 		<div class="main-wrap">
-			<c:if test="${memberChk == 2 || memberChk eq 2}">
-				<script>
-					alert("탈퇴 처리된 회원입니다.");
-				</script>
-			</c:if>
 			<header>
 				<div class="sel-lang-wrap">
 					<select class="lang-select">
@@ -50,9 +47,7 @@
 					</div>
 				</form>
 				<div class="login-button-wrap">
-					<button type="submit" onclick="loginFunc();">
-						<span>로그인</span>
-					</button>
+					<button id="btnLogin"  onclick="loginFunc()" >로그인</button>
 				</div>
 
 				<!-- <div class="login-stay-sign-in">
@@ -83,4 +78,4 @@
 	</div>
 </body>
 
-<script src="/ttangTtang/js/login/login.js"></script>
+
