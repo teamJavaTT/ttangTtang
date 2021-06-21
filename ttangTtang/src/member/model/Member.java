@@ -11,8 +11,9 @@ public class Member {
 	private String address1;
 	private String address2;
 	private String address3;
+	private String memberChk;
 	
-	public Member(String userid, String upw, String uemail, String uname, String phone, String sex, String address1, String address2, String address3) {
+	public Member(String userid, String upw, String uemail, String uname, String phone, String sex, String address1, String address2, String address3, String memberchk) {
 		this.userid = userid;
 		this.upw = upw;
 		this.uemail = uemail;
@@ -22,6 +23,7 @@ public class Member {
 		this.address1 = address1;
 		this.address2 = address2;
 		this.address3 = address3;
+		this.memberChk = memberchk;
 	}
 
 	public String getUserid() {
@@ -58,6 +60,10 @@ public class Member {
 	
 	public String getAddress3() {
 		return address3;
+	}
+	
+	public String getMemberChk() {
+		return memberChk;
 	}
 
 

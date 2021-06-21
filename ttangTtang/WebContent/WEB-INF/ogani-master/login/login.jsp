@@ -11,6 +11,11 @@
 <body>
 	<div class="main-container">
 		<div class="main-wrap">
+			<c:if test="${memberChk == 2 || memberChk eq 2}">
+				<script>
+					alert("탈퇴 처리된 회원입니다.");
+				</script>
+			</c:if>
 			<header>
 				<div class="sel-lang-wrap">
 					<select class="lang-select">

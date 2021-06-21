@@ -22,7 +22,7 @@ public class MemberDao {
 			if (rs.next()) {
 				member = new Member(rs.getString("userid"), rs.getString("upw"), rs.getString("uemail"),
 						rs.getString("uname"), rs.getString("phone"), rs.getString("sex"), rs.getString("address1"),
-						rs.getString("address2"), rs.getString("address3"));
+						rs.getString("address2"), rs.getString("address3"), rs.getString("memberchk"));
 			}
 			return member;
 		} finally {
@@ -33,13 +33,14 @@ public class MemberDao {
 
 	public void memberInsert(Connection conn, Member mem) throws SQLException {
 		try (PreparedStatement pstmt = conn
-				.prepareStatement("insert into member values(?,?,?,?,?,?,null,null,null,sysdate,sysdate,null,1)")) {
+				.prepareStatement("insert into member values(?,?,?,?,?,?,null,null,null,sysdate,sysdate,null,?)")) {
 			pstmt.setString(1, mem.getUserid());
 			pstmt.setString(2, mem.getUpw());
 			pstmt.setString(3, mem.getUemail());
 			pstmt.setString(4, mem.getUname());
 			pstmt.setString(5, mem.getPhone());
 			pstmt.setString(6, mem.getSex());
+			pstmt.setString(7, mem.getMemberChk());
 			pstmt.executeUpdate();
 		}
 	}

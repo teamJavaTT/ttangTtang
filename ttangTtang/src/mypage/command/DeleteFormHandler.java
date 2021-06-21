@@ -1,16 +1,9 @@
 package mypage.command;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import AES256.AES256Util;
-import member.service.DuplicateIdException;
-import member.service.MemberRequest;
-import member.service.MemberService;
 import member.service.User;
 import mvc.command.CommandHandler;
 import mypage.service.DeleteFormService;
@@ -18,7 +11,6 @@ import mypage.service.DeleteFormService;
 public class DeleteFormHandler implements CommandHandler {
 
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/mypage/deleteForm.jsp";
-	private MemberService memberService = new MemberService();
 	private DeleteFormService deleteFormService = new DeleteFormService();
 
 	@Override

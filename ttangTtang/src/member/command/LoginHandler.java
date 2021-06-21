@@ -53,9 +53,15 @@ public class LoginHandler implements CommandHandler {
 
 		try {
 			User user = memberService.login(id, password);
-			req.getSession().setAttribute("memberUser", user);
-			req.getSession().setAttribute("userid", user.getUserid());
-			res.sendRedirect(req.getContextPath() + "/index.do");
+			
+			if(user.getMemberChk() == "1" || user.getMemberChk().equals("1")) {
+				req.getSession().setAttribute("memberUser", user);
+				req.getSession().setAttribute("userid", user.getUserid());
+				res.sendRedirect("index.do");
+			}else {
+				req.setAttribute("memberChk", 2);
+				return FORM_VIEW;
+			}
 			return null;
 		} catch (LoginFailException e) {
 			errors.put("idNotMatch", Boolean.TRUE);
@@ -66,7 +72,4 @@ public class LoginHandler implements CommandHandler {
 		}
 	}
 
-	private String trim(String str) {
-		return str == null ? null : str.trim();
-	}
 }

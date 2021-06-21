@@ -46,7 +46,7 @@ public class MemberService {
 			memberDao.memberInsert(conn,
 					new Member(memberReq.getUserid(), memberReq.getUpw(), memberReq.getUemail(), memberReq.getUname(),
 							memberReq.getPhone(), memberReq.getSex(), memberReq.getAddress1(), memberReq.getAddress2(),
-							memberReq.getAddress3()));
+							memberReq.getAddress3(), "1"));
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
@@ -58,7 +58,7 @@ public class MemberService {
 
 	// 濡쒓렇�씤
 	public User login(String id, String password) throws Exception {
-		try (Connection conn = DBConnection.getConnection()) {
+		try {
 			Member member = selectById(id);
 			if (member == null) {
 				throw new LoginFailException();
@@ -66,7 +66,7 @@ public class MemberService {
 			if (!member.matchPassword(password)) {
 				throw new PasswordFailException();
 			}
-			return new User(member.getUserid(), member.getUname());
+			return new User(member.getUserid(), member.getUname(), member.getMemberChk());
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -134,7 +134,7 @@ public class MemberService {
 			memberDao.memberEdit(conn,
 					new Member(memberEdit.getUserid(), memberEdit.getUpw(), memberEdit.getUemail(),
 							memberEdit.getUname(), memberEdit.getPhone(), memberEdit.getSex(), memberEdit.getAddress1(),
-							memberEdit.getAddress2(), memberEdit.getAddress3()));
+							memberEdit.getAddress2(), memberEdit.getAddress3(), "1"));
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
