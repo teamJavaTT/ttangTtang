@@ -21,7 +21,7 @@ public class QnaAnswerHandler implements CommandHandler {
 		int ansNo = Integer.parseInt(requestNo);
 		String answerContent = req.getParameter("answerContent");
 		String answerPatext = req.getParameter("patext");
-
+		
 		qnaService.qnaAnswerUpdate(ansNo, answerContent, answerPatext);
 		
 		return "qnaread.do?no="+requestNo;

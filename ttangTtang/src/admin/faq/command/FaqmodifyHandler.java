@@ -45,7 +45,7 @@ public class FaqmodifyHandler implements CommandHandler {
 		req.setAttribute("errors", errors);
 		String requestNo = req.getParameter("no");
 		int delNo = Integer.parseInt(requestNo);
-		Faq modReq = new Faq(req.getParameter("title"), req.getParameter("content"));
+		Faq modReq = new Faq(req.getParameter("title"), req.getParameter("content").replace("\r\n", "<br>"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;

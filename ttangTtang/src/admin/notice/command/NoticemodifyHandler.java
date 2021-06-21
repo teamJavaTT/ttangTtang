@@ -45,7 +45,7 @@ public class NoticemodifyHandler implements CommandHandler {
 		req.setAttribute("errors", errors);
 		String requestNo = req.getParameter("no");
 		int delNo = Integer.parseInt(requestNo);
-		Notice modReq = new Notice(req.getParameter("title"), req.getParameter("content"));
+		Notice modReq = new Notice(req.getParameter("title"), req.getParameter("content").replace("\r\n", "<br>"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;

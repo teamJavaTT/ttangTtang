@@ -43,7 +43,7 @@
 											</tr>
 										</tbody>
 										<tr>
-											<td colspan="2"><c:set var="pageNo"
+											<td colspan="4"><c:set var="pageNo"
 												value="${empty param.pageNo ? '1' : param.pageNo}" />
 												<input type="button" value="목록" onclick="location.href='declarationlist.do?pageNo=${pageNo}'">
 											</td>

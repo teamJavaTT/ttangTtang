@@ -15,14 +15,16 @@
 				<div class="wrap-table100">
 					<div class="table100">
 						<div class="box">
-							<select name="memberChk">
-								<option value="0"
-									<c:if test="${param.memberChk == 0}">seleted</c:if>>전체회원</option>
-								<option value="1"
-									<c:if test="${param.memberChk == 1}">seleted</c:if>>정규회원</option>
-								<option value="2"
-									<c:if test="${param.memberChk == 2}">seleted</c:if>>탈퇴회원</option>
-							</select> <input type="submit" class="button" value="보기">
+							<div style="float: right;">
+								<select name="memberChk">
+									<option value="0"
+										<c:if test="${param.memberChk == 0}">seleted</c:if>>전체회원</option>
+									<option value="1"
+										<c:if test="${param.memberChk == 1}">seleted</c:if>>정규회원</option>
+									<option value="2"
+										<c:if test="${param.memberChk == 2}">seleted</c:if>>탈퇴회원</option>
+								</select>&nbsp;<input type="submit" class="button" value="보기">
+							</div>
 							<table>
 								<thead>
 									<tr>

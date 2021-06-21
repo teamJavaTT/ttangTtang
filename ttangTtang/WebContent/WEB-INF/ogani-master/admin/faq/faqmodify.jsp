@@ -16,7 +16,7 @@
 							</thead>
 							</tbody>
 							<tr>
-								<td class="contents" colspan="4">
+								<td style="text-align:left;" colspan="4">
 								번호 : <input style="border:0px;" type="text" placeholder="번호" name="no" value="${faqData.faq.fno}" maxlength="200" readonly></td>
 							</tr>
 							<tr>

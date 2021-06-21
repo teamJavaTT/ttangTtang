@@ -30,6 +30,9 @@ table tbody tr {
 .button {
 	color: white;
 	background: #EC0000;
+	border: none;
+	height: 40px;
+	font-weight: bold;
 }
 
 .title {
