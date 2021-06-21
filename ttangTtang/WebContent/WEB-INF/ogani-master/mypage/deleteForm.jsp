@@ -59,8 +59,8 @@
 
 					</div>
 					<div class="btn_area">
-						<a href="mypage.do">
-							<input type="button" id="btnNo" value="취소하기">
+						<a href="mypage.do"> <input type="button" id="btnNo"
+							value="취소하기">
 						</a>
 					</div>
 					<!-- content-->

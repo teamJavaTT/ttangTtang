@@ -4,5 +4,5 @@
 
 <script>
 		alert("성공적으로 삭제했습니다.");
-		location.href = "deleteForm.do"
+		location.href = "index.do"
 </script>
