@@ -42,7 +42,7 @@ public class DeleteFormHandler implements CommandHandler {
 		User user = (User) session.getAttribute("memberUser");
 
 		String userId = user.getUserid();
-		String sText = req.getParameter("sText");
+		String sText = req.getParameter("stext");
 
 		deleteFormService.getDeleteform(userId, sText);
 

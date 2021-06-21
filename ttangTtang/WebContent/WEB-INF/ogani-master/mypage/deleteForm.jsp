@@ -15,7 +15,7 @@
 <body>
 	<!-- header -->
 	<div id="header">
-		<a href="#"><img src="/ttangTtang/img/logo_red.png" width="500"
+		<a href="index.do"><img src="/ttangTtang/img/logo_red.png" width="500"
 			height="172" alt=""></a>
 	</div>
 
