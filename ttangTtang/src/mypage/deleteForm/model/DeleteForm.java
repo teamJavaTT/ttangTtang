@@ -1,4 +1,4 @@
-package mypage.model;
+package mypage.deleteForm.model;
 
 public class DeleteForm {
 

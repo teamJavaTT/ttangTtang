@@ -1,9 +1,9 @@
-package mypage.service;
+package mypage.deleteForm.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import jdbc.DBConnection;
-import mypage.dao.DeleteFormDao;
+import mypage.deleteForm.dao.DeleteFormDao;
 
 public class DeleteFormService {
 

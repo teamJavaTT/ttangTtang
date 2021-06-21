@@ -1,4 +1,4 @@
-package mypage.command;
+package mypage.deleteForm.command;
 
 import java.util.HashMap;
 import java.util.Map;

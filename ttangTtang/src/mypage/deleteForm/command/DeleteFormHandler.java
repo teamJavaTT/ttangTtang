@@ -1,4 +1,4 @@
-package mypage.command;
+package mypage.deleteForm.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import member.service.User;
 import mvc.command.CommandHandler;
-import mypage.service.DeleteFormService;
+import mypage.deleteForm.service.DeleteFormService;
 
 public class DeleteFormHandler implements CommandHandler {
 
@@ -32,6 +32,8 @@ public class DeleteFormHandler implements CommandHandler {
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
+
+		req.setCharacterEncoding("utf-8");
 
 		String userId = user.getUserid();
 		String sText = req.getParameter("stext");
