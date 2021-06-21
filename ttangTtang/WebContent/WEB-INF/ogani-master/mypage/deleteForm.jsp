@@ -25,15 +25,23 @@
 
 		<!-- content-->
 		<div id="content">
-			 <section class="content">
-				<form action="deleteForm.do" method="post"> 
+			<section class="content">
+				<form action="deleteForm.do" method="post">
+
+
+					<h4>회원 탈퇴 사유</h4>
+
+
+					<textarea rows="10" cols="100%" placeholder="탈퇴사유를 입력해주세요"
+						name="stext" id="stext"></textarea>
+
 
 
 					<!-- PW1 -->
 					<div>
-						<h3 class="join_title">
+						<h4 class="join_title">
 							<label for="pswd1">비밀번호</label>
-						</h3>
+						</h4>
 						<span class="box int_pass"> <input type="password"
 							id="pswd1" name="upw" class="int" maxlength="20"> <span
 							id="alertTxt">사용불가</span> <img
@@ -42,11 +50,12 @@
 						</span> <span class="error_next_box"></span>
 					</div>
 
-					
+
 					<!-- deleteFrom-->
 					<div class="btn_area">
 						<a href="/ttangTtang/index.do">
-							<button type="submit" id="btnDelete" name="btnDelete">회원 탈퇴</button>
+							<button type="submit" id="btnDelete" name="btnDelete">회원
+								탈퇴</button>
 						</a>
 					</div>
 					<div class="btn_area">
@@ -55,8 +64,8 @@
 						</a>
 					</div>
 					<!-- content-->
-	</form>
-</section>
+				</form>
+			</section>
 		</div>
 	</div>
 	<!-- wrapper -->

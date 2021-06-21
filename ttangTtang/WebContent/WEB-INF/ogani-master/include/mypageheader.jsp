@@ -19,7 +19,7 @@
 					</div>
 					<ul>
 						<li><a href="adminmain.do">고객 센터</a></li>
-						<li><a href="delete.do">회원탈퇴</a></li>
+						<li><a href="deleteForm.do">회원탈퇴</a></li>
 						<c:if test="${memberUser.userid eq 'admin'}">
 							<li><a href="blacklist.do">블랙리스트관리</a></li>
 							<li><a href="declarationlist.do">신고 관리</a></li>
