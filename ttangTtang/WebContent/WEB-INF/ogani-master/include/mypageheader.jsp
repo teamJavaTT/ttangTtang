@@ -18,16 +18,14 @@
 						<i class="fa fa-bars"></i> <span>All departments</span>
 					</div>
 					<ul>
+						<li><a href="memberEdit.do">회원정보 수정</a></li>
+						<li><a href="accountDeclaration.do">사용자 신고</a></li>
 						<li><a href="adminmain.do">고객 센터</a></li>
 						<li><a href="deleteForm.do">회원탈퇴</a></li>
-						<c:if test="${memberUser.userid eq 'admin'}">
-							<li><a href="blacklist.do">블랙리스트관리</a></li>
-							<li><a href="declarationlist.do">신고 관리</a></li>
-							<li><a href="outuserlist.do">탈퇴회원 관리</a></li>
-						</c:if>
+						
+							
 					</ul>
 				</div>
 			</div>
-		
-<!-- admin list end -->
 
+			<!-- admin list end -->

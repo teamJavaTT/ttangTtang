@@ -15,8 +15,8 @@
 <body>
 	<!-- header -->
 	<div id="header">
-		<a href="index.do"><img src="/ttangTtang/img/logo_red.png" width="500"
-			height="172" alt=""></a>
+		<a href="index.do"><img src="/ttangTtang/img/logo_red.png"
+			width="500" height="172" alt=""></a>
 	</div>
 
 	<!-- wrapper -->
@@ -53,14 +53,14 @@
 
 					<!-- deleteFrom-->
 					<div class="btn_area">
-						<a href="/ttangTtang/index.do">
-							<button type="submit" id="btnDelete" name="btnDelete">회원
-								탈퇴</button>
-						</a>
+
+						<button type="submit" id="btnDelete" name="btnDelete">회원
+							탈퇴</button>
+
 					</div>
 					<div class="btn_area">
-						<a href="/ttangTtang/ogani-master/mypage/mypage.jsp">
-							<button type="submit" id="btnNo">취소하기</button>
+						<a href="mypage.do">
+							<input type="button" id="btnNo" value="취소하기">
 						</a>
 					</div>
 					<!-- content-->

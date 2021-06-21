@@ -12,10 +12,8 @@
 	                </div>
 	                <div style="text-align : center;">
 	                <div style="text-align : center;margin-bottom: 100px;">
-	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">회원정보 수정</button></a>
+	                	<a href="memberEdit.do"><button type="submit" id="btnJoin">회원정보 수정</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">관심 상품</button></a>
-	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">사용자 차단</button></a>
-	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">사용자 신고</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">구매 내역</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">경매 참여 내역</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">경매 진행 내역</button></a>
@@ -26,7 +24,7 @@
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">판매자 거래 리뷰</button></a>
 						<a href="deleteForm.do"><button type="submit" id="btnJoin">칭찬 불만 후기 작성 및 확인</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">사용자 차단</button></a>
-	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">사용자 신고</button></a>
+	                	<a href="accountDeclaration.do"><button type="submit" id="btnJoin">사용자 신고</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">회원 탈퇴</button></a> <a href="adminmain.do"><button type="submit" id="btnJoin">고객
 					센터</button></a>
 		</div>

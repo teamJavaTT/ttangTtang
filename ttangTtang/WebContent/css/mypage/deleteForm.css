@@ -189,6 +189,12 @@ select {
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 }
 
+#badid {
+	margin: 0px;
+	width: 453px;
+	height: 20px;
+}
+
 textarea#stext {
 	margin: 0px;
 	width: 453px;
