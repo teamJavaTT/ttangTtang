@@ -33,6 +33,7 @@ public class AccountDeclarationHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		MemberService memberService = new MemberService();
+		
 		req.setCharacterEncoding("utf-8");
 
 		if (req.getParameter("no") == "1" || req.getParameter("no").equals("1")) {
@@ -53,8 +54,7 @@ public class AccountDeclarationHandler implements CommandHandler {
 
 			req.setCharacterEncoding("utf-8");
 
-			//String userId = user.getUserid();
-			String userId = "ssmsm";
+			String userId = user.getUserid();
 			String declId = req.getParameter("declId");
 			String dText = req.getParameter("dtext");
 			accountDeclarationService.getAccountDeclaration(userId, declId, dText);

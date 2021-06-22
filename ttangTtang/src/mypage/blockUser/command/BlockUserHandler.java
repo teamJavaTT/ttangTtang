@@ -34,6 +34,8 @@ public class BlockUserHandler implements CommandHandler {
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		MemberService memberService = new MemberService();
 
+		req.setCharacterEncoding("utf-8");
+
 		if (req.getParameter("no") == "1" || req.getParameter("no").equals("1")) {
 			String blockid = req.getParameter("blockid");
 			Member member = memberService.selectById(blockid);
@@ -53,8 +55,7 @@ public class BlockUserHandler implements CommandHandler {
 
 			req.setCharacterEncoding("utf-8");
 
-			// String userId = user.getUserid();
-			String userId = "ssmsm";
+			String userId = user.getUserid();
 			String bId = req.getParameter("blockid2");
 			String bText = req.getParameter("btext");
 			blockUserService.getBlockUser(userId, bId, bText);
