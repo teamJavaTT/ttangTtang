@@ -1,5 +1,5 @@
 function getFileUpload(fileUpload) {
-	
+
 	var form = $(fileUpload)[0];
 	var formData = new FormData(form);
 
@@ -10,10 +10,10 @@ function getFileUpload(fileUpload) {
 		contentType: false,
 		processData: false,
 		success: function(data) {
-			if(fileUpload == "#fileUploadAuc"){
+			if (fileUpload == "#fileUploadAuc") {
 				document.aucForm.imagefaceNameAuc.value = data;
 				document.aucForm.submit();
-			}else if(fileUpload == "#fileUploadNor"){
+			} else if (fileUpload == "#fileUploadNor"){
 				document.norForm.imagefaceNameNor.value = data;
 				document.norForm.submit();
 			}
@@ -34,7 +34,7 @@ function productWriteNor() {
 		document.norForm.productName.focus();
 		return;
 	}
-	if (category == "") { 
+	if (category == "") {
 		alert("카테고리를 선택하세요");
 		document.norForm.categoryNor.focus();
 		return;
@@ -45,18 +45,18 @@ function productWriteNor() {
 		document.norForm.price.focus();
 		return;
 	}
-	if (priceText == "") { 
+	if (priceText == "") {
 		alert("상품설명을 입력하세요");
 		document.norForm.priceTextNor.focus();
 		return;
 	}
 
-	if(document.fileUploadNor.imagefaceNor.value == null || document.fileUploadNor.imagefaceNor.value == ""){
+	if (document.fileUploadNor.imagefaceNor.value == null || document.fileUploadNor.imagefaceNor.value == "") {
 		document.norForm.submit();
-	}else{
+	} else {
 		getFileUpload("#fileUploadNor");
 	}
-	
+
 };
 
 function productWriteAuc() {
@@ -102,23 +102,35 @@ function productWriteAuc() {
 	}
 	// input 태그를 마우스로 클릭하여 입력상태로 만든것을 포커스를 얻었다고 한다.
 	// 그리고 입력상태를 떠난 것을 포커스가 벗어났다고 한다.
-	
+
 	//이미지 첨부 안했을때 바로 insert
-	if(document.fileUploadAuc.imagefaceAuc.value == null || document.fileUploadAuc.imagefaceAuc.value == ""){
+	if (document.fileUploadAuc.imagefaceAuc.value == null || document.fileUploadAuc.imagefaceAuc.value == ""){
 		document.aucForm.submit();
-	}else{// 이미지 첨부가 있으면 파일 등록 후 insert
+	} else{// 이미지 첨부가 있으면 파일 등록 후 insert
 		getFileUpload("#fileUploadAuc");
 	}
-	
+
 };
+
+var norLeng;
 
 $(document).ready(function() {
 	// 태그에 onchange를 부여한다.
 	$('#imagefaceNor').change(function() {
-		addPreview($(this), 1); //preview form 추가하기
+		if ($('#imagefaceNor')[0].files.length > 4 || norLeng >= 4) {
+			alert("사진 첨부는 최대 4장까지 가능합니다.");
+			return false;
+		} else {
+			addPreview($(this), 1); //preview form 추가하기
+		}
 	});
 	$('#imagefaceAuc').change(function() {
-		addPreview($(this), 2); //preview form 추가하기
+		if ($('#imagefaceAuc')[0].files.length > 4 || norLeng >= 4) {
+			alert("사진 첨부는 최대 4장까지 가능합니다.");
+			return false;
+		} else {
+			addPreview($(this), 2); //preview form 추가하기
+		}
 	});
 });
 
@@ -134,8 +146,15 @@ function addPreview(input, num) {
 			reader.onload = function(img) {
 				//div id="preview" 내에 동적코드추가.
 				//이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
-				if(num == 1) $("#previewNor").append("<img src=\"" + img.target.result + "\"\/>");
-				else $("#previewAuc").append("<img src=\"" + img.target.result + "\"\/>");
+				if (num == 1) {
+					$("#previewNor ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
+					norLeng = $('#previewNor li').length;
+					$('#norImageTbl small').empty().append("(" + norLeng + "/4)");
+				} else {
+					$("#previewAuc ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
+					norLeng = $('#previewAuc li').length;
+					$('#aucImageTbl small').empty().append("(" + norLeng + "/4)");
+				}
 			};
 
 			reader.readAsDataURL(file);

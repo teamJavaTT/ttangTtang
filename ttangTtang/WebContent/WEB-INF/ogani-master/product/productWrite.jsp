@@ -82,16 +82,16 @@ preview-box {
 			</table>
 		</form>
 		<div class="filebox">
-			<table>
+			<table id="norImageTbl">
 				<tr>
-					<td><span style=" opacity: 0.6; font-size: 12px;">(최대 10개의 이미지를 선택하실 수 있습니다.※정면,측면,후면 필수!)</span></td>
+					<td><span>상품이미지<small>(0/4)</small></span></td>
 				</tr>
 				<tr>
 					<td>
-						<div id="previewNor" class="preview"></div>
-						<input class="upload-name" value="이미지 등록" disabled="disabled" multiple /> <label for="imagefaceNor">업로드</label>
+						<div id="previewNor" class="preview"><ul></ul></div>
+						<input class="upload-name" value="이미지 등록" disabled="disabled" /> <label for="imagefaceNor">업로드</label>
 						<form id="fileUploadNor" name="fileUploadNor"  method="post" enctype="multipart/form-data">
-							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imagefaceNor" id="imagefaceNor" class="upload-hidden">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imagefaceNor" id="imagefaceNor" class="upload-hidden" multiple>
 						</form>
 					</td>
 				</tr>
@@ -188,16 +188,16 @@ preview-box {
 		</form>
 		
 		<div class="filebox">
-			<table>
+			<table id="aucImageTbl">
 				<tr>
-					<td><span style=" opacity: 0.6; font-size: 12px;">(최대 10개의 이미지를 선택하실 수 있습니다.※정면,측면,후면 필수!)</span></td>
+					<td><span>상품이미지<small>(0/4)</small></span></td>
 				</tr>
 				<tr>
 					<td>
-						<div id="previewAuc" class="preview"></div>
-						<input class="upload-name" value="이미지 등록" disabled="disabled" multiple /> <label for="imagefaceAuc">업로드</label>
+						<div id="previewAuc" class="preview"><ul></ul></div>
+						<input class="upload-name" value="이미지 등록" disabled="disabled" /> <label for="imagefaceAuc">업로드</label>
 						<form id="fileUploadAuc" name="fileUploadAuc"  method="post" enctype="multipart/form-data">
-							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imagefaceAuc" id="imagefaceAuc" class="upload-hidden">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imagefaceAuc" id="imagefaceAuc" class="upload-hidden" multiple>
 						</form>
 					</td>
 				</tr>
