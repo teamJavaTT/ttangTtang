@@ -17,9 +17,7 @@
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">구매 내역</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">경매 참여 내역</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">경매 진행 내역</button></a>
-	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">경매 중인 나의 상품</button></a>
 	                	
-	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">판매 진행 확인</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">일정시간 내 경매 취소 가능</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">판매자 거래 리뷰</button></a>
 						<a href="deleteForm.do"><button type="submit" id="btnJoin">칭찬 불만 후기 작성 및 확인</button></a>
