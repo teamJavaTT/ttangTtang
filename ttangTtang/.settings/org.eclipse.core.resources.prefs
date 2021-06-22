@@ -2,6 +2,7 @@
 <<<<<<<=HEAD
 >>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
+encoding//WebContent/css/login/edit.css=UTF-8
 encoding//WebContent/css/login/joinmain.css=UTF-8
 encoding//WebContent/css/mypage/deleteForm.css=UTF-8
 encoding//WebContent/ogani-master/matching/matching2.jsp=UTF-8

@@ -8,7 +8,7 @@
 <title>TTang TTang Market : 회원수정</title>
 <link rel="stylesheet" type="text/css"
 	href="/ttangTtang/css/login/edit.css">
-
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 <!-- 헤뉴 메뉴  -->
@@ -127,6 +127,7 @@
 						</h3>
 						<span class="box int_name"> 
 							<input type="text" id="address1" name="address1" class="int" maxlength="20" value="${member.address1}" >
+							<input type="button" id="addBnt1" style="position: absolute; right: 10px;top: 13px;" onclick="execPostCode()" value="주소찾기">
 						</span> 
 						<span class="error_next_box"></span>
 					</div>
@@ -138,6 +139,7 @@
 						</h3>
 						<span class="box int_name"> 
 							<input type="text" id="address2" name="address2" class="int" maxlength="20" placeholder="선택입력" value="${member.address2}"  >
+							<input type="button" id="addBnt2" style="position: absolute; right: 10px;top: 13px;" onclick="execPostCode2()" value="주소찾기">
 						</span> 
 						<span class="error_next_box"></span>
 					</div>
@@ -149,6 +151,7 @@
 						</h3>
 						<span class="box int_name"> 
 							<input type="text" id="address3" name="address3" class="int" maxlength="20" placeholder="선택입력" value="${member.address3}" >
+						<input type="button" id="addBnt3" style="position: absolute; right: 10px;top: 13px;" onclick="execPostCode3()" value="주소찾기">
 						</span> 
 						<span class="error_next_box"></span>
 					</div>

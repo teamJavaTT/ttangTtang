@@ -24,7 +24,6 @@ mobile.addEventListener("focusout", checkPhoneNum);
 gender.addEventListener("focusout", checkGender);
 
 
-
 /*콜백 함수*/
 function checkId() {
 	var idPattern = /[a-zA-Z0-9_-]{5,20}/;
@@ -145,6 +144,72 @@ function idCheckFunc() {
 	var url = "idCheck.do?userid=" + document.joinform.userid.value;
 	//alert(url);
 	window.open(url, "", "width=400, height=200");
+}
+
+function execPostCode() {
+	new daum.Postcode({
+
+        oncomplete: function(data) {
+             //data는 사용자가 선택한 주소 정보를 담고 있는 객체이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+        var addr = ''; // 주소 변수
+	//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다
+	if(data.userSelectedType === 'R'){
+		addr=data.roadAddress;
+	}else{
+		addr=data.jibunAddress;
+	}
+	//주소 정보를 해당 필드에 넣는다
+	document.getElementById("address1").value = addr;
+	
+	//커서를 주소 필드로 이동한다
+	document.getElementById("address1").focus();
+}
+    }).open();
+	
+}
+
+function execPostCode2() {
+	new daum.Postcode({
+
+        oncomplete: function(data) {
+             //data는 사용자가 선택한 주소 정보를 담고 있는 객체이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+        var addr = ''; // 주소 변수
+	//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다
+	if(data.userSelectedType === 'R'){
+		addr=data.roadAddress;
+	}else{
+		addr=data.jibunAddress;
+	}
+	//주소 정보를 해당 필드에 넣는다
+	document.getElementById("address2").value = addr;
+	
+	//커서를 주소 필드로 이동한다
+	document.getElementById("address2").focus();
+}
+    }).open();
+	
+}
+
+function execPostCode3() {
+	new daum.Postcode({
+
+        oncomplete: function(data) {
+             //data는 사용자가 선택한 주소 정보를 담고 있는 객체이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+        var addr = ''; // 주소 변수
+	//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다
+	if(data.userSelectedType === 'R'){
+		addr=data.roadAddress;
+	}else{
+		addr=data.jibunAddress;
+	}
+	//주소 정보를 해당 필드에 넣는다
+	document.getElementById("address3").value = addr;
+	
+	//커서를 주소 필드로 이동한다
+	document.getElementById("address3").focus();
+}
+    }).open();
+	
 }
 
 
