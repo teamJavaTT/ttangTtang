@@ -19,6 +19,7 @@
 					</div>
 					<ul>
 						<li><a href="memberEdit.do">회원정보 수정</a></li>
+						<li><a href="sellcheck.do">내 판매 내역</a></li>
 						<li><a href="accountDeclaration.do">사용자 신고</a></li>
 						<li><a href="blockUser.do">사용자 차단</a></li>
 						<li><a href="declarationAndBlockList.do">신고 및 차단 리스트</a></li>
