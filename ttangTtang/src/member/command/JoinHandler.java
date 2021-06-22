@@ -55,7 +55,7 @@ public class JoinHandler implements CommandHandler {
 
 		try {
 			memberService.memberInsert(memberReq);
-			res.sendRedirect(req.getContextPath() + "/login.do");
+			res.sendRedirect(req.getContextPath()+"/login.do");
 			return null;
 		} catch (DuplicateIdException e) {
 			errors.put("duplicateId", Boolean.TRUE);

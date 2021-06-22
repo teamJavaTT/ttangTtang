@@ -1,11 +1,3 @@
-$(document).ready(function() {
-	// 태그에 onchange를 부여한다.
-	$('#id').change(function() {
-		$('#idCheck').val("");
-	});
-
-	
-});
 
 /*변수 선언*/
 
@@ -31,24 +23,7 @@ email.addEventListener("focusout", isEmailCorrect);
 mobile.addEventListener("focusout", checkPhoneNum);
 gender.addEventListener("focusout", checkGender);
 
-$('#btnJoin').click(function() {
-	// 검색 버튼을 눌렀을때의 기능 구현
-});
 
-function joinFunc() {
-
-	checkId();
-	if (document.joinform.idCheck.value != "idCheck") {
-		alert("아이디 중복체크를 해주세요.");
-		return false;
-	} 
-	checkPw();
-	comparePw();
-	checkName();
-	isEmailCorrect();
-	checkPhoneNum();
-	checkGender("joinGo");
-}
 
 /*콜백 함수*/
 function checkId() {
@@ -159,7 +134,7 @@ function checkGender(cnk) {
 		error[6].style.display = "none";
 	}
 
-	if (cnk == "joinGo") {
+	if (cnk == "editGo") {
 		//회원가입
 		document.joinform.submit();
 	}

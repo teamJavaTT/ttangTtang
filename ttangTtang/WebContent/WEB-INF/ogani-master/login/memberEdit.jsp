@@ -155,7 +155,7 @@
 
 					<!-- JOIN BTN-->
 					<div class="btn_area">
-						<button type="submit" id="btnJoin">정보 수정 하기</button>
+						<button type="submit" id="btnEdit" onclick="editFunc()">정보 수정 하기</button>
 					</div>
 					<div class="btn_area">
 						<button type="submit" id="btnBack">뒤로가기</button>
@@ -169,7 +169,7 @@
 	</div>
 
 	<!-- wrapper -->
-	<script src="/ttangTtang/js/login/joinmain.js"></script>
+	<script src="/ttangTtang/js/login/edit.js"></script>
 </body>
 </html>
 
