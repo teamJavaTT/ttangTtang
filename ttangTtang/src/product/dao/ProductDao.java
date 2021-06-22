@@ -25,7 +25,7 @@ public class ProductDao {
 		
 		try {
 			pstmt = conn.prepareStatement("INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME,SELLCHECK)"
-										+ "VALUES(product_seq.NEXTVAL,?,?,'Y',null,?,?,?,?,?,0,0,sysdate,sysdate+"+aucProduct.getAuctionTime()+"/24,?,'Y')");
+										+ "VALUES(product_seq.NEXTVAL,?,?,'Y',null,?,?,?,?,?,0,0,sysdate,sysdate+"+aucProduct.getAuctionTime()+"/24,?,'N')");
 			pstmt.setString(1, aucProduct.getUserId()); //userId
 			pstmt.setString(2, aucProduct.getCategory());//cname
 			pstmt.setString(3, aucProduct.getProductName());//iname
@@ -77,17 +77,17 @@ public class ProductDao {
 	}
 
 	//경매상품 업데이트 
-	public AucPro updateAuc(Connection conn, AucPro aucProduct) throws SQLException {
+	public AucPro updateAuc(Connection conn, AucPro upAuc) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(
 					"update product set  iname= ?, minprice = ?,maxprice=?,pricetext=? where ino = ?");
-			pstmt.setString(1, aucProduct.getIname());
-			pstmt.setString(2, aucProduct.getMinprice());
-			pstmt.setString(3, aucProduct.getMaxprice());
-			pstmt.setString(4, aucProduct.getPricetext());
+			pstmt.setString(1, upAuc.getIname());
+			pstmt.setString(2, upAuc.getMinprice());
+			pstmt.setString(3, upAuc.getMaxprice());
+			pstmt.setString(4, upAuc.getPricetext());
 			return null;
 		} finally {
 			JdbcUtil.close(rs);
@@ -97,15 +97,15 @@ public class ProductDao {
 	}
 
 	//일반 상품 업데이트
-	public NorPro updateNor(Connection conn, NorPro norProduct) throws SQLException {
+	public NorPro updateNor(Connection conn, NorPro upNor) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement("update product set iname= ?, price = ?, pricetext=? where ino = ?");
-			pstmt.setString(1, norProduct.getIname());
-			pstmt.setString(2, norProduct.getPrice());
-			pstmt.setString(3, norProduct.getPricetext());
+			pstmt.setString(1, upNor.getIname());
+			pstmt.setString(2, upNor.getPrice());
+			pstmt.setString(3, upNor.getPricetext());
 			return null;
 		} finally {
 			JdbcUtil.close(rs);
@@ -182,8 +182,8 @@ public class ProductDao {
 	
 	private Product convertProduct(ResultSet rs) throws SQLException {
 		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"),
-				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
-				rs.getString("minprice"), rs.getString("maxprice"),rs.getString("apricenow"), rs.getString("apriceend"), rs.getString("pricetext"),
+				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getInt("price"),
+				rs.getInt("minprice"), rs.getInt("maxprice"),rs.getInt("apricenow"), rs.getInt("apriceend"), rs.getString("pricetext"),
 				rs.getString("imageface"), rs.getDate("endtime"));
 	}
 
