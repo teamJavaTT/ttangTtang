@@ -13,6 +13,8 @@ public class ProductDeleteHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String requestNo = req.getParameter("ino");
 		int delNo = Integer.parseInt(requestNo);
+		req.setCharacterEncoding("utf-8");
+		
 		
 		productService.getAucDel(delNo);
 		productService.getNorDel(delNo);

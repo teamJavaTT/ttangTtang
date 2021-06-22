@@ -102,9 +102,17 @@ public class ProductService {
 		}
 	}
 
+	public void aucProductModi(int productNum, AucProRequest aucReq)throws Exception {
+		try(Connection conn = DBConnection.getConnection()) {
+		
+	}
+	}
+	public void norProductModi(NorProRequest norReq) throws Exception{
+		try(Connection conn = DBConnection.getConnection()) {
+		
+	}
 
-
-
+	
 }
 
-
+}

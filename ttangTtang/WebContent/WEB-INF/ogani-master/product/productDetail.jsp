@@ -197,11 +197,15 @@
 									<!--  ${Product.readCount}-->
 								</div></li>
 						</ul>
-						<c:if test="${memberUser.userid != memberUser.userid}">
+						<c:if test="${memberUser.userid eq allProduct.userid}">
+							<input type="button" value="상품수정"
+								onclick="location.href='productModify.do?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
+						
 							<input type="hidden" value="${allProduct.ino}" id="delNo">
 							<input type="button" value="삭제" onclick="productDel()"
 								id="productDel" style="float: right;">
 						</c:if>
+
 					</div>
 				</c:forEach>
 			</div>
