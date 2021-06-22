@@ -183,7 +183,7 @@ ol {
 }
 
 /* Preloder */
-
+/* 0622 mjsong 페이지 이동시 까만화면, 동글뱅이 안보이게
 #preloder {
 	position: fixed;
 	width: 100%;
@@ -206,7 +206,7 @@ ol {
 	animation: loader 0.8s linear infinite;
 	-webkit-animation: loader 0.8s linear infinite;
 }
-
+ */
 @keyframes loader {
 	0% {
 		-webkit-transform: rotate(0deg);
