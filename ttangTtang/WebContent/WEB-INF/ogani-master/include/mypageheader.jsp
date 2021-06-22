@@ -20,6 +20,8 @@
 					<ul>
 						<li><a href="memberEdit.do">회원정보 수정</a></li>
 						<li><a href="accountDeclaration.do">사용자 신고</a></li>
+						<li><a href="blockUser.do">사용자 차단</a></li>
+						<li><a href="declarationAndBlockList.do">신고 및 차단 리스트</a></li>
 						<li><a href="adminmain.do">고객 센터</a></li>
 						<li><a href="deleteForm.do">회원탈퇴</a></li>
 						

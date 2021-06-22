@@ -195,7 +195,31 @@ select {
 	height: 20px;
 }
 
+#blockid {
+	margin: 0px;
+	width: 453px;
+	height: 20px;
+}
+
+#blockid2 {
+	margin: 0px;
+	width: 453px;
+	height: 20px;
+}
+
 textarea#stext {
+	margin: 0px;
+	width: 453px;
+	height: 152px;
+}
+
+textarea#dtext {
+	margin: 0px;
+	width: 453px;
+	height: 152px;
+}
+
+textarea#btext {
 	margin: 0px;
 	width: 453px;
 	height: 152px;

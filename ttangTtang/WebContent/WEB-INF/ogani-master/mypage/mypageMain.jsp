@@ -23,10 +23,11 @@
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">일정시간 내 경매 취소 가능</button></a>
 	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">판매자 거래 리뷰</button></a>
 						<a href="deleteForm.do"><button type="submit" id="btnJoin">칭찬 불만 후기 작성 및 확인</button></a>
-	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">사용자 차단</button></a>
 	                	<a href="accountDeclaration.do"><button type="submit" id="btnJoin">사용자 신고</button></a>
-	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">회원 탈퇴</button></a> <a href="adminmain.do"><button type="submit" id="btnJoin">고객
-					센터</button></a>
+	                	<a href="blockUser.do"><button type="submit" id="btnJoin">사용자 차단</button></a>
+	                	<a href="declarationAndBlockList.do"><button type="submit" id="btnJoin">신고 및 차단 리스트</button></a>
+	                	<a href="deleteForm.do"><button type="submit" id="btnJoin">회원 탈퇴</button></a> 
+	                	<a href="adminmain.do"><button type="submit" id="btnJoin">고객센터</button></a>
 		</div>
 	                	
 	                </div>
