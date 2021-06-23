@@ -2,7 +2,9 @@ package mypage.sellcheck.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import member.service.User;
 import mvc.command.CommandHandler;
 import mypage.sellcheck.service.SellCheckPage;
 import mypage.sellcheck.service.SellCheckService;
@@ -15,6 +17,9 @@ public class SellCheckListHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String pageVal = req.getParameter("pageNo");
 		int pageNo = 1;
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		String userId = user.getUserid();
 		
 		String sellChkVal = req.getParameter("sellChk");
 		if(pageVal != null) {
@@ -23,11 +28,11 @@ public class SellCheckListHandler implements CommandHandler {
 		if(sellChkVal == null) {
 			sellChkVal = "A";
 		}
-		if(sellChkVal.equals("Y") || sellChkVal.equals("N")) { // 정규회원이랑 탈퇴회원 체크시
-			SellCheckPage sellCheckListPage = sellCheckService.getSellCheckListPage(pageNo, sellChkVal);
+		if(sellChkVal.equals("Y") || sellChkVal.equals("N")) {
+			SellCheckPage sellCheckListPage = sellCheckService.getSellCheckListPage(pageNo, userId, sellChkVal);
 			req.setAttribute("sellCheckPage", sellCheckListPage);
-		}else {// 전체 회원 체크시
- 			SellCheckPage sellCheckPage = sellCheckService.getSellCheckPage(pageNo);
+		}else {
+ 			SellCheckPage sellCheckPage = sellCheckService.getSellCheckPage(pageNo, userId);
 			req.setAttribute("sellCheckPage", sellCheckPage);
 		}
 		return "/WEB-INF/ogani-master/mypage/sellcheck.jsp";
