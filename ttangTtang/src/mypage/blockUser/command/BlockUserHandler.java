@@ -35,7 +35,8 @@ public class BlockUserHandler implements CommandHandler {
 		MemberService memberService = new MemberService();
 
 		req.setCharacterEncoding("utf-8");
-
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
 		if (req.getParameter("no") == "1" || req.getParameter("no").equals("1")) {
 			String blockid = req.getParameter("blockid");
 			Member member = memberService.selectById(blockid);
@@ -44,23 +45,28 @@ public class BlockUserHandler implements CommandHandler {
 				req.setAttribute("idBlockOk", 0);
 				return FORM_VIEW;
 			} else {
-				req.setAttribute("idBlockOk", 1);
+
+				if (user.getUserid() == member.getUserid() || user.getUserid().equals(member.getUserid())) {
+					req.setAttribute("idBlockOk", 2);
+
+				} else {
+					req.setAttribute("idBlockOk", 1);
+
+				}
 				return FORM_VIEW;
 			}
 
 		} else {
 
-			HttpSession session = req.getSession(false);
-			User user = (User) session.getAttribute("memberUser");
-
 			req.setCharacterEncoding("utf-8");
 
-			String userId = user.getUserid();
+			// String userId = user.getUserid();
+			String userId = "ssmsm";
 			String bId = req.getParameter("blockid2");
 			String bText = req.getParameter("btext");
 			blockUserService.getBlockUser(userId, bId, bText);
 
-			return "mypage.do";
+			return "/WEB-INF/ogani-master/mypage/blockSuccess.jsp";
 		}
 	}
 }

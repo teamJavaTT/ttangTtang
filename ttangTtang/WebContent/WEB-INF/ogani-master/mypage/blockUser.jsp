@@ -27,19 +27,24 @@
 		<!-- content-->
 		<div id="content">
 			<section class="content">
-				<c:if test="${idChkOk == 0}">
-				<script>
-				alert("없는 사용자입니다")
-				</script>
+				<c:if test="${idBlockOk == 0}">
+					<script>
+						alert("없는 사용자입니다")
+					</script>
+				</c:if>
+				<c:if test="${idBlockOk == 2}">
+					<script>
+						alert("자기 자신은 차단할 수 없습니다")
+					</script>
 				</c:if>
 				<form action="blockUser.do?no=1" method="post">
 					<h4>사용자 차단</h4>
 					<input type="text" class="title" placeholder="차단 대상" name="blockid"
-						id="blockid" value="${param.blockid}"> 
-						<input type="submit" value="아이디 확인" name="chkIdBnt">
+						id="blockid" value="${param.blockid}"> <input
+						type="submit" value="아이디 확인" name="chkIdBnt">
 				</form>
-				<c:if test="${idChkOk == 1}">
-					<form action="BlockUser.do?no=2" method="post">
+				<c:if test="${idBlockOk == 1}">
+					<form action="blockUser.do?no=2" method="post">
 						<input type="hidden" value="${param.blockid}" name="blockid2">
 						<h4>차단 사유</h4>
 						<textarea rows="10" cols="100%" placeholder="차단사유를 입력해주세요"

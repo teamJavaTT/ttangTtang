@@ -14,7 +14,7 @@ public class AccountDeclarationService {
 		try (Connection conn = DBConnection.getConnection()) {
 			
 			accountDeclarationDao.accoundDeclarationInsert(conn, userId, declId, dText);
-			conn.commit();
+			
 		}
 	}
 

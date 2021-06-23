@@ -14,7 +14,7 @@ public class BlockUserService {
 		try (Connection conn = DBConnection.getConnection()) {
 			
 			blockUserDao.blockUserInsert(conn, userId, bId, bText);
-			conn.commit();
+			
 		}
 	}
 

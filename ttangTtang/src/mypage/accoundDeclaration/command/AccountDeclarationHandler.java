@@ -35,6 +35,8 @@ public class AccountDeclarationHandler implements CommandHandler {
 		MemberService memberService = new MemberService();
 		
 		req.setCharacterEncoding("utf-8");
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
 
 		if (req.getParameter("no") == "1" || req.getParameter("no").equals("1")) {
 			String badid = req.getParameter("badid");
@@ -43,23 +45,30 @@ public class AccountDeclarationHandler implements CommandHandler {
 				req.setAttribute("idChkOk", 0);
 				return FORM_VIEW;
 			} else {
-				req.setAttribute("idChkOk", 1);
+
+				if (user.getUserid() == member.getUserid() || user.getUserid().equals(member.getUserid())) {
+					req.setAttribute("idChkOk", 2);
+
+				} else {
+					req.setAttribute("idChkOk", 1);
+
+				}
 				return FORM_VIEW;
 			}
 
+
 		} else {
 
-			HttpSession session = req.getSession(false);
-			User user = (User) session.getAttribute("memberUser");
-
+			
 			req.setCharacterEncoding("utf-8");
 
-			String userId = user.getUserid();
+			//String userId = user.getUserid();
+			String userId = "ssmsm";
 			String declId = req.getParameter("declId");
 			String dText = req.getParameter("dtext");
 			accountDeclarationService.getAccountDeclaration(userId, declId, dText);
-
-			return "mypage.do";
+			
+			return "/WEB-INF/ogani-master/mypage/accountDeclarationSuccess.jsp";
 		}
 	}
 }

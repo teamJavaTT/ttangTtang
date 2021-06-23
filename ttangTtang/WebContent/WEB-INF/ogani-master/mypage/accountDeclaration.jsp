@@ -32,6 +32,11 @@
 						alert("없는 사용자입니다")
 					</script>
 				</c:if>
+				<c:if test="${idChkOk == 2}">
+					<script>
+						alert("자기 자신은 신고할 수 없습니다")
+					</script>
+				</c:if>
 				<form action="accountDeclaration.do?no=1" method="post">
 					<h4>사용자 신고</h4>
 					<input type="text" class="title" placeholder="신고 대상" name="badid"
