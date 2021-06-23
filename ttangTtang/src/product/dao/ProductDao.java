@@ -238,7 +238,7 @@ public class ProductDao {
 				rs.getString("endtime"));
 	}
 
-//norProDetail select
+	// norProDetail select
 	public NorPro selectNorPro(Connection conn, int ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -278,6 +278,27 @@ public class ProductDao {
 		return new NorPro(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"), categoryPro,
 				rs.getString("auctioncheck"), rs.getString("iname"), rs.getString("price"), rs.getString("pricetext"),
 				rs.getString("imageface"));
+	}
+
+	public AucPro auctionPartInsert(Connection conn, String userId, String aucIno, String oPrice) throws SQLException {
+		PreparedStatement pstmt = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(
+					"INSERT INTO AUCTION(ANO_SEQ.NEXTVAL, ?, ?, ?)");
+			pstmt.setString(1, userId);
+			pstmt.setString(2, aucIno);
+			pstmt.setString(3, oPrice);
+			pstmt.executeUpdate();
+
+			return null;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+			JdbcUtil.close(pstmt);
+		}
 	}
 
 }
