@@ -42,15 +42,17 @@ preview-box {
 <c:if test="${param.aucChk == 'N'}">
 	<section id="normal" class="productUpdate">
 		<h3 style="text-align: center;">일반 상품 수정</h3>
-		<div class="container" style="padding-left: 34%;">
-			<form id="norForm" name="norForm" action="productModify.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
+		<div class="container" style="padding-left: 17%;">
+			<form id="norForm" name="norForm" action="productModify.do"
+				method="post" style="margin-top: 20px; margin-bottom: 10px;">
 				<!-- 			<input type="hidden" name="aucChk" value="N"/>
 			<input type="hidden" name="imagefaceNameNor"/> -->
 				<!-- 파일업로드를 위해 추가하는 타입 -->
 				<table>
 					<tr>
 						<td>상품명:</td>
-						<td><input type="text" name="productNameNor" value="${norPro.iname}"></td>
+						<td><input type="text" name="productNameNor"
+							value="${norPro.iname}"></td>
 					</tr>
 					<tr>
 						<td>카테고리:</td>
@@ -74,8 +76,7 @@ preview-box {
 					<tr>
 						<td style="float: left;">상품설명:</td>
 						<td><textarea name="priceTextNor" id="priceTextNor"
-								style="resize: none; width: 306px; height: 176px;">${norPro.pricetext}</textarea>
-						</td>
+								style="resize: none; width: 306px; height: 176px;">${norPro.pricetext}</textarea></td>
 					</tr>
 				</table>
 			</form>
@@ -87,8 +88,11 @@ preview-box {
 					</tr>
 					<tr>
 						<td>
-							<div id="previewNor" class="preview"></div>
-							<input class="upload-name" value="이미지 등록" disabled="disabled"
+							<div id="previewNor" class="preview">
+								<div class="preview" style="width: 97.5px; margin-right: 20px;">
+									<img src="${norPro.imageface}">
+								</div>
+							</div> <input class="upload-name" value="이미지 등록" disabled="disabled"
 							multiple /> <label for="imagefaceNor">업로드</label>
 							<form id="fileUploadNor" name="fileUploadNor" method="post"
 								enctype="multipart/form-data">
@@ -112,7 +116,7 @@ preview-box {
 <c:if test="${param.aucChk == 'Y'}">
 	<section id="auction" class="productUpdate">
 		<h3 style="text-align: center;">경매 상품 수정</h3>
-		<div class="container" style="padding-left: 34%;">
+		<div class="container" style="padding-left: 17%;">
 			<form id="aucForm" name="aucForm" action="productModify.do"
 				method="post" style="margin-top: 20px; margin-bottom: 10px;">
 				<!-- <input type="hidden" name="aucChk" value="Y"/>
@@ -121,7 +125,7 @@ preview-box {
 				<table>
 					<tr>
 						<td>상품명:</td>
-						<td colspan="2"><input type="text" name="productNameAuc"
+						<td><input type="text" name="productNameAuc"
 							value="${aucPro.iname}"></td>
 					</tr>
 					<tr>
@@ -146,8 +150,15 @@ preview-box {
 					</tr>
 					<tr>
 						<td>최대가격:</td>
+
 						<td colspan="2"><input name="maxPrice"
-							value="${aucPro.maxprice}" readonly></td>
+							value="${aucPro.maxprice}" readonly><span
+							style="font-color: 0.6; font-size: 15px; color: tomato;">(최대
+								가격은 수정이 불가 합니다.)</span></td>
+					</tr>
+					<tr>
+						<td>설정된 경매 종료시간:</td>
+						<td><span>${aucPro.endtime}</span></td>
 					</tr>
 					<tr>
 						<td>경매기간:</td>
@@ -186,12 +197,11 @@ preview-box {
 								<option value="22">22시간</option>
 								<option value="23">23시간</option>
 						</select></td>
+
 					</tr>
 					<tr>
 						<td style="float: left;">상품설명:</td>
-						<td colspan="2"><textarea name="priceTextAuc"
-								id="priceTextAuc"
-								style="resize: none; width: 306px; height: 176px;">${aucPro.pricetext}</textarea>
+						<td colspan="2"><textarea name="priceTextAuc"	id="priceTextAuc" style="resize: none; width: 306px; height: 176px;">${aucPro.pricetext}</textarea>
 						</td>
 					</tr>
 				</table>
@@ -204,15 +214,19 @@ preview-box {
 								4개의 이미지를 선택하실 수 있습니다.)</span></td>
 					</tr>
 					<tr>
-						<td>
-							<div id="previewAuc" class="preview" value="${aucPro.imageface}"></div>
-							<input class="upload-name" value="이미지 등록" disabled="disabled"
-							multiple /> <label for="imagefaceAuc">업로드</label>
-							<form id="fileUploadAuc" name="fileUploadAuc" method="post"
+					<td>
+							<div id="previewAuc" class="preview">
+								<div class="preview" style="width: 97.5px; margin-right: 20px;">
+									<img src="${aucPro.imageface}">
+								</div>
+							</div> <input class="upload-name" value="이미지 등록" disabled="disabled"
+							multiple /> <label for="imagefaceNor">업로드</label>
+							<form id="fileUploadNor" name="fileUploadNor" method="post"
 								enctype="multipart/form-data">
 								<input type="file" accept="image/jpg, image/jpeg, image/png"
-									name="imagefaceAuc" id="imagefaceAuc" class="upload-hidden">
+									name="imagefaceNor" id="imagefaceNor" class="upload-hidden">
 							</form>
+
 						</td>
 					</tr>
 					<tr>
@@ -226,5 +240,5 @@ preview-box {
 		</div>
 	</section>
 </c:if>
-<!-- 	<script src="/ttangTtang/js/product/productWrite.js"></script> -->
+<script src="/ttangTtang/js/product/productWrite.js"></script>
 <%@ include file="../include/footer.jsp"%>
