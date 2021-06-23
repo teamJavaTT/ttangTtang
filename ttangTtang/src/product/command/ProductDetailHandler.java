@@ -28,14 +28,14 @@ public class ProductDetailHandler implements CommandHandler {
 		}
 		if (aucChk.equals("Y") || aucChk == "Y") {
 
-			List<AucPro> aucPro = productService.getAucPro(ino);
+			AucPro aucPro = productService.getAucPro(ino);
 			req.setAttribute("category", category);
 			req.setAttribute("allPro", aucPro);
 			return "/WEB-INF/ogani-master/product/productDetail.jsp";
 
 		} else {
 
-			List<NorPro> norPro = productService.getNorPro(ino);
+			NorPro norPro = productService.getNorPro(ino);
 			req.setAttribute("category", category);
 			req.setAttribute("allPro", norPro);
 			return "/WEB-INF/ogani-master/product/productDetail.jsp";

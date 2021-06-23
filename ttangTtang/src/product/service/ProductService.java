@@ -51,18 +51,18 @@ public class ProductService {
 		return null;
 	}
 	//aucPro 상품 불러오기 
-	public List<AucPro> getAucPro(int ino) throws Exception{
+	public AucPro getAucPro(int ino) throws Exception{
 		try(Connection conn = DBConnection.getConnection()){
-		List<AucPro> aucPro = productDao.selecAucPro(conn, ino);
+			AucPro aucPro = (AucPro) productDao.selectAucPro(conn, ino);
 		return aucPro;
 		}catch(SQLException e ){
 			throw new RuntimeException(e);
 		}
 	}
 //norPro 상품 불러오기
-	public List<NorPro> getNorPro(int ino) throws Exception{
+	public NorPro getNorPro(int ino) throws Exception{
 		try(Connection conn = DBConnection.getConnection()){
-			List<NorPro> norPro = productDao.selecNorPro(conn, ino);
+			NorPro norPro = (NorPro) productDao.selectNorPro(conn, ino);
 			return norPro;
 		}catch(SQLException e ){
 			throw new RuntimeException(e);
@@ -102,12 +102,12 @@ public class ProductService {
 		}
 	}
 
-	public void aucProductModi(int productNum, AucProRequest aucReq)throws Exception {
+	public void aucProductModi(int ino, AucProRequest aucReq)throws Exception {
 		try(Connection conn = DBConnection.getConnection()) {
 		
 	}
 	}
-	public void norProductModi(NorProRequest norReq) throws Exception{
+	public void norProductModi(int ino, NorProRequest norReq) throws Exception{
 		try(Connection conn = DBConnection.getConnection()) {
 		
 	}

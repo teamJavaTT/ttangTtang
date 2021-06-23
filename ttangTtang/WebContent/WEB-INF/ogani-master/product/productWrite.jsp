@@ -37,8 +37,6 @@ preview-box {
 	margin-bottom: 10px;
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-</head>
 
 <div class="featured__controls">
     <ul>

@@ -11,12 +11,12 @@
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<div class="breadcrumb__text">
-					<c:forEach var="allProduct" items="${allPro}">
-						<h2>${allProduct.cname}</h2>
-						<div class="breadcrumb__option">
-							<a href="/ttangTtang/ogani-master/index.jsp">Home</a>
-						</div>
-					</c:forEach>
+
+					<h2>${allPro.cname}</h2>
+					<div class="breadcrumb__option">
+						<a href="/ttangTtang/ogani-master/index.jsp">Home</a>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -29,185 +29,182 @@
 	<div class="container">
 
 		<div class="row">
-			<c:forEach var="allProduct" items="${allPro}">
-				<div class="col-lg-6 col-md-6">
-					<div class="product__details__pic">
-						<div class="product__details__pic__item">
-							<img class="product__details__pic__item--large"
-								src="${allProduct.imageface}">
-						</div>
-						<div
-							class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
+
+			<div class="col-lg-6 col-md-6">
+				<div class="product__details__pic">
+					<div class="product__details__pic__item">
+						<img class="product__details__pic__item--large"
+							src="${allPro.imageface}">
+					</div>
+					<div
+						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
 
 
 
 
-							<div class="owl-stage-outer">
-								<div class="owl-stage"
-									style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
-									<div class="owl-item cloned"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
-											alt="">
-									</div>
-									<div class="owl-item cloned"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
-											alt="">
-									</div>
-									<div class="owl-item cloned"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
-											alt="">
-									</div>
-									<div class="owl-item cloned"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
-											alt="">
-									</div>
-									<div class="owl-item"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
-											alt="">
-									</div>
-									<div class="owl-item"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
-											alt="">
-									</div>
-									<div class="owl-item"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
-											alt="">
-									</div>
-									<div class="owl-item active"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
-											alt="">
-									</div>
-									<div class="owl-item cloned active"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
-											alt="">
-									</div>
-									<div class="owl-item cloned active"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
-											alt="">
-									</div>
-									<div class="owl-item cloned active"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
-											alt="">
-									</div>
-									<div class="owl-item cloned"
-										style="width: 97.5px; margin-right: 20px;">
-										<img
-											data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
-											src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
-											alt="">
-									</div>
+						<div class="owl-stage-outer">
+							<div class="owl-stage"
+								style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
+								<div class="owl-item cloned"
+									style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
+										alt="">
+								</div>
+								<div class="owl-item cloned"
+									style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
+										alt="">
+								</div>
+								<div class="owl-item cloned"
+									style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
+										alt="">
+								</div>
+								<div class="owl-item cloned"
+									style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
+										alt="">
+								</div>
+								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
+										alt="">
+								</div>
+								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
+										alt="">
+								</div>
+								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
+										alt="">
+								</div>
+								<div class="owl-item active"
+									style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
+										alt="">
+								</div>
+								<div class="owl-item cloned active"
+									style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
+										alt="">
+								</div>
+								<div class="owl-item cloned active"
+									style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
+										alt="">
+								</div>
+								<div class="owl-item cloned active"
+									style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
+										alt="">
+								</div>
+								<div class="owl-item cloned"
+									style="width: 97.5px; margin-right: 20px;">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
+										alt="">
 								</div>
 							</div>
-							<div class="owl-nav disabled">
-								<button type="button" role="presentation" class="owl-prev">
-									<span aria-label="Previous">‹</span>
-								</button>
-								<button type="button" role="presentation" class="owl-next">
-									<span aria-label="Next">›</span>
-								</button>
-							</div>
-							<div class="owl-dots disabled">
-								<button role="button" class="owl-dot active">
-									<span></span>
-								</button>
-							</div>
+						</div>
+						<div class="owl-nav disabled">
+							<button type="button" role="presentation" class="owl-prev">
+								<span aria-label="Previous">‹</span>
+							</button>
+							<button type="button" role="presentation" class="owl-next">
+								<span aria-label="Next">›</span>
+							</button>
+						</div>
+						<div class="owl-dots disabled">
+							<button role="button" class="owl-dot active">
+								<span></span>
+							</button>
 						</div>
 					</div>
 				</div>
-			</c:forEach>
+			</div>
+
 			<div class="col-lg-6 col-md-6">
-				<c:forEach var="allProduct" items="${allPro}">
-					<div class="product__details__text">
-						<h3>${allProduct.iname }</h3>
 
-						<c:choose>
-							<c:when test="${allProduct.auctioncheck=='Y'}">
-								<div class="product__details__price" id="now_price">${allProduct.apricenow}</div>
-							</c:when>
-							<c:when test="${allProduct.auctioncheck == 'N'}">
-								<div class="product__details__price">
-									<span>${allProduct.price}</span>
-								</div>
-							</c:when>
+				<div class="product__details__text">
+					<h3>${allPro.iname }</h3>
 
-						</c:choose>
+					<c:choose>
+						<c:when test="${allPro.auctioncheck=='Y'}">
+							<div class="product__details__price" id="now_price">${allPro.apricenow}</div>
+						</c:when>
+						<c:when test="${allPro.auctioncheck == 'N'}">
+							<div class="product__details__price">
+								<span>${allPro.price}</span>
+							</div>
+						</c:when>
+
+					</c:choose>
 
 
-						<p>${allProduct.pricetext}</p>
-						<div class="product__details__quantity">
-							<div class="quantity"></div>
-						</div>
-						<c:choose>
-							<c:when test="${allProduct.auctioncheck=='Y'}">
-								<div class="product__details__quantity">
-									가격제시 <input type="text"><input type="button" value="등록">
-								</div>
-							</c:when>
-							<c:when test="${allProduct.auctioncheck == 'N'}">
-								<a href="#" class="primary-btn">판매자와 연락하기</a>
-								<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-							</c:when>
-						</c:choose>
-
-						<ul>
-							<c:if test="${allProduct.auctioncheck=='Y' }">
-								<li><b>시작가격</b> <span id="minprice">${allProduct.minprice}</span></li>
-								<li><b>남은시간</b> <span id="endtime">${allProduct.endtime }</span></li>
-							</c:if>
-							<li><b>판매자</b><span>${allProduct.userid}</span></li>
-							<li><b>공유</b>
-								<div class="share">
-									<a href="#"><i class="fa fa-link"></i></a>
-								</div></li>
-							<li><b>조회수</b>
-								<div id="view_count">
-									<!--  ${Product.readCount}-->
-								</div></li>
-						</ul>
-						<c:if test="${memberUser.userid eq allProduct.userid}">
-							<input type="button" value="상품수정"
-								onclick="location.href='productModify.do?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
-						
-							<input type="hidden" value="${allProduct.ino}" id="delNo">
-							<input type="button" value="삭제" onclick="productDel()"
-								id="productDel" style="float: right;">
-						</c:if>
-
+					<p>${allPro.pricetext}</p>
+					<div class="product__details__quantity">
+						<div class="quantity"></div>
 					</div>
-				</c:forEach>
+					<c:choose>
+						<c:when test="${allPro.auctioncheck=='Y'}">
+							<div class="product__details__quantity">
+								가격제시 <input type="text"><input type="button" value="등록">
+							</div>
+						</c:when>
+						<c:when test="${allPro.auctioncheck == 'N'}">
+							<a href="#" class="primary-btn">판매자와 연락하기</a>
+							<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+						</c:when>
+					</c:choose>
+
+					<ul>
+						<c:if test="${allPro.auctioncheck=='Y' }">
+							<li><b>시작가격</b> <span id="minprice">${allPro.minprice}</span></li>
+							<li><b>남은시간</b> <span id="endtime">${allPro.endtime }</span></li>
+						</c:if>
+						<li><b>판매자</b><span>${allPro.userid}</span></li>
+						<li><b>공유</b>
+							<div class="share">
+								<a href="#"><i class="fa fa-link"></i></a>
+							</div></li>
+						<li><b>조회수</b>
+							<div id="view_count">
+								<!--  ${Product.readCount}-->
+							</div></li>
+					</ul>
+					<c:if test="${memberUser.userid eq allPro.userid}">
+						<input type="button" value="상품수정"
+							onclick="location.href='productModify.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
+
+						<input type="hidden" value="${allPro.ino}" id="delNo">
+						<input type="button" value="삭제" onclick="productDel()"
+							id="productDel" style="float: right;">
+					</c:if>
+
+				</div>
+
 			</div>
 			<div class="col-lg-12">
 				<div class="product__details__tab">
