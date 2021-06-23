@@ -25,17 +25,18 @@ public class ProductDao {
 
 		try {
 			pstmt = conn.prepareStatement(
-					"INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME,SELLCHECK)"
-							+ "VALUES(product_seq.NEXTVAL,?,?,'Y',null,?,?,?,?,?,0,0,sysdate,sysdate+"
+					"INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,APRICENOW,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME,SELLCHECK)"
+							+ "VALUES(product_seq.NEXTVAL,?,?,'Y',null,?,?,?,?,?,?,0,0,sysdate,sysdate+"
 							+ aucProduct.getAuctionTime() + "/24,?,'N')");
 			pstmt.setString(1, aucProduct.getUserId()); // userId
 			pstmt.setString(2, aucProduct.getCategory());// cname
 			pstmt.setString(3, aucProduct.getProductName());// iname
 			pstmt.setString(4, aucProduct.getMinPrice());// minPrice
 			pstmt.setString(5, aucProduct.getMaxPrice());// MaxPrice
-			pstmt.setString(6, aucProduct.getPriceText());// PriceTexe
-			pstmt.setString(7, aucProduct.getImageFace());// ImageFace
-			pstmt.setString(8, aucProduct.getAuctionTime());// AuctionTime
+			pstmt.setString(6, aucProduct.getMinPrice());// APRICENOW
+			pstmt.setString(7, aucProduct.getPriceText());// PriceTexe
+			pstmt.setString(8, aucProduct.getImageFace());// ImageFace
+			pstmt.setString(9, aucProduct.getAuctionTime());// AuctionTime
 			pstmt.executeUpdate();
 
 			return null;
