@@ -26,6 +26,7 @@ public class ProductModifyHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		if (req.getMethod().equalsIgnoreCase("GET")) {
+			
 			return processForm(req, res);
 		} else if (req.getMethod().equalsIgnoreCase("POST")) {
 			return processSubmit(req, res);
@@ -40,7 +41,9 @@ public class ProductModifyHandler implements CommandHandler {
 
 	// 데이터 가져오기
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		int ino = Integer.parseInt(req.getParameter("ino"));
+
+		String ino = req.getParameter("ino");
+
 		String aucChk = req.getParameter("aucChk");
 		List<Category> category = mainService.getCategory();
 		req.setAttribute("category", category);
@@ -57,12 +60,14 @@ public class ProductModifyHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
+		req.setCharacterEncoding("utf-8");
 		NorProRequest norReq = new NorProRequest();
 		AucProRequest aucReq = new AucProRequest();
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-		
 		req.setCharacterEncoding("utf-8");
+		String ino = req.getParameter("ino");
+
 		String aucChk = req.getParameter("aucChk");
 		if (aucChk.equals("Y") || aucChk == "Y") {
 			String imageName = "";
@@ -74,7 +79,6 @@ public class ProductModifyHandler implements CommandHandler {
 
 			int endDay = Integer.parseInt(req.getParameter("endDay"));
 			int endTime = Integer.parseInt(req.getParameter("endTime"));
-
 			aucReq.setIno(req.getParameter("ino"));
 			aucReq.setUserId(user.getUserid());
 			aucReq.setCategory(req.getParameter("categoryAuc"));
@@ -86,8 +90,9 @@ public class ProductModifyHandler implements CommandHandler {
 			aucReq.setAuctionTime(Integer.toString(endDay + endTime));
 
 			try {
-				productService.aucProductModi(aucReq);
-				return "productDetail.do?ino="+req.getParameter("ino");
+				String aucModi = productService.aucProductModi(aucReq,ino);
+				req.setAttribute("aucModi", aucModi);
+				return "productDetail.do?ino="+req.getParameter("ino")+"&aucChk=Y";
 			} catch (DuplicateIdException e) {
 
 			}
@@ -98,7 +103,7 @@ public class ProductModifyHandler implements CommandHandler {
 			} else {
 				imageName = req.getParameter("imagefaceNameNor");
 			}
-
+			norReq.setIno(req.getParameter("ino"));
 			norReq.setUserId(user.getUserid());
 			norReq.setCategory(req.getParameter("categoryNor"));
 			norReq.setProductName(req.getParameter("productNameNor"));
@@ -107,14 +112,15 @@ public class ProductModifyHandler implements CommandHandler {
 			norReq.setImageFace("/ttangTtang/file/" + imageName);
 
 			try {
-				productService.norProductModi(norReq);
-				return "productDetail.do?ino="+req.getParameter("ino");
+				String norModi = productService.norProductModi(norReq,ino);
+				req.setAttribute("norModi", norModi);
+		
 			} catch (DuplicateIdException e) {
 
 			}
-		}
-		return "productDetail.do?ino="+req.getParameter("ino");
-
+				}
+		return "productDetail.do?ino="+req.getParameter("ino")+"&aucChk="+req.getParameter("aucChk");
+				
 	}
 }
 

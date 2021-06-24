@@ -18,14 +18,14 @@ public class ProductDetailHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
+
+		req.setCharacterEncoding("utf-8");
 		List<Category> category = mainService.getCategory();
 		String aucChk = req.getParameter("aucChk");
 
-		String pageVal = req.getParameter("ino");
-		int ino = 1;
-		if (pageVal != null) {
-			ino = Integer.parseInt(pageVal);
-		}
+		String ino = req.getParameter("ino");
+	
+		
 		if (aucChk.equals("Y") || aucChk == "Y") {
 
 			AucPro aucPro = productService.getAucPro(ino);

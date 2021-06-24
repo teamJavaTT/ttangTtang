@@ -42,12 +42,12 @@ public class ProductHandler implements CommandHandler {
 
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		req.setCharacterEncoding("utf-8");
 		NorProRequest norReq = new NorProRequest();
 		AucProRequest aucReq = new AucProRequest();
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		
-		req.setCharacterEncoding("utf-8");
 		
 		String aucChk = req.getParameter("aucChk");
 		

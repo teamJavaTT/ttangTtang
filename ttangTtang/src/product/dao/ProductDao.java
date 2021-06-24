@@ -81,7 +81,7 @@ public class ProductDao {
 	}
 
 	// 경매상품 업데이트
-	public AucPro updateAuc(Connection conn, AucProRequest upAuc) throws SQLException {
+	public AucPro updateAuc(Connection conn, AucProRequest upAuc,String ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -106,17 +106,18 @@ public class ProductDao {
 	}
 
 	// 일반 상품 업데이트
-	public NorPro updateNor(Connection conn, NorProRequest upNor) throws SQLException {
+	public NorPro updateNor(Connection conn, NorProRequest upNor,String ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("update product set iname= ?, price = ?, pricetext=?,imageface=? where ino = ?");
+			pstmt = conn.prepareStatement("update product set iname= ?,ccode=?, price = ?, pricetext = ? , imageface = ? where ino = ?");
 			pstmt.setString(1, upNor.getProductName());
-			pstmt.setString(2, upNor.getPrice());
-			pstmt.setString(3, upNor.getPriceText());
-			pstmt.setString(4, upNor.getImageFace());
-			pstmt.setString(5, upNor.getIno());
+			pstmt.setString(2, upNor.getCategory());
+			pstmt.setString(3, upNor.getPrice());
+			pstmt.setString(4, upNor.getPriceText());
+			pstmt.setString(5, upNor.getImageFace());
+			pstmt.setString(6, upNor.getIno());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -199,12 +200,12 @@ public class ProductDao {
 	}
 
 // aucProDetail select
-	public AucPro selectAucPro(Connection conn, int ino) throws SQLException {
+	public AucPro selectAucPro(Connection conn, String ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement("select * from product where ino =?");
-			pstmt.setInt(1, ino);
+			pstmt.setString(1, ino);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -244,12 +245,11 @@ public class ProductDao {
 	}
 
 	// norProDetail select
-	public NorPro selectNorPro(Connection conn, int ino) throws SQLException {
+	public NorPro selectNorPro(Connection conn, String ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from product where ino =?");
-			pstmt.setInt(1, ino);
+			pstmt = conn.prepareStatement("select * from product where ino ="+ino);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

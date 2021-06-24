@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 <%@ include file="../include/middle_header.jsp"%>
-
 <title>상품 수정</title>
 <style>
 #test textarea {
@@ -45,8 +44,10 @@ preview-box {
 		<div class="container" style="padding-left: 17%;">
 			<form id="norForm" name="norForm" action="productModify.do"
 				method="post" style="margin-top: 20px; margin-bottom: 10px;">
-				<input type="hidden" name="aucChk" value="N" /> <input type="hidden"
-					name="imagefaceNameNor" />
+						<input type="hidden" name="aucChk" value="N"/>
+			<input type="hidden" name="imagefaceNameNor"/> 
+				<input type="hidden" name="ino" value="${norPro.ino}"/>
+					<input type="hidden" name="aucChk" value="${aucPro.auctioncheck=='N' }"/>
 				<!-- 파일업로드를 위해 추가하는 타입 -->
 				<table>
 					<tr>
@@ -91,7 +92,11 @@ preview-box {
 							<div id="previewNor" class="preview">
 								<div class="preview" style="width: 97.5px; margin-right: 20px;">
 									<img src="${norPro.imageface}">
+									<div class="select_img">
+								<input type="hidden" name="changeImg" value="${norPro.imageface}">
 								</div>
+								</div>
+					
 							</div> <input class="upload-name" value="이미지 등록" disabled="disabled"
 							multiple /> <label for="imagefaceNor">업로드</label>
 							<form id="fileUploadNor" name="fileUploadNor" method="post"
@@ -119,8 +124,11 @@ preview-box {
 		<div class="container" style="padding-left: 17%;">
 			<form id="aucForm" name="aucForm" action="productModify.do"
 				method="post" style="margin-top: 20px; margin-bottom: 10px;">
-				<input type="hidden" name="aucChk" value="Y" /> <input type="hidden"
-					name="imagefaceNameAuc" />
+			 <input type="hidden" name="aucChk" value="Y"/>
+			<input type="hidden" name="imagefaceNameAuc"/>
+			<input type="hidden" name="ino" value="${aucPro.ino}"/>
+			<input type="hidden" name="aucChk" value="${aucPro.auctioncheck=='Y' }"/>
+			
 				<!-- 파일업로드를 위해 추가하는 타입 -->
 				<table>
 					<tr>
@@ -201,9 +209,7 @@ preview-box {
 					</tr>
 					<tr>
 						<td style="float: left;">상품설명:</td>
-						<td colspan="2"><textarea name="priceTextAuc"
-								id="priceTextAuc"
-								style="resize: none; width: 306px; height: 176px;">${aucPro.pricetext}</textarea>
+						<td colspan="2"><textarea name="priceTextAuc"	id="priceTextAuc" style="resize: none; width: 306px; height: 176px;">${aucPro.pricetext}</textarea>
 						</td>
 					</tr>
 				</table>
@@ -216,7 +222,7 @@ preview-box {
 								4개의 이미지를 선택하실 수 있습니다.)</span></td>
 					</tr>
 					<tr>
-						<td>
+					<td>
 							<div id="previewAuc" class="preview">
 								<div class="preview" style="width: 97.5px; margin-right: 20px;">
 									<img src="${aucPro.imageface}">
@@ -231,6 +237,7 @@ preview-box {
 
 						</td>
 					</tr>
+				
 					<tr>
 						<td colspan="2" align="center"><input type="button"
 							value="등록" onclick="productUpdateAuc()"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
@@ -242,5 +249,5 @@ preview-box {
 		</div>
 	</section>
 </c:if>
-<script src="/ttangTtang/js/product/productWrite.js"></script>
+<script src="/ttangTtang/js/product/productEdit.js"></script>
 <%@ include file="../include/footer.jsp"%>
