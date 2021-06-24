@@ -39,14 +39,14 @@ preview-box {
 </style>
 
 <!-- 상품 등록 section begin -->
-<c:if test="${param.aucChk == 'N'}">
+<c:if test="${param.aucChk eq 'N'}">
 	<section id="normal" class="productUpdate">
 		<h3 style="text-align: center;">일반 상품 수정</h3>
 		<div class="container" style="padding-left: 17%;">
 			<form id="norForm" name="norForm" action="productModify.do"
 				method="post" style="margin-top: 20px; margin-bottom: 10px;">
-				<!-- 			<input type="hidden" name="aucChk" value="N"/>
-			<input type="hidden" name="imagefaceNameNor"/> -->
+				<input type="hidden" name="aucChk" value="N" /> <input type="hidden"
+					name="imagefaceNameNor" />
 				<!-- 파일업로드를 위해 추가하는 타입 -->
 				<table>
 					<tr>
@@ -104,7 +104,7 @@ preview-box {
 					</tr>
 					<tr>
 						<td align="center"><input type="button" value="등록"
-							onclick="productUpdateNor();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+							onclick=" productUpdateNor();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
 							<input type="button" value="취소" onclick="history.back(-1);">
 							<!-- "목록 버튼을 누르면 list.do페이지로 이동" --></td>
 					</tr>
@@ -113,14 +113,14 @@ preview-box {
 		</div>
 	</section>
 </c:if>
-<c:if test="${param.aucChk == 'Y'}">
+<c:if test="${param.aucChk eq 'Y'}">
 	<section id="auction" class="productUpdate">
 		<h3 style="text-align: center;">경매 상품 수정</h3>
 		<div class="container" style="padding-left: 17%;">
 			<form id="aucForm" name="aucForm" action="productModify.do"
 				method="post" style="margin-top: 20px; margin-bottom: 10px;">
-				<!-- <input type="hidden" name="aucChk" value="Y"/>
-			<input type="hidden" name="imagefaceNameAuc"/> -->
+				<input type="hidden" name="aucChk" value="Y" /> <input type="hidden"
+					name="imagefaceNameAuc" />
 				<!-- 파일업로드를 위해 추가하는 타입 -->
 				<table>
 					<tr>
@@ -201,7 +201,9 @@ preview-box {
 					</tr>
 					<tr>
 						<td style="float: left;">상품설명:</td>
-						<td colspan="2"><textarea name="priceTextAuc"	id="priceTextAuc" style="resize: none; width: 306px; height: 176px;">${aucPro.pricetext}</textarea>
+						<td colspan="2"><textarea name="priceTextAuc"
+								id="priceTextAuc"
+								style="resize: none; width: 306px; height: 176px;">${aucPro.pricetext}</textarea>
 						</td>
 					</tr>
 				</table>
@@ -214,7 +216,7 @@ preview-box {
 								4개의 이미지를 선택하실 수 있습니다.)</span></td>
 					</tr>
 					<tr>
-					<td>
+						<td>
 							<div id="previewAuc" class="preview">
 								<div class="preview" style="width: 97.5px; margin-right: 20px;">
 									<img src="${aucPro.imageface}">
@@ -231,7 +233,7 @@ preview-box {
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="button"
-							value="등록" onclick="productUpdateAuc();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+							value="등록" onclick="productUpdateAuc()"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
 							<input type="button" value="취소" onclick="history.back(-1);">
 							<!-- "목록 버튼을 누르면 list.do페이지로 이동" --></td>
 					</tr>

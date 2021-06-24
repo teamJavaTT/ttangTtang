@@ -4,12 +4,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import auth.model.Category;
 import auth.service.MainService;
+import member.service.DuplicateIdException;
+import member.service.User;
 import mvc.command.CommandHandler;
 import product.model.AucPro;
 import product.model.NorPro;
+import product.service.AucProRequest;
+import product.service.NorProRequest;
 import product.service.ProductService;
 
 public class ProductModifyHandler implements CommandHandler {
@@ -51,7 +56,7 @@ public class ProductModifyHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
-/*
+
 		NorProRequest norReq = new NorProRequest();
 		AucProRequest aucReq = new AucProRequest();
 		HttpSession session = req.getSession(false);
@@ -82,7 +87,7 @@ public class ProductModifyHandler implements CommandHandler {
 
 			try {
 				productService.aucProductModi(aucReq);
-				return "productDetail.do?ino=?";
+				return "productDetail.do?ino="+req.getParameter("ino");
 			} catch (DuplicateIdException e) {
 
 			}
@@ -103,13 +108,13 @@ public class ProductModifyHandler implements CommandHandler {
 
 			try {
 				productService.norProductModi(norReq);
-				return "productDetail.do?ino=?";
+				return "productDetail.do?ino="+req.getParameter("ino");
 			} catch (DuplicateIdException e) {
 
 			}
 		}
-*/
-		return FORM_VIEW;
+		return "productDetail.do?ino="+req.getParameter("ino");
+
 	}
 }
 

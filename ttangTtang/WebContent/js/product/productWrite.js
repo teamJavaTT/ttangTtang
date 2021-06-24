@@ -182,10 +182,10 @@ function getFileUpload(fileUpload) {
 		processData: false,
 		success: function(data) {
 			if (fileUpload == "#fileUploadAuc") {
-				document.aucForm.imagefaceNameAuc.value = data;
+				
 				document.aucForm.submit();
 			} else if (fileUpload == "#fileUploadNor"){
-				document.norForm.imagefaceNameNor.value = data;
+			
 				document.norForm.submit();
 			}
 		}, error: function() {
@@ -230,7 +230,7 @@ function productUpdateNor() {
 
 };
 
-function productDateAuc() {
+function productUpdateAuc() {
 	var productName = document.aucForm.productNameAuc.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품이름을 반환해서 name에 저장함
 	var category = document.aucForm.categoryAuc.value;
 	var maxPrice = document.aucForm.maxPrice.value;
@@ -333,5 +333,4 @@ function addPreview(input, num) {
 	} else
 		alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
 }
-
 

@@ -81,17 +81,19 @@ public class ProductDao {
 	}
 
 	// 경매상품 업데이트
-	public AucPro updateAuc(Connection conn, AucPro upAuc) throws SQLException {
+	public AucPro updateAuc(Connection conn, AucProRequest upAuc) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(
-					"update product set  iname= ?, minprice = ?,maxprice=?,pricetext=? where ino = ?");
-			pstmt.setString(1, upAuc.getIname());
-			pstmt.setString(2, upAuc.getMinprice());
-			pstmt.setString(3, upAuc.getMaxprice());
-			pstmt.setString(4, upAuc.getPricetext());
+					"update product set  iname= ?, minprice = ?,pricetext=?,imageface=? where ino = ?");
+			pstmt.setString(1, upAuc.getProductName());
+			pstmt.setString(2, upAuc.getMinPrice());
+
+			pstmt.setString(3, upAuc.getPriceText());
+			pstmt.setString(4, upAuc.getImageFace());
+			pstmt.setString(5, upAuc.getIno());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -100,19 +102,21 @@ public class ProductDao {
 			JdbcUtil.close(stmt);
 			JdbcUtil.close(pstmt);
 		}
-		return upAuc;
+		return null;
 	}
 
 	// 일반 상품 업데이트
-	public NorPro updateNor(Connection conn, NorPro upNor) throws SQLException {
+	public NorPro updateNor(Connection conn, NorProRequest upNor) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("update product set iname= ?, price = ?, pricetext=? where ino = ?");
-			pstmt.setString(1, upNor.getIname());
+			pstmt = conn.prepareStatement("update product set iname= ?, price = ?, pricetext=?,imageface=? where ino = ?");
+			pstmt.setString(1, upNor.getProductName());
 			pstmt.setString(2, upNor.getPrice());
-			pstmt.setString(3, upNor.getPricetext());
+			pstmt.setString(3, upNor.getPriceText());
+			pstmt.setString(4, upNor.getImageFace());
+			pstmt.setString(5, upNor.getIno());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -121,7 +125,7 @@ public class ProductDao {
 			JdbcUtil.close(stmt);
 			JdbcUtil.close(pstmt);
 		}
-		return upNor;
+		return null;
 	}
 
 	// 경매 삭제

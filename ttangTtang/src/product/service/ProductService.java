@@ -61,7 +61,7 @@ public class ProductService {
 		}
 	}
 
-	//norPro 상품 불러오기
+	// norPro 상품 불러오기
 	public NorPro getNorPro(int ino) throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {
 			NorPro norPro = (NorPro) productDao.selectNorPro(conn, ino);
@@ -107,25 +107,46 @@ public class ProductService {
 		}
 	}
 
-	public void aucProductModi(int ino, AucProRequest aucReq) throws Exception {
-		try (Connection conn = DBConnection.getConnection()) {
-
-		}
-	}
-
-	public void norProductModi(int ino, NorProRequest norReq) throws Exception {
-		try (Connection conn = DBConnection.getConnection()) {
-
-		}
-
-	}
-	
-	public String auctionPartInsert(String userId, String aucIno, String oPrice) throws Exception{
+	public String aucProductModi(AucProRequest aucProductModi) throws Exception {
 		Connection conn = null;
-		try{
-			conn= DBConnection.getConnection();
+		try {
+			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
-	
+		
+			productDao.updateAuc(conn, aucProductModi);
+			conn.commit();
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return null;
+	}
+
+	public String norProductModi(NorProRequest norProductModi) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+
+			productDao.updateNor(conn, norProductModi);
+			conn.commit();
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return null;
+	}
+
+	public String auctionPartInsert(String userId, String aucIno, String oPrice) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+
 			productDao.auctionPartInsert(conn, userId, aucIno, oPrice);
 			productDao.updateAucPart(conn, aucIno, oPrice);
 			conn.commit();
