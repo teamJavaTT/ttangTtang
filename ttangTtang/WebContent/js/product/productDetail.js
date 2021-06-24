@@ -1,5 +1,10 @@
 $(document).ready(function() {
-
+	$("body").keypress(function(e) {
+		if (e.keyCode == 13) {
+			aucPricePart();
+			return false;
+		}
+	})
 });
 
 function aucPricePart() {
@@ -7,6 +12,7 @@ function aucPricePart() {
 	var pricePart = $('#oPrice').val();
 	if (priceNow >= pricePart) {
 		alert("현재가보다 높은 금액만 제시할 수 있습니다.");
+		return false;
 	} else {
 		document.auctionPart.submit();
 	}

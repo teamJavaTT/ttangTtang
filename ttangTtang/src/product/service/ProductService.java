@@ -127,6 +127,7 @@ public class ProductService {
 			conn.setAutoCommit(false);
 	
 			productDao.auctionPartInsert(conn, userId, aucIno, oPrice);
+			productDao.updateAucPart(conn, aucIno, oPrice);
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);

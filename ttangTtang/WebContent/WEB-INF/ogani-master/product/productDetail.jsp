@@ -27,63 +27,37 @@
 <!-- Product Details Section Begin -->
 <section class="product-details spad">
 	<div class="container">
-
 		<div class="row">
-
 			<div class="col-lg-6 col-md-6">
 				<div class="product__details__pic">
 					<div class="product__details__pic__item">
-						<img class="product__details__pic__item--large"
-							src="${allPro.imageface}">
+						<img class="product__details__pic__item--large" src="${allPro.imageface}">
 					</div>
-					<div
-						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
-
-
-
-
+					<div class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
 						<div class="owl-stage-outer">
 							<div class="owl-stage"
 								style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
-										alt="">
+									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg" alt="">
 								</div>
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
-										alt="">
+									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg" alt="">
 								</div>
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
-										alt="">
+									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg" alt="">
 								</div>
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
-										alt="">
+									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg" alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
-										alt="">
+									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg" alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
-										alt="">
+									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg" alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
 									<img
@@ -159,14 +133,17 @@
 								<span>${allPro.price}</span>
 							</div>
 						</c:when>
-
 					</c:choose>
-
 
 					<p>${allPro.pricetext}</p>
 					<div class="product__details__quantity">
 						<div class="quantity"></div>
 					</div>
+					<c:if test="${aucOk == 1}">
+						<script>
+							alert("가격 제시 성공");
+						</script>
+					</c:if>
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
 							<form action="auctionPart.do" name="auctionPart" method="post">

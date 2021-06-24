@@ -20,7 +20,7 @@ public class AuctionPartHandler implements CommandHandler {
 		String oPrice = req.getParameter("oPrice");
 		
 		productService.auctionPartInsert(user.getUserid(), aucIno, oPrice);
-
+		req.setAttribute("aucOk", 1);
 		return "productDetail.do?ino="+aucIno+"&aucChk=Y";
 	}
 

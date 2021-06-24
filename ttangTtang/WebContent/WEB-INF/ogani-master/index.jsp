@@ -86,7 +86,7 @@
 									<h5>${allProduct.price}원</h5>
 								</c:when>
 								<c:when test="${allProduct.auctioncheck == 'Y'}">
-									<h5>${allProduct.minprice}원</h5>
+									<h5>현재가 ${allProduct.apricenow}원</h5>
 								</c:when>
 							</c:choose>
 						</div>
@@ -137,7 +137,7 @@
 								<h6>
 									<a href="productDetail.do?ino=${aucProduct.ino}">${aucProduct.iname}</a>
 								</h6>
-								<h5>${aucProduct.minprice}원</h5>
+								<h5>현재가 ${aucProduct.apricenow}원</h5>
 							</div>
 						</div>
 					</div>

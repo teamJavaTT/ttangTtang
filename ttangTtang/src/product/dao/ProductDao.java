@@ -295,4 +295,19 @@ public class ProductDao {
 		}
 	}
 
+	// 경매 최대가 업데이트
+	public AucPro updateAucPart(Connection conn, String aucIno, String oPrice) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("update product set apricenow= ? where ino = ?");
+			pstmt.setString(1, oPrice);
+			pstmt.setString(2, aucIno);
+			pstmt.executeUpdate();
+			return null;
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+	}
+
 }
