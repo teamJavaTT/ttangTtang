@@ -284,7 +284,7 @@ public class ProductDao {
 	public AucPro auctionPartInsert(Connection conn, String userId, String aucIno, String oPrice) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement("INSERT INTO auction VALUES(ANO_SEQ.NEXTVAL,?,?,?)");
+			pstmt = conn.prepareStatement("INSERT INTO auction VALUES(auction_seq.NEXTVAL,?,?,?)");
 			pstmt.setString(1, userId);
 			pstmt.setString(2, aucIno);
 			pstmt.setString(3, oPrice);

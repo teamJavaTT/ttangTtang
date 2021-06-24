@@ -14,7 +14,7 @@ public class AccountDeclarationDao {
 		PreparedStatement pstmt = null;
 		// insert 부분 구문
 		try {
-			pstmt = conn.prepareStatement("insert into declaration values (dno_seq.nextval, ?, ?, ?,sysdate)");
+			pstmt = conn.prepareStatement("insert into declaration values (declaration_seq.nextval, ?, ?, ?,sysdate)");
 			pstmt.setString(1, userId);
 			pstmt.setString(2, declId);
 			pstmt.setString(3, dText);

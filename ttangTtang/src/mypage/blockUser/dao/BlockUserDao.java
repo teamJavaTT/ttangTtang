@@ -14,7 +14,7 @@ public class BlockUserDao {
 		PreparedStatement pstmt = null;
 		// insert 부분 구문
 		try {
-			pstmt = conn.prepareStatement("insert into block values (bno_seq.nextval, ?, ?, ?,sysdate)");
+			pstmt = conn.prepareStatement("insert into block values (block_seq.nextval, ?, ?, ?,sysdate)");
 			pstmt.setString(1, userId);
 			pstmt.setString(2, blockid2);
 			pstmt.setString(3, bText);

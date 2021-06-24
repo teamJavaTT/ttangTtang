@@ -24,7 +24,7 @@ public class DeleteFormDao {
 		PreparedStatement pstmt = null;
 		// insert 부분 구문
 		try {
-			pstmt = conn.prepareStatement("insert into secession values (sno_seq.NEXTVAL,?,?,sysdate, sysdate+7)");
+			pstmt = conn.prepareStatement("insert into secession values (secession_seq.NEXTVAL,?,?,sysdate, sysdate+7)");
 			pstmt.setString(1, userId);
 			pstmt.setString(2, sText);
 			pstmt.executeUpdate();
