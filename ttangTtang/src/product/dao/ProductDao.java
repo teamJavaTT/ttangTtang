@@ -283,21 +283,14 @@ public class ProductDao {
 
 	public AucPro auctionPartInsert(Connection conn, String userId, String aucIno, String oPrice) throws SQLException {
 		PreparedStatement pstmt = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
 		try {
-			pstmt = conn.prepareStatement(
-					"INSERT INTO AUCTION(ANO_SEQ.NEXTVAL, ?, ?, ?)");
+			pstmt = conn.prepareStatement("INSERT INTO auction VALUES(ANO_SEQ.NEXTVAL,?,?,?)");
 			pstmt.setString(1, userId);
 			pstmt.setString(2, aucIno);
 			pstmt.setString(3, oPrice);
 			pstmt.executeUpdate();
-
 			return null;
 		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(stmt);
 			JdbcUtil.close(pstmt);
 		}
 	}

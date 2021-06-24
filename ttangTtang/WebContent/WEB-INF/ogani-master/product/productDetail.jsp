@@ -169,9 +169,13 @@
 					</div>
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
-							<div class="product__details__quantity">
-								가격제시 <input type="text"><input type="button" value="등록">
-							</div>
+							<form action="auctionPart.do" name="auctionPart" method="post">
+								<input type="hidden" name="aucIno" value="${allPro.ino}">
+								<div class="product__details__quantity">
+									가격제시 <input type="text" name="oPrice" id="oPrice">
+									<input type="button" onclick="aucPricePart()" value="등록">
+								</div>
+							</form>
 						</c:when>
 						<c:when test="${allPro.auctioncheck == 'N'}">
 							<a href="#" class="primary-btn">판매자와 연락하기</a>
@@ -195,12 +199,10 @@
 							</div></li>
 					</ul>
 					<c:if test="${memberUser.userid eq allPro.userid}">
-						<input type="button" value="상품수정"
-							onclick="location.href='productModify.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
+						<input type="button" value="상품수정" onclick="location.href='productModify.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
 
 						<input type="hidden" value="${allPro.ino}" id="delNo">
-						<input type="button" value="삭제" onclick="productDel()"
-							id="productDel" style="float: right;">
+						<input type="button" value="삭제" onclick="productDel()" id="productDel" style="float: right;">
 					</c:if>
 
 				</div>
@@ -328,5 +330,5 @@
 	</div>
 </section>
 <!-- Related Product Section End -->
-<script src="/ttangTtang/js/product/productDelete.js"></script>
+<script src="/ttangTtang/js/product/productDetail.js"></script>
 <%@ include file="../include/footer.jsp"%>

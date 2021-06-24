@@ -21,7 +21,7 @@ public class AuctionPartHandler implements CommandHandler {
 		
 		productService.auctionPartInsert(user.getUserid(), aucIno, oPrice);
 
-		return null;
+		return "productDetail.do?ino="+aucIno+"&aucChk=Y";
 	}
 
 }
