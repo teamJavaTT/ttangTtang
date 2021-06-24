@@ -42,7 +42,7 @@
         
 		</div>
         <div class="links">
-            <a href="passwordfind.do">비밀번호 찾기</a> | <a href="login.do">로그인</a> | <a href="join.do">회원가입</a>
+            <a href="passwordFind.do">비밀번호 찾기</a> | <a href="login.do">로그인</a> | <a href="join.do">회원가입</a>
         </div>
 	</div>
    
