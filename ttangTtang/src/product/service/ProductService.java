@@ -2,13 +2,11 @@ package product.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import auth.model.Product;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
-import member.dao.MemberDao;
 import product.dao.ProductDao;
 import product.model.AucPro;
 import product.model.NorPro;
@@ -58,6 +56,7 @@ public class ProductService {
 		try (Connection conn = DBConnection.getConnection()) {
 			AucPro aucPro = (AucPro) productDao.selectAucPro(conn, ino);
 			productDao.viewCountUpdate(conn, ino);
+			productDao.LikeCountUpdate(conn, ino);
 			return aucPro;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -69,6 +68,7 @@ public class ProductService {
 		try (Connection conn = DBConnection.getConnection()) {
 			NorPro norPro = (NorPro) productDao.selectNorPro(conn, ino);
 			productDao.viewCountUpdate(conn, ino);
+			productDao.LikeCountUpdate(conn, ino);
 			return norPro;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -165,7 +165,24 @@ public class ProductService {
 		return null;
 	}
 
-	
+
+	public String likeCountUpdate(String userId, String ino) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+productDao.aucLikeInsert(conn, userId, ino);
+productDao.norLikeInsert(conn, userId, ino);
+			productDao.LikeCountUpdate(conn, ino);
+			conn.commit();
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return null;
+	}
 	
 
 }

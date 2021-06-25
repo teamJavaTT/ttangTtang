@@ -244,7 +244,7 @@ public class ProductDao {
 				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
 				rs.getString("minprice"), rs.getString("maxprice"), rs.getString("apricenow"),
 				rs.getString("apriceend"), rs.getString("pricetext"), rs.getString("imageface"),
-				rs.getString("endtime"),rs.getString("viewcount"));
+				rs.getString("endtime"),rs.getString("viewcount"),rs.getString("likecount"));
 	}
 
 	// norProDetail select
@@ -285,7 +285,7 @@ public class ProductDao {
 	private NorPro converNorPro(ResultSet rs, String categoryPro) throws SQLException {
 		return new NorPro(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"), categoryPro,
 				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
-				rs.getString("pricetext"), rs.getString("imageface"), rs.getString("viewcount"));
+				rs.getString("pricetext"), rs.getString("imageface"), rs.getString("viewcount"),rs.getString("likecount"));
 	}
 
 	public AucPro auctionPartInsert(Connection conn, String userId, String aucIno, String oPrice) throws SQLException {
@@ -320,6 +320,37 @@ public class ProductDao {
 	public void viewCountUpdate(Connection conn, String ino) throws SQLException {
 		try (PreparedStatement pstmt = conn
 				.prepareStatement("update product set viewcount=viewcount +1 where ino = ?")) {
+			pstmt.setString(1, ino);
+			pstmt.executeUpdate();
+		}
+	}
+	public AucPro aucLikeInsert(Connection conn, String userId, String ino) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("INSERT INTO product VALUES(product_seq.NEXTVAL,?,?,)");
+			pstmt.setString(1, userId);
+			pstmt.setString(2, ino);
+			pstmt.executeUpdate();
+			return null;
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	public NorPro norLikeInsert(Connection conn, String userId, String ino) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("INSERT INTO product VALUES(product_seq.NEXTVAL,?,?,)");
+			pstmt.setString(1, userId);
+			pstmt.setString(2, ino);
+			pstmt.executeUpdate();
+			return null;
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	public void LikeCountUpdate(Connection conn, String ino) throws SQLException {
+		try (PreparedStatement pstmt = conn
+				.prepareStatement("update product set likecount=likecount +1 where ino = ?")) {
 			pstmt.setString(1, ino);
 			pstmt.executeUpdate();
 		}

@@ -40,8 +40,8 @@ preview-box {
 
 <div class="featured__controls">
     <ul>
-        <li onclick="fnOpen('#normal')">판매하기</li>
-        <li onclick="fnOpen('#auction')">경매하기</li>
+        <li onclick="fnOpen('#normal')" class="btn btn-outline-danger">판매하기</li>
+        <li onclick="fnOpen('#auction')"class="btn btn-outline-danger">경매하기</li>
     </ul>
 </div>
 <!-- 상품 등록 section begin -->
@@ -55,7 +55,7 @@ preview-box {
 			<table>
 				<tr>
 					<td>상품명:</td>
-					<td><input name="productNameNor"></td>
+					<td><input name="productNameNor"class="form-control"></td>
 				</tr>
 				<tr>
 					<td>카테고리:</td>
@@ -69,7 +69,7 @@ preview-box {
 				</tr>
 				<tr>
 					<td>가격:</td>
-					<td><input name="price"></td>
+					<td><input name="price"class="form-control"></td>
 				</tr>
 				<tr>
 					<td>판매 지역:</td>
@@ -88,7 +88,7 @@ preview-box {
 				<tr>
 					<td style="float: left;">상품설명:</td>
 					<td>
-						<textarea name="priceTextNor" id="priceTextNor" style="resize: none; width: 306px; height: 176px;"></textarea>
+						<textarea class="form-control" name="priceTextNor" id="priceTextNor" style="resize: none;" rows="5"></textarea>
 					</td>
 				</tr>
 			</table>
@@ -109,8 +109,8 @@ preview-box {
 				</tr>
 				<tr>
 					<td align="center">
-						<input type="button" value="등록" onclick="productWriteNor();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
-						<input type="button" value="목록" onclick="location.href='index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
+						<input type="button" class="btn btn-outline-secondary" value="등록" onclick="productWriteNor();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+						<input type="button" class="btn btn-outline-secondary" value="목록" onclick="location.href='index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
 					</td>
 				</tr>
 			</table>
@@ -119,7 +119,7 @@ preview-box {
 </section>
 <section id="auction" class="productInsert" style="display:none">
 	<h3 style="text-align: center;">경매 상품 등록</h3>
-	<div class="container" style="padding-left: 34%;">
+	<div class="form-group" style="padding-left: 34%;">
 		<form id="aucForm" name="aucForm" action="productWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
 			<input type="hidden" name="aucChk" value="Y"/>
 			<input type="hidden" name="imagefaceNameAuc"/>
@@ -127,7 +127,7 @@ preview-box {
 			<table>
 				<tr>
 					<td>상품명:</td>
-					<td colspan="2"><input type="text" name="productNameAuc"></td>
+					<td colspan="2"><input type="text" name="productNameAuc" class="form-control"></td>
 				</tr>
 				<tr>
 					<td>카테고리:</td>
@@ -143,11 +143,11 @@ preview-box {
 				</tr>
 				<tr>
 					<td>최소가격:</td>
-					<td colspan="2"><input name="minPrice"></td>
+					<td colspan="2"><input name="minPrice"class="form-control"></td>
 				</tr>
 				<tr>
 					<td>최대가격:</td>
-					<td colspan="2"><input name="maxPrice"></td>
+					<td colspan="2"><input name="maxPrice"class="form-control"></td>
 				</tr>
 				<tr>
 					<td>판매 지역:</td>
@@ -223,7 +223,7 @@ preview-box {
 				<tr>
 					<td style="float: left;">상품설명:</td>
 					<td colspan="2">
-						<textarea name="priceTextAuc" id="priceTextAuc" style="resize: none; width: 306px; height: 176px;"></textarea>
+						<textarea class="form-control" name="priceTextAuc" id="priceTextAuc" style="resize: none;" rows="5"></textarea>
 					</td>
 				</tr>
 			</table>
@@ -245,8 +245,8 @@ preview-box {
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="button" value="등록" onclick="productWriteAuc();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
-						<input type="button" value="목록" onclick="location.href='index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
+						<input type="button" class="btn btn-outline-secondary" value="등록" onclick="productWriteAuc();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+						<input type="button" class="btn btn-outline-secondary" value="목록" onclick="location.href='index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
 					</td>
 				</tr>
 			</table>

@@ -170,14 +170,14 @@
 								<input type="hidden" name="aucIno" value="${allPro.ino}">
 								<div class="product__details__quantity">
 									가격제시 <input type="text" name="oPrice" id="oPrice"> <input
-										type="button" onclick="aucPricePart()" value="등록">
+										type="button" class="btn btn-outline-dark" onclick="aucPricePart()" value="등록">
 								</div>
 							</form>
 						</c:when>
 						<c:when test="${allPro.auctioncheck == 'N'}">
 							<input type="button" value="판매자와 연락하기" class="primary-btn"
 								onclick="matchingwindow()" />
-							<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+							
 						</c:when>
 					</c:choose>
 
@@ -202,11 +202,11 @@
 						</li>
 					</ul>
 					<c:if test="${memberUser.userid eq allPro.userid}">
-						<input type="button" value="상품수정"
+						<input type="button" class="btn btn-outline-dark" value="상품수정"
 							onclick="location.href='productModify.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
 
 						<input type="hidden" value="${allPro.ino}" id="delNo">
-						<input type="button" value="삭제" onclick="productDel()"
+						<input type="button" class="btn btn-outline-danger" value="삭제" onclick="productDel()"
 							id="productDel" style="float: right;">
 					</c:if>
 
@@ -264,7 +264,7 @@
 					<div class="product__item__pic set-bg"
 						data-setbg="img/product/product-1.jpg">
 						<ul class="product__item__pic__hover">
-							<li><a href="#"><i class="fa fa-heart"></i></a></li>
+								<li><a href="#"><i class="fa fa-heart"></i></a></li>
 							<li><a href="#"><i class="fa fa-retweet"></i></a></li>
 							<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 						</ul>
@@ -282,7 +282,7 @@
 					<div class="product__item__pic set-bg"
 						data-setbg="img/product/product-2.jpg">
 						<ul class="product__item__pic__hover">
-							<li><a href="#"><i class="fa fa-heart"></i></a></li>
+									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 							<li><a href="#"><i class="fa fa-retweet"></i></a></li>
 							<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 						</ul>
