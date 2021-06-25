@@ -25,7 +25,7 @@
 										<c:if test="${param.memberChk == 2}">seleted</c:if>>탈퇴회원</option>
 								</select>&nbsp;<input type="submit" class="button" value="보기">
 							</div>
-							<table>
+							<table border="1">
 								<thead>
 									<tr>
 										<td>사용자</td>

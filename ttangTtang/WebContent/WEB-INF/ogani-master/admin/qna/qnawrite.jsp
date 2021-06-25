@@ -9,7 +9,7 @@
 				<section class="content">
 					<form action="qnawrite.do" method="post">
 					<input type="hidden" name="userid" value="${memberUser.userid}">
-						<table>
+						<table border="1">
 							<thead>
 								<tr>
 									<th colspan="4">Q&A 글쓰기 양식</th>

@@ -2,10 +2,10 @@ package mypage.declarationAndBlockList.service;
 
 import mypage.declarationAndBlockList.model.DeclarationColumn;
 
-public class ListtData {
+public class DeclarationData {
 	private DeclarationColumn blockDeclaration;
 
-	public ListtData(DeclarationColumn blockDeclaration) {
+	public DeclarationData(DeclarationColumn blockDeclaration) {
 		this.blockDeclaration = blockDeclaration;
 	}
 

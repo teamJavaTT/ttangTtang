@@ -175,7 +175,8 @@
 							</form>
 						</c:when>
 						<c:when test="${allPro.auctioncheck == 'N'}">
-							<a href="#" class="primary-btn">판매자와 연락하기</a>
+							<input type="button" value="판매자와 연락하기" class="primary-btn"
+								onclick="matchingwindow()" />
 							<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 						</c:when>
 					</c:choose>

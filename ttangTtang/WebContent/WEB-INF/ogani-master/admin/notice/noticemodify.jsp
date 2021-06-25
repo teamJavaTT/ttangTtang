@@ -8,7 +8,7 @@
 				</section>
 				<section class="content">
 					<form action="noticemodify.do" method="post">
-						<table>
+						<table border="1">
 							<thead>
 								<tr>
 									<th colspan="4">공지사항 글수정 양식</th>

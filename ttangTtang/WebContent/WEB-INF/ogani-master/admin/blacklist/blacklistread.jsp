@@ -11,7 +11,7 @@
 						<div class="wrap-table100">
 							<div class="table100">
 								<div class="box">
-									<table>
+									<table border="1">
 										<thead>
 											<tr>
 												<th colspan="4" style="text-align: center; padding-left: 0px;">게시물</th>

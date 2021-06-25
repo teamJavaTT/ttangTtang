@@ -28,4 +28,11 @@ function productDel() {
 			alert("취소되었습니다.");
 		}
 	});
-} (jQuery);
+}
+
+function matchingwindow() {
+	var url = "/ttangTtang/ogani-master/matching/matching.jsp";
+	window.open(url, "", "width=600,height=800,left=800");
+}
+
+(jQuery);

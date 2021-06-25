@@ -62,8 +62,7 @@ public class AccountDeclarationHandler implements CommandHandler {
 			
 			req.setCharacterEncoding("utf-8");
 
-			//String userId = user.getUserid();
-			String userId = "ssmsm";
+			String userId = user.getUserid();
 			String declId = req.getParameter("declId");
 			String dText = req.getParameter("dtext");
 			accountDeclarationService.getAccountDeclaration(userId, declId, dText);

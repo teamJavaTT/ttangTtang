@@ -8,7 +8,7 @@
 				</section>
 				<section class="content">
 					<form action="qnamodify.do" method="post">
-						<table>
+						<table border="1">
 							<thead>
 								<tr>
 									<th colspan="4" style="text-align: center;">Q&A 글수정 양식</th>

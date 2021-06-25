@@ -46,7 +46,7 @@
 											<!-- 경매/일반 -->
 											<td>${product.auctionCheck eq 'N'? '일반' : '경매'}</td>
 											<!-- 상품명 -->
-											<td><c:out value="${product.iName}" />
+											<td><a href="productDetail.do?ino=${product.iNo}&aucChk=${product.auctionCheck}"><c:out value="${product.iName}" /></a>
 											</td>
 											<!-- 등록날짜 -->
 											<td>${product.pDate}</td>

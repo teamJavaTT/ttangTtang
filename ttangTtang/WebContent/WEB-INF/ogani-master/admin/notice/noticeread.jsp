@@ -16,7 +16,7 @@
 				<div class="table100">
 					<!-- Default box -->
 					<div class="box">
-						<table>
+						<table border="1">
 							<thead>
 								<tr>
 									<th colspan="4">게시물</th>

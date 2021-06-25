@@ -13,7 +13,7 @@
 			<div class="wrap-table100">
 				<div class="table100">
 					<div class="box">
-						<table>
+						<table border="1">
 							<thead>
 								<tr>
 									<th colspan="4">게시물</th>
