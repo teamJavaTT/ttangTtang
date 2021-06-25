@@ -66,10 +66,10 @@ public class ProductDao {
 			pstmt.setString(2, norProduct.getCategory());
 			pstmt.setString(3, auctionCnk);
 			pstmt.setString(4, norProduct.getUad());
-			pstmt.setString(4, norProduct.getProductName());
-			pstmt.setString(5, norProduct.getPrice());
-			pstmt.setString(6, norProduct.getPriceText());
-			pstmt.setString(7, norProduct.getImageFace());// ImageFace
+			pstmt.setString(5, norProduct.getProductName());
+			pstmt.setString(6, norProduct.getPrice());
+			pstmt.setString(7, norProduct.getPriceText());
+			pstmt.setString(8, norProduct.getImageFace());// ImageFace
 
 			pstmt.executeUpdate();
 
