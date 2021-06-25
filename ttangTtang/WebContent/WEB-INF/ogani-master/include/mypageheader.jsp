@@ -31,4 +31,3 @@
 				</div>
 			</div>
 
-			<!-- admin list end -->

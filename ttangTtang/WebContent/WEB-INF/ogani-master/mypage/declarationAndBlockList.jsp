@@ -8,7 +8,7 @@
 	<form action="declarationAndBlockList.do" method="post">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
-		<c:if test="${param.sellChk eq 'D' || empty param.sellChk}">
+		<c:if test="${param.sellChk eq 'D' || emptparam.sellChk}">
 			<h3>신고 내역</h3>
 		</c:if>
 		<c:if test="${param.sellChk eq 'B'}">
@@ -30,13 +30,12 @@
 							<table>
 								<thead>
 									<tr>
+										
 										<th>아이디</th>
-										<!-- USERID -->
-										<th>종류</th>
 										<!-- CNAMe -->
-										<th>설명</th>
+										<th>종류</th>
 										<!-- REASON -->
-										<th>등록날짜</th>
+										<th>날짜</th>
 										<!-- DATE  -->
 
 									</tr>
@@ -45,11 +44,11 @@
 									<c:if test="${key eq 'D'}">
 										<c:forEach var="declaration" items="${listPage.declaration}">
 											<tr>
-												<!-- 아이디 -->
-												<td>${declaration.userId}</td>
+												
+												
 												<%-- <!-- 신고/차단 -->
 											<td>${declaration.auctionCheck eq 'N'? '신고' : '차단'}</td> --%>
-												<!-- 설명 -->
+												<!-- 신고 아이디 -->
 												<td>${declaration.duid}</td>
 												<!-- 상품명 -->
 												<td><c:out value="${declaration.dtext}" /></td>
@@ -62,11 +61,10 @@
 									<c:if test="${key eq 'B'}">
 										<c:forEach var="block" items="${listPage.block}">
 											<tr>
-												<!-- 아이디 -->
-												<td>${block.userId}</td>
+												
 												<%-- <!-- 신고/차단 -->
 											<td>${declaration.auctionCheck eq 'N'? '신고' : '차단'}</td> --%>
-												<!-- 설명 -->
+												<!-- 차단 아이디 -->
 												<td>${block.bid}</td>
 												<!-- 상품명 -->
 												<td><c:out value="${block.btext}" /></td>

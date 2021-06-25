@@ -6,7 +6,7 @@
 <!-- 판매자와 연락하기 -->
 <script>
 	function matchingwindow() {
-		var url = "matching.jsp";
+		var url = "/ttangTtang/ogani-master/matching/matching.jsp";
 		window.open(url, "", "width=600,height=800,left=800");
 	}
 </script>
