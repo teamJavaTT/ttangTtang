@@ -8,7 +8,7 @@
 	<form action="declarationAndBlockList.do" method="post">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
-		<c:if test="${param.sellChk eq 'D'}">
+		<c:if test="${param.sellChk eq 'D' || empty param.sellChk}">
 			<h3>신고 내역</h3>
 		</c:if>
 		<c:if test="${param.sellChk eq 'B'}">
@@ -22,16 +22,9 @@
 					<div class="table100">
 						<div class="box">
 							<div style="float: right;">
-								<select name="sellChk" id="sellChk">
-								<c:if test="${param.sellChk eq 'D'}">
-									<option value="D" selected>신고리스트</option>
-									<option value="B">차단리스트</option>
-								</c:if>
-								<c:if test="${param.sellChk eq 'B'}">
-									<option value="D">신고리스트</option>
-									<option value="B" selected>차단리스트</option>
-								</c:if>
-								</select>&nbsp;<input type="submit" class="button" value="보기">
+								<input type="radio" name="sellChk" value="D">신고리스트
+								<input type="radio" name="sellChk" value="B">차단리스트
+								<input type="submit" class="button" value="보기">
 							</div>
 
 							<table>
