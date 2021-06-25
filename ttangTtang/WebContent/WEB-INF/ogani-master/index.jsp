@@ -26,7 +26,7 @@
 				<c:forEach var="productToday" items="${mainPage.productToday}">
 					<div class="col-lg-3">
 						<div class="categories__item set-bg"
-							data-setbg="${productToday.imageface}">
+							data-setbg="${productToday.imageface}" onclick="location.href='productDetail.do?ino=${productToday.ino}&aucChk=${productToday.auctioncheck}'">
 							<h5>
 								<a href="#">${productToday.iname}</a>
 							</h5>

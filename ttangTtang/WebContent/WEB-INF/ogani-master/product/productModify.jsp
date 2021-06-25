@@ -90,18 +90,14 @@ preview-box {
 					<tr>
 						<td>
 							<div id="previewNor" class="preview">
-								<div class="preview" style="width: 97.5px; margin-right: 20px;">
-									<ul>
-										<li style="float: left; list-style: none; position: relative;">
-											<img src="${norPro.imageface}">
-											<button type="button" class="fa fa-close"
-												onclick="deletePreview($(this), 1)"
-												style="position: absolute; right: 0px; background: none; border: none; border-radius: 50%; height: 1.5em; background-color: rgba(255, 255, 255, 0.5);"></button>					
-										</li>
-									</ul>
-
-								</div>
-
+								<ul>
+									<li style="float: left; list-style: none; position: relative;">
+										<img src="${norPro.imageface}">
+										<button type="button" class="fa fa-close"
+											onclick="deletePreview($(this), 1)"
+											style="position: absolute; right: 0px; background: none; border: none; border-radius: 50%; height: 1.5em; background-color: rgba(255, 255, 255, 0.5);"></button>					
+									</li>
+								</ul>
 							</div> <input class="upload-name" value="이미지 등록" disabled="disabled"
 							multiple /> <label for="imagefaceNor">업로드</label>
 							<form id="fileUploadNor" name="fileUploadNor" method="post"
@@ -231,16 +227,14 @@ preview-box {
 					<tr>
 						<td>
 							<div id="previewAuc" class="preview">
-								<div class="preview" style="width: 97.5px; margin-right: 20px;">
-									<ul>
-										<li style="float: left; list-style: none; position: relative;">
-											<img src="${aucPro.imageface}">
-											<button type="button" class="fa fa-close"
-												onclick="deletePreview($(this), 1)"
-												style="position: absolute; right: 0px; background: none; border: none; border-radius: 50%; height: 1.5em; background-color: rgba(255, 255, 255, 0.5);"></button>
-										</li>
-									</ul>
-								</div>
+								<ul>
+									<li style="float: left; list-style: none; position: relative;">
+										<img src="${aucPro.imageface}">
+										<button type="button" class="fa fa-close"
+											onclick="deletePreview($(this), 1)"
+											style="position: absolute; right: 0px; background: none; border: none; border-radius: 50%; height: 1.5em; background-color: rgba(255, 255, 255, 0.5);"></button>
+									</li>
+								</ul>
 							</div> <input class="upload-name" value="이미지 등록" disabled="disabled"
 							multiple /> <label for="imagefaceNor">업로드</label>
 							<form id="fileUploadNor" name="fileUploadAuc" method="post"

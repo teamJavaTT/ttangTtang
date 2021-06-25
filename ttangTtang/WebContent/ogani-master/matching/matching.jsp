@@ -236,7 +236,7 @@ preview-box {
 
 			<div class="item on">
 				<div class="box">
-					<p class="msg">놀아줘요</p>
+					<p class="msg">2조입니다</p>
 					<span class="time ">오전 10:05</span>
 				</div>
 
