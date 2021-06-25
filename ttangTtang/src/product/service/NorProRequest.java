@@ -5,11 +5,12 @@ public class NorProRequest {
 	private String userId;
 	private String category;
 	private String auctioncheck;
+	private String uad;
 	private String productName;
 	private String price;
 	private String priceText;
 	private String imageFace;
-	private String viewcount;
+
 	
 	public String getIno() {
 		return ino;
@@ -38,6 +39,13 @@ public class NorProRequest {
 	public void setAuctioncheck(String auctioncheck) {
 		this.auctioncheck = auctioncheck;
 	}
+	
+	public String getUad() {
+		return uad;
+	}
+	public void setUad(String uad) {
+		this.uad = uad;
+	}
 	public String getProductName() {
 		return productName;
 	}
@@ -62,10 +70,5 @@ public class NorProRequest {
 	public void setImageFace(String imageFace) {
 		this.imageFace = imageFace;
 	}
-	public String getViewcount() {
-		return viewcount;
-	}
-	public void setViewcount(String viewcount) {
-		this.viewcount = viewcount;
-	}
+	
 }

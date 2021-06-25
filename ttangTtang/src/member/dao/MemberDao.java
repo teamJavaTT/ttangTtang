@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import jdbc.JdbcUtil;
 import member.model.Member;
 
@@ -138,6 +140,26 @@ public class MemberDao {
 		return value;
 	}
 
-	
+	public ArrayList<String> addressSelect(Connection conn, String userid) throws SQLException {
+		ResultSet rs = null;
+		ArrayList<String> address = new ArrayList<String>();
+		try (PreparedStatement pstmt = conn.prepareStatement("select address1,address2,address3 from member where userid=? ")) {
+
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				address.add(rs.getString("address1"));
+				address.add(rs.getString("address2"));
+				address.add(rs.getString("address3"));
+				
+			}
+			return address;
+		} finally {
+			JdbcUtil.close(rs);
+
+		}
+
+	}
 
 }

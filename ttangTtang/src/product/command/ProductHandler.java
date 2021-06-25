@@ -1,5 +1,6 @@
 package product.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import auth.model.Category;
 import auth.service.MainService;
 import member.service.DuplicateIdException;
+import member.service.MemberService;
 import member.service.User;
 import mvc.command.CommandHandler;
 import product.service.AucProRequest;
@@ -18,6 +20,7 @@ import product.service.ProductService;
 public class ProductHandler implements CommandHandler {
 	private ProductService productService = new ProductService();
 	private MainService mainService = new MainService();
+	private MemberService memberService = new MemberService();
 
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/product/productWrite.jsp";
 
@@ -34,23 +37,26 @@ public class ProductHandler implements CommandHandler {
 	}
 
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+
+		ArrayList<String> address = memberService.address(user.getUserid());
 		List<Category> category = mainService.getCategory();
+		req.setAttribute("address", address);
 		req.setAttribute("category", category);
 		return FORM_VIEW;
 	}
 
-
-
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		req.setCharacterEncoding("utf-8");
+
 		NorProRequest norReq = new NorProRequest();
 		AucProRequest aucReq = new AucProRequest();
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-		
-		
+
 		String aucChk = req.getParameter("aucChk");
-		
+
 		if (aucChk.equals("Y") || aucChk == "Y") {
 			String imageName = "";
 			if (req.getParameter("imagefaceNameAuc") == null || req.getParameter("imagefaceNameAuc").isEmpty()) {
@@ -65,6 +71,7 @@ public class ProductHandler implements CommandHandler {
 			aucReq.setUserId(user.getUserid());
 			aucReq.setCategory(req.getParameter("categoryAuc"));
 			aucReq.setProductName(req.getParameter("productNameAuc"));
+			aucReq.setUad(req.getParameter("uadAuc"));
 			aucReq.setMinPrice(req.getParameter("minPrice"));
 			aucReq.setMaxPrice(req.getParameter("maxPrice"));
 			aucReq.setPriceText(req.getParameter("priceTextAuc").replace("\r\n", "<br>"));
@@ -89,6 +96,7 @@ public class ProductHandler implements CommandHandler {
 			norReq.setUserId(user.getUserid());
 			norReq.setCategory(req.getParameter("categoryNor"));
 			norReq.setProductName(req.getParameter("productNameNor"));
+			norReq.setUad(req.getParameter("uadNor"));
 			norReq.setPrice(req.getParameter("price"));
 			norReq.setPriceText(req.getParameter("priceTextNor").replace("\r\n", "<br>"));
 			norReq.setImageFace("/ttangTtang/file/" + imageName);
@@ -101,7 +109,6 @@ public class ProductHandler implements CommandHandler {
 
 			}
 		}
-		
 
 		return FORM_VIEW;
 	}

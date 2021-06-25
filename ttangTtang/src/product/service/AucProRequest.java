@@ -12,7 +12,7 @@ public class AucProRequest {
 	private String priceText;
 	private String imageFace;
 	private String auctionTime;
-	private String viewcount;
+	
 
 	public String getIno() {
 		return ino;
@@ -103,11 +103,6 @@ public class AucProRequest {
 		this.auctionTime = auctionTime;
 	}
 
-	public String getViewcount() {
-		return viewcount;
-	}
-	public void setViewcount(String viewcount) {
-		this.viewcount = viewcount;
-	}
+
 
 }

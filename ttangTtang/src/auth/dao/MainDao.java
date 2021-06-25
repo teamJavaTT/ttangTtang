@@ -80,7 +80,7 @@ public class MainDao {
 	private Product convertProduct(ResultSet rs) throws SQLException {
 		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"), rs.getString("auctioncheck")
 				,rs.getString("uad"), rs.getString("iname"), rs.getInt("price"), rs.getInt("minprice")
-				,rs.getInt("maxprice"), rs.getInt("apricenow"), rs.getInt("apriceend"),rs.getString("pricetext"), rs.getString("imageface"), rs.getDate("endtime"));
+				,rs.getInt("maxprice"), rs.getInt("apricenow"), rs.getInt("apriceend"),rs.getString("pricetext"), rs.getString("imageface"),rs.getDate("endtime"));
 	}
 	
 }

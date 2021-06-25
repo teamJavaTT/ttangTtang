@@ -25,18 +25,17 @@ public class ProductDao {
 
 		try {
 			pstmt = conn.prepareStatement(
-					"INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,APRICENOW,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME,SELLCHECK)"
-							+ "VALUES(product_seq.NEXTVAL,?,?,'Y',null,?,?,?,?,?,?,0,0,sysdate,sysdate+"
-							+ aucProduct.getAuctionTime() + "/24,?,'N')");
+					"INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,APRICENOW,APRICEEND,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME,SELLCHECK)"
+							+ "VALUES(product_seq.NEXTVAL,?,?,'Y',?,?,?,?,?,0,?,?,0,0,sysdate,sysdate+"+aucProduct.getAuctionTime() + "/24,?,'N')");
 			pstmt.setString(1, aucProduct.getUserId()); // userId
 			pstmt.setString(2, aucProduct.getCategory());// cname
-			pstmt.setString(3, aucProduct.getProductName());// iname
-			pstmt.setString(4, aucProduct.getMinPrice());// minPrice
-			pstmt.setString(5, aucProduct.getMaxPrice());// MaxPrice
-			pstmt.setString(6, aucProduct.getMinPrice());// APRICENOW
-			pstmt.setString(7, aucProduct.getPriceText());// PriceTexe
-			pstmt.setString(8, aucProduct.getImageFace());// ImageFace
-			pstmt.setString(9, aucProduct.getViewcount());
+			pstmt.setString(3, aucProduct.getUad());
+			pstmt.setString(4, aucProduct.getProductName());// iname
+			pstmt.setString(5, aucProduct.getMinPrice());// minPrice
+			pstmt.setString(6, aucProduct.getMaxPrice());// MaxPrice
+			pstmt.setString(7, aucProduct.getMinPrice());// APRICENOW
+			pstmt.setString(8, aucProduct.getPriceText());// PriceTexe
+			pstmt.setString(9, aucProduct.getImageFace());// ImageFace
 			pstmt.setString(10, aucProduct.getAuctionTime());// AuctionTime
 			pstmt.executeUpdate();
 
@@ -61,17 +60,17 @@ public class ProductDao {
 
 		try {
 			pstmt = conn.prepareStatement(
-					"INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,PRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,SELLCHECK)VALUES(product_seq.NEXTVAL,?,?,?,null,?,?,?,?,0,0,sysdate,'N')");
+					"INSERT INTO PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,PRICE,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,SELLCHECK)VALUES(product_seq.NEXTVAL,?,?,?,?,?,?,?,?,0,0,sysdate,'N')");
 
 			pstmt.setString(1, norProduct.getUserId()); // userId
 			pstmt.setString(2, norProduct.getCategory());
 			pstmt.setString(3, auctionCnk);
+			pstmt.setString(4, norProduct.getUad());
 			pstmt.setString(4, norProduct.getProductName());
 			pstmt.setString(5, norProduct.getPrice());
 			pstmt.setString(6, norProduct.getPriceText());
 			pstmt.setString(7, norProduct.getImageFace());// ImageFace
-			pstmt.setString(8, norProduct.getViewcount());// ImageFace
-		
+
 			pstmt.executeUpdate();
 
 			return null;
@@ -84,7 +83,7 @@ public class ProductDao {
 	}
 
 	// 경매상품 업데이트
-	public AucPro updateAuc(Connection conn, AucProRequest upAuc,String ino) throws SQLException {
+	public AucPro updateAuc(Connection conn, AucProRequest upAuc, String ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -109,12 +108,13 @@ public class ProductDao {
 	}
 
 	// 일반 상품 업데이트
-	public NorPro updateNor(Connection conn, NorProRequest upNor,String ino) throws SQLException {
+	public NorPro updateNor(Connection conn, NorProRequest upNor, String ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("update product set iname= ?,ccode=?, price = ?, pricetext = ? , imageface = ? where ino = ?");
+			pstmt = conn.prepareStatement(
+					"update product set iname= ?,ccode=?, price = ?, pricetext = ? , imageface = ? where ino = ?");
 			pstmt.setString(1, upNor.getProductName());
 			pstmt.setString(2, upNor.getCategory());
 			pstmt.setString(3, upNor.getPrice());
@@ -252,7 +252,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from product where ino ="+ino);
+			pstmt = conn.prepareStatement("select * from product where ino =" + ino);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -284,8 +284,8 @@ public class ProductDao {
 
 	private NorPro converNorPro(ResultSet rs, String categoryPro) throws SQLException {
 		return new NorPro(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"), categoryPro,
-				rs.getString("auctioncheck"),rs.getString("uad"), rs.getString("iname"), rs.getString("price"), rs.getString("pricetext"),
-				rs.getString("imageface"),rs.getString("viewcount"));
+				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
+				rs.getString("pricetext"), rs.getString("imageface"), rs.getString("viewcount"));
 	}
 
 	public AucPro auctionPartInsert(Connection conn, String userId, String aucIno, String oPrice) throws SQLException {
@@ -314,16 +314,15 @@ public class ProductDao {
 		} finally {
 			JdbcUtil.close(pstmt);
 		}
-		
+
 	}
+
 	public void viewCountUpdate(Connection conn, String ino) throws SQLException {
-		try (PreparedStatement pstmt = 
-				conn.prepareStatement(
-						"update product set viewcount=viewcount +1 where ino = ?")) {
+		try (PreparedStatement pstmt = conn
+				.prepareStatement("update product set viewcount=viewcount +1 where ino = ?")) {
 			pstmt.setString(1, ino);
 			pstmt.executeUpdate();
 		}
 	}
 
-	
 }

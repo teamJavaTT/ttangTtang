@@ -2,6 +2,7 @@ package member.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import AES256.AES256Util;
 import jdbc.DBConnection;
@@ -103,7 +104,7 @@ public class MemberService {
 			// DAO 객체를 생성 시 Connection 전달
 			MemberDao memberDao = new MemberDao();
 			String upw = memberDao.memberpasswordFind(conn, Userid, Uname, Uemail);
-			
+
 			AES256Util aes256Util = new AES256Util();
 			String passwordfind = aes256Util.decrypt(upw);
 			return passwordfind;
@@ -161,4 +162,19 @@ public class MemberService {
 
 	}
 
+	public ArrayList<String> address(String userid) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+			ArrayList<String> address = memberDao.addressSelect(conn, userid);
+			conn.commit();
+			return address;
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+	}
 }

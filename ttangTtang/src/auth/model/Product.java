@@ -21,7 +21,7 @@ public class Product {
 	private String imageface;
 	private String endtime;
 
-	public Product(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, int price, int minprice, int maxprice, int apricenow, int apriceend,String pricetext, String imageface, Date endtime) {
+	public Product(String ino, String userid, String ccode, String auctioncheck, String uad, String iname, int price, int minprice, int maxprice, int apricenow, int apriceend, String pricetext, String imageface, Date endtime) {
 		DecimalFormat df = new DecimalFormat("###,###");
 		this.ino = ino;
 		this.userid = userid;
@@ -29,11 +29,14 @@ public class Product {
 		this.auctioncheck = auctioncheck;
 		this.uad = uad;
 		this.iname = iname;
-		this.price = df.format(price);
-		this.minprice = df.format(minprice);
-		this.maxprice = df.format(maxprice);
-		this.apricenow = df.format(apricenow);
-		this.apriceend =df.format(apriceend);
+		if(auctioncheck.equals("Y") || auctioncheck == "Y") {
+			this.minprice = df.format(minprice);
+			this.maxprice = df.format(maxprice);
+			this.apricenow = df.format(apricenow);
+			this.apriceend =df.format(apriceend);
+		}else {
+			this.price = df.format(price);
+		}
 		this.pricetext = pricetext;
 		this.imageface = imageface;
 		

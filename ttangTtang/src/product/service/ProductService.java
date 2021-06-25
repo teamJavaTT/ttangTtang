@@ -2,11 +2,13 @@ package product.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import auth.model.Product;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
+import member.dao.MemberDao;
 import product.dao.ProductDao;
 import product.model.AucPro;
 import product.model.NorPro;
@@ -114,7 +116,7 @@ public class ProductService {
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
-		
+
 			productDao.updateAuc(conn, aucProductModi, ino);
 			conn.commit();
 		} catch (SQLException e) {
@@ -162,5 +164,8 @@ public class ProductService {
 		}
 		return null;
 	}
+
+	
+	
 
 }

@@ -187,15 +187,19 @@
 							<li><b>남은시간</b> <span id="endtime">${allPro.endtime }</span></li>
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
-						<li><b>판매 지역</b><span>${member.address1}</span></li>
+						<li><b>판매 지역</b> <c:if test="${!empty address[0]}">
+							${address[0]}
+						</c:if> <c:if test="${!empty address[1]}">
+							${address[1]}
+						</c:if> <c:if test="${!empty address[2]}">
+							${address[2]}
+						</c:if></li>
 						<li><b>공유</b>
 							<div class="share">
 								<a href="#"><i class="fa fa-link"></i></a>
 							</div></li>
-						<li><b>조회수</b>
-							<div>
-								<span id="view_count">${allPro.viewcount}</span>
-							</div></li>
+						<li><b>조회수</b> <span id="view_count">${allPro.viewcount}</span>
+						</li>
 					</ul>
 					<c:if test="${memberUser.userid eq allPro.userid}">
 						<input type="button" value="상품수정"
