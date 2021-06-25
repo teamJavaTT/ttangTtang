@@ -16,6 +16,7 @@
 		<div style="text-align: center; margin-bottom: 100px;">
 
 				<input type="button" value="회원정보 수정" class="primary-btn" onclick="location.href='memberEdit.do'" >
+				<input type="button" value="관심상품" class="primary-btn" onclick="location.href='likeProduct.do'">
 				<input type="button" value="내 판매 내역" class="primary-btn"  onclick="location.href='sellcheck.do'" > 
 				<input type="button" value="사용자 신고" class="primary-btn" onclick="location.href='accountDeclaration.do'">
 			<br>
