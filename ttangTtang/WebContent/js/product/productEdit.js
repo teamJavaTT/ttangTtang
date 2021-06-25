@@ -13,10 +13,10 @@ function getFileUpload(fileUpload) {
 		processData: false,
 		success: function(data) {
 			if (fileUpload == "#fileUploadAuc") {
-				
+				document.aucForm.imagefaceNameAuc.value = data;
 				document.aucForm.submit();
 			} else if (fileUpload == "#fileUploadNor"){
-			
+				document.norForm.imagefaceNameNor.value = data;
 				document.norForm.submit();
 			}
 		}, error: function() {
@@ -113,7 +113,7 @@ function productUpdateAuc() {
 	}
 
 };
-$(changImg).change(function(){
+/*$(changImg).change(function(){
 	if(this.files&&this.files[0]){
 				var reader = new FileReader;
 				reader.onload=function(date){
@@ -121,7 +121,7 @@ $(changImg).change(function(){
 				}
 				reader.readAsDataURL(this.files[0]);
 				}
-});
+});*/
 var norLeng;
 
 $(document).ready(function() {
@@ -146,6 +146,16 @@ $(document).ready(function() {
 	});
 });
 
+function deletePreview(input, num) {
+	$(input).parent('li').remove();
+	norLeng -= 1;
+	if(num == 1)
+		$('#norImageTbl small').empty().append("(" + norLeng + "/4)");
+	else
+		$('#aucImageTbl small').empty().append("(" + norLeng + "/4)");
+	
+}
+
 // image preview 기능 구현
 // input = file object[]
 function addPreview(input, num) {
@@ -159,11 +169,11 @@ function addPreview(input, num) {
 				//div id="preview" 내에 동적코드추가.
 				//이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
 				if (num == 1) {
-					$("#previewNor ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
+					$("#previewNor ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' onclick='deletePreview($(this), 1)' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
 					norLeng = $('#previewNor li').length;
 					$('#norImageTbl small').empty().append("(" + norLeng + "/4)");
 				} else {
-					$("#previewAuc ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
+					$("#previewAuc ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' onclick='deletePreview($(this), 1)' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
 					norLeng = $('#previewAuc li').length;
 					$('#aucImageTbl small').empty().append("(" + norLeng + "/4)");
 				}
