@@ -31,33 +31,53 @@
 			<div class="col-lg-6 col-md-6">
 				<div class="product__details__pic">
 					<div class="product__details__pic__item">
-						<img class="product__details__pic__item--large" src="${allPro.imageface}">
+						<img class="product__details__pic__item--large"
+							src="${allPro.imageface}">
 					</div>
-					<div class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
+					<div
+						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
 						<div class="owl-stage-outer">
 							<div class="owl-stage"
 								style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg" alt="">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
+										alt="">
 								</div>
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg" alt="">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
+										alt="">
 								</div>
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg" alt="">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
+										alt="">
 								</div>
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg" alt="">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
+										alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg" alt="">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
+										alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg" src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg" alt="">
+									<img
+										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
+										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
+										alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
 									<img
@@ -149,8 +169,8 @@
 							<form action="auctionPart.do" name="auctionPart" method="post">
 								<input type="hidden" name="aucIno" value="${allPro.ino}">
 								<div class="product__details__quantity">
-									가격제시 <input type="text" name="oPrice" id="oPrice">
-									<input type="button" onclick="aucPricePart()" value="등록">
+									가격제시 <input type="text" name="oPrice" id="oPrice"> <input
+										type="button" onclick="aucPricePart()" value="등록">
 								</div>
 							</form>
 						</c:when>
@@ -166,20 +186,23 @@
 							<li><b>남은시간</b> <span id="endtime">${allPro.endtime }</span></li>
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
+						<li><b>판매 지역</b><span>${member.address1}</span></li>
 						<li><b>공유</b>
 							<div class="share">
 								<a href="#"><i class="fa fa-link"></i></a>
 							</div></li>
 						<li><b>조회수</b>
-							<div id="view_count">
-								<!--  ${Product.readCount}-->
+							<div>
+								<span id="view_count">${allPro.viewcount}</span>
 							</div></li>
 					</ul>
 					<c:if test="${memberUser.userid eq allPro.userid}">
-						<input type="button" value="상품수정" onclick="location.href='productModify.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
+						<input type="button" value="상품수정"
+							onclick="location.href='productModify.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
 
 						<input type="hidden" value="${allPro.ino}" id="delNo">
-						<input type="button" value="삭제" onclick="productDel()" id="productDel" style="float: right;">
+						<input type="button" value="삭제" onclick="productDel()"
+							id="productDel" style="float: right;">
 					</c:if>
 
 				</div>

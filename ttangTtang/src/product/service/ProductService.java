@@ -55,6 +55,7 @@ public class ProductService {
 	public AucPro getAucPro(String ino) throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {
 			AucPro aucPro = (AucPro) productDao.selectAucPro(conn, ino);
+			productDao.viewCountUpdate(conn, ino);
 			return aucPro;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -65,6 +66,7 @@ public class ProductService {
 	public NorPro getNorPro(String ino) throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {
 			NorPro norPro = (NorPro) productDao.selectNorPro(conn, ino);
+			productDao.viewCountUpdate(conn, ino);
 			return norPro;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

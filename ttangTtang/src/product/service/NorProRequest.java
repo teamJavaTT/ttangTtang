@@ -9,6 +9,7 @@ public class NorProRequest {
 	private String price;
 	private String priceText;
 	private String imageFace;
+	private String viewcount;
 	
 	public String getIno() {
 		return ino;
@@ -60,5 +61,11 @@ public class NorProRequest {
 	}
 	public void setImageFace(String imageFace) {
 		this.imageFace = imageFace;
+	}
+	public String getViewcount() {
+		return viewcount;
+	}
+	public void setViewcount(String viewcount) {
+		this.viewcount = viewcount;
 	}
 }

@@ -5,12 +5,14 @@ public class AucProRequest {
 	private String userId;
 	private String category;
 	private String auctioncheck;
+	private String uad;
 	private String productName;
 	private String minPrice;
 	private String maxPrice;
 	private String priceText;
 	private String imageFace;
 	private String auctionTime;
+	private String viewcount;
 
 	public String getIno() {
 		return ino;
@@ -44,6 +46,13 @@ public class AucProRequest {
 
 	public void setAuctioncheck(String auctioncheck) {
 		this.auctioncheck = auctioncheck;
+	}
+	public String getUad() {
+		return uad;
+	}
+
+	public void setUad(String uad) {
+		this.uad = uad;
 	}
 
 	public String getProductName() {
@@ -92,6 +101,13 @@ public class AucProRequest {
 
 	public void setAuctionTime(String auctionTime) {
 		this.auctionTime = auctionTime;
+	}
+
+	public String getViewcount() {
+		return viewcount;
+	}
+	public void setViewcount(String viewcount) {
+		this.viewcount = viewcount;
 	}
 
 }

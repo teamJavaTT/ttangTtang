@@ -22,10 +22,8 @@ public class ProductDetailHandler implements CommandHandler {
 		req.setCharacterEncoding("utf-8");
 		List<Category> category = mainService.getCategory();
 		String aucChk = req.getParameter("aucChk");
-
 		String ino = req.getParameter("ino");
 	
-		
 		if (aucChk.equals("Y") || aucChk == "Y") {
 
 			AucPro aucPro = productService.getAucPro(ino);

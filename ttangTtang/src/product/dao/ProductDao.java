@@ -36,7 +36,8 @@ public class ProductDao {
 			pstmt.setString(6, aucProduct.getMinPrice());// APRICENOW
 			pstmt.setString(7, aucProduct.getPriceText());// PriceTexe
 			pstmt.setString(8, aucProduct.getImageFace());// ImageFace
-			pstmt.setString(9, aucProduct.getAuctionTime());// AuctionTime
+			pstmt.setString(9, aucProduct.getViewcount());
+			pstmt.setString(10, aucProduct.getAuctionTime());// AuctionTime
 			pstmt.executeUpdate();
 
 			return null;
@@ -69,6 +70,8 @@ public class ProductDao {
 			pstmt.setString(5, norProduct.getPrice());
 			pstmt.setString(6, norProduct.getPriceText());
 			pstmt.setString(7, norProduct.getImageFace());// ImageFace
+			pstmt.setString(8, norProduct.getViewcount());// ImageFace
+		
 			pstmt.executeUpdate();
 
 			return null;
@@ -87,13 +90,13 @@ public class ProductDao {
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(
-					"update product set  iname= ?, minprice = ?,pricetext=?,imageface=? where ino = ?");
+					"update product set  iname = ?, ccode = ?,minprice = ?, pricetext = ?, imageface = ? where ino = ?");
 			pstmt.setString(1, upAuc.getProductName());
-			pstmt.setString(2, upAuc.getMinPrice());
-
-			pstmt.setString(3, upAuc.getPriceText());
-			pstmt.setString(4, upAuc.getImageFace());
-			pstmt.setString(5, upAuc.getIno());
+			pstmt.setString(2, upAuc.getCategory());
+			pstmt.setString(3, upAuc.getMinPrice());
+			pstmt.setString(4, upAuc.getPriceText());
+			pstmt.setString(5, upAuc.getImageFace());
+			pstmt.setString(6, upAuc.getIno());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -281,8 +284,8 @@ public class ProductDao {
 
 	private NorPro converNorPro(ResultSet rs, String categoryPro) throws SQLException {
 		return new NorPro(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"), categoryPro,
-				rs.getString("auctioncheck"), rs.getString("iname"), rs.getString("price"), rs.getString("pricetext"),
-				rs.getString("imageface"));
+				rs.getString("auctioncheck"),rs.getString("uad"), rs.getString("iname"), rs.getString("price"), rs.getString("pricetext"),
+				rs.getString("imageface"),rs.getString("viewcount"));
 	}
 
 	public AucPro auctionPartInsert(Connection conn, String userId, String aucIno, String oPrice) throws SQLException {
@@ -313,5 +316,14 @@ public class ProductDao {
 		}
 		
 	}
+	public void viewCountUpdate(Connection conn, String ino) throws SQLException {
+		try (PreparedStatement pstmt = 
+				conn.prepareStatement(
+						"update product set viewcount=viewcount +1 where ino = ?")) {
+			pstmt.setString(1, ino);
+			pstmt.executeUpdate();
+		}
+	}
 
+	
 }

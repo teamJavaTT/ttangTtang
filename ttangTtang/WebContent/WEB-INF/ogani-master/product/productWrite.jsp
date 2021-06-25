@@ -72,6 +72,10 @@ preview-box {
 					<td><input name="price"></td>
 				</tr>
 				<tr>
+					<td>판매 지역:</td>
+					<td><input name="uad"></td>
+				</tr>
+				<tr>
 					<td style="float: left;">상품설명:</td>
 					<td>
 						<textarea name="priceTextNor" id="priceTextNor" style="resize: none; width: 306px; height: 176px;"></textarea>

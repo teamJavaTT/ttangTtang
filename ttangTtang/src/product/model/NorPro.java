@@ -7,21 +7,25 @@ public class NorPro {
 	private String ccode;
 	private String cname;
 	private String auctioncheck;
+	private String uad;
 	private String iname;
 	private String price;
 	private String pricetext;
 	private String imageface;
+	private String viewcount;
 	
-	public NorPro(String ino,String userid,String ccode,String cname,String auctioncheck,String iname,String price,String pricetext,	String imageface) {
+	public NorPro(String ino,String userid,String ccode,String cname,String auctioncheck,String iname,String uad, String price,String pricetext,String imageface,String viewcount) {
 	this.ino = ino;
 	this.userid = userid;
 	this.ccode = ccode; 
 	this.cname = cname;
 	this.auctioncheck = auctioncheck;
+	this.uad = uad;
 	this.iname = iname;
 	this.price = price; 
 	this.pricetext = pricetext;
 	this.imageface = imageface;
+	this.viewcount = viewcount;
 	
 	
 	}
@@ -41,6 +45,9 @@ public class NorPro {
 		return auctioncheck;
 	}
 	
+	public String getUad() {
+		return uad;
+	}
 	public String getIname() {
 		return iname;
 	}
@@ -52,5 +59,8 @@ public class NorPro {
 	}
 	public String getImageface() {
 		return imageface;
+	}
+	public String getViewcount() {
+		return viewcount;
 	}
 }
