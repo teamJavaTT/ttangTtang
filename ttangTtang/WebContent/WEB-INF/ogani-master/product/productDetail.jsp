@@ -191,11 +191,13 @@
 						<li><b>공유</b>
 							<div class="share">
 								<a href="#"><i class="fa fa-link"></i></a>
-							</div></li>
+							</div>
+						</li>
 						<li><b>조회수</b>
 							<div>
 								<span id="view_count">${allPro.viewcount}</span>
-							</div></li>
+							</div>
+						</li>
 					</ul>
 					<c:if test="${memberUser.userid eq allPro.userid}">
 						<input type="button" value="상품수정"
