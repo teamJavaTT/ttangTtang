@@ -15,7 +15,7 @@
 							<div class="table100">
 								<div class="box">
 									<form action="qnalist.do" method="post">
-										<table>
+										<table border="1">
 											<thead>
 												<tr>
 													<td>번호</td>

@@ -7,7 +7,7 @@
 				</section>
 				<section class="content">
 					<form action="noticewrite.do" method="post">
-						<table>
+						<table border="1">
 							<thead>
 								<tr>
 									<th>공지사항 글쓰기 양식</th>

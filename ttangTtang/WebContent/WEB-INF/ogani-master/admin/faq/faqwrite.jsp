@@ -4,7 +4,7 @@
 
 			<div class="col-lg-9">
 				<section class="content-header">
-					<h2>공지사항</h2>
+					<h2>FAQ</h2>
 				</section>
 				<section class="content">
 					<form action="faqwrite.do" method="post">

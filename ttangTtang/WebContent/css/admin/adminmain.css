@@ -49,18 +49,18 @@ textarea {
 }
 
 a {
-	color: #007bff;
+	color: black;
 }
 a:link{
-	color: #007bff;
+	color: black;
 }
 a:visited{
-	color: #007bff;
+	color: black;
 }
 /* 마우스 오버(마우스 올렸을때) */
 a:hover {
-	color: #007bff;
+	color: black;
 }
 a:active{
-	color: #007bff;
+	color: black;
 }

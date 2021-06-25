@@ -14,7 +14,7 @@
 							<div class="table100">
 								<div class="box">
 									<form action="blacklist.do" method="post">
-										<table>
+										<table border="1">
 											<thead>
 												<tr class="table100-head">
 													<td>사용자</td>
