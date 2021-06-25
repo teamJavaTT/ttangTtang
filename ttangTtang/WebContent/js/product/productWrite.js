@@ -27,6 +27,17 @@ $(document).ready(function() {
 	});
 });
 
+function deletePreview(input, num) {
+	$(input).parent('li').remove();
+	norLeng -= 1;
+	if(num == 1)
+		$('#norImageTbl small').empty().append("(" + norLeng + "/4)");
+	else
+		$('#aucImageTbl small').empty().append("(" + norLeng + "/4)");
+	
+}
+
+
 function auctionTime() {
 	var selectTime = parseInt($('#endDay').val()) + parseInt($('#endTime').val());
 
@@ -40,7 +51,7 @@ function auctionTime() {
 		leadingZeros(date.getMinutes(), 2) + ':' +
 		leadingZeros(date.getSeconds(), 2);
 
-	$('#timeMent').text("마감시간:"+s);
+	$('#timeMent').text("마감시간:" + s);
 }
 
 function leadingZeros(n, digits) {
@@ -185,11 +196,11 @@ function addPreview(input, num) {
 				//div id="preview" 내에 동적코드추가.
 				//이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
 				if (num == 1) {
-					$("#previewNor ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
+					$("#previewNor ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' onclick='deletePreview($(this), 1)' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
 					norLeng = $('#previewNor li').length;
 					$('#norImageTbl small').empty().append("(" + norLeng + "/4)");
 				} else {
-					$("#previewAuc ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
+					$("#previewAuc ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' onclick='deletePreview($(this), 2)' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
 					norLeng = $('#previewAuc li').length;
 					$('#aucImageTbl small').empty().append("(" + norLeng + "/4)");
 				}
