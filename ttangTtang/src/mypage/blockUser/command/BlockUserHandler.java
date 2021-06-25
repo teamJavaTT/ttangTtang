@@ -60,8 +60,7 @@ public class BlockUserHandler implements CommandHandler {
 
 			req.setCharacterEncoding("utf-8");
 
-			// String userId = user.getUserid();
-			String userId = "ssmsm";
+			String userId = user.getUserid();
 			String bId = req.getParameter("blockid2");
 			String bText = req.getParameter("btext");
 			blockUserService.getBlockUser(userId, bId, bText);
