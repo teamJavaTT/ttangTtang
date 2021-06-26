@@ -75,7 +75,7 @@ preview-box {
 					<td>판매 지역:</td>
 					<td colspan="2" >
 						<c:if test="${!empty address[0]}">
-							<input type="radio" name="uadAuc" value="${address[0]}"><span>${address[0]}</span>
+							<input type="radio" name="uadNor" value="${address[0]}"><span>${address[0]}</span>
 						</c:if>
 					</td>
 				</tr>
@@ -83,7 +83,7 @@ preview-box {
 					<td></td>
 					<td colspan="2" >
 						<c:if test="${!empty address[1]}">
-							<input type="radio" name="uadAuc" value="${address[1]}"><span>${address[1]}</span>
+							<input type="radio" name="uadNor" value="${address[1]}"><span>${address[1]}</span>
 						</c:if>
 					</td>
 				</tr>
@@ -91,7 +91,7 @@ preview-box {
 					<td></td>
 					<td colspan="2" >
 						<c:if test="${!empty address[2]}">
-							<input type="radio" name="uadAuc" value="${address[2]}"><span>${address[2]}</span>
+							<input type="radio" name="uadNor" value="${address[2]}"><span>${address[2]}</span>
 						</c:if>
 					</td>
 				</tr>
