@@ -47,7 +47,7 @@ preview-box {
 <!-- 상품 등록 section begin -->
 <section id="normal" class="productInsert" style="display:none">
 	<h3 style="text-align: center;">일반 상품 등록</h3>
-	<div class="container" style="padding-left: 23%;">
+	<div class="container" style="padding-left: 34%;">
 		<form id="norForm" name="norForm" action="productWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
 			<input type="hidden" name="aucChk" value="N"/>
 			<input type="hidden" name="imagefaceNameNor"/>
@@ -119,7 +119,7 @@ preview-box {
 </section>
 <section id="auction" class="productInsert" style="display:none">
 	<h3 style="text-align: center;">경매 상품 등록</h3>
-	<div class="container" style="padding-left: 23%;">
+	<div class="container" style="padding-left: 34%;">
 		<form id="aucForm" name="aucForm" action="productWrite.do" method="post" style="margin-top: 20px; margin-bottom: 10px;">
 			<input type="hidden" name="aucChk" value="Y"/>
 			<input type="hidden" name="imagefaceNameAuc"/>

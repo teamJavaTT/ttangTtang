@@ -159,31 +159,45 @@
 					<div class="product__details__quantity">
 						<div class="quantity"></div>
 					</div>
-						
+
 					<c:if test="${aucOk == 1}">
 						<script>
 							alert("가격 제시 성공");
 						</script>
 					</c:if>
+					<c:if test="${user ne null}">
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
 							<form action="auctionPart.do" name="auctionPart" method="post">
 								<input type="hidden" name="aucIno" value="${allPro.ino}">
 								<div class="product__details__quantity">
 									가격제시 <input type="text" name="oPrice" id="oPrice"> <input
-										type="button" class="btn btn-outline-dark" onclick="aucPricePart()" value="등록">
+										type="button" class="btn btn-outline-dark"
+										onclick="aucPricePart()" value="등록">
 								</div>
 							</form>
+								<button type="button" class="btn btn-outline-danger" 	onclick="location.href='likeCount.do?ino=${allPro.ino}'"  >
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+</svg>	
+							찜하기
+							</button>
 						</c:when>
 						<c:when test="${allPro.auctioncheck == 'N'}">
 							<input type="button" value="판매자와 연락하기" class="primary-btn"
 								onclick="matchingwindow()" />
-								<input type="button" value="찜하기" class="fa fa-heart"
-								onclick="location.href='likeCount.do?ino=${allPro.ino}'" />
-							
+							<button type="button" class="btn btn-outline-danger" 	onclick="location.href='likeCount.do?ino=${allPro.ino}'"  >
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+</svg>	
+							찜하기
+							</button>
+						
 						</c:when>
 					</c:choose>
-
+</c:if>
 					<ul>
 						<c:if test="${allPro.auctioncheck=='Y' }">
 							<li><b>시작가격</b> <span id="minprice">${allPro.minprice}</span></li>
@@ -204,8 +218,8 @@
 							onclick="location.href='productModify.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
 
 						<input type="hidden" value="${allPro.ino}" id="delNo">
-						<input type="button" class="btn btn-outline-danger" value="삭제" onclick="productDel()"
-							id="productDel" style="float: right;">
+						<input type="button" class="btn btn-outline-danger" value="삭제"
+							onclick="productDel()" id="productDel" style="float: right;">
 					</c:if>
 
 				</div>
@@ -262,7 +276,7 @@
 					<div class="product__item__pic set-bg"
 						data-setbg="img/product/product-1.jpg">
 						<ul class="product__item__pic__hover">
-								<li><a href="#"><i class="fa fa-heart"></i></a></li>
+							<li><a href="#"><i class="fa fa-heart"></i></a></li>
 							<li><a href="#"><i class="fa fa-retweet"></i></a></li>
 							<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 						</ul>
@@ -280,7 +294,7 @@
 					<div class="product__item__pic set-bg"
 						data-setbg="img/product/product-2.jpg">
 						<ul class="product__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
+							<li><a href="#"><i class="fa fa-heart"></i></a></li>
 							<li><a href="#"><i class="fa fa-retweet"></i></a></li>
 							<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 						</ul>
@@ -334,4 +348,5 @@
 </section>
 <!-- Related Product Section End -->
 <script src="/ttangTtang/js/product/productDetail.js"></script>
+
 <%@ include file="../include/footer.jsp"%>
