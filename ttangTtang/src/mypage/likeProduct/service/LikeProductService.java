@@ -13,6 +13,13 @@ public class LikeProductService {
 
 	private LikeProductDao likeProductDao = new LikeProductDao();
 
+	public int likeProductUser(String userId, String ino) throws SQLException, Exception {
+		try (Connection conn = DBConnection.getConnection()) {
+			int iNo = likeProductDao.likeProductUser(conn, userId, ino);
+			return iNo;
+		}
+	}
+
 	public List<Product> likeProduct(String userId) throws SQLException, Exception {
 		try (Connection conn = DBConnection.getConnection()) {
 

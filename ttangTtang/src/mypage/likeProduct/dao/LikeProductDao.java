@@ -15,6 +15,22 @@ import mypage.declarationAndBlockList.model.DeclarationColumn;
 
 public class LikeProductDao {
 
+	public int likeProductUser(Connection conn, String userId, String ino) throws SQLException {
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select count(ino) from likeproduct where userid = '"+userId+"' and ino = "+ino);
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+		}
+	}
+	
 	// 신고 dao
 	public ArrayList<String> likeProductSelect(Connection conn, String userId) throws SQLException {
 		PreparedStatement pstmt = null;

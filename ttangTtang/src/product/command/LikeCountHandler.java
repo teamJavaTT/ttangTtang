@@ -17,12 +17,12 @@ public class LikeCountHandler implements CommandHandler {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String ino = req.getParameter("ino");
-
+		String aucChk = req.getParameter("aucChk");
 
 		productService.getAucPro(ino);
 		productService.getNorPro(ino);
 		productService.likeCountUpdate(user.getUserid(), ino);
-		return  "productDetail.do?ino="+req.getParameter("ino")+"&aucChk="+req.getParameter("aucChk");
-
+		res.sendRedirect("productDetail.do?ino="+ino+"&aucChk="+aucChk);
+		return null;
 	}
 }
