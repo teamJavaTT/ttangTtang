@@ -35,13 +35,11 @@
 												<td>${qna.userId}</td>
 												<!-- 내용 -->
 												<td>
-												<form action ="qnaread.do?no=${qna.qno}" id="pwdForm" method="post">
-													<input type="button" value="${qna.qpw eq null ? qna.qtit : '비밀글 입니다.'}" class="qnaRead">
-													<input type="text"  name="qnaPwd${qna.qno}" style="display:none">
-													<input type="submit"  value="확인" style="display:none">
-												</form>
-												
-												<%-- <a href="qnaread.do?no=${qna.qno}"><c:out value="${qna.qpw eq null ? qna.qtit : '비밀 글 입니다.'}"/></a> --%>
+													<form action ="qnaread.do?no=${qna.qno}" id="pwdForm" method="post">
+														<a <c:if test="${qna.qpw ne null}">class="qnaRead"</c:if><c:if test="${qna.qpw eq null}">href="qnaread.do?no=${qna.qno}"</c:if>>${qna.qpw eq null ? qna.qtit : '비밀글 입니다.'}</a>
+														<input type="password"  name="qnaPwd${qna.qno}" style="display:none">
+														<input type="submit" value="확인" style="display:none">
+													</form>
 												</td>
 												<!--  작성일자  -->
 												<td>${qna.qdate}</td>

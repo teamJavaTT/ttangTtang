@@ -32,7 +32,7 @@
 		}
 	});
 	
-	$("#qnaRead").on('click', function() {
+	/*$("#qnaRead").on('click', function() {
 		var qno = $("#qnaNo").val();
 		var qpw = $("#qnaPw").val();
 		if (qpw == null) {
@@ -45,5 +45,5 @@
 		}else{
 			location.href = 'qnaread.do?no=' + qno; 
 		}
-	});
+	});*/
 })(jQuery);
