@@ -15,7 +15,7 @@ public class NorPro {
 	private String viewcount;
 	private String likecount;
 	
-	public NorPro(String ino,String userid,String ccode,String cname,String auctioncheck,String iname,String uad, String price,String pricetext,String imageface,String viewcount,String likecount) {
+	public NorPro(String ino,String userid,String ccode,String cname,String auctioncheck,String uad,String iname, String price,String pricetext,String imageface,String viewcount,String likecount) {
 	this.ino = ino;
 	this.userid = userid;
 	this.ccode = ccode; 

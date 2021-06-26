@@ -190,13 +190,7 @@
 							<li><b>남은시간</b> <span id="endtime">${allPro.endtime }</span></li>
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
-						<li><b>판매 지역</b> <c:if test="${!empty address[0]}">
-							${address[0]}
-						</c:if> <c:if test="${!empty address[1]}">
-							${address[1]}
-						</c:if> <c:if test="${!empty address[2]}">
-							${address[2]}
-						</c:if></li>
+						<li><b>판매 지역</b><span>${allPro.uad}</span></li>
 						<li><b>공유</b>
 							<div class="share">
 								<a href="#"><i class="fa fa-link"></i></a>

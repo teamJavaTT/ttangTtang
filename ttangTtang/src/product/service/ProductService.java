@@ -7,7 +7,6 @@ import java.util.List;
 import auth.model.Product;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
-import member.service.User;
 import product.dao.ProductDao;
 import product.model.AucPro;
 import product.model.NorPro;
