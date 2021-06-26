@@ -71,20 +71,32 @@ preview-box {
 					<td>가격:</td>
 					<td><input name="price"class="form-control"></td>
 				</tr>
-				<tr>
+					<tr>
 					<td>판매 지역:</td>
-					<td>
+					<td colspan="2" >
 						<c:if test="${!empty address[0]}">
-							<input type="radio" name="uadNor" value="${address[0]}">${address[0]}
-						</c:if>
-						<c:if test="${!empty address[1]}">
-							<input type="radio" name="uadNor" value="${address[1]}">${address[1]}
-						</c:if>
-						<c:if test="${!empty address[2]}">
-							<input type="radio" name="uadNor" value="${address[2]}">${address[2]}
+							<input type="radio" name="uadAuc" value="${address[0]}"><span>${address[0]}</span>
 						</c:if>
 					</td>
 				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2" >
+						<c:if test="${!empty address[1]}">
+							<input type="radio" name="uadAuc" value="${address[1]}"><span>${address[1]}</span>
+						</c:if>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2" >
+						<c:if test="${!empty address[2]}">
+							<input type="radio" name="uadAuc" value="${address[2]}"><span>${address[2]}</span>
+						</c:if>
+					</td>
+				</tr>
+				
+				
 				<tr>
 					<td style="float: left;">상품설명:</td>
 					<td>
