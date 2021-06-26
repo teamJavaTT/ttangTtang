@@ -42,7 +42,7 @@
 		<init-param>
         <param-name>excludedUrls</param-name>
         <!-- 제외할 url들  -->
-        <param-value>/join.do,/login.do,/logout.do,/idFind.do,/passwordFind.do,/index.do,/searchProduct.do,/categories.do,/productDetail.do,/adminmain.do,/noticelist.do,/faqlist.do,/faqread.do,/qnalist.do</param-value>
+        <param-value>/join.do,/idCheck.do,/login.do,/logout.do,/idFind.do,/passwordFind.do,/index.do,/searchProduct.do,/categories.do,/productDetail.do,/adminmain.do,/noticelist.do,/faqlist.do,/faqread.do,/qnalist.do</param-value>
     </init-param>
 	</filter>
 	<filter-mapping>
