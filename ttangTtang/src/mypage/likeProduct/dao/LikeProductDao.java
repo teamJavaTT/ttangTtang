@@ -72,7 +72,7 @@ public class LikeProductDao {
 		ResultSet rs = null;
 		List<Product> result = new ArrayList<>();
 		try {
-			pstmt = conn.prepareStatement("select * from product where ino in("+likeList+")");
+			pstmt = conn.prepareStatement("select * from product where ino in("+likeList+") order by ino desc");
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
