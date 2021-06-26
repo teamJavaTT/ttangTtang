@@ -31,18 +31,12 @@ public class ProductDetailHandler implements CommandHandler {
 		String aucChk = req.getParameter("aucChk");
 		String ino = req.getParameter("ino");
 		int iNo = 0;
-		
-		if(user != null) {
-			iNo = likeProductService.likeProductUser(user.getUserid(), ino);
-		}
-		else {
-			iNo = 0;
-		}
+		if(user != null) iNo = likeProductService.likeProductUser(user.getUserid(), ino);
+		else iNo = 0;
 		
 		if (aucChk.equals("Y") || aucChk == "Y") {
 			AucPro aucPro = productService.getAucPro(ino);
 			List<Product> productUser = productService.productUser(aucPro.getUserid(), ino);
-			
 			req.setAttribute("iNo", iNo);
 			req.setAttribute("user", user);
 			req.setAttribute("category", category);
