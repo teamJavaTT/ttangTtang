@@ -33,8 +33,11 @@
 	});
 
 	$(".qnaRead").on('click', function() {
-		$(this).next("input").css("display", "inline-block");
-		$(this).next().next("input").css("display", "inline-block");
+		
+		$('#pwdForm input').hide();
+		$('.qnaRead').show();
+		$(this).next("input").show();
+		$(this).next().next("input").show();
 		
 		
 		/*var qno = $("#qnaNo").val();
