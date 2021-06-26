@@ -40,11 +40,11 @@
 					<h3>${allPro.iname }</h3>
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
-							<div class="product__details__price" id="now_price">${allPro.apricenow}</div>
+							<div class="product__details__price" id="now_price">${allPro.apricenow}&nbsp;원</div>
 						</c:when>
 						<c:when test="${allPro.auctioncheck=='N'}">
 							<div class="product__details__price">
-								<span>${allPro.price}</span>
+								<span>${allPro.price}원</span>
 							</div>
 						</c:when>
 					</c:choose>
@@ -83,7 +83,7 @@
 					</c:if>
 					<ul>
 						<c:if test="${allPro.auctioncheck=='Y' }">
-							<li><b>시작가격</b> <span id="minprice">${allPro.minprice}</span></li>
+							<li><b>시작가격</b> <span id="minprice">${allPro.minprice}원</span></li>
 							<li><b>남은시간</b> <span id="endtime">${allPro.endtime}</span></li>
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
@@ -140,26 +140,32 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-3 col-md-4 col-sm-6">
-				<div class="product__item">
-					<div class="product__item__pic set-bg"
-						data-setbg="img/product/product-1.jpg">
-						<ul class="product__item__pic__hover">
-							<li><a href="#"><i class="fa fa-heart"></i></a></li>
-							<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-							<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-						</ul>
-					</div>
-					<div class="product__item__text">
-						<h6>
-							<a href="#">Crab Pool Security</a>
-						</h6>
-						<h5>$30.00</h5>
+		<c:forEach var="productUser" items="${productUser}">
+			<div class="row">
+				<div class="col-lg-3 col-md-4 col-sm-6">
+					<div class="product__item" onclick="location.href='productDetail.do?ino=${productUser.ino}&aucChk=${productUser.auctioncheck}'">
+						<div class="product__item__pic set-bg" 
+							data-setbg="${productUser.imageface}">
+							<ul class="product__item__pic__hover">
+								<li><a href="#"><i class="fa fa-heart"></i></a></li>
+								<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+							</ul>
+						</div>
+						<div class="product__item__text">
+							<h6>
+								<a href="#">${productUser.iname}</a>
+							</h6>
+							<c:if test="${productUser.auctioncheck eq 'Y'}">
+								<h5>${productUser.apricenow}원</h5>
+							</c:if>
+							<c:if test="${productUser.auctioncheck ne 'Y'}">
+								<h5>${productUser.price}원</h5>
+							</c:if>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</c:forEach>
 	</div>
 </section>
 <!-- Related Product Section End -->

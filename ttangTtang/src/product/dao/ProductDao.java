@@ -196,13 +196,6 @@ public class ProductDao {
 		}
 	}
 
-	private Product convertProduct(ResultSet rs) throws SQLException {
-		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"),
-				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getInt("price"),
-				rs.getInt("minprice"), rs.getInt("maxprice"), rs.getInt("apricenow"), rs.getInt("apriceend"),
-				rs.getString("pricetext"), rs.getString("imageface"), rs.getDate("endtime"));
-	}
-
 // aucProDetail select
 	public AucPro selectAucPro(Connection conn, String ino) throws SQLException {
 		PreparedStatement pstmt = null;
@@ -319,7 +312,7 @@ public class ProductDao {
 
 	}
 
-//조회수 업데이트
+//	조회수 업데이트
 	public void viewCountUpdate(Connection conn, String ino) throws SQLException {
 		try (PreparedStatement pstmt = conn
 				.prepareStatement("update product set viewcount=viewcount +1 where ino = ?")) {
@@ -351,6 +344,33 @@ public class ProductDao {
 		} finally {
 			JdbcUtil.close(pstmt);
 		}
+	}
+	
+	//판매자의 다른 판매 상품 select
+	public List<Product> productUserSelect(Connection conn, String userid, String ino) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from product where userid = ? and ino != ? order by ino desc");
+			pstmt.setString(1, userid);
+			pstmt.setString(2, ino);
+			rs = pstmt.executeQuery();
+			List<Product> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertProduct(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	private Product convertProduct(ResultSet rs) throws SQLException {
+		return new Product(rs.getString("ino"), rs.getString("userid"), rs.getString("ccode"),
+				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getInt("price"),
+				rs.getInt("minprice"), rs.getInt("maxprice"), rs.getInt("apricenow"), rs.getInt("apriceend"),
+				rs.getString("pricetext"), rs.getString("imageface"), rs.getDate("endtime"));
 	}
 	
 	// 찜 수

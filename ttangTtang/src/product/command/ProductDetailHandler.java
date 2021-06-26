@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import auth.model.Category;
+import auth.model.Product;
 import auth.service.MainService;
 import member.service.User;
 import mvc.command.CommandHandler;
@@ -40,16 +41,21 @@ public class ProductDetailHandler implements CommandHandler {
 		
 		if (aucChk.equals("Y") || aucChk == "Y") {
 			AucPro aucPro = productService.getAucPro(ino);
+			List<Product> productUser = productService.productUser(aucPro.getUserid(), ino);
+			
 			req.setAttribute("iNo", iNo);
 			req.setAttribute("user", user);
 			req.setAttribute("category", category);
 			req.setAttribute("allPro", aucPro);
+			req.setAttribute("productUser", productUser);
 		} else {
 			NorPro norPro = productService.getNorPro(ino);
+			List<Product> productUser = productService.productUser(norPro.getUserid(), ino);
 			req.setAttribute("iNo", iNo);
 			req.setAttribute("user", user);
 			req.setAttribute("category", category);
 			req.setAttribute("allPro", norPro);
+			req.setAttribute("productUser", productUser);
 		}
 		return "/WEB-INF/ogani-master/product/productDetail.jsp";
 	}

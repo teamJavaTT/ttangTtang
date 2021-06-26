@@ -196,5 +196,15 @@ public class ProductService {
 		}
 		return null;
 	}
+	
+	public List<Product> productUser(String userid, String ino) throws Exception {
+		try (Connection conn = DBConnection.getConnection()) {
+			List<Product> productUser = productDao.productUserSelect(conn, userid, ino);
+			return productUser;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
 
 }
