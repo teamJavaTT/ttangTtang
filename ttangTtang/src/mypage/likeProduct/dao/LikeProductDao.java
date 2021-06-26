@@ -15,6 +15,22 @@ import mypage.declarationAndBlockList.model.DeclarationColumn;
 
 public class LikeProductDao {
 
+	public int likeProductCount(Connection conn, String userId) throws SQLException {
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select count(ino) from likeproduct where userid = '"+userId+"'");
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+		}
+	}
+	
 	public int likeProductUser(Connection conn, String userId, String ino) throws SQLException {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -51,12 +67,12 @@ public class LikeProductDao {
 		}
 	}
 	
-	public List<Product> likeDetailSelect(Connection conn, String test) throws SQLException {
+	public List<Product> likeDetailSelect(Connection conn, String likeList) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Product> result = new ArrayList<>();
 		try {
-			pstmt = conn.prepareStatement("select * from product where ino in("+test+")");
+			pstmt = conn.prepareStatement("select * from product where ino in("+likeList+")");
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

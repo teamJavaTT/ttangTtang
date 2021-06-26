@@ -53,8 +53,8 @@ function sessionCheck(){
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="likeProduct.do"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <!-- <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li> -->
                
             </ul>
 
@@ -116,7 +116,7 @@ function sessionCheck(){
 		                                <a href="login.do" style="flex: 1;"><i class="fa fa-user"></i> 로그인</a>
 	                                </c:when>
 	                                <c:when test="${!empty memberUser.uname}">
-	                                	<a href="memberEdit.do" style="flex: 1;margin-right: 15px;">${memberUser.uname}님 </a>
+	                                	<a href="memberEdit.do" style="flex: 1;margin-right: 15px;">${userid}님 </a>
 	                                	<a href="logout.do"><i class="fa fa-user"></i>로그아웃</a>
 	                                </c:when>
                                 </c:choose>
@@ -146,13 +146,14 @@ function sessionCheck(){
                     <div class="header__cart">
                         <ul>
                         	<li><a onclick="sessionCheck()" style="color: black;cursor: pointer;"><i class="fa fa-buysellads"></i> 판매하기</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                            
-                        </ul>
-                    
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
-                        	
+                            <li><a href="likeProduct.do"><i class="fa fa-heart"></i> 
+                            	<span>
+                            		<c:if test="${empty userid}">0</c:if>
+                            		<c:if test="${!empty userid}">${likeCount}</c:if>
+                           		</span></a>
+                        	</li>
+                            <!-- <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li> -->
+                        </ul>    	
                     </div>
                 </div>
             </div>

@@ -62,7 +62,6 @@
 				<div class="col-lg-3 col-md-4 col-sm-6 mix allProduct">
 					<div class="featured__item"
 						onclick="location.href='productDetail.do?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
-
 						<div class="featured__item__pic set-bg"
 							data-setbg="${allProduct.imageface}">
 							<ul class="featured__item__pic__hover">
@@ -70,8 +69,8 @@
 									<h2 class="aucTimer" id="all${allProduct.ino}"></h2>
 								</c:if>
 								<li><a href="#"><i class="fa fa-heart"></i></a></li>
-								<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-								<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+								<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> 
+								<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
 							</ul>
 						</div>
 						<div class="featured__item__text">
@@ -79,10 +78,7 @@
 								<a href="#">${allProduct.iname}</a>
 							</h6>
 							<c:choose>
-								<c:when test="${allProduct.auctioncheck == 'B'}">
-									<h5>${allProduct.price}원</h5>
-								</c:when>
-								<c:when test="${allProduct.auctioncheck == 'N'}">
+								<c:when test="${allProduct.auctioncheck != 'Y'}">
 									<h5>${allProduct.price}원</h5>
 								</c:when>
 								<c:when test="${allProduct.auctioncheck == 'Y'}">
@@ -104,8 +100,8 @@
 
 								<ul class="featured__item__pic__hover">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+									<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
 								</ul>
 							</div>
 							<div class="featured__item__text">
@@ -129,8 +125,8 @@
 								<ul class="featured__item__pic__hover">
 									<h2 class="aucTimer" id="auc${aucProduct.ino}"></h2>
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+									<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> 
+									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
 								</ul>
 							</div>
 							<div class="featured__item__text">
@@ -153,8 +149,8 @@
 								data-setbg="${buyProduct.imageface}">
 								<ul class="featured__item__pic__hover">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+									<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> 
+									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
 								</ul>
 							</div>
 							<div class="featured__item__text">

@@ -13,12 +13,13 @@ import member.service.MemberService;
 import member.service.PasswordFailException;
 import member.service.User;
 import mvc.command.CommandHandler;
+import mypage.likeProduct.service.LikeProductService;
 
 public class LoginHandler implements CommandHandler {
 
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/login/login.jsp";
 	private MemberService memberService = new MemberService();
-
+	private LikeProductService likeProductService = new LikeProductService();
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if (req.getMethod().equalsIgnoreCase("GET")) {
@@ -63,10 +64,12 @@ public class LoginHandler implements CommandHandler {
 
 		try {
 			User user = memberService.login(id, password);
+			int likeCount = likeProductService.likeProductCount(user.getUserid());
 			
 			if(user.getMemberChk() == "1" || user.getMemberChk().equals("1")) {
 				req.getSession().setAttribute("memberUser", user);
 				req.getSession().setAttribute("userid", user.getUserid());
+				req.getSession().setAttribute("likeCount", likeCount);
 				res.sendRedirect("index.do");
 			}else {
 				req.setAttribute("memberChk", 2);
