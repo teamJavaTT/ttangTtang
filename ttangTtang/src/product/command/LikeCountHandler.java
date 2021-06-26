@@ -27,6 +27,8 @@ public class LikeCountHandler implements CommandHandler {
 		}else {
 			productService.likeCountSubtract(user.getUserid(), ino);
 		}
+		int likeCount = likeProductService.likeProductCount(user.getUserid());
+		req.getSession().setAttribute("likeCount", likeCount);
 		res.sendRedirect("productDetail.do?ino="+ino+"&aucChk="+aucChk);
 		return null;
 	}
