@@ -341,9 +341,28 @@ public class ProductDao {
 		}
 	}
 
+	public void LikeCountDelete(Connection conn, String user, String ino) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("delete from likeproduct where userid=? and ino=?");
+			pstmt.setString(1, user);
+			pstmt.setString(2, ino);
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
 	// 찜 수
 	public void LikeCountUpdate(Connection conn, String ino) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement("update product set likecount=likecount +1 where ino = ?")) {
+			pstmt.setString(1, ino);
+			pstmt.executeUpdate();
+		}
+	}
+		
+	public void LikeCountSubtract(Connection conn, String ino) throws SQLException {
+		try (PreparedStatement pstmt = conn.prepareStatement("update product set likecount=likecount -1 where ino = ?")) {
 			pstmt.setString(1, ino);
 			pstmt.executeUpdate();
 		}

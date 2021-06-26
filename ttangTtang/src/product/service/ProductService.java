@@ -179,5 +179,22 @@ public class ProductService {
 		}
 		return null;
 	}
+	
+	public String likeCountSubtract(String userId, String ino) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+			productDao.LikeCountDelete(conn, userId, ino);
+			productDao.LikeCountSubtract(conn, ino);
+			conn.commit();
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return null;
+	}
 
 }
