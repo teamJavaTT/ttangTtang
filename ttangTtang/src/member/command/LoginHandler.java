@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import AES256.AES256Util;
 import member.service.LoginFailException;
@@ -31,6 +32,15 @@ public class LoginHandler implements CommandHandler {
 	}
 
 	private String processForm(HttpServletRequest req, HttpServletResponse res) {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		
+		if(user == null) {
+			req.setAttribute("login", false);
+		}else {
+			req.setAttribute("login", true);
+		}
+		
 		return FORM_VIEW;
 	}
 
