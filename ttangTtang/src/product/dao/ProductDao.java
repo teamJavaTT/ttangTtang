@@ -322,7 +322,7 @@ public class ProductDao {
 	}
 
 	// 찜하기
-	public void LikeCountInsert(Connection conn, String user, String ino) throws SQLException {
+	public void likeCountInsert(Connection conn, String user, String ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = conn.prepareStatement("INSERT INTO likeproduct VALUES(?,?)");
@@ -334,7 +334,7 @@ public class ProductDao {
 		}
 	}
 
-	public void LikeCountDelete(Connection conn, String user, String ino) throws SQLException {
+	public void likeCountDelete(Connection conn, String user, String ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = conn.prepareStatement("delete from likeproduct where userid=? and ino=?");
@@ -374,17 +374,28 @@ public class ProductDao {
 	}
 	
 	// 찜 수
-	public void LikeCountUpdate(Connection conn, String ino) throws SQLException {
+	public void likeCountUpdate(Connection conn, String ino) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement("update product set likecount=likecount +1 where ino = ?")) {
 			pstmt.setString(1, ino);
 			pstmt.executeUpdate();
 		}
 	}
 		
-	public void LikeCountSubtract(Connection conn, String ino) throws SQLException {
+	public void likeCountSubtract(Connection conn, String ino) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement("update product set likecount=likecount -1 where ino = ?")) {
 			pstmt.setString(1, ino);
 			pstmt.executeUpdate();
+		}
+	}
+	public void auctionTableDelete(Connection conn, String user, String ino) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("delete from auction where userid=? and ino=?");
+			pstmt.setString(1, user);
+			pstmt.setString(2, ino);
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
 		}
 	}
 

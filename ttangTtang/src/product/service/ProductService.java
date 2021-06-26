@@ -75,14 +75,17 @@ public class ProductService {
 	}
 
 	// 상품 삭제
-	public void getAucDel(int delNo) throws SQLException, Exception {
+	public void getAucDel(int delNo, String user, String ino) throws SQLException, Exception {
 		try (Connection conn = DBConnection.getConnection()) {
+			productDao.likeCountDelete(conn, user, ino);
+			productDao.auctionTableDelete(conn, user, ino);
 			productDao.deleteAucPro(conn, delNo);
 		}
 	}
 
-	public void getNorDel(int delNo) throws SQLException, Exception {
+	public void getNorDel(int delNo,String user, String ino) throws SQLException, Exception {
 		try (Connection conn = DBConnection.getConnection()) {
+			productDao.likeCountDelete(conn, user, ino);
 			productDao.deleteNorPro(conn, delNo);
 		}
 	}
@@ -168,8 +171,8 @@ public class ProductService {
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
-			productDao.LikeCountInsert(conn, userId, ino);
-			productDao.LikeCountUpdate(conn, ino);
+			productDao.likeCountInsert(conn, userId, ino);
+			productDao.likeCountUpdate(conn, ino);
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
@@ -179,14 +182,14 @@ public class ProductService {
 		}
 		return null;
 	}
-	
+
 	public String likeCountSubtract(String userId, String ino) throws Exception {
 		Connection conn = null;
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
-			productDao.LikeCountDelete(conn, userId, ino);
-			productDao.LikeCountSubtract(conn, ino);
+			productDao.likeCountDelete(conn, userId, ino);
+			productDao.likeCountSubtract(conn, ino);
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
@@ -196,7 +199,7 @@ public class ProductService {
 		}
 		return null;
 	}
-	
+
 	public List<Product> productUser(String userid, String ino) throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {
 			List<Product> productUser = productDao.productUserSelect(conn, userid, ino);
@@ -206,5 +209,22 @@ public class ProductService {
 		}
 
 	}
+	public String aucProductTabDelete(String userId, String ino) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+			productDao.auctionTableDelete(conn, userId, ino);
+			conn.commit();
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return null;
+	}
 
+	
 }
+
