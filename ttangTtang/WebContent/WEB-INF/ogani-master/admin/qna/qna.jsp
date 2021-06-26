@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/adminheader.jsp"%>
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 			<div class="col-lg-9">
 				<!-- Content Header (Page header) -->
@@ -32,7 +33,14 @@
 													<!-- 작성자 -->
 													<td>${qna.userId}</td>
 													<!-- 내용 -->
-													<td><a href="qnaread.do?no=${qna.qno}"><c:out value="${qna.qtit}" /></a></td>
+													<td>
+													<input type="hidden" value="${qna.qno}" id="qnaNo">
+													<input type="hidden" value="${qna.qpw}" id="qnaPw">
+													<input type="button" value="${qna.qpw eq null ? qna.qtit : '비밀글 입니다.'}" id="qnaRead">
+													
+													
+													<%-- <a href="qnaread.do?no=${qna.qno}"><c:out value="${qna.qpw eq null ? qna.qtit : '비밀 글 입니다.'}"/></a> --%>
+													</td>
 													<!--  작성일자  -->
 													<td>${qna.qdate}</td>
 												</tr>
@@ -72,6 +80,6 @@
 </section>
 <!-- Hero Section End -->
 
-
+<script src="/ttangTtang/js/admin/main.js"></script>
 
 <%@ include file="../../include/footer.jsp"%>
