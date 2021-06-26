@@ -387,12 +387,21 @@ public class ProductDao {
 			pstmt.executeUpdate();
 		}
 	}
-	public void auctionTableDelete(Connection conn, String user, String ino) throws SQLException {
+	public void auctionTableDelete(Connection conn,int ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement("delete from auction where userid=? and ino=?");
-			pstmt.setString(1, user);
-			pstmt.setString(2, ino);
+			pstmt = conn.prepareStatement("delete from auction where ino=?");
+			pstmt.setInt(1, ino);
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	public void likeDelete(Connection conn, int ino) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("delete from likeproduct where ino=?");
+			pstmt.setInt(1,ino);
 			pstmt.executeUpdate();
 		} finally {
 			JdbcUtil.close(pstmt);

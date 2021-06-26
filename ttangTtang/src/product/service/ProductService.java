@@ -75,17 +75,17 @@ public class ProductService {
 	}
 
 	// 상품 삭제
-	public void getAucDel(int delNo, String user, String ino) throws SQLException, Exception {
+	public void getAucDel(int delNo) throws SQLException, Exception {
 		try (Connection conn = DBConnection.getConnection()) {
-			productDao.likeCountDelete(conn, user, ino);
-			productDao.auctionTableDelete(conn, user, ino);
+			productDao.likeDelete(conn, delNo);
+			productDao.auctionTableDelete(conn,delNo);
 			productDao.deleteAucPro(conn, delNo);
 		}
 	}
 
-	public void getNorDel(int delNo,String user, String ino) throws SQLException, Exception {
+	public void getNorDel(int delNo) throws SQLException, Exception {
 		try (Connection conn = DBConnection.getConnection()) {
-			productDao.likeCountDelete(conn, user, ino);
+			productDao.likeDelete(conn, delNo);
 			productDao.deleteNorPro(conn, delNo);
 		}
 	}
@@ -209,12 +209,12 @@ public class ProductService {
 		}
 
 	}
-	public String aucProductTabDelete(String userId, String ino) throws Exception {
+	public String aucProductTabDelete(int delNo) throws Exception {
 		Connection conn = null;
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
-			productDao.auctionTableDelete(conn, userId, ino);
+			productDao.auctionTableDelete(conn,delNo);
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);
@@ -225,6 +225,20 @@ public class ProductService {
 		return null;
 	}
 
-	
+	public String likeDelete(int delNo) throws Exception {
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+			productDao.likeDelete(conn, delNo);
+			conn.commit();
+		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return null;
+	}
 }
 

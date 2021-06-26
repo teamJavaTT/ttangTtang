@@ -38,7 +38,7 @@ preview-box {
 </style>
 
 <!-- 상품 등록 section begin -->
-<c:if test="${param.aucChk eq 'N'}">
+<c:if test="${param.aucChk eq 'N'||param.aucChk eq 'B'}">
 	<section id="normal" class="productUpdate">
 		<h3 style="text-align: center;">일반 상품 수정</h3>
 		<div class="container" style="padding-left: 17%;">
@@ -47,7 +47,7 @@ preview-box {
 				<input type="hidden" name="aucChk" value="N" /> <input
 					type="hidden" name="imagefaceNameNor" /> <input type="hidden"
 					name="ino" value="${norPro.ino}" /> <input type="hidden"
-					name="aucChk" value="${aucPro.auctioncheck=='N' }" />
+					name="aucChk" value="${aucPro.auctioncheck=='N'||aucPro.auctioncheck=='B' }" />
 				<!-- 파일업로드를 위해 추가하는 타입 -->
 				<table>
 					<tr>
@@ -170,7 +170,8 @@ preview-box {
 					</tr>
 					<tr>
 						<td>설정된 경매 종료시간:</td>
-						<td colspan="2"><input class="form-control" value="${aucPro.endtime}"></td>
+						<td colspan="2"><input class="form-control"
+							value="${aucPro.endtime}"></td>
 					</tr>
 					<tr>
 						<td>경매기간:</td>

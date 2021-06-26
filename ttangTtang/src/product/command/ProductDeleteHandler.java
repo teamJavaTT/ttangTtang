@@ -2,9 +2,7 @@ package product.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import member.service.User;
 import mvc.command.CommandHandler;
 import product.service.ProductService;
 
@@ -16,16 +14,14 @@ public class ProductDeleteHandler implements CommandHandler {
 		String requestNo = req.getParameter("ino");
 		int delNo = Integer.parseInt(requestNo);
 		req.setCharacterEncoding("utf-8");
-		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-		
-		String ino = req.getParameter("ino");
+
+
 	
 		
-
-		productService.aucProductTabDelete( user.getUserid(),ino);
-		productService.getAucDel(delNo, user.getUserid(), ino);
-		productService.getNorDel(delNo,user.getUserid(),ino);
+		productService.likeDelete(delNo);
+		productService.aucProductTabDelete(delNo);
+		productService.getAucDel(delNo);
+		productService.getNorDel(delNo);
 
 	
 		
