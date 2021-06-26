@@ -126,7 +126,7 @@
 							<label for="address1">주소 1</label>
 						</h3>
 						<span class="box int_name"> 
-							<input type="text" id="address1" name="address1" class="int" maxlength="20" value="${member.address1}" >
+							<input type="text" id="address1" name="address1" class="int" maxlength="20" placeholder="선택입력" value="${member.address1}" >
 							<input type="button" id="addBnt1" style="position: absolute; right: 10px;top: 13px;" onclick="execPostCode()" value="주소찾기">
 						</span> 
 						<span class="error_next_box"></span>

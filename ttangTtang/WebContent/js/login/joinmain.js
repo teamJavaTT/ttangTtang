@@ -20,6 +20,7 @@ var userName = document.querySelector('#name');
 var gender = document.querySelector('#gender');
 var email = document.querySelector('#email');
 var mobile = document.querySelector('#mobile');
+var address1 = document.querySelector('#address1');
 var error = document.querySelectorAll('.error_next_box');
 
 /*이벤트 핸들러 연결*/
@@ -30,6 +31,7 @@ userName.addEventListener("focusout", checkName);
 email.addEventListener("focusout", isEmailCorrect);
 mobile.addEventListener("focusout", checkPhoneNum);
 gender.addEventListener("focusout", checkGender);
+address1.addEventListener("focusout", checkAddress);
 
 $('#btnJoin').click(function() {
 	// 검색 버튼을 눌렀을때의 기능 구현
@@ -47,7 +49,9 @@ function joinFunc() {
 	checkName();
 	isEmailCorrect();
 	checkPhoneNum();
-	checkGender("joinGo");
+	checkGender();
+	checkAddress();
+	joinGo();
 }
 
 /*콜백 함수*/
@@ -152,16 +156,35 @@ function checkPhoneNum() {
 
 }
 
-function checkGender(cnk) {
+function checkGender() {
 	if (gender.value === "성별") {
 		error[6].style.display = "block";
 	} else {
 		error[6].style.display = "none";
 	}
 
-	if (cnk == "joinGo") {
-		//회원가입
-		document.joinform.submit();
+	
+}
+
+function checkAddress(cnk) {
+	if (address1.value === "") {
+		error[7].innerHTML = "필수 정보입니다.";
+		error[7].style.display = "block";
+	} else {
+		error[7].style.display = "none";
+	}
+}
+
+function joinGo(){
+	for(var i=1;i<error.length;i++){
+		if(error[0].innerHTML == "멋진 아이디네요!" && error[i].style.display != "block"){
+			if(i == error.length-1){
+				document.joinform.submit();
+			}
+		}else{
+			console.log("!!!");
+			return false;
+		}
 	}
 }
 
@@ -173,4 +196,70 @@ function idCheckFunc() {
 }
 
 
+
+function execPostCode() {
+	new daum.Postcode({
+
+        oncomplete: function(data) {
+             //data는 사용자가 선택한 주소 정보를 담고 있는 객체이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+        var addr = ''; // 주소 변수
+	//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다
+	if(data.userSelectedType === 'R'){
+		addr=data.roadAddress;
+	}else{
+		addr=data.jibunAddress;
+	}
+	//주소 정보를 해당 필드에 넣는다
+	document.getElementById("address1").value = addr;
+	
+	//커서를 주소 필드로 이동한다
+	document.getElementById("address1").focus();
+}
+    }).open();
+	
+}
+
+function execPostCode2() {
+	new daum.Postcode({
+
+        oncomplete: function(data) {
+             //data는 사용자가 선택한 주소 정보를 담고 있는 객체이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+        var addr = ''; // 주소 변수
+	//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다
+	if(data.userSelectedType === 'R'){
+		addr=data.roadAddress;
+	}else{
+		addr=data.jibunAddress;
+	}
+	//주소 정보를 해당 필드에 넣는다
+	document.getElementById("address2").value = addr;
+	
+	//커서를 주소 필드로 이동한다
+	document.getElementById("address2").focus();
+}
+    }).open();
+	
+}
+
+function execPostCode3() {
+	new daum.Postcode({
+
+        oncomplete: function(data) {
+             //data는 사용자가 선택한 주소 정보를 담고 있는 객체이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+        var addr = ''; // 주소 변수
+	//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다
+	if(data.userSelectedType === 'R'){
+		addr=data.roadAddress;
+	}else{
+		addr=data.jibunAddress;
+	}
+	//주소 정보를 해당 필드에 넣는다
+	document.getElementById("address3").value = addr;
+	
+	//커서를 주소 필드로 이동한다
+	document.getElementById("address3").focus();
+}
+    }).open();
+	
+}
 

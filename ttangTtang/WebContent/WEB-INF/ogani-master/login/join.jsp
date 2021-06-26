@@ -10,7 +10,8 @@
 <title>TTang TTang Market : 회원가입</title>
 <link rel="stylesheet" type="text/css"
 	href="/ttangTtang/css/login/joinmain.css">
-	<script src="/ttangTtang/js/jquery-3.3.1.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/ttangTtang/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -106,6 +107,42 @@
 						</select>
 						</span> <span class="error_next_box">필수 정보입니다.</span>
 					</div>
+					
+					<!-- ADDRESS1-->
+					<div>
+						<h3 class="join_title">
+							<label for="address1">주소 1</label>
+						</h3>
+						<span class="box int_name"  onclick="execPostCode()"> 
+							<input type="text" id="address1" name="address1" class="int" maxlength="20" placeholder="필수입력">
+							<input type="button" id="addBnt1" style="position: absolute; right: 10px;top: 13px;" value="주소찾기">
+						</span> 
+						<span class="error_next_box"></span>
+					</div>
+					
+					<!-- ADDRESS2-->
+					<div>
+						<h3 class="join_title">
+							<label for="address2">주소 2(선택사항)</label>
+						</h3>
+						<span class="box int_name" onclick="execPostCode2()"> 
+							<input type="text" id="address2" name="address2" class="int" maxlength="20" placeholder="선택입력">
+							<input type="button" id="addBnt2" style="position: absolute; right: 10px;top: 13px;" value="주소찾기">
+						</span> 
+					</div>
+					
+					<!-- ADDRESS3-->
+					<div>
+						<h3 class="join_title">
+							<label for="address3">주소 3(선택사항)</label>
+						</h3>
+						<span class="box int_name" onclick="execPostCode3()"> 
+							<input type="text" id="address3" name="address3" class="int" maxlength="20" placeholder="선택입력">
+						<input type="button" id="addBnt3" style="position: absolute; right: 10px;top: 13px;" value="주소찾기">
+						</span> 
+					</div>
+					
+					
 					<!-- JOIN BTN-->
 					<div class="btn_area">
 						<button type="button" id="btnJoin" onclick="joinFunc()">가입하기</button>

@@ -35,14 +35,17 @@ public class MemberDao {
 
 	public void memberInsert(Connection conn, Member mem) throws SQLException {
 		try (PreparedStatement pstmt = conn
-				.prepareStatement("insert into member values(?,?,?,?,?,?,null,null,null,sysdate,sysdate,null,?)")) {
+				.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,sysdate,sysdate,null,?)")) {
 			pstmt.setString(1, mem.getUserid());
 			pstmt.setString(2, mem.getUpw());
 			pstmt.setString(3, mem.getUemail());
 			pstmt.setString(4, mem.getUname());
 			pstmt.setString(5, mem.getPhone());
 			pstmt.setString(6, mem.getSex());
-			pstmt.setString(7, mem.getMemberChk());
+			pstmt.setString(7, mem.getAddress1());
+			pstmt.setString(8, mem.getAddress2());
+			pstmt.setString(9, mem.getAddress3());
+			pstmt.setString(10, mem.getMemberChk());
 			pstmt.executeUpdate();
 		}
 	}
