@@ -32,8 +32,12 @@
 		}
 	});
 
-	$("#qnaRead").on('click', function() {
-		var qno = $("#qnaNo").val();
+	$(".qnaRead").on('click', function() {
+		$(this).next("input").css("display", "inline-block");
+		$(this).next().next("input").css("display", "inline-block");
+		
+		
+		/*var qno = $("#qnaNo").val();
 		var qpw = $("#qnaPw").val();
 		if (qpw == null) {
 			var result = prompt("비밀번호를 입력하세요");
@@ -44,7 +48,7 @@
 			}
 		}else{
 			location.href = 'qnaread.do?no=' + qno; 
-		}
+		}*/
 	});
 	
 })(jQuery);

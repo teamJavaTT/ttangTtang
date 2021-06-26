@@ -18,8 +18,17 @@ private QnaService qnaService = new QnaService();
 		String noVal = req.getParameter("no");
 		int qnaNum = Integer.parseInt(noVal);
 		QnaData qnaData = qnaService.getQnaRead(qnaNum);
-		req.setAttribute("qnaData", qnaData);
-		return "/WEB-INF/ogani-master/admin/qna/qnaread.jsp";
+		
+		String test = "qnaPwd"+noVal;
+		
+		String qnaPwd = req.getParameter(test);
+		if(qnaPwd == qnaData.getQna().getQpw() || qnaPwd.equals(qnaData.getQna().getQpw())) {
+			req.setAttribute("qnaData", qnaData);
+			return "/WEB-INF/ogani-master/admin/qna/qnaread.jsp";
+		}else {
+			req.setAttribute("pwdNo", "no");
+			return "qnalist.do";
+		}
 		
 	}
 }
