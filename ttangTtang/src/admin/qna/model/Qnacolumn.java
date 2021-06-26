@@ -12,8 +12,9 @@ public class Qnacolumn {
 	private String paText;
 	private String qsText;
 	private Date qsDate;
+	private String qPw;
 	
-	public Qnacolumn(Integer qNo, String userid, String qTit, String qText, Date qDate, String paText, String qsText, Date qsDate) {
+	public Qnacolumn(Integer qNo, String userid, String qTit, String qText, Date qDate, String paText, String qsText, Date qsDate, String qPw) {
 		this.qNo = qNo;
 		this.userid = userid;
 		this.qTit = qTit;
@@ -22,6 +23,7 @@ public class Qnacolumn {
 		this.paText = paText;
 		this.qsText = qsText;
 		this.qsDate = qsDate;
+		this.qPw = qPw;
 	}
 
 	public Integer getQno() {
@@ -50,5 +52,9 @@ public class Qnacolumn {
 	}
 	public Date getQsdate() {
 		return qsDate;
+	}
+
+	public String getQpw() {
+		return qPw;
 	}
 }

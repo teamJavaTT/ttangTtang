@@ -43,7 +43,7 @@ public class QnaService {
 	private Qnacolumn toColumn(Qna req) {
 		Date now = new Date();
 				
-		return new Qnacolumn(null, req.getUserId(), req.getQtit(), req.getQtext(), now, "N", null, null); //null에 아이디 추가
+		return new Qnacolumn(null, req.getUserId(), req.getQtit(), req.getQtext(), now, "N", null, null, req.getQpw()); //null에 아이디 추가
 	}
 	// 글 입력하기 끝
 	
@@ -116,7 +116,7 @@ public class QnaService {
 	// 수정 끝
 	private Qnacolumn toQnaMod(int delNo, Qna req) {
 		Date now = new Date();
-		return new Qnacolumn(delNo, null, req.getQtit(), req.getQtext(), now, "N", null, null);
+		return new Qnacolumn(delNo, null, req.getQtit(), req.getQtext(), now, "N", null, null, req.getQpw());
 	}
 	
 	//댓글

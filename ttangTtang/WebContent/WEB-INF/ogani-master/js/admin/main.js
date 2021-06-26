@@ -31,4 +31,19 @@
 			alert("취소되었습니다.");
 		}
 	});
+	
+	$("#qnaRead").on('click', function() {
+		var qno = $("#qnaNo").val();
+		var qpw = $("#qnaPw").val();
+		if (qpw == null) {
+			var result = prompt("비밀번호를 입력하세요");
+			if (result == qpw) {
+				location.href = 'qnaread.do?no=' + qno;
+			} else {
+				alert("비밀번호가 틀렸습니다.");
+			}
+		}else{
+			location.href = 'qnaread.do?no=' + qno; 
+		}
+	});
 })(jQuery);

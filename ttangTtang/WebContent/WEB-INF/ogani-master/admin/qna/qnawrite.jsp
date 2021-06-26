@@ -23,6 +23,9 @@
 									<td colspan="4"><textarea rows="10" cols="100%" placeholder="내용" name="content"></textarea></td>
 								</tr>
 								<tr>
+									<td colspan="4"><input type="password" class="title" placeholder="비밀번호" name="password" maxlength="200"></td>
+								</tr>
+								<tr>
 									<td><input type="submit" value="글 등록"></td>
 								</tr>
 							</tbody>

@@ -18,11 +18,12 @@ public class QnaDao {
 		ResultSet rs = null;
 		// insert 부분 구문
 		try {
-			pstmt = conn.prepareStatement("insert into qna values (qna_seq.NEXTVAL,?,?,?,sysdate,'N',null,null)");
+			pstmt = conn.prepareStatement("insert into qna values (qna_seq.NEXTVAL,?,?,?,sysdate,'N',null,null,?)");
 
 			pstmt.setString(1, qna.getUserId());
 			pstmt.setString(2, qna.getQtit());
 			pstmt.setString(3, qna.getQtext());
+			pstmt.setString(4, qna.getQpw());
 			int insertedCount = pstmt.executeUpdate();
 
 			if (insertedCount > 0) {
@@ -30,7 +31,7 @@ public class QnaDao {
 				rs = stmt.executeQuery("select max(qno) from Qna");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Qnacolumn(newNo, qna.getUserId(), qna.getQtit(), qna.getQtext(), qna.getQdate(), "N", null, null);
+					return new Qnacolumn(newNo, qna.getUserId(), qna.getQtit(), qna.getQtext(), qna.getQdate(), "N", null, null, qna.getQpw());
 				}
 			}
 			return null;
@@ -108,7 +109,7 @@ public class QnaDao {
 	 * JdbcUtil.close(rs); JdbcUtil.close(pstmt); } }
 	 */	
 	private Qnacolumn qnaConvert(ResultSet rs) throws SQLException {
-		return new Qnacolumn(rs.getInt("qno"), rs.getString("userid"), rs.getString("qtit"), rs.getString("qtext"), rs.getDate("qdate"), rs.getString("patext"), rs.getString("qstext"), rs.getDate("qsdate")); // null에 아이디 추가
+		return new Qnacolumn(rs.getInt("qno"), rs.getString("userid"), rs.getString("qtit"), rs.getString("qtext"), rs.getDate("qdate"), rs.getString("patext"), rs.getString("qstext"), rs.getDate("qsdate"), rs.getString("qPw")); // null에 아이디 추가
 	}
 	// select 부분 끝
 	
@@ -126,10 +127,11 @@ public class QnaDao {
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("update qna set qtit = ?, qtext = ? where qno = ?");
+			pstmt = conn.prepareStatement("update qna set qtit = ?, qtext = ?, qpw = ? where qno = ?");
 			pstmt.setString(1, qna.getQtit());
 			pstmt.setString(2, qna.getQtext());
-			pstmt.setInt(3, qna.getQno());
+			pstmt.setString(3, qna.getQpw());
+			pstmt.setInt(4, qna.getQno());
 			int insertedCount = pstmt.executeUpdate();
 
 			if (insertedCount > 0) {
@@ -137,7 +139,7 @@ public class QnaDao {
 				rs = stmt.executeQuery("select max(qno) from qna");
 				if (rs.next()) {
 					Integer newNo = rs.getInt(1);
-					return new Qnacolumn(newNo, qna.getUserId(), qna.getQtit(), qna.getQtext(), qna.getQdate(), "N", null, null); // null에 아이디 추가
+					return new Qnacolumn(newNo, qna.getUserId(), qna.getQtit(), qna.getQtext(), qna.getQdate(), "N", null, null, null);
 				}
 			}
 		return null;

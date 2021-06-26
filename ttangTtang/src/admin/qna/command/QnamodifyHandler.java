@@ -48,7 +48,7 @@ public class QnamodifyHandler implements CommandHandler {
 		int delNo = Integer.parseInt(requestNo);
 		// NoticeRequest writeReq =new NoticeRequest(new Notice(noticeuser.getmno(),
 		// noticeuser.getmtit(), noticeuser.getmtext(), noticeuser.getmdate()));
-		Qna modReq = new Qna(req.getParameter("userid"),req.getParameter("title"), req.getParameter("content").replace("\r\n", "<br>"));
+		Qna modReq = new Qna(req.getParameter("userid"),req.getParameter("title"), req.getParameter("content").replace("\r\n", "<br>"),req.getParameter("password"));
 		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
