@@ -34,128 +34,21 @@
 						<img class="product__details__pic__item--large"
 							src="${allPro.imageface}">
 					</div>
-					<div
-						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
-						<div class="owl-stage-outer">
-							<div class="owl-stage"
-								style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
-								<div class="owl-item cloned"
-									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
-										alt="">
-								</div>
-								<div class="owl-item cloned"
-									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
-										alt="">
-								</div>
-								<div class="owl-item cloned"
-									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
-										alt="">
-								</div>
-								<div class="owl-item cloned"
-									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
-										alt="">
-								</div>
-								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
-										alt="">
-								</div>
-								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
-										alt="">
-								</div>
-								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
-										alt="">
-								</div>
-								<div class="owl-item active"
-									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
-										alt="">
-								</div>
-								<div class="owl-item cloned active"
-									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-2.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-1.jpg"
-										alt="">
-								</div>
-								<div class="owl-item cloned active"
-									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-3.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-2.jpg"
-										alt="">
-								</div>
-								<div class="owl-item cloned active"
-									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-5.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-3.jpg"
-										alt="">
-								</div>
-								<div class="owl-item cloned"
-									style="width: 97.5px; margin-right: 20px;">
-									<img
-										data-imgbigurl="/ttangTtang/ogani-master/img/product/details/product-details-4.jpg"
-										src="/ttangTtang/ogani-master/img/product/details/thumb-4.jpg"
-										alt="">
-								</div>
-							</div>
-						</div>
-						<div class="owl-nav disabled">
-							<button type="button" role="presentation" class="owl-prev">
-								<span aria-label="Previous">‹</span>
-							</button>
-							<button type="button" role="presentation" class="owl-next">
-								<span aria-label="Next">›</span>
-							</button>
-						</div>
-						<div class="owl-dots disabled">
-							<button role="button" class="owl-dot active">
-								<span></span>
-							</button>
-						</div>
-					</div>
 				</div>
 			</div>
-
 			<div class="col-lg-6 col-md-6">
-
 				<div class="product__details__text">
 					<h3>${allPro.iname }</h3>
-
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
 							<div class="product__details__price" id="now_price">${allPro.apricenow}</div>
 						</c:when>
-						<c:when test="${allPro.auctioncheck == 'N'}">
+						<c:when test="${allPro.auctioncheck=='N'}">
 							<div class="product__details__price">
 								<span>${allPro.price}</span>
 							</div>
 						</c:when>
 					</c:choose>
-
-					<p>${allPro.pricetext}</p>
 					<div class="product__details__quantity">
 						<div class="quantity"></div>
 					</div>
@@ -166,42 +59,40 @@
 						</script>
 					</c:if>
 					<c:if test="${user ne null}">
-					<c:choose>
-						<c:when test="${allPro.auctioncheck=='Y'}">
-							<form action="auctionPart.do" name="auctionPart" method="post">
-								<input type="hidden" name="aucIno" value="${allPro.ino}">
-								<div class="product__details__quantity">
-									가격제시 <input type="text" name="oPrice" id="oPrice"> <input
-										type="button" class="btn btn-outline-dark"
-										onclick="aucPricePart()" value="등록">
-								</div>
-							</form>
-								<button type="button" class="btn btn-outline-danger" 	onclick="location.href='likeCount.do?ino=${allPro.ino}'"  >
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
-</svg>	
-							찜하기
-							</button>
-						</c:when>
-						<c:when test="${allPro.auctioncheck == 'N'}">
-							<input type="button" value="판매자와 연락하기" class="primary-btn"
-								onclick="matchingwindow()" />
-							<button type="button" class="btn btn-outline-danger" 	onclick="location.href='likeCount.do?ino=${allPro.ino}'"  >
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
-</svg>	
-							찜하기
-							</button>
-						
-						</c:when>
-					</c:choose>
-</c:if>
+						<c:choose>
+							<c:when test="${allPro.auctioncheck=='Y'}">
+								<form action="auctionPart.do" name="auctionPart" method="post">
+									<input type="hidden" name="aucIno" value="${allPro.ino}">
+									<div class="product__details__quantity"> 가격제시 
+									<input type="text" name="oPrice" id="oPrice"> 
+									<input type="button" class="btn btn-outline-dark" onclick="aucPricePart()" value="등록">
+									</div>
+								</form>
+								<button type="button" class="btn btn-outline-danger" onclick="location.href='likeCount.do?ino=${allPro.ino}'">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  										<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+									</svg>
+									찜하기
+								</button>
+							</c:when>
+							<c:when test="${allPro.auctioncheck == 'N'}">
+								<input type="button" value="판매자와 연락하기" class="primary-btn"
+									onclick="matchingwindow()" />
+								<button type="button" class="btn btn-outline-danger"
+									onclick="location.href='likeCount.do?ino=${allPro.ino}'">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  										<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+									</svg>
+									찜하기
+								</button>
+
+							</c:when>
+						</c:choose>
+					</c:if>
 					<ul>
 						<c:if test="${allPro.auctioncheck=='Y' }">
 							<li><b>시작가격</b> <span id="minprice">${allPro.minprice}</span></li>
-							<li><b>남은시간</b> <span id="endtime">${allPro.endtime }</span></li>
+							<li><b>남은시간</b> <span id="endtime">${allPro.endtime}</span></li>
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
 						<li><b>판매 지역</b><span>${allPro.uad}</span></li>
@@ -228,28 +119,15 @@
 			<div class="col-lg-12">
 				<div class="product__details__tab">
 					<ul class="nav nav-tabs" role="tablist">
-						<li class="nav-item"><a class="nav-link active"
-							data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">상세설명</a>
+						<li class="nav-item">
+							<h3>상세설명</h3>
 						</li>
-
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="tabs-1" role="tabpanel">
 							<div class="product__details__tab__desc">
-								<h6>Products Infomation</h6>
-								<p>제품 설명</p>
-							</div>
-						</div>
-						<div class="tab-pane" id="tabs-2" role="tabpanel">
-							<div class="product__details__tab__desc">
-								<h6>Products Infomation</h6>
-								<p>제품 설명</p>
-							</div>
-						</div>
-						<div class="tab-pane" id="tabs-3" role="tabpanel">
-							<div class="product__details__tab__desc">
-								<h6>Products Infomation</h6>
-								<p>제품설명</p>
+								<h6>제품 설명</h6>
+								<p>${allPro.pricetext}</p>
 							</div>
 						</div>
 					</div>
