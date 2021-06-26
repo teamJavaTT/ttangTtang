@@ -159,6 +159,7 @@
 					<div class="product__details__quantity">
 						<div class="quantity"></div>
 					</div>
+						
 					<c:if test="${aucOk == 1}">
 						<script>
 							alert("가격 제시 성공");
@@ -177,6 +178,8 @@
 						<c:when test="${allPro.auctioncheck == 'N'}">
 							<input type="button" value="판매자와 연락하기" class="primary-btn"
 								onclick="matchingwindow()" />
+								<input type="button" value="찜하기" class="fa fa-heart"
+								onclick="location.href='likeCount.do?ino=${allPro.ino}'" />
 							
 						</c:when>
 					</c:choose>
@@ -200,6 +203,7 @@
 							</div></li>
 						<li><b>조회수</b> <span id="view_count">${allPro.viewcount}</span>
 						</li>
+						<li><b>찜한 수</b><i class="fa fa-heart"></i>${allPro.likecount}</li>
 					</ul>
 					<c:if test="${memberUser.userid eq allPro.userid}">
 						<input type="button" class="btn btn-outline-dark" value="상품수정"
