@@ -3,11 +3,14 @@ package member.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import AES256.AES256Util;
+import auth.model.Category;
 import jdbc.DBConnection;
 import jdbc.JdbcUtil;
 import member.dao.MemberDao;
+import member.model.Alim;
 import member.model.Member;
 
 public class MemberService {

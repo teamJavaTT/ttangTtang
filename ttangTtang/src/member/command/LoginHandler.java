@@ -1,5 +1,6 @@
 package member.command;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,11 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import AES256.AES256Util;
+import member.model.Alim;
 import member.service.LoginFailException;
 import member.service.MemberService;
 import member.service.PasswordFailException;
 import member.service.User;
 import mvc.command.CommandHandler;
+import mypage.alimList.service.AlimListService;
 import mypage.likeProduct.service.LikeProductService;
 
 public class LoginHandler implements CommandHandler {
@@ -20,6 +23,7 @@ public class LoginHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/ogani-master/login/login.jsp";
 	private MemberService memberService = new MemberService();
 	private LikeProductService likeProductService = new LikeProductService();
+	private AlimListService alimListService = new AlimListService();
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if (req.getMethod().equalsIgnoreCase("GET")) {
@@ -64,9 +68,11 @@ public class LoginHandler implements CommandHandler {
 
 		try {
 			User user = memberService.login(id, password);
-			int likeCount = likeProductService.likeProductCount(user.getUserid());
-			
+						
 			if(user.getMemberChk() == "1" || user.getMemberChk().equals("1")) {
+				int likeCount = likeProductService.likeProductCount(user.getUserid());
+				ArrayList<Alim> alimList = alimListService.alimSelect(user.getUserid());
+				req.getSession().setAttribute("alim", alimList);
 				req.getSession().setAttribute("memberUser", user);
 				req.getSession().setAttribute("userid", user.getUserid());
 				req.getSession().setAttribute("likeCount", likeCount);

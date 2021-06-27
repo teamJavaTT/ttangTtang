@@ -146,12 +146,16 @@ function sessionCheck(){
                     <div class="header__cart">
                         <ul>
                         	<li><a onclick="sessionCheck()" style="color: black;cursor: pointer;"><i class="fa fa-buysellads"></i> 판매하기</a></li>
-                            <li><a href="likeProduct.do"><i class="fa fa-heart"></i> 
-                            	<span>
-                            		<c:if test="${empty memberUser.uname}">0</c:if>
-                            		<c:if test="${!empty memberUser.uname}">${likeCount}</c:if>
-                           		</span></a>
-                        	</li>
+                            <li><a href="likeProduct.do"><i class="fa fa-heart"></i>
+                            	<c:if test="${!empty memberUser.uname}">
+                            		<span>${likeCount}</span>
+                           		</c:if>
+                           	</a></li>
+                        	<li><a href="alimList.do"><i class="fa fa-bell"></i>
+                            	<c:if test="${!empty alim}">
+                            		<span>+</span>
+                           		</c:if>
+                        	</a></li>
                             <!-- <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li> -->
                         </ul>    	
                     </div>

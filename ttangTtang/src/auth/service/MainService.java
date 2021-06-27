@@ -34,7 +34,7 @@ public class MainService {
 		}
 	}
 	
-	public MainPage auctionEnd() throws Exception {
+	public void auctionEnd() throws Exception {
 		try (Connection conn = DBConnection.getConnection()) {
 			List<String> likeProduct = mainDao.auctionEndInoSelect(conn);
 			int aucPartCnt = 0;
@@ -59,7 +59,6 @@ public class MainService {
 					}
 				}
 			}
-			return null;
 		}
 	}
 }
