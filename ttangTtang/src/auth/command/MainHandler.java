@@ -18,6 +18,7 @@ public class MainHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		MainPage mainPage = mainService.getMainPage();
 		List<Category> category = mainService.getCategory();
+		mainService.auctionEnd();
 		req.setAttribute("mainPage", mainPage);
 		req.setAttribute("category", category);
 		return "/WEB-INF/ogani-master/index.jsp";

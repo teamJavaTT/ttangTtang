@@ -13,8 +13,10 @@ const countDownTimer = function (id, date) {
 	
 	function showRemaining() {
 		var now = new Date();
-		var distDt = _vDate - now; if (distDt < 0) {
+		var distDt = _vDate - now; 
+		if (distDt < 0) {
 			clearInterval(timer);
+			document.getElementById(id).textContent += '경매종료';
 			return;
 		}
 		
