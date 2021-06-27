@@ -238,7 +238,7 @@ public class ProductDao {
 				rs.getString("auctioncheck"), rs.getString("uad"), rs.getString("iname"), rs.getString("price"),
 				rs.getString("minprice"), rs.getString("maxprice"), rs.getString("apricenow"),
 				rs.getString("apriceend"), rs.getString("pricetext"), rs.getString("imageface"),
-				rs.getString("endtime"), rs.getString("viewcount"), rs.getString("likecount"));
+				rs.getString("endtime"), rs.getString("viewcount"), rs.getString("likecount"), rs.getString("sellcheck"));
 	}
 
 	// norProDetail select

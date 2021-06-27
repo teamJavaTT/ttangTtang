@@ -63,10 +63,12 @@
 								<form action="auctionPart.do" name="auctionPart" method="post">
 									<input type="hidden" name="aucIno" value="${allPro.ino}">
 									<c:if test="${allPro.userid ne memberUser.userid}">
+									<c:if test="${allPro.sellcheck eq 'N'}">
 										<div class="product__details__quantity"> 가격제시
 										<input type="text" name="oPrice" id="oPrice"> 
 										<input type="button" class="btn btn-outline-dark" onclick="aucPricePart()" value="등록">
 										</div>
+										</c:if>
 									</c:if>
 								</form>
 							</c:when>
