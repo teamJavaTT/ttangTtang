@@ -10,7 +10,7 @@ $(document).ready(function() {
 function aucPricePart() {
 	var priceNow = $('#now_price').text();
 	var pricePart = $('#oPrice').val();
-	if (priceNow >= pricePart) {
+	if (parseInt(priceNow) >= parseInt(pricePart)) {
 		alert("현재가보다 높은 금액만 제시할 수 있습니다.");
 		return false;
 	} else {

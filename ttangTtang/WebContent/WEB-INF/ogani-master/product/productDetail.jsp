@@ -40,7 +40,7 @@
 					<h3>${allPro.iname }</h3>
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
-							<div class="product__details__price" id="now_price">${allPro.apricenow}&nbsp;원</div>
+							<div class="product__details__price"><span id="now_price">${allPro.apricenow}</span>&nbsp;원</div>
 						</c:when>
 						<c:when test="${allPro.auctioncheck=='N'}">
 							<div class="product__details__price">
@@ -144,8 +144,8 @@
 				</div>
 			</div>
 		</div>
-		<c:forEach var="productUser" items="${productUser}">
-			<div class="row">
+		<div class="row">
+			<c:forEach var="productUser" items="${productUser}">
 				<div class="col-lg-3 col-md-4 col-sm-6">
 					<div class="product__item" onclick="location.href='productDetail.do?ino=${productUser.ino}&aucChk=${productUser.auctioncheck}'">
 						<div class="product__item__pic set-bg" 
@@ -167,8 +167,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
 	</div>
 </section>
 <!-- Related Product Section End -->
