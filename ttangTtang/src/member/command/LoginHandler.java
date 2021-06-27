@@ -77,9 +77,11 @@ public class LoginHandler implements CommandHandler {
 			}
 			return null;
 		} catch (LoginFailException e) {
+			req.setAttribute("login", false);
 			errors.put("idNotMatch", Boolean.TRUE);
 			return FORM_VIEW;
 		} catch (PasswordFailException e) {
+			req.setAttribute("login", false);
 			errors.put("pwdNotMatch", Boolean.TRUE);
 			return FORM_VIEW;
 		}

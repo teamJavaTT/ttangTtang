@@ -30,18 +30,18 @@
 				</div>
 			</header>
 			<section class="login-input-section-wrap">
+				<c:if test="${errors.idNotMatch}">
+					<script>
+						alert("아이디를 다시 확인하세요.");
+					</script>
+				</c:if>
+				<c:if test="${errors.pwdNotMatch}">
+					<script>
+						alert("비밀번호를 다시 확인하세요.");
+					</script>
+				</c:if>
 				<c:if test="${login eq false}">
 					<form action="login.do" method="post" name="loginForm">
-						<c:if test="${errors.idNotMatch}">
-							<script>
-								alert("아이디를 다시 확인하세요.");
-							</script>
-						</c:if>
-						<c:if test="${errors.pwdNotMatch}">
-							<script>
-								alert("비밀번호를 다시 확인하세요.");
-							</script>
-						</c:if>
 						<div class="login-input-wrap">
 							<input placeholder="아이디를 입력하세요." name="userid" type="text"
 								value="${param.userid}"></input>
