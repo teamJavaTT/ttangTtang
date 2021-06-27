@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.List;
 
 import admin.qna.model.Qnacolumn;
-import auth.model.AuctionEnd;
 import auth.model.Category;
 import auth.model.Product;
 import auth.model.ProductToday;
@@ -103,11 +102,12 @@ public class MainDao {
 		}
 	}
 	
-	public void auctionEndUpdate(Connection conn, String likeList) throws SQLException {
+	public void auctionEndUpdate(Connection conn, String aucEndIno) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("update product set sellcheck = 'Y', apriceend = apricenow where ino in("+likeList+")");
+			pstmt = conn.prepareStatement("update product set sellcheck = 'Y', apriceend = apricenow where ino = ?");
+			pstmt.setString(1, aucEndIno);
 			rs = pstmt.executeQuery();
 		} finally {
 			JdbcUtil.close(rs);
@@ -115,36 +115,33 @@ public class MainDao {
 		}
 	}
 	
-	public List<AuctionEnd> auctionEndInoCount(Connection conn, String likeList) throws SQLException {
+	public int auctionEndInoCount(Connection conn, String aucEndIno) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<AuctionEnd> result = new ArrayList<>();
 		try {
-			pstmt = conn.prepareStatement("select ino, count(*) cnt from auction where ino in("+likeList+") group by ino");
+			pstmt = conn.prepareStatement("select count(*) cnt from auction where ino = ?");
+			pstmt.setString(1, aucEndIno);
 			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				result.add(convertAuctionEnd(rs));
-			}
-			return result;
+			rs.next();
+			return rs.getInt("cnt");
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
 	}
-	private AuctionEnd convertAuctionEnd(ResultSet rs) throws SQLException {
-		return new AuctionEnd(rs.getString("ino"), rs.getInt("cnt"));
-	}
 	
-	public String aucAlimUserIdSelect(Connection conn, String ino) throws SQLException {
+	public List<String> aucAlimUserIdSelect(Connection conn, String ino) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		List<String> aucAlimUser = new ArrayList<>();
 		try {
-			pstmt = conn.prepareStatement("select userid from product where ino = ?");
+			pstmt = conn.prepareStatement("select userid, iname from product where ino = ?");
 			pstmt.setString(1, ino);
 			rs = pstmt.executeQuery();
 			rs.next();
-			return rs.getString("userid");
+			aucAlimUser.add(rs.getString("userid"));
+			aucAlimUser.add(rs.getString("iname"));
+			return aucAlimUser;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
