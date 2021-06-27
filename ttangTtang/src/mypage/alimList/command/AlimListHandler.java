@@ -24,6 +24,7 @@ public class AlimListHandler implements CommandHandler {
 		List<Alim> alimAll = alimListService.alimAll(user.getUserid());
 		req.setAttribute("alimAll", alimAll);
 		alimListService.alimChkUpdate(user.getUserid());
+		req.getSession().setAttribute("alim", null);
 		return FORM_VIEW;
 	}
 

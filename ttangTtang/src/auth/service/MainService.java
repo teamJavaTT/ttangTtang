@@ -54,7 +54,7 @@ public class MainService {
 						
 						mainDao.auctioConnUpdate(conn, likeProduct.get(i));
 						String connUserId = mainDao.aucConnUserIdSelect(conn, likeProduct.get(i));
-						lText = machAlimUserId.get(1) + "상품 경매에 매칭되었습니다.";
+						lText = machAlimUserId.get(1) + " 상품 경매에 매칭되었습니다.";
 						mainDao.alimInsert(conn, connUserId, lText);
 					}
 				}
