@@ -20,6 +20,7 @@
 					<ul>
 						<li><a href="memberEdit.do">회원정보 수정</a></li>
 						<li><a href="likeProduct.do">관심상품</a></li>
+						<li><a href="alimList.do">알림내역</a></li>
 						<li><a href="sellcheck.do">내 판매 내역</a></li>
 						<li><a href="accountDeclaration.do">사용자 신고</a></li>
 						<li><a href="blockUser.do">사용자 차단</a></li>
