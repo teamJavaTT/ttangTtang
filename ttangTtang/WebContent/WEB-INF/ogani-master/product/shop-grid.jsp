@@ -3,7 +3,7 @@
  <%@ include file="../include/middle_header.jsp" %>
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="/ttangTtang/ogani-master/img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="/ttangTtang/img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
