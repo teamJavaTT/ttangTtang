@@ -80,7 +80,7 @@ function sessionCheck(){
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="mypage.do">MYPAGE</a></li>
+                <li><a href="/mypage/mypageMain">MYPAGE</a></li>
                 <li><a href="adminmain.do"">Service</a></li>
             </ul>
         </nav>
@@ -116,7 +116,7 @@ function sessionCheck(){
 		                                <a href="login.do" style="flex: 1;"><i class="fa fa-user"></i> 로그인</a>
 	                                </c:when>
 	                                <c:when test="${!empty memberUser.uname}">
-	                                	<a href="mypage.do" style="flex: 1;margin-right: 15px;">${memberUser.uname}님 </a>
+	                                	<a href="/mypage/mypageMain" style="flex: 1;margin-right: 15px;">${memberUser.uname}님 </a>
 	                                	<a href="logout.do"><i class="fa fa-user"></i>로그아웃</a>
 	                                </c:when>
                                 </c:choose>
@@ -137,7 +137,7 @@ function sessionCheck(){
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="/">Home</a></li>
-                            <li><a href="mypage.do">MYPAGE</a></li>
+                            <li><a href="/mypage/mypageMain">MYPAGE</a></li>
               				<li><a href="adminmain.do">Service</a></li>
                         </ul>
                     </nav>
