@@ -17,7 +17,7 @@
    >
     <title>아이디 찾기</title>
     <link rel="stylesheet" type="text/css"
-	href="/ttangTtang/css/login/find.css">
+	href="/resources/css/login/find.css">
     
     
   </head>
@@ -27,7 +27,7 @@
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title" >
             
-			<h2 class="card-title" style="color:#f58b34; text-align: center;"><img src="/ttangTtang/img/logo_red.png" width="100%" alt=""/></h2>
+			<h2 class="card-title" style="color:#f58b34; text-align: center;"><img src="/resources/img/logo_red.png" width="100%" alt=""/></h2>
 		</div>
         
 		<div class="card-body">

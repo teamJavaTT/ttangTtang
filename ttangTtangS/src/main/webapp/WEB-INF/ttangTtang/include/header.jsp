@@ -113,7 +113,7 @@ function sessionCheck(){
                             <div class="header__top__right__auth" style="display: flex;">
                             	<c:choose>
 	                            	<c:when test="${empty memberUser.uname}">
-		                                <a href="login.do" style="flex: 1;"><i class="fa fa-user"></i> 로그인</a>
+		                                <a href="/member/login" style="flex: 1;"><i class="fa fa-user"></i> 로그인</a>
 	                                </c:when>
 	                                <c:when test="${!empty memberUser.uname}">
 	                                	<a href="/mypage/mypageMain" style="flex: 1;margin-right: 15px;">${memberUser.uname}님 </a>

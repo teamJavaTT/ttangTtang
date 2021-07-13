@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <title>TTang TTang 로그인</title>
 <link rel="stylesheet" type="text/css"
-	href="/ttangTtang/css/login/main.css">
+	href="/resources/css/login/main.css">
 <script src="https://kit.fontawesome.com/51db22a717.js"
 	crossorigin="anonymous"></script>
-<script src="/ttangTtang/js/jquery-3.3.1.min.js"></script>
-<script src="/ttangTtang/js/login/login.js"></script>
+<script src="/resources/js/jquery-3.3.1.min.js"></script>
+<script src="/resources/js/login/login.js"></script>
 </head>
 <body>
 	<div class="main-container">
@@ -29,7 +29,7 @@
 				</div>
 
 				<div class="logo-wrap">
-					<a href="index.do"> <img src="/ttangTtang/img/logo_red.png"
+					<a href="index.do"> <img src="/resources/img/logo_red.png"
 						style="height: auto;">
 					</a>
 				</div>
@@ -45,7 +45,7 @@
 						alert("비밀번호를 다시 확인하세요.");
 					</script>
 				</c:if>
-				<c:if test="${login eq false}">
+				<%--  <c:if test="${login eq false}">--%>
 					<form action="login.do" method="post" name="loginForm">
 						<div class="login-input-wrap">
 							<input placeholder="아이디를 입력하세요." name="userid" type="text"
@@ -68,7 +68,7 @@
 						<span class="txt1 p-b-9"> 계정이 없으십니까? </span> <a href="join.do"
 							class="txt3"> 회원가입 </a>
 					</div>
-				</c:if>
+			<%-- 	</c:if>--%>
 				<c:if test="${login eq true}">
 				 <h1>로그인 상태입니다.</h1><br>
 				 <div class="login-button-wrap">
@@ -79,7 +79,7 @@
 
 			<footer>
 				<div class="copyright-wrap">
-					<span> <img src="/ttangTtang/img/logo_red.png">
+					<span> <img src="/resources/img/logo_red.png">
 						Copyright © TTang TTang Corp. All Rights Reserved.
 					</span>
 				</div>

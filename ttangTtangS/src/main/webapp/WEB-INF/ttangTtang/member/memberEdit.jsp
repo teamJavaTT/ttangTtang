@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>TTang TTang Market : 회원수정</title>
 <link rel="stylesheet" type="text/css"
-	href="/ttangTtang/css/login/edit.css">
+	href="/resources/css/login/edit.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
@@ -15,7 +15,7 @@
 	
 	<!-- header -->
 	<div id="header">
-		<a href="#"><img src="/ttangTtang/img/logo_red.png" width="500"
+		<a href="#"><img src="/resources/img/logo_red.png" width="500"
 			height="172" alt=""></a>
 	</div>
 
@@ -48,7 +48,7 @@
 						<span class="box int_pass"> 
 							<input type="password" id="pswd1" name="upw" class="int" maxlength="20"> 
 							<span id="alertTxt">사용불가</span> 
-							<img src="/ttangTtang/img/login/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
+							<img src="/resources/img/login/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
 						</span> 
 						<span class="error_next_box"></span>
 					</div>
@@ -60,7 +60,7 @@
 						</h3>
 						<span class="box int_pass_check"> 
 							<input type="password" id="pswd2" name="upw2" class="int" maxlength="20"> 
-							<img src="/ttangTtang/img/login/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
+							<img src="/resources/img/login/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
 						</span> 
 						<span class="error_next_box"></span>
 					</div>
@@ -172,7 +172,7 @@
 	</div>
 
 	<!-- wrapper -->
-	<script src="/ttangTtang/js/login/edit.js"></script>
+	<script src="/resources/js/login/edit.js"></script>
 </body>
 </html>
 

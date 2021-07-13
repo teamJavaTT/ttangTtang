@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>비밀번호 찾기</title>
 <link rel="stylesheet" type="text/css"
-	href="/ttangTtang/css/login/find.css">
+	href="/resources/css/login/find.css">
   </head>
    
   <body cellpadding="0" cellspacing="0" width="100%" height="100%" align="center">
@@ -24,7 +24,7 @@
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title">
             
-			<h2 class="card-title" style="color:#f58b34; text-align: center;"><img src="/ttangTtang/img/logo_red.png" width="100%" alt=""/></h2>
+			<h2 class="card-title" style="color:#f58b34; text-align: center;"><img src="/resources/img/logo_red.png" width="100%" alt=""/></h2>
 		</div>
         
 		<div class="card-body">

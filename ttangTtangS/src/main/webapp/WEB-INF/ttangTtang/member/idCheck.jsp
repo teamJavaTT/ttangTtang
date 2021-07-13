@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 확인</title>
-<script src="/ttangTtang/js/jquery-3.3.1.min.js"></script>
+<script src="/resources/js/jquery-3.3.1.min.js"></script>
 <script>
 function checkId() {// 아이디 중복에서 하는 체크
 	var id = $('#id').val();
