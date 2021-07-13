@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>TTang TTang Market : 사용자 신고</title>
 <link rel="stylesheet" type="text/css"
-	href="/ttangTtang/css/mypage/deleteForm.css">
+	href="/resources/css/mypage/deleteForm.css">
 
 </head>
 <body>
