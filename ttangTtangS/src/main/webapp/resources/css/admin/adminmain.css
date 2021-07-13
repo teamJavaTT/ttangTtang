@@ -1,0 +1,66 @@
+@charset "EUC-KR";
+
+table {
+	border-spacing: 1;
+	border-collapse: collapse;
+	background: white;
+	border-radius: 10px;
+	border: 1px solid #444444;
+	overflow: hidden;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+	text-align: center;
+}
+
+table thead tr {
+	height: 60px;
+	background: #EC0000;
+	color: white;
+	font-weight: 900;
+	border-bottom: 1px solid #444444;
+}
+
+table tbody tr {
+	background: white;
+	border-bottom: 1px solid #444444;
+}
+
+.button {
+	color: white;
+	background: #EC0000;
+	border: none;
+	height: 40px;
+	font-weight: bold;
+}
+
+.title {
+	width: 100%;
+}
+
+textarea {
+	width: 100%;
+	resize: none;
+}
+
+.submit {
+	width: auto;
+}
+
+a {
+	color: black;
+}
+a:link{
+	color: black;
+}
+a:visited{
+	color: black;
+}
+/* 마우스 오버(마우스 올렸을때) */
+a:hover {
+	color: black;
+}
+a:active{
+	color: black;
+}
