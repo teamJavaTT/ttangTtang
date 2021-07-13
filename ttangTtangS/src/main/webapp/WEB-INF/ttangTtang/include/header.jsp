@@ -79,7 +79,7 @@ function sessionCheck(){
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="index.do">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <li><a href="mypage.do">MYPAGE</a></li>
                 <li><a href="adminmain.do"">Service</a></li>
             </ul>
@@ -130,13 +130,13 @@ function sessionCheck(){
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="index.do"><img src="/resources/img/logo_red.png" alt=""></a>
+                        <a href="/"><img src="/resources/img/logo_red.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="index.do">Home</a></li>
+                            <li class="active"><a href="/">Home</a></li>
                             <li><a href="mypage.do">MYPAGE</a></li>
               				<li><a href="adminmain.do">Service</a></li>
                         </ul>
