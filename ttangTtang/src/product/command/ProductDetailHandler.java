@@ -11,7 +11,7 @@ import auth.model.Product;
 import auth.service.MainService;
 import member.service.User;
 import mvc.command.CommandHandler;
-import mypage.likeProduct.service.LikeProductService;
+import mypage.service.LikeProductService;
 import product.model.AucPro;
 import product.model.NorPro;
 import product.service.ProductService;

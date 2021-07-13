@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import member.service.User;
 import mvc.command.CommandHandler;
-import mypage.likeProduct.service.LikeProductService;
+import mypage.service.LikeProductService;
 import product.service.ProductService;
 
 public class LikeCountHandler implements CommandHandler {

@@ -15,8 +15,8 @@ import member.service.MemberService;
 import member.service.PasswordFailException;
 import member.service.User;
 import mvc.command.CommandHandler;
-import mypage.alimList.service.AlimListService;
-import mypage.likeProduct.service.LikeProductService;
+import mypage.service.AlimListService;
+import mypage.service.LikeProductService;
 
 public class LoginHandler implements CommandHandler {
 
