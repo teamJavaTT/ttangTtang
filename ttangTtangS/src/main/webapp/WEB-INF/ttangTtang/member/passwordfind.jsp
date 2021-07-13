@@ -39,7 +39,7 @@
       
 		</div>
         <div class="links">
-            <a href="idFind.do">아이디 찾기</a> | <a href="login.do">로그인</a> | <a href="join.do">회원가입</a>
+            <a href="/member/idfind">아이디 찾기</a> | <a href="/member/login">로그인</a> | <a href="/member/join">회원가입</a>
 
         </div>
 	</div>

@@ -20,10 +20,27 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
+	//로그인
 	@RequestMapping(value = "/login")
 	public void mainPage(Model model) throws Exception {
 		
 	}
+	//회원가입
+	@RequestMapping(value = "/join")
+	public void joinPage(Model model) throws Exception {
+		
+	}
+	//아이디 찾기
+		@RequestMapping(value = "/idfind")
+		public void idFindPage(Model model) throws Exception {
+			
+		}
+		//비밀번호 찾기
+				@RequestMapping(value = "/passwordfind")
+				public void passwordFindPage(Model model) throws Exception {
+					
+				}
+	
 	
 }
 		

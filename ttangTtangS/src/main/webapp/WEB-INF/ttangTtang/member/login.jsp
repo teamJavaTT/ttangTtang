@@ -60,12 +60,12 @@
 					</div>
 					<br>
 					<div class="text-right p-t-13 p-b-23">
-						<span class="txt1"> </span> <a href="idFind.do" class="txt2">아이디찾기</a>
-						/ <a href="passwordFind.do" class="txt2">비밀번호 찾기 </a>
+						<span class="txt1"> </span> <a href="/member/idfind" class="txt2">아이디찾기</a>
+						/ <a href="/member/passwordfind" class="txt2">비밀번호 찾기 </a>
 					</div>
 
 					<div class="flex-col-c p-t-170 p-b-40">
-						<span class="txt1 p-b-9"> 계정이 없으십니까? </span> <a href="join.do"
+						<span class="txt1 p-b-9"> 계정이 없으십니까? </span> <a href="/member/join"
 							class="txt3"> 회원가입 </a>
 					</div>
 			<%-- 	</c:if>--%>
