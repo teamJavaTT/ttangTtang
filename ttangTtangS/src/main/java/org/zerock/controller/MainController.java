@@ -16,15 +16,14 @@ import org.zerock.service.MainService;
 
 
 @Controller
-@RequestMapping(value = "/ttangTtang")
 public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	@Inject
 	private MainService mainService;
 	
-	@RequestMapping(value = "/index")
-	public void mainPage(Model model) throws Exception {
+	@RequestMapping(value = "/")
+	public String mainPage(Model model) throws Exception {
 		List<Category> category = mainService.selectCategory();
 		List<Product> product = mainService.selectProduct();
 		List<ProductToday> productToday = mainService.selectProductToday();
@@ -32,6 +31,8 @@ public class MainController {
 		model.addAttribute("category", category);
 		model.addAttribute("product", product);
 		model.addAttribute("productToday", productToday);		
+		
+		return "index";
 	}
 
 }
