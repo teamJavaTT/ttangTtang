@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="col-lg-9">
-	<form action="declarationAndBlockList.do" method="post">
+	<form action="declarationAndBlockList" method="post">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		<c:if test="${param.sellChk eq 'D' || emptparam.sellChk}">
@@ -41,8 +41,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:if test="${key eq 'D'}">
-										<c:forEach var="declaration" items="${listPage.declaration}">
+									
+										<c:forEach var="declaration" items="${accountDeclaration}">
 											<tr>
 												
 												
@@ -57,9 +57,9 @@
 
 											</tr>
 										</c:forEach>
-									</c:if>
-									<c:if test="${key eq 'B'}">
-										<c:forEach var="block" items="${listPage.block}">
+										
+									
+										<c:forEach var="block" items="${blockUser}">
 											<tr>
 												
 												<%-- <!-- 신고/차단 -->
@@ -73,17 +73,18 @@
 
 											</tr>
 										</c:forEach>
-									</c:if>
+										
+							
 									<tr>
 										<td colspan="5"><c:if test="${listPage.startPage > 10}">
 												<a
-													href="declarationAndBlock.do?pageNo=${listPage.startPage - 10}">[이전]</a>
+													href="declarationAndBlock?pageNo=${listPage.startPage - 10}">[이전]</a>
 											</c:if> <c:forEach var="pNo" begin="${listPage.startPage}"
 												end="${listPage.endPage}">
-												<a href="declarationAndBlock.do?pageNo=${pNo}">[${pNo}]</a>
+												<a href="declarationAndBlock?pageNo=${pNo}">[${pNo}]</a>
 											</c:forEach> <c:if test="${listPage.endPage < listPage.totalPages}">
 												<a
-													href="declarationAndBlock.do?pageNo=${listPage.startPage + 10}">[다음]</a>
+													href="declarationAndBlock?pageNo=${listPage.startPage + 10}">[다음]</a>
 											</c:if></td>
 									</tr>
 

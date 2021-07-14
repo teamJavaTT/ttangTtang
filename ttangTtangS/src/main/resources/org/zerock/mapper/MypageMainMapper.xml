@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.MypageMainMapper">
+
+	<select id="selectAccountDeclaration"
+		resultType="org.zerock.domain.AccountDeclaration">
+		<![CDATA[
+		select * 
+		from Declaration 
+		order by dno desc
+		]]>
+	</select>
+
+	<select id="selectBlockUser"
+		resultType="org.zerock.domain.BlockUser">
+		<![CDATA[
+		select * 
+		from block 
+		order by bno desc
+		]]>
+	</select>
+
+	<select id="selectLikeProduct"
+		resultType="org.zerock.domain.BlockUser">
+		<![CDATA[
+		select * 
+		from LikeProduct 
+		order by ino desc
+		]]>
+	</select>
+
+
+
+</mapper>

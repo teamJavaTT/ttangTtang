@@ -16,7 +16,7 @@
 <body>
 	<!-- header -->
 	<div id="header">
-		<a href="index.do"><img src="/ttangTtang/img/logo_red.png"
+		<a href="index"><img src="/resources/img/logo_red.png"
 			width="500" height="172" alt=""></a>
 	</div>
 
@@ -37,14 +37,14 @@
 						alert("자기 자신은 신고할 수 없습니다")
 					</script>
 				</c:if>
-				<form action="accountDeclaration.do?no=1" method="post">
+				<form action="accountDeclaration?no=1" method="post">
 					<h4>사용자 신고</h4>
 					<input type="text" class="title" placeholder="신고 대상" name="badid"
 						id="badid" value="${param.badid}"> 
 						<input type="submit" value="아이디 확인" name="chkIdBnt">
 				</form>
 				<c:if test="${idChkOk == 1}">
-					<form action="accountDeclaration.do?no=2" method="post">
+					<form action="accountDeclaration?no=2" method="post">
 						<input type="hidden" value="${param.badid}" name="declId">
 						<h4>신고 사유</h4>
 						<textarea rows="10" cols="100%" placeholder="신고사유를 입력해주세요"
@@ -56,7 +56,7 @@
 					</form>
 				</c:if>
 				<div class="btn_area">
-					<a href="mypage.do"> <input type="button" id="btnNo"
+					<a href="mypage"> <input type="button" id="btnNo"
 						value="취소하기">
 					</a>
 				</div>
@@ -64,7 +64,7 @@
 		</div>
 	</div>
 	<!-- wrapper -->
-	<script src="/ttangTtang/js/mypage/accoundDeclaration.js"></script>
+	<script src="/resources/js/mypage/accoundDeclaration.js"></script>
 </body>
 </html>
 

@@ -15,7 +15,7 @@
 <body>
 	<!-- header -->
 	<div id="header">
-		<a href="index.do"><img src="/ttangTtang/img/logo_red.png"
+		<a href="index"><img src="/resourcesTtang/img/logo_red.png"
 			width="500" height="172" alt=""></a>
 	</div>
 
@@ -26,7 +26,7 @@
 		<!-- content-->
 		<div id="content">
 			<section class="content">
-				<form action="deleteForm.do" method="post">
+				<form action="deleteForm" method="post">
 
 
 					<h4>회원 탈퇴 사유</h4>
@@ -45,7 +45,7 @@
 						<span class="box int_pass"> <input type="password"
 							id="pswd1" name="upw" class="int" maxlength="20"> <span
 							id="alertTxt">사용불가</span> <img
-							src="/ttangTtang/img/login/m_icon_pass.png" id="pswd1_img1"
+							src="/resources/img/login/m_icon_pass.png" id="pswd1_img1"
 							class="pswdImg">
 						</span> <span class="error_next_box"></span>
 					</div>
@@ -59,7 +59,7 @@
 
 					</div>
 					<div class="btn_area">
-						<a href="mypage.do"> <input type="button" id="btnNo"
+						<a href="mypage"> <input type="button" id="btnNo"
 							value="취소하기">
 						</a>
 					</div>
@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	<!-- wrapper -->
-	<script src="/ttangTtang/js/mypage/deleteForm.js"></script>
+	<script src="/resources/js/mypage/deleteForm.js"></script>
 </body>
 </html>
 

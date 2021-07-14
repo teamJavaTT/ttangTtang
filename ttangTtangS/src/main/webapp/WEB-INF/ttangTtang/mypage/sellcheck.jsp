@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="col-lg-9">
-	<form action="sellcheck.do" method="post">
+	<form action="sellcheck" method="post">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h2>판매 내역</h2>
@@ -46,7 +46,7 @@
 											<!-- 경매/일반 -->
 											<td>${product.auctionCheck eq 'N'? '일반' : '경매'}</td>
 											<!-- 상품명 -->
-											<td><a href="productDetail.do?ino=${product.iNo}&aucChk=${product.auctionCheck}"><c:out value="${product.iName}" /></a>
+											<td><a href="productDetail?ino=${product.iNo}&aucChk=${product.auctionCheck}"><c:out value="${product.iName}" /></a>
 											</td>
 											<!-- 등록날짜 -->
 											<td>${product.pDate}</td>
@@ -59,14 +59,14 @@
 										<td colspan="5"><c:if
 												test="${sellCheckPage.startPage > 10}">
 												<a
-													href="sellcheck.do?pageNo=${sellCheckPage.startPage - 10}">[이전]</a>
+													href="sellcheck?pageNo=${sellCheckPage.startPage - 10}">[이전]</a>
 											</c:if> <c:forEach var="pNo" begin="${sellCheckPage.startPage}"
 												end="${sellCheckPage.endPage}">
-												<a href="sellcheck.do?pageNo=${pNo}">[${pNo}]</a>
+												<a href="sellcheck?pageNo=${pNo}">[${pNo}]</a>
 											</c:forEach> <c:if
 												test="${sellCheckPage.endPage < sellCheckPage.totalPages}">
 												<a
-													href="sellcheck.do?pageNo=${sellCheckPage.startPage + 10}">[다음]</a>
+													href="sellcheck?pageNo=${sellCheckPage.startPage + 10}">[다음]</a>
 											</c:if></td>
 									</tr>
 								</tbody>
