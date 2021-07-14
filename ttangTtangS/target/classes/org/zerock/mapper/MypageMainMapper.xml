@@ -31,7 +31,7 @@
          select ino 
          from likeproduct 
          where userid=#{userid}
-      );
+      )
       ]]>
    </select>
 

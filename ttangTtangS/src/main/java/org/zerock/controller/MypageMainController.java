@@ -57,15 +57,15 @@ public class MypageMainController {
 	// 관심상품
 	@RequestMapping(value = "/likeProduct")
 	public void likeProductPage(Model model) throws Exception {
-		String userid = "ssmsm";
-		List<Product> Product = mypagemainService.selectLikeProduct(userid);
-		model.addAttribute("Product", Product);
+		String userid = "song127";
+		List<Product> likeProduct = mypagemainService.selectLikeProduct(userid);
+		model.addAttribute("likeProduct", likeProduct);
 	}
 	
 	// 판매내역
 	@RequestMapping(value = "/sellcheck")
 	public void sellcheckPage(Model model) throws Exception {
-		String userid = "ssmsm";
+		String userid = "song127";
 		List<Product> sellList = mypagemainService.selectSellList(userid);
 		model.addAttribute("sellList", sellList);
 	}
