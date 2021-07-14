@@ -26,7 +26,7 @@
 				<c:forEach var="productToday" items="${productToday}">
 					<div class="col-lg-3">
 						<div class="categories__item set-bg"
-							data-setbg="${productToday.imageface}" onclick="location.href='productDetail.do?ino=${productToday.ino}&aucChk=${productToday.auctioncheck}'">
+							data-setbg="${productToday.imageface}" onclick="location.href='/product/productDetail?ino=${productToday.ino}&aucChk=${productToday.auctioncheck}'">
 							<h5>
 								<a href="#">${productToday.iname}</a>
 							</h5>
@@ -61,7 +61,7 @@
 			<c:forEach var="allProduct" items="${product}">
 				<div class="col-lg-3 col-md-4 col-sm-6 mix allProduct">
 					<div class="featured__item"
-						onclick="location.href='productDetail.do?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
+						onclick="location.href='/product/productDetail?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
 						<div class="featured__item__pic set-bg"
 							data-setbg="${allProduct.imageface}">
 							<ul class="featured__item__pic__hover">
@@ -94,7 +94,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-6 mix norProduct"
 						style="display: none;">
 						<div class="featured__item"
-							onclick="location.href='productDetail.do?ino=${norProduct.ino}&aucChk=${norProduct.auctioncheck}'">
+							onclick="location.href='/product/productDetail?ino=${norProduct.ino}&aucChk=${norProduct.auctioncheck}'">
 							<div class="featured__item__pic set-bg"
 								data-setbg="${norProduct.imageface}">
 
@@ -131,7 +131,7 @@
 							</div>
 							<div class="featured__item__text">
 								<h6>
-									<a href="productDetail.do?ino=${aucProduct.ino}">${aucProduct.iname}</a>
+									<a href="/product/productDetail?ino=${aucProduct.ino}">${aucProduct.iname}</a>
 								</h6>
 								<h5>현재가 ${aucProduct.apricenow}원</h5>
 							</div>
@@ -144,7 +144,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-6 mix buyProduct"
 						style="display: none;">
 						<div class="featured__item"
-							onclick="location.href='productDetail.do?ino=${buyProduct.ino}'">
+							onclick="location.href='/product/productDetail?ino=${buyProduct.ino}'">
 							<div class="featured__item__pic set-bg"
 								data-setbg="${buyProduct.imageface}">
 								<ul class="featured__item__pic__hover">

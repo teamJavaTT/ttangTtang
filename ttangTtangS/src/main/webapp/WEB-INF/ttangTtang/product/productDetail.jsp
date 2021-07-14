@@ -102,7 +102,7 @@
 					</ul>
 					<c:if test="${memberUser.userid eq allPro.userid}">
 						<input type="button" class="btn btn-outline-dark" value="상품수정"
-							onclick="location.href='productModify.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
+							onclick="location.href='/product/productModify?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
 
 						<input type="hidden" value="${allPro.ino}" id="delNo">
 						<input type="button" class="btn btn-outline-danger" value="삭제"
@@ -147,7 +147,7 @@
 		<div class="row">
 			<c:forEach var="productUser" items="${productUser}">
 				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="product__item" onclick="location.href='productDetail.do?ino=${productUser.ino}&aucChk=${productUser.auctioncheck}'">
+					<div class="product__item" onclick="location.href='/product/productDetail?ino=${productUser.ino}&aucChk=${productUser.auctioncheck}'">
 						<div class="product__item__pic set-bg" 
 							data-setbg="${productUser.imageface}">
 							<ul class="product__item__pic__hover">
@@ -172,6 +172,6 @@
 	</div>
 </section>
 <!-- Related Product Section End -->
-<script src="/ttangTtang/js/product/productDetail.js"></script>
+<script src="/resources/js/product/productDetail.js"></script>
 
 <%@ include file="../include/footer.jsp"%>

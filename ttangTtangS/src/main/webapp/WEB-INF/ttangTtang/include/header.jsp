@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
-<script>
+<%-- <script>
 
 function sessionCheck(){
      var userid = '<%=(String)session.getAttribute("userid")%>';
@@ -14,7 +14,7 @@ function sessionCheck(){
     	  location.href = "productWrite.do"
       }
 }   
-</script>
+</script> --%>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -145,8 +145,9 @@ function sessionCheck(){
                 <div class="col-lg-5">
                     <div class="header__cart">
                         <ul>
-                        	<li><a onclick="sessionCheck()" style="color: black;cursor: pointer;"><i class="fa fa-buysellads"></i> 판매하기</a></li>
-                            <li><a href="likeProduct.do"><i class="fa fa-heart"></i>
+                        	<li><a href="/product/productWrite" style="color: black;cursor: pointer;"><i class="fa fa-buysellads"></i> 판매하기</a></li>
+ <!-- onclick="sessionCheck()" -->                        
+  <li><a href="likeProduct.do"><i class="fa fa-heart"></i>
                             	<c:if test="${!empty memberUser.uname}">
                             		<span>${likeCount}</span>
                            		</c:if>

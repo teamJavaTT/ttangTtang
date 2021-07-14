@@ -266,5 +266,5 @@ preview-box {
 	</div>
 </section>
 
-<script src="/ttangTtang/js/product/productWrite.js"></script>
+<script src="/resources/js/product/productWrite.js"></script>
 <%@ include file="../include/footer.jsp"%>
