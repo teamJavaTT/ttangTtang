@@ -36,24 +36,22 @@
 									</tr>
 								</thead>
 								<tbody><%-- sellCehckData.product.userId --%>
-									<c:forEach var="product" items="${sellCheckPage.product}">
-									<c:if test="${memberUser.userid eq product.userId}">
+									<c:forEach var="product" items="${sellList}">
 										<tr>
 											<!-- 상품번호 -->
-											<td>${product.iNo}</td>
+											<td>${product.ino}</td>
 											<!-- 카테고리 -->
-											<td>${product.cCode}</td>
+											<td>${product.ccode}</td>
 											<!-- 경매/일반 -->
-											<td>${product.auctionCheck eq 'N'? '일반' : '경매'}</td>
+											<td>${product.auctioncheck eq 'N'? '일반' : '경매'}</td>
 											<!-- 상품명 -->
-											<td><a href="productDetail?ino=${product.iNo}&aucChk=${product.auctionCheck}"><c:out value="${product.iName}" /></a>
+											<td><a href="productDetail?ino=${product.ino}&aucChk=${product.auctioncheck}"><c:out value="${product.iname}" /></a>
 											</td>
 											<!-- 등록날짜 -->
-											<td>${product.pDate}</td>
+											<td>${product.pdate}</td>
 											<!-- 판매여부 -->
-											<td>${product.sellCheck eq 'N'? '판매중' : '판매완료'}</td>
+											<td>${product.sellcheck eq 'N'? '판매중' : '판매완료'}</td>
 										</tr>
-									</c:if>
 									</c:forEach>
 									<tr>
 										<td colspan="5"><c:if

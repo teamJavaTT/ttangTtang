@@ -22,15 +22,29 @@
 		]]>
 	</select>
 
-	<select id="selectLikeProduct"
-		resultType="org.zerock.domain.BlockUser">
+	 <select id="selectLikeProduct"
+      resultType="org.zerock.domain.Product">
+      <![CDATA[
+      select * 
+      from product 
+      where ino in (
+         select ino 
+         from likeproduct 
+         where userid=#{userid}
+      );
+      ]]>
+   </select>
+
+
+	<select id="selectSellList"
+		resultType="org.zerock.domain.Product">
 		<![CDATA[
 		select * 
-		from LikeProduct 
+		from product 
+		where userid = #{userid}
 		order by ino desc
 		]]>
 	</select>
-
 
 
 </mapper>

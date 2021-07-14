@@ -47,7 +47,7 @@ public class LikeProductDao {
 		}
 	}
 	
-	// 신고 dao
+	
 	public ArrayList<String> likeProductSelect(Connection conn, String userId) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

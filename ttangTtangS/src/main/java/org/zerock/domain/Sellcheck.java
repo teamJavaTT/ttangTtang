@@ -1,4 +1,5 @@
 package org.zerock.domain;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -7,8 +8,8 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 @Component
-@Data    //∞¸Ω…ªÛ«∞
-public class LikeProduct { 
+@Data
+public class Sellcheck { // ÌåêÎß§ÎÇ¥Ïó≠
 
 	private BigDecimal iNo;
 	private String userId;
@@ -27,12 +28,10 @@ public class LikeProduct {
 	private Timestamp pDate;
 	private Timestamp endTime;
 	private String sellCheck;
-	
 
-	
-	public LikeProduct(BigDecimal iNo, String userId, String cCode, String auctionCheck, String uad,
-			String iName, String price, String minPrice, String maxPrice, String apriceNow, String apriceEnd,
-			String priceText, String imageFace, BigDecimal viewCount, Timestamp pDate, Timestamp endTime,String sellCheck) {
+	public Sellcheck(BigDecimal iNo, String userId, String cCode, String auctionCheck, String uad, String iName,
+			String price, String minPrice, String maxPrice, String apriceNow, String apriceEnd, String priceText,
+			String imageFace, BigDecimal viewCount, Timestamp pDate, Timestamp endTime, String sellCheck) {
 		this.iNo = iNo;
 		this.userId = userId;
 		this.cCode = cCode;

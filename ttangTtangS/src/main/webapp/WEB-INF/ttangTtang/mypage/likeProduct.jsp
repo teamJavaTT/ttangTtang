@@ -5,9 +5,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="col-lg-9" id=likeProduct>
-	
-		<h3 style="margin-bottom: 30px;">관심상품</h3>
-	
+
+	<h3 style="margin-bottom: 30px;">관심상품</h3>
+
 
 
 
@@ -48,7 +48,7 @@
 											<td>${likeProduct.apricenow}</td>
 										</c:if>
 										<td>${likeProduct.endtime}</td>
-
+										<td>${likeProduct.apricenow}</td>
 
 									</tr>
 								</c:forEach>

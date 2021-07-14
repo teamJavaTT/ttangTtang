@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Component
 @Data
-public class BlockUser { //Â÷´Ü
+public class BlockUser { //ì°¨ë‹¨
 
 	private BigDecimal bNo;
 	private String userId;

@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.domain.AccountDeclaration;
 import org.zerock.domain.BlockUser;
-import org.zerock.domain.LikeProduct;
+import org.zerock.domain.Product;
 import org.zerock.service.MypageMainService;
 
 @Controller
@@ -22,42 +22,51 @@ public class MypageMainController {
 	@Inject
 	private MypageMainService mypagemainService;
 
-	// ∏ﬁ¿Œ
+	// Î©îÏù∏
 	@RequestMapping(value = "/mypageMain")
-	public void mainPage(Model model) throws Exception {
+	public void  mypageMainPage(Model model) throws Exception {
 	}
 
-	// Ω≈∞Ì
+	// Ïã†Í≥†
 	@RequestMapping(value = "/accountDeclaration")
-	public void mainPage1(Model model) throws Exception {
+	public void accountDeclarationPage(Model model) throws Exception {
 
 		List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration();
 		model.addAttribute("accountDeclaration", accountDeclaration);
 	}
 
-	// ¬˜¥‹
+	// Ï∞®Îã®
 	@RequestMapping(value = "/blockUser")
-	public void mainPage2(Model model) throws Exception {
+	public void blockUserPage(Model model) throws Exception {
 
 		List<BlockUser> blockUser = mypagemainService.selectBlockUser();
 		model.addAttribute("blockUser", blockUser);
 	}
 
-	// Ω≈∞Ì π◊ ¬˜¥‹ ∏ÆΩ∫∆Æ
+	// Ïã†Í≥† Î∞è Ï∞®Îã® Î¶¨Ïä§Ìä∏
 	@RequestMapping(value = "/declarationAndBlockList")
-	public void mainPage3(Model model) throws Exception {
+	public void declarationAndBlockListPage(Model model) throws Exception {
+
 		List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration();
 		List<BlockUser> blockUser = mypagemainService.selectBlockUser();
 		model.addAttribute("accountDeclaration", accountDeclaration);
 		model.addAttribute("blockUser", blockUser);
-		
+
 	}
 
-	// ∞¸Ω…ªÛ«∞
-		@RequestMapping(value = "/likeProduct")
-		public void mainPage4(Model model) throws Exception {
-
-			List<LikeProduct> likeProduct = mypagemainService.selectLikeProduct();
-			model.addAttribute("likeProduct", likeProduct);
-		}
+	// Í¥ÄÏã¨ÏÉÅÌíà
+	@RequestMapping(value = "/likeProduct")
+	public void likeProductPage(Model model) throws Exception {
+		String userid = "ssmsm";
+		List<Product> Product = mypagemainService.selectLikeProduct(userid);
+		model.addAttribute("Product", Product);
+	}
+	
+	// ÌåêÎß§ÎÇ¥Ïó≠
+	@RequestMapping(value = "/sellcheck")
+	public void sellcheckPage(Model model) throws Exception {
+		String userid = "ssmsm";
+		List<Product> sellList = mypagemainService.selectSellList(userid);
+		model.addAttribute("sellList", sellList);
+	}
 }

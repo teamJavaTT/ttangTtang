@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.AccountDeclaration;
 import org.zerock.domain.BlockUser;
-import org.zerock.domain.LikeProduct;
+import org.zerock.domain.Product;
 import org.zerock.mapper.MypageMainMapper;
 
 @Service
@@ -15,22 +15,30 @@ public class MypageMainServiceImpl implements MypageMainService {
 	@Autowired
 	private MypageMainMapper mypageMainMapper;
 
-	@Override //½Å°í
+	@Override  //ì‹ ê³ 
 	@Transactional
 	public List<AccountDeclaration> selectAccountDeclaration() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mypageMainMapper.selectAccountDeclaration();
 	}
 
-	@Override  //Â÷´Ü
+	@Override  //ì°¨ë‹¨
 	public List<BlockUser> selectBlockUser() throws Exception {
 		return mypageMainMapper.selectBlockUser();
 	}
 
 	
-	@Override  //°ü½É»óÇ°
-	public List<LikeProduct> selectLikeProduct() throws Exception {
-		return mypageMainMapper.selectLikeProduct();
+	
+	@Override  //ê´€ì‹¬ìƒí’ˆ
+	public List<Product> selectLikeProduct(String userid) throws Exception {
+		return mypageMainMapper.selectLikeProduct(userid);
 	}
+
+	@Override  //íŒë§¤ë‚´ì—­
+	public List<Product> selectSellList(String userid) throws Exception {
+		return mypageMainMapper.selectSellList(userid);
+	}
+
+
+
 	
 }
