@@ -26,5 +26,24 @@
 		where num <=20
 		]]>
 	</select>
+	
+	<select id="selectCategoryProduct" resultType="org.zerock.domain.Product">
+		<![CDATA[
+		select * 
+		from product 
+		where ccode=#{ccode}
+		order by ino desc
+		]]>
+	</select>
+	
+	<select id="selectSearchProduct" resultType="org.zerock.domain.Product">
+		select * 
+		from product 
+		where 
+		<foreach collection="array" item="arr" separator=" and ">
+			iname like '%${arr}%' or uad like '%${arr}%'
+		</foreach>
+		order by ino desc
+	</select>
 
 </mapper>

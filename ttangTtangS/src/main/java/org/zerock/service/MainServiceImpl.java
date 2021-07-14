@@ -32,5 +32,19 @@ public class MainServiceImpl implements MainService {
 	public List<ProductToday> selectProductToday() throws Exception {
 		return mainMapper.selectProductToday();
 	}
-
+	
+	@Override
+	@Transactional
+	public List<Product> selectCategoryProduct(String ccode) throws Exception {
+		return mainMapper.selectCategoryProduct(ccode);
+	}
+	
+	@Override
+	@Transactional
+	public List<Product> selectSearchProduct(String search) throws Exception {
+		String[] searchArr = search.trim().split("");
+				
+		return mainMapper.selectSearchProduct(searchArr);
+	}
+	
 }

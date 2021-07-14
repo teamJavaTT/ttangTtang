@@ -8,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.Category;
 import org.zerock.domain.Product;
 import org.zerock.domain.ProductToday;
@@ -34,5 +36,26 @@ public class MainController {
 		
 		return "index";
 	}
+	
+	@RequestMapping(value = "/categories/{ccode}")
+	public String categoryProduct(Model model, @PathVariable("ccode") String ccode) throws Exception {
+		List<Category> category = mainService.selectCategory();
+		List<Product> categoryProduct = mainService.selectCategoryProduct(ccode);
+		
+		model.addAttribute("category", category);
+		model.addAttribute("categoryProduct", categoryProduct);
+		
+		return "product/categories";
+	}
 
+	@RequestMapping(value = "/search")
+	public String searchProduct(Model model, @RequestParam("searchName") String search) throws Exception {
+		List<Category> category = mainService.selectCategory();
+		List<Product> searchProduct = mainService.selectSearchProduct(search);
+		
+		model.addAttribute("category", category);
+		model.addAttribute("searchProduct", searchProduct);
+		
+		return "product/searchProduct";
+	}
 }

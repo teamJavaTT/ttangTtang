@@ -12,7 +12,7 @@
                         </div>
                         <ul>
 	                        <c:forEach var="category" items="${category}">
-	                        	<li><a href="categories.do?categories=${category.ccode}">${category.cname}</a></li>
+	                        	<li><a href="/categories/${category.ccode}">${category.cname}</a></li>
 							</c:forEach>
                         </ul>
                     </div>
@@ -20,8 +20,8 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="searchProduct.do">
-                            	<input type="text" placeholder="상품명,지역명 입력" name="searchProduct" value="${param.searchProduct}">
+                            <form action="/search">
+                            	<input type="text" placeholder="상품명,지역명 입력" name="searchName" value="${param.searchName}">
                                 <button type="submit" class="site-btn">검색</button>
                             </form>
                         </div>
