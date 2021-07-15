@@ -26,7 +26,7 @@
 		<!-- content-->
 		<div id="content">
 			<section class="content">
-				<form name="joinform" action="join.do" method="post">
+				<form name="joinform" action="/member/join" method="post">
 				
 					<input type="hidden" name="idCheck" id="idCheck">
 					<!-- ID -->

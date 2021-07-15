@@ -4,5 +4,5 @@
 
 <script>
 		alert("TTang TTang Market 회원가입 성공");
-		location.href = "login.do"
+		location.href = "/member/login"
 </script>

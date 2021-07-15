@@ -46,7 +46,7 @@
 					</script>
 				</c:if>
 				<%--  <c:if test="${login eq false}">--%>
-					<form action="login.do" method="post" name="loginForm">
+					<form action="/member/login" method="post" name="loginForm">
 						<div class="login-input-wrap">
 							<input placeholder="아이디를 입력하세요." name="userid" type="text"
 								value="${param.userid}"></input>
