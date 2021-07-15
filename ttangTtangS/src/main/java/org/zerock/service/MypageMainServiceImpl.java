@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.AccountDeclaration;
 import org.zerock.domain.BlockUser;
 import org.zerock.domain.Product;
+import org.zerock.domain.Secession;
 import org.zerock.mapper.MypageMainMapper;
 
 @Service
@@ -27,18 +28,21 @@ public class MypageMainServiceImpl implements MypageMainService {
 	}
 
 	
-	
 	@Override  //관심상품
 	public List<Product> selectLikeProduct(String userid) throws Exception {
 		return mypageMainMapper.selectLikeProduct(userid);
 	}
 
+	
 	@Override  //판매내역
 	public List<Product> selectSellList(String userid) throws Exception {
 		return mypageMainMapper.selectSellList(userid);
 	}
 
-
-
+	
+	@Override  //회원탈퇴
+	public List<Secession> selectDeleteForm() throws Exception {
+		return mypageMainMapper.selectDeleteForm();
+	}
 	
 }
