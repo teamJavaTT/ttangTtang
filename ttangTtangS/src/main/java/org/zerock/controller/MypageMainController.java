@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.domain.AccountDeclaration;
 import org.zerock.domain.BlockUser;
 import org.zerock.domain.Product;
+import org.zerock.domain.Secession;
 import org.zerock.service.MypageMainService;
 
 @Controller
@@ -57,7 +58,7 @@ public class MypageMainController {
 	// 관심상품
 	@RequestMapping(value = "/likeProduct")
 	public void likeProductPage(Model model) throws Exception {
-		String userid = "song127";
+		String userid = "ssmsm";
 		List<Product> likeProduct = mypagemainService.selectLikeProduct(userid);
 		model.addAttribute("likeProduct", likeProduct);
 	}
@@ -65,8 +66,17 @@ public class MypageMainController {
 	// 판매내역
 	@RequestMapping(value = "/sellcheck")
 	public void sellcheckPage(Model model) throws Exception {
-		String userid = "song127";
+		String userid = "ssmsm";
 		List<Product> sellList = mypagemainService.selectSellList(userid);
 		model.addAttribute("sellList", sellList);
 	}
+	
+	// 회원탈퇴
+		@RequestMapping(value = "/deleteForm")
+		public void deleteFormPage(Model model) throws Exception {
+
+			List<Secession> deleteForm = mypagemainService.selectDeleteForm();
+			model.addAttribute("deleteForm", deleteForm);
+		}
+	
 }
