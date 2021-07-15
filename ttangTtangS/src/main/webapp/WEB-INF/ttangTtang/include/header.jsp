@@ -81,7 +81,7 @@ function sessionCheck(){
             <ul>
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/mypage/mypageMain">MYPAGE</a></li>
-                <li><a href="adminmain.do"">Service</a></li>
+                <li><a href="/admin/adminmain"">Service</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -117,7 +117,7 @@ function sessionCheck(){
 	                                </c:when>
 	                                <c:when test="${!empty memberUser.uname}">
 	                                	<a href="/mypage/mypageMain" style="flex: 1;margin-right: 15px;">${memberUser.uname}님 </a>
-	                                	<a href="logout.do"><i class="fa fa-user"></i>로그아웃</a>
+	                                	<a href="/member/logout"><i class="fa fa-user"></i>로그아웃</a>
 	                                </c:when>
                                 </c:choose>
                             </div>
@@ -138,7 +138,7 @@ function sessionCheck(){
                         <ul>
                             <li class="active"><a href="/">Home</a></li>
                             <li><a href="/mypage/mypageMain">MYPAGE</a></li>
-              				<li><a href="adminmain.do">Service</a></li>
+              				<li><a href="/admin/adminmain">Service</a></li>
                         </ul>
                     </nav>
                 </div>

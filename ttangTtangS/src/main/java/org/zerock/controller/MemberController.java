@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -46,7 +47,7 @@ public class MemberController {
 		}		
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(Model model, HttpServletRequest req, @RequestParam("userid") String userid, @RequestParam("upw") String upw) throws Exception {
+	public String loginPost(Model model, HttpServletRequest req, HttpServletResponse res, @RequestParam("userid") String userid, @RequestParam("upw") String upw) throws Exception {
 		AES256Util aes256Util = new AES256Util();
 		Map<String, Boolean> errors = new HashMap<>();
 		model.addAttribute("errors", errors);
@@ -62,7 +63,18 @@ public class MemberController {
 			errors.put("pwdNotMatch", Boolean.TRUE);
 			return "/member/login";
 		}
-		return "/index";
+		res.sendRedirect("/");
+		return null;
+	}
+	
+	//로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public void logout(Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		HttpSession session = req.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
+		res.sendRedirect("/");
 	}
 	
 	//ȸ������
