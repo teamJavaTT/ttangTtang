@@ -29,7 +29,7 @@
 				</div>
 
 				<div class="logo-wrap">
-					<a href="index.do"> <img src="/resources/img/logo_red.png"
+					<a href="/"> <img src="/resources/img/logo_red.png"
 						style="height: auto;">
 					</a>
 				</div>
@@ -45,7 +45,7 @@
 						alert("비밀번호를 다시 확인하세요.");
 					</script>
 				</c:if>
-				<%--  <c:if test="${login eq false}">--%>
+				<c:if test="${login eq false}">
 					<form action="/member/login" method="post" name="loginForm">
 						<div class="login-input-wrap">
 							<input placeholder="아이디를 입력하세요." name="userid" type="text"
@@ -68,11 +68,11 @@
 						<span class="txt1 p-b-9"> 계정이 없으십니까? </span> <a href="/member/join"
 							class="txt3"> 회원가입 </a>
 					</div>
-			<%-- 	</c:if>--%>
+				</c:if>
 				<c:if test="${login eq true}">
 				 <h1>로그인 상태입니다.</h1><br>
 				 <div class="login-button-wrap">
-						<button onclick="location.href='index.do'">메인으로 바로가기</button>
+						<button onclick="location.href='/'">메인으로 바로가기</button>
 					</div>
 				</c:if>
 			</section>
