@@ -3,8 +3,8 @@ package org.zerock.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zerock.domain.Member;
 import org.zerock.domain.User;
+import org.zerock.dto.Member;
 import org.zerock.mapper.MemberMapper;
 
 @Service

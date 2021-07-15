@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,11 +14,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.zerock.domain.Member;
 import org.zerock.domain.User;
+import org.zerock.dto.Member;
 import org.zerock.service.LoginFailException;
 import org.zerock.service.MemberService;
 import org.zerock.service.PasswordFailException;
+
+import AES256.AES256Util;
 
 
 @Controller
@@ -29,18 +33,28 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
-	//·Î±×ÀÎ
+	//ï¿½Î±ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void loginGet(Model model) throws Exception {
+	public void loginGet(Model model, HttpServletRequest req) throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
 		
+		if(user == null) {
+			req.setAttribute("login", false);
+		}else {
+			req.setAttribute("login", true);
+		}		
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(Model model, @RequestParam("userid") String userid, @RequestParam("upw") String upw) throws Exception {
+	public String loginPost(Model model, HttpServletRequest req, @RequestParam("userid") String userid, @RequestParam("upw") String upw) throws Exception {
+		AES256Util aes256Util = new AES256Util();
 		Map<String, Boolean> errors = new HashMap<>();
 		model.addAttribute("errors", errors);
 		
 		try {
-			User user = memberService.selectById(userid, upw);
+			String upwd = aes256Util.encrypt(upw);
+			User user = memberService.selectById(userid, upwd);
+			req.getSession().setAttribute("memberUser", user);
 		} catch (LoginFailException e) {
 			errors.put("idNotMatch", Boolean.TRUE);
 			return "/member/login";
@@ -51,24 +65,26 @@ public class MemberController {
 		return "/index";
 	}
 	
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public void joinGet(Model model) {
 		
 	}
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPost(Member member,Model model) throws Exception {
+		AES256Util aes256Util = new AES256Util();
+		member.setUpw(aes256Util.encrypt(member.getUpw()));
 		memberService.insertMemberJoin(member);
 		return "/member/joinSuccess";
 	}
 	
-	//¾ÆÀÌµð Ã£±â
+	//ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½
 	@RequestMapping(value = "/idfind")
 	public void idFindPage(Model model) throws Exception {
 		
 	}
 	
-	//ºñ¹Ð¹øÈ£ Ã£±â
+	//ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½
 	@RequestMapping(value = "/passwordfind")
 	public void passwordFindPage(Model model) throws Exception {
 		

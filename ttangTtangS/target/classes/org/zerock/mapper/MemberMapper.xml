@@ -5,12 +5,9 @@
 <mapper namespace="org.zerock.mapper.MemberMapper">
 
 	<insert id="insertMemberJoin" >
-
 		INSERT INTO MEMBER
-		
 		VALUES
-		(
-		#{userid}
+		(#{userid}
 		,#{upw}
 		,#{uemail}
 		,#{uname}
@@ -22,13 +19,12 @@
 		,sysdate
 		,sysdate
 		,null
-		,1
-		)
+		,1)
 	</insert>
 	
 	<select id="selectById" resultType="org.zerock.domain.User">
 		<![CDATA[
-		select userid, upw, memberchk
+		select userid, upw, uname, memberchk
 		from member
 		where userid =#{userid}
 		]]>
