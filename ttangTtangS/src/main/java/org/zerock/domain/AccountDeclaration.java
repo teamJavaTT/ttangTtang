@@ -1,7 +1,6 @@
 package org.zerock.domain;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
@@ -11,10 +10,10 @@ import lombok.Data;
 @Data
 public class AccountDeclaration { // 신고
 
-	private BigDecimal dNo;
+	private int dNo;
 	private String userId;
 	private String duid;
 	private String dtext;
-	private Timestamp ddate;
+	private Date ddate;
 
 }

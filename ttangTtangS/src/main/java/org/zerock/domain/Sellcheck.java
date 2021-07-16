@@ -1,7 +1,6 @@
 package org.zerock.domain;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
@@ -11,7 +10,7 @@ import lombok.Data;
 @Data
 public class Sellcheck { // 판매내역
 
-	private BigDecimal iNo;
+	private int iNo;
 	private String userId;
 	private String cCode;
 	private String auctionCheck;
@@ -24,9 +23,9 @@ public class Sellcheck { // 판매내역
 	private String apriceEnd;
 	private String priceText;
 	private String imageFace;
-	private BigDecimal viewCount;
-	private Timestamp pDate;
-	private Timestamp endTime;
+	private int viewCount;
+	private Date pDate;
+	private Date endTime;
 	private String sellCheck;
 
 	

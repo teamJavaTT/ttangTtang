@@ -1,7 +1,6 @@
 package org.zerock.domain;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
@@ -11,10 +10,10 @@ import lombok.Data;
 @Data
 public class BlockUser { // 차단
 
-	private BigDecimal bNo;
+	private int bNo;
 	private String userId;
 	private String bid;
 	private String btext;
-	private Timestamp bdate;
+	private Date bdate;
 
 }

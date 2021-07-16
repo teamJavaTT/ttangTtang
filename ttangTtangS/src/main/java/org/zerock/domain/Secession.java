@@ -1,6 +1,5 @@
 package org.zerock.domain;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
@@ -10,11 +9,11 @@ import lombok.Data;
 @Data
 public class Secession { //회원탈퇴
 
-	private BigDecimal sNo;
+	private int sNo;
 	private String userId;
 	private String stext;
-	private Timestamp sdate;
-	private Timestamp bcdate;
+	private Date sdate;
+	private Date bcdate;
 	
 	
 	
