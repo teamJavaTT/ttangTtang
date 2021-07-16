@@ -14,6 +14,13 @@
 	
 	<!-- Qna -->
 	<!-- List -->
+	<!-- <select id="selectQnaList" resultType="org.zerock.domain.Qna" parameterType="org.zerock.domain.QnaPage">
+		<![CDATA[
+		select * from 
+		(select row_number() over (order by qno desc) num, A.* from qna A order by qno desc) 
+		where num between #{startPage} and #{endPage}
+		]]>
+	</select> -->
 	<select id="selectQnaList" resultType="org.zerock.domain.Qna">
 		<![CDATA[
 		select * from qna order by qNo desc
@@ -50,6 +57,18 @@
 	<select id="deleteQna">
 		<![CDATA[
 		delete from qna where qno = #{no}
+		]]>
+	</select>
+	<!-- AnswerUpdate -->
+	<select id="updateQnaAnswer">
+		<![CDATA[
+		update qna set patext = 'Y', qstext = #{qstext}, qsdate = sysdate where qno = #{qno}
+		]]>
+	</select>
+	<!-- AnswerUpdate -->
+	<select id="updateQnaReAnswer">
+		<![CDATA[
+		update qna set patext = 'N' where qno = #{qno}
 		]]>
 	</select>
 </mapper>

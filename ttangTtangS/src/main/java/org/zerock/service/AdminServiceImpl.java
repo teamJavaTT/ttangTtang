@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Notice;
 import org.zerock.domain.Qna;
+import org.zerock.domain.QnaPage;
 import org.zerock.dto.QnaColumn;
 import org.zerock.mapper.AdminMapper;
 
@@ -26,6 +27,13 @@ public class AdminServiceImpl implements AdminService {
 	public List<Qna> selectQnaList() throws Exception {
 		return adminMapper.selectQnaList();
 	}
+	
+	/*
+	 * @Override
+	 * 
+	 * @Transactional public List<QnaPage> pageMaker() throws Exception { return
+	 * adminMapper.pageMaker(); }
+	 */
 
 	@Override
 	@Transactional
@@ -49,5 +57,16 @@ public class AdminServiceImpl implements AdminService {
 	@Transactional
 	public List<Qna> deleteQna(int no) throws Exception {
 		return adminMapper.deleteQna(no);
+	}
+	
+	@Override
+	@Transactional
+	public List<QnaColumn> updateQnaAnswer(QnaColumn qnaColumn) throws Exception{
+		return adminMapper.updateQnaAnswer(qnaColumn);
+	}
+	@Override
+	@Transactional
+	public List<QnaColumn> updateQnaReAnswer(QnaColumn qnaColumn) throws Exception{
+		return adminMapper.updateQnaReAnswer(qnaColumn);
 	}
 }

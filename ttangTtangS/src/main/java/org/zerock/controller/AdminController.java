@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.Notice;
 import org.zerock.domain.Qna;
+import org.zerock.domain.QnaPage;
 import org.zerock.dto.QnaColumn;
 import org.zerock.service.AdminService;
 
@@ -30,7 +31,6 @@ public class AdminController {
 	// admin 메인
 	@RequestMapping(value = "/adminmain")
 	public void mainPage(Model model) throws Exception {
-
 	}
 
 	// ---------------------------------------------------------------------
@@ -47,6 +47,10 @@ public class AdminController {
 	public void qnaPage(Model model) throws Exception {
 		List<Qna> qna = adminService.selectQnaList();
 		model.addAttribute("qna", qna);
+		/*
+		 * List<QnaPage> qnaPage = adminService.pageMaker();
+		 * model.addAttribute("qnapage", qnaPage);
+		 */
 	}
 
 	// Qna 글쓰기
@@ -108,4 +112,19 @@ public class AdminController {
 	@RequestMapping(value = "/qnadeletesuccess", method = RequestMethod.GET)
 	public void qnaDeleteSuccessPage(Model model) throws Exception {
 	}
+	
+	// Qna 댓글달기
+	@RequestMapping(value = "/qnaAnswer", method = RequestMethod.POST)
+	public void qnaAnswerRePage(QnaColumn qnaColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		if(qnaColumn.getPatext() == "N" || qnaColumn.getPatext().equals("N")) {
+			List<QnaColumn> qna = adminService.updateQnaAnswer(qnaColumn);
+			model.addAttribute("qna", qna);
+		}else {
+			List<QnaColumn> qna = adminService.updateQnaReAnswer(qnaColumn);
+			model.addAttribute("qna", qna);
+		}
+
+		res.sendRedirect("/admin/qnaread?no="+qnaColumn.getQno());
+	}
+	
 }

@@ -48,13 +48,13 @@
 											<tr>
 												<td colspan="4">
 													<c:if test="${qnaPage.startPage > 10}">
-														<a href="qnalist.do?pageNo=${qnaPage.startPage - 10}">[이전]</a>
+														<a href="qna?pageNo=${qnaPage.startPage - 10}">[이전]</a>
 													</c:if>
 													<c:forEach var="pNo" begin="${qnaPage.startPage}" end="${qnaPage.endPage}">
-														<a href="qnalist.do?pageNo=${pNo}">[${pNo}]</a>
+														<a href="qna?pageNo=${pNo}">[${pNo}]</a>
 													</c:forEach>
 													<c:if test="${qnaPage.endPage < qnaPage.totalPages}">
-														<a href="qnalist.do?pageNo=${qnaPage.startPage + 10}">[다음]</a>
+														<a href="qna?pageNo=${qnaPage.startPage + 10}">[다음]</a>
 													</c:if>
 												</td>
 											</tr>
