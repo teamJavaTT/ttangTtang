@@ -38,9 +38,8 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGet(Model model, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-		
-		if(user == null) {
+
+		if(session.getAttribute("memberUser") == null) {
 			req.setAttribute("login", false);
 		}else {
 			req.setAttribute("login", true);
