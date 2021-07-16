@@ -27,7 +27,7 @@
 											</tr>
 										</thead>
 										<tbody>
-										<c:forEach var="qna" items="${qna}">
+										<c:forEach var="qna" items="${qnaPage}">
 											<tr>
 												<!-- 번호 -->
 												<td>${qna.qno}</td>
@@ -44,7 +44,7 @@
 												<!--  작성일자  -->
 												<td>${qna.qdate}</td>
 											</tr>
-										</c:forEach>
+										
 											<tr>
 												<td colspan="4">
 													<c:if test="${qnaPage.startPage > 10}">
@@ -59,6 +59,7 @@
 												</td>
 											</tr>
 										</tbody>
+										</c:forEach>
 									</table>
 									<table>
 										<tr>

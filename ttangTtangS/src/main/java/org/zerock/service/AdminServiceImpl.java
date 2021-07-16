@@ -24,8 +24,8 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	@Transactional
-	public List<Qna> selectQnaList() throws Exception {
-		return adminMapper.selectQnaList();
+	public List<QnaPage> selectQnaList(int startNo, int endNo) throws Exception {
+		return adminMapper.selectQnaList(startNo,endNo);
 	}
 	
 	/*

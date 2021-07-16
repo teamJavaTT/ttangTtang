@@ -7,8 +7,9 @@
 	<!-- Notice -->
 	<select id="selectNoticeList" resultType="org.zerock.domain.Notice">
 		<![CDATA[
-		select * from notice order by mNo desc
-		
+		select * from 
+		(select row_number() over (order by qno desc) num, A.* from qna A order by qno desc) 
+		where num between #{startNo} and #{endNo}
 		]]>
 	</select>
 	
@@ -16,6 +17,8 @@
 	<!-- List -->
 	<!-- <select id="selectQnaList" resultType="org.zerock.domain.Qna" parameterType="org.zerock.domain.QnaPage">
 		<![CDATA[
+		select * from notice order by mNo desc
+		
 		select * from 
 		(select row_number() over (order by qno desc) num, A.* from qna A order by qno desc) 
 		where num between #{startPage} and #{endPage}
@@ -23,7 +26,9 @@
 	</select> -->
 	<select id="selectQnaList" resultType="org.zerock.domain.Qna">
 		<![CDATA[
-		select * from qna order by qNo desc
+		select * from 
+		(select row_number() over (order by qno desc) num, A.* from qna A order by qno desc) 
+		where num between #{startNo} and #{endNo}
 		]]>
 	</select>
 	<!-- Write -->

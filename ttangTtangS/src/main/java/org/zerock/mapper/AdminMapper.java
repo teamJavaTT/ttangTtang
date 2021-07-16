@@ -10,7 +10,7 @@ import org.zerock.dto.QnaColumn;
 public interface AdminMapper {
 	List<Notice> selectNoticeList() throws Exception;
 	// ---------------------------------------------------------------------
-	List<Qna> selectQnaList() throws Exception;
+	List<QnaPage> selectQnaList(int startNo, int endNo) throws Exception;
 
 	/* List<QnaPage> pageMaker() throws Exception; */
 	List<QnaColumn> insertQnaWrite(QnaColumn qnaColumn) throws Exception;
