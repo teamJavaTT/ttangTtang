@@ -30,7 +30,7 @@
             <div class="row featured__filter">
 				<c:forEach var="allProduct" items="${categoryProduct}">
 	    			<div class="col-lg-3 col-md-4 col-sm-6 mix allProduct">
-	                    <div class="featured__item">
+	                    <div class="featured__item" onclick="location.href='/product/productDetail?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
 	                        <div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface}">
 	                            <ul class="featured__item__pic__hover">
 	                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -58,7 +58,7 @@
 				<c:forEach var="norProduct" items="${categoryProduct}">
 	                <c:if test="${norProduct.auctioncheck == 'N'}">
 		    			<div class="col-lg-3 col-md-4 col-sm-6 mix norProduct" style="display: none;">
-		                    <div class="featured__item">
+		                    <div class="featured__item" onclick="location.href='/product/productDetail?ino=${norProduct.ino}&aucChk=${norProduct.auctioncheck}'">
 		                        <div class="featured__item__pic set-bg" data-setbg="${norProduct.imageface}">
 		                            <ul class="featured__item__pic__hover">
 		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -77,7 +77,7 @@
 				<c:forEach var="aucProduct" items="${categoryProduct}">
 	                <c:if test="${aucProduct.auctioncheck == 'Y'}">
 		    			<div class="col-lg-3 col-md-4 col-sm-6 mix aucProduct" style="display: none;">
-		                    <div class="featured__item">
+		                    <div class="featured__item" onclick="location.href='/product/productDetail?ino=${aucProduct.ino}&aucChk=${aucProduct.auctioncheck}'">
 		                        <div class="featured__item__pic set-bg" data-setbg="${aucProduct.imageface}">
 		                            <ul class="featured__item__pic__hover">
 		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -96,7 +96,7 @@
 				<c:forEach var="buyProduct" items="${categoryProduct}">
 	                <c:if test="${buyProduct.auctioncheck == 'B'}">
 		    			<div class="col-lg-3 col-md-4 col-sm-6 mix buyProduct" style="display: none;">
-		                    <div class="featured__item">
+		                    <div class="featured__item" onclick="location.href='/product/productDetail?ino=${buyProduct.ino}'">
 		                        <div class="featured__item__pic set-bg" data-setbg="${buyProduct.imageface}">
 		                            <ul class="featured__item__pic__hover">
 		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>

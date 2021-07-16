@@ -119,7 +119,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-6 mix aucProduct"
 						style="display: none;">
 						<div class="featured__item"
-							onclick="location.href='productDetail?ino=${aucProduct.ino}&aucChk=${aucProduct.auctioncheck}'">
+							onclick="location.href='/product/productDetail?ino=${aucProduct.ino}&aucChk=${aucProduct.auctioncheck}'">
 							<div class="featured__item__pic set-bg"
 								data-setbg="${aucProduct.imageface}">
 								<ul class="featured__item__pic__hover">
