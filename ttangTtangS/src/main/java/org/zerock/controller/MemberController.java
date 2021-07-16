@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,7 +35,7 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
-	//�α���
+	//로그인
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGet(Model model, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
@@ -76,7 +77,7 @@ public class MemberController {
 		res.sendRedirect("/");
 	}
 	
-	//ȸ������
+	//회원가입
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public void joinGet(Model model) {
 		
@@ -89,13 +90,31 @@ public class MemberController {
 		return "/member/joinSuccess";
 	}
 	
-	//���̵� ã��
-	@RequestMapping(value = "/idfind")
-	public void idFindPage(Model model) throws Exception {
-		
+	// 아이디 찾기
+	@RequestMapping(value = "/idfind", method = RequestMethod.GET)
+	public void idFindPage(Model model) {
+
 	}
+	@RequestMapping(value = "/idfind", method = RequestMethod.POST)
+	public String idFindPage(@RequestParam("uname") String uname, @RequestParam("uemail") String uemail, Model model)
+			throws Exception {
+		String selectIdFind = memberService.selectIdFind(uname, uemail);		
+		model.addAttribute("selectIdFind",selectIdFind);
+
+			return "/member/idfind";
+	}
+	/*
+	 * @RequestMapping(value = "/idfind", method = RequestMethod.POST) public String
+	 * idFindPage(@PathVariable("uname") String uname, @PathVariable("uemail")
+	 * String uemail, Model model) throws Exception { Member selectIdFind =
+	 * memberService.selectIdFind(uname, uemail);
+	 * model.addAttribute("selectIdFind",selectIdFind);
+	 * 
+	 * return "/member/idfind"; }
+	 */
+
 	
-	//��й�ȣ ã��
+	//비밀번호찾기
 	@RequestMapping(value = "/passwordfind")
 	public void passwordFindPage(Model model) throws Exception {
 		

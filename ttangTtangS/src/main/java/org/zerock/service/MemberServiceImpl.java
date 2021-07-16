@@ -9,27 +9,35 @@ import org.zerock.mapper.MemberMapper;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-@Autowired
-private MemberMapper memberMapper;
+	@Autowired
+	private MemberMapper memberMapper;
+
 	@Override
 	@Transactional
 	public void insertMemberJoin(Member member) throws Exception {
 		memberMapper.insertMemberJoin(member);
 	}
-	
-		@Override
-		@Transactional
-		public User selectById(String userid, String upw) throws Exception {
-			User user = memberMapper.selectById(userid);
-			
-			if(user == null) {
-				throw new LoginFailException();
-			}
-			if(!user.matchPassword(upw)) {
-				throw new PasswordFailException();
-			}
-			return user;
+
+	@Override
+	@Transactional
+	public User selectById(String userid, String upw) throws Exception {
+		User user = memberMapper.selectById(userid);
+
+		if (user == null) {
+			throw new LoginFailException();
 		}
+		if (!user.matchPassword(upw)) {
+			throw new PasswordFailException();
+		}
+		return user;
+	}
 
+	@Override
+	@Transactional
+	public String selectIdFind(String uname, String uemail) throws Exception {
+		String userid = memberMapper.selectIdFind(uname, uemail);
+		return userid;
 
+	}
+	
 }

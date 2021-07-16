@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.MemberMapper">
 
-	<insert id="insertMemberJoin" >
+	<insert id="insertMemberJoin">
 		INSERT INTO MEMBER
 		VALUES
 		(#{userid}
@@ -21,12 +21,19 @@
 		,null
 		,1)
 	</insert>
-	
+
 	<select id="selectById" resultType="org.zerock.domain.User">
 		<![CDATA[
 		select userid, upw, uname, memberchk
 		from member
 		where userid =#{userid}
+		]]>
+	</select>
+
+	<select id="selectIdFind"  parameterType="map" resultType="string">
+		<![CDATA[
+		select userid from member where  uname=#{uname} and
+		 uemail=#{uemail}
 		]]>
 	</select>
 
