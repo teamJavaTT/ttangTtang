@@ -1,4 +1,5 @@
 package org.zerock.domain;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -8,21 +9,12 @@ import lombok.Data;
 
 @Component
 @Data
-public class BlockUser { //차단
+public class BlockUser { // 차단
 
 	private BigDecimal bNo;
 	private String userId;
 	private String bid;
 	private String btext;
 	private Timestamp bdate;
-	
-	
-	public BlockUser(BigDecimal bNo, String userId, String bid, String btext, Timestamp bdate) {
-		this.bNo = bNo;
-		this.userId = userId;
-		this.bid = bid;
-		this.btext = btext;
-		this.bdate = bdate;
-	}
 
 }

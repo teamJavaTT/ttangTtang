@@ -29,26 +29,6 @@ public class Sellcheck { // 판매내역
 	private Timestamp endTime;
 	private String sellCheck;
 
-	public Sellcheck(BigDecimal iNo, String userId, String cCode, String auctionCheck, String uad, String iName,
-			String price, String minPrice, String maxPrice, String apriceNow, String apriceEnd, String priceText,
-			String imageFace, BigDecimal viewCount, Timestamp pDate, Timestamp endTime, String sellCheck) {
-		this.iNo = iNo;
-		this.userId = userId;
-		this.cCode = cCode;
-		this.auctionCheck = auctionCheck;
-		this.uad = uad;
-		this.iName = iName;
-		this.price = price;
-		this.minPrice = minPrice;
-		this.maxPrice = maxPrice;
-		this.apriceNow = apriceNow;
-		this.apriceEnd = apriceEnd;
-		this.priceText = priceText;
-		this.imageFace = imageFace;
-		this.viewCount = viewCount;
-		this.pDate = pDate;
-		this.endTime = endTime;
-		this.sellCheck = sellCheck;
-	}
+	
 
 }
