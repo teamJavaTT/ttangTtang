@@ -58,7 +58,7 @@ public class AdminController {
 	@RequestMapping(value = "/qnawrite", method = RequestMethod.POST)
 	public void qnaWritePage(QnaColumn qnaColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		
-		List<QnaColumn> qna = adminService.selectQnaWrite(qnaColumn);
+		List<QnaColumn> qna = adminService.insertQnaWrite(qnaColumn);
 		model.addAttribute("qna", qna);
 
 		res.sendRedirect("/admin/qnasuccess");
@@ -94,4 +94,18 @@ public class AdminController {
 		res.sendRedirect("/admin/qnasuccess");
 	}
 	
+	// Qna 글 삭제
+	@RequestMapping(value = "/qnadelete")
+	public void qnaDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Qna> qna = adminService.deleteQna(no);
+		model.addAttribute("qna", qna);
+		
+		res.sendRedirect("/admin/qnadeletesuccess");
+	}
+	
+	// Qna 글삭제완료
+	@RequestMapping(value = "/qnadeletesuccess", method = RequestMethod.GET)
+	public void qnaDeleteSuccessPage(Model model) throws Exception {
+	}
 }

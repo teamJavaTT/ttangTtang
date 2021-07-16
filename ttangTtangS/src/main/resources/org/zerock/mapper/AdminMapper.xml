@@ -20,7 +20,7 @@
 		]]>
 	</select>
 	<!-- Write -->
-	<select id="selectQnaWrite">
+	<select id="insertQnaWrite">
 		<![CDATA[
 		insert into qna values
 		(qna_seq.NEXTVAL
@@ -44,6 +44,12 @@
 	<select id="updateQnaModify">
 		<![CDATA[
 		update qna set qtit = #{qtit}, qtext = #{qtext}, qpw = #{qpw} where qno = #{qno}
+		]]>
+	</select>
+	<!-- Delete -->
+	<select id="deleteQna">
+		<![CDATA[
+		delete from qna where qno = #{no}
 		]]>
 	</select>
 </mapper>

@@ -1,8 +1,5 @@
 package org.zerock.dto;
 
-
-import java.math.BigDecimal;
-
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
@@ -11,7 +8,7 @@ import lombok.Data;
 @Data
 public class QnaColumn {
 
-	private BigDecimal qno;
+	private int qno;
 	private String userid;
 	private String qtit;
 	private String qtext;

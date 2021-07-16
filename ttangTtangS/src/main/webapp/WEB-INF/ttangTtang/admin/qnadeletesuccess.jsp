@@ -4,5 +4,5 @@
 
 <script>
 		alert("성공적으로 삭제했습니다.");
-		location.href = "qnalist.do"
+		location.href = "qna"
 </script>

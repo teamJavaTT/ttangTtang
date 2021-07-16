@@ -96,6 +96,6 @@
 </section>
 
 
-<script src="/ttangTtang/js/admin/main.js"></script>
+<script src="/resources/js/admin/main.js"></script>
 
 <%@ include file="../include/footer.jsp"%>

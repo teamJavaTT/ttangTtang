@@ -29,8 +29,8 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	@Transactional
-	public List<QnaColumn> selectQnaWrite(QnaColumn qnaColumn) throws Exception {
-		return adminMapper.selectQnaWrite(qnaColumn);
+	public List<QnaColumn> insertQnaWrite(QnaColumn qnaColumn) throws Exception {
+		return adminMapper.insertQnaWrite(qnaColumn);
 	}
 
 	@Override
@@ -38,11 +38,16 @@ public class AdminServiceImpl implements AdminService {
 	public List<Qna> selectQnaRead(int no) throws Exception {
 		return adminMapper.selectQnaRead(no);
 	}
-	@Override
 	
+	@Override
 	@Transactional
 	public List<QnaColumn> updateQnaModify(QnaColumn qnaColumn) throws Exception {
 		return adminMapper.updateQnaModify(qnaColumn);
 	}
 
+	@Override
+	@Transactional
+	public List<Qna> deleteQna(int no) throws Exception {
+		return adminMapper.deleteQna(no);
+	}
 }

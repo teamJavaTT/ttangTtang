@@ -6,7 +6,7 @@
 		var mno = $("#delNo").val();
 		var result = confirm("정말 삭제하시겠습니까?");
 		if (result) {
-			location.href = 'noticedelete.do?no=' + mno;
+			location.href = 'noticedelete?no=' + mno;
 		} else {
 			alert("취소되었습니다.");
 		}
@@ -16,7 +16,7 @@
 		var fno = $("#delNo").val();
 		var result = confirm("정말 삭제하시겠습니까?");
 		if (result) {
-			location.href = 'faqdelete.do?no=' + fno;
+			location.href = 'faqdelete?no=' + fno;
 		} else {
 			alert("취소되었습니다.");
 		}
@@ -26,7 +26,7 @@
 		var qno = $("#delNo").val();
 		var result = confirm("정말 삭제하시겠습니까?");
 		if (result) {
-			location.href = 'qnadelete.do?no=' + qno;
+			location.href = 'qnadelete?no=' + qno;
 		} else {
 			alert("취소되었습니다.");
 		}
