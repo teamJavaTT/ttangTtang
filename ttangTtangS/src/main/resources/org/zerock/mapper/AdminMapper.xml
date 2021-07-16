@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.AdminMapper">
+
+	<!-- Notice -->
+	<select id="selectNoticeList" resultType="org.zerock.domain.Notice">
+		<![CDATA[
+		select * from notice order by mNo desc
+		
+		]]>
+	</select>
+	
+	<!-- Qna -->
+	<!-- List -->
+	<select id="selectQnaList" resultType="org.zerock.domain.Qna">
+		<![CDATA[
+		select * from qna order by qNo desc
+		]]>
+	</select>
+	<!-- Write -->
+	<select id="selectQnaWrite">
+		<![CDATA[
+		insert into qna values
+		(qna_seq.NEXTVAL
+		,#{userid}
+		,#{qtit}
+		,#{qtext}
+		,sysdate
+		,'N'
+		,null
+		,null
+		,#{qpw})
+		]]>
+	</select>
+	<!-- Read -->
+	<select id="selectQnaRead" resultType="org.zerock.domain.Qna">
+		<![CDATA[
+		select * from qna where qno = #{no}
+		]]>
+	</select>
+	<!-- Update -->
+	<select id="updateQnaModify">
+		<![CDATA[
+		update qna set qtit = #{qtit}, qtext = #{qtext}, qpw = #{qpw} where qno = #{qno}
+		]]>
+	</select>
+</mapper>

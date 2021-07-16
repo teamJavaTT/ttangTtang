@@ -2,7 +2,7 @@
 <%request.setCharacterEncoding("UTF-8");%>
 
 <%@ include file="header.jsp"%>
-<link rel="stylesheet" href="/ttangTtang/css/admin/adminmain.css">
+<link rel="stylesheet" href="/resources/css/admin/adminmain.css">
 <!-- Hero Section Begin -->
 <section class="hero">
    <div class="container">
@@ -15,8 +15,8 @@
                   <i class="fa fa-bars"></i> <span>All departments</span>
                </div>
                <ul>
-                  <li><a href="noticelist.do">공지사항</a></li>
-                  <li><a href="qnalist.do">Q&A</a></li>
+                  <li><a href="notice">공지사항</a></li>
+                  <li><a href="qna">Q&A</a></li>
                   <li><a href="faqlist.do">FAQ</a></li>
                   <c:if test="${memberUser.userid eq 'admin'}">
                   <li><a href="userinfolist.do">사용자 회원정보 관리</a></li>
