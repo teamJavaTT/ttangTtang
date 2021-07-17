@@ -22,8 +22,8 @@
 		]]>
 	</select>
 
-	 <select id="selectLikeProduct"
-      resultType="org.zerock.domain.Product">
+	<select id="selectLikeProduct"
+		resultType="org.zerock.domain.Product">
       <![CDATA[
       select * 
       from product 
@@ -33,20 +33,24 @@
          where userid=#{userid}
       )
       ]]>
-   </select>
-
-
-	<select id="selectSellList"
-		resultType="org.zerock.domain.Product">
-		<![CDATA[
-		select * 
-		from product 
-		where userid = #{userid}
-		order by ino desc
-		]]>
 	</select>
 
-<select id="selectDeleteForm"
+
+	<select id="selectSellList" parameterType="map" 
+		resultType="org.zerock.domain.Product">
+
+		select *
+		from product
+		where userid=#{userid}
+		
+		<if test='!sellchk.equals("A")'>
+			and sellcheck=#{sellchk}
+		</if>
+		order by ino desc
+
+	</select>
+
+	<select id="selectDeleteForm"
 		resultType="org.zerock.domain.Secession">
 		<![CDATA[
 		select * 
@@ -54,5 +58,7 @@
 		order by sno desc
 		]]>
 	</select>
+
+
 
 </mapper>

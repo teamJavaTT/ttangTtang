@@ -35,8 +35,8 @@ public class MypageMainServiceImpl implements MypageMainService {
 
 	
 	@Override  //판매내역
-	public List<Product> selectSellList(String userid) throws Exception {
-		return mypageMainMapper.selectSellList(userid);
+	public List<Product> selectSellList(String userid, String sellchk) throws Exception {
+		return mypageMainMapper.selectSellList(userid, sellchk);
 	}
 
 	
@@ -44,5 +44,6 @@ public class MypageMainServiceImpl implements MypageMainService {
 	public List<Secession> selectDeleteForm() throws Exception {
 		return mypageMainMapper.selectDeleteForm();
 	}
+	
 	
 }
