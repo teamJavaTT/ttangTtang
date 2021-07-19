@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.Notice;
 import org.zerock.domain.Qna;
 import org.zerock.domain.QnaPage;
@@ -24,8 +25,16 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	@Transactional
-	public List<QnaPage> selectQnaList(int startNo, int endNo) throws Exception {
-		return adminMapper.selectQnaList(startNo,endNo);
+	// 목록 + 페이징
+	public List<Qna> selectQnaList(Criteria cri) throws Exception {
+		return adminMapper.selectQnaList(cri);
+	}
+	
+	@Override
+	@Transactional
+	// 게시물 총 갯수
+	public int selectQnaListCount() throws Exception{
+		return adminMapper.selectQnaListCount();
 	}
 	
 	/*

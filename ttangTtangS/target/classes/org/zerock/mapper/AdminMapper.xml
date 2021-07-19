@@ -24,13 +24,20 @@
 		where num between #{startPage} and #{endPage}
 		]]>
 	</select> -->
-	<select id="selectQnaList" resultType="org.zerock.domain.Qna">
+	<select id="selectQnaList" resultType="org.zerock.domain.Qna" parameterType="org.zerock.domain.Criteria">
 		<![CDATA[
 		select * from 
 		(select row_number() over (order by qno desc) num, A.* from qna A order by qno desc) 
-		where num between #{startNo} and #{endNo}
+		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
+	
+	<select id="selectQnaListCount" resultType="int">
+		<![CDATA[
+		select count(qno) from qna where qno > 0
+		]]>
+	</select>
+	
 	<!-- Write -->
 	<select id="insertQnaWrite">
 		<![CDATA[

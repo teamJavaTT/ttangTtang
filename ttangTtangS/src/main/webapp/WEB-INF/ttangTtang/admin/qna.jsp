@@ -44,22 +44,25 @@
 												<!--  작성일자  -->
 												<td>${qna.qdate}</td>
 											</tr>
-										
+										</c:forEach>
 											<tr>
 												<td colspan="4">
-													<c:if test="${qnaPage.startPage > 10}">
-														<a href="qna?pageNo=${qnaPage.startPage - 10}">[이전]</a>
-													</c:if>
-													<c:forEach var="pNo" begin="${qnaPage.startPage}" end="${qnaPage.endPage}">
-														<a href="qna?pageNo=${pNo}">[${pNo}]</a>
-													</c:forEach>
-													<c:if test="${qnaPage.endPage < qnaPage.totalPages}">
-														<a href="qna?pageNo=${qnaPage.startPage + 10}">[다음]</a>
-													</c:if>
+												<ul style="text-align:center;">
+													<c:if test="${pageMaker.prev}">
+													   <li style="display:inline;"><a href="qna?page=${pageMaker.startPage - 1}">이전</a></li>
+													  </c:if> 
+													  
+													  <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+													   <li style="display:inline;"><a href="qna?page=${(idx)}">${idx}</a></li>
+													  </c:forEach>
+													    
+													  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+													   <li style="display:inline;"><a href="qna?page=${pageMaker.endPage + 1}">다음</a></li>
+													  </c:if>
+													  </ul> 
 												</td>
 											</tr>
 										</tbody>
-										</c:forEach>
 									</table>
 									<table>
 										<tr>

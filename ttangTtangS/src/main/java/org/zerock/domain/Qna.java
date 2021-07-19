@@ -9,7 +9,7 @@ import lombok.Data;
 @Component
 @Data
 public class Qna {
-	
+	private int num;
 	private int qno;
 	private String userid;
 	private String qtit;

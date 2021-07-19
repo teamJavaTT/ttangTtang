@@ -14,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.Notice;
+import org.zerock.domain.PageMaker;
 import org.zerock.domain.Qna;
 import org.zerock.domain.QnaPage;
 import org.zerock.dto.QnaColumn;
@@ -43,23 +45,21 @@ public class AdminController {
 
 	// ---------------------------------------------------------------------
 	// Qna 메인
-	@RequestMapping(value = "/qna")
-	public void qnaPage(Model model,@RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
-		if(numVal.equals("0")) {
-			numVal = null;
-		}
-		String pageVal = numVal;
-		int pageNo = 1;
-		if(pageVal != null) {
-			pageNo = Integer.parseInt(pageVal);
-		}
-		int size = 10;
-		int startNo = (pageNo - 1) * size + 1;
-		int endNo = startNo + 9;
+	@RequestMapping(value = "/qna", method = RequestMethod.GET)
+	public void qnaPage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+		/*
+		 * if(numVal.equals("0")) { numVal = null; } String pageVal = numVal; int pageNo
+		 * = 1; if(pageVal != null) { pageNo = Integer.parseInt(pageVal); } int size =
+		 * 10; int startNo = (pageNo - 1) * size + 1; int endNo = startNo + 9;
+		 */
 		/* int total = adminService.selectCount(); */
-		List<QnaPage> qna = adminService.selectQnaList(startNo,endNo);
-		/* new QnaPage(total, pageNo, size, qna); */
+		List<Qna> qna = adminService.selectQnaList(cri);
 		model.addAttribute("qnaPage", qna);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.selectQnaListCount());
+		model.addAttribute("pageMaker", pageMaker);
 		 
 	}
 
