@@ -18,7 +18,7 @@
 						<i class="fa fa-bars"></i> <span>All departments</span>
 					</div>
 					<ul>
-						<li><a href="memberEdit">회원정보 수정</a></li>
+						<li><a href="/member/memberEdit">회원정보 수정</a></li>
 						<li><a href="likeProduct">관심상품</a></li>
 						<li><a href="alimList">알림내역</a></li>
 						<li><a href="sellcheck">내 판매 내역</a></li>

@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,7 +53,7 @@ public class MemberController {
 		
 		try {
 			String upwd = aes256Util.encrypt(upw);
-			User user = memberService.selectById(userid, upwd);
+			User user = memberService.memberLogin(userid, upwd);
 			req.getSession().setAttribute("memberUser", user);
 		} catch (LoginFailException e) {
 			errors.put("idNotMatch", Boolean.TRUE);
@@ -103,16 +102,6 @@ public class MemberController {
 
 			return "/member/idfind";
 	}
-	/*
-	 * @RequestMapping(value = "/idfind", method = RequestMethod.POST) public String
-	 * idFindPage(@PathVariable("uname") String uname, @PathVariable("uemail")
-	 * String uemail, Model model) throws Exception { Member selectIdFind =
-	 * memberService.selectIdFind(uname, uemail);
-	 * model.addAttribute("selectIdFind",selectIdFind);
-	 * 
-	 * return "/member/idfind"; }
-	 */
-
 	
 	//비밀번호찾기
 	@RequestMapping(value = "/passwordfind")
@@ -120,8 +109,38 @@ public class MemberController {
 		
 	}
 	
+	//회원 정보 수정
+		@RequestMapping(value = "/memberEdit", method = RequestMethod.GET)
+		public String updateMemberPage(Model model,HttpServletRequest req)  throws Exception {
+			HttpSession session = req.getSession(false);
+			User user = (User) session.getAttribute("memberUser");
+			
+			User member = memberService.selectById(user.getUserid());
+			 model.addAttribute("member", member);
+			return "/member/memberEdit";
+			
+		}
+		@RequestMapping(value = "/memberEdit", method = RequestMethod.POST)
+		public String memberEditPage(Member member, Model model, HttpServletRequest req) throws Exception {
+			AES256Util aes256Util = new AES256Util();
+			
+			HttpSession session = req.getSession(false);
+			User user = (User) session.getAttribute("memberUser");
+			member.setUserid(user.getUserid());
+			
+			if(member.getUpw() == null || member.getUpw() == "") {
+				member.setUpw("");
+			}else {
+				member.setUpw(aes256Util.encrypt(member.getUpw()));
+			}
+			memberService.updateMember(member);
+			
+			return "/member/editSuccess";		
+		}
+		
+	
 	
 }
-		
+
 		
 		

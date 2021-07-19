@@ -12,5 +12,8 @@ public interface MemberMapper {
 
 	String selectIdFind(@Param("uname") String uname, @Param("uemail") String uemail) throws Exception;
 	
+	 void updateMember(Member member) throws Exception;
+		
+		
 	
 }

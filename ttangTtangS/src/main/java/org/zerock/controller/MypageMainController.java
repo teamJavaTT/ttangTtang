@@ -112,10 +112,10 @@ public class MypageMainController {
 	}
 
 	// 회원정보 수정
-	@RequestMapping(value = "/memberEdit")
-	public String memberEditPage(Model model) throws Exception {
-		return "member/memberEdit";
-	}
+	/*
+	 * @RequestMapping(value = "/memberEdit") public String memberEditPage(Model
+	 * model) throws Exception { return "member/memberEdit"; }
+	 */
 
 	// 고객센터
 	@RequestMapping(value = "/adminmain")

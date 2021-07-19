@@ -20,8 +20,15 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	@Transactional
-	public User selectById(String userid, String upw) throws Exception {
+	public User selectById(String userid) throws Exception {
 		User user = memberMapper.selectById(userid);
+		return user;
+	}
+	
+	@Override
+	@Transactional
+	public User memberLogin(String userid, String upw) throws Exception {
+		User user = selectById(userid);
 
 		if (user == null) {
 			throw new LoginFailException();
@@ -38,6 +45,14 @@ public class MemberServiceImpl implements MemberService {
 		String userid = memberMapper.selectIdFind(uname, uemail);
 		return userid;
 
+	}
+
+	@Override
+	@Transactional
+	public void updateMember(Member member) throws Exception {
+		 memberMapper.updateMember(member);
+		
+		
 	}
 	
 }

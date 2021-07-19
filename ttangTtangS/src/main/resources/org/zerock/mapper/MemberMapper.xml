@@ -24,17 +24,35 @@
 
 	<select id="selectById" resultType="org.zerock.domain.User">
 		<![CDATA[
-		select userid, upw, uname, memberchk
+		select *
 		from member
 		where userid =#{userid}
 		]]>
 	</select>
 
-	<select id="selectIdFind"  parameterType="map" resultType="string">
+	<select id="selectIdFind" parameterType="map"
+		resultType="string">
 		<![CDATA[
 		select userid from member where  uname=#{uname} and
 		 uemail=#{uemail}
 		]]>
 	</select>
 
+	<update id="updateMember" >
+<![CDATA[
+update member set
+]]> 
+<if test='upw != ""'>
+upw = #{upw},
+</if>
+<![CDATA[
+uemail =#{uemail},
+phone = #{phone},
+address1=#{address1},
+address2=#{address2},
+address3=#{address3},
+updatetime=sysdate
+where userid = #{userid}
+]]>
+	</update>
 </mapper>
