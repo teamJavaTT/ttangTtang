@@ -104,9 +104,18 @@ public class MemberController {
 	}
 	
 	//비밀번호찾기
-	@RequestMapping(value = "/passwordfind")
+	@RequestMapping(value = "/passwordfind", method = RequestMethod.GET)
 	public void passwordFindPage(Model model) throws Exception {
 		
+	}
+	@RequestMapping(value = "/passwordfind", method = RequestMethod.POST)
+	public String passwordFindPage(@RequestParam("userid") String userid,@RequestParam("uname") String uname, @RequestParam("uemail") String uemail, Model model,HttpServletRequest req)
+			throws Exception {
+		req.setCharacterEncoding("utf-8");
+		String selectPasswordFind = memberService.selectPasswordFind(userid, uname, uemail);		
+		model.addAttribute("selectPasswordFind",selectPasswordFind);
+
+			return  "/member/passwordfind";
 	}
 	
 	//회원 정보 수정

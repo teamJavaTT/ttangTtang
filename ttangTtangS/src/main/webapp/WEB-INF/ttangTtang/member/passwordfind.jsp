@@ -28,12 +28,12 @@
 		</div>
         
 		<div class="card-body">
-      <form action="passwordFind.do" class="form-signin" method="POST">
+      <form action="/member/passwordfind" class="form-signin" method="POST">
       <p class="text2"> ${findpassword2}</p>
         <input type="text" name="userid" id="userid" class="form-control" placeholder="아이디" required><br>
         <input type="text" name="uname" id="uname" class="form-control" placeholder="이름" required><BR>
         <input type="email" name="uemail" id="uemail" class="form-control" placeholder="이메일" required><br>
-        <p class="check" id="check">비밀번호 : ${passwordfind}</p><br/>
+        <p class="check" id="check">비밀번호 : ${selectPasswordFind}</p><br/>
         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호 찾기</button>
       </form>
       
@@ -51,8 +51,8 @@
 	  	//아이디 정규식
 		var idJ = /^[a-z0-9]{5,20}$/;
 		
-  		$("#member_id").focusout(function(){
-	     if($('#member_id').val() == ""){
+  		$("#userid").focusout(function(){
+	     if($('#userid').val() == ""){
 	   		$('#checks').text('아이디를 입력해주세요.');
 	   	  	$('#checks').css('color', 'red');
 	     }
@@ -65,15 +65,15 @@
   		}
   		 });
   		
-  		$("#name").focusout(function(){
-	     if($('#name').val() == ""){
+  		$("#uname").focusout(function(){
+	     if($('#uname').val() == ""){
 	   		$('#checks').text('이름을 입력해주세요.');
 	   	  	$('#checks').css('color', 'red');
 	     }
 	     });
 	     
-  		$("#email").focusout(function(){
-	     if($('#email').val() == ""){
+  		$("#uemail").focusout(function(){
+	     if($('#uemail').val() == ""){
 	   		$('#checks').text('이메일을 입력해주세요');
 	   	  	$('#checks').css('color', 'red');
 	     }

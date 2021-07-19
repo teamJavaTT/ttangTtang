@@ -55,4 +55,12 @@ updatetime=sysdate
 where userid = #{userid}
 ]]>
 	</update>
+	
+	<select id="selectPasswordFind" parameterType="map"
+		resultType="string">
+		<![CDATA[
+		select upw from member where userid=#{userid} and uname=#{uname} and
+		 uemail=#{uemail}
+		]]>
+	</select>
 </mapper>

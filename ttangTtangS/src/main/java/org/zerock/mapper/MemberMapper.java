@@ -6,13 +6,16 @@ import org.zerock.domain.User;
 import org.zerock.dto.Member;
 
 public interface MemberMapper {
+	//회원가입
 	void insertMemberJoin(Member member) throws Exception;
-
+	//로그인
 	User selectById(String userid) throws Exception;
-
+	//아이디찾기
 	String selectIdFind(@Param("uname") String uname, @Param("uemail") String uemail) throws Exception;
-	
+	//회원정보 수정
 	 void updateMember(Member member) throws Exception;
+	 //비밀번호찾기
+	 String selectPasswordFind(@Param("userid") String userid,@Param("uname") String uname, @Param("uemail") String uemail) throws Exception;
 		
 		
 	

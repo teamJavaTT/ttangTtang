@@ -55,4 +55,12 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 	
+	@Override
+	@Transactional
+	public String selectPasswordFind(String userid, String uname, String uemail) throws Exception {
+		String upw = memberMapper.selectPasswordFind(userid, uname, uemail);
+		return upw;
+
+	}
+	
 }

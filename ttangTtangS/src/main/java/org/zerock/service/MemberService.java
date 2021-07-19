@@ -18,6 +18,7 @@ public interface MemberService {
 	// 회원 수정
 	void updateMember(Member member) throws Exception;
 
-
+	//비밀번호 찾기
+	String selectPasswordFind(String userid, String uname, String uemail) throws Exception;
 
 }
