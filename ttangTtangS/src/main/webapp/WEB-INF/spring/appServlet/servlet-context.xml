@@ -22,4 +22,15 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="org.zerock.controller" />
+	
+	<!-- 로그인시 진입 가능 -->
+	<beans:bean id="authInterceptor" class="org.zerock.interceptor.AuthInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/mypage/*" />
+			<mapping path="/admin/qnawrite" />
+			<mapping path="/product/productWrite" />
+			<beans:ref bean="authInterceptor" />
+		</interceptor>
+	</interceptors>
 </beans:beans>
