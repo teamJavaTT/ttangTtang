@@ -22,7 +22,16 @@ select * from product where ino =#{ino}
 		where ccode=#{ccode}
 	</select>
 	<!-- Update -->
-	<select id="productModifyNor">
-	update product set iname=#{iname},ccode=#{ccode}, price =#{price} , pricetext =#{pricetext} , imageface =#{imageface} where ino = #{ino}"
-	</select>
+	<update id="productModify">
+	update product set
+	<if test='aucCHK = "N"'>
+	auctioncheck=#{auctioncheck},
+	</if>
+	 iname=#{iname},
+	 ccode=#{ccode},
+	  price =#{price} ,
+	   pricetext =#{pricetext} , 
+	   imageface =#{imageface} 
+	   where ino = #{ino}
+	</update>
 </mapper>

@@ -12,6 +12,7 @@ public interface ProductService {
 	String selectCname(String ccode) throws Exception;
 	List<AucProduct> insertAucProduct() throws Exception;
 	List<NorProduct> insertNorProduct() throws Exception;
-	ProductDetail productModify(ProductDetail productDetail) throws Exception;
+	ProductDetail productModify(int ino) throws Exception;
+
 	
 }

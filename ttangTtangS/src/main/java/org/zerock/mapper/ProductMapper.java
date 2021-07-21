@@ -11,7 +11,7 @@ public interface ProductMapper {
 	List<NorProduct> insertNorProduct() throws Exception;
 	ProductDetail selectProduct(int ino);
 	String selectCname(String ccode);
-	ProductDetail productModify() throws Exception;
+	ProductDetail productModify(int ino) throws Exception;
 
 
 

@@ -41,11 +41,11 @@ public class ProductServiceImpl implements ProductService {
 		return category;
 	}
 
+
 	@Override
 	@Transactional
-	
-	public ProductDetail productModify(ProductDetail productDetail) throws Exception {
-		return productMapper.productModify();
+	public ProductDetail productModify(int ino) throws Exception {
+		return productMapper.productModify(ino);
 	}
 
 }

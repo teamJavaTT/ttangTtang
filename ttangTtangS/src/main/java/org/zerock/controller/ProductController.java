@@ -3,8 +3,6 @@ package org.zerock.controller;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,15 +21,16 @@ public class ProductController {
 
 	@Inject
 	private ProductService productService;
+	@Inject
 	private MainService mainService;
-//	private MemberService memberService = new MemberService();
+	//private MemberService memberService = new MemberService();
 
 	// 상품등록
 	@RequestMapping(value = "/productWrite", method = RequestMethod.GET)
-	public String productWriteGet(Model model) throws Exception {
+	private String productWriteGet(Model model) throws Exception {
 		List<Category> category = mainService.selectCategory();
 		model.addAttribute("category", category);
-		// model.addAttribute("product",product);
+
 
 		return "product/productWrite";
 
@@ -88,19 +87,22 @@ public class ProductController {
 
 	// 상품수정
 	@RequestMapping(value = "/productModify", method = RequestMethod.GET)
-	public void productModifyView(Model model,@RequestParam(value = "ino",required=true,defaultValue = "0") int ino) throws Exception {
-		ProductDetail productDetail = productService.selectProduct(ino);
+	public void productModifyView(Model model,@RequestParam("ino") int ino) throws Exception {
+		ProductDetail productModify = productService.selectProduct(ino);
 		List<Category> category = mainService.selectCategory();
+		productModify.setCname(productService.selectCname(productModify.getCcode()));
 		model.addAttribute("category", category);
-		model.addAttribute("NorPro", productDetail);	
+		model.addAttribute("norPro", productModify);	
 	}
-	@RequestMapping(value = "/productModify", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/productModify", method = RequestMethod.POST)
 		public void productModifyPage(Model model, ProductDetail productDetail , HttpServletRequest req, HttpServletResponse res)throws Exception{
 	ProductDetail productModify =  productService.productModify(productDetail);	
 model.addAttribute("NorPro",productModify);
 
 res.sendRedirect("/product/productDetail");
-	}
+}
+*/
+	
 
 
 
