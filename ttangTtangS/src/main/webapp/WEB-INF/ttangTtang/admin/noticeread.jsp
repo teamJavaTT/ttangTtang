@@ -23,32 +23,31 @@
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach var="notice" items="${notice}">
 								<tr>
-									<td style="text-align: left;">번호 :	${noticeData.notice.mno}</td>
-									<td style="text-align: left;">작성일자 : ${noticeData.notice.mdate}</td>
+									<td style="text-align: left;">번호 :	${notice.mno}</td>
+									<td style="text-align: left;">작성일자 : ${notice.mdate}</td>
 								</tr>
 								<tr>
-									<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">${noticeData.notice.mtit}</td>
+									<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">${notice.mtit}</td>
 								</tr>
 								<tr style="height: 100px;">
-									<td colspan="4" style="text-align: left;">${noticeData.notice.mtext}</td>
+									<td colspan="4" style="text-align: left;">${notice.mtext}</td>
 								</tr>
-							</tbody>
+							
 							<tr>
-								<td colspan="2"><c:set
-										var="pageNo"
-										value="${empty param.pageNo ? '1' : param.pageNo}" /> <input
-									type="button" value="목록"
-									onclick="location.href='noticelist.do?pageNo=${pageNo}'">
-									<c:if test="${memberUser.userid eq 'admin'}">
-										<input type="button" value="게시글수정"
-											onclick="location.href='noticemodify.do?no=${noticeData.notice.mno}'">
-										<input type="hidden" value="${noticeData.notice.mno}"
-											id="delNo">
-										<input type="button" value="게시글삭제" id="noticeDel">
-							</c:if>
-								</td>
-							</tr>
+								<td colspan="2">
+								<c:set var="pageNo" value="${empty param.pageNo ? '1' : param.pageNo}" /> 
+												<input type="button" value="목록" onclick="location.href='notice'">
+													<c:if test="${memberUser.userid eq 'admin'}">
+														<input type="button" value="게시글수정" onclick="location.href='noticemodify?no=${notice.mno}'">
+														<input type="hidden" value="${notice.mno}" id="delNo">
+														<input type="button" value="게시글삭제" id="noticeDel">
+													</c:if>
+												</td>
+											</tr>
+							</c:forEach>
+							</tbody>
 						</table>
 					</div>
 				</div>

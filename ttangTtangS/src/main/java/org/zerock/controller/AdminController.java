@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.Faq;
 import org.zerock.domain.Notice;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.Qna;
-import org.zerock.domain.QnaPage;
+import org.zerock.dto.FaqColumn;
+import org.zerock.dto.NoticeColumn;
 import org.zerock.dto.QnaColumn;
 import org.zerock.service.AdminService;
 
@@ -30,7 +32,7 @@ public class AdminController {
 	@Inject
 	private AdminService adminService;
 
-	// admin 메인
+	// Admin 메인
 	@RequestMapping(value = "/adminmain")
 	public void mainPage(Model model) throws Exception {
 	}
@@ -38,21 +40,81 @@ public class AdminController {
 	// ---------------------------------------------------------------------
 	// Notice 메인
 	@RequestMapping(value = "/notice")
-	public void noticePage(Model model) throws Exception {
-		List<Notice> notice = adminService.selectNoticeList();
-		model.addAttribute("Notice", notice);
+	public void noticePage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+		
+		List<Notice> notice = adminService.selectNoticeList(cri);
+		model.addAttribute("noticePage", notice);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.selectNoticeListCount());
+		model.addAttribute("pageMaker", pageMaker);
+		 
 	}
+	
+	// Notice 글쓰기
+	@RequestMapping(value = "/noticewrite", method = RequestMethod.GET)
+	public void noticeWriteViewPage(Model model) throws Exception {
+	}
+	
+	@RequestMapping(value = "/noticewrite", method = RequestMethod.POST)
+	public void noticeWritePage(NoticeColumn noticeColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		noticeColumn.setMtext(noticeColumn.getMtext().replace("\r\n", "<br>"));
+		List<NoticeColumn> notice = adminService.insertNoticeWrite(noticeColumn);
+		model.addAttribute("notice", notice);
 
+		res.sendRedirect("/admin/noticesuccess");
+	}
+	
+	// Notice 글작성완료
+		@RequestMapping(value = "/noticesuccess", method = RequestMethod.GET)
+		public void noticeModifyPage(Model model) throws Exception {
+		}
+
+	// Notice 글읽기
+	@RequestMapping(value = "/noticeread")
+	public void noticeReadPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Notice> notice = adminService.selectNoticeRead(no);
+		model.addAttribute("notice", notice);
+	}
+	
+	// Notice 글수정
+	@RequestMapping(value = "/noticemodify", method = RequestMethod.GET)
+	public void noticeModifyViewPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Notice> notice = adminService.selectNoticeRead(no);
+		model.addAttribute("notice", notice);
+	}
+	
+	@RequestMapping(value = "/noticemodify", method = RequestMethod.POST)
+	public void noticeModifyPage(NoticeColumn noticeColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		noticeColumn.setMtext(noticeColumn.getMtext().replace("\r\n", "<br>"));
+		List<NoticeColumn> notice = adminService.updateNoticeModify(noticeColumn);
+		model.addAttribute("notice", notice);
+		res.sendRedirect("/admin/noticesuccess");
+	}
+	
+	// Notice 글 삭제
+	@RequestMapping(value = "/noticedelete")
+	public void noticeDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Notice> notice = adminService.deleteNotice(no);
+		model.addAttribute("notice", notice);
+		
+		res.sendRedirect("/admin/noticedeletesuccess");
+	}
+	
+	// Notice 글삭제완료
+	@RequestMapping(value = "/noticedeletesuccess", method = RequestMethod.GET)
+	public void noticeDeleteSuccessPage(Model model) throws Exception {
+	}
+	
 	// ---------------------------------------------------------------------
 	// Qna 메인
 	@RequestMapping(value = "/qna", method = RequestMethod.GET)
 	public void qnaPage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
-		/*
-		 * if(numVal.equals("0")) { numVal = null; } String pageVal = numVal; int pageNo
-		 * = 1; if(pageVal != null) { pageNo = Integer.parseInt(pageVal); } int size =
-		 * 10; int startNo = (pageNo - 1) * size + 1; int endNo = startNo + 9;
-		 */
-		/* int total = adminService.selectCount(); */
+		
 		List<Qna> qna = adminService.selectQnaList(cri);
 		model.addAttribute("qnaPage", qna);
 		
@@ -64,14 +126,13 @@ public class AdminController {
 	}
 
 	// Qna 글쓰기
-
 	@RequestMapping(value = "/qnawrite", method = RequestMethod.GET)
 	public void qnaWriteViewPage(Model model) throws Exception {
 	}
 	
 	@RequestMapping(value = "/qnawrite", method = RequestMethod.POST)
 	public void qnaWritePage(QnaColumn qnaColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
-		
+		qnaColumn.setQtext(qnaColumn.getQtext().replace("\r\n", "<br>"));
 		List<QnaColumn> qna = adminService.insertQnaWrite(qnaColumn);
 		model.addAttribute("qna", qna);
 
@@ -101,7 +162,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/qnamodify", method = RequestMethod.POST)
 	public void qnaModifyPage(QnaColumn qnaColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
-		
+		qnaColumn.setQtext(qnaColumn.getQtext().replace("\r\n", "<br>"));
 		List<QnaColumn> qna = adminService.updateQnaModify(qnaColumn);
 		model.addAttribute("qna", qna);
 
@@ -127,6 +188,7 @@ public class AdminController {
 	@RequestMapping(value = "/qnaAnswer", method = RequestMethod.POST)
 	public void qnaAnswerRePage(QnaColumn qnaColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(qnaColumn.getPatext() == "N" || qnaColumn.getPatext().equals("N")) {
+			qnaColumn.setQstext(qnaColumn.getQstext().replace("\r\n", "<br>"));
 			List<QnaColumn> qna = adminService.updateQnaAnswer(qnaColumn);
 			model.addAttribute("qna", qna);
 		}else {
@@ -136,5 +198,78 @@ public class AdminController {
 
 		res.sendRedirect("/admin/qnaread?no="+qnaColumn.getQno());
 	}
+	
 	// ---------------------------------------------------------------------
+	// Faq 메인
+	@RequestMapping(value = "/faq")
+	public void faqPage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+		
+		List<Faq> faq = adminService.selectFaqList(cri);
+		model.addAttribute("faqPage", faq);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.selectFaqListCount());
+		model.addAttribute("pageMaker", pageMaker);
+		 
+	}
+	
+	// Faq 글쓰기
+	@RequestMapping(value = "/faqwrite", method = RequestMethod.GET)
+	public void faqWriteViewPage(Model model) throws Exception {
+	}
+	
+	@RequestMapping(value = "/faqwrite", method = RequestMethod.POST)
+	public void faqWritePage(FaqColumn faqColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		faqColumn.setFtext(faqColumn.getFtext().replace("\r\n", "<br>"));
+		List<FaqColumn> faq = adminService.insertFaqWrite(faqColumn);
+		model.addAttribute("faq", faq);
+
+		res.sendRedirect("/admin/faqsuccess");
+	}
+	
+	// Faq 글작성완료
+		@RequestMapping(value = "/faqsuccess", method = RequestMethod.GET)
+		public void faqModifyPage(Model model) throws Exception {
+		}
+
+	// Faq 글읽기
+	@RequestMapping(value = "/faqread")
+	public void faqReadPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Faq> faq = adminService.selectFaqRead(no);
+		model.addAttribute("faq", faq);
+	}
+	
+	// Faq 글수정
+	@RequestMapping(value = "/faqmodify", method = RequestMethod.GET)
+	public void faqModifyViewPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Faq> faq = adminService.selectFaqRead(no);
+		model.addAttribute("faq", faq);
+	}
+	
+	@RequestMapping(value = "/faqmodify", method = RequestMethod.POST)
+	public void faqModifyPage(FaqColumn faqColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		faqColumn.setFtext(faqColumn.getFtext().replace("\r\n", "<br>"));
+		List<FaqColumn> faq = adminService.updateFaqModify(faqColumn);
+		model.addAttribute("faq", faq);
+		res.sendRedirect("/admin/faqsuccess");
+	}
+	
+	// Faq 글 삭제
+	@RequestMapping(value = "/faqdelete")
+	public void faqDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Faq> faq = adminService.deleteFaq(no);
+		model.addAttribute("faq", faq);
+		
+		res.sendRedirect("/admin/faqdeletesuccess");
+	}
+	
+	// Faq 글삭제완료
+	@RequestMapping(value = "/faqdeletesuccess", method = RequestMethod.GET)
+	public void faqDeleteSuccessPage(Model model) throws Exception {
+	}
+	
 }

@@ -12,7 +12,7 @@
 			<div class="wrap-table100">
 				<div class="table100">
 					<div class="box">
-						<form action="noticelist.do" method="post">
+						<form action="notice" method="post">
 							<table border="1">
 								<thead>
 									<tr>
@@ -22,13 +22,13 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="notice" items="${notice}">
+									<c:forEach var="notice" items="${noticePage}">
 										<tr>
 											<!-- 번호 -->
 											<td>${notice.mno}</td>
 											<!-- 내용 -->
 											<td><a
-												href="noticeread.do?no=${notice.mno}">
+												href="noticeread?no=${notice.mno}">
 													<c:out value="${notice.mtit}" />
 											</a></td>
 											<!--  작성일자  -->
@@ -36,15 +36,21 @@
 										</tr>
 									</c:forEach>
 									<tr>
-										<td colspan="3"><c:if
-												test="${noticePage.startPage > 10}">
-												<a href="noticelist.do?pageNo=${noticePage.startPage - 10}">[이전]</a>
-											</c:if> <c:forEach var="pNo" begin="${noticePage.startPage}"
-												end="${noticePage.endPage}">
-												<a href="noticelist.do?pageNo=${pNo}">[${pNo}]</a>
-											</c:forEach> <c:if test="${noticePage.endPage < noticePage.totalPages}">
-												<a href="noticelist.do?pageNo=${noticePage.startPage + 10}">[다음]</a>
-											</c:if></td>
+										<td colspan="3">
+											<ul style="text-align:center;">
+												<c:if test="${pageMaker.prev}">
+												 	<li style="display:inline;"><a href="notice?page=${pageMaker.startPage - 1}">이전</a></li>
+												</c:if> 
+														  
+												<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+													<li style="display:inline;"><a href="notice?page=${(idx)}">${idx}</a></li>
+												</c:forEach>
+														    
+												<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+													<li style="display:inline;"><a href="notice?page=${pageMaker.endPage + 1}">다음</a></li>
+												</c:if>
+											</ul>
+										</td>
 									</tr>
 								</tbody>
 							</table>

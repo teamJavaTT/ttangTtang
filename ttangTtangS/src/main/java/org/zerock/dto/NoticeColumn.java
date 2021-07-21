@@ -1,4 +1,4 @@
-package org.zerock.domain;
+package org.zerock.dto;
 
 import java.util.Date;
 
@@ -8,9 +8,8 @@ import lombok.Data;
 
 @Component
 @Data
-public class Notice {
+public class NoticeColumn {
 
-	private int num;
 	private int mno;
 	private String mtit;
 	private String mtext;

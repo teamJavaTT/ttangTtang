@@ -15,7 +15,7 @@
 				<div class="table100">
 					<!-- Default box -->
 					<div class="box">
-						<form action="faqlist.do" method="post">
+						<form action="faq" method="post">
 							<table border="1">
 								<thead>
 									<tr class="table100-head">
@@ -26,13 +26,13 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="faq" items="${faqPage.faq}">
+									<c:forEach var="faq" items="${faqPage}">
 										<tr>
 											<!-- 번호 -->
 											<td>${faq.fno}</td>
 											<!-- 내용 -->
 											<td colspan="2">
-												<a href="faqread.do?no=${faq.fno}"><c:out value="${faq.ftit}" /></a>
+												<a href="faqread?no=${faq.fno}"><c:out value="${faq.ftit}" /></a>
 											</td>
 											<!--  작성일자  -->
 											<td>${faq.fdate}</td>
@@ -40,17 +40,19 @@
 									</c:forEach>
 									<tr>
 										<td colspan="4">
-											<c:if test="${faqPage.startPage > 10}">
-													<a href="faqlist.do?pageNo=${faqPage.startPage - 10}">[이전]</a>
-											</c:if>
-											
-											<c:forEach var="pNo" begin="${faqPage.startPage}" end="${faqPage.endPage}">
-												<a href="faqlist.do?pageNo=${pNo}">[${pNo}]</a>
-											</c:forEach>
-											
-											<c:if test="${faqPage.endPage < faqPage.totalPages}">
-												<a href="faqlist.do?pageNo=${faqPage.startPage + 10}">[다음]</a>
-											</c:if>
+											<ul style="text-align:center;">
+												<c:if test="${pageMaker.prev}">
+												 	<li style="display:inline;"><a href="faq?page=${pageMaker.startPage - 1}">이전</a></li>
+												</c:if> 
+														  
+												<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+													<li style="display:inline;"><a href="faq?page=${(idx)}">${idx}</a></li>
+												</c:forEach>
+														    
+												<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+													<li style="display:inline;"><a href="faq?page=${pageMaker.endPage + 1}">다음</a></li>
+												</c:if>
+											</ul>
 										</td>
 									</tr>
 								</tbody>
@@ -58,7 +60,7 @@
 							<c:if test="${memberUser.userid eq 'admin'}">
 								<table>
 									<tr>
-										<td colspan="1"><a href="faqwrite.do">[게시글쓰기]</a></td>
+										<td colspan="1"><a href="faqwrite">[게시글쓰기]</a></td>
 									</tr>
 								</table>
 							</c:if>

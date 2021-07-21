@@ -20,31 +20,35 @@
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach var="faq" items="${faq}">
 								<tr>
-									<td style="text-align: left;">번호 : ${faqData.faq.fno}</td>
-									<td style="text-align: left;">작성일자 : ${faqData.faq.fdate}
+									<td style="text-align: left;">번호 : ${faq.fno}</td>
+									<td style="text-align: left;">작성일자 : ${faq.fdate}
 									</td>
 								</tr>
 								<tr>
 									<td colspan="4"
 										style="text-align: left; font-weight: bold; font-size: 20px">
-										${faqData.faq.ftit}</td>
+										${faq.ftit}</td>
 								</tr>
 								<tr>
-									<td colspan="4" style="text-align: left;">${faqData.faq.ftext}</td>
+									<td colspan="4" style="text-align: left;">${faq.ftext}</td>
 								</tr>
-							</tbody>
 							<tr>
 								<td colspan="2">
-									<c:set var="pageNo" value="${empty param.pageNo ? '1' : param.pageNo}"/>
-									<input type="button" value="목록" onclick="location.href='faqlist.do?pageNo=${pageNo}'">
-									<c:if test="${memberUser.userid eq 'admin'}">
-									<input type="button" value="게시글수정" onclick="location.href='faqmodify.do?no=${faqData.faq.fno}'">
-									<input type="hidden" value="${faqData.faq.fno}" id="delNo">
-									<input type="button" value="게시글삭제" id="faqDel">
-									</c:if>
+									<c:set var="pageNo" value="${empty param.pageNo ? '1' : param.pageNo}" /> 
+												<input type="button" value="목록" onclick="location.href='faq'">
+													<c:if test="${memberUser.userid eq 'admin'}">
+														<input type="button" value="게시글수정" onclick="location.href='faqmodify?no=${faq.fno}'">
+														<input type="hidden" value="${faq.fno}" id="delNo">
+														<input type="button" value="게시글삭제" id="faqDel">
+													</c:if>
+												</td>
+											</tr>
 								</td>
 							</tr>
+							</c:forEach>
+							</tbody>
 						</table>
 					</div>
 				</div>

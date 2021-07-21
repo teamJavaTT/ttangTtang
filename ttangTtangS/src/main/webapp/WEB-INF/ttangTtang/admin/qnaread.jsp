@@ -36,7 +36,7 @@
 											</tr>
 											<tr>
 												<td colspan="2"><c:set var="pageNo" value="${empty param.pageNo ? '1' : param.pageNo}" /> 
-												<input type="button" value="목록" onclick="location.href='qnalist?pageNo=${pageNo}'">
+												<input type="button" value="목록" onclick="location.href='qna'">
 													<c:if test="${memberUser.userid eq qna.userid}">
 														<input type="button" value="게시글수정" onclick="location.href='qnamodify?no=${qna.qno}'">
 														<input type="hidden" value="${qna.qno}" id="delNo">

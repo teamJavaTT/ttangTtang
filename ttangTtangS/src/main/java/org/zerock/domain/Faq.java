@@ -8,11 +8,11 @@ import lombok.Data;
 
 @Component
 @Data
-public class Notice {
+public class Faq {
 
 	private int num;
-	private int mno;
-	private String mtit;
-	private String mtext;
-	private Date mdate;
+	private int fno;
+	private String ftit;
+	private String ftext;
+	private Date fdate;
 }

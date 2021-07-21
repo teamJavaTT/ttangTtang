@@ -47,19 +47,19 @@
 										</c:forEach>
 											<tr>
 												<td colspan="4">
-												<ul style="text-align:center;">
-													<c:if test="${pageMaker.prev}">
-													   <li style="display:inline;"><a href="qna?page=${pageMaker.startPage - 1}">이전</a></li>
-													  </c:if> 
-													  
-													  <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-													   <li style="display:inline;"><a href="qna?page=${(idx)}">${idx}</a></li>
-													  </c:forEach>
-													    
-													  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-													   <li style="display:inline;"><a href="qna?page=${pageMaker.endPage + 1}">다음</a></li>
-													  </c:if>
-													  </ul> 
+													<ul style="text-align:center;">
+														<c:if test="${pageMaker.prev}">
+														   <li style="display:inline;"><a href="qna?page=${pageMaker.startPage - 1}">이전</a></li>
+														  </c:if> 
+														  
+														  <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+														   <li style="display:inline;"><a href="qna?page=${(idx)}">${idx}</a></li>
+														  </c:forEach>
+														    
+														  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+														   <li style="display:inline;"><a href="qna?page=${pageMaker.endPage + 1}">다음</a></li>
+														  </c:if>
+													</ul> 
 												</td>
 											</tr>
 										</tbody>
