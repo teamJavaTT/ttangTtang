@@ -20,5 +20,8 @@ public interface MemberService {
 
 	//비밀번호 찾기
 	String selectPasswordFind(String userid, String uname, String uemail) throws Exception;
+	
+	//비밀 번호 변경
+	void updatePassword(String upw, String userid) throws Exception;
 
 }

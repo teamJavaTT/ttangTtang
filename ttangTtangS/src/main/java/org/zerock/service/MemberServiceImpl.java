@@ -63,4 +63,12 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 	
+	@Override
+	@Transactional
+	public void updatePassword(String upw, String userid) throws Exception {
+		 memberMapper.updatePassword(upw, userid);
+		
+		
+	}
+	
 }

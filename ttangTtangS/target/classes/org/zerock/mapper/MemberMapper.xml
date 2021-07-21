@@ -38,13 +38,13 @@
 		]]>
 	</select>
 
-	<update id="updateMember" >
+	<update id="updateMember">
 <![CDATA[
 update member set
-]]> 
-<if test='upw != ""'>
-upw = #{upw},
-</if>
+]]>
+		<if test='upw != ""'>
+			upw = #{upw},
+		</if>
 <![CDATA[
 uemail =#{uemail},
 phone = #{phone},
@@ -55,7 +55,7 @@ updatetime=sysdate
 where userid = #{userid}
 ]]>
 	</update>
-	
+
 	<select id="selectPasswordFind" parameterType="map"
 		resultType="string">
 		<![CDATA[
@@ -63,4 +63,10 @@ where userid = #{userid}
 		 uemail=#{uemail}
 		]]>
 	</select>
+
+	<update id="updatePassword" parameterType="map">
+<![CDATA[
+update member set upw=#{upw} where userid=#{userid}
+]]>
+	</update>
 </mapper>

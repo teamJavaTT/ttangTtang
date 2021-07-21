@@ -16,7 +16,8 @@ public interface MemberMapper {
 	 void updateMember(Member member) throws Exception;
 	 //비밀번호찾기
 	 String selectPasswordFind(@Param("userid") String userid,@Param("uname") String uname, @Param("uemail") String uemail) throws Exception;
-		
+	//비밀 번호 변경
+	 void updatePassword(@Param("upw") String upw, @Param("userid") String userid) throws Exception;
 		
 	
 }

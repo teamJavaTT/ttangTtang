@@ -21,8 +21,9 @@ import org.zerock.service.LoginFailException;
 import org.zerock.service.MemberService;
 import org.zerock.service.PasswordFailException;
 
-import AES256.AES256Util;
+import com.fasterxml.jackson.databind.JsonNode;
 
+import AES256.AES256Util;
 
 @Controller
 @RequestMapping(value = "/member")
@@ -33,24 +34,26 @@ public class MemberController {
 
 	@Inject
 	private MemberService memberService;
-	
-	//로그인
+
+	// 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGet(Model model, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
 
-		if(session.getAttribute("memberUser") == null) {
+		if (session.getAttribute("memberUser") == null) {
 			req.setAttribute("login", false);
-		}else {
+		} else {
 			req.setAttribute("login", true);
-		}		
+		}
 	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(Model model, HttpServletRequest req, HttpServletResponse res, @RequestParam("userid") String userid, @RequestParam("upw") String upw) throws Exception {
+	public String loginPost(Model model, HttpServletRequest req, HttpServletResponse res,
+			@RequestParam("userid") String userid, @RequestParam("upw") String upw) throws Exception {
 		AES256Util aes256Util = new AES256Util();
 		Map<String, Boolean> errors = new HashMap<>();
 		model.addAttribute("errors", errors);
-		
+
 		try {
 			String upwd = aes256Util.encrypt(upw);
 			User user = memberService.memberLogin(userid, upwd);
@@ -65,8 +68,8 @@ public class MemberController {
 		res.sendRedirect("/");
 		return null;
 	}
-	
-	//로그아웃
+
+	// 로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public void logout(Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession(false);
@@ -75,81 +78,98 @@ public class MemberController {
 		}
 		res.sendRedirect("/");
 	}
-	
-	//회원가입
+
+	// 회원가입
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public void joinGet(Model model) {
-		
+
 	}
+
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinPost(Member member,Model model) throws Exception {
+	public String joinPost(Member member, Model model) throws Exception {
 		AES256Util aes256Util = new AES256Util();
 		member.setUpw(aes256Util.encrypt(member.getUpw()));
 		memberService.insertMemberJoin(member);
 		return "/member/joinSuccess";
 	}
-	
+
 	// 아이디 찾기
 	@RequestMapping(value = "/idfind", method = RequestMethod.GET)
 	public void idFindPage(Model model) {
 
 	}
+
 	@RequestMapping(value = "/idfind", method = RequestMethod.POST)
 	public String idFindPage(@RequestParam("uname") String uname, @RequestParam("uemail") String uemail, Model model)
 			throws Exception {
-		String selectIdFind = memberService.selectIdFind(uname, uemail);		
-		model.addAttribute("selectIdFind",selectIdFind);
+		String selectIdFind = memberService.selectIdFind(uname, uemail);
+		model.addAttribute("selectIdFind", selectIdFind);
 
-			return "/member/idfind";
+		return "/member/idfind";
 	}
-	
-	//비밀번호찾기
+
+	// 비밀번호찾기
 	@RequestMapping(value = "/passwordfind", method = RequestMethod.GET)
 	public void passwordFindPage(Model model) throws Exception {
-		
+
 	}
+
 	@RequestMapping(value = "/passwordfind", method = RequestMethod.POST)
-	public String passwordFindPage(@RequestParam("userid") String userid,@RequestParam("uname") String uname, @RequestParam("uemail") String uemail, Model model,HttpServletRequest req)
-			throws Exception {
+	public String passwordFindPage(@RequestParam(value = "userid",required=false) String userid, @RequestParam(value = "uname",required=false) String uname, @RequestParam(value = "uemail",required=false) String uemail, 
+			@RequestParam(value = "upw",required=false) String upw, @RequestParam(value = "upw2",required=false) String upw2, @RequestParam("findChange") String findChange,
+			Model model, HttpServletRequest req) throws Exception {
+		AES256Util aes256Util = new AES256Util();
 		req.setCharacterEncoding("utf-8");
-		String selectPasswordFind = memberService.selectPasswordFind(userid, uname, uemail);		
-		model.addAttribute("selectPasswordFind",selectPasswordFind);
 
-			return  "/member/passwordfind";
-	}
-	
-	//회원 정보 수정
-		@RequestMapping(value = "/memberEdit", method = RequestMethod.GET)
-		public String updateMemberPage(Model model,HttpServletRequest req)  throws Exception {
-			HttpSession session = req.getSession(false);
-			User user = (User) session.getAttribute("memberUser");
-			
-			User member = memberService.selectById(user.getUserid());
-			 model.addAttribute("member", member);
-			return "/member/memberEdit";
-			
-		}
-		@RequestMapping(value = "/memberEdit", method = RequestMethod.POST)
-		public String memberEditPage(Member member, Model model, HttpServletRequest req) throws Exception {
-			AES256Util aes256Util = new AES256Util();
-			
-			HttpSession session = req.getSession(false);
-			User user = (User) session.getAttribute("memberUser");
-			member.setUserid(user.getUserid());
-			
-			if(member.getUpw() == null || member.getUpw() == "") {
-				member.setUpw("");
-			}else {
-				member.setUpw(aes256Util.encrypt(member.getUpw()));
+		if(findChange == "find" || findChange.equals("find")) {
+			String selectPasswordFind = memberService.selectPasswordFind(userid, uname, uemail);
+			if (selectPasswordFind != null) {
+				model.addAttribute("userExist", "Y");
+			} else {
+				model.addAttribute("userExist", "N");
 			}
-			memberService.updateMember(member);
-			
-			return "/member/editSuccess";		
+			return "/member/passwordfind";
+		}else {
+			if(upw == upw2 || upw.equals(upw2)) {
+				String encodeUpw = aes256Util.encrypt(upw);
+				memberService.updatePassword(encodeUpw, userid);
+				return "/member/editSuccess";
+			}else {
+				model.addAttribute("userExist", "Y");
+				model.addAttribute("upwSame", "N");
+				return "/member/passwordfind";
+			}
 		}
-		
-	
-	
-}
+	}
 
-		
-		
+	// 회원 정보 수정
+	@RequestMapping(value = "/memberEdit", method = RequestMethod.GET)
+	public String updateMemberPage(Model model, HttpServletRequest req) throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+
+		User member = memberService.selectById(user.getUserid());
+		model.addAttribute("member", member);
+		return "/member/memberEdit";
+
+	}
+
+	@RequestMapping(value = "/memberEdit", method = RequestMethod.POST)
+	public String memberEditPage(Member member, Model model, HttpServletRequest req) throws Exception {
+		AES256Util aes256Util = new AES256Util();
+
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		member.setUserid(user.getUserid());
+
+		if (member.getUpw() == null || member.getUpw() == "") {
+			member.setUpw("");
+		} else {
+			member.setUpw(aes256Util.encrypt(member.getUpw()));
+		}
+		memberService.updateMember(member);
+
+		return "/member/editSuccess";
+	}
+
+}
