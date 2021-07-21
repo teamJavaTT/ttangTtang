@@ -9,6 +9,8 @@ import org.zerock.domain.AccountDeclaration;
 import org.zerock.domain.BlockUser;
 import org.zerock.domain.Product;
 import org.zerock.domain.Secession;
+import org.zerock.dto.AccountDeclarationDTO;
+import org.zerock.dto.BlockUserDTO;
 import org.zerock.mapper.MypageMainMapper;
 
 @Service
@@ -46,4 +48,23 @@ public class MypageMainServiceImpl implements MypageMainService {
 	}
 	
 	
+	@Override //신고 insert
+	public void insertAccountDeclaration(AccountDeclarationDTO accountDec) throws Exception {
+		mypageMainMapper.insertAccountDeclaration(accountDec);
+	}
+	
+	@Override  //신고 중복
+	public int selectCountDec(String userid, String badid) throws Exception {
+		return mypageMainMapper.selectCountDec(userid, badid);
+	}
+	
+	@Override //차단 insert
+	public void insertBlockUser(BlockUserDTO accountBl) throws Exception {
+		mypageMainMapper.insertBlockUser(accountBl);
+	}
+	
+	@Override  //차단 중복
+	public int selectCountBl(String userid, String blockid) throws Exception {
+		return mypageMainMapper.selectCountBl(userid, blockid);
+	}
 }

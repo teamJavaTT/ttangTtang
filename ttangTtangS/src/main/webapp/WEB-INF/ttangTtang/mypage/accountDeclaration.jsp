@@ -16,7 +16,7 @@
 <body>
 	<!-- header -->
 	<div id="header">
-		<a href="index"><img src="/resources/img/logo_red.png"
+		<a href="http://localhost:8082"><img src="/resources/img/logo_red.png"
 			width="500" height="172" alt=""></a>
 	</div>
 
@@ -25,16 +25,21 @@
 
 
 		<!-- content-->
-		<div id="content">
+		<div id="content" >
 			<section class="content">
 				<c:if test="${idChkOk == 0}">
 					<script>
-						alert("없는 사용자입니다")
+						alert("없는 사용자입니다.")
 					</script>
 				</c:if>
 				<c:if test="${idChkOk == 2}">
 					<script>
-						alert("자기 자신은 신고할 수 없습니다")
+						alert("자기 자신은 신고할 수 없습니다.")
+					</script>
+				</c:if>
+				<c:if test="${idChkOk == 3}">
+					<script>
+						alert("이미 신고된 사용자입니다.")
 					</script>
 				</c:if>
 				<form action="accountDeclaration?no=1" method="post">

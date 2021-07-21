@@ -4,5 +4,5 @@
 
 <script>
 		alert("신고 완료");
-		location.href = "mypage"
+		location.href = "/mypage/mypageMain"
 </script>

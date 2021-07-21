@@ -8,7 +8,7 @@
 		resultType="org.zerock.domain.AccountDeclaration">
 		<![CDATA[
 		select * 
-		from Declaration 
+		from declaration 
 		order by dno desc
 		]]>
 	</select>
@@ -36,13 +36,13 @@
 	</select>
 
 
-	<select id="selectSellList" parameterType="map" 
+	<select id="selectSellList" parameterType="map"
 		resultType="org.zerock.domain.Product">
 
 		select *
 		from product
 		where userid=#{userid}
-		
+
 		<if test='!sellchk.equals("A")'>
 			and sellcheck=#{sellchk}
 		</if>
@@ -56,6 +56,31 @@
 		select * 
 		from Secession 
 		order by sno desc
+		]]>
+	</select>
+
+	<insert id="insertAccountDeclaration">
+		insert into declaration values
+		(declaration_seq.nextval, #{userId}, #{declId}, #{dtext}, sysdate)
+	</insert>
+
+	<select id="selectCountDec" parameterType="map" 
+		resultType="int">
+		<![CDATA[
+		select count(*) from declaration where userid=#{userid} and duid=#{badid}
+		]]>
+	</select>
+	
+	
+	<insert id="insertBlockUser">
+		insert into block values
+		(block_seq.nextval, #{userId}, #{blockid2}, #{btext}, sysdate)
+	</insert>
+
+	<select id="selectCountBl" parameterType="map" 
+		resultType="int">
+		<![CDATA[
+		select count(*) from block where userid=#{userid} and bid=#{blockid}
 		]]>
 	</select>
 

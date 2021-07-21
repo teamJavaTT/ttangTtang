@@ -16,8 +16,8 @@
 <body>
 	<!-- header -->
 	<div id="header">
-		<a href="index"><img src="/resources/img/logo_red.png"
-			width="500" height="172" alt=""></a>
+		<a href="http://localhost:8082"><img
+			src="/resources/img/logo_red.png" width="500" height="172" alt=""></a>
 	</div>
 
 	<!-- wrapper -->
@@ -35,6 +35,11 @@
 				<c:if test="${idBlockOk == 2}">
 					<script>
 						alert("자기 자신은 차단할 수 없습니다")
+					</script>
+				</c:if>
+				<c:if test="${idBlockOk == 3}">
+					<script>
+						alert("이미 차단된 사용자입니다.")
 					</script>
 				</c:if>
 				<form action="blockUser?no=1" method="post">
@@ -56,8 +61,7 @@
 					</form>
 				</c:if>
 				<div class="btn_area">
-					<a href="mypage"> <input type="button" id="btnNo"
-						value="취소하기">
+					<a href="mypage"> <input type="button" id="btnNo" value="취소하기">
 					</a>
 				</div>
 			</section>
