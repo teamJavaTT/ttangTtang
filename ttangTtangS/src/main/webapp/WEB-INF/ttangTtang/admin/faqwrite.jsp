@@ -7,7 +7,7 @@
 					<h2>FAQ</h2>
 				</section>
 				<section class="content">
-					<form action="faqwrite.do" method="post">
+					<form action="faqwrite" method="post">
 						<table>
 							<thead>
 								<tr>
@@ -17,12 +17,12 @@
 							</tbody>
 							<tr>
 								<td>
-									<input type="text" class="title" placeholder="글 제목" name="title" maxlength="200">
+									<input type="text" class="title" placeholder="글 제목" name="ftit" maxlength="200">
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<textarea rows="10" cols="100%" placeholder="내용" name="content"></textarea>
+									<textarea rows="10" cols="100%" placeholder="내용" name="ftext"></textarea>
 								</td>
 							</tr>
 							<tr>

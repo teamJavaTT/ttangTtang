@@ -106,4 +106,48 @@
 		update qna set patext = 'N' where qno = #{qno}
 		]]>
 	</select>
+	<!--  ***************************************************** -->
+	<!-- Faq -->
+	<select id="selectFaqList" resultType="org.zerock.domain.Faq" parameterType="org.zerock.domain.Criteria">
+		<![CDATA[
+		select * from 
+		(select row_number() over (order by fno desc) num, A.* from faq A order by fno desc) 
+		where num between #{pageStart} and #{pageEnd}
+		]]>
+	</select>
+	
+	<select id="selectFaqListCount" resultType="int">
+		<![CDATA[
+		select count(fno) from faq where fno > 0
+		]]>
+	</select>
+	<!-- Write -->
+	<select id="insertFaqWrite">
+		<![CDATA[
+		insert into faq values 
+		(faq_seq.NEXTVAL
+		,#{ftit}
+		,#{ftext}
+		,sysdate)
+		]]>
+	</select>
+	<!-- Read -->
+	<select id="selectFaqRead" resultType="org.zerock.domain.Faq">
+		<![CDATA[
+		select * from faq where fno = #{no}
+		]]>
+	</select>
+	<!-- Update -->
+	<select id="updateFaqModify">
+		<![CDATA[
+		update faq set ftit = #{ftit}, ftext = #{ftext} where fno = #{fno}
+		]]>
+	</select>
+	<!-- Delete -->
+	<select id="deleteFaq">
+		<![CDATA[
+		delete from faq where fno = #{no}
+		]]>
+	</select>
+	<!--  ***************************************************** -->
 </mapper>

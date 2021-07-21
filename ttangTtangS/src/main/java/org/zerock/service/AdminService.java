@@ -3,8 +3,10 @@ package org.zerock.service;
 import java.util.List;
 
 import org.zerock.domain.Criteria;
+import org.zerock.domain.Faq;
 import org.zerock.domain.Notice;
 import org.zerock.domain.Qna;
+import org.zerock.dto.FaqColumn;
 import org.zerock.dto.NoticeColumn;
 import org.zerock.dto.QnaColumn;
 
@@ -25,4 +27,10 @@ public interface AdminService {
 	List<QnaColumn> updateQnaAnswer(QnaColumn qnaColumn) throws Exception;
 	List<QnaColumn> updateQnaReAnswer(QnaColumn qnaColumn) throws Exception;
 	// ---------------------------------------------------------------------
+	List<Faq> selectFaqList(Criteria cri) throws Exception;
+	int selectFaqListCount() throws Exception;
+	List<FaqColumn> insertFaqWrite(FaqColumn faqColumn) throws Exception;
+	List<Faq> selectFaqRead(int no) throws Exception;
+	List<FaqColumn> updateFaqModify(FaqColumn faqColumn) throws Exception;
+	List<Faq> deleteFaq(int no) throws Exception;
 }
