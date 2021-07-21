@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.Notice;
 import org.zerock.domain.Qna;
-import org.zerock.domain.QnaPage;
+import org.zerock.dto.NoticeColumn;
 import org.zerock.dto.QnaColumn;
 import org.zerock.mapper.AdminMapper;
 
@@ -19,10 +19,43 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	@Transactional
-	public List<Notice> selectNoticeList() throws Exception {
-		return adminMapper.selectNoticeList();
+	// 목록 + 페이징
+	public List<Notice> selectNoticeList(Criteria cri) throws Exception {
+		return adminMapper.selectNoticeList(cri);
+	}
+	
+	@Override
+	@Transactional
+	// 게시물 총 갯수
+	public int selectNoticeListCount() throws Exception{
+		return adminMapper.selectNoticeListCount();
+	}
+	
+	@Override
+	@Transactional
+	public List<NoticeColumn> insertNoticeWrite(NoticeColumn noticeColumn) throws Exception {
+		return adminMapper.insertNoticeWrite(noticeColumn);
 	}
 
+	@Override
+	@Transactional
+	public List<Notice> selectNoticeRead(int no) throws Exception {
+		return adminMapper.selectNoticeRead(no);
+	}
+	
+	@Override
+	@Transactional
+	public List<NoticeColumn> updateNoticeModify(NoticeColumn noticeColumn) throws Exception {
+		return adminMapper.updateNoticeModify(noticeColumn);
+	}
+	
+	@Override
+	@Transactional
+	public List<Notice> deleteNotice(int no) throws Exception {
+		return adminMapper.deleteNotice(no);
+	}
+
+	// ---------------------------------------------------------------------
 	@Override
 	@Transactional
 	// 목록 + 페이징
@@ -37,13 +70,6 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.selectQnaListCount();
 	}
 	
-	/*
-	 * @Override
-	 * 
-	 * @Transactional public List<QnaPage> pageMaker() throws Exception { return
-	 * adminMapper.pageMaker(); }
-	 */
-
 	@Override
 	@Transactional
 	public List<QnaColumn> insertQnaWrite(QnaColumn qnaColumn) throws Exception {

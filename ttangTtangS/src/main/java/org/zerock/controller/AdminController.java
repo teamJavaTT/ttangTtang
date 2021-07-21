@@ -18,7 +18,7 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.Notice;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.Qna;
-import org.zerock.domain.QnaPage;
+import org.zerock.dto.NoticeColumn;
 import org.zerock.dto.QnaColumn;
 import org.zerock.service.AdminService;
 
@@ -30,7 +30,7 @@ public class AdminController {
 	@Inject
 	private AdminService adminService;
 
-	// admin 메인
+	// Admin 메인
 	@RequestMapping(value = "/adminmain")
 	public void mainPage(Model model) throws Exception {
 	}
@@ -38,21 +38,80 @@ public class AdminController {
 	// ---------------------------------------------------------------------
 	// Notice 메인
 	@RequestMapping(value = "/notice")
-	public void noticePage(Model model) throws Exception {
-		List<Notice> notice = adminService.selectNoticeList();
-		model.addAttribute("Notice", notice);
+	public void noticePage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+		
+		List<Notice> notice = adminService.selectNoticeList(cri);
+		model.addAttribute("noticePage", notice);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.selectNoticeListCount());
+		model.addAttribute("pageMaker", pageMaker);
+		 
 	}
+	
+	// Notice 글쓰기
+	@RequestMapping(value = "/noticewrite", method = RequestMethod.GET)
+	public void noticeWriteViewPage(Model model) throws Exception {
+	}
+	
+	@RequestMapping(value = "/noticewrite", method = RequestMethod.POST)
+	public void noticeWritePage(NoticeColumn noticeColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		
+		List<NoticeColumn> notice = adminService.insertNoticeWrite(noticeColumn);
+		model.addAttribute("notice", notice);
 
+		res.sendRedirect("/admin/noticesuccess");
+	}
+	
+	// Notice 글작성완료
+		@RequestMapping(value = "/noticesuccess", method = RequestMethod.GET)
+		public void noticeModifyPage(Model model) throws Exception {
+		}
+
+	// Notice 글읽기
+	@RequestMapping(value = "/noticeread")
+	public void noticeReadPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Notice> notice = adminService.selectNoticeRead(no);
+		model.addAttribute("notice", notice);
+	}
+	
+	// Notice 글수정
+	@RequestMapping(value = "/noticemodify", method = RequestMethod.GET)
+	public void noticeModifyViewPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Notice> notice = adminService.selectNoticeRead(no);
+		model.addAttribute("notice", notice);
+	}
+	
+	@RequestMapping(value = "/noticemodify", method = RequestMethod.POST)
+	public void noticeModifyPage(NoticeColumn noticeColumn, Model model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		
+		List<NoticeColumn> notice = adminService.updateNoticeModify(noticeColumn);
+		model.addAttribute("notice", notice);
+		res.sendRedirect("/admin/noticesuccess");
+	}
+	
+	// Qna 글 삭제
+	@RequestMapping(value = "/noticedelete")
+	public void noticeDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Notice> notice = adminService.deleteNotice(no);
+		model.addAttribute("notice", notice);
+		
+		res.sendRedirect("/admin/noticedeletesuccess");
+	}
+	
+	// Qna 글삭제완료
+	@RequestMapping(value = "/noticedeletesuccess", method = RequestMethod.GET)
+	public void noticeDeleteSuccessPage(Model model) throws Exception {
+	}
 	// ---------------------------------------------------------------------
 	// Qna 메인
 	@RequestMapping(value = "/qna", method = RequestMethod.GET)
 	public void qnaPage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
-		/*
-		 * if(numVal.equals("0")) { numVal = null; } String pageVal = numVal; int pageNo
-		 * = 1; if(pageVal != null) { pageNo = Integer.parseInt(pageVal); } int size =
-		 * 10; int startNo = (pageNo - 1) * size + 1; int endNo = startNo + 9;
-		 */
-		/* int total = adminService.selectCount(); */
+		
 		List<Qna> qna = adminService.selectQnaList(cri);
 		model.addAttribute("qnaPage", qna);
 		
@@ -64,7 +123,6 @@ public class AdminController {
 	}
 
 	// Qna 글쓰기
-
 	@RequestMapping(value = "/qnawrite", method = RequestMethod.GET)
 	public void qnaWriteViewPage(Model model) throws Exception {
 	}
