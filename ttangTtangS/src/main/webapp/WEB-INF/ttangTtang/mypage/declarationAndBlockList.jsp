@@ -8,12 +8,14 @@
 	<form action="declarationAndBlockList" method="post">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
-		<c:if test="${param.sellChk eq 'D' || emptparam.sellChk}">
-			<h3>신고 내역</h3>
-		</c:if>
-		<c:if test="${param.sellChk eq 'B'}">
-			<h3>차단 내역</h3>
-		</c:if>
+		<c:choose>
+			<c:when test="${param.sellChk eq 'B'}">
+				<h3>차단 내역</h3>
+			</c:when>
+			<c:otherwise>
+				<h3>신고 내역</h3>
+			</c:otherwise>
+		</c:choose>
 		</section>
 		<!-- list -->
 		<section class="content">
@@ -22,9 +24,19 @@
 					<div class="table100">
 						<div class="box">
 							<div style="float: right;">
-								<input type="radio" name="sellChk" value="D">신고리스트
-								<input type="radio" name="sellChk" value="B">차단리스트
-								<input type="submit" class="button" value="보기">
+							<select name="sellChk">
+								<c:choose>
+									<c:when test="${param.sellChk eq 'B'}">
+										<option value="D">신고리스트</option>
+										<option value="B" selected>차단리스트</option>
+									</c:when>
+									<c:otherwise>
+										<option value="D" selected>신고리스트</option>
+										<option value="B">차단리스트</option>
+									</c:otherwise>
+								</c:choose>
+							</select>
+							<input type="submit" class="button" value="보기">
 							</div>
 
 							<table>

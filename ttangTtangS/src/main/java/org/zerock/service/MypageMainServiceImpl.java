@@ -18,29 +18,29 @@ public class MypageMainServiceImpl implements MypageMainService {
 
 	@Override  //신고
 	@Transactional
-	public List<AccountDeclaration> selectAccountDeclaration() throws Exception {
-		return mypageMainMapper.selectAccountDeclaration();
+	public List<AccountDeclaration> selectAccountDeclaration(String userid, String accountDeclaration) throws Exception {
+		return mypageMainMapper.selectAccountDeclaration(userid, accountDeclaration);
 	}
 
 	@Override  //차단
-	public List<BlockUser> selectBlockUser() throws Exception {
-		return mypageMainMapper.selectBlockUser();
+	public List<BlockUser> selectBlockUser(String userid, String blockUser1) throws Exception {
+		return mypageMainMapper.selectBlockUser(userid, blockUser1);
 	}
 
 	
-	@Override  //관심상품
+	@Override  //관심 상품
 	public List<Product> selectLikeProduct(String userid) throws Exception {
 		return mypageMainMapper.selectLikeProduct(userid);
 	}
 
 	
-	@Override  //판매내역
+	@Override  //판매 내역
 	public List<Product> selectSellList(String userid, String sellchk) throws Exception {
 		return mypageMainMapper.selectSellList(userid, sellchk);
 	}
 
 	
-	@Override  //회원탈퇴
+	@Override  //회원 탈퇴
 	public List<Secession> selectDeleteForm() throws Exception {
 		return mypageMainMapper.selectDeleteForm();
 	}

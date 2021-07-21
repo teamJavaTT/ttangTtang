@@ -9,8 +9,8 @@ import org.zerock.domain.Secession;
 import org.zerock.dto.Member;
 
 public interface MypageMainService {
-	List<AccountDeclaration> selectAccountDeclaration() throws Exception;
-	List<BlockUser> selectBlockUser() throws Exception;
+	List<AccountDeclaration> selectAccountDeclaration(String userid, String accountDeclaration) throws Exception;
+	List<BlockUser> selectBlockUser(String userid, String blockUser1) throws Exception;
 	List<Product> selectLikeProduct(String userid) throws Exception;
 	List<Product> selectSellList(String userid, String sellchk) throws Exception;
 	List<Secession> selectDeleteForm() throws Exception;

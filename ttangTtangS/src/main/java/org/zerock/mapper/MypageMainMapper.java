@@ -10,8 +10,8 @@ import org.zerock.domain.Secession;
 import org.zerock.dto.Member;
 
 public interface MypageMainMapper {
-	List<AccountDeclaration> selectAccountDeclaration() throws Exception;
-	List<BlockUser> selectBlockUser() throws Exception;
+	List<AccountDeclaration> selectAccountDeclaration(@Param("userid") String userid, @Param("accountDeclaration") String accountDeclaration) throws Exception;
+	List<BlockUser> selectBlockUser(@Param("userid") String userid, @Param("blockUser") String blockUser1) throws Exception;
 	List<Product> selectLikeProduct(String userid) throws Exception;
 	List<Product> selectSellList(@Param("userid") String userid, @Param("sellchk") String sellchk) throws Exception;
 	List<Secession> selectDeleteForm() throws Exception;
