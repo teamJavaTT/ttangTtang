@@ -15,13 +15,13 @@ function loginFunc() {
 		if (userid == "") {
 			alert("아이디를 입력하세요.");
 			document.loginForm.userid.focus();
-			return;
+			return "/member/login";
 		}
 		if (password == "") {
 			alert("비밀번호를 입력하세요.");
 			document.loginForm.upw.focus();
-			return;
-		}
+			return "/member/login"; 
+		} 
 		document.loginForm.submit();
 
 

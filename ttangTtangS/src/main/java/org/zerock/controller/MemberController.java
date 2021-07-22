@@ -60,9 +60,11 @@ public class MemberController {
 			req.getSession().setAttribute("memberUser", user);
 		} catch (LoginFailException e) {
 			errors.put("idNotMatch", Boolean.TRUE);
+			req.setAttribute("login", false);
 			return "/member/login";
 		} catch (PasswordFailException e) {
 			errors.put("pwdNotMatch", Boolean.TRUE);
+			req.setAttribute("login", false);
 			return "/member/login";
 		}
 		res.sendRedirect("/");
@@ -129,7 +131,7 @@ public class MemberController {
 				model.addAttribute("userExist", "N");
 			}
 			return "/member/passwordfind";
-		}else {
+		}else {	
 			if(upw == upw2 || upw.equals(upw2)) {
 				String encodeUpw = aes256Util.encrypt(upw);
 				memberService.updatePassword(encodeUpw, userid);
