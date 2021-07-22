@@ -31,7 +31,7 @@
 			#{iname},
 			#{price},
 			#{priceText},
-			#{imageface},
+			#{imageface,jdbcType=VARCHAR},
 			0,
 			0,
 			sysdate,

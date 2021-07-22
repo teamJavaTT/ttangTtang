@@ -15,8 +15,8 @@ public class ProductServiceImpl implements ProductService {
 	//상품 등록 
 	@Override
 	@Transactional
-	public Product insertProduct(Product product) throws Exception {
-		return productMapper.insertProduct(product);
+	public void  insertProduct(Product product) throws Exception {
+		 productMapper.insertProduct(product);
 	}
 
 

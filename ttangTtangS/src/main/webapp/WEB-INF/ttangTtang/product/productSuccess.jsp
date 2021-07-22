@@ -4,5 +4,5 @@
 
 <script>
 		alert("상품등록을 성공했습니다");
-		location.href = "index"
+		location.href = "/"
 </script>

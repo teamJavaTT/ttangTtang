@@ -5,10 +5,12 @@ import org.zerock.dto.Product;
 
 public interface ProductMapper {
 
-	
-	Product insertProduct(Product product);
-	ProductDetail selectProduct(int ino);
-	String selectCname(String ccode);
+	//상품 등록
+	void insertProduct(Product product)throws Exception;
+	//상품 상세페이지 
+	ProductDetail selectProduct(int ino)throws Exception;
+	//상품 상세페이지 카테고리 불러오기
+	String selectCname(String ccode)throws Exception;
 
 
 

@@ -90,7 +90,7 @@ public class ProductController {
 		String userid = user.getUserid();
 		product.setUserid(userid);
 		productService.insertProduct(product);
-		return "/product/producSuccess";
+		return "/product/productSuccess";
 		
 	}
 
