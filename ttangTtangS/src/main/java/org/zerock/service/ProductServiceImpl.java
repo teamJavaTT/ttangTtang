@@ -1,13 +1,10 @@
 package org.zerock.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.ProductDetail;
-import org.zerock.dto.AucProduct;
-import org.zerock.dto.NorProduct;
+import org.zerock.dto.Product;
 import org.zerock.mapper.ProductMapper;
 
 @Service
@@ -15,17 +12,13 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductMapper productMapper;
 
+	//상품 등록 
 	@Override
-	// 경매 등록
-	public List<AucProduct> insertAucProduct() throws Exception {
-		return productMapper.insertAucProduct();
+	@Transactional
+	public Product insertProduct(Product product) throws Exception {
+		return productMapper.insertProduct(product);
 	}
 
-	@Override
-	// 일반 등록
-	public List<NorProduct> insertNorProduct() throws Exception {
-		return productMapper.insertNorProduct();
-	}
 
   //상품 상세페이지 
 	@Override
@@ -42,10 +35,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
-	@Override
-	@Transactional
-	public ProductDetail productModify(int ino) throws Exception {
-		return productMapper.productModify(ino);
-	}
 
+	/*
+	 * @Override
+	 * 
+	 * @Transactional public NorProduct productModify(NorProduct norProduct) throws
+	 * Exception { return productMapper.productModify(norProduct); }
+	 */
 }

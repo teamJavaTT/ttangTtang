@@ -1,5 +1,7 @@
 package org.zerock.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -69,6 +71,11 @@ public class MemberServiceImpl implements MemberService {
 		 memberMapper.updatePassword(upw, userid);
 		
 		
+	}
+
+	@Override
+	public ArrayList<String> address(String userid) throws Exception {
+		return memberMapper.addressSelect(userid);
 	}
 	
 }

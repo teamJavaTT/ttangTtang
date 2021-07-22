@@ -1,5 +1,7 @@
 package org.zerock.mapper;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.User;
@@ -18,6 +20,7 @@ public interface MemberMapper {
 	 String selectPasswordFind(@Param("userid") String userid,@Param("uname") String uname, @Param("uemail") String uemail) throws Exception;
 	//비밀 번호 변경
 	 void updatePassword(@Param("upw") String upw, @Param("userid") String userid) throws Exception;
-		
+	// 상품 등록 주소 찾기
+	 ArrayList<String> addressSelect(@Param("userid") String userid)throws Exception;
 	
 }

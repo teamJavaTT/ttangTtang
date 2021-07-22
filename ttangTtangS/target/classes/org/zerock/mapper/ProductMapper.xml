@@ -3,12 +3,79 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.ProductMapper">
-	<insert id="insertAuc">
-		INSERT INTO
-		PRODUCT(INO,USERID,CCODE,AUCTIONCHECK,UAD,INAME,MINPRICE,MAXPRICE,APRICENOW,APRICEEND,PRICETEXT,IMAGEFACE,VIEWCOUNT,LIKECOUNT,PDATE,ENDTIME,AUCTIONTIME)
-		VALUES(product_seq.NEXTVAL,#{USERID},#{CCODE},#{'Y'},#{UAD},#{INAME},#{MINPRICE},#{MAXPRICE},#{APRICENOW},#{APRICEEND},#{PRICETEXT},#{IMAGEFACE},#{imageside},#{imageback},#{imageetc},#{viewcount},#{likecount},#{pdate},#{endtime},#{auctiontime},#{sellcheck})
 
-
+	<!-- Insert -->
+	<insert id="insertProduct">
+		insert into
+		product
+		<if test='auctioncheck == "N"'>
+			(INO,
+			USERID,
+			CCODE,
+			AUCTIONCHECK,
+			UAD,
+			INAME,
+			PRICE,
+			PRICETEXT,
+			IMAGEFACE,
+			VIEWCOUNT,
+			LIKECOUNT,
+			PDATE,
+			SELLCHECK)
+			VALUES(
+			product_seq.NEXTVAL,
+			#{userid},
+			#{ccode},
+			#{auctioncheck},
+			#{uad},
+			#{iname},
+			#{price},
+			#{priceText},
+			#{imageface},
+			0,
+			0,
+			sysdate,
+			'N')
+		</if>
+		<if test='auctioncheck == "Y"'>
+			(INO,
+			USERID,
+			CCODE,
+			AUCTIONCHECK,
+			UAD,
+			INAME,
+			MINPRICE,
+			MAXPRICE,
+			APRICENOW,
+			APRICEEND,
+			PRICETEXT,
+			IMAGEFACE,
+			VIEWCOUNT,
+			LIKECOUNT,
+			PDATE,
+			ENDTIME,
+			AUCTIONTIME,
+			SELLCHECK)
+			VALUES(
+			product_seq.NEXTVAL,
+			#{userid},
+			#{ccode},
+			#{auctioncheck},
+			#{uad},
+			#{iname},
+			#{minPrice},
+			#{maxPrice},
+			#{apricenow},
+			0,
+			#{pricetext},
+			#{imageface},
+			0,
+			0,
+			sysdate,
+			sysdate+${totalTime}/24,
+			#{totalTime},
+			'N')
+		</if>
 	</insert>
 	<!-- Detail -->
 	<select id="selectProduct"
@@ -23,15 +90,24 @@ select * from product where ino =#{ino}
 	</select>
 	<!-- Update -->
 	<update id="productModify">
-	update product set
-	<if test='aucCHK = "N"'>
-	auctioncheck=#{auctioncheck},
-	</if>
-	 iname=#{iname},
-	 ccode=#{ccode},
-	  price =#{price} ,
-	   pricetext =#{pricetext} , 
-	   imageface =#{imageface} 
-	   where ino = #{ino}
+		update product set
+		<choose>
+			<when test='aucCHK = "N"'>
+				iname=#{productNameNor},
+				ccode=#{ccode},
+				price =#{price} ,
+				pricetext =#{pricetext} ,
+				imageface =#{imageface}
+				where ino = #{ino}
+			</when>
+			<when test='aucChk="Y"'>
+				iname = #{iname},
+				ccode =#{ccode},
+				minprice =#{price},
+				pricetext = #{pricetext} ,
+				imageface = #{imageface}
+				where ino =#{ino}
+			</when>
+		</choose>
 	</update>
 </mapper>

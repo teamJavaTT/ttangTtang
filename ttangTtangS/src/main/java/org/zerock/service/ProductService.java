@@ -1,18 +1,13 @@
 package org.zerock.service;
 
-import java.util.List;
-
 import org.zerock.domain.ProductDetail;
-import org.zerock.dto.AucProduct;
-import org.zerock.dto.NorProduct;
+import org.zerock.dto.Product;
 
 public interface ProductService {
-
+	Product insertProduct(Product product) throws Exception;
 	ProductDetail selectProduct(int ino) throws Exception;
 	String selectCname(String ccode) throws Exception;
-	List<AucProduct> insertAucProduct() throws Exception;
-	List<NorProduct> insertNorProduct() throws Exception;
-	ProductDetail productModify(int ino) throws Exception;
+	//Product productModify(Product Product) throws Exception;
 
 	
 }

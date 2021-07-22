@@ -6,19 +6,28 @@ import lombok.Data;
 
 @Component
 @Data
-public class NorProduct {
+public class Product {
 	
 	private String ino;
 	private String userid;
 	private String ccode;
 	private String cname;
 	private String auctioncheck;
-	private String uadNor;
-	private String productNameNor;
+	private String uad;
+	private String iname;
 	private String price;
-	private String priceTextNor;
-	private String imagefaceNor;
+	private String minPrice;
+	private String maxPrice;
+	private String apricenow;
+	private String apriceend;
+	private String priceText;
+	private String imageface;
+	private String endDay;
+	private String endTime;
+	private int totalTime;
 	private String viewcount;
 	private String likecount;
 	private String sellcheck;
-}
+	}
+
+

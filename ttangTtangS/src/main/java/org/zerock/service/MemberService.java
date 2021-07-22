@@ -1,5 +1,7 @@
 package org.zerock.service;
 
+import java.util.ArrayList;
+
 import org.zerock.domain.User;
 import org.zerock.dto.Member;
 
@@ -23,5 +25,7 @@ public interface MemberService {
 	
 	//비밀 번호 변경
 	void updatePassword(String upw, String userid) throws Exception;
+	//주소 찾기
+	ArrayList<String> address(String userid) throws Exception;
 
 }
