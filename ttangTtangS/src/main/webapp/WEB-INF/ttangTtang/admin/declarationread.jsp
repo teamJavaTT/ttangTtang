@@ -18,34 +18,35 @@
 											</tr>
 										</thead>
 										<tbody>
+										<c:forEach var="declaration" items="${declaration}">
 											<tr>
 												<td colspan="2" style="text-align: left;">
-													번호 : ${declarationData.declaration.dNo}
+													번호 : ${declaration.dno}
 												</td>
 												<td colspan="2" style="text-align: left;">
-													작성일자 : ${declarationData.declaration.dDate}
+													작성일자 : ${declaration.ddate}
 												</td>
 											</tr>
 											<tr>
 												<td colspan="4" style="text-align: left;">
-													사용자 : ${declarationData.declaration.userId}
+													사용자 : ${declaration.userid}
 												</td>
 											</tr>
 											<tr>
 												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													차단된 사용자 : ${declarationData.declaration.duId}
+													차단된 사용자 : ${declaration.duid}
 												</td>
 											</tr>
 											<tr>
 												<td colspan="4" style="text-align: left;">
-													내용 : ${declarationData.declaration.dText}
+													내용 : ${declaration.dtext}
 												</td>
 											</tr>
+										</c:forEach>
 										</tbody>
 										<tr>
-											<td colspan="4"><c:set var="pageNo"
-												value="${empty param.pageNo ? '1' : param.pageNo}" />
-												<input type="button" value="목록" onclick="location.href='declarationlist.do?pageNo=${pageNo}'">
+											<td colspan="4">
+												<input type="button" value="목록" onclick="location.href='declaration'">
 											</td>
 										</tr>
 									</table>

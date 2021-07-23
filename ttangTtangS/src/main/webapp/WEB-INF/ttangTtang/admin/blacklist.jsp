@@ -13,7 +13,7 @@
 						<div class="wrap-table100">
 							<div class="table100">
 								<div class="box">
-									<form action="blacklist.do" method="post">
+									<form action="blacklist" method="post">
 										<table border="1">
 											<thead>
 												<tr class="table100-head">
@@ -23,28 +23,32 @@
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="blacklist" items="${blacklistPage.blacklist}">
+											<c:forEach var="blacklist" items="${blacklistPage}">
 												<tr>
 													<!-- 사용자 -->
-													<td>${blacklist.userId}</td>
+													<td>${blacklist.userid}</td>
 													<!-- 차단된 사용자 -->
-													<td><a href="blacklistread.do?no=${blacklist.bNo}">
-													<c:out value="${blacklist.bId}" /></a></td>
+													<td><a href="blacklistread?no=${blacklist.bno}">
+													<c:out value="${blacklist.bid}" /></a></td>
 													<!--  작성일자  -->
-													<td>${blacklist.bDate}</td>
+													<td>${blacklist.bdate}</td>
 												</tr>
 											</c:forEach>
 												<tr>
 													<td colspan="3">
-														<c:if test="${blacklistPage.startPage > 10}">
-															<a href="blacklist.do?pageNo=${blacklistPage.startPage - 10}">[이전]</a>
-														</c:if>
-														<c:forEach var="pNo" begin="${blacklistPage.startPage}" end="${blacklistPage.endPage}">
-															<a href="blacklist.do?pageNo=${pNo}">[${pNo}]</a>
-														</c:forEach>
-														<c:if test="${blacklistPage.endPage < blacklistPage.totalPages}">
-															<a href="blacklist.do?pageNo=${blacklistPage.startPage + 10}">[다음]</a>
-														</c:if>
+														<ul style="text-align:center;">
+															<c:if test="${pageMaker.prev}">
+															 	<li style="display:inline;"><a href="blacklist?page=${pageMaker.startPage - 1}">이전</a></li>
+															</c:if> 
+																	  
+															<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+																<li style="display:inline;"><a href="blacklist?page=${(idx)}">${idx}</a></li>
+															</c:forEach>
+																	    
+															<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+																<li style="display:inline;"><a href="blacklist?page=${pageMaker.endPage + 1}">다음</a></li>
+															</c:if>
+														</ul>
 													</td>
 												</tr>
 											</tbody>

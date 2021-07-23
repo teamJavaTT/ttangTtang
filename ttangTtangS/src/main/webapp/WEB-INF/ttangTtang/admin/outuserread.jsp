@@ -4,7 +4,7 @@
 
 			<div class="col-lg-9">
 				<section class="content-header">
-					<h2>블랙리스트 관리</h2>
+					<h2>탈퇴회원 관리</h2>
 				</section>
 				<section class="content">
 					<div class="limiter">
@@ -18,35 +18,36 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td colspan="4" style="text-align: left;">
-													번호 : ${outuserData.outuser.sNo}
-												</td>
-											</tr>
-											<tr>
-												<td colspan="2" style="text-align: left;">
-													탈퇴신청일자 : ${outuserData.outuser.sDate}
-												</td>
-											
-												<td colspan="2" style="text-align: left;">
-													탈퇴확정일자 : ${outuserData.outuser.scDate}
-												</td>
-											</tr>
-											<tr>
-												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													탈퇴한 사용자 : ${outuserData.outuser.userId}
-												</td>
-											</tr>
-											<tr>
-												<td colspan="4" style="text-align: left;">
-													내용 : ${outuserData.outuser.sText}
-												</td>
-											</tr>
+											<c:forEach var="outuser" items="${outuser}">
+												<tr>
+													<td colspan="4" style="text-align: left;">
+														번호 : ${outuser.sno}
+													</td>
+												</tr>
+												<tr>
+													<td colspan="2" style="text-align: left;">
+														탈퇴신청일자 : ${outuser.sdate}
+													</td>
+												
+													<td colspan="2" style="text-align: left;">
+														탈퇴확정일자 : ${outuser.scdate}
+													</td>
+												</tr>
+												<tr>
+													<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
+														탈퇴한 사용자 : ${outuser.userid}
+													</td>
+												</tr>
+												<tr>
+													<td colspan="4" style="text-align: left;">
+														내용 : ${outuser.stext}
+													</td>
+												</tr>
+											</c:forEach>
 										</tbody>
 										<tr>
-											<td colspan="4"><c:set var="pageNo"
-												value="${empty param.pageNo ? '1' : param.pageNo}" />
-												<input type="button" value="목록" onclick="location.href='outuserlist.do?pageNo=${pageNo}'">
+											<td colspan="4">
+												<input type="button" value="목록" onclick="location.href='outuser'">
 											</td>
 										</tr>
 									</table>

@@ -14,11 +14,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.zerock.domain.BlackList;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.Declaration;
 import org.zerock.domain.Faq;
 import org.zerock.domain.Notice;
+import org.zerock.domain.OutUser;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.Qna;
+import org.zerock.domain.UserInfo;
 import org.zerock.dto.FaqColumn;
 import org.zerock.dto.NoticeColumn;
 import org.zerock.dto.QnaColumn;
@@ -272,4 +276,104 @@ public class AdminController {
 	public void faqDeleteSuccessPage(Model model) throws Exception {
 	}
 	
+	// ---------------------------------------------------------------------
+	// UserInfo 메인
+	@RequestMapping(value = "/userinfo", method = RequestMethod.GET)
+	public void userInfoViewPage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+		
+		List<UserInfo> userInfo = adminService.selectUserInfoAllList(cri);
+		model.addAttribute("userInfoPage", userInfo);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.selectUserInfoListCount());
+		model.addAttribute("pageMaker", pageMaker);
+		 
+	}
+	
+	@RequestMapping(value = "/userinfo", method = RequestMethod.POST)
+	public void userInfoPage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal, @RequestParam("check") String check) throws Exception {
+		int memChk = Integer.parseInt(check);
+		if(memChk == 1 || memChk == 2) {
+			int pageStart = cri.getPageStart();
+			int pageEnd = cri.getPageEnd();
+			List<UserInfo> userInfo = adminService.selectUserInfoMemberList(pageStart, pageEnd, memChk);
+			model.addAttribute("userInfoPage", userInfo);
+		}else {
+			List<UserInfo> userInfo = adminService.selectUserInfoAllList(cri);
+			model.addAttribute("userInfoPage", userInfo);
+		}
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.selectUserInfoListCount());
+		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	// UserInfo 글읽기
+	@RequestMapping(value = "/userinforead")
+	public void userInfoReadPage(Model model, @RequestParam(value = "id", defaultValue = "0") String id) throws Exception {
+		List<UserInfo> userInfo = adminService.selectUserInfoRead(id);
+		model.addAttribute("userInfo", userInfo);
+	}
+	// ---------------------------------------------------------------------
+	// Blacklist 메인
+	@RequestMapping(value = "/blacklist")
+	public void blacklistPage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+		
+		List<BlackList> blacklist = adminService.selectBlackList(cri);
+		model.addAttribute("blacklistPage", blacklist);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.selectBlackListCount());
+		model.addAttribute("pageMaker", pageMaker);
+	}
+	// Blacklist 글읽기
+	@RequestMapping(value = "/blacklistread")
+	public void blacklistReadPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<BlackList> blacklist = adminService.selectBlackListRead(no);
+		model.addAttribute("blacklist", blacklist);
+	}
+	// ---------------------------------------------------------------------
+	// Declaration 메인
+	@RequestMapping(value = "/declaration")
+	public void declarationPage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+		
+		List<Declaration> declaration = adminService.selectDeclarationList(cri);
+		model.addAttribute("declarationPage", declaration);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.selectDeclarationListCount());
+		model.addAttribute("pageMaker", pageMaker);
+	}
+	// Declaration 글읽기
+	@RequestMapping(value = "/declarationread")
+	public void declarationReadPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<Declaration> declaration = adminService.selectDeclarationRead(no);
+		model.addAttribute("declaration", declaration);
+	}
+	// ---------------------------------------------------------------------
+	// OutUser 메인
+	@RequestMapping(value = "/outuser")
+	public void outuserPage(Criteria cri, Model model, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+		
+		List<OutUser> outuser = adminService.selectOutUserList(cri);
+		model.addAttribute("outuserPage", outuser);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.selectOutUserListCount());
+		model.addAttribute("pageMaker", pageMaker);
+	}
+	// Declaration 글읽기
+	@RequestMapping(value = "/outuserread")
+	public void outuserReadPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal) throws Exception {
+		int no = Integer.parseInt(numVal);
+		List<OutUser> outuser = adminService.selectOutUserRead(no);
+		model.addAttribute("outuser", outuser);
+	}
 }

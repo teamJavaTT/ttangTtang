@@ -18,34 +18,35 @@
 											</tr>
 										</thead>
 										<tbody>
+										<c:forEach var="blacklist" items="${blacklist}">
 											<tr>
 												<td style="text-align: left;">
-													번호 : ${blacklistData.blacklist.bNo}
+													번호 : ${blacklist.bno}
 												</td>
 												<td style="text-align: left;">
-													작성일자 : ${blacklistData.blacklist.bDate}
+													작성일자 : ${blacklist.bdate}
 												</td>
 											</tr>
 											<tr>
 												<td colspan="4" style="text-align: left;">
-													사용자 : ${blacklistData.blacklist.userId}
+													사용자 : ${blacklist.userid}
 												</td>
 											</tr>
 											<tr>
 												<td colspan="4" style="text-align: left; font-weight: bold; font-size: 20px">
-													차단된 사용자 : ${blacklistData.blacklist.bId}
+													차단된 사용자 : ${blacklist.bid}
 												</td>
 											</tr>
 											<tr>
 												<td colspan="4" style="text-align: left;">
-													내용 : ${blacklistData.blacklist.bText}
+													내용 : ${blacklist.btext}
 												</td>
 											</tr>
+										</c:forEach>
 										</tbody>
 										<tr>
-											<td colspan="4"><c:set var="pageNo"
-												value="${empty param.pageNo ? '1' : param.pageNo}" />
-												<input type="button" value="목록" onclick="location.href='blacklist.do?pageNo=${pageNo}'">
+											<td colspan="4">
+												<input type="button" value="목록" onclick="location.href='blacklist'">
 											</td>
 										</tr>
 									</table>

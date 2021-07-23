@@ -150,4 +150,91 @@
 		]]>
 	</select>
 	<!--  ***************************************************** -->
+	<!-- UserInfo -->
+	<select id="selectUserInfoMemberList" resultType="org.zerock.domain.UserInfo" parameterType="map">
+		<![CDATA[
+		select * from(select row_number() over (order by datetime desc) num, A.* from member A where memberChk = #{memChk} order by datetime desc) where num between #{pageStart} and #{pageEnd}
+		]]>
+	</select>
+	
+	<select id="selectUserInfoAllList" resultType="org.zerock.domain.UserInfo" parameterType="org.zerock.domain.Criteria">
+		<![CDATA[
+		select * from(select row_number() over (order by datetime desc) num, A.* from member A order by datetime desc) where num between #{pageStart} and #{pageEnd}
+		]]>
+	</select>
+	<select id="selectUserInfoListCount" resultType="int">
+		<![CDATA[
+		select count(memberchk) from member where memberchk > 0
+		]]>
+	</select>
+	<!-- Read -->
+	<select id="selectUserInfoRead" resultType="org.zerock.domain.UserInfo">
+		<![CDATA[
+		select * from member where userid = #{id}
+		]]>
+	</select>
+	<!--  ***************************************************** -->
+	<!-- BlackList -->
+	<select id="selectBlackList" resultType="org.zerock.domain.BlackList" parameterType="org.zerock.domain.Criteria">
+		<![CDATA[
+		select * from 
+		(select row_number() over (order by bno desc) num, A.* from block A order by bno desc) 
+		where num between #{pageStart} and #{pageEnd}
+		]]>
+	</select>
+	
+	<select id="selectBlackListCount" resultType="int">
+		<![CDATA[
+		select count(bno) from block where bno > 0
+		]]>
+	</select>
+	<!-- Read -->
+	<select id="selectBlackListRead" resultType="org.zerock.domain.BlackList">
+		<![CDATA[
+		select * from block where bNo = #{no}
+		]]>
+	</select>
+	<!--  ***************************************************** -->
+	<!-- Declaration -->
+	<select id="selectDeclarationList" resultType="org.zerock.domain.Declaration" parameterType="org.zerock.domain.Criteria">
+		<![CDATA[
+		select * from 
+		(select row_number() over (order by dno desc) num, A.* from declaration A order by dno desc) 
+		where num between #{pageStart} and #{pageEnd}
+		]]>
+	</select>
+	
+	<select id="selectDeclarationListCount" resultType="int">
+		<![CDATA[
+		select count(dno) from declaration where dno > 0
+		]]>
+	</select>
+	<!-- Read -->
+	<select id="selectDeclarationRead" resultType="org.zerock.domain.Declaration">
+		<![CDATA[
+		select * from declaration where dno = #{no}
+		]]>
+	</select>
+		<!--  ***************************************************** -->
+	<!-- Secession -->
+	<select id="selectOutUserList" resultType="org.zerock.domain.OutUser" parameterType="org.zerock.domain.Criteria">
+		<![CDATA[
+		select * from 
+		(select row_number() over (order by sno desc) num, A.* from secession A order by sno desc) 
+		where num between #{pageStart} and #{pageEnd}
+		]]>
+	</select>
+	
+	<select id="selectOutUserListCount" resultType="int">
+		<![CDATA[
+		select count(sno) from secession where sno > 0
+		]]>
+	</select>
+	<!-- Read -->
+	<select id="selectOutUserRead" resultType="org.zerock.domain.OutUser">
+		<![CDATA[
+		select * from secession where sno = #{no}
+		]]>
+	</select>
+	
 </mapper>

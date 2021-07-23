@@ -20,48 +20,49 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td style="text-align: left;">
-													이름 : ${userinfoData.userinfo.uName}
-												</td>
-											</tr>
-											<tr>
-												<td style="text-align: left;">
-													아이디 : ${userinfoData.userinfo.userId}
-												</td>
-											</tr>
-											<tr>
-												<td style="text-align: left;">
-													이메일 : ${userinfoData.userinfo.uEmail}
-												</td>
-											</tr>
-											<tr>
-												<td style="text-align: left;">
-													성별 : ${userinfoData.userinfo.sex}
-												</td>
-											</tr>
-											<tr>
-												<td style="text-align: left;">
-													전화번호 : ${userinfoData.userinfo.phone}
-												</td>
-											</tr>
-											<tr>
-												<td style="text-align: left;">
-													주소 : ${userinfoData.userinfo.uEmail}
-												</td>
-											</tr>
-											<tr>
-												<td style="text-align: left;">
-													가입일자 : ${userinfoData.userinfo.dateTime}
-												</td>
-											</tr>
+											<c:forEach var="userinfo" items="${userInfo}">
+												<tr>
+													<td style="text-align: left;">
+														이름 : ${userinfo.uname}
+													</td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">
+														아이디 : ${userinfo.userid}
+													</td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">
+														이메일 : ${userinfo.uemail}
+													</td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">
+														성별 : ${userinfo.sex}
+													</td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">
+														전화번호 : ${userinfo.phone}
+													</td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">
+														주소 : ${userinfo.uemail}
+													</td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">
+														가입일자 : ${userinfo.datetime}
+													</td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 									<table>
 										<tr>
-											<td colspan="2"><c:set var="pageNo"
-												value="${empty param.pageNo ? '1' : param.pageNo}" />
-												<input type="button" value="목록" onclick="location.href='userinfolist.do?pageNo=${pageNo}'">
+											<td colspan="2">
+												<input type="button" value="목록" onclick="location.href='userinfo'">
 											</td>
 										</tr>
 									</table>

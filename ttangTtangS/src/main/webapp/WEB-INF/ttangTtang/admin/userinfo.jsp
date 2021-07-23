@@ -3,7 +3,7 @@
 <%@ include file="../include/adminheader.jsp"%>
 
 <div class="col-lg-9">
-	<form action="userinfolist.do" method="post">
+	<form action="userinfo" method="post">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h2>사용자 회원정보 관리</h2>
@@ -16,13 +16,13 @@
 					<div class="table100">
 						<div class="box">
 							<div style="float: right;">
-								<select name="memberChk">
+								<select id="check" name="check">
 									<option value="0"
-										<c:if test="${param.memberChk == 0}">seleted</c:if>>전체회원</option>
+										<c:if test="${param.check == 0}">seleted</c:if>>전체회원</option>
 									<option value="1"
-										<c:if test="${param.memberChk == 1}">seleted</c:if>>정규회원</option>
+										<c:if test="${param.check == 1}">seleted</c:if>>정규회원</option>
 									<option value="2"
-										<c:if test="${param.memberChk == 2}">seleted</c:if>>탈퇴회원</option>
+										<c:if test="${param.check == 2}">seleted</c:if>>탈퇴회원</option>
 								</select>&nbsp;<input type="submit" class="button" value="보기">
 							</div>
 							<table border="1">
@@ -35,33 +35,36 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="userinfo" items="${userinfoPage.userinfo}">
+									<c:forEach var="userinfo" items="${userInfoPage}">
 										<tr>
 											<!-- 사용자 ID -->
-											<td><a href="userinforead.do?id=${userinfo.userId}">
-													<c:out value="${userinfo.userId}" />
+											<td><a href="userinforead?id=${userinfo.userid}">
+													<c:out value="${userinfo.userid}" />
 											</a></td>
 											<!-- 이름 -->
-											<td>${userinfo.uName}</td>
+											<td>${userinfo.uname}</td>
 											<!-- 가입일자 -->
-											<td>${userinfo.dateTime}</td>
+											<td>${userinfo.datetime}</td>
 											<!--  회원구분  -->
-											<td>${userinfo.memberChk}</td>
+											<td>${userinfo.memberchk}</td>
 										</tr>
 									</c:forEach>
 									<tr>
-										<td colspan="5"><c:if
-												test="${userinfoPage.startPage > 10}">
-												<a
-													href="userinfolist.do?pageNo=${userinfoPage.startPage - 10}">[이전]</a>
-											</c:if> <c:forEach var="pNo" begin="${userinfoPage.startPage}"
-												end="${userinfoPage.endPage}">
-												<a href="userinfolist.do?pageNo=${pNo}">[${pNo}]</a>
-											</c:forEach> <c:if
-												test="${userinfoPage.endPage < userinfoPage.totalPages}">
-												<a
-													href="userinfolist.do?pageNo=${userinfoPage.startPage + 10}">[다음]</a>
-											</c:if></td>
+										<td colspan="5">
+											<ul style="text-align:center;">
+												<c:if test="${pageMaker.prev}">
+												 	<li style="display:inline;"><a href="userinfo?page=${pageMaker.startPage - 1}">이전</a></li>
+												</c:if> 
+														  
+												<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+													<li style="display:inline;"><a href="userinfo?page=${(idx)}">${idx}</a></li>
+												</c:forEach>
+														    
+												<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+													<li style="display:inline;"><a href="userinfo?page=${pageMaker.endPage + 1}">다음</a></li>
+												</c:if>
+											</ul>
+										</td>
 									</tr>
 								</tbody>
 							</table>

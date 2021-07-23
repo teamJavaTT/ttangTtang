@@ -13,7 +13,7 @@
 						<div class="wrap-table100">
 							<div class="table100">
 								<div class="box">
-									<form action="outuserlist.do" method="post">
+									<form action="outuser" method="post">
 										<table border="1">
 											<thead>
 												<tr class="table100-head">
@@ -23,28 +23,32 @@
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="outuser" items="${outuserPage.outuser}">
+											<c:forEach var="outuser" items="${outuserPage}">
 												<tr>
-													<!-- 사용자 -->
-													<td style="padding-left: 0px;">${outuser.sNo}</td>
-													<!-- 차단된 사용자 -->
-													<td colspan="2"><a href="outuserread.do?no=${outuser.sNo}">
-													<c:out value="${outuser.userId}" /></a></td>
-													<!--  작성일자  -->
-													<td>${outuser.sDate}</td>
+													<!-- 번호 -->
+													<td style="padding-left: 0px;">${outuser.sno}</td>
+													<!-- 탈퇴 사용자 -->
+													<td colspan="2"><a href="outuserread?no=${outuser.sno}">
+													<c:out value="${outuser.userid}" /></a></td>
+													<!--  탈퇴일자  -->
+													<td>${outuser.sdate}</td>
 												</tr>
 											</c:forEach>
 												<tr>
 													<td colspan="4">
-														<c:if test="${outuserPage.startPage > 10}">
-															<a href="outuserlist.do?pageNo=${outuserPage.startPage - 10}">[이전]</a>
-														</c:if>
-														<c:forEach var="pNo" begin="${outuserPage.startPage}" end="${outuserPage.endPage}">
-															<a href="outuserlist.do?pageNo=${pNo}">[${pNo}]</a>
-														</c:forEach>
-														<c:if test="${outuserPage.endPage < outuserPage.totalPages}">
-															<a href="outuserlist.do?pageNo=${outuserPage.startPage + 10}">[다음]</a>
-														</c:if>
+														<ul style="text-align:center;">
+															<c:if test="${pageMaker.prev}">
+															 	<li style="display:inline;"><a href="outuser?page=${pageMaker.startPage - 1}">이전</a></li>
+															</c:if> 
+																	  
+															<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+																<li style="display:inline;"><a href="outuser?page=${(idx)}">${idx}</a></li>
+															</c:forEach>
+																	    
+															<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+																<li style="display:inline;"><a href="outuser?page=${pageMaker.endPage + 1}">다음</a></li>
+															</c:if>
+														</ul>
 													</td>
 												</tr>
 											</tbody>
