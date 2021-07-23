@@ -40,7 +40,7 @@
 		select * 
 		from product 
 		where 
-		<foreach collection="array" item="arr" separator=" and ">
+		<foreach collection="array" item="arr" open="(" close=")" separator=") and (">
 			iname like '%${arr}%' or uad like '%${arr}%'
 		</foreach>
 		order by ino desc
