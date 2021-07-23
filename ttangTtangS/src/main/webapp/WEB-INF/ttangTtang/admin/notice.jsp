@@ -32,7 +32,7 @@
 													<c:out value="${notice.mtit}" />
 											</a></td>
 											<!--  작성일자  -->
-											<td>${notice.mdate}</td>
+											<td><fmt:formatDate value="${notice.mdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 										</tr>
 									</c:forEach>
 									<tr>

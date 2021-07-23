@@ -31,7 +31,7 @@
 													<td colspan="2"><a href="declarationread?no=${declaration.dno}">
 													<c:out value="${declaration.duid}" /></a></td>
 													<!--  작성일자  -->
-													<td>${declaration.ddate}</td>
+													<td><fmt:formatDate value="${declaration.ddate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 												</tr>
 											</c:forEach>
 												<tr>

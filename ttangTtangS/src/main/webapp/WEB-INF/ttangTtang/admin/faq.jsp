@@ -35,7 +35,7 @@
 												<a href="faqread?no=${faq.fno}"><c:out value="${faq.ftit}" /></a>
 											</td>
 											<!--  작성일자  -->
-											<td>${faq.fdate}</td>
+											<td><fmt:formatDate value="${faq.fdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 										</tr>
 									</c:forEach>
 									<tr>

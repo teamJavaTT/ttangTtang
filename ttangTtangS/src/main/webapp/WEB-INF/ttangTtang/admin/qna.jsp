@@ -42,7 +42,7 @@
 													</form>
 												</td>
 												<!--  작성일자  -->
-												<td>${qna.qdate}</td>
+												<td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 											</tr>
 										</c:forEach>
 											<tr>

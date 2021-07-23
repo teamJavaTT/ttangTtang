@@ -31,7 +31,7 @@
 													<td colspan="2"><a href="outuserread?no=${outuser.sno}">
 													<c:out value="${outuser.userid}" /></a></td>
 													<!--  탈퇴일자  -->
-													<td>${outuser.sdate}</td>
+													<td><fmt:formatDate value="${outuser.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 												</tr>
 											</c:forEach>
 												<tr>

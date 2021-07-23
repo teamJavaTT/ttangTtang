@@ -31,7 +31,7 @@
 													<td><a href="blacklistread?no=${blacklist.bno}">
 													<c:out value="${blacklist.bid}" /></a></td>
 													<!--  작성일자  -->
-													<td>${blacklist.bdate}</td>
+													<td><fmt:formatDate value="${blacklist.bdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 												</tr>
 											</c:forEach>
 												<tr>

@@ -44,7 +44,7 @@
 											<!-- 이름 -->
 											<td>${userinfo.uname}</td>
 											<!-- 가입일자 -->
-											<td>${userinfo.datetime}</td>
+											<td><fmt:formatDate value="${userinfo.datetime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 											<!--  회원구분  -->
 											<td>${userinfo.memberchk}</td>
 										</tr>
