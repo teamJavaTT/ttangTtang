@@ -1,9 +1,9 @@
-var norLeng;
+var imageLeng;
 
 $(document).ready(function() {
 	// 태그에 onchange를 부여한다.
-	$('#imagefaceNor').change(function() {
-		if ($('#imagefaceNor')[0].files.length > 4 || norLeng >= 4) {
+	$('#imageFace').change(function() {
+		if ($('#imageFace')[0].files.length > 4 || imageLeng >= 4 || $('#imageFace')[0].files.length+imageLeng > 4) {
 			alert("사진 첨부는 최대 4장까지 가능합니다.");
 			return false;
 		} else {
@@ -22,13 +22,10 @@ $(document).ready(function() {
 	$("#productWriteDiv").hide();
 });
 
-function deletePreview(input, num) {
+function deletePreview(input) {
 	$(input).parent('li').remove();
-	norLeng -= 1;
-	if(num == 1)
-		$('#norImageTbl small').empty().append("(" + norLeng + "/4)");
-	else
-		$('#aucImageTbl small').empty().append("(" + norLeng + "/4)");
+	imageLeng -= 1;
+	$('#imageTbl small').empty().append("(" + imageLeng + "/4)");
 	
 }
 
@@ -74,13 +71,10 @@ function getFileUpload(fileUpload) {
 		contentType: false,
 		processData: false,
 		success: function(data) {
-			if (fileUpload == "#fileUploadAuc") {
-				document.aucForm.imagefaceNameAuc.value = data;
-				document.aucForm.submit();
-			} else if (fileUpload == "#fileUploadNor") {
-				document.norForm.imagefaceNameNor.value = data;
-				document.norForm.submit();
-			}
+			
+				document.InsertForm.imagefaceName.value = data;
+				document.InsertForm.submit();
+			
 		}, error: function() {
 			alert("사진업로드 에러발생");
 		}
@@ -88,14 +82,16 @@ function getFileUpload(fileUpload) {
 }
 
 function productWrite() {
+
 	var iname = document.InsertForm.iname.value;
 	var ccode = document.InsertForm.ccode.value;
 	var price = document.InsertForm.price.value;
-	/*var maxPrice = document.InsertForm.maxPrice.value;
+	var maxPrice = document.InsertForm.maxPrice.value;
 	var minPrice = document.InsertForm.minPrice.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
 	var endDay = document.InsertForm.endDay.value;
-	var endTime = document.InsertForm.endTime.value;*/
+	var endTime = document.InsertForm.endTime.value;
 	var priceText = document.InsertForm.priceText.value;
+ 	var auctioncheck = document.InsertForm.auctioncheck.value;
 
 	if (iname == "") {
 		alert("상품명을 입력하세요");
@@ -108,92 +104,38 @@ function productWrite() {
 		return;
 
 	}
-	if (price == "") {
+	if (price == "" && auctioncheck == "N") {
 		alert("가격을 입력하세요");
 		document.InsertForm.price.focus();
 		return;
-	}/*
-		if (maxPrice == "") { //상품가격이 입력되어 있지 않으면
+	}
+		if (maxPrice == "" && auctioncheck == "Y") { //상품가격이 입력되어 있지 않으면
 		alert("최대가격을 입력하세요");
 		document.InsertForm.maxPrice.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
 		return;
 	}
-	if (minPrice == "") { //상품가격이 입력되어 있지 않으면
+	if (minPrice == "" && auctioncheck == "Y") { //상품가격이 입력되어 있지 않으면
 		alert("최소가격을 입력하세요");
 		document.InsertForm.minPrice.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
 		return;
 	}
-	if (endDay == "0" && endTime == "0") { //상품설명이 입력되어 있지 않으면
+	if (endDay == "0" && endTime == "0" && auctioncheck == "Y") { //상품설명이 입력되어 있지 않으면
 		alert("경매시간을 설정하세요");
 		return;
-	}*/
+	}
 	if (priceText == "") {
 		alert("상품설명을 입력하세요");
 		document.InsertForm.priceText.focus();
 		return;
 	}
-/*
-	if (document.fileUploadNor.imagefaceNor.value == null || document.fileUploadNor.imagefaceNor.value == "") {
+
+	if (document.fileUpload.imageFace.value == null || document.fileUpload.imageFace.value == "") {
 		document.InsertForm.submit();
 	} else {
-		getFileUpload("#fileUploadNor");
-	}*/
+		//getFileUpload("#fileUpload");
+	}
 	document.InsertForm.submit();
 };
-
-/*function productWriteAuc() {
-	var productName = document.aucForm.productNameAuc.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품이름을 반환해서 name에 저장함
-	var category = document.aucForm.categoryAuc.value;
-	var maxPrice = document.aucForm.maxPrice.value;
-	var minPrice = document.aucForm.minPrice.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
-	var endDay = document.aucForm.endDay.value;
-	var endTime = document.aucForm.endTime.value;
-	var priceText = document.aucForm.priceTextAuc.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 정보를 반환해서 description에 저장함
-
-	//document.form.은 폼페이지에 있는 값을 반환한다는 뜻.
-
-	if (productName == "") { //상품 이름이 입력되어 있지 않으면
-		alert("상품명을 입력하세요");
-		document.aucForm.productName.focus(); //form1페이지에 있는 "상품명을 입력하세요" 에 커서를 올려둔다.
-		return;
-	}
-	if (category == "") { //상품가격이 입력되어 있지 않으면
-		alert("카테고리를 선택하세요");
-		document.aucForm.category.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
-		return;
-
-	}
-	if (maxPrice == "") { //상품가격이 입력되어 있지 않으면
-		alert("최대가격을 입력하세요");
-		document.aucForm.maxPrice.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
-		return;
-	}
-	if (minPrice == "") { //상품가격이 입력되어 있지 않으면
-		alert("최소가격을 입력하세요");
-		document.aucForm.minPrice.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
-		return;
-	}
-	if (endDay == "0" && endTime == "0") { //상품설명이 입력되어 있지 않으면
-		alert("경매시간을 설정하세요");
-		return;
-	}
-	if (priceText == "") { //상품설명이 입력되어 있지 않으면
-		alert("상품설명을 입력하세요");
-		document.aucForm.priceText.focus(); //form1페이지에 있는 "상품설명을 입력하세요" 에 커서를 올려둔다.
-		return;
-	}
-	// input 태그를 마우스로 클릭하여 입력상태로 만든것을 포커스를 얻었다고 한다.
-	// 그리고 입력상태를 떠난 것을 포커스가 벗어났다고 한다.
-
-	//이미지 첨부 안했을때 바로 insert
-	if (document.fileUploadAuc.imagefaceAuc.value == null || document.fileUploadAuc.imagefaceAuc.value == "") {
-		document.aucForm.submit();
-	} else {// 이미지 첨부가 있으면 파일 등록 후 insert
-		getFileUpload("#fileUploadAuc");
-	}
-
-};
-*/
 
 
 // image preview 기능 구현
@@ -209,9 +151,9 @@ function addPreview(input) {
 				//div id="preview" 내에 동적코드추가.
 				//이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
 				
-					$("#preview ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' onclick='deletePreview($(this), 1)' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
-					norLeng = $('#preview li').length;
-					$('#ImageTbl small').empty().append("(" + norLeng + "/4)");
+					$("#preview ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' onclick='deletePreview($(this))' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
+					imageLeng = $('#preview li').length;
+					$('#imageTbl small').empty().append("(" + imageLeng + "/4)");
 				 
 			};
 

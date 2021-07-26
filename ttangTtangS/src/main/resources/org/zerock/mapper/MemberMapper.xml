@@ -70,7 +70,7 @@ update member set upw=#{upw} where userid=#{userid}
 ]]>
 	</update>
 	<!-- 상품 등록 주소 불러오기 -->
-	<select id ="addressSelect" parameterType="arraylist" resultType="string">
+	 <select id ="addressSelect"  resultType="map">
 	select address1,address2,address3 from member where userid=  #{userid}
 	</select>
 	

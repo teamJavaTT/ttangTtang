@@ -61,7 +61,7 @@ preview-box {
 			<table>
 				<tr>
 					<td>상품명:</td>
-					<td><input name="iname" id="iname" class="form-control"></td>
+					<td colspan="2"><input name="iname" id="iname" class="form-control"></td>
 				</tr>
 				<tr>
 					<td>카테고리:</td>
@@ -93,13 +93,6 @@ preview-box {
 				</tr>
 				<tr>
 					<td>판매 지역:</td>
-					<td colspan="2"><c:if test="${!empty address[0]}">
-							<input type="radio" name="uad" value="${address[0]}">
-							<span>${address[0]}</span>
-						</c:if></td>
-				</tr>
-				<tr>
-					<td></td>
 					<td colspan="2"><c:if test="${!empty address[1]}">
 							<input type="radio" name="uad" value="${address[1]}">
 							<span>${address[1]}</span>
@@ -110,6 +103,13 @@ preview-box {
 					<td colspan="2"><c:if test="${!empty address[2]}">
 							<input type="radio" name="uad" value="${address[2]}">
 							<span>${address[2]}</span>
+						</c:if></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2"><c:if test="${!empty address[3]}">
+							<input type="radio" name="uad" value="${address[3]}">
+							<span>${address[3]}</span>
 						</c:if></td>
 				</tr>
 	
@@ -151,7 +151,7 @@ preview-box {
 							<option value=23>23시간</option>
 					</select></td>
 				</tr>
-				<tr>
+				<tr class= "auction">
 					<td></td>
 					<td colspan="2" id="timeMent"></td>
 				</tr>
@@ -164,30 +164,30 @@ preview-box {
 			</table>
 		</form>
 		<div class="filebox">
-			<table id="norImageTbl">
+			<table id="imageTbl">
 				<tr>
 					<td><span>상품이미지<small>(0/4)</small></span></td>
 				</tr>
-		<!--		<tr>
+			<tr>
 					<td>
 						<div id="preview" class="preview">
 							<ul></ul>
 						</div> <input class="upload-name" value="이미지 등록" disabled="disabled" />
-						<label for="imagefaceNor">업로드</label>
-						<form id="fileUploadNor" name="fileUploadNor" method="post"
+						<label for="imageFace">업로드</label>
+						<form id="fileUpload" name="fileUpload" method="post"
 							enctype="multipart/form-data">
 							<input type="file" accept="image/jpg, image/jpeg, image/png"
-								name="imagefaceNor" id="imagefaceNor" class="upload-hidden"
+								name="imageFace" id="imageFace" class="upload-hidden"
 								multiple>
 						</form>
 					</td>
-				</tr>  -->
+				</tr>  
 				<tr>
 					<td align="center"><input type="button"
 						class="btn btn-outline-secondary" value="등록"
-						onclick="productWrite();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+						onclick="productWrite()"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
 						<input type="button" class="btn btn-outline-secondary" value="목록"
-						onclick="location.href='index.do'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
+						onclick="location.href='/'"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" -->
 					</td>
 				</tr>
 			</table>

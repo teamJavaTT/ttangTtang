@@ -77,6 +77,7 @@
 			'N')
 		</if>
 	</insert>
+	
 	<!-- Detail -->
 	<select id="selectProduct"
 		resultType="org.zerock.domain.ProductDetail">
@@ -88,6 +89,7 @@ select * from product where ino =#{ino}
 		select cname from category
 		where ccode=#{ccode}
 	</select>
+	
 	<!-- Update -->
 	<update id="productModify">
 		update product set
