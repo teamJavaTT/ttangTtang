@@ -33,7 +33,7 @@ function checkId() {// 아이디 중복에서 하는 체크
 			<c:if test="${idCheck == 1}">
 				사용중인 아이디입니다.
 			</c:if>
-			<form action="idCheck.do" method="post" name="idChkform">
+			<form action="/member/idCheck" method="post" name="idChkform">
 				<input type="text" name="userid" id="id"/>
 				<span class="error_next_box"></span>
 				<input type="button" onclick="checkId()" value="확인"/>

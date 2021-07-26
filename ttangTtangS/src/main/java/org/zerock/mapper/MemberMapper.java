@@ -22,5 +22,6 @@ public interface MemberMapper {
 	 void updatePassword(@Param("upw") String upw, @Param("userid") String userid) throws Exception;
 	// 상품 등록 주소 찾기
 	 ArrayList<String> addressSelect(@Param("userid") String userid)throws Exception;
-	
+	//아이디 중복확인
+	 int idCheck(String userid)throws Exception;
 }

@@ -24,7 +24,7 @@ var address1 = document.querySelector('#address1');
 var error = document.querySelectorAll('.error_next_box');
 
 /*이벤트 핸들러 연결*/
-id.addEventListener("focusout", checkId);
+id.addEventListener("change", checkId);
 pw1.addEventListener("focusout", checkPw);
 pw2.addEventListener("focusout", comparePw);
 userName.addEventListener("focusout", checkName);
@@ -58,10 +58,9 @@ function joinFunc() {
 function checkId() {
 	var idPattern = /[a-zA-Z0-9_-]{5,20}/;
 	if (id.value === "") {
-		error[0].innerHTML = "필수 정보입니다.";
+		error[0].innerHTML = "아이디를 입력하세요.";
 		error[0].style.color = "red";
 		error[0].style.display = "block";
-		$('#idCheckBnt').css("display", "none");
 	}
 	else if (!idPattern.test(id.value)) {
 		error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
@@ -69,9 +68,6 @@ function checkId() {
 		error[0].style.display = "block";
 		$('#idCheckBnt').css("display", "none");
 	} else {
-		error[0].innerHTML = "멋진 아이디네요!";
-		error[0].style.color = "#08A600";
-		error[0].style.display = "block";
 		$('#idCheckBnt').css("display", "block");
 	}
 }
@@ -88,22 +84,22 @@ function checkPw() {
 		error[1].style.display = "block";
 		pwMsg.style.color = "red";
 		pwMsg.style.display = "block";
-		pwImg1.src = "/ttangTtang/img/login/m_icon_not_use.png";
+		pwImg1.src = "/resources/img/login/m_icon_not_use.png";
 	} else {
 		error[1].style.display = "none";
 		pwMsg.innerHTML = "안전";
 		pwMsg.style.display = "block";
 		pwMsg.style.color = "#03c75a";
-		pwImg1.src = "/ttangTtang/img/login/m_icon_safe.png";
+		pwImg1.src = "/resources/img/login/m_icon_safe.png";
 	}
 }
 
 function comparePw() {
 	if (pw2.value === pw1.value && pw2.value != "") {
-		pwImg2.src = "/ttangTtang/img/login/m_icon_check_enable.png";
+		pwImg2.src = "/resources/img/login/m_icon_check_enable.png";
 		error[2].style.display = "none";
 	} else if (pw2.value !== pw1.value) {
-		pwImg2.src = "/ttangTtang/img/login/m_icon_check_disable.png";
+		pwImg2.src = "/resources/img/login/m_icon_check_disable.png";
 		error[2].innerHTML = "비밀번호가 일치하지 않습니다.";
 		error[2].style.display = "block";
 	}
@@ -190,9 +186,28 @@ function joinGo(){
 
 
 function idCheckFunc() {
-	var url = "idCheck.do?userid=" + document.joinform.userid.value;
-	//alert(url);
-	window.open(url, "", "width=400, height=200");
+	$.ajax({
+		url: "/member/idCheck?userid=" + document.joinform.userid.value,
+		type: "POST",
+		contentType: false,
+		processData: false,
+		success: function(data) {
+			if(data == 0){
+				error[0].innerHTML = "멋진 아이디네요!";
+				error[0].style.color = "#08A600";
+				error[0].style.display = "block";
+				document.joinform.idCheck.value="idCheck"
+			}else if(data > 0){
+				error[0].innerHTML = "사용중인 아이디입니다.";
+				error[0].style.color = "red";
+				error[0].style.display = "block";
+			}else if(data == "null"){
+				error[0].innerHTML = "아이디를 입력하세요.";
+				error[0].style.color = "red";
+				error[0].style.display = "block";
+			}
+		}
+	});
 }
 
 

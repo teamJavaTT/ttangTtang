@@ -3,6 +3,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -35,7 +36,7 @@
 							<label for="id">아이디</label>
 						</h3>
 						<span class="box int_id"> <input type="text" id="id" name="userid" class="int" maxlength="20">
-							<button type="button" id="idCheckBnt" style="position: absolute;right: 10px;top: 13px;display:none" onclick="idCheckFunc()">아이디 중복</button>
+							<button type="button" id="idCheckBnt" style="position: absolute;right: 10px;top: 13px" onclick="idCheckFunc()">중복 확인</button>
 						</span> <span class="error_next_box"></span>
 					</div>
 

@@ -117,13 +117,16 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/passwordfind", method = RequestMethod.POST)
-	public String passwordFindPage(@RequestParam(value = "userid",required=false) String userid, @RequestParam(value = "uname",required=false) String uname, @RequestParam(value = "uemail",required=false) String uemail, 
-			@RequestParam(value = "upw",required=false) String upw, @RequestParam(value = "upw2",required=false) String upw2, @RequestParam("findChange") String findChange,
+	public String passwordFindPage(@RequestParam(value = "userid", required = false) String userid,
+			@RequestParam(value = "uname", required = false) String uname,
+			@RequestParam(value = "uemail", required = false) String uemail,
+			@RequestParam(value = "upw", required = false) String upw,
+			@RequestParam(value = "upw2", required = false) String upw2, @RequestParam("findChange") String findChange,
 			Model model, HttpServletRequest req) throws Exception {
 		AES256Util aes256Util = new AES256Util();
 		req.setCharacterEncoding("utf-8");
 
-		if(findChange == "find" || findChange.equals("find")) {
+		if (findChange == "find" || findChange.equals("find")) {
 			String selectPasswordFind = memberService.selectPasswordFind(userid, uname, uemail);
 			if (selectPasswordFind != null) {
 				model.addAttribute("userExist", "Y");
@@ -131,12 +134,12 @@ public class MemberController {
 				model.addAttribute("userExist", "N");
 			}
 			return "/member/passwordfind";
-		}else {	
-			if(upw == upw2 || upw.equals(upw2)) {
+		} else {
+			if (upw == upw2 || upw.equals(upw2)) {
 				String encodeUpw = aes256Util.encrypt(upw);
 				memberService.updatePassword(encodeUpw, userid);
 				return "/member/editSuccess";
-			}else {
+			} else {
 				model.addAttribute("userExist", "Y");
 				model.addAttribute("upwSame", "N");
 				return "/member/passwordfind";
@@ -174,4 +177,19 @@ public class MemberController {
 		return "/member/editSuccess";
 	}
 
+	// 아이디 중복 확인
+	@RequestMapping(value = "/idCheck")
+	public String idCheckPage(@RequestParam(value = "userid", required = false) String userid, Model model, HttpServletResponse res) throws Exception {
+		java.io.PrintWriter pw = res.getWriter();
+		if (userid == null || userid == "") {
+			model.addAttribute("idCheck", null);
+			pw.print("null");
+			return null;
+		}
+
+		int idCheck = memberService.idCheck(userid);
+		model.addAttribute("idCheck", idCheck);
+        pw.print(idCheck);
+		return null;
+	}
 }

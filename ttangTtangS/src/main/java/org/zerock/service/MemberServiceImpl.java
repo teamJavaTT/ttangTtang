@@ -79,4 +79,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.addressSelect(userid);
 	}
 	
+	@Override
+	@Transactional
+	public int idCheck(String userid) throws Exception {
+		 return memberMapper.idCheck(userid);
+		
+		
+	}
 }

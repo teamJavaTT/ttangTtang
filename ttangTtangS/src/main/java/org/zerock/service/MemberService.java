@@ -25,7 +25,10 @@ public interface MemberService {
 	
 	//비밀 번호 변경
 	void updatePassword(String upw, String userid) throws Exception;
+	
 	//주소 찾기
 	ArrayList<String> address(String userid) throws Exception;
 
+	//아이디 중복 확인 
+	int idCheck(String userid) throws Exception;
 }
