@@ -70,9 +70,10 @@ public class ProductController {
 	private String productWriteGet(Model model,HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-		ArrayList<String> address = memberService.address(user.getUserid());
-		List<Category> category = mainService.selectCategory();
+	ArrayList<String> address = memberService.address(user.getUserid());
 	
+	List<Category> category = mainService.selectCategory();
+
 		model.addAttribute("category", category);
 		model.addAttribute("address", address);
 		return "product/productWrite";
@@ -84,6 +85,7 @@ public class ProductController {
 		User user = (User) session.getAttribute("memberUser");
 		product.setTotalTime(Integer.parseInt(product.getEndDay())+Integer.parseInt(product.getEndTime()));
 		ArrayList<String> address = memberService.address(user.getUserid());
+
 		List<Category> category = mainService.selectCategory();
 		model.addAttribute("category", category);
 		model.addAttribute("address", address);

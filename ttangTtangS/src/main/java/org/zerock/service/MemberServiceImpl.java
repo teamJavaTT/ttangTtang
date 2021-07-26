@@ -74,6 +74,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	@Transactional
 	public ArrayList<String> address(String userid) throws Exception {
 		return memberMapper.addressSelect(userid);
 	}
