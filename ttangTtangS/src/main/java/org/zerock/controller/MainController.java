@@ -2,6 +2,7 @@ package org.zerock.controller;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -24,9 +25,15 @@ public class MainController {
 	@Inject
 	private MainService mainService;
 	
+	public static List<Category> category = null;
+	@PostConstruct
+	public final List<Category> initCategory() throws Exception {
+		category = mainService.selectCategory();
+		return category;
+	}
+	
 	@RequestMapping(value = "/")
 	public String mainPage(Model model) throws Exception {
-		List<Category> category = mainService.selectCategory();
 		List<Product> product = mainService.selectProduct();
 		List<ProductToday> productToday = mainService.selectProductToday();
 		//mainService.auctionEnd();
@@ -39,7 +46,6 @@ public class MainController {
 	
 	@RequestMapping(value = "/categories/{ccode}")
 	public String categoryProduct(Model model, @PathVariable("ccode") String ccode) throws Exception {
-		List<Category> category = mainService.selectCategory();
 		List<Product> categoryProduct = mainService.selectCategoryProduct(ccode);
 		
 		model.addAttribute("category", category);
@@ -50,7 +56,6 @@ public class MainController {
 
 	@RequestMapping(value = "/search")
 	public String searchProduct(Model model, @RequestParam("searchName") String search) throws Exception {
-		List<Category> category = mainService.selectCategory();
 		List<Product> searchProduct = mainService.selectSearchProduct(search);
 		
 		model.addAttribute("category", category);
