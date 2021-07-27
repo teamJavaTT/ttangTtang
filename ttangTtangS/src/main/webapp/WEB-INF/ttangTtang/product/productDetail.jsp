@@ -3,6 +3,9 @@
 
 <%@ include file="../include/header.jsp"%>
 <%@ include file="../include/middle_header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <!-- Breadcrumb Section Begin -->
 
 <section class="breadcrumb-section set-bg"
@@ -42,12 +45,12 @@
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
 							<div class="product__details__price">
-								<span id="now_price">${allPro.apricenow}</span>&nbsp;원
+								<span id="now_price"><fmt:formatNumber value="${allPro.apricenow}"pattern="#,###" /></span>&nbsp;원
 							</div>
 						</c:when>
 						<c:when test="${allPro.auctioncheck=='N'}">
 							<div class="product__details__price">
-								<span>${allPro.price}원</span>
+								<span><fmt:formatNumber pattern="#,###" value="${allPro.price}" />원</span>
 							</div>
 						</c:when>
 					</c:choose>
@@ -94,7 +97,7 @@
 					</c:if>
 					<ul>
 						<c:if test="${allPro.auctioncheck=='Y' }">
-							<li><b>시작가격</b> <span id="minprice">${allPro.minprice}원</span></li>
+							<li><b>시작가격</b> <span id="minprice"><fmt:formatNumber value="${allPro.minprice}" pattern="#,###" /></span>원</li>
 							<li><b>남은시간</b> <span id="endtime">${allPro.endtime}</span></li>
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
@@ -131,6 +134,12 @@
 							<div class="product__details__tab__desc">
 								<h6>제품 설명</h6>
 								<p>${allPro.pricetext}</p>
+								<ul>
+									<li><img class="product__details__pic__item--large"
+										src="${allPro.imageface}" style="height: 500px;"></li>
+									<li><img class="product__details__pic__item--large"
+										src="${allPro.imageside}" style="height: 500px;"></li>
+								</ul>
 							</div>
 						</div>
 					</div>

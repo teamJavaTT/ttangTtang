@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="include/header.jsp"%>
 <%@ include file="include/middle_header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
 	var iNoArr = new Array();
 	var endTimeArr = new Array();
@@ -26,7 +27,8 @@
 				<c:forEach var="productToday" items="${productToday}">
 					<div class="col-lg-3">
 						<div class="categories__item set-bg"
-							data-setbg="${productToday.imageface}" onclick="location.href='/product/productDetail?ino=${productToday.ino}&aucChk=${productToday.auctioncheck}'">
+							data-setbg="${productToday.imageface}"
+							onclick="location.href='/product/productDetail?ino=${productToday.ino}&aucChk=${productToday.auctioncheck}'">
 							<h5>
 								<a href="#">${productToday.iname}</a>
 							</h5>
@@ -66,7 +68,8 @@
 							data-setbg="${allProduct.imageface}">
 							<ul class="featured__item__pic__hover">
 								<c:if test="${allProduct.auctioncheck == 'Y'}">
-									<h3 class="aucTimer" id="all${allProduct.ino}"style="background-color: white;"></h3>
+									<h3 class="aucTimer" id="all${allProduct.ino}"
+										style="background-color: white;"></h3>
 								</c:if>
 								<li><a href="#"><i class="fa fa-heart"></i></a></li>
 								<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> 
@@ -79,10 +82,18 @@
 							</h6>
 							<c:choose>
 								<c:when test="${allProduct.auctioncheck != 'Y'}">
-									<h5>${allProduct.price}원</h5>
+									<h5>
+										<fmt:formatNumber pattern="#,###" value="${allProduct.price}" />
+										원
+									</h5>
 								</c:when>
 								<c:when test="${allProduct.auctioncheck == 'Y'}">
-									<h5>현재가 ${allProduct.apricenow}원</h5>
+									<h5>
+										현재가
+										<fmt:formatNumber pattern="#,###"
+											value="${allProduct.apricenow}" />
+										원
+									</h5>
 								</c:when>
 							</c:choose>
 						</div>
@@ -108,7 +119,10 @@
 								<h6>
 									<a href="productDetail.do?ino=${norProduct.ino}">${norProduct.iname}</a>
 								</h6>
-								<h5>${norProduct.price}원</h5>
+								<h5>
+									<fmt:formatNumber pattern="#,###" value="${norProduct.price}" />
+									원
+								</h5>
 							</div>
 						</div>
 					</div>
@@ -123,7 +137,8 @@
 							<div class="featured__item__pic set-bg"
 								data-setbg="${aucProduct.imageface}">
 								<ul class="featured__item__pic__hover">
-									<h2 class="aucTimer" id="auc${aucProduct.ino}"style="background-color: white;"></h2>
+									<h2 class="aucTimer" id="auc${aucProduct.ino}"
+										style="background-color: white;"></h2>
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> 
 									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
@@ -133,7 +148,12 @@
 								<h6>
 									<a href="/product/productDetail?ino=${aucProduct.ino}">${aucProduct.iname}</a>
 								</h6>
-								<h5>현재가 ${aucProduct.apricenow}원</h5>
+								<h5>
+									현재가
+									<fmt:formatNumber pattern="#,###"
+										value="${aucProduct.apricenow}" />
+									원
+								</h5>
 							</div>
 						</div>
 					</div>
@@ -157,7 +177,10 @@
 								<h6>
 									<a href="#">${buyProduct.iname}</a>
 								</h6>
-								<h5>${buyProduct.price}원</h5>
+								<h5>
+									<fmt:formatNumber pattern="#,###" value="${buyProduct.price}" />
+									원
+								</h5>
 							</div>
 						</div>
 					</div>
