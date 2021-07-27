@@ -35,11 +35,34 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
+	@Override
+	@Transactional
+	public Product productModify(Product Product) throws Exception {
+		 return productMapper.productModify(Product);
+	}
 
-	/*
-	 * @Override
-	 * 
-	 * @Transactional public NorProduct productModify(NorProduct norProduct) throws
-	 * Exception { return productMapper.productModify(norProduct); }
-	 */
+
+	@Override
+	@Transactional
+	public void productDelete(int ino) throws Exception {
+	productMapper.productDelete(ino);
+	}
+
+
+	@Override
+	@Transactional
+	public void likeDelete(int ino) throws Exception {
+		 productMapper.likeDelete(ino);
+	}
+
+
+	@Override
+	@Transactional
+	public void aucProductTabDelete(int ino) throws Exception {
+		 productMapper.aucProductTabDelete(ino);
+	}
+
+
+
+	
 }

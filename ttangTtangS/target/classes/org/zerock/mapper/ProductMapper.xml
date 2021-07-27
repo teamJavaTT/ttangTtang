@@ -95,7 +95,7 @@ select * from product where ino =#{ino}
 		update product set
 		<choose>
 			<when test='aucCHK = "N"'>
-				iname=#{productNameNor},
+				iname=#{iname},
 				ccode=#{ccode},
 				price =#{price} ,
 				pricetext =#{pricetext} ,
@@ -105,11 +105,23 @@ select * from product where ino =#{ino}
 			<when test='aucChk="Y"'>
 				iname = #{iname},
 				ccode =#{ccode},
-				minprice =#{price},
+				minprice =#{minPrice},
 				pricetext = #{pricetext} ,
 				imageface = #{imageface}
 				where ino =#{ino}
 			</when>
 		</choose>
 	</update>
+	<!-- Delete -->
+	<delete id = "productDelete">
+	delete from product where ino = #{ino}
+	</delete>
+	
+	<delete id="aucProductTabDelete">
+	delete from auction where ino= #{ino}
+	</delete>
+	
+	<delete id = "likeDelete">
+	delete from likeproduct where ino= #{ino}
+	</delete>
 </mapper>

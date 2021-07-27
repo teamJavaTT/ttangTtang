@@ -23,7 +23,7 @@ function productDel() {
 		var ino = $("#delNo").val();
 		var result = confirm("정말 삭제하시겠습니까?");
 		if (result) {
-			location.href = 'productDelete.do?ino=' + ino;
+			location.href = '/product/productDelete?ino=' +ino;
 		} else {
 			alert("취소되었습니다.");
 		}

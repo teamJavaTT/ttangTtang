@@ -11,9 +11,17 @@ public interface ProductMapper {
 	ProductDetail selectProduct(int ino)throws Exception;
 	//상품 상세페이지 카테고리 불러오기
 	String selectCname(String ccode)throws Exception;
+	//상품 수정 
+	Product productModify(Product product) throws Exception;
+	//상품 삭제 
+	void productDelete(int ino)throws Exception;
+	void likeDelete(int ino)throws Exception;
+	void aucProductTabDelete(int ino)throws Exception;
+	
 
 
 
 
 
 }
+

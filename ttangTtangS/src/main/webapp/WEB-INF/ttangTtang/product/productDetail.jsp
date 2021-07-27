@@ -31,7 +31,8 @@
 			<div class="col-lg-6 col-md-6">
 				<div class="product__details__pic">
 					<div class="product__details__pic__item">
-						<img class="product__details__pic__item--large" src="${allPro.imageface}" style="height:500px;">
+						<img class="product__details__pic__item--large"
+							src="${allPro.imageface}" style="height: 500px;">
 					</div>
 				</div>
 			</div>
@@ -40,7 +41,9 @@
 					<h3>${allPro.iname }</h3>
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
-							<div class="product__details__price"><span id="now_price">${allPro.apricenow}</span>&nbsp;원</div>
+							<div class="product__details__price">
+								<span id="now_price">${allPro.apricenow}</span>&nbsp;원
+							</div>
 						</c:when>
 						<c:when test="${allPro.auctioncheck=='N'}">
 							<div class="product__details__price">
@@ -63,11 +66,12 @@
 								<form action="auctionPart.do" name="auctionPart" method="post">
 									<input type="hidden" name="aucIno" value="${allPro.ino}">
 									<c:if test="${allPro.userid ne memberUser.userid}">
-									<c:if test="${allPro.sellcheck eq 'N'}">
-										<div class="product__details__quantity"> 가격제시
-										<input type="text" name="oPrice" id="oPrice"> 
-										<input type="button" class="btn btn-outline-dark" onclick="aucPricePart()" value="등록">
-										</div>
+										<c:if test="${allPro.sellcheck eq 'N'}">
+											<div class="product__details__quantity">
+												가격제시 <input type="text" name="oPrice" id="oPrice"> <input
+													type="button" class="btn btn-outline-dark"
+													onclick="aucPricePart()" value="등록">
+											</div>
 										</c:if>
 									</c:if>
 								</form>
@@ -77,10 +81,13 @@
 									onclick="matchingwindow()" />
 							</c:when>
 						</c:choose>
-						<button type="button" class="btn btn-outline-danger <c:if test="${iNo != 0}">active</c:if>"
+						<button type="button"
+							class="btn btn-outline-danger <c:if test="${iNo != 0}">active</c:if>"
 							onclick="location.href='likeCount.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-								<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+								fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+								<path
+									d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
 							</svg>
 							&nbsp;찜&nbsp;${allPro.likecount}
 						</button>
@@ -147,8 +154,9 @@
 		<div class="row">
 			<c:forEach var="productUser" items="${productUser}">
 				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="product__item" onclick="location.href='/product/productDetail?ino=${productUser.ino}&aucChk=${productUser.auctioncheck}'">
-						<div class="product__item__pic set-bg" 
+					<div class="product__item"
+						onclick="location.href='/product/productDetail?ino=${productUser.ino}&aucChk=${productUser.auctioncheck}'">
+						<div class="product__item__pic set-bg"
 							data-setbg="${productUser.imageface}">
 							<ul class="product__item__pic__hover">
 								<li><a href="#"><i class="fa fa-heart"></i></a></li>
