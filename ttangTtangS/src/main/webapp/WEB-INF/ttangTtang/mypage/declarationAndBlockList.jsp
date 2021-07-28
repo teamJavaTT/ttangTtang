@@ -9,7 +9,7 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		<c:choose>
-			<c:when test="${param.sellChk eq 'B'}">
+			<c:when test="${param.blockChk eq 'B'}">
 				<h3>차단 내역</h3>
 			</c:when>
 			<c:otherwise>
@@ -24,13 +24,13 @@
 					<div class="table100">
 						<div class="box">
 							<div style="float: right;">
-							<select name="sellChk">
+							<select name="blockChk">
 								<c:choose>
-									<c:when test="${param.sellChk eq 'B'}">
-										<option value="D">신고리스트</option>
-										<option value="B" selected>차단리스트</option>
-									</c:when>
-									<c:otherwise>
+										<c:when test="${param.blockChk eq 'B'}">
+											<option value="D">신고리스트</option>
+											<option value="B" selected>차단리스트</option>
+										</c:when>
+										<c:otherwise>
 										<option value="D" selected>신고리스트</option>
 										<option value="B">차단리스트</option>
 									</c:otherwise>
@@ -85,21 +85,23 @@
 
 											</tr>
 										</c:forEach>
-										
-							
-									<tr>
-										<td colspan="5"><c:if test="${listPage.startPage > 10}">
-												<a
-													href="declarationAndBlock?pageNo=${listPage.startPage - 10}">[이전]</a>
-											</c:if> <c:forEach var="pNo" begin="${listPage.startPage}"
-												end="${listPage.endPage}">
-												<a href="declarationAndBlock?pageNo=${pNo}">[${pNo}]</a>
-											</c:forEach> <c:if test="${listPage.endPage < listPage.totalPages}">
-												<a
-													href="declarationAndBlock?pageNo=${listPage.startPage + 10}">[다음]</a>
-											</c:if></td>
+										<tr>
+										<td colspan="5">
+											<ul style="text-align:center;">
+												<c:if test="${pageMaker.prev}">
+												 	<li style="display:inline;"><a href="declarationAndBlock?page=${pageMaker.startPage - 1}">이전</a></li>
+												</c:if> 
+														  
+												<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+													<li style="display:inline;"><a href="declarationAndBlock?page=${(idx)}&blockChk=${param.blockChk}">${idx}</a></li>
+												</c:forEach>
+														    
+												<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+													<li style="display:inline;"><a href="declarationAndBlock?page=${pageMaker.endPage + 1}">다음</a></li>
+												</c:if>
+											</ul>
+										</td>
 									</tr>
-
 								</tbody>
 							</table>
 						</div>

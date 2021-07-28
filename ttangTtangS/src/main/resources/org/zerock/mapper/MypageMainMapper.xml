@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.MypageMainMapper">
 
+
 	<select id="selectAccountDeclaration"
 		resultType="org.zerock.domain.AccountDeclaration">
 		<![CDATA[
@@ -22,32 +23,55 @@
 		]]>
 	</select>
 
-	<select id="selectLikeProduct"
-		resultType="org.zerock.domain.Product">
-      <![CDATA[
-      select * 
-      from product 
-      where ino in (
+
+
+<select id="selectLikeProduct" resultType="org.zerock.domain.Product" parameterType="map">
+		<![CDATA[
+		select * from 
+		(select row_number() over (order by ino desc) num, A.* from product A where ino in (
          select ino 
          from likeproduct 
          where userid=#{userid}
-      )
-      ]]>
+      ) order by ino desc) 
+		where num between #{pageStart} and #{pageEnd}
+		]]>
+	</select>
+	<select id="selectLikeProductListCount" resultType="int">
+		<![CDATA[
+		select count(ino) from likeproduct where ino > 0
+		]]>
 	</select>
 
 
-	<select id="selectSellList" parameterType="map"
-		resultType="org.zerock.domain.Product">
-
-		select *
-		from product
-		where userid=#{userid}
-
-		<if test='!sellchk.equals("A")'>
+	<select id="selectSellList" resultType="org.zerock.domain.Product" parameterType="map">
+		<![CDATA[
+		select * from 
+		(select row_number() over (order by ino desc) num, A.* from product A where ino in (
+         select ino 
+         from product 
+         where userid=#{userid}
+         ]]>
+         <if test='!sellchk.equals("A")'>
 			and sellcheck=#{sellchk}
 		</if>
-		order by ino desc
-
+		<![CDATA[
+      ) order by ino desc) 
+		where num between #{pageStart} and #{pageEnd}
+		]]>
+	</select>
+	
+	<select id="selectSellListCount" resultType="int">
+		<![CDATA[
+		select count(ino) 
+		from product 
+		where userid=#{userid} 
+		]]>
+         <if test='!sellchk.equals("A")'>
+			and sellcheck=#{sellchk}
+		</if>
+		<![CDATA[
+		and ino > 0
+		]]>
 	</select>
 
 	<select id="selectDeleteForm"
@@ -62,12 +86,14 @@
 	<insert id="insertAccountDeclaration">
 		insert into declaration values
 		(declaration_seq.nextval, #{userId}, #{declId}, #{dtext}, sysdate)
+		where num between #{pageStart} and #{pageEnd}
 	</insert>
 
 	<select id="selectCountDec" parameterType="map" 
 		resultType="int">
 		<![CDATA[
 		select count(*) from declaration where userid=#{userid} and duid=#{badid}
+		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
 	
@@ -81,6 +107,7 @@
 		resultType="int">
 		<![CDATA[
 		select count(*) from block where userid=#{userid} and bid=#{blockid}
+		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
 

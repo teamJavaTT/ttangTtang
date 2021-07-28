@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.AccountDeclaration;
 import org.zerock.domain.BlockUser;
+import org.zerock.domain.Criteria;
+import org.zerock.domain.PageMaker;
 import org.zerock.domain.Product;
 import org.zerock.domain.Secession;
 import org.zerock.domain.User;
@@ -139,77 +141,80 @@ public class MypageMainController {
 
 		}
 	// 신고 및 차단 리스트
-	@RequestMapping(value = "/declarationAndBlockList", method = RequestMethod.GET)
-	public void declarationAndBlockListPageGET(Model model, HttpServletRequest req) throws Exception {
-
-		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-		String userid = user.getUserid();
-
-		List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration(userid, "D");
-		model.addAttribute("accountDeclaration", accountDeclaration);
-	}
-
-	@RequestMapping(value = "/declarationAndBlockList", method = RequestMethod.POST)
-	public void declarationAndBlockListPagePOST(Model model, @RequestParam("sellChk") String sellChk,
+	
+	@RequestMapping(value = "/declarationAndBlockList")
+	public void declarationAndBlockListPagePOST(Criteria cri, Model model, @RequestParam(value = "blockChk",required=false) String blockChk,
 			HttpServletRequest req) throws Exception {
 
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
+		
+		int pageStart = cri.getPageStart();
+		int pageEnd = cri.getPageEnd();
 
-		if (sellChk.equals("D")) {
-			List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration(userid, sellChk);
+		if (blockChk.equals("D")) {
+			List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration(userid, blockChk);
 			model.addAttribute("accountDeclaration", accountDeclaration);
 		} else {
-			List<BlockUser> blockUser = mypagemainService.selectBlockUser(userid, sellChk);
+			List<BlockUser> blockUser = mypagemainService.selectBlockUser(userid, blockChk);
 			model.addAttribute("blockUser", blockUser);
 		}
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(mypagemainService.selectDclrBlckListCount(userid, blockChk));
+		model.addAttribute("pageMaker", pageMaker);
 
 	}
 
 	// 관심 상품
-	@RequestMapping(value = "/likeProduct")
-	public void likeProductPage(Model model, HttpServletRequest req) throws Exception {
+		@RequestMapping(value = "/likeProduct")
+		public void likeProductPage(Criteria cri, Model model, HttpServletRequest req, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
 
-		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-		String userid = user.getUserid();
+			HttpSession session = req.getSession(false);
+			User user = (User) session.getAttribute("memberUser");
+			String userid = user.getUserid();
 
-		List<Product> likeProduct = mypagemainService.selectLikeProduct(userid);
-		model.addAttribute("likeProduct", likeProduct);
-	}
-
-	// 판매 내역
-	@RequestMapping(value = "/sellcheck", method = RequestMethod.GET)
-	public void sellcheckPageGET(Model model, HttpServletRequest req) throws Exception {
-
-		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-		String userid = user.getUserid();
-
-		List<Product> sellList = mypagemainService.selectSellList(userid, "A");
-		model.addAttribute("sellList", sellList);
-	}
-
-	@RequestMapping(value = "/sellcheck", method = RequestMethod.POST)
-	public void sellcheckPagePOST(Model model, @RequestParam("sellChk") String sellchk, HttpServletRequest req)
+			int pageStart = cri.getPageStart();
+			int pageEnd = cri.getPageEnd();
+			
+			List<Product> likeProduct = mypagemainService.selectLikeProduct(userid,pageStart,pageEnd);
+			model.addAttribute("likeProduct", likeProduct);
+		
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(mypagemainService.selectLikeProductListCount());
+			model.addAttribute("pageMaker", pageMaker);
+		}
+		
+		
+		// 판매내역
+	@RequestMapping(value = "/sellcheck")
+	public void sellcheckPagePOST(Criteria cri, Model model, @RequestParam(value = "sellChk",required=false) String sellchk, HttpServletRequest req, @RequestParam(value = "pageNo", defaultValue = "0") String numVal)
 			throws Exception {
 
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
-
+		
+		int pageStart = cri.getPageStart();
+		int pageEnd = cri.getPageEnd();
+		
 		if (sellchk == null)
 			sellchk = "A";
 		if (sellchk.equals("Y") || sellchk.equals("N")) {
-			List<Product> sellList = mypagemainService.selectSellList(userid, sellchk);
+			List<Product> sellList = mypagemainService.selectSellList(userid, sellchk, pageStart, pageEnd);
 			model.addAttribute("sellList", sellList);
 		} else {
-			List<Product> sellList = mypagemainService.selectSellList(userid, sellchk);
+			List<Product> sellList = mypagemainService.selectSellList(userid, sellchk, pageStart, pageEnd);
 			model.addAttribute("sellList", sellList);
 		}
-
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(mypagemainService.selectSellListCount(userid, sellchk));
+		model.addAttribute("pageMaker", pageMaker);
 	}
 
 	// 회원 탈퇴

@@ -19,9 +19,9 @@
 						<div class="box">
 							<div style="float: right;">
 								<select name="sellChk">
-									<option value="A">전체판매내역</option>
-									<option value="N">판매중인내역</option>
-									<option value="Y">판매완료내역</option>
+									<option value="A" <c:if test="${param.sellChk eq 'A'}">selected</c:if>>전체판매내역</option>
+									<option value="N" <c:if test="${param.sellChk eq 'N'}">selected</c:if>>판매중인내역</option>
+									<option value="Y" <c:if test="${param.sellChk eq 'Y'}">selected</c:if>>판매완료내역</option>
 								</select>&nbsp;<input type="submit" class="button" value="보기">
 							</div>
 							<table>
@@ -54,18 +54,21 @@
 										</tr>
 									</c:forEach>
 									<tr>
-										<td colspan="5"><c:if
-												test="${sellCheckPage.startPage > 10}">
-												<a
-													href="sellcheck?pageNo=${sellCheckPage.startPage - 10}">[이전]</a>
-											</c:if> <c:forEach var="pNo" begin="${sellCheckPage.startPage}"
-												end="${sellCheckPage.endPage}">
-												<a href="sellcheck?pageNo=${pNo}">[${pNo}]</a>
-											</c:forEach> <c:if
-												test="${sellCheckPage.endPage < sellCheckPage.totalPages}">
-												<a
-													href="sellcheck?pageNo=${sellCheckPage.startPage + 10}">[다음]</a>
-											</c:if></td>
+										<td colspan="5">
+											<ul style="text-align:center;">
+												<c:if test="${pageMaker.prev}">
+												 	<li style="display:inline;"><a href="sellcheck?page=${pageMaker.startPage - 1}">이전</a></li>
+												</c:if> 
+														  
+												<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+													<li style="display:inline;"><a href="sellcheck?page=${(idx)}&sellChk=${param.sellChk}">${idx}</a></li>
+												</c:forEach>
+														    
+												<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+													<li style="display:inline;"><a href="sellcheck?page=${pageMaker.endPage + 1}">다음</a></li>
+												</c:if>
+											</ul>
+										</td>
 									</tr>
 								</tbody>
 							</table>
