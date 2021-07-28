@@ -9,9 +9,9 @@
 	                	<p>궁금하신 점 또는 상품에 대한 질문내용을 입력해주시면상세히 안내해드립니다.</p>
 	                </div>
 	                <div style="text-align : center;">
-	                	<a href="noticelist.do"><img src="/resources/img/admin/noticeicon.png" width="30%" alt=""></a>
-	                	<a href="qnalist.do"><img src="/resources/img/admin/qnaicon.png" width="30%" alt=""></a>
-	                	<a href="faqlist.do"><img src="/resources/img/admin/faqicon.png" width="30%" alt=""></a>
+	                	<a href="notice"><img src="/resources/img/admin/noticeicon.png" width="30%" alt=""></a>
+	                	<a href="qna"><img src="/resources/img/admin/qnaicon.png" width="30%" alt=""></a>
+	                	<a href="faq"><img src="/resources/img/admin/faqicon.png" width="30%" alt=""></a>
 	                </div>
                 </div>
             </div>
