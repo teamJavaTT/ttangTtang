@@ -21,7 +21,10 @@ public class Product {
 	private String apricenow;
 	private String apriceend;
 	private String priceText;
-	private String imageface;
+	private String imageface1;
+	private String imageface2;
+	private String imageface3;
+	private String imageface4;
 	private String endDay;
 	private String endTime;
 	private int totalTime;

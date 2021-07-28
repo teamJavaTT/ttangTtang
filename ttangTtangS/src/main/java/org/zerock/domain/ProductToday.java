@@ -23,41 +23,15 @@ public class ProductToday {
 	private String apricenow;
 	private String apriceend;
 	private String pricetext;
-	private String imageface;
-	private String imageside;
-	private String imageback;
-	private String imageetc;
+	private String imageface1;
+	private String imageface2;
+	private String imageface3;
+	private String imageface4;
 	private BigDecimal viewcount;
 	private BigDecimal likecount;
 	private Timestamp pdate;
 	private Timestamp endtime;
 	private String auctiontime;
 	private String sellcheck;
-
-	public ProductToday(BigDecimal num,BigDecimal ino, String userid, String ccode, String auctioncheck, String uad, String iname, String price, String minprice, String maxprice, String apricenow, String apriceend, String pricetext, String imageface, String imageside, String imageback, String imageetc, BigDecimal viewcount, BigDecimal likecount, Timestamp pdate, Timestamp endtime, String auctiontime, String sellcheck) {
-		this.num = num;
-		this.ino = ino;
-		this.userid = userid;
-		this.ccode = ccode;
-		this.auctioncheck = auctioncheck;
-		this.uad = uad;
-		this.iname = iname;
-		this.price = price;
-		this.minprice = minprice;
-		this.maxprice = maxprice;
-		this.apricenow = apricenow;
-		this.apriceend = apriceend;
-		this.pricetext = pricetext;
-		this.imageface = imageface;
-		this.imageside = imageside;
-		this.imageback = imageback;
-		this.imageetc = imageetc;
-		this.viewcount = viewcount;
-		this.likecount = likecount;
-		this.pdate = pdate;
-		this.endtime = endtime;
-		this.auctiontime = auctiontime;
-		this.sellcheck = sellcheck;
-	}
 
 }

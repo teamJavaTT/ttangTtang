@@ -56,12 +56,7 @@ public class ProductController {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		product.setTotalTime(Integer.parseInt(product.getEndDay()) + Integer.parseInt(product.getEndTime()));
-		ArrayList<String> address = memberService.address(user.getUserid());
-
-		model.addAttribute("category", category);
-		model.addAttribute("address", address);
-		String userid = user.getUserid();
-		product.setUserid(userid);
+		product.setUserid(user.getUserid());
 		productService.insertProduct(product);
 		return "/product/productSuccess";
 	}

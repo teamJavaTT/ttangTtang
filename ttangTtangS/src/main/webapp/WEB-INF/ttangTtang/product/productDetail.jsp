@@ -35,7 +35,7 @@
 				<div class="product__details__pic">
 					<div class="product__details__pic__item">
 						<img class="product__details__pic__item--large"
-							src="${allPro.imageface}" style="height: 500px;">
+							src="${allPro.imageface1}" style="height: 500px;">
 					</div>
 				</div>
 			</div>
@@ -136,9 +136,9 @@
 								<p>${allPro.pricetext}</p>
 								<ul>
 									<li><img class="product__details__pic__item--large"
-										src="${allPro.imageface}" style="height: 500px;"></li>
+										src="${allPro.imageface1}" style="height: 500px;"></li>
 									<li><img class="product__details__pic__item--large"
-										src="${allPro.imageside}" style="height: 500px;"></li>
+										src="${allPro.imageface2}" style="height: 500px;"></li>
 								</ul>
 							</div>
 						</div>
@@ -166,7 +166,7 @@
 					<div class="product__item"
 						onclick="location.href='/product/productDetail?ino=${productUser.ino}&aucChk=${productUser.auctioncheck}'">
 						<div class="product__item__pic set-bg"
-							data-setbg="${productUser.imageface}">
+							data-setbg="${productUser.imageface1}">
 							<ul class="product__item__pic__hover">
 								<li><a href="#"><i class="fa fa-heart"></i></a></li>
 							</ul>

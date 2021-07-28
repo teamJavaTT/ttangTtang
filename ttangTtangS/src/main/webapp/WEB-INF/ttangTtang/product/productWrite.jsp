@@ -55,8 +55,11 @@ preview-box {
 	<div class="container" style="padding-left: 34%;">
 		<form id="InsertForm" name="InsertForm" action="productWrite"
 			method="post" style="margin-top: 20px; margin-bottom: 10px;">
-			<input type="hidden" name="imagefaceName" /> <input type="hidden"
-				name="auctioncheck" id="auctioncheck" />
+			<input type="hidden" name="imageface1" id="imageface1"/>
+			<input type="hidden" name="imageface2" id="imageface2"/> 
+			<input type="hidden" name="imageface3" id="imageface3"/> 
+			<input type="hidden" name="imageface4" id="imageface4"/>  
+			<input type="hidden" name="auctioncheck" id="auctioncheck" />
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
 				<tr>
@@ -174,11 +177,9 @@ preview-box {
 						<div id="preview" class="preview">
 							<ul></ul>
 						</div> <input class="upload-name" value="이미지 등록" disabled="disabled" />
-						<label for="imageFace">업로드</label>
-						<form id="fileUpload" name="fileUpload" method="post"
-							enctype="multipart/form-data">
-							<input type="file" accept="image/jpg, image/jpeg, image/png"
-								name="imageFace" id="imageFace" class="upload-hidden" multiple>
+						<label for="imageFile">업로드</label>
+						<form id="fileUpload" name="fileUpload" enctype="multipart/form-data">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imageFile" id="imageFile" class="upload-hidden" multiple="multiple">
 						</form>
 					</td>
 				</tr>

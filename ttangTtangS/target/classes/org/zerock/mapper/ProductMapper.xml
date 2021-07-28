@@ -17,7 +17,10 @@
 			INAME,
 			PRICE,
 			PRICETEXT,
-			IMAGEFACE,
+			IMAGEFACE1,
+			IMAGEFACE2,
+			IMAGEFACE3,
+			IMAGEFACE4,
 			VIEWCOUNT,
 			LIKECOUNT,
 			PDATE,
@@ -31,7 +34,10 @@
 			#{iname},
 			#{price},
 			#{priceText},
-			#{imageface,jdbcType=VARCHAR},
+			#{imageface1},
+			#{imageface2},
+			#{imageface3},
+			#{imageface4},
 			0,
 			0,
 			sysdate,
@@ -49,7 +55,10 @@
 			APRICENOW,
 			APRICEEND,
 			PRICETEXT,
-			IMAGEFACE,
+			IMAGEFACE1,
+			IMAGEFACE2,
+			IMAGEFACE3,
+			IMAGEFACE4,
 			VIEWCOUNT,
 			LIKECOUNT,
 			PDATE,
@@ -68,7 +77,10 @@
 			#{apricenow},
 			0,
 			#{priceText},
-			#{imageface},
+			#{imageface1},
+			#{imageface2},
+			#{imageface3},
+			#{imageface4},
 			0,
 			0,
 			sysdate,
@@ -115,7 +127,7 @@ select * from product where ino =#{ino}
 				ccode=#{ccode},
 				price =#{price} ,
 				pricetext =#{priceText} ,
-				imageface =#{imageface}
+				imageface1 =#{imageface1}
 				where ino = #{ino}
 			</when>
 			<when test='auctioncheck"Y"'>
@@ -123,7 +135,7 @@ select * from product where ino =#{ino}
 				ccode =#{ccode},
 				minprice =#{minPrice},
 				pricetext = #{priceText} ,
-				imageface = #{imageface}
+				imageface1 = #{imageface1}
 				where ino =#{ino}
 			</when>
 		</choose>

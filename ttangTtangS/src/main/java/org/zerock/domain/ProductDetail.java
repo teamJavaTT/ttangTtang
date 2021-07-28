@@ -22,10 +22,10 @@ public class ProductDetail {
 	private String apricenow;
 	private String apriceend;
 	private String pricetext;
-	private String imageface;
-	private String imageside;
-	private String imageback;
-	private String imageetc;
+	private String imageface1;
+	private String imageface2;
+	private String imageface3;
+	private String imageface4;
 	private int viewcount;
 	private int likecount;
 	private Date pdate;

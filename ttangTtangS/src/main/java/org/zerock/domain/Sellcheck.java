@@ -22,7 +22,7 @@ public class Sellcheck { // 판매내역
 	private String apriceNow;
 	private String apriceEnd;
 	private String priceText;
-	private String imageFace;
+	private String imageFace1;
 	private int viewCount;
 	private Date pDate;
 	private Date endTime;

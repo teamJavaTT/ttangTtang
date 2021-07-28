@@ -34,7 +34,7 @@
 				<div class="product__details__pic" >
 					<div class="product__details__pic__item" >
 						<img class="product__details__pic__item--large"
-							src="${aucProduct.imageface}"> 
+							src="${aucProduct.imageface1}"> 
 					</div>
 					<div
 						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">

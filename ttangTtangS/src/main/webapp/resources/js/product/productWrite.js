@@ -2,8 +2,8 @@ var imageLeng;
 
 $(document).ready(function() {
 	// 태그에 onchange를 부여한다.
-	$('#imageFace').change(function() {
-		if ($('#imageFace')[0].files.length > 4 || imageLeng >= 4 || $('#imageFace')[0].files.length+imageLeng > 4) {
+	$('#imageFile').change(function() {
+		if ($('#imageFile')[0].files.length > 4 || imageLeng >= 4 || $('#imageFile')[0].files.length+imageLeng > 4) {
 			alert("사진 첨부는 최대 4장까지 가능합니다.");
 			return false;
 		} else {
@@ -59,22 +59,25 @@ function leadingZeros(n, digits) {
 
 
 
-function getFileUpload(fileUpload) {
+function getFileUpload() {
 
-	var form = $(fileUpload)[0];
+	var form = $('#fileUpload')[0];
 	var formData = new FormData(form);
 
 	$.ajax({
-		url: "/ttangTtang/ImageServlet",
+		url: "/uploadImage",
 		type: "POST",
 		data: formData,
 		contentType: false,
 		processData: false,
 		success: function(data) {
-			
-				document.InsertForm.imagefaceName.value = data;
-				document.InsertForm.submit();
-			
+			const imageArr = data.split(",");
+			var name = "";
+			for(var i=0;i<imageArr.length;i++){
+				name = "#imageface"+(i+1);
+				$(name).val("/resources/file/"+imageArr[i]);
+			}
+			document.InsertForm.submit();
 		}, error: function() {
 			alert("사진업로드 에러발생");
 		}
@@ -129,12 +132,11 @@ function productWrite() {
 		return;
 	}
 
-	if (document.fileUpload.imageFace.value == null || document.fileUpload.imageFace.value == "") {
+	if (document.fileUpload.imageFile.value == null || document.fileUpload.imageFile.value == "") {
 		document.InsertForm.submit();
 	} else {
-		//getFileUpload("#fileUpload");
+		getFileUpload();
 	}
-	document.InsertForm.submit();
 };
 
 

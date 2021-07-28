@@ -27,7 +27,7 @@
 				<c:forEach var="productToday" items="${productToday}">
 					<div class="col-lg-3">
 						<div class="categories__item set-bg"
-							data-setbg="${productToday.imageface}"
+							data-setbg="${productToday.imageface1}"
 							onclick="location.href='/product/productDetail?ino=${productToday.ino}&aucChk=${productToday.auctioncheck}'">
 							<h5>
 								<a href="#">${productToday.iname}</a>
@@ -65,7 +65,7 @@
 					<div class="featured__item"
 						onclick="location.href='/product/productDetail?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
 						<div class="featured__item__pic set-bg"
-							data-setbg="${allProduct.imageface}">
+							data-setbg="${allProduct.imageface1}">
 							<ul class="featured__item__pic__hover">
 								<c:if test="${allProduct.auctioncheck == 'Y'}">
 									<li><h3 class="aucTimer" id="all${allProduct.ino}"
@@ -107,7 +107,7 @@
 						<div class="featured__item"
 							onclick="location.href='/product/productDetail?ino=${norProduct.ino}&aucChk=${norProduct.auctioncheck}'">
 							<div class="featured__item__pic set-bg"
-								data-setbg="${norProduct.imageface}">
+								data-setbg="${norProduct.imageface1}">
 
 								<ul class="featured__item__pic__hover">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -135,7 +135,7 @@
 						<div class="featured__item"
 							onclick="location.href='/product/productDetail?ino=${aucProduct.ino}&aucChk=${aucProduct.auctioncheck}'">
 							<div class="featured__item__pic set-bg"
-								data-setbg="${aucProduct.imageface}">
+								data-setbg="${aucProduct.imageface1}">
 								<ul class="featured__item__pic__hover">
 									<li><h3 class="aucTimer" id="auc${aucProduct.ino}"
 										style="background-color: white;"></h3></li><br>
@@ -166,7 +166,7 @@
 						<div class="featured__item"
 							onclick="location.href='/product/productDetail?ino=${buyProduct.ino}'">
 							<div class="featured__item__pic set-bg"
-								data-setbg="${buyProduct.imageface}">
+								data-setbg="${buyProduct.imageface1}">
 								<ul class="featured__item__pic__hover">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> 
