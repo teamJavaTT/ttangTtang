@@ -1,7 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/adminheader.jsp"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file="../include/header.jsp"%>
+<link rel="stylesheet" href="/resources/css/admin/adminmain.css">
+<section class="hero">
+   <div class="container">
+      <div class="row">
+         <!-- admin list -->
+         <div class="col-lg-3">
+            <div class="hero__categories">
+               <ul>
+               <%@ include file="list.jsp"%>
+               </ul>
+            </div>
+         </div>
 			<div class="col-lg-9">
 				<section class="content-header">
 					<h2>신고 관리</h2>
@@ -24,7 +36,7 @@
 													번호 : ${declaration.dno}
 												</td>
 												<td colspan="2" style="text-align: left;">
-													작성일자 : ${declaration.ddate}
+													작성일자 : <fmt:formatDate value="${declaration.ddate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 												</td>
 											</tr>
 											<tr>

@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/adminheader.jsp"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file="../include/header.jsp"%>
+<link rel="stylesheet" href="/resources/css/admin/adminmain.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<c:if test="${pwdNo eq 'no'}">
 			<script>alert("비밀번호가 틀렸습니다.");</script>
 		</c:if>
+		
+<section class="hero">
+   <div class="container">
+      <div class="row">
+         <!-- admin list -->
+         <div class="col-lg-3">
+            <div class="hero__categories">
+               <ul>
+               <%@ include file="list.jsp"%>
+               </ul>
+            </div>
+         </div>
 			<div class="col-lg-9">
 				<!-- Content Header (Page header) -->
 				<section class="content-header">

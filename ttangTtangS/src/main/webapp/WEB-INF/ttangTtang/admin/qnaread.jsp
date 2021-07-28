@@ -1,9 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/adminheader.jsp"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file="../include/header.jsp"%>
+<link rel="stylesheet" href="/resources/css/admin/adminmain.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+<section class="hero">
+   <div class="container">
+      <div class="row">
+         <!-- admin list -->
+         <div class="col-lg-3">
+            <div class="hero__categories">
+               <ul>
+               <%@ include file="list.jsp"%>
+               </ul>
+            </div>
+         </div>
 			<div class="col-lg-9">
 				<section class="content-header">
 					<h2>Q&A</h2>
@@ -24,7 +36,7 @@
 										<c:forEach var="qna" items="${qna}">
 											<tr>
 												<td style="text-align: left;">번호 : ${qna.qno}</td>
-												<td style="text-align: left;">작성일자 : ${qna.qdate}</td>
+												<td style="text-align: left;">작성일자 : <fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 											</tr>
 											<tr>
 												<td colspan="4"

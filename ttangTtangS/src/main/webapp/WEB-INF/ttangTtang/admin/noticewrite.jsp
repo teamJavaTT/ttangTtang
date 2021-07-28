@@ -1,7 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/adminheader.jsp"%>
-			<div class="col-lg-9">
+<%@ include file="../include/header.jsp"%>
+<link rel="stylesheet" href="/resources/css/admin/adminmain.css">
+<section class="hero">
+   <div class="container">
+      <div class="row">
+         <!-- admin list -->
+         <div class="col-lg-3">
+            <div class="hero__categories">
+               <ul>
+               <%@ include file="list.jsp"%>
+               </ul>
+            </div>
+         </div>
+         <div class="col-lg-9">
 				<section class="content-header">
 					<h2>공지사항</h2>
 				</section>
