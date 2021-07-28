@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zerock.domain.Alim;
 import org.zerock.domain.User;
 import org.zerock.dto.Member;
 import org.zerock.mapper.MemberMapper;
@@ -85,5 +86,19 @@ public class MemberServiceImpl implements MemberService {
 		 return memberMapper.idCheck(userid);
 		
 		
+	}
+	
+	@Override
+	@Transactional
+	public int likeProductCount(String userid) throws Exception {
+		int iNoCount = memberMapper.likeProductCount(userid);
+		return iNoCount;
+	}
+	
+	@Override
+	@Transactional
+	public ArrayList<Alim> alimSelect(String userid) throws Exception {
+		ArrayList<Alim> alimList = memberMapper.alimSelect(userid);
+		return alimList;
 	}
 }

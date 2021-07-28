@@ -2,6 +2,7 @@ package org.zerock.service;
 
 import java.util.ArrayList;
 
+import org.zerock.domain.Alim;
 import org.zerock.domain.User;
 import org.zerock.dto.Member;
 
@@ -31,4 +32,10 @@ public interface MemberService {
 
 	//아이디 중복 확인 
 	int idCheck(String userid) throws Exception;
+	
+	// 관심상품 카운트
+	int likeProductCount(String userid) throws Exception;
+	
+	// 알림 카운트
+	ArrayList<Alim> alimSelect(String userid) throws Exception;
 }

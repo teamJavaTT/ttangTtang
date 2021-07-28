@@ -39,21 +39,21 @@
 	</select>
 
 	<update id="updateMember">
-<![CDATA[
-update member set
-]]>
+		<![CDATA[
+		update member set
+		]]>
 		<if test='upw != ""'>
 			upw = #{upw},
 		</if>
-<![CDATA[
-uemail =#{uemail},
-phone = #{phone},
-address1=#{address1},
-address2=#{address2},
-address3=#{address3},
-updatetime=sysdate
-where userid = #{userid}
-]]>
+		<![CDATA[
+		uemail =#{uemail},
+		phone = #{phone},
+		address1=#{address1},
+		address2=#{address2},
+		address3=#{address3},
+		updatetime=sysdate
+		where userid = #{userid}
+		]]>
 	</update>
 
 	<select id="selectPasswordFind" parameterType="map"
@@ -65,17 +65,26 @@ where userid = #{userid}
 	</select>
 
 	<update id="updatePassword" parameterType="map">
-<![CDATA[
-update member set upw=#{upw} where userid=#{userid}
-]]>
+		<![CDATA[
+		update member set upw=#{upw} where userid=#{userid}
+		]]>
 	</update>
 	<!-- 상품 등록 주소 불러오기 -->
-	 <select id ="addressSelect"  resultType="map">
-	select address1,address2,address3 from member where userid=  #{userid}
+	<select id="addressSelect" resultType="map">
+		select address1,address2,address3 from member where userid= #{userid}
 	</select>
-	
-	<!--아이디 중복 확인-->
-	<select id ="idCheck" resultType="int">
-	select count(userid) from member where userid = #{userid}
+
+	<!--아이디 중복 확인 -->
+	<select id="idCheck" resultType="int">
+		select count(userid) from member where userid = #{userid}
 	</select>
+
+	<select id="likeProductCount" resultType="int">
+		select count(ino) from likeproduct where userid = #{userid}
+	</select>
+
+	<select id="alimSelect" resultType="org.zerock.domain.Alim">
+		select * from alim where userid = #{userid} and alimchk='N' order by lno desc
+	</select>
+
 </mapper>

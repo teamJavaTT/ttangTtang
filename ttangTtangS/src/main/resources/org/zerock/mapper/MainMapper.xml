@@ -3,12 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.MainMapper">
-
-	<select id="selectCategory" resultType="org.zerock.domain.Category">
-		select * 
-		from category 
-		order by maincategory
-	</select>
 	
 	<select id="selectProduct" resultType="org.zerock.domain.Product">
 		<![CDATA[

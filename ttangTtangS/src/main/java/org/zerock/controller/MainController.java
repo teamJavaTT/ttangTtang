@@ -25,12 +25,7 @@ public class MainController {
 	@Inject
 	private MainService mainService;
 	
-	public static List<Category> category = null;
-	@PostConstruct
-	public final List<Category> initCategory() throws Exception {
-		category = mainService.selectCategory();
-		return category;
-	}
+	List<Category> category = InitController.category;
 	
 	@RequestMapping(value = "/")
 	public String mainPage(Model model) throws Exception {

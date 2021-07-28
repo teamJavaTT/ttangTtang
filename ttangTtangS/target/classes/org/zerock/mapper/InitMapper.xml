@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.InitMapper">
+
+	<select id="selectCategory" resultType="org.zerock.domain.Category">
+		select * 
+		from category 
+		order by maincategory
+	</select>
+
+	<select id="auctionEndInoSelect" resultType="String">
+		<![CDATA[
+		select ino 
+		from product 
+		where sellcheck='N' 
+		and endtime <= sysdate
+		]]>
+	</select>
+
+	<update id="auctionEndUpdate">
+		update product 
+		set sellcheck = 'Y', 
+		apriceend = apricenow 
+		where ino = #{ino}
+	</update>
+	
+	<select id="auctionEndInoCount" resultType="int">
+		select count(*) cnt 
+		from auction 
+		where ino = #{ino}
+	</select>
+	
+	<select id="aucAlimUserIdSelect" resultType="Map">
+		select userid, iname 
+		from product 
+		where ino = #{ino}
+	</select>
+	
+	<insert id="alimInsert" parameterType="map">
+		insert into alim values(alim_seq.nextval, #{userid}, #{lText}, sysdate, 'N')
+	</insert>
+	
+	<update id="auctioConnUpdate">
+		update auction 
+		set conn = 'Y' 
+		where ino = #{ino} 
+		and oprice = (select max(oprice) 
+						from auction 
+						where ino=#{ino})
+	</update>
+	
+	<select id="aucConnUserIdSelect" resultType="String">
+		select userid 
+		from auction 
+		where  ino = #{ino} 
+		and conn = 'Y'
+	</select>
+	
+</mapper>

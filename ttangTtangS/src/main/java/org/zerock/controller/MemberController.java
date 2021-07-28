@@ -1,5 +1,6 @@
 package org.zerock.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,22 +16,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.zerock.domain.Alim;
 import org.zerock.domain.User;
 import org.zerock.dto.Member;
 import org.zerock.service.LoginFailException;
 import org.zerock.service.MemberService;
 import org.zerock.service.PasswordFailException;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import AES256.AES256Util;
 
 @Controller
 @RequestMapping(value = "/member")
 public class MemberController {
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-
-	private static final String Member = null;
 
 	@Inject
 	private MemberService memberService;
@@ -58,6 +55,11 @@ public class MemberController {
 			String upwd = aes256Util.encrypt(upw);
 			User user = memberService.memberLogin(userid, upwd);
 			req.getSession().setAttribute("memberUser", user);
+			
+			int likeCount = memberService.likeProductCount(user.getUserid());
+			ArrayList<Alim> alimList = memberService.alimSelect(user.getUserid());
+			req.getSession().setAttribute("likeCount", likeCount);
+			req.getSession().setAttribute("alim", alimList);
 		} catch (LoginFailException e) {
 			errors.put("idNotMatch", Boolean.TRUE);
 			req.setAttribute("login", false);

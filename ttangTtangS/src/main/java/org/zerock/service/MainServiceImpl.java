@@ -14,12 +14,6 @@ import org.zerock.mapper.MainMapper;
 public class MainServiceImpl implements MainService {
 	@Autowired
 	private MainMapper mainMapper;
-
-	@Override
-	@Transactional
-	public List<Category> selectCategory() throws Exception {
-		return mainMapper.selectCategory();
-	}
 	
 	@Override
 	@Transactional
