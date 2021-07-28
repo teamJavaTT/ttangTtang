@@ -68,8 +68,8 @@
 							data-setbg="${allProduct.imageface}">
 							<ul class="featured__item__pic__hover">
 								<c:if test="${allProduct.auctioncheck == 'Y'}">
-									<h3 class="aucTimer" id="all${allProduct.ino}"
-										style="background-color: white;"></h3>
+									<li><h3 class="aucTimer" id="all${allProduct.ino}"
+										style="background-color: white;"></h3></li><br>
 								</c:if>
 								<li><a href="#"><i class="fa fa-heart"></i></a></li>
 								<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> 
@@ -137,8 +137,8 @@
 							<div class="featured__item__pic set-bg"
 								data-setbg="${aucProduct.imageface}">
 								<ul class="featured__item__pic__hover">
-									<h2 class="aucTimer" id="auc${aucProduct.ino}"
-										style="background-color: white;"></h2>
+									<li><h3 class="aucTimer" id="auc${aucProduct.ino}"
+										style="background-color: white;"></h3></li><br>
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> 
 									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->

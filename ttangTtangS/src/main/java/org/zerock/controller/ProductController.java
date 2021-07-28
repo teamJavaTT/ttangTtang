@@ -32,7 +32,7 @@ public class ProductController {
 	@Inject
 	private MemberService memberService;
 
-	List<Category> category = MainController.category;
+	List<Category> category = InitController.category;
 
 	// 상품등록
 	@RequestMapping(value = "/productWrite", method = RequestMethod.GET)
