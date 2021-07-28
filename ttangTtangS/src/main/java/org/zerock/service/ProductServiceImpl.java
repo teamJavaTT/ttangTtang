@@ -37,8 +37,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional
-	public Product productModify(Product Product) throws Exception {
-		 return productMapper.productModify(Product);
+	public void productModify(Product Product) throws Exception {
+		  productMapper.productModify(Product);
 	}
 
 
@@ -61,6 +61,44 @@ public class ProductServiceImpl implements ProductService {
 	public void aucProductTabDelete(int ino) throws Exception {
 		 productMapper.aucProductTabDelete(ino);
 	}
+
+
+	@Override
+	@Transactional
+	public int  likeProductCount(String userId) throws Exception {
+		  return productMapper.likeProductCount(userId);
+	}
+
+
+	@Override
+	@Transactional
+	public void viewCountUpdate(int ino) throws Exception {
+		productMapper.viewCountUpdate(ino);
+		
+	}
+
+
+	@Override
+	@Transactional
+	public void likeCountUpdate(String userid, int ino) throws Exception {
+		productMapper.likeCountUpdate(userid, ino);
+	}
+
+
+	@Override
+	@Transactional
+	public void likeCountSubtract(String userid, int ino)throws Exception {
+		productMapper.likeCountSubtract(userid, ino);
+	}
+
+
+	@Override
+	@Transactional
+	public int likeProductUser(String userid, int ino) throws Exception{
+		return productMapper.likeProductUser(userid, ino);
+	}
+
+
 
 
 

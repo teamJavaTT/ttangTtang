@@ -45,7 +45,7 @@
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
 							<div class="product__details__price">
-								<span id="now_price"><fmt:formatNumber value="${allPro.apricenow}"pattern="#,###" /></span>&nbsp;원
+								<span id="now_price"><fmt:formatNumber value="${allPro.apricenow}" pattern="#,###" /></span>&nbsp;원
 							</div>
 						</c:when>
 						<c:when test="${allPro.auctioncheck=='N'}">
@@ -86,7 +86,7 @@
 						</c:choose>
 						<button type="button"
 							class="btn btn-outline-danger <c:if test="${iNo != 0}">active</c:if>"
-							onclick="location.href='likeCount.do?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
+							onclick="location.href='/product/likeCount?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 								fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
 								<path

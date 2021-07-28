@@ -53,19 +53,20 @@ preview-box {
 		<h3 style="text-align: center;">경매 상품 등록</h3>
 	</div>
 	<div class="container" style="padding-left: 34%;">
-		<form id="InsertForm" name="InsertForm"action="productWrite" method="post"
-			style="margin-top: 20px; margin-bottom: 10px;">
-			<input type="hidden" name="imagefaceName" />
-			<input type="hidden" name="auctioncheck"  id="auctioncheck"/>
+		<form id="InsertForm" name="InsertForm" action="productWrite"
+			method="post" style="margin-top: 20px; margin-bottom: 10px;">
+			<input type="hidden" name="imagefaceName" /> <input type="hidden"
+				name="auctioncheck" id="auctioncheck" />
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
 				<tr>
 					<td>상품명:</td>
-					<td colspan="2"><input name="iname" id="iname" class="form-control"></td>
+					<td colspan="2"><input name="iname" id="iname"
+						class="form-control"></td>
 				</tr>
 				<tr>
 					<td>카테고리:</td>
-	
+
 					<td><select name="ccode">
 							<c:forEach var="category" items="${category}">
 								<c:choose>
@@ -112,7 +113,7 @@ preview-box {
 							<span>${address[3]}</span>
 						</c:if></td>
 				</tr>
-	
+
 				<tr class="auction">
 					<td>경매기간:</td>
 					<td style="width: 74px;"><select name="endDay" id="endDay">
@@ -151,11 +152,11 @@ preview-box {
 							<option value=23>23시간</option>
 					</select></td>
 				</tr>
-				<tr class= "auction">
+				<tr class="auction">
 					<td></td>
 					<td colspan="2" id="timeMent"></td>
 				</tr>
-	
+
 				<tr>
 					<td style="float: left;">상품설명:</td>
 					<td><textarea class="form-control" name="priceText"
@@ -168,7 +169,7 @@ preview-box {
 				<tr>
 					<td><span>상품이미지<small>(0/4)</small></span></td>
 				</tr>
-			<tr>
+				<tr>
 					<td>
 						<div id="preview" class="preview">
 							<ul></ul>
@@ -177,11 +178,10 @@ preview-box {
 						<form id="fileUpload" name="fileUpload" method="post"
 							enctype="multipart/form-data">
 							<input type="file" accept="image/jpg, image/jpeg, image/png"
-								name="imageFace" id="imageFace" class="upload-hidden"
-								multiple>
+								name="imageFace" id="imageFace" class="upload-hidden" multiple>
 						</form>
 					</td>
-				</tr>  
+				</tr>
 				<tr>
 					<td align="center"><input type="button"
 						class="btn btn-outline-secondary" value="등록"
