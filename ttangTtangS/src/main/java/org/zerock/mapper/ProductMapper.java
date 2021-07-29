@@ -2,6 +2,7 @@ package org.zerock.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.zerock.domain.ProductDetail;
+import org.zerock.dto.LikeProduct;
 import org.zerock.dto.Product;
 
 public interface ProductMapper {
@@ -20,10 +21,10 @@ public interface ProductMapper {
 	void aucProductTabDelete(int ino)throws Exception;
 	
 	//찜하기
-	 int likeProductCount(String userId)throws Exception;
+	void likeProductCountInsert(LikeProduct likeProduct)throws Exception;
 	 void likeCountUpdate(String userid, int ino)throws Exception;
 	 void likeCountSubtract(String userid, int ino)throws Exception;
-	int likeProductUser(@Param("userid") String userid,@Param("ino") int ino)throws Exception;
+	LikeProduct likeProductUser(@Param("userid") String userid,@Param("ino") int ino)throws Exception;
 	 
 	 //조회수
 	 void viewCountUpdate(int ino) throws Exception ;

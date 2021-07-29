@@ -1,9 +1,7 @@
 package org.zerock.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.Category;
 import org.zerock.domain.ProductDetail;
 import org.zerock.domain.User;
+import org.zerock.dto.LikeProduct;
 import org.zerock.dto.Product;
 import org.zerock.service.MemberService;
 import org.zerock.service.ProductService;
@@ -69,15 +68,11 @@ public class ProductController {
 		User user = (User) session.getAttribute("memberUser");
 		ProductDetail productDetail = productService.selectProduct(ino);
 		productDetail.setCname(productService.selectCname(productDetail.getCcode()));
-		int ibo = 0;
-		if(user != null) 
-			ibo = productService.likeProductUser(user.getUserid(), ino);
-		else 
-			ibo = 0;
-		Map<String, Integer> iNo = new HashMap<>(ibo);
-		 
-		model.addAttribute("iNo", iNo);
+		LikeProduct likeProduct = productService.likeProductUser(user.getUserid(), ino);
+	
+		model.addAttribute("iNo", likeProduct);
 		model.addAttribute("allPro", productDetail);
+		model.addAttribute("user", user);
 		productService.viewCountUpdate(ino);
 		return "product/productDetail";
 	}
@@ -119,11 +114,14 @@ public class ProductController {
 	}
 
 // 찜하기
-	@RequestMapping(value = "/likeCount")
-	public int likeProductCount(Model model,@RequestParam(value = "userId", required = false) String userId) throws Exception {
-	
-		int iNoCount = productService.likeProductCount(userId);
-		return iNoCount;
+	@RequestMapping(value = "/likeCountInsert")
+	public String likeProductCountInsert(Model model,LikeProduct likeProduct,HttpServletRequest req) throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		likeProduct.setUserid(user.getUserid());;
+	  productService.likeProductCountInsert(likeProduct);
+	  System.out.println("주소 이동중");
+		return "/product/productDetail";
 	}
 //
 //	@RequestMapping(value = "/likeCount")

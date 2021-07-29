@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.ProductDetail;
+import org.zerock.dto.LikeProduct;
 import org.zerock.dto.Product;
 import org.zerock.mapper.ProductMapper;
 
@@ -63,10 +64,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
+	
+
 	@Override
 	@Transactional
-	public int  likeProductCount(String userId) throws Exception {
-		  return productMapper.likeProductCount(userId);
+	public void  likeProductCountInsert(LikeProduct likeProduct) throws Exception {
+		  productMapper.likeProductCountInsert(likeProduct);
 	}
 
 
@@ -94,7 +97,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional
-	public int likeProductUser(String userid, int ino) throws Exception{
+	public LikeProduct likeProductUser(String userid, int ino) throws Exception{
 		return productMapper.likeProductUser(userid, ino);
 	}
 

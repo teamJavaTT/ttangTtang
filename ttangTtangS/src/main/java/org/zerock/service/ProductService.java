@@ -1,6 +1,7 @@
 package org.zerock.service;
 
 import org.zerock.domain.ProductDetail;
+import org.zerock.dto.LikeProduct;
 import org.zerock.dto.Product;
 
 public interface ProductService {
@@ -19,10 +20,10 @@ public interface ProductService {
 	void aucProductTabDelete(int ino) throws Exception;
 
 	//상품 찜하기
-	 int  likeProductCount(String userId)throws Exception;
+	void  likeProductCountInsert(LikeProduct likeProduct) throws Exception;
 	 void likeCountUpdate(String userid, int ino)throws Exception;
 	 void likeCountSubtract(String userid, int ino)throws Exception;
-	 int  likeProductUser(String userid, int ino)throws Exception;
+	 LikeProduct  likeProductUser(String userid, int ino)throws Exception;
 	 
 
 	 //조회수

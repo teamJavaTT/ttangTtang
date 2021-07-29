@@ -90,9 +90,13 @@
 		</if>
 	</insert>
 	
-	<insert id="likeProductCount">
-			<![CDATA[insert into likeproduct 
-	values(#{userid}, #{ino})
+	<insert id="likeProductCountInsert">
+			<![CDATA[
+			insert into likeproduct 
+	values(
+	#{userid},
+	 #{ino})
+	 
 		]]>
 	</insert>
 	
@@ -114,7 +118,7 @@ select * from product where ino =#{ino}
 	select * from product where userid = #{userid} and ino != #{ino} order by ino desc
 	</select>
 	
-	<select id="likeProductUser"  parameterType="map" resultType="int">
+	<select id="likeProductUser"  resultType="org.zerock.dto.LikeProduct" >
 	select count(ino) from likeproduct where userid =#{userid}  and ino =#{ino}
 	</select>
 	
