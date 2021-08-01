@@ -4,5 +4,5 @@
 
 <script>
 		alert("상품수정을 성공했습니다");
-		location.href = "/product/productDetail"
+		location.href = "/"
 </script>

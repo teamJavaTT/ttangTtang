@@ -62,34 +62,48 @@ public class ProductController {
 
 	// 상세페이지
 	@RequestMapping(value = "/productDetail", method = RequestMethod.GET)
-	public String productDetail(Model model,@RequestParam(value = "ino", required = true, defaultValue = "0") int ino,HttpServletRequest req)
-			throws Exception {
+	public String productDetail(Model model, @RequestParam(value = "ino", required = true, defaultValue = "0") int ino,
+			HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		ProductDetail productDetail = productService.selectProduct(ino);
 		productDetail.setCname(productService.selectCname(productDetail.getCcode()));
+
 		LikeProduct likeProduct = productService.likeProductUser(user.getUserid(), ino);
-	
+		String ibo = Integer.toString(ino);
+		List<Product> productUser = productService.productUser(productDetail.getUserid(), ibo);
 		model.addAttribute("iNo", likeProduct);
 		model.addAttribute("allPro", productDetail);
 		model.addAttribute("user", user);
+		model.addAttribute("productUser", productUser);
 		productService.viewCountUpdate(ino);
 		return "product/productDetail";
 	}
 
 	// 상품수정
 	@RequestMapping(value = "/productModify", method = RequestMethod.GET)
-	public String productModifyGet(Model model, @RequestParam("ino") int ino) throws Exception {
+	public String productModifyGet(Model model, @RequestParam("ino") int ino, HttpServletRequest req) throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
 		ProductDetail productModify = productService.selectProduct(ino);
 		productModify.setCname(productService.selectCname(productModify.getCcode()));
+		ArrayList<String> address = memberService.address(user.getUserid());
+		address.add(user.getAddress1());
+		address.add(user.getAddress2());
+		address.add(user.getAddress3());
+		model.addAttribute("address", address);
 		model.addAttribute("category", category);
 		model.addAttribute("allPro", productModify);
 		return "/product/productModify";
 	}
 
 	@RequestMapping(value = "/productModify", method = RequestMethod.POST)
-	public String productModifyPost(Model model, Product product, HttpServletRequest req, HttpServletResponse res)
+	public String productModifyPost( Product product, @RequestParam("ino") int ino,HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		product.setUserid(user.getUserid());
+		product.setIno(Integer.toString(ino));
 		productService.productModify(product);
 
 		return "/product/modifySuccess";
@@ -114,15 +128,26 @@ public class ProductController {
 	}
 
 // 찜하기
-	@RequestMapping(value = "/likeCountInsert")
-	public String likeProductCountInsert(Model model,LikeProduct likeProduct,HttpServletRequest req) throws Exception {
-		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-		likeProduct.setUserid(user.getUserid());;
-	  productService.likeProductCountInsert(likeProduct);
-	  System.out.println("주소 이동중");
-		return "/product/productDetail";
-	}
+	/*
+	 * @RequestMapping(value = "/likeCountInsert") public String
+	 * likeProductCountInsert(Model model, LikeProduct likeProduct,
+	 * HttpServletRequest req, HttpServletResponse res, @RequestParam(value = "ino",
+	 * required = true, defaultValue = "0") int ino) throws Exception { HttpSession
+	 * session = req.getSession(false); User user = (User)
+	 * session.getAttribute("memberUser"); String userid = user.getUserid(); String
+	 * aucChk = req.getParameter("aucChk");
+	 * 
+	 * int iNo = productService.likeProductUser(userid, ino); if (iNo == 0) {
+	 * productService.likeProductCountInsert(userid,ino);
+	 * productService.likeCountUpdate(userid, ino); } else {
+	 * productService.likeCountDelete(userid,ino);
+	 * productService.likeCountSubtract(user.getUserid(), ino); } int likeCount =
+	 * productService.likeProductCount(user.getUserid());
+	 * model.addAttribute("likeCount", likeCount);
+	 * res.sendRedirect("productDetail?ino=" + ino + "&aucChk=" + aucChk); return
+	 * null;
+	 */
+}
 //
 //	@RequestMapping(value = "/likeCount")
 //	public String likeService(Model model, @RequestParam(value = "ino", required = true, defaultValue = "0") String num,
@@ -140,6 +165,6 @@ public class ProductController {
 //		String likeCount = productService.likeProductCount(user.getUserid());
 //		req.getSession().setAttribute("likeCount", likeCount);
 //		res.sendRedirect("productDetail?ino=" + ino + "&aucChk=" + aucChk);
-//		return null;
+//		return nSull;
 //	}
-}
+//}

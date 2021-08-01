@@ -133,12 +133,16 @@
 							<div class="product__details__tab__desc">
 								<h6>제품 설명</h6>
 								<p>${allPro.pricetext}</p>
-								<ul>
-									<li><img class="product__details__pic__item--large"
-										src="${allPro.imageface1}" style="height: 500px;"></li>
-									<li><img class="product__details__pic__item--large"
-										src="${allPro.imageface2}" style="height: 500px;"></li>
-								</ul>
+								
+									<img class="product__details__pic__item--large"
+										src="${allPro.imageface1}" style="height: 500px;">
+									<img class="product__details__pic__item--large"
+										src="${allPro.imageface2}" style="height: 500px;">
+									<img class="product__details__pic__item--large"
+										src="${allPro.imageface3}" style="height: 500px;">
+										<img class="product__details__pic__item--large"
+										src="${allPro.imageface4}" style="height: 500px;">
+								
 							</div>
 						</div>
 					</div>
@@ -175,10 +179,10 @@
 								<a href="#">${productUser.iname}</a>
 							</h6>
 							<c:if test="${productUser.auctioncheck eq 'Y'}">
-								<h5>${productUser.apricenow}원</h5>
+								<h5><fmt:formatNumber pattern="#,###" value="${productUser.apricenow}" />원</h5>
 							</c:if>
 							<c:if test="${productUser.auctioncheck ne 'Y'}">
-								<h5>${productUser.price}원</h5>
+								<h5><fmt:formatNumber pattern="#,###" value="${productUser.price}" />원</h5>
 							</c:if>
 						</div>
 					</div>

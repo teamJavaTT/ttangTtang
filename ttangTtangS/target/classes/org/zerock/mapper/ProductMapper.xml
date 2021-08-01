@@ -74,7 +74,7 @@
 			#{iname},
 			#{minPrice},
 			#{maxPrice},
-			#{apricenow},
+			#{minPrice},
 			0,
 			#{priceText},
 			#{imageface1},
@@ -89,7 +89,7 @@
 			'N')
 		</if>
 	</insert>
-	
+
 	<insert id="likeProductCountInsert">
 			<![CDATA[
 			insert into likeproduct 
@@ -99,9 +99,9 @@
 	 
 		]]>
 	</insert>
-	
 
-	
+
+
 	<!-- select -->
 	<select id="selectProduct"
 		resultType="org.zerock.domain.ProductDetail">
@@ -113,69 +113,93 @@ select * from product where ino =#{ino}
 		select cname from category
 		where ccode=#{ccode}
 	</select>
-	
-	<select id="productUserSelect">
-	select * from product where userid = #{userid} and ino != #{ino} order by ino desc
+
+	<select id="productUserSelect"
+		resultType="org.zerock.dto.Product">
+		select * from product where userid = #{userid} and
+		ino !=
+		#{ino} order by
+		ino desc
 	</select>
-	
-	<select id="likeProductUser"  resultType="org.zerock.dto.LikeProduct" >
-	select count(ino) from likeproduct where userid =#{userid}  and ino =#{ino}
+
+	<select id="likeProductUser"
+		resultType="org.zerock.dto.LikeProduct">
+		select count(ino) from likeproduct where userid =#{userid}
+		and ino =#{ino}
 	</select>
-	
+	<select id="likeProductCount" resultType="int">
+		select count(ino) from
+		likeproduct where userid = #{userid}
+	</select>
+
+
 	<!-- Update -->
-	<update id="productModify">
-		update product set
+	<update id="productModify" parameterType="map">
+		UPDATE PRODUCT SET
 		<choose>
-			<when test='auctioncheck = "N"'>
-				iname=#{iname},
-				ccode=#{ccode},
-				price =#{price} ,
-				pricetext =#{priceText} ,
-				imageface1 =#{imageface1}
+			<when test='auctioncheck =="N"'>
+				iname = #{iname},
+				ccode = #{ccode},
+				auctioncheck = #{auctioncheck},
+				price = #{price},
+				uad = #{uad},
+				pricetext = #{priceText},
+				 imageface1 = #{imageface1}, imageface2 = #{imageface2}, imageface3 
+					= #{imageface3}, imageface4 = #{imageface4} 
 				where ino = #{ino}
 			</when>
-			<when test='auctioncheck"Y"'>
+			<when test='auctioncheck=="Y"'>
 				iname = #{iname},
-				ccode =#{ccode},
-				minprice =#{minPrice},
-				pricetext = #{priceText} ,
-				imageface1 = #{imageface1}
-				where ino =#{ino}
+				ccode = #{ccode},
+				auctioncheck = #{auctioncheck},
+				minprice =
+				#{minPrice},
+				uad = #{uad},
+				pricetext = #{priceText},
+				imageface1 =
+				#{imageface1},
+				imageface2 = #{imageface2},
+				imageface3 = #{imageface3},
+				imageface4 = #{imageface4}
+				where ino = #{ino}
 			</when>
 		</choose>
 	</update>
-	
+
 	<update id="likeCountSubtract">
 			<![CDATA[
 			update product set likecount=likecount -1 where ino = #{ino}
 		]]>
 	</update>
-	
+
 	<update id="likeCountUpdate">
-	update product set likecount=likecount +1 where ino =#{ino}
+		update product set likecount=likecount +1 where ino
+		=#{ino}
 	</update>
-	
-	
+
+
 	<update id="viewCountUpdate">
-	update product set viewcount=viewcount +1 where ino =#{ino}
+		update product set viewcount=viewcount +1 where ino
+		=#{ino}
 	</update>
-	
-	
+
+
 	<!-- Delete -->
-	<delete id = "productDelete">
-	delete from product where ino = #{ino}
+	<delete id="productDelete">
+		delete from product where ino = #{ino}
 	</delete>
-	
+
 	<delete id="aucProductTabDelete">
-	delete from auction where ino= #{ino}
+		delete from auction where ino= #{ino}
 	</delete>
-	
-	<delete id = "likeDelete">
-	delete from likeproduct where ino= #{ino}
+
+	<delete id="likeDelete">
+		delete from likeproduct where ino= #{ino}
 	</delete>
-	
-	<delete id = "likeCountDelete">
-	delete from likeproduct where userid=#{userid} and ino= #{ino}
+
+	<delete id="likeCountDelete">
+		delete from likeproduct where userid=#{userid} and
+		ino= #{ino}
 	</delete>
-	
+
 </mapper>

@@ -39,48 +39,54 @@ preview-box {
 
 <!-- 상품 등록 section begin -->
 <div id="productModiDiv">
-	
 
-		<div class="normal">
+	<c:if test="${allPro.auctioncheck=='N'}">
+		<div>
 			<h3 style="text-align: center;">일반 상품 수정</h3>
 		</div>
+	</c:if>
+	<c:if test="${allPro.auctioncheck=='Y'}">
 		<div class="auction">
 			<h3 style="text-align: center;">경매 상품 수정</h3>
 		</div>
-		<div class="container" style="padding-left: 34%;">
-			<form id="InsertForm" name="InsertForm" action="productModify"
-				method="post" style="margin-top: 20px; margin-bottom: 10px;">
-				<input type="hidden" name="imagefaceNameNor" /> <input
-					type="hidden" name="ino" value="${allPro.ino}" /> <input
-					type="hidden" id="auctioncheck" value="${allPro.auctioncheck}" /> 
-				<!-- 파일업로드를 위해 추가하는 타입 -->
-				<table>
-					<tr>
-						<td>상품명:</td>
-						<td colspan="2"><input type="text" class="form-control"
-							name="iname" value="${allPro.iname}"></td>
-					</tr>
-					<tr>
-						<td>카테고리:</td>
-						<td><select name="ccode">
-								<c:forEach var="category" items="${category}">
-									<c:choose>
-										<c:when test="${category.ccode ne allPro.ccode}">
-											<option value="${category.ccode}">${category.cname}</option>
-										</c:when>
-										<c:when test="${category.ccode eq allPro.ccode}">
-											<option selected value="${category.ccode}">${category.cname}</option>
-										</c:when>
-									</c:choose>
-								</c:forEach>
-						</select></td>
-					</tr>
-					<tr class="normal">
-						<td>가격:</td>
-						<td><input name="price" class="form-control"
-							value="${allPro.price}"></td>
-					</tr>
-					<c:if test="${param.auctioncheck eq 'Y'}">
+	</c:if>
+	<div class="container" style="padding-left: 34%;">
+		<form id="InsertForm" name="InsertForm" action="productModify"
+			method="post" style="margin-top: 20px; margin-bottom: 10px;">
+			<input type="hidden" name="ino" value="${allPro.ino}" />
+				<input type="hidden" name="auctioncheck" value="${allPro.auctioncheck}" />
+			<!-- 파일업로드를 위해 추가하는 타입 -->
+			<table>
+				<tr>
+					<td>상품명:</td>
+					<td colspan="2"><input type="text" class="form-control"
+						name="iname" value="${allPro.iname}"></td>
+				</tr>
+				<tr>
+					<td>카테고리:</td>
+					<td><select name="ccode">
+							<c:forEach var="category" items="${category}">
+								<c:choose>
+									<c:when test="${category.ccode ne allPro.ccode}">
+										<option value="${category.ccode}">${category.cname}</option>
+									</c:when>
+									<c:when test="${category.ccode eq allPro.ccode}">
+										<option selected value="${category.ccode}">${category.cname}</option>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+					</select></td>
+				</tr>
+				<c:choose>
+					<c:when
+						test="${allPro.auctioncheck eq 'N'||allPro.auctioncheck eq 'B' }">
+						<tr class="normal">
+							<td>가격:</td>
+							<td><input name="price" class="form-control"
+								value="${allPro.price}"></td>
+						</tr>
+					</c:when>
+					<c:when test="${allPro.auctioncheck eq 'Y'}">
 						<tr class="auction">
 							<td>최소가격:</td>
 							<td colspan="2"><input name="minPrice" class="form-control"
@@ -94,119 +100,80 @@ preview-box {
 								style="font-color: 0.6; font-size: 15px; color: tomato;">(최대
 									가격은 수정이 불가 합니다.)</span></td>
 						</tr>
-						<tr class="auction">
-							<td>설정된 경매 종료시간:</td>
-							<td colspan="2"><input class="form-control"
-								value="${allPro.totalTime}"></td>
-						</tr>
-						<tr>
-							<td>판매 지역:</td>
-							<td colspan="2"><c:if test="${!empty address[1]}">
-									<input type="radio" name="uad" value="${address[1]}">
-									<span>${address[1]}</span>
-								</c:if></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td colspan="2"><c:if test="${!empty address[2]}">
-									<input type="radio" name="uad" value="${address[2]}">
-									<span>${address[2]}</span>
-								</c:if></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td colspan="2"><c:if test="${!empty address[3]}">
-									<input type="radio" name="uad" value="${address[3]}">
-									<span>${address[3]}</span>
-								</c:if></td>
-						</tr>
+					</c:when>
+				</c:choose>
+
+				<tr>
+					<td>판매 지역:</td>
+					<td colspan="2"><c:if test="${!empty address[1]}">
+							<input type="radio" name="uad" value="${address[1]}">
+							<span>${address[1]}</span>
+						</c:if></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2"><c:if test="${!empty address[2]}">
+							<input type="radio" name="uad" value="${address[2]}">
+							<span>${address[2]}</span>
+						</c:if></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2"><c:if test="${!empty address[3]}">
+							<input type="radio" name="uad" value="${address[3]}">
+							<span>${address[3]}</span>
+						</c:if></td>
+				</tr>
 
 
-						<tr class="auction">
-							<td>경매기간:</td>
-							<td style="width: 74px;"><select name="endDay" id="endDay">
-									<option value="0">0일</option>
-									<option value="24">1일</option>
-									<option value="48">2일</option>
-									<option value="72">3일</option>
-									<option value="96">4일</option>
-									<option value="120">5일</option>
-									<option value="144">6일</option>
-							</select></td>
-							<td><select name="endTime" id="endTime">
-									<option value=0>0시간</option>
-									<option value=1>1시간</option>
-									<option value=2>2시간</option>
-									<option value=3>3시간</option>
-									<option value=4>4시간</option>
-									<option value=5>5시간</option>
-									<option value=6>6시간</option>
-									<option value=7>7시간</option>
-									<option value=8>8시간</option>
-									<option value=9>9시간</option>
-									<option value=10>10시간</option>
-									<option value=11>11시간</option>
-									<option value=12>12시간</option>
-									<option value=13>13시간</option>
-									<option value=14>14시간</option>
-									<option value=15>15시간</option>
-									<option value=16>16시간</option>
-									<option value=17>17시간</option>
-									<option value=18>18시간</option>
-									<option value=19>19시간</option>
-									<option value=20>20시간</option>
-									<option value=21>21시간</option>
-									<option value=22>22시간</option>
-									<option value=23>23시간</option>
-							</select></td>
+				<tr>
+					<td style="float: left;">상품설명:</td>
+					<td><textarea name="priceText" id="priceText"
+							class="form-control" style="resize: none;" rows="5">${allPro.pricetext}</textarea></td>
+				</tr>
+			</table>
+		</form>
+		<div class="filebox">
+			<table id="imageTbl">
+				<tr>
+					<td><span style="opacity: 0.6; font-size: 12px;">(최대
+							4개의 이미지를 선택하실 수 있습니다.)</span></td>
+				</tr>
+		<tr>
+					<td>
+						<div id="preview" class="preview">
+							<ul>
+								<li style="float: left; list-style: none; position: relative;">
 
-						</tr>
-					</c:if>
-					<tr>
-						<td style="float: left;">상품설명:</td>
-						<td><textarea name="priceText" id="priceText"
-								class="form-control" style="resize: none;" rows="5">${allPro.pricetext}</textarea></td>
-					</tr>
-				</table>
-			</form>
-			<div class="filebox">
-				<table id="imageTbl">
-					<tr>
-						<td><span style="opacity: 0.6; font-size: 12px;">(최대
-								4개의 이미지를 선택하실 수 있습니다.)</span></td>
-					</tr>
-					<!--  	<tr>
-						<td>
-							<div id="previewNor" class="preview">
-								<ul>
-									<li style="float: left; list-style: none; position: relative;">
-										<img src="${norPro.imageface}">
-										<button type="button" class="fa fa-close"
-											onclick="deletePreview($(this), 1)"
-											style="position: absolute; right: 0px; background: none; border: none; border-radius: 50%; height: 1.5em; background-color: rgba(255, 255, 255, 0.5);"></button>
-									</li>
-								</ul>
-							</div> <input class="upload-name" value="이미지 등록" disabled="disabled"
-							multiple /> <label for="imagefaceNor">업로드</label>
-							<form id="fileUploadNor" name="fileUploadNor" method="post"
-								enctype="multipart/form-data">
-								<input type="file" accept="image/jpg, image/jpeg, image/png"
-									name="imagefaceNor" id="imagefaceNor" class="upload-hidden"
-									multiple>
-							</form>
+									<c:if test="${!empty allPro.imageface1}">
+										<img src="${allPro.imageface1}">
+									</c:if> <c:if test="${!empty allPro.imageface2}">
+										<img src="${allPro.imageface2}">
+									</c:if> <c:if test="${!empty allPro.imageface3}">
+										<img src="${allPro.imageface3}">
+									</c:if> <c:if test="${!empty allPro.imageface4}">
+										<img src="${allPro.imageface4}">
+									</c:if>
+								
+								</li>
+							</ul>
+						</div> <input class="upload-name" value="이미지 등록" disabled="disabled" /> <label for="imageFile">업로드</label>
+						<form id="fileUpload" name="fileUpload" enctype="multipart/form-data">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imageFile" id="imageFile" class="upload-hidden" multiple="multiple">
+						</form>
 
-						</td>
-					</tr>-->
-					<tr>
-						<td align="center"><input type="button"
-							class="btn btn-outline-secondary" value="등록"
-							onclick=" productUpdate();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
-							<input type="button" class="btn btn-outline-secondary" value="취소"
-							onclick="history.back(-1);"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" --></td>
-					</tr>
-				</table>
-			</div>
+					</td>
+				</tr> 
+				<tr>
+					<td align="center"><input type="button"
+						class="btn btn-outline-secondary" value="등록"
+						onclick=" productUpdate();"> <!-- "등록" 버튼을 누르면 위쪽에 있는 스크립트문에서 product_write()함수가 호출되서 실행되 insert.do페이지로 자료를 전송한다. -->
+						<input type="button" class="btn btn-outline-secondary" value="취소"
+						onclick="history.back(-1);"> <!-- "목록 버튼을 누르면 list.do페이지로 이동" --></td>
+				</tr>
+			</table>
 		</div>
+	</div>
 
 </div>
 <script src="/resources/js/product/productEdit.js"></script>

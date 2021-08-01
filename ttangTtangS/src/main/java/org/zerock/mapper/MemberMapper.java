@@ -3,7 +3,6 @@ package org.zerock.mapper;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.Alim;
 import org.zerock.domain.User;
 import org.zerock.dto.Member;
