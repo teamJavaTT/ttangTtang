@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.Category;
 import org.zerock.domain.ProductDetail;
 import org.zerock.domain.User;
-import org.zerock.dto.LikeProduct;
 import org.zerock.dto.Product;
 import org.zerock.service.MemberService;
 import org.zerock.service.ProductService;

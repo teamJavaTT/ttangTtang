@@ -33,7 +33,8 @@
 				<div class="product__details__pic">
 					<div class="product__details__pic__item">
 						<img class="product__details__pic__item--large"
-							src="${allPro.imageface1}" style="height: fit-content;width: auto;">
+							src="${allPro.imageface1}"
+							style="height: fit-content; width: auto;">
 					</div>
 					<div
 						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
@@ -42,31 +43,39 @@
 								style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img src="${allPro.imageface1}" alt="">
+									<img data-imgbigurl="${allPro.imageface1}"
+										src="${allPro.imageface1}" alt="">
 								</div>
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img src="${allPro.imageface2}" alt="">
+									<img data-imgbigurl="${allPro.imageface2}"
+										src="${allPro.imageface2}" alt="">
 								</div>
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img src="${allPro.imageface3}" alt="">
+									<img data-imgbigurl="${allPro.imageface3}"
+										src="${allPro.imageface3}" alt="">
 								</div>
 								<div class="owl-item cloned"
 									style="width: 97.5px; margin-right: 20px;">
-									<img src="${allPro.imageface4}" alt="">
+									<img data-imgbigurl="${allPro.imageface4}"
+										src="${allPro.imageface4}" alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img src="${allPro.imageface1}" alt="">
+									<img data-imgbigurl="${allPro.imageface1}"
+										src="${allPro.imageface1}" alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img src="${allPro.imageface2}" alt="">
+									<img data-imgbigurl="${allPro.imageface2}"
+										src="${allPro.imageface2}" alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img src="${allPro.imageface3}" alt="">
+									<img data-imgbigurl="${allPro.imageface3}"
+										src="${allPro.imageface3}" alt="">
 								</div>
 								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img src="${allPro.imageface4}" alt="">
+									<img data-imgbigurl="${allPro.imageface4}"
+										src="${allPro.imageface4}" alt="">
 								</div>
 							</div>
 						</div>
@@ -189,14 +198,12 @@
 							<h6>제품 설명</h6>
 							<p>${allPro.pricetext}</p>
 
-							<img class="product__details__pic__item--large"
-								src="${allPro.imageface1}" style="height: 500px;"> <img
-								class="product__details__pic__item--large"
-								src="${allPro.imageface2}" style="height: 500px;"> <img
-								class="product__details__pic__item--large"
-								src="${allPro.imageface3}" style="height: 500px;"> <img
-								class="product__details__pic__item--large"
-								src="${allPro.imageface4}" style="height: 500px;">
+							<img src="${allPro.imageface1}"
+								style="height: 400px; width: auto;"> <img
+								src="${allPro.imageface2}" style="height: 400px; width: auto;">
+							<img src="${allPro.imageface3}"
+								style="height: 400px; width: auto;"> <img
+								src="${allPro.imageface4}" style="height: 400px; width: auto;">
 
 						</div>
 					</div>
