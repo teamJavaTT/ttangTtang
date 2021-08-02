@@ -23,11 +23,11 @@ public interface ProductMapper {
 	void productModify(ProductDTO product) throws Exception;
 
 	// 상품 삭제
-	void productDelete(int ino) throws Exception;
+	void productDelete(@Param("ino") int ino) throws Exception;
 
-	void likeDelete(int ino) throws Exception;
+	void likeDelete(@Param("ino") int ino) throws Exception;
 
-	void aucProductTabDelete(int ino) throws Exception;
+	void aucProductTabDelete(@Param("ino") int ino) throws Exception;
 
 	// 찜하기
 	void likeProductCountInsert(@Param("userid") String userid, @Param("ino") int ino) throws Exception;

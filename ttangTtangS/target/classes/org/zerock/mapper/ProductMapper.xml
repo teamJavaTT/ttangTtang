@@ -188,7 +188,7 @@ select * from product where ino =#{ino}
 
 	<update id="likeCountUpdate">
 		update product set likecount=likecount +1 where ino
-		=#{ino}
+		= #{ino}
 	</update>
 
 

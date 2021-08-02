@@ -53,10 +53,10 @@ public class ProductController {
 	private String productWritePost(Model model, ProductDTO product, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-		
+
 		if (product.getImageface1() == null || product.getImageface1().isEmpty()) {
-	         product.setImageface1("/resources/file/noimage.jpg");
-	      }
+			product.setImageface1("/resources/file/noimage.jpg");
+		}
 		product.setTotalTime(Integer.parseInt(product.getEndDay()) + Integer.parseInt(product.getEndTime()));
 		product.setUserid(user.getUserid());
 		productService.insertProduct(product);
@@ -100,7 +100,7 @@ public class ProductController {
 		address.add(user.getAddress1());
 		address.add(user.getAddress2());
 		address.add(user.getAddress3());
-		
+
 		model.addAttribute("address", address);
 		model.addAttribute("category", category);
 		model.addAttribute("allPro", productModify);
@@ -113,8 +113,8 @@ public class ProductController {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		if (product.getImageface1() == null || product.getImageface1().isEmpty()) {
-	         product.setImageface1("/resources/file/noimage.jpg");
-	      }
+			product.setImageface1("/resources/file/noimage.jpg");
+		}
 		product.setUserid(user.getUserid());
 		product.setIno(Integer.toString(ino));
 		productService.productModify(product);
@@ -127,12 +127,17 @@ public class ProductController {
 	public void productDelete(Model model, @RequestParam(value = "ino", required = true, defaultValue = "0") int ino,
 			HttpServletResponse res) throws Exception {
 
-		model.addAttribute("category", category);
-		productService.productDelete(ino);
+	
 		productService.likeDelete(ino);
 		productService.aucProductTabDelete(ino);
+		productService.productDelete(ino);
 
 		res.sendRedirect("/product/productDeleteSuccess");
+	}
+
+	// 글삭제 완료
+	@RequestMapping(value = "/productDeleteSuccess", method = RequestMethod.GET)
+	public void productDeleteSuccessPage(Model model) throws Exception {
 	}
 
 // 찜하기
@@ -160,15 +165,17 @@ public class ProductController {
 
 	// 경매 가격 제시
 	@RequestMapping(value = "/auctionPart")
-	public String auctionPart(HttpServletRequest req, HttpServletResponse res, @RequestParam(value = "aucIno", required = true) int aucIno, @RequestParam(value = "oPrice", required = true) String  oPrice)throws Exception {
+	public String auctionPart(HttpServletRequest req, HttpServletResponse res,
+			@RequestParam(value = "aucIno", required = true) int aucIno,
+			@RequestParam(value = "oPrice", required = true) String oPrice) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-	
+
 		productService.auctionPartInsert(user.getUserid(), aucIno, oPrice);
 		productService.updateAucPart(user.getUserid(), aucIno, oPrice);
-		
+
 		req.setAttribute("aucOk", 1);
-		res.sendRedirect("productDetail?ino="+aucIno+"&aucChk=Y");
+		res.sendRedirect("productDetail?ino=" + aucIno + "&aucChk=Y");
 		return null;
 	}
 }
