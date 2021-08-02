@@ -99,7 +99,9 @@ public class MemberController {
 		AES256Util aes256Util = new AES256Util();
 		member.setUpw(aes256Util.encrypt(member.getUpw()));
 		memberService.insertMemberJoin(member);
-		return "/member/joinSuccess";
+		model.addAttribute("ment", "TTang TTang Market 회원가입 성공!");
+		model.addAttribute("href", "/member/login");
+		return "/successPage";
 	}
 
 	// 아이디 찾기
@@ -145,7 +147,9 @@ public class MemberController {
 			if (upw == upw2 || upw.equals(upw2)) {
 				String encodeUpw = aes256Util.encrypt(upw);
 				memberService.updatePassword(encodeUpw, userid);
-				return "/member/editSuccess";
+				model.addAttribute("ment", "TTang TTang Market 비밀번호 변경 성공!");
+				model.addAttribute("href", "/mypage/mypageMain");
+				return "/successPage";
 			} else {
 				model.addAttribute("userExist", "Y");
 				model.addAttribute("upwSame", "N");
@@ -181,7 +185,9 @@ public class MemberController {
 		}
 		memberService.updateMember(member);
 
-		return "/member/editSuccess";
+		model.addAttribute("ment", "TTang TTang Market 회원수정 성공!");
+		model.addAttribute("href", "/mypage/mypageMain");
+		return "/successPage";
 	}
 
 	// 아이디 중복 확인

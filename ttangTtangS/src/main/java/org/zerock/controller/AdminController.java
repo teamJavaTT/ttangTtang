@@ -64,18 +64,15 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/noticewrite", method = RequestMethod.POST)
-	public void noticeWritePage(NoticeColumn noticeColumn, Model model, HttpServletRequest req, HttpServletResponse res)
+	public String noticeWritePage(NoticeColumn noticeColumn, Model model, HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		noticeColumn.setMtext(noticeColumn.getMtext().replace("\r\n", "<br>"));
 		List<NoticeColumn> notice = adminService.insertNoticeWrite(noticeColumn);
 		model.addAttribute("notice", notice);
 
-		res.sendRedirect("/admin/noticesuccess");
-	}
-
-	// Notice 글작성완료
-	@RequestMapping(value = "/noticesuccess", method = RequestMethod.GET)
-	public void noticeModifyPage(Model model) throws Exception {
+		model.addAttribute("ment", "성공적으로 삭제했습니다.");
+		model.addAttribute("href", "/admin/notice");
+		return "/successPage";
 	}
 
 	// Notice 글읽기
@@ -98,28 +95,27 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/noticemodify", method = RequestMethod.POST)
-	public void noticeModifyPage(NoticeColumn noticeColumn, Model model, HttpServletRequest req,
+	public String noticeModifyPage(NoticeColumn noticeColumn, Model model, HttpServletRequest req,
 			HttpServletResponse res) throws Exception {
 		noticeColumn.setMtext(noticeColumn.getMtext().replace("\r\n", "<br>"));
 		List<NoticeColumn> notice = adminService.updateNoticeModify(noticeColumn);
 		model.addAttribute("notice", notice);
-		res.sendRedirect("/admin/noticesuccess");
+		model.addAttribute("ment", "성공적으로 게시글을 수정했습니다.");
+		model.addAttribute("href", "/notice");
+		return "/successPage";
 	}
 
 	// Notice 글 삭제
 	@RequestMapping(value = "/noticedelete")
-	public void noticeDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal,
+	public String noticeDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal,
 			HttpServletRequest req, HttpServletResponse res) throws Exception {
 		int no = Integer.parseInt(numVal);
 		List<Notice> notice = adminService.deleteNotice(no);
 		model.addAttribute("notice", notice);
 
-		res.sendRedirect("/admin/noticedeletesuccess");
-	}
-
-	// Notice 글삭제완료
-	@RequestMapping(value = "/noticedeletesuccess", method = RequestMethod.GET)
-	public void noticeDeleteSuccessPage(Model model) throws Exception {
+		model.addAttribute("ment", "성공적으로 삭제했습니다.");
+		model.addAttribute("href", "/admin/notice");
+		return "/successPage";
 	}
 
 	// ---------------------------------------------------------------------
@@ -146,18 +142,15 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/qnawrite", method = RequestMethod.POST)
-	public void qnaWritePage(QnaColumn qnaColumn, Model model, HttpServletRequest req, HttpServletResponse res)
+	public String qnaWritePage(QnaColumn qnaColumn, Model model, HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		qnaColumn.setQtext(qnaColumn.getQtext().replace("\r\n", "<br>"));
 		List<QnaColumn> qna = adminService.insertQnaWrite(qnaColumn);
 		model.addAttribute("qna", qna);
 
-		res.sendRedirect("/admin/qnasuccess");
-	}
-
-	// Qna 글작성완료
-	@RequestMapping(value = "/qnasuccess", method = RequestMethod.GET)
-	public void qnaModifyPage(Model model) throws Exception {
+		model.addAttribute("ment", "성공적으로 게시글을 작성했습니다.");
+		model.addAttribute("href", "/admin/qna");
+		return "/successPage";
 	}
 
 	// Qna 글읽기
@@ -181,30 +174,30 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/qnamodify", method = RequestMethod.POST)
-	public void qnaModifyPage(QnaColumn qnaColumn, Model model, HttpServletRequest req, HttpServletResponse res)
+	public String qnaModifyPage(QnaColumn qnaColumn, Model model, HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		qnaColumn.setQtext(qnaColumn.getQtext().replace("\r\n", "<br>"));
 		List<QnaColumn> qna = adminService.updateQnaModify(qnaColumn);
 		model.addAttribute("qna", qna);
 
-		res.sendRedirect("/admin/qnasuccess");
+		model.addAttribute("ment", "성공적으로 게시글을 수정했습니다.");
+		model.addAttribute("href", "/admin/qna");
+		return "/successPage";
 	}
 
 	// Qna 글 삭제
 	@RequestMapping(value = "/qnadelete")
-	public void qnaDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal,
+	public String qnaDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal,
 			HttpServletRequest req, HttpServletResponse res) throws Exception {
 		int no = Integer.parseInt(numVal);
 		List<Qna> qna = adminService.deleteQna(no);
 		model.addAttribute("qna", qna);
 
-		res.sendRedirect("/admin/qnadeletesuccess");
+		model.addAttribute("ment", "성공적으로 삭제했습니다.");
+		model.addAttribute("href", "/admin/qna");
+		return "/successPage";
 	}
 
-	// Qna 글삭제완료
-	@RequestMapping(value = "/qnadeletesuccess", method = RequestMethod.GET)
-	public void qnaDeleteSuccessPage(Model model) throws Exception {
-	}
 
 	// Qna 댓글달기
 	@RequestMapping(value = "/qnaAnswer", method = RequestMethod.POST)
@@ -245,18 +238,15 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/faqwrite", method = RequestMethod.POST)
-	public void faqWritePage(FaqColumn faqColumn, Model model, HttpServletRequest req, HttpServletResponse res)
+	public String faqWritePage(FaqColumn faqColumn, Model model, HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		faqColumn.setFtext(faqColumn.getFtext().replace("\r\n", "<br>"));
 		List<FaqColumn> faq = adminService.insertFaqWrite(faqColumn);
 		model.addAttribute("faq", faq);
 
-		res.sendRedirect("/admin/faqsuccess");
-	}
-
-	// Faq 글작성완료
-	@RequestMapping(value = "/faqsuccess", method = RequestMethod.GET)
-	public void faqModifyPage(Model model) throws Exception {
+		model.addAttribute("ment", "성공적으로 게시글을 작성했습니다.");
+		model.addAttribute("href", "/admin/faq");
+		return "/successPage";
 	}
 
 	// Faq 글읽기
@@ -279,28 +269,27 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/faqmodify", method = RequestMethod.POST)
-	public void faqModifyPage(FaqColumn faqColumn, Model model, HttpServletRequest req, HttpServletResponse res)
+	public String faqModifyPage(FaqColumn faqColumn, Model model, HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		faqColumn.setFtext(faqColumn.getFtext().replace("\r\n", "<br>"));
 		List<FaqColumn> faq = adminService.updateFaqModify(faqColumn);
 		model.addAttribute("faq", faq);
-		res.sendRedirect("/admin/faqsuccess");
+		model.addAttribute("ment", "성공적으로 게시글을 수정했습니다.");
+		model.addAttribute("href", "/admin/faq");
+		return "/successPage";
 	}
 
 	// Faq 글 삭제
 	@RequestMapping(value = "/faqdelete")
-	public void faqDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal,
+	public String faqDeletePage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal,
 			HttpServletRequest req, HttpServletResponse res) throws Exception {
 		int no = Integer.parseInt(numVal);
 		List<Faq> faq = adminService.deleteFaq(no);
 		model.addAttribute("faq", faq);
 
-		res.sendRedirect("/admin/faqdeletesuccess");
-	}
-
-	// Faq 글삭제완료
-	@RequestMapping(value = "/faqdeletesuccess", method = RequestMethod.GET)
-	public void faqDeleteSuccessPage(Model model) throws Exception {
+		model.addAttribute("ment", "성공적으로 삭제했습니다.");
+		model.addAttribute("href", "/admin/faq");
+		return "/successPage";
 	}
 
 	// ---------------------------------------------------------------------

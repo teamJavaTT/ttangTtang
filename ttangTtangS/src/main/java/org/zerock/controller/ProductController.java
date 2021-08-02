@@ -60,7 +60,9 @@ public class ProductController {
 		product.setTotalTime(Integer.parseInt(product.getEndDay()) + Integer.parseInt(product.getEndTime()));
 		product.setUserid(user.getUserid());
 		productService.insertProduct(product);
-		return "/product/productSuccess";
+		model.addAttribute("ment", "상품등록을 성공했습니다.");
+		model.addAttribute("href", "/");
+		return "/successPage";
 	}
 
 	// 상세페이지
@@ -113,7 +115,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/productModify", method = RequestMethod.POST)
-	public String productModifyPost(ProductDTO product, @RequestParam("ino") int ino, HttpServletRequest req,
+	public String productModifyPost(Model model, ProductDTO product, @RequestParam("ino") int ino, HttpServletRequest req,
 			HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
@@ -123,26 +125,22 @@ public class ProductController {
 		product.setUserid(user.getUserid());
 		product.setIno(Integer.toString(ino));
 		productService.productModify(product);
-
-		return "/product/modifySuccess";
+		model.addAttribute("ment", "상품수정을 성공했습니다.");
+		model.addAttribute("href", "/");
+		return "/successPage";
 	}
 
 	// 글삭제
 	@RequestMapping(value = "/productDelete")
-	public void productDelete(Model model, @RequestParam(value = "ino", required = true, defaultValue = "0") int ino,
+	public String productDelete(Model model, @RequestParam(value = "ino", required = true, defaultValue = "0") int ino,
 			HttpServletResponse res) throws Exception {
 
-	
 		productService.likeDelete(ino);
 		productService.aucProductTabDelete(ino);
 		productService.productDelete(ino);
-
-		res.sendRedirect("/product/productDeleteSuccess");
-	}
-
-	// 글삭제 완료
-	@RequestMapping(value = "/productDeleteSuccess", method = RequestMethod.GET)
-	public void productDeleteSuccessPage(Model model) throws Exception {
+		model.addAttribute("ment", "성공적으로 삭제했습니다.");
+		model.addAttribute("href", "/");
+		return "/successPage";
 	}
 
 // 찜하기

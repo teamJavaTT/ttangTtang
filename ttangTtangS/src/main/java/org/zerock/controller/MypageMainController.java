@@ -86,7 +86,9 @@ public class MypageMainController {
 			
 			mypagemainService.insertAccountDeclaration(accountDec);
 			
-			return "/mypage/accountDeclarationSuccess";
+			model.addAttribute("ment", "신고되었습니다.");
+			model.addAttribute("href", "/mypage/mypageMain");
+			return "/successPage";
 		}
 
 	}
@@ -137,7 +139,9 @@ public class MypageMainController {
 				
 				mypagemainService.insertBlockUser(accountBl);
 				
-				return "/mypage/blockSuccess";
+				model.addAttribute("ment", "차단되었습니다.");
+				model.addAttribute("href", "/mypage/mypageMain");
+				return "/successPage";
 			}
 
 		}
