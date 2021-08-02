@@ -3,7 +3,6 @@ package org.zerock.service;
 import java.util.List;
 
 import org.zerock.domain.ProductDetail;
-import org.zerock.dto.LikeProduct;
 import org.zerock.dto.Product;
 
 public interface ProductService {
@@ -33,7 +32,9 @@ public interface ProductService {
 
 	 //조회수
 	 void viewCountUpdate(int ino) throws Exception ;
-
-
+	 
+	 //가격제시
+	void auctionPartInsert(String userid, int aucIno, String oPrice) throws Exception ;
+	void updateAucPart(String userid, int aucIno, String oPrice) throws Exception ;
 	
 }

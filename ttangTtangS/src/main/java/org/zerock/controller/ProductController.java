@@ -69,15 +69,16 @@ public class ProductController {
 		ProductDetail productDetail = productService.selectProduct(ino);
 		productDetail.setCname(productService.selectCname(productDetail.getCcode()));
 
-		int iNo=0;
-		if(user != null) iNo= productService.likeProductUser(user.getUserid(), ino);
-		else iNo = 0;
+		int iNo = 0;
+		if (user != null)
+			iNo = productService.likeProductUser(user.getUserid(), ino);
+		else
+			iNo = 0;
 
 		String ibo = Integer.toString(ino);
 		List<Product> productUser = productService.productUser(productDetail.getUserid(), ibo);
-		
+
 		model.addAttribute("iNo", iNo);
-		
 		model.addAttribute("allPro", productDetail);
 		model.addAttribute("user", user);
 		model.addAttribute("productUser", productUser);
@@ -127,17 +128,10 @@ public class ProductController {
 		res.sendRedirect("/product/productDeleteSuccess");
 	}
 
-//글삭제 완료 
-	@RequestMapping(value = "/productDeleteSuccess", method = RequestMethod.GET)
-	public void productDeleteSuccessPage(Model model) throws Exception {
-	}
-
 // 찜하기
-
 	@RequestMapping(value = "/likeCountInsert")
-	public String likeProductCountInsert(Model model, LikeProduct likeProduct, HttpServletRequest req,
-			HttpServletResponse res, @RequestParam(value = "ino", required = true, defaultValue = "0") int ino)
-			throws Exception {
+	public String likeProductCountInsert(Model model, HttpServletRequest req, HttpServletResponse res,
+			@RequestParam(value = "ino", required = true, defaultValue = "0") int ino) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
@@ -155,6 +149,19 @@ public class ProductController {
 		model.addAttribute("likeCount", likeCount);
 		res.sendRedirect("productDetail?ino=" + ino + "&aucChk=" + aucChk);
 		return null;
+	}
 
+	// 경매 가격 제시
+	@RequestMapping(value = "/auctionPart")
+	public String auctionPart(HttpServletRequest req, HttpServletResponse res, @RequestParam(value = "aucIno", required = true) int aucIno, @RequestParam(value = "oPrice", required = true) String  oPrice)throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+	
+		productService.auctionPartInsert(user.getUserid(), aucIno, oPrice);
+		productService.updateAucPart(user.getUserid(), aucIno, oPrice);
+		
+		req.setAttribute("aucOk", 1);
+		res.sendRedirect("productDetail?ino="+aucIno+"&aucChk=Y");
+		return null;
 	}
 }

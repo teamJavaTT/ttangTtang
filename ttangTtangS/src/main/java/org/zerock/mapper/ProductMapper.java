@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.zerock.domain.ProductDetail;
-import org.zerock.dto.LikeProduct;
 import org.zerock.dto.Product;
 
 public interface ProductMapper {
@@ -46,4 +45,7 @@ public interface ProductMapper {
 	// 조회수
 	void viewCountUpdate(int ino) throws Exception;
 
+	//가격제시
+	void auctionPartInsert(@Param("userid") String userid, @Param("aucIno") int aucIno, @Param("oPrice") String oPrice)throws Exception;
+	void updateAucPart(@Param("userid")String userid,@Param("aucIno")  int aucIno, @Param("oPrice") String oPrice)throws Exception;
 }

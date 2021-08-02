@@ -100,7 +100,16 @@
 		]]>
 	</insert>
 
+	<insert id="auctionPartInsert">
+		INSERT INTO auction(ano,userid,ino,oPrice,conn)
+		VALUES(
+		auction_seq.NEXTVAL,
+		#{userid},
+		#{aucIno},
+		#{oPrice},
+	'N')
 
+	</insert>
 
 	<!-- select -->
 	<select id="selectProduct"
@@ -122,9 +131,9 @@ select * from product where ino =#{ino}
 		ino desc
 	</select>
 
-	<select id="likeProductUser"
-		resultType="int">
-		select count(ino) from likeproduct where userid =#{userid}
+	<select id="likeProductUser" resultType="int">
+		select count(ino) from
+		likeproduct where userid =#{userid}
 		and ino =#{ino}
 	</select>
 	<select id="likeProductCount" resultType="int">
@@ -140,28 +149,33 @@ select * from product where ino =#{ino}
 			<when test='auctioncheck =="N"'>
 				iname = #{iname},
 				ccode = #{ccode},
-				auctioncheck = #{auctioncheck},
+				auctioncheck =
+				#{auctioncheck},
 				price = #{price},
 				uad = #{uad},
-				pricetext = #{priceText},
-				 imageface1 = #{imageface1}, imageface2 = #{imageface2}, imageface3 
-					= #{imageface3}, imageface4 = #{imageface4} 
+				pricetext =
+				#{priceText},
+				imageface1 = #{imageface1}, imageface2 = #{imageface2}, imageface3
+				= #{imageface3}, imageface4 = #{imageface4}
 				where ino = #{ino}
 			</when>
 			<when test='auctioncheck=="Y"'>
 				iname = #{iname},
 				ccode = #{ccode},
-				auctioncheck = #{auctioncheck},
+				auctioncheck =
+				#{auctioncheck},
 				minprice =
 				#{minPrice},
 				uad = #{uad},
-				pricetext = #{priceText},
+				pricetext =
+				#{priceText},
 				imageface1 =
 				#{imageface1},
 				imageface2 = #{imageface2},
 				imageface3 = #{imageface3},
 				imageface4 = #{imageface4}
-				where ino = #{ino}
+				where ino =
+				#{ino}
 			</when>
 		</choose>
 	</update>
@@ -183,7 +197,9 @@ select * from product where ino =#{ino}
 		=#{ino}
 	</update>
 
-
+<update id="updateAucPart">
+update product set apricenow = #{oPrice} where ino = #{aucIno}
+</update>
 	<!-- Delete -->
 	<delete id="productDelete">
 		delete from product where ino = #{ino}

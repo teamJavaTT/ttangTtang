@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.ProductDetail;
-import org.zerock.dto.LikeProduct;
 import org.zerock.dto.Product;
 import org.zerock.mapper.ProductMapper;
 
@@ -35,20 +34,23 @@ public class ProductServiceImpl implements ProductService {
 		String category = productMapper.selectCname(ccode);
 		return category;
 	}
+
 	@Override
 	@Transactional
 	public List<Product> productUser(String userid, String ino) throws Exception {
-		List<Product> productUser =productMapper.productUserSelect(userid,ino);
+		List<Product> productUser = productMapper.productUserSelect(userid, ino);
 		return productUser;
 	}
 
+//상품수정
 	@Override
 	@Transactional
 	public void productModify(Product Product) throws Exception {
-	
+
 		productMapper.productModify(Product);
 	}
 
+//상품 삭제
 	@Override
 	@Transactional
 	public void productDelete(int ino) throws Exception {
@@ -67,11 +69,11 @@ public class ProductServiceImpl implements ProductService {
 		productMapper.aucProductTabDelete(ino);
 	}
 
-	
+//찜하기	
 	@Override
 	@Transactional
 	public void likeProductCountInsert(String userid, int ino) throws Exception {
-		productMapper.likeProductCountInsert(userid,ino);
+		productMapper.likeProductCountInsert(userid, ino);
 	}
 
 	@Override
@@ -93,11 +95,10 @@ public class ProductServiceImpl implements ProductService {
 		productMapper.likeCountSubtract(userid, ino);
 	}
 
-
 	@Override
 	@Transactional
 	public int likeProductUser(String userid, int ino) throws Exception {
-		return productMapper.likeProductUser(userid,ino);
+		return productMapper.likeProductUser(userid, ino);
 	}
 
 	@Override
@@ -111,10 +112,16 @@ public class ProductServiceImpl implements ProductService {
 		productMapper.likeCountDelete(userid, ino);
 	}
 
+//가격제시
+	@Override
+	public void auctionPartInsert(String userid, int aucIno, String oPrice) throws Exception {
+	
+		productMapper.auctionPartInsert(userid, aucIno, oPrice);
+	}
 
-
-
-
-
+	@Override
+	public void updateAucPart(String userid, int aucIno, String oPrice) throws Exception {
+		 productMapper.updateAucPart(userid, aucIno, oPrice);
+	}
 
 }

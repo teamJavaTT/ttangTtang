@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ include file="../include/header.jsp"%>
-<%@ include file="../include/middle_header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
@@ -35,22 +33,74 @@
 				<div class="product__details__pic">
 					<div class="product__details__pic__item">
 						<img class="product__details__pic__item--large"
-							src="${allPro.imageface1}" style="height: 500px;">
+							src="${allPro.imageface1}" style="height: fit-content;width: auto;">
+					</div>
+					<div
+						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
+						<div class="owl-stage-outer">
+							<div class="owl-stage"
+								style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
+								<div class="owl-item cloned"
+									style="width: 97.5px; margin-right: 20px;">
+									<img src="${allPro.imageface1}" alt="">
+								</div>
+								<div class="owl-item cloned"
+									style="width: 97.5px; margin-right: 20px;">
+									<img src="${allPro.imageface2}" alt="">
+								</div>
+								<div class="owl-item cloned"
+									style="width: 97.5px; margin-right: 20px;">
+									<img src="${allPro.imageface3}" alt="">
+								</div>
+								<div class="owl-item cloned"
+									style="width: 97.5px; margin-right: 20px;">
+									<img src="${allPro.imageface4}" alt="">
+								</div>
+								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<img src="${allPro.imageface1}" alt="">
+								</div>
+								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<img src="${allPro.imageface2}" alt="">
+								</div>
+								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<img src="${allPro.imageface3}" alt="">
+								</div>
+								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<img src="${allPro.imageface4}" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="owl-nav disabled">
+							<button type="button" role="presentation" class="owl-prev">
+								<span aria-label="Previous">‹</span>
+							</button>
+							<button type="button" role="presentation" class="owl-next">
+								<span aria-label="Next">›</span>
+							</button>
+						</div>
+						<div class="owl-dots disabled">
+							<button role="button" class="owl-dot active">
+								<span></span>
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
+
 			<div class="col-lg-6 col-md-6">
 				<div class="product__details__text">
 					<h3>${allPro.iname }</h3>
 					<c:choose>
 						<c:when test="${allPro.auctioncheck=='Y'}">
 							<div class="product__details__price">
-								<span id="now_price"><fmt:formatNumber value="${allPro.apricenow}" pattern="#,###" /></span>&nbsp;원
+								<span id="now_price"><fmt:formatNumber
+										value="${allPro.apricenow}" pattern="#,###" /></span>&nbsp;원
 							</div>
 						</c:when>
 						<c:when test="${allPro.auctioncheck=='N'}">
 							<div class="product__details__price">
-								<span><fmt:formatNumber pattern="#,###" value="${allPro.price}" />원</span>
+								<span><fmt:formatNumber pattern="#,###"
+										value="${allPro.price}" />원</span>
 							</div>
 						</c:when>
 					</c:choose>
@@ -66,7 +116,8 @@
 					<c:if test="${user ne null}">
 						<c:choose>
 							<c:when test="${allPro.auctioncheck=='Y'}">
-								<form action="auctionPart.do" name="auctionPart" method="post">
+								<form action="/product/auctionPart" name="auctionPart"
+									method="post">
 									<input type="hidden" name="aucIno" value="${allPro.ino}">
 									<c:if test="${allPro.userid ne memberUser.userid}">
 										<c:if test="${allPro.sellcheck eq 'N'}">
@@ -84,7 +135,8 @@
 									onclick="matchingwindow()" />
 							</c:when>
 						</c:choose>
-				<button type="button" class="btn btn-outline-danger <c:if test="${iNo!= 0}">active</c:if>"
+						<button type="button"
+							class="btn btn-outline-danger <c:if test="${iNo!= 0}">active</c:if>"
 							onclick="location.href='/product/likeCountInsert?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 								fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
@@ -92,11 +144,12 @@
 									d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
 							</svg>
 							&nbsp;찜&nbsp;${allPro.likecount}
-						</button> 
+						</button>
 					</c:if>
 					<ul>
 						<c:if test="${allPro.auctioncheck=='Y' }">
-							<li><b>시작가격</b> <span id="minprice"><fmt:formatNumber value="${allPro.minprice}" pattern="#,###" /></span>원</li>
+							<li><b>시작가격</b> <span id="minprice"><fmt:formatNumber
+										value="${allPro.minprice}" pattern="#,###" /></span>원</li>
 							<li><b>남은시간</b> <span id="endtime">${allPro.endtime}</span></li>
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
@@ -121,34 +174,36 @@
 				</div>
 
 			</div>
-			<div class="col-lg-12">
-				<div class="product__details__tab">
-					<ul class="nav nav-tabs" role="tablist">
-						<li class="nav-item">
-							<h3>상세설명</h3>
-						</li>
-					</ul>
-					<div class="tab-content">
-						<div class="tab-pane active" id="tabs-1" role="tabpanel">
-							<div class="product__details__tab__desc">
-								<h6>제품 설명</h6>
-								<p>${allPro.pricetext}</p>
-								
-									<img class="product__details__pic__item--large"
-										src="${allPro.imageface1}" style="height: 500px;">
-									<img class="product__details__pic__item--large"
-										src="${allPro.imageface2}" style="height: 500px;">
-									<img class="product__details__pic__item--large"
-										src="${allPro.imageface3}" style="height: 500px;">
-										<img class="product__details__pic__item--large"
-										src="${allPro.imageface4}" style="height: 500px;">
-								
-							</div>
+
+		</div>
+		<div class="col-lg-12">
+			<div class="product__details__tab">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item">
+						<h3>상세설명</h3>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tabs-1" role="tabpanel">
+						<div class="product__details__tab__desc">
+							<h6>제품 설명</h6>
+							<p>${allPro.pricetext}</p>
+
+							<img class="product__details__pic__item--large"
+								src="${allPro.imageface1}" style="height: 500px;"> <img
+								class="product__details__pic__item--large"
+								src="${allPro.imageface2}" style="height: 500px;"> <img
+								class="product__details__pic__item--large"
+								src="${allPro.imageface3}" style="height: 500px;"> <img
+								class="product__details__pic__item--large"
+								src="${allPro.imageface4}" style="height: 500px;">
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </section>
 <!-- Product Details Section End -->
@@ -179,10 +234,17 @@
 								<a href="#">${productUser.iname}</a>
 							</h6>
 							<c:if test="${productUser.auctioncheck eq 'Y'}">
-								<h5><fmt:formatNumber pattern="#,###" value="${productUser.apricenow}" />원</h5>
+								<h5>
+									<fmt:formatNumber pattern="#,###"
+										value="${productUser.apricenow}" />
+									원
+								</h5>
 							</c:if>
 							<c:if test="${productUser.auctioncheck ne 'Y'}">
-								<h5><fmt:formatNumber pattern="#,###" value="${productUser.price}" />원</h5>
+								<h5>
+									<fmt:formatNumber pattern="#,###" value="${productUser.price}" />
+									원
+								</h5>
 							</c:if>
 						</div>
 					</div>
