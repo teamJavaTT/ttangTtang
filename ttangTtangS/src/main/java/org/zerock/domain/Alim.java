@@ -10,9 +10,9 @@ import lombok.Data;
 @Data
 public class Alim {
 
-	private int lNo;
-	private String userId;
-	private String lText;
-	private Date lDate;
-	private String alimChk;
+	private int lno;
+	private String userid;
+	private String ltext;
+	private Date ldate;
+	private String alimchk;
 }

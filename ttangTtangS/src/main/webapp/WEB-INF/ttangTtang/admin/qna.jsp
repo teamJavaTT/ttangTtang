@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/admin/adminmain.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -15,7 +14,7 @@
          <div class="col-lg-3">
             <div class="hero__categories">
                <ul>
-               <%@ include file="list.jsp"%>
+               <%@ include file="adminMenuList.jsp"%>
                </ul>
             </div>
          </div>

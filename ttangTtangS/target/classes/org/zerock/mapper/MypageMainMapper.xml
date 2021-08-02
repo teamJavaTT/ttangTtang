@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.MypageMainMapper">
 
-
 	<select id="selectAccountDeclaration"
 		resultType="org.zerock.domain.AccountDeclaration">
 		<![CDATA[
@@ -23,9 +22,8 @@
 		]]>
 	</select>
 
-
-
-<select id="selectLikeProduct" resultType="org.zerock.domain.Product" parameterType="map">
+	<select id="selectLikeProduct"
+		resultType="org.zerock.domain.Product" parameterType="map">
 		<![CDATA[
 		select * from 
 		(select row_number() over (order by ino desc) num, A.* from product A where ino in (
@@ -36,14 +34,15 @@
 		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
+	
 	<select id="selectLikeProductListCount" resultType="int">
 		<![CDATA[
 		select count(ino) from likeproduct where ino > 0
 		]]>
 	</select>
 
-
-	<select id="selectSellList" resultType="org.zerock.domain.Product" parameterType="map">
+	<select id="selectSellList"
+		resultType="org.zerock.domain.Product" parameterType="map">
 		<![CDATA[
 		select * from 
 		(select row_number() over (order by ino desc) num, A.* from product A where ino in (
@@ -51,7 +50,7 @@
          from product 
          where userid=#{userid}
          ]]>
-         <if test='!sellchk.equals("A")'>
+		<if test='!sellchk.equals("A")'>
 			and sellcheck=#{sellchk}
 		</if>
 		<![CDATA[
@@ -59,14 +58,14 @@
 		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
-	
+
 	<select id="selectSellListCount" resultType="int">
 		<![CDATA[
 		select count(ino) 
 		from product 
 		where userid=#{userid} 
 		]]>
-         <if test='!sellchk.equals("A")'>
+		<if test='!sellchk.equals("A")'>
 			and sellcheck=#{sellchk}
 		</if>
 		<![CDATA[
@@ -89,28 +88,38 @@
 		where num between #{pageStart} and #{pageEnd}
 	</insert>
 
-	<select id="selectCountDec" parameterType="map" 
-		resultType="int">
+	<select id="selectCountDec" parameterType="map" resultType="int">
 		<![CDATA[
 		select count(*) from declaration where userid=#{userid} and duid=#{badid}
 		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
-	
-	
+
 	<insert id="insertBlockUser">
 		insert into block values
-		(block_seq.nextval, #{userId}, #{blockid2}, #{btext}, sysdate)
+		(block_seq.nextval,
+		#{userId}, #{blockid2}, #{btext}, sysdate)
 	</insert>
 
-	<select id="selectCountBl" parameterType="map" 
-		resultType="int">
+	<select id="selectCountBl" parameterType="map" resultType="int">
 		<![CDATA[
 		select count(*) from block where userid=#{userid} and bid=#{blockid}
 		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
-
-
+	
+	<select id="alimAllSelect" resultType="org.zerock.domain.Alim">
+		select * 
+		from alim 
+		where userid = #{userid} 
+		order by lno desc
+	</select>
+	
+	<update id="alimChkUpdate">
+		update alim 
+		set alimchk = 'Y' 
+		where alimchk = 'N' 
+		and userid = #{userid}
+	</update>
 
 </mapper>

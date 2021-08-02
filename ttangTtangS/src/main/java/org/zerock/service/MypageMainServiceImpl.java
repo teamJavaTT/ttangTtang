@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.AccountDeclaration;
+import org.zerock.domain.Alim;
 import org.zerock.domain.BlockUser;
 import org.zerock.domain.Product;
 import org.zerock.domain.Secession;
@@ -105,8 +106,14 @@ public class MypageMainServiceImpl implements MypageMainService {
 		return null;
 	}
 
+	//알림
+	public List<Alim> alimAllSelect(String userid) throws Exception {
+		return mypageMainMapper.alimAllSelect(userid);
+	}
 	
-
+	public void alimChkUpdate(String userid) throws Exception {
+		mypageMainMapper.alimChkUpdate(userid);
+	}
 
 
 }

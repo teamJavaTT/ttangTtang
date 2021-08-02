@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.AccountDeclaration;
+import org.zerock.domain.Alim;
 import org.zerock.domain.BlockUser;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
@@ -233,6 +234,18 @@ public class MypageMainController {
 	@RequestMapping(value = "/adminmain")
 	public String adminmainPage(Model model) throws Exception {
 		return "admin/adminmain";
+	}
+	
+	// 알림내역
+	@RequestMapping(value = "/alimList")
+	public void alimList(Model model, HttpServletRequest req) throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		List<Alim> alimAll = mypagemainService.alimAllSelect(user.getUserid());
+		model.addAttribute("alimAll", alimAll);
+		mypagemainService.alimChkUpdate(user.getUserid());
+		model.addAttribute("alim", null);
+
 	}
 
 }

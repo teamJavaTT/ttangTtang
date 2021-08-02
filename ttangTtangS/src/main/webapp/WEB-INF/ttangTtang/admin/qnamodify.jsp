@@ -9,7 +9,7 @@
          <div class="col-lg-3">
             <div class="hero__categories">
                <ul>
-               <%@ include file="list.jsp"%>
+               <%@ include file="adminMenuList.jsp"%>
                </ul>
             </div>
          </div>
