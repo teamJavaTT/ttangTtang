@@ -16,7 +16,7 @@ const countDownTimer = function (id, date) {
 		var distDt = _vDate - now; 
 		if (distDt < 0) {
 			clearInterval(timer);
-			document.getElementById(id).textContent += '경매종료';
+			document.getElementById(id).textContent = '경매종료';
 			return;
 		}
 		

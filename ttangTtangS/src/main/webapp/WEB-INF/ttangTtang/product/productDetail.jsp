@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<script>
+	var date = "<fmt:formatDate value='${allPro.endtime}' pattern='yyyy-MM-dd HH:mm:ss'/>";
+</script>
 
 
 <!-- Breadcrumb Section Begin -->
@@ -160,7 +162,7 @@
 						<c:if test="${allPro.auctioncheck=='Y' }">
 							<li><b>시작가격</b> <span id="minprice"><fmt:formatNumber
 										value="${allPro.minprice}" pattern="#,###" /></span>원</li>
-							<li><b>남은시간</b><span class="aucTimer"><fmt:formatDate value="${allPro.endtime}" pattern='yyyy-MM-dd HH:mm:ss'/></span></li>
+							<li><b>남은시간</b><span class="aucTimer" id="aucTimer"></span></li>
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
 						<li><b>판매 지역</b><span>${allPro.uad}</span></li>
@@ -211,7 +213,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </section>
 <!-- Product Details Section End -->
