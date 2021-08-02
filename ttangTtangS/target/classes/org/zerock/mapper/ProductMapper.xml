@@ -124,7 +124,7 @@ select * from product where ino =#{ino}
 	</select>
 
 	<select id="productUserSelect"
-		resultType="org.zerock.dto.Product">
+		resultType="org.zerock.dto.ProductDTO">
 		select * from product where userid = #{userid} and
 		ino !=
 		#{ino} order by

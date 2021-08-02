@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.ProductDetail;
-import org.zerock.dto.Product;
+import org.zerock.dto.ProductDTO;
 import org.zerock.mapper.ProductMapper;
 
 @Service
@@ -17,7 +17,7 @@ public class ProductServiceImpl implements ProductService {
 	// 상품 등록
 	@Override
 	@Transactional
-	public void insertProduct(Product product) throws Exception {
+	public void insertProduct(ProductDTO product) throws Exception {
 		productMapper.insertProduct(product);
 	}
 
@@ -37,15 +37,15 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional
-	public List<Product> productUser(String userid, String ino) throws Exception {
-		List<Product> productUser = productMapper.productUserSelect(userid, ino);
+	public List<ProductDTO> productUser(String userid, String ino) throws Exception {
+		List<ProductDTO> productUser = productMapper.productUserSelect(userid, ino);
 		return productUser;
 	}
 
 //상품수정
 	@Override
 	@Transactional
-	public void productModify(Product Product) throws Exception {
+	public void productModify(ProductDTO Product) throws Exception {
 
 		productMapper.productModify(Product);
 	}

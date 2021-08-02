@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Component
 @Data
-public class Product {
+public class ProductDTO {
 	
 	private String ino;
 	private String userid;

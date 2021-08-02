@@ -3,18 +3,18 @@ package org.zerock.service;
 import java.util.List;
 
 import org.zerock.domain.ProductDetail;
-import org.zerock.dto.Product;
+import org.zerock.dto.ProductDTO;
 
 public interface ProductService {
 	
 	//상품 등록
-	void insertProduct(Product product) throws Exception;
+	void insertProduct(ProductDTO product) throws Exception;
 	//상품 상세페이지 
 	ProductDetail selectProduct(int ino) throws Exception;
 	String selectCname(String ccode) throws Exception;
-	List<Product> productUser(String userid, String ino) throws Exception;
+	List<ProductDTO> productUser(String userid, String ino) throws Exception;
 	//상품 수정
-	void productModify(Product Product) throws Exception;
+	void productModify(ProductDTO Product) throws Exception;
 	
 	//상품 삭제
 	void productDelete(int ino) throws Exception;

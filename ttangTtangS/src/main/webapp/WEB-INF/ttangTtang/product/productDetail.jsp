@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
+
 <!-- Breadcrumb Section Begin -->
 
 <section class="breadcrumb-section set-bg"
@@ -159,7 +160,7 @@
 						<c:if test="${allPro.auctioncheck=='Y' }">
 							<li><b>시작가격</b> <span id="minprice"><fmt:formatNumber
 										value="${allPro.minprice}" pattern="#,###" /></span>원</li>
-							<li><b>남은시간</b> <span id="endtime">${allPro.endtime}</span></li>
+							<li><b>남은시간</b><span class="aucTimer"><fmt:formatDate value="${allPro.endtime}" pattern='yyyy-MM-dd HH:mm:ss'/></span></li>
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
 						<li><b>판매 지역</b><span>${allPro.uad}</span></li>
@@ -262,5 +263,6 @@
 </section>
 <!-- Related Product Section End -->
 <script src="/resources/js/product/productDetail.js"></script>
+<script src="/resources/js/product/index.js"></script>
 
 <%@ include file="../include/footer.jsp"%>

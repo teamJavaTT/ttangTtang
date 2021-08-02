@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.Category;
 import org.zerock.domain.ProductDetail;
 import org.zerock.domain.User;
-import org.zerock.dto.Product;
+import org.zerock.dto.ProductDTO;
 import org.zerock.service.MemberService;
 import org.zerock.service.ProductService;
 
@@ -34,7 +34,7 @@ public class ProductController {
 
 	// 상품등록
 	@RequestMapping(value = "/productWrite", method = RequestMethod.GET)
-	private String productWriteGet(Model model, Product product, HttpServletRequest req) throws Exception {
+	private String productWriteGet(Model model, ProductDTO product, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 
@@ -50,9 +50,13 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/productWrite", method = RequestMethod.POST)
-	private String productWritePost(Model model, Product product, HttpServletRequest req) throws Exception {
+	private String productWritePost(Model model, ProductDTO product, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
+		
+		if (product.getImageface1() == null || product.getImageface1().isEmpty()) {
+	         product.setImageface1("/resources/file/noimage.jpg");
+	      }
 		product.setTotalTime(Integer.parseInt(product.getEndDay()) + Integer.parseInt(product.getEndTime()));
 		product.setUserid(user.getUserid());
 		productService.insertProduct(product);
@@ -75,7 +79,7 @@ public class ProductController {
 			iNo = 0;
 
 		String ibo = Integer.toString(ino);
-		List<Product> productUser = productService.productUser(productDetail.getUserid(), ibo);
+		List<ProductDTO> productUser = productService.productUser(productDetail.getUserid(), ibo);
 
 		model.addAttribute("iNo", iNo);
 		model.addAttribute("allPro", productDetail);
@@ -96,6 +100,7 @@ public class ProductController {
 		address.add(user.getAddress1());
 		address.add(user.getAddress2());
 		address.add(user.getAddress3());
+		
 		model.addAttribute("address", address);
 		model.addAttribute("category", category);
 		model.addAttribute("allPro", productModify);
@@ -103,10 +108,13 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/productModify", method = RequestMethod.POST)
-	public String productModifyPost(Product product, @RequestParam("ino") int ino, HttpServletRequest req,
+	public String productModifyPost(ProductDTO product, @RequestParam("ino") int ino, HttpServletRequest req,
 			HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
+		if (product.getImageface1() == null || product.getImageface1().isEmpty()) {
+	         product.setImageface1("/resources/file/noimage.jpg");
+	      }
 		product.setUserid(user.getUserid());
 		product.setIno(Integer.toString(ino));
 		productService.productModify(product);
