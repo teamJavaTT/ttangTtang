@@ -3,6 +3,7 @@
 <%@ include file="../include/header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
+	var auctionChk = "${allPro.auctioncheck}";
 	var date = "<fmt:formatDate value='${allPro.endtime}' pattern='yyyy-MM-dd HH:mm:ss'/>";
 </script>
 

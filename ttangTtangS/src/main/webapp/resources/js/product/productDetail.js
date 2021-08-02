@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	countDownTimer();
+	if(auctionChk == "Y") countDownTimer();
 	
 	$("body").keypress(function(e) {
 		if (e.keyCode == 13) {
@@ -55,15 +55,13 @@ function aucPricePart() {
 }
 
 function productDel() {
-	$("#productDel").on('click', function() {
-		var ino = $("#delNo").val();
-		var result = confirm("정말 삭제하시겠습니까?");
-		if (result) {
-			location.href = '/product/productDelete?ino=' +ino;
-		} else {
-			alert("취소되었습니다.");
-		}
-	});
+	var ino = $("#delNo").val();
+	var result = confirm("정말 삭제하시겠습니까?");
+	if (result) {
+		location.href = '/product/productDelete?ino=' +ino;
+	} else {
+		alert("취소되었습니다.");
+	}
 }
 
 function matchingwindow() {

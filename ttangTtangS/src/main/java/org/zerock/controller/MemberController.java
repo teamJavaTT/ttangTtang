@@ -38,6 +38,8 @@ public class MemberController {
 		HttpSession session = req.getSession(false);
 
 		if (session.getAttribute("memberUser") == null) {
+			String referrer = req.getHeader("Referer");
+			req.getSession().setAttribute("prevPage", referrer);
 			req.setAttribute("login", false);
 		} else {
 			req.setAttribute("login", true);
@@ -50,7 +52,7 @@ public class MemberController {
 		AES256Util aes256Util = new AES256Util();
 		Map<String, Boolean> errors = new HashMap<>();
 		model.addAttribute("errors", errors);
-
+		HttpSession session = req.getSession(false);
 		try {
 			String upwd = aes256Util.encrypt(upw);
 			User user = memberService.memberLogin(userid, upwd);
@@ -69,7 +71,9 @@ public class MemberController {
 			req.setAttribute("login", false);
 			return "/member/login";
 		}
-		res.sendRedirect("/");
+		String redirectUrl = (String) session.getAttribute("prevPage");
+		session.removeAttribute("prevPage");
+		res.sendRedirect(redirectUrl);
 		return null;
 	}
 
@@ -80,7 +84,8 @@ public class MemberController {
 		if (session != null) {
 			session.invalidate();
 		}
-		res.sendRedirect("/");
+		String referrer = req.getHeader("Referer");
+		res.sendRedirect(referrer);
 	}
 
 	// 회원가입

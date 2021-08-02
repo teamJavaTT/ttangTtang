@@ -68,15 +68,20 @@ public class ProductController {
 	public String productDetail(Model model, @RequestParam(value = "ino", required = true, defaultValue = "0") int ino,
 			HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-		ProductDetail productDetail = productService.selectProduct(ino);
-		productDetail.setCname(productService.selectCname(productDetail.getCcode()));
-
+		User user;
+		if(session == null) {
+			user = null;
+		}else{
+			user = (User) session.getAttribute("memberUser");
+		}
 		int iNo = 0;
 		if (user != null)
 			iNo = productService.likeProductUser(user.getUserid(), ino);
 		else
 			iNo = 0;
+		
+		ProductDetail productDetail = productService.selectProduct(ino);
+		productDetail.setCname(productService.selectCname(productDetail.getCcode()));
 
 		String ibo = Integer.toString(ino);
 		List<ProductDTO> productUser = productService.productUser(productDetail.getUserid(), ibo);
