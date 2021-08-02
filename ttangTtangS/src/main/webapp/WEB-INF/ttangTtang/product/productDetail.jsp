@@ -264,6 +264,5 @@
 </section>
 <!-- Related Product Section End -->
 <script src="/resources/js/product/productDetail.js"></script>
-<script src="/resources/js/product/index.js"></script>
 
 <%@ include file="../include/footer.jsp"%>
