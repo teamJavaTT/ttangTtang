@@ -53,8 +53,12 @@ preview-box {
 	<div class="container" style="padding-left: 34%;">
 		<form id="InsertForm" name="InsertForm" action="productModify"
 			method="post" style="margin-top: 20px; margin-bottom: 10px;">
-			<input type="hidden" name="ino" value="${allPro.ino}" />
-				<input type="hidden" name="auctioncheck" value="${allPro.auctioncheck}" />
+			<input type="hidden" name="ino" value="${allPro.ino}" /> <input
+				type="hidden" name="imageface1" id="imageface1"> <input
+				type="hidden" name="imageface2" id="imageface2"> <input
+				type="hidden" name="imageface3" id="imageface3"> <input
+				type="hidden" name="imageface4" id="imageface4"> <input
+				type="hidden" name="auctioncheck" value="${allPro.auctioncheck}" />
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
 				<tr>
@@ -106,21 +110,21 @@ preview-box {
 				<tr>
 					<td>판매 지역:</td>
 					<td colspan="2"><c:if test="${!empty address[1]}">
-							<input type="radio" name="uad" value="${address[1]}">
+							<input type="radio" name="uad" value="${address[1]}"<c:if test="${address[1]eq allPro.uad}">checked="checked"</c:if> />
 							<span>${address[1]}</span>
 						</c:if></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td colspan="2"><c:if test="${!empty address[2]}">
-							<input type="radio" name="uad" value="${address[2]}">
+							<input type="radio" name="uad" value="${address[2]}"<c:if test="${address[2]eq allPro.uad}">checked="checked"</c:if>/>
 							<span>${address[2]}</span>
 						</c:if></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td colspan="2"><c:if test="${!empty address[3]}">
-							<input type="radio" name="uad" value="${address[3]}">
+							<input type="radio" name="uad" value="${address[3]}"<c:if test="${address[3]eq allPro.uad}">checked="checked"</c:if>/>
 							<span>${address[3]}</span>
 						</c:if></td>
 				</tr>
@@ -139,7 +143,7 @@ preview-box {
 					<td><span style="opacity: 0.6; font-size: 12px;">(최대
 							4개의 이미지를 선택하실 수 있습니다.)</span></td>
 				</tr>
-		<tr>
+				<tr>
 					<td>
 						<div id="preview" class="preview">
 							<ul>
@@ -154,16 +158,20 @@ preview-box {
 									</c:if> <c:if test="${!empty allPro.imageface4}">
 										<img src="${allPro.imageface4}">
 									</c:if>
-								
+
 								</li>
 							</ul>
-						</div> <input class="upload-name" value="이미지 등록" disabled="disabled" /> <label for="imageFile">업로드</label>
-						<form id="fileUpload" name="fileUpload" enctype="multipart/form-data">
-							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imageFile" id="imageFile" class="upload-hidden" multiple="multiple">
+						</div> <input class="upload-name" value="이미지 등록" disabled="disabled" />
+						<label for="imageFile">업로드</label>
+						<form id="fileUpload" name="fileUpload"
+							enctype="multipart/form-data">
+							<input type="file" accept="image/jpg, image/jpeg, image/png"
+								name="imageFile" id="imageFile" class="upload-hidden"
+								multiple="multiple">
 						</form>
 
 					</td>
-				</tr> 
+				</tr>
 				<tr>
 					<td align="center"><input type="button"
 						class="btn btn-outline-secondary" value="등록"

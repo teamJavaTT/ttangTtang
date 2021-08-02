@@ -96,7 +96,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional
-	public LikeProduct likeProductUser(String userid, int ino) throws Exception {
+	public int likeProductUser(String userid, int ino) throws Exception {
 		return productMapper.likeProductUser(userid,ino);
 	}
 

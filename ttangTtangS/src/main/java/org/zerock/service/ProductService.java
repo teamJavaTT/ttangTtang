@@ -27,12 +27,12 @@ public interface ProductService {
 	 void likeCountSubtract(String userid, int ino)throws Exception;
 	 void likeCountDelete(String userid, int ino)throws Exception;
 	 Integer likeProductCount(String userid)throws Exception;
-	 LikeProduct  likeProductUser(String userid,int ino)throws Exception;
+	 int  likeProductUser(String userid,int ino)throws Exception;
+	 void likeProductCountInsert(String userid, int ino) throws Exception;
 	
 
 	 //조회수
 	 void viewCountUpdate(int ino) throws Exception ;
-	void likeProductCountInsert(String userid, int ino) throws Exception;
 
 
 	

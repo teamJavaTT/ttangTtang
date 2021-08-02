@@ -84,7 +84,7 @@
 									onclick="matchingwindow()" />
 							</c:when>
 						</c:choose>
-				<button type="button" class="btn btn-outline-danger <c:if test="${iNo.ino != 0}">active</c:if>"
+				<button type="button" class="btn btn-outline-danger <c:if test="${iNo!= 0}">active</c:if>"
 							onclick="location.href='/product/likeCountInsert?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 								fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">

@@ -1,3 +1,7 @@
+$("input:radio[name='uad']]").prop('checked', true); // 선택하기
+$("input:radio[name='uad']").prop('checked', false); // 해제하기
+
+
 
 function getFileUpload() {
 

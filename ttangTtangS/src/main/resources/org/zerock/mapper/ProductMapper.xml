@@ -123,7 +123,7 @@ select * from product where ino =#{ino}
 	</select>
 
 	<select id="likeProductUser"
-		resultType="org.zerock.dto.LikeProduct">
+		resultType="int">
 		select count(ino) from likeproduct where userid =#{userid}
 		and ino =#{ino}
 	</select>

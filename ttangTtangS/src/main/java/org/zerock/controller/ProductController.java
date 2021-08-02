@@ -69,10 +69,15 @@ public class ProductController {
 		ProductDetail productDetail = productService.selectProduct(ino);
 		productDetail.setCname(productService.selectCname(productDetail.getCcode()));
 
-		LikeProduct likeProduct = productService.likeProductUser(user.getUserid(), ino);
+		int iNo=0;
+		if(user != null) iNo= productService.likeProductUser(user.getUserid(), ino);
+		else iNo = 0;
+
 		String ibo = Integer.toString(ino);
 		List<Product> productUser = productService.productUser(productDetail.getUserid(), ibo);
-		model.addAttribute("iNo", likeProduct);
+		
+		model.addAttribute("iNo", iNo);
+		
 		model.addAttribute("allPro", productDetail);
 		model.addAttribute("user", user);
 		model.addAttribute("productUser", productUser);
@@ -98,8 +103,8 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/productModify", method = RequestMethod.POST)
-	public String productModifyPost( Product product, @RequestParam("ino") int ino,HttpServletRequest req, HttpServletResponse res)
-			throws Exception {
+	public String productModifyPost(Product product, @RequestParam("ino") int ino, HttpServletRequest req,
+			HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		product.setUserid(user.getUserid());
@@ -128,43 +133,28 @@ public class ProductController {
 	}
 
 // 찜하기
-	/*
-	 * @RequestMapping(value = "/likeCountInsert") public String
-	 * likeProductCountInsert(Model model, LikeProduct likeProduct,
-	 * HttpServletRequest req, HttpServletResponse res, @RequestParam(value = "ino",
-	 * required = true, defaultValue = "0") int ino) throws Exception { HttpSession
-	 * session = req.getSession(false); User user = (User)
-	 * session.getAttribute("memberUser"); String userid = user.getUserid(); String
-	 * aucChk = req.getParameter("aucChk");
-	 * 
-	 * int iNo = productService.likeProductUser(userid, ino); if (iNo == 0) {
-	 * productService.likeProductCountInsert(userid,ino);
-	 * productService.likeCountUpdate(userid, ino); } else {
-	 * productService.likeCountDelete(userid,ino);
-	 * productService.likeCountSubtract(user.getUserid(), ino); } int likeCount =
-	 * productService.likeProductCount(user.getUserid());
-	 * model.addAttribute("likeCount", likeCount);
-	 * res.sendRedirect("productDetail?ino=" + ino + "&aucChk=" + aucChk); return
-	 * null;
-	 */
+
+	@RequestMapping(value = "/likeCountInsert")
+	public String likeProductCountInsert(Model model, LikeProduct likeProduct, HttpServletRequest req,
+			HttpServletResponse res, @RequestParam(value = "ino", required = true, defaultValue = "0") int ino)
+			throws Exception {
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		String userid = user.getUserid();
+		String aucChk = req.getParameter("aucChk");
+
+		int iNo = productService.likeProductUser(userid, ino);
+		if (iNo == 0) {
+			productService.likeProductCountInsert(userid, ino);
+			productService.likeCountUpdate(userid, ino);
+		} else {
+			productService.likeCountDelete(userid, ino);
+			productService.likeCountSubtract(user.getUserid(), ino);
+		}
+		int likeCount = productService.likeProductCount(user.getUserid());
+		model.addAttribute("likeCount", likeCount);
+		res.sendRedirect("productDetail?ino=" + ino + "&aucChk=" + aucChk);
+		return null;
+
+	}
 }
-//
-//	@RequestMapping(value = "/likeCount")
-//	public String likeService(Model model, @RequestParam(value = "ino", required = true, defaultValue = "0") String num,
-//			HttpServletRequest req, HttpServletResponse res) throws Exception {
-//		HttpSession session = req.getSession(false);
-//		User user = (User) session.getAttribute("memberUser");
-//		int ino = Integer.parseInt(num);
-//		int iNo = productService.likeProductUser(user.getUserid(), ino);
-//		String aucChk = req.getParameter("aucChk");
-//		if (iNo == 0) {
-//			productService.likeCountUpdate(user.getUserid(), ino);
-//		} else {
-//			productService.likeCountSubtract(user.getUserid(), ino);
-//		}
-//		String likeCount = productService.likeProductCount(user.getUserid());
-//		req.getSession().setAttribute("likeCount", likeCount);
-//		res.sendRedirect("productDetail?ino=" + ino + "&aucChk=" + aucChk);
-//		return nSull;
-//	}
-//}

@@ -39,7 +39,7 @@ public interface ProductMapper {
 
 	void likeCountDelete(@Param("userid") String userid, @Param("ino") int ino);
 
-	LikeProduct likeProductUser(@Param("userid") String userid, @Param("ino") int ino) throws Exception;
+	int likeProductUser(@Param("userid") String userid, @Param("ino") int ino) throws Exception;
 
 	Integer likeProductCount(@Param("userid") String userid) throws Exception;
 
