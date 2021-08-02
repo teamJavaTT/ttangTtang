@@ -8,13 +8,14 @@
 	<c:forEach var="aucProduct" items="${product}">
 	<c:if test="${aucProduct.auctioncheck == 'Y'}">
 	iNoArr.push("<c:out value='${aucProduct.ino}'/>");
-	endTimeArr.push("<c:out value='${aucProduct.endtime}'/>");
+	endTimeArr.push("<fmt:formatDate value='${aucProduct.endtime}' pattern='yyyy-MM-dd HH:mm:ss'/>");
 	</c:if>
 	</c:forEach>
 </script>
 <style>
 .aucTimer {
 	font-size: 15px;
+	padding-bottom: 10px;
 }
 </style>
 
@@ -116,7 +117,7 @@
 							</div>
 							<div class="featured__item__text">
 								<h6>
-									<a href="productDetail.do?ino=${norProduct.ino}">${norProduct.iname}</a>
+									<a href="productDetail?ino=${norProduct.ino}">${norProduct.iname}</a>
 								</h6>
 								<h5>
 									<fmt:formatNumber pattern="#,###" value="${norProduct.price}" />
