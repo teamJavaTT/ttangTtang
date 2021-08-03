@@ -6,8 +6,6 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.AccountDeclaration;
 import org.zerock.domain.Alim;
 import org.zerock.domain.BlockUser;
+import org.zerock.domain.Category;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.Product;
@@ -30,11 +29,12 @@ import org.zerock.service.MypageMainService;
 @RequestMapping(value = "/mypage")
 public class MypageMainController {
 
+	List<Category> category = InitController.category;
 	@Inject
 	private MypageMainService mypagemainService;
 	@Inject
 	private MemberService memberService;
-
+	
 	// 메인
 	@RequestMapping(value = "/mypageMain")
 	public void mypageMainPage(Model model) throws Exception {
@@ -196,7 +196,7 @@ public class MypageMainController {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
-
+		
 		int pageStart = cri.getPageStart();
 		int pageEnd = cri.getPageEnd();
 
@@ -213,6 +213,8 @@ public class MypageMainController {
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(mypagemainService.selectSellListCount(userid, sellchk));
+
+		model.addAttribute("category", category);
 		model.addAttribute("pageMaker", pageMaker);
 	}
 
