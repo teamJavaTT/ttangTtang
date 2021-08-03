@@ -46,7 +46,7 @@
 													<c:if test="${likeProduct.auctioncheck=='Y' }">
 														<td>${likeProduct.apricenow}</td>
 													</c:if>
-													<td>${likeProduct.endtime}</td>
+													<td><fmt:formatDate value="${likeProduct.endtime}" pattern="yyyy-MM-dd HH:mm"/></td>
 												</tr>
 											</c:forEach>
 											<tr>

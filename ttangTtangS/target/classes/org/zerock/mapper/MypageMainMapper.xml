@@ -6,19 +6,43 @@
 
 	<select id="selectAccountDeclaration"
 		resultType="org.zerock.domain.AccountDeclaration">
+		<!-- <![CDATA[ select * from declaration order by dno desc ]]> -->
 		<![CDATA[
-		select * 
-		from declaration 
-		order by dno desc
+		select * from 
+		(select row_number() over (order by dno desc) num, A.* from declaration A where dno in (
+         select dno 
+         from declaration 
+         where userid=#{userid}
+         ]]>
+		<![CDATA[
+      ) order by dno desc) 
+		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
 
+
+
 	<select id="selectBlockUser"
 		resultType="org.zerock.domain.BlockUser">
+		<!-- <![CDATA[ select * from block order by bno desc ]]> -->
 		<![CDATA[
-		select * 
-		from block 
-		order by bno desc
+		select * from 
+		(select row_number() over (order by bno desc) num, A.* from block A where bno in (
+         select bno 
+         from block 
+         where userid=#{userid}
+         ]]>
+		<![CDATA[
+      ) order by bno desc) 
+		where num between #{pageStart} and #{pageEnd}
+		]]>
+	</select>
+
+	<select id="selectDclrBlckListCount" resultType="int">
+		<![CDATA[
+		select count(*) 
+		from ${blockChk} 
+		where userid=#{userid} 
 		]]>
 	</select>
 
@@ -34,10 +58,10 @@
 		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
-	
+
 	<select id="selectLikeProductListCount" resultType="int">
 		<![CDATA[
-		select count(ino) from likeproduct where ino > 0
+		select count(ino) from likeproduct where ino > 0 and userid=#{userid}
 		]]>
 	</select>
 
@@ -104,18 +128,18 @@
 		select count(*) from block where userid=#{userid} and bid=#{blockid}
 		]]>
 	</select>
-	
+
 	<select id="alimAllSelect" resultType="org.zerock.domain.Alim">
-		select * 
-		from alim 
-		where userid = #{userid} 
+		select *
+		from alim
+		where userid = #{userid}
 		order by lno desc
 	</select>
-	
+
 	<update id="alimChkUpdate">
-		update alim 
-		set alimchk = 'Y' 
-		where alimchk = 'N' 
+		update alim
+		set alimchk = 'Y'
+		where alimchk = 'N'
 		and userid = #{userid}
 	</update>
 

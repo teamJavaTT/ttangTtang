@@ -24,21 +24,21 @@ public class MypageMainServiceImpl implements MypageMainService {
 
 	@Override  //신고
 	@Transactional
-	public List<AccountDeclaration> selectAccountDeclaration(String userid, String accountDeclaration, int pageStart, int pageEnd) throws Exception {
-		List<AccountDeclaration> accountDeclaration1 = mypageMainMapper.selectAccountDeclaration(userid, accountDeclaration, pageStart, pageEnd);
-		return accountDeclaration1;
+	public List<AccountDeclaration> selectAccountDeclaration(String userid, int pageStart, int pageEnd) throws Exception {
+		List<AccountDeclaration> accountDeclarationList = mypageMainMapper.selectAccountDeclaration(userid, pageStart, pageEnd);
+		return accountDeclarationList;
 	}
 
 	@Override  //차단
-	public List<BlockUser> selectBlockUser(String userid, String blockUser1, int pageStart, int pageEnd) throws Exception {
-		List<BlockUser> blockUser = mypageMainMapper.selectBlockUser(userid, blockUser1, pageStart, pageEnd);
-		return blockUser;
+	public List<BlockUser> selectBlockUser(String userid, int pageStart, int pageEnd) throws Exception {
+		List<BlockUser> blockUserList = mypageMainMapper.selectBlockUser(userid, pageStart, pageEnd);
+		return blockUserList;
 	}
 
 	@Override
 	@Transactional // 게시물 총 갯수 
 	public int selectDclrBlckListCount(@Param("userid") String userid, @Param("blockChk") String blockChk) throws Exception{
-		return mypageMainMapper.selectSellListCount(userid, blockChk);
+		return mypageMainMapper.selectDclrBlckListCount(userid, blockChk);
 	}
 	
 	
@@ -50,8 +50,8 @@ public class MypageMainServiceImpl implements MypageMainService {
 	
 	@Override
 	@Transactional // 게시물 총 갯수 
-	public int selectLikeProductListCount() throws Exception{
-		return mypageMainMapper.selectLikeProductListCount();
+	public int selectLikeProductListCount(String userid) throws Exception{
+		return mypageMainMapper.selectLikeProductListCount(userid);
 	}
 	
 	
@@ -93,18 +93,6 @@ public class MypageMainServiceImpl implements MypageMainService {
 		return mypageMainMapper.selectCountBl(userid, blockid);
 	}
 
-	@Override
-	public List<AccountDeclaration> selectAccountDeclaration(String userid, String accountDeclaration)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BlockUser> selectBlockUser(String userid, String blockUser) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	//알림
 	public List<Alim> alimAllSelect(String userid) throws Exception {

@@ -68,7 +68,7 @@
 															href="productDetail?ino=${product.ino}&aucChk=${product.auctioncheck}"><c:out
 																	value="${product.iname}" /></a></td>
 														<!-- 등록날짜 -->
-														<td>${product.pdate}</td>
+														<td><fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd HH:mm"/></td>
 														<!-- 판매여부 -->
 														<td>${product.sellcheck eq 'N'? '판매중' : '판매완료'}</td>
 													</tr>

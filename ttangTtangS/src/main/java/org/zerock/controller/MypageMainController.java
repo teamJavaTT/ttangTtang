@@ -45,12 +45,6 @@ public class MypageMainController {
 	@RequestMapping(value = "/accountDeclaration", method = RequestMethod.GET)
 	public void accountDeclarationPageGET(Model model, HttpServletRequest req) throws Exception {
 
-		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-		String userid = user.getUserid();
-
-		List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration(userid, "D");
-		model.addAttribute("accountDeclaration", accountDeclaration);
 	}
 
 	@RequestMapping(value = "/accountDeclaration", method = RequestMethod.POST)
@@ -97,12 +91,6 @@ public class MypageMainController {
 	@RequestMapping(value = "/blockUser", method = RequestMethod.GET)
 	public void blockUserPageGET(Model model, HttpServletRequest req) throws Exception {
 
-		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-		String userid = user.getUserid();
-
-		List<BlockUser> blockUser = mypagemainService.selectBlockUser(userid, "B");
-		model.addAttribute("blockUser", blockUser);
 	}
 
 	@RequestMapping(value = "/blockUser", method = RequestMethod.POST)
@@ -155,21 +143,26 @@ public class MypageMainController {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
-
+		String tblName ;
 		int pageStart = cri.getPageStart();
 		int pageEnd = cri.getPageEnd();
 
+		if (blockChk == null || blockChk == "") {
+			blockChk = "D";
+		}
 		if (blockChk.equals("D")) {
-			List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration(userid, blockChk);
+			tblName = "declaration";
+			List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration(userid, pageStart, pageEnd);
 			model.addAttribute("accountDeclaration", accountDeclaration);
 		} else {
-			List<BlockUser> blockUser = mypagemainService.selectBlockUser(userid, blockChk);
+			tblName = "block";
+			List<BlockUser> blockUser = mypagemainService.selectBlockUser(userid, pageStart, pageEnd);
 			model.addAttribute("blockUser", blockUser);
 		}
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(mypagemainService.selectDclrBlckListCount(userid, blockChk));
+		pageMaker.setTotalCount(mypagemainService.selectDclrBlckListCount(userid, tblName));
 		model.addAttribute("pageMaker", pageMaker);
 
 	}
@@ -191,7 +184,7 @@ public class MypageMainController {
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(mypagemainService.selectLikeProductListCount());
+		pageMaker.setTotalCount(mypagemainService.selectLikeProductListCount(userid));
 		model.addAttribute("pageMaker", pageMaker);
 	}
 
