@@ -89,7 +89,7 @@
 														<!-- 상품명 -->
 														<td><c:out value="${block.btext}" /></td>
 														<!-- 등록날짜 -->
-														<td>${block.bdate}</td>
+														<td><fmt:formatDate value="${block.bdate}" pattern="yyyy-MM-dd HH:mm"/></td>
 
 													</tr>
 												</c:forEach>
