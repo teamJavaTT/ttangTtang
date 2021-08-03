@@ -9,6 +9,18 @@ $(document).ready(function() {
 	})
 });
 
+function likeProductFunc(ino) {
+	$.ajax({
+		url: "/product/likeCountInsert?ino="+ino,
+		type: "POST",
+		contentType: false,
+		processData: false,
+		success: function(data) {
+			//const imageArr = data.split(",");
+		}
+	});
+}
+
 const countDownTimer = function () {
 
 	var id = "aucTimer";

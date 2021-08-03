@@ -3,39 +3,7 @@
 <%@ include file="../include/header.jsp"%>
 
 <title>상품 수정</title>
-<style>
-#test textarea {
-	width: 200px;
-	height: 100px;
-	border: 3px solid #ff0000;
-}
-
-label {
-	display: block;
-	font: 1rem 'Fira Sans', sans-serif;
-}
-
-input, label {
-	margin: .4rem 0;
-}
-
-.preview img {
-	width: 100px;
-	height: 100px;
-}
-
-.preview p {
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-
-preview-box {
-	border: 1px solid;
-	padding: 5px;
-	border-radius: 2px;
-	margin-bottom: 10px;
-}
-</style>
+<link rel="stylesheet" href="/resources/css/product/product.css">
 
 <!-- 상품 등록 section begin -->
 <div id="productModiDiv">
@@ -50,7 +18,7 @@ preview-box {
 			<h3 style="text-align: center;">경매 상품 수정</h3>
 		</div>
 	</c:if>
-	<div class="container" style="padding-left: 34%;">
+	<div class="container">
 		<form id="InsertForm" name="InsertForm" action="productModify"
 			method="post" style="margin-top: 20px; margin-bottom: 10px;">
 			<input type="hidden" name="ino" value="${allPro.ino}" /> <input
@@ -108,7 +76,7 @@ preview-box {
 				</c:choose>
 
 				<tr>
-					<td>판매 지역:</td>
+					<td>판매지역:</td>
 					<td colspan="2"><c:if test="${!empty address[1]}">
 							<input type="radio" name="uad" value="${address[1]}"<c:if test="${address[1]eq allPro.uad}">checked="checked"</c:if> />
 							<span>${address[1]}</span>
@@ -140,28 +108,11 @@ preview-box {
 		<div class="filebox">
 			<table id="imageTbl">
 				<tr>
-					<td><span style="opacity: 0.6; font-size: 12px;">(최대
-							4개의 이미지를 선택하실 수 있습니다.)</span></td>
+					<td><span>상품이미지<small>(0/4)</small></span></td>
 				</tr>
 				<tr>
 					<td>
-						<div id="preview" class="preview">
-							<ul>
-								<li style="float: left; list-style: none; position: relative;">
-
-									<c:if test="${!empty allPro.imageface1}">
-										<img src="${allPro.imageface1}">
-									</c:if> <c:if test="${!empty allPro.imageface2}">
-										<img src="${allPro.imageface2}">
-									</c:if> <c:if test="${!empty allPro.imageface3}">
-										<img src="${allPro.imageface3}">
-									</c:if> <c:if test="${!empty allPro.imageface4}">
-										<img src="${allPro.imageface4}">
-									</c:if>
-
-								</li>
-							</ul>
-						</div> <input class="upload-name" value="이미지 등록" disabled="disabled" />
+						<input class="upload-name" value="이미지 등록" disabled="disabled" />
 						<label for="imageFile">업로드</label>
 						<form id="fileUpload" name="fileUpload"
 							enctype="multipart/form-data">
@@ -169,7 +120,34 @@ preview-box {
 								name="imageFile" id="imageFile" class="upload-hidden"
 								multiple="multiple">
 						</form>
-
+						<div id="preview" class="preview">
+							<ul>
+								<c:if test="${!empty allPro.imageface1}">
+									<li style="float: left; list-style: none; position: relative;">
+										<img src="${allPro.imageface1}">
+										<button type="button" class="fa fa-close" onclick="deletePreview($(this))" style="position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);"></button>
+									</li>
+								</c:if>
+								<c:if test="${!empty allPro.imageface2}">
+									<li style="float: left; list-style: none; position: relative;">
+										<img src="${allPro.imageface2}">
+										<button type="button" class="fa fa-close" onclick="deletePreview($(this))" style="position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);"></button>
+									</li>
+								</c:if>
+								<c:if test="${!empty allPro.imageface3}">
+									<li style="float: left; list-style: none; position: relative;">
+										<img src="${allPro.imageface3}">
+										<button type="button" class="fa fa-close" onclick="deletePreview($(this))" style="position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);"></button>
+									</li>
+								</c:if>
+								<c:if test="${!empty allPro.imageface4}">
+									<li style="float: left; list-style: none; position: relative;">
+										<img src="${allPro.imageface4}">
+										<button type="button" class="fa fa-close" onclick="deletePreview($(this))" style="position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);"></button>
+									</li>
+								</c:if>
+							</ul>
+						</div>
 					</td>
 				</tr>
 				<tr>

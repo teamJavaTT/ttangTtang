@@ -416,7 +416,7 @@ ol {
 }
 
 .header__menu {
-	padding: 24px 0;
+	padding: 45px 0;
 }
 
 .header__menu ul li {
@@ -639,7 +639,7 @@ ol {
 }
 
 .hero__search__form {
-	width: 570px;
+	width: 100%;
 	height: 50px;
 	border: 1px solid #ebebeb;
 	position: relative;
@@ -896,6 +896,16 @@ ol {
 .featured__item__pic__hover li:hover a i {
 	color: #ffffff;
 	transform: rotate(360deg);
+}
+
+.featured__item__pic__hover li.active a {
+   background: #EC0000;
+   border-color: #EC0000;
+}
+
+.featured__item__pic__hover li.active a i {
+   color: #ffffff;
+   transform: rotate(360deg);
 }
 
 .featured__item__pic__hover li a {
@@ -2616,7 +2626,7 @@ ol {
 
 .footer {
 	background: #F3F6FA;
-	padding-top: 70px;
+	padding-top: 45px;
 	padding-bottom: 0;
 }
 

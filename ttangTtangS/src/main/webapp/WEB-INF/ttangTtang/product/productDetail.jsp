@@ -16,12 +16,7 @@
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<div class="breadcrumb__text">
-
-					<h2>${allPro.cname}</h2>
-					<div class="breadcrumb__option">
-						<a href="/ttangTtang/ogani-master/index.jsp">Home</a>
-					</div>
-
+					<h2><a style="color: white;" href="/categories/${allPro.ccode}">${allPro.cname}</a></h2>
 				</div>
 			</div>
 		</div>
@@ -43,44 +38,51 @@
 					<div
 						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
 						<div class="owl-stage-outer">
-							<div class="owl-stage"
-								style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
-								<div class="owl-item cloned"
-									style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="${allPro.imageface1}"
-										src="${allPro.imageface1}" alt="">
-								</div>
-								<div class="owl-item cloned"
-									style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="${allPro.imageface2}"
-										src="${allPro.imageface2}" alt="">
-								</div>
-								<div class="owl-item cloned"
-									style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="${allPro.imageface3}"
-										src="${allPro.imageface3}" alt="">
-								</div>
-								<div class="owl-item cloned"
-									style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="${allPro.imageface4}"
-										src="${allPro.imageface4}" alt="">
-								</div>
-								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="${allPro.imageface1}"
-										src="${allPro.imageface1}" alt="">
-								</div>
-								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="${allPro.imageface2}"
-										src="${allPro.imageface2}" alt="">
-								</div>
-								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="${allPro.imageface3}"
-										src="${allPro.imageface3}" alt="">
-								</div>
-								<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
-									<img data-imgbigurl="${allPro.imageface4}"
-										src="${allPro.imageface4}" alt="">
-								</div>
+							<div class="owl-stage" style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
+								<c:if test="${!empty allPro.imageface1}">
+									<div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;">
+										<img data-imgbigurl="${allPro.imageface1}"
+											src="${allPro.imageface1}" alt="">
+									</div>
+								</c:if>
+								<c:if test="${!empty allPro.imageface2}">
+									<div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;">
+										<img data-imgbigurl="${allPro.imageface2}"
+											src="${allPro.imageface2}" alt="">
+									</div>
+								</c:if>
+								<c:if test="${!empty allPro.imageface3}">
+									<div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;">
+										<img data-imgbigurl="${allPro.imageface3}"
+											src="${allPro.imageface3}" alt="">
+									</div>
+								</c:if>
+								<c:if test="${!empty allPro.imageface4}">
+									<div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;">
+										<img data-imgbigurl="${allPro.imageface4}"
+											src="${allPro.imageface4}" alt="">
+									</div>
+								</c:if>
+								<c:if test="${!empty allPro.imageface1}">
+									<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+										<img data-imgbigurl="${allPro.imageface1}" src="${allPro.imageface1}" alt="">
+									</div>
+								</c:if>
+								<c:if test="${!empty allPro.imageface2}">
+									<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+										<img data-imgbigurl="${allPro.imageface2}" src="${allPro.imageface2}" alt="">
+									</div>
+								</c:if>
+								<c:if test="${!empty allPro.imageface3}">
+									<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+										<img data-imgbigurl="${allPro.imageface3}" src="${allPro.imageface3}" alt="">
+									</div>
+								</c:if>
+								<c:if test="${!empty allPro.imageface4}">
+									<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+										<img data-imgbigurl="${allPro.imageface4}" src="${allPro.imageface4}" alt="">
+									</div>
+								</c:if>
 							</div>
 						</div>
 						<div class="owl-nav disabled">
@@ -143,14 +145,15 @@
 									</c:if>
 								</form>
 							</c:when>
-							<c:when test="${allPro.auctioncheck == 'N'}">
+							<%-- <c:when test="${allPro.auctioncheck == 'N'}">
 								<input type="button" value="판매자와 연락하기" class="primary-btn"
 									onclick="matchingwindow()" />
-							</c:when>
+							</c:when> --%>
 						</c:choose>
+						</c:if>
 						<button type="button"
 							class="btn btn-outline-danger <c:if test="${iNo!= 0}">active</c:if>"
-							onclick="location.href='/product/likeCountInsert?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'">
+							onclick="likeProductFunc(${allPro.ino})">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 								fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
 								<path
@@ -158,7 +161,6 @@
 							</svg>
 							&nbsp;찜&nbsp;${allPro.likecount}
 						</button>
-					</c:if>
 					<ul>
 						<c:if test="${allPro.auctioncheck=='Y' }">
 							<li><b>시작가격</b> <span id="minprice"><fmt:formatNumber

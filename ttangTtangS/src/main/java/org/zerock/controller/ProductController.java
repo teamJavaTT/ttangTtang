@@ -88,6 +88,7 @@ public class ProductController {
 		String ibo = Integer.toString(ino);
 		List<ProductDTO> productUser = productService.productUser(productDetail.getUserid(), ibo);
 
+		model.addAttribute("category", category);
 		model.addAttribute("iNo", iNo);
 		model.addAttribute("allPro", productDetail);
 		model.addAttribute("user", user);
@@ -144,25 +145,29 @@ public class ProductController {
 	}
 
 // 찜하기
-	@RequestMapping(value = "/likeCountInsert")
+	@RequestMapping(value = "/likeCountInsert", method = RequestMethod.POST)
 	public String likeProductCountInsert(Model model, HttpServletRequest req, HttpServletResponse res,
 			@RequestParam(value = "ino", required = true, defaultValue = "0") int ino) throws Exception {
+		java.io.PrintWriter pw = res.getWriter();
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
-		String aucChk = req.getParameter("aucChk");
-
+		boolean like;
+		
 		int iNo = productService.likeProductUser(userid, ino);
 		if (iNo == 0) {
 			productService.likeProductCountInsert(userid, ino);
 			productService.likeCountUpdate(userid, ino);
+			like = true;
 		} else {
 			productService.likeCountDelete(userid, ino);
 			productService.likeCountSubtract(user.getUserid(), ino);
+			like = false;
 		}
 		int likeCount = productService.likeProductCount(user.getUserid());
-		model.addAttribute("likeCount", likeCount);
-		res.sendRedirect("productDetail?ino=" + ino + "&aucChk=" + aucChk);
+
+		pw.print(likeCount+",");
+		pw.print(like);
 		return null;
 	}
 

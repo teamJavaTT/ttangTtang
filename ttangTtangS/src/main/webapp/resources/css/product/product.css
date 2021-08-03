@@ -1,0 +1,52 @@
+@charset "EUC-KR";
+
+label {
+	display: block;
+	font: 1rem 'Fira Sans', sans-serif;
+}
+
+input, label {
+	margin: .4rem 0;
+}
+
+.preview img {
+	width: 100px;
+	height: 100px;
+}
+
+.preview p {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+preview-box {
+	border: 1px solid;
+	padding: 5px;
+	border-radius: 2px;
+	margin-bottom: 10px;
+}
+
+table {
+	border-spacing: 1;
+	border-collapse: collapse;
+	background: white;
+	border-radius: 10px;
+	/* border: 1px solid #999; */
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+}
+
+table thead tr {
+	height: 60px;
+	background: #EC0000;
+	color: white;
+	font-weight: 900;
+	/* border-bottom: 1px solid #999; */
+}
+
+table tbody tr {
+	background: white;
+	/* border-bottom: 1px solid #999; */
+}

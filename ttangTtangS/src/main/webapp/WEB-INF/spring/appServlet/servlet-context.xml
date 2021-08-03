@@ -38,6 +38,7 @@
 			<mapping path="/mypage/*" />
 			<mapping path="/admin/qnawrite" />
 			<mapping path="/product/productWrite" />
+			<mapping path="/product/likeCountInsert" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 	</interceptors>

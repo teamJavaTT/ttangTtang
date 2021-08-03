@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
-<%@ include file="../include/middle_header.jsp" %>
 
     <!-- Featured Section Begin -->
     <section class="featured spad" style="padding-top: 0px;">
@@ -27,8 +26,6 @@
 	                        <div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface1}">
 	                            <ul class="featured__item__pic__hover">
 	                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-	                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-	                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 	                            </ul>
 	                        </div>
 	                        <div class="featured__item__text">
@@ -55,8 +52,6 @@
 		                        <div class="featured__item__pic set-bg" data-setbg="${norProduct.imageface1}">
 		                            <ul class="featured__item__pic__hover">
 		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-		                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-		                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
@@ -74,8 +69,6 @@
 		                        <div class="featured__item__pic set-bg" data-setbg="${aucProduct.imageface1}">
 		                            <ul class="featured__item__pic__hover">
 		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-		                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-		                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
@@ -93,8 +86,6 @@
 		                        <div class="featured__item__pic set-bg" data-setbg="${buyProduct.imageface1}">
 		                            <ul class="featured__item__pic__hover">
 		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-		                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-		                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
