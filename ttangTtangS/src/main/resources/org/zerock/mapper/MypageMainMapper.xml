@@ -85,13 +85,11 @@
 	<insert id="insertAccountDeclaration">
 		insert into declaration values
 		(declaration_seq.nextval, #{userId}, #{declId}, #{dtext}, sysdate)
-		where num between #{pageStart} and #{pageEnd}
 	</insert>
 
 	<select id="selectCountDec" parameterType="map" resultType="int">
 		<![CDATA[
 		select count(*) from declaration where userid=#{userid} and duid=#{badid}
-		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
 
@@ -104,7 +102,6 @@
 	<select id="selectCountBl" parameterType="map" resultType="int">
 		<![CDATA[
 		select count(*) from block where userid=#{userid} and bid=#{blockid}
-		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
 	

@@ -54,9 +54,9 @@ public class MypageMainController {
 	}
 
 	@RequestMapping(value = "/accountDeclaration", method = RequestMethod.POST)
-	public String accountDeclarationPagePOST(AccountDeclarationDTO accountDec, Model model, @RequestParam("no") String no, 
-			@RequestParam(value = "badid", required = false) String badid, @RequestParam(value = "declId", required = false) String declId, HttpServletRequest req)
-			throws Exception {
+	public String accountDeclarationPagePOST(AccountDeclarationDTO accountDec, Model model,
+			@RequestParam("no") String no, @RequestParam(value = "badid", required = false) String badid,
+			@RequestParam(value = "declId", required = false) String declId, HttpServletRequest req) throws Exception {
 
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
@@ -65,14 +65,14 @@ public class MypageMainController {
 		if (no == "1" || no.equals("1")) {
 			User member = memberService.selectById(badid);
 			int countDec = mypagemainService.selectCountDec(userid, badid);
-			
+
 			if (member == null) {
 				req.setAttribute("idChkOk", 0);
 				return "/mypage/accountDeclaration";
-			} else if (countDec != 0) { 
+			} else if (countDec != 0) {
 				req.setAttribute("idChkOk", 3);
 				return "/mypage/accountDeclaration";
-			}else {
+			} else {
 				if (userid == member.getUserid() || userid.equals(member.getUserid())) {
 					req.setAttribute("idChkOk", 2);
 				} else {
@@ -80,12 +80,12 @@ public class MypageMainController {
 				}
 				return "/mypage/accountDeclaration";
 			}
-		} else{
+		} else {
 			req.setCharacterEncoding("utf-8");
 			accountDec.setUserId(userid);
-			
+
 			mypagemainService.insertAccountDeclaration(accountDec);
-			
+
 			model.addAttribute("ment", "신고되었습니다.");
 			model.addAttribute("href", "/mypage/mypageMain");
 			return "/successPage";
@@ -105,56 +105,57 @@ public class MypageMainController {
 		model.addAttribute("blockUser", blockUser);
 	}
 
-
-		@RequestMapping(value = "/blockUser", method = RequestMethod.POST)
-		public String blockUserPagePOST(BlockUserDTO accountBl, Model model, @RequestParam("no") String no, 
-				@RequestParam(value = "blockid", required = false) String blockid, @RequestParam(value = "blockid2", required = false) String blockid2, HttpServletRequest req)
-				throws Exception {
-
-			HttpSession session = req.getSession(false);
-			User user = (User) session.getAttribute("memberUser");
-			String userid = user.getUserid();
-
-			if (no == "1" || no.equals("1")) {
-				User member = memberService.selectById(blockid);
-				int countBl = mypagemainService.selectCountBl(userid, blockid);
-				
-				if (member == null) {
-					req.setAttribute("idBlockOk", 0);
-					return "/mypage/blockUser";
-				} else if (countBl != 0) { 
-					req.setAttribute("idBlockOk", 3);
-					return "/mypage/blockUser";
-				}else {
-					if (userid == member.getUserid() || userid.equals(member.getUserid())) {
-						req.setAttribute("idBlockOk", 2);
-					} else {
-						req.setAttribute("idBlockOk", 1);
-					}
-					return "/mypage/blockUser";
-				}
-			} else{
-				req.setCharacterEncoding("utf-8");
-				accountBl.setUserId(userid);
-				
-				mypagemainService.insertBlockUser(accountBl);
-				
-				model.addAttribute("ment", "차단되었습니다.");
-				model.addAttribute("href", "/mypage/mypageMain");
-				return "/successPage";
-			}
-
-		}
-	// 신고 및 차단 리스트
-	
-	@RequestMapping(value = "/declarationAndBlockList")
-	public void declarationAndBlockListPagePOST(Criteria cri, Model model, @RequestParam(value = "blockChk",required=false) String blockChk,
-			HttpServletRequest req) throws Exception {
+	@RequestMapping(value = "/blockUser", method = RequestMethod.POST)
+	public String blockUserPagePOST(BlockUserDTO accountBl, Model model, @RequestParam("no") String no,
+			@RequestParam(value = "blockid", required = false) String blockid,
+			@RequestParam(value = "blockid2", required = false) String blockid2, HttpServletRequest req)
+			throws Exception {
 
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
-		
+
+		if (no == "1" || no.equals("1")) {
+			User member = memberService.selectById(blockid);
+			int countBl = mypagemainService.selectCountBl(userid, blockid);
+
+			if (member == null) {
+				req.setAttribute("idBlockOk", 0);
+				return "/mypage/blockUser";
+			} else if (countBl != 0) {
+				req.setAttribute("idBlockOk", 3);
+				return "/mypage/blockUser";
+			} else {
+				if (userid == member.getUserid() || userid.equals(member.getUserid())) {
+					req.setAttribute("idBlockOk", 2);
+				} else {
+					req.setAttribute("idBlockOk", 1);
+				}
+				return "/mypage/blockUser";
+			}
+		} else {
+			req.setCharacterEncoding("utf-8");
+			accountBl.setUserId(userid);
+
+			mypagemainService.insertBlockUser(accountBl);
+
+			model.addAttribute("ment", "차단되었습니다.");
+			model.addAttribute("href", "/mypage/mypageMain");
+			return "/successPage";
+		}
+
+	}
+	// 신고 및 차단 리스트
+
+	@RequestMapping(value = "/declarationAndBlockList")
+	public void declarationAndBlockListPagePOST(Criteria cri, Model model,
+			@RequestParam(value = "blockChk", required = false) String blockChk, HttpServletRequest req)
+			throws Exception {
+
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		String userid = user.getUserid();
+
 		int pageStart = cri.getPageStart();
 		int pageEnd = cri.getPageEnd();
 
@@ -165,7 +166,7 @@ public class MypageMainController {
 			List<BlockUser> blockUser = mypagemainService.selectBlockUser(userid, blockChk);
 			model.addAttribute("blockUser", blockUser);
 		}
-		
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(mypagemainService.selectDclrBlckListCount(userid, blockChk));
@@ -174,39 +175,40 @@ public class MypageMainController {
 	}
 
 	// 관심 상품
-		@RequestMapping(value = "/likeProduct")
-		public void likeProductPage(Criteria cri, Model model, HttpServletRequest req, @RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
-
-			HttpSession session = req.getSession(false);
-			User user = (User) session.getAttribute("memberUser");
-			String userid = user.getUserid();
-
-			int pageStart = cri.getPageStart();
-			int pageEnd = cri.getPageEnd();
-			
-			List<Product> likeProduct = mypagemainService.selectLikeProduct(userid,pageStart,pageEnd);
-			model.addAttribute("likeProduct", likeProduct);
-		
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(mypagemainService.selectLikeProductListCount());
-			model.addAttribute("pageMaker", pageMaker);
-		}
-		
-		
-		// 판매내역
-	@RequestMapping(value = "/sellcheck")
-	public void sellcheckPagePOST(Criteria cri, Model model, @RequestParam(value = "sellChk",required=false) String sellchk, HttpServletRequest req, @RequestParam(value = "pageNo", defaultValue = "0") String numVal)
-			throws Exception {
+	@RequestMapping(value = "/likeProduct")
+	public void likeProductPage(Criteria cri, Model model, HttpServletRequest req,
+			@RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
 
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
-		
+
 		int pageStart = cri.getPageStart();
 		int pageEnd = cri.getPageEnd();
-		
-		if (sellchk == null)
+
+		List<Product> likeProduct = mypagemainService.selectLikeProduct(userid, pageStart, pageEnd);
+		model.addAttribute("likeProduct", likeProduct);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(mypagemainService.selectLikeProductListCount());
+		model.addAttribute("pageMaker", pageMaker);
+	}
+
+	// 판매내역
+	@RequestMapping(value = "/sellcheck")
+	public void sellcheckPagePOST(Criteria cri, Model model,
+			@RequestParam(value = "sellChk", required = false) String sellchk, HttpServletRequest req,
+			@RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+
+		HttpSession session = req.getSession(false);
+		User user = (User) session.getAttribute("memberUser");
+		String userid = user.getUserid();
+
+		int pageStart = cri.getPageStart();
+		int pageEnd = cri.getPageEnd();
+
+		if (sellchk == null || sellchk == "")
 			sellchk = "A";
 		if (sellchk.equals("Y") || sellchk.equals("N")) {
 			List<Product> sellList = mypagemainService.selectSellList(userid, sellchk, pageStart, pageEnd);
@@ -215,7 +217,7 @@ public class MypageMainController {
 			List<Product> sellList = mypagemainService.selectSellList(userid, sellchk, pageStart, pageEnd);
 			model.addAttribute("sellList", sellList);
 		}
-		
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(mypagemainService.selectSellListCount(userid, sellchk));
@@ -239,7 +241,7 @@ public class MypageMainController {
 	public String adminmainPage(Model model) throws Exception {
 		return "admin/adminmain";
 	}
-	
+
 	// 알림내역
 	@RequestMapping(value = "/alimList")
 	public void alimList(Model model, HttpServletRequest req) throws Exception {
