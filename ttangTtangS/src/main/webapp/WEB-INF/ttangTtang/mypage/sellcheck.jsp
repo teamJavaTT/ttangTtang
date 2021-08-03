@@ -65,7 +65,7 @@
 														<td>${product.auctioncheck eq 'N'? '일반' : '경매'}</td>
 														<!-- 상품명 -->
 														<td><a
-															href="productDetail?ino=${product.ino}&aucChk=${product.auctioncheck}"><c:out
+															href="/product/productDetail?ino=${product.ino}&aucChk=${product.auctioncheck}"><c:out
 																	value="${product.iname}" /></a></td>
 														<!-- 등록날짜 -->
 														<td><fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd HH:mm"/></td>
