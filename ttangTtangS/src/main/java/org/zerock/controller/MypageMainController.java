@@ -29,7 +29,6 @@ import org.zerock.service.MypageMainService;
 @Controller
 @RequestMapping(value = "/mypage")
 public class MypageMainController {
-	private static final Logger logger = LoggerFactory.getLogger(MypageMainController.class);
 
 	@Inject
 	private MypageMainService mypagemainService;
