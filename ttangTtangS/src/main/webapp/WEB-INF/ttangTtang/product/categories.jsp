@@ -28,20 +28,18 @@
                 <div class="col-lg-12">
                     <div class="section-title">
 						<c:forEach var="category" items="${category}">
-							<c:if test="${category.ccode eq param.categories}">
+							<c:if test="${category.ccode eq chkCcode}">
 								<h2>${category.cname}</h2>
 							</c:if>
 						</c:forEach>
                     </div>
                     <div class="featured__controls">
                         <ul>
-                        	<c:forEach var="categories" items="${param.categories}">
-                            	<c:if test="${categories != 'BUY'}">
-	                            	<li data-filter=".allProduct" class="active">전체</li>
-		                            <li data-filter=".norProduct">일반거래</li>
-		                            <li data-filter=".aucProduct">경매</li>
-	                            </c:if>
-                            </c:forEach>
+                           	<c:if test="${chkCcode != 'BUY'}">
+                            	<li data-filter=".allProduct" class="active">전체</li>
+	                            <li data-filter=".norProduct">일반거래</li>
+	                            <li data-filter=".aucProduct">경매</li>
+                            </c:if>
                         </ul>
                     </div>
                 </div>

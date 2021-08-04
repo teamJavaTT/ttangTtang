@@ -48,6 +48,7 @@ public class MainController {
 	public String categoryProduct(Model model, HttpServletRequest req, @PathVariable("ccode") String ccode) throws Exception {
 		List<Product> categoryProduct = mainService.selectCategoryProduct(ccode);
 		ArrayList<?> likeproduct = likeProductIno(req);
+		model.addAttribute("chkCcode", ccode);
 		model.addAttribute("likeproduct", likeproduct);
 		model.addAttribute("category", category);
 		model.addAttribute("categoryProduct", categoryProduct);
