@@ -7,5 +7,5 @@
 <li><a href="/mypage/accountDeclaration">사용자 신고</a></li>
 <li><a href="/mypage/blockUser">사용자 차단</a></li>
 <li><a href="/mypage/declarationAndBlockList">신고 및 차단 리스트</a></li>
-<li><a href="/mypage/adminmain">고객 센터</a></li>
+<li><a href="/admin/adminmain">고객 센터</a></li>
 <li><a href="/mypage/deleteForm">회원탈퇴</a></li>
