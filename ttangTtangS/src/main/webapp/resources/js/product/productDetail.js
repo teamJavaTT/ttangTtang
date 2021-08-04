@@ -9,6 +9,27 @@ $(document).ready(function() {
 	})
 });
 
+function likeProductFunc(ino) {
+	if(sessionUser == false){
+		location.href = '/member/login';
+	}else{
+		$.ajax({
+			url: "/product/likeCountInsert?ino="+ino,
+			type: "POST",
+			contentType: false,
+			processData: false,
+			success: function(data) {
+				const imageArr = data.split(",");
+				const likeCount = imageArr[0];
+				const likeIno = imageArr[1];
+				$(".likeCount").html(likeCount);
+				if(likeIno == 0) $("#likeBtn").addClass("active");
+				else $("#likeBtn").removeClass("active");
+			}
+		});
+	}
+}
+
 const countDownTimer = function () {
 
 	var id = "aucTimer";
@@ -43,7 +64,7 @@ const countDownTimer = function () {
 	timer = setInterval(showRemaining, 1000);
 }
 
-function aucPricePart() {
+/*function aucPricePart() {
 	var priceNow = $('#now_price').text();
 	var pricePart = $('#oPrice').val();
 	if (parseInt(priceNow) >= parseInt(pricePart)) {
@@ -52,7 +73,7 @@ function aucPricePart() {
 	} else {
 		document.auctionPart.submit();
 	}
-}
+}*/
 
 function productDel() {
 	var ino = $("#delNo").val();

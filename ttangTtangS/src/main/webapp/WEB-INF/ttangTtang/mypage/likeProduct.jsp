@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/mypage/mypagemain.css">
-
+<style>
+</style>
 <!-- Hero Section Begin -->
 <section class="hero">
 	<div class="container">
@@ -26,7 +27,7 @@
 									<table>
 										<thead>
 											<tr>
-												<th>번호</th>
+												<th>상품</th>
 												<th>관심상품</th>
 												<th>가격</th>
 												<th>경매 종료시간</th>
@@ -38,7 +39,12 @@
 													<%-- <!-- 신고/차단 -->
 											<td>${declaration.auctionCheck eq 'N'? '신고' : '차단'}</td> --%>
 													<!-- 신고 아이디 -->
-													<td>${likeProduct.ino}</td>
+
+											<td style="height:100px;"><img class="preview" style="width: aucto; height: 100px;"
+															src="${likeProduct.imageface1}"
+															data-setbg="${likeProduct.imageface1}"
+															onclick="location.href='/product/productDetail?ino=${likeProduct.ino}&aucChk=${likeProduct.auctioncheck}'">
+														</td>
 													<td>${likeProduct.iname}</td>
 													<c:if test="${likeProduct.auctioncheck=='N' }">
 														<td>${likeProduct.price}</td>
@@ -46,7 +52,8 @@
 													<c:if test="${likeProduct.auctioncheck=='Y' }">
 														<td>${likeProduct.apricenow}</td>
 													</c:if>
-													<td><fmt:formatDate value="${likeProduct.endtime}" pattern="yyyy-MM-dd HH:mm"/></td>
+													<td><fmt:formatDate value="${likeProduct.endtime}"
+															pattern="yyyy-MM-dd HH:mm" /></td>
 												</tr>
 											</c:forEach>
 											<tr>

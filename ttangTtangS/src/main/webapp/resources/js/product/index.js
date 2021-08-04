@@ -1,4 +1,13 @@
 $(document).ready(function() {
+	for(var i=0;i<endTimeArr.length;i++){
+		countDownTimer('auc'+iNoArr[i], endTimeArr[i]);
+		countDownTimer('all'+iNoArr[i], endTimeArr[i]);		
+	}
+	
+	for(var i=0;i<likeproductArr.length;i++){
+		var likeClass = ".like"+likeproductArr[i];
+		$(likeClass).addClass("active");
+	}
 	
 });
 const countDownTimer = function (id, date) {
@@ -35,8 +44,22 @@ const countDownTimer = function (id, date) {
 	timer = setInterval(showRemaining, 1000);
 }
 
-for(var i=0;i<endTimeArr.length;i++){
-	countDownTimer('auc'+iNoArr[i], endTimeArr[i]);
-	countDownTimer('all'+iNoArr[i], endTimeArr[i]);		
-}
 
+function likeProductFunc(ino) {
+	event.preventDefault(); // a태그를 누르면 화면 최상단으로 가는 기능 해결
+	event.stopPropagation(); //현재 이벤트가 부모에게 전파되지 않도록 중지
+	if(sessionUser == false){
+		location.href = '/member/login';
+	}else{
+		$.ajax({
+			url: "/likeCountInsert?ino="+ino,
+			type: "POST",
+			contentType: false,
+			processData: false,
+			success: function(data) {
+				if(data == 0) $(".like"+ino).addClass("active");
+				else $(".like"+ino).removeClass("active");
+			}
+		});
+	}
+}

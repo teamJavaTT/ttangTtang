@@ -26,6 +26,7 @@
 		select * 
 		from product 
 		where ccode=#{ccode}
+		and sellcheck='N' 
 		order by ino desc
 		]]>
 	</select>
@@ -37,7 +38,14 @@
 		<foreach collection="array" item="arr" open="(" close=")" separator=") and (">
 			iname like '%${arr}%' or uad like '%${arr}%'
 		</foreach>
+		and sellcheck='N' 
 		order by ino desc
+	</select>
+	
+	<select id="selectLikeproduct" resultType="int">
+		select ino 
+		from likeproduct 
+		where userid=#{userid}
 	</select>
 
 </mapper>

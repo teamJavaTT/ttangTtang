@@ -37,4 +37,6 @@ public interface ProductService {
 	void auctionPartInsert(String userid, int aucIno, String oPrice) throws Exception ;
 	void updateAucPart(String userid, int aucIno, String oPrice) throws Exception ;
 	
+	int apricenowSelect(int ino) throws Exception;
+	
 }

@@ -39,7 +39,7 @@
 										<table>
 											<thead>
 												<tr>
-													<th>상품번호</th>
+													<th>상품</th>
 													<!-- INO -->
 													<th>카테고리</th>
 													<!-- CNAMe -->
@@ -57,10 +57,18 @@
 												<%-- sellCehckData.product.userId --%>
 												<c:forEach var="product" items="${sellList}">
 													<tr>
-														<!-- 상품번호 -->
-														<td>${product.ino}</td>
+														<!-- 상품 사진  -->
+														<td  style="height:100px;"><img class="preview" style="width: 100px; height: aucto;"
+															 src="${product.imageface1}"
+															data-setbg="${product.imageface1}"
+															onclick="location.href='/product/productDetail?ino=${product.ino}&aucChk=${product.auctioncheck}'">
+														</td>
 														<!-- 카테고리 -->
-														<td>${product.ccode}</td>
+													<td>	<c:forEach var="category" items="${category}">
+															<c:if test="${category.ccode eq product.ccode}">
+														${category.cname}
+															</c:if>
+														</c:forEach></td>
 														<!-- 경매/일반 -->
 														<td>${product.auctioncheck eq 'N'? '일반' : '경매'}</td>
 														<!-- 상품명 -->
@@ -68,7 +76,8 @@
 															href="/product/productDetail?ino=${product.ino}&aucChk=${product.auctioncheck}"><c:out
 																	value="${product.iname}" /></a></td>
 														<!-- 등록날짜 -->
-														<td><fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+														<td><fmt:formatDate value="${product.pdate}"
+																pattern="yyyy-MM-dd HH:mm" /></td>
 														<!-- 판매여부 -->
 														<td>${product.sellcheck eq 'N'? '판매중' : '판매완료'}</td>
 													</tr>

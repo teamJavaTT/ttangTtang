@@ -1,5 +1,6 @@
 package org.zerock.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,12 @@ public class MainServiceImpl implements MainService {
 		String[] searchArr = search.trim().split("");
 				
 		return mainMapper.selectSearchProduct(searchArr);
+	}
+	
+	@Override
+	@Transactional
+	public ArrayList<?> selectLikeproduct(String userid) throws Exception {
+		return mainMapper.selectLikeproduct(userid);
 	}
 	
 }

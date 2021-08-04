@@ -2,41 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 
-
 <title>상품 등록</title>
-<style>
-#test textarea {
-	width: 200px;
-	height: 100px;
-	border: 3px solid #ff0000;
-}
-
-label {
-	display: block;
-	font: 1rem 'Fira Sans', sans-serif;
-}
-
-input, label {
-	margin: .4rem 0;
-}
-
-.preview img {
-	width: 100px;
-	height: 100px;
-}
-
-.preview p {
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-
-preview-box {
-	border: 1px solid;
-	padding: 5px;
-	border-radius: 2px;
-	margin-bottom: 10px;
-}
-</style>
+<link rel="stylesheet" href="/resources/css/product/product.css">
 
 <div class="featured__controls">
 	<ul>
@@ -52,7 +19,7 @@ preview-box {
 	<div class="auction">
 		<h3 style="text-align: center;">경매 상품 등록</h3>
 	</div>
-	<div class="container" style="padding-left: 34%;">
+	<div class="container">
 		<form id="InsertForm" name="InsertForm" action="productWrite"
 			method="post" style="margin-top: 20px; margin-bottom: 10px;">
 			<input type="hidden" name="imageface1" id="imageface1" /> <input
@@ -61,14 +28,14 @@ preview-box {
 				type="hidden" name="imageface4" id="imageface4" /> <input
 				type="hidden" name="auctioncheck" id="auctioncheck" />
 			<!-- 파일업로드를 위해 추가하는 타입 -->
-			<table>
+			<table class="proWriteTbl">
 				<tr>
-					<td>상품명:</td>
+					<td style="width: 25%;">상품명</td>
 					<td colspan="2"><input name="iname" id="iname"
 						class="form-control"></td>
 				</tr>
 				<tr>
-					<td>카테고리:</td>
+					<td>카테고리</td>
 
 					<td><select name="ccode">
 							<c:forEach var="category" items="${category}">
@@ -84,19 +51,19 @@ preview-box {
 					</select></td>
 				</tr>
 				<tr class="normal">
-					<td>가격:</td>
+					<td>가격</td>
 					<td><input name="price" class="form-control"></td>
 				</tr>
 				<tr class="auction">
-					<td>최소가격:</td>
+					<td>최소가격</td>
 					<td colspan="2"><input name="minPrice" class="form-control"></td>
 				</tr>
 				<tr class="auction">
-					<td>최대가격:</td>
+					<td>최대가격</td>
 					<td colspan="2"><input name="maxPrice" class="form-control"></td>
 				</tr>
 				<tr>
-					<td>판매 지역:</td>
+					<td>판매지역</td>
 					<td colspan="2"><c:if test="${!empty address[1]}">
 							<input type="radio" name="uad" value="${address[1]}">
 							<span>${address[1]}</span>
@@ -118,8 +85,8 @@ preview-box {
 				</tr>
 
 				<tr class="auction">
-					<td>경매기간:</td>
-					<td style="width: 74px;"><select name="endDay" id="endDay">
+					<td>경매기간</td>
+					<td style="width: 122px;"><select name="endDay" id="endDay">
 							<option value="0">0일</option>
 							<option value="24">1일</option>
 							<option value="48">2일</option>
@@ -161,23 +128,20 @@ preview-box {
 				</tr>
 
 				<tr>
-					<td style="float: left;">상품설명:</td>
-					<td><textarea class="form-control" name="priceText"
+					<td style="float: left;">상품설명</td>
+					<td colspan="2"><textarea class="form-control" name="priceText"
 							id="priceText" style="resize: none;" rows="5"></textarea></td>
 				</tr>
 			</table>
 		</form>
 		<div class="filebox">
-			<table id="imageTbl">
+			<table id="imageTbl" class="proWriteTbl">
 				<tr>
 					<td><span>상품이미지<small>(0/4)</small></span></td>
 				</tr>
 				<tr>
 					<td>
-						<div id="preview" class="preview">
-							<ul></ul>
-						
-						</div> <input class="upload-name" value="이미지 등록" disabled="disabled" />
+						<input class="upload-name" value="이미지 등록" disabled="disabled" />
 						<label for="imageFile">업로드</label>
 						<form id="fileUpload" name="fileUpload"
 							enctype="multipart/form-data">
@@ -185,6 +149,9 @@ preview-box {
 								name="imageFile" id="imageFile" class="upload-hidden"
 								multiple="multiple">
 						</form>
+						<div id="preview" class="preview">
+							<ul></ul>
+						</div> 
 					</td>
 				</tr>
 				<tr>

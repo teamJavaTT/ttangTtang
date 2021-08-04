@@ -123,5 +123,12 @@ public class ProductServiceImpl implements ProductService {
 	public void updateAucPart(String userid, int aucIno, String oPrice) throws Exception {
 		 productMapper.updateAucPart(userid, aucIno, oPrice);
 	}
+	
+	@Override
+	@Transactional
+	public int apricenowSelect(int ino) throws Exception {
+		int apricenow = productMapper.apricenowSelect(ino);
+		return apricenow;
+	}
 
 }

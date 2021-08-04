@@ -47,5 +47,8 @@ public interface ProductMapper {
 
 	//가격제시
 	void auctionPartInsert(@Param("userid") String userid, @Param("aucIno") int aucIno, @Param("oPrice") String oPrice)throws Exception;
+	
 	void updateAucPart(@Param("userid")String userid,@Param("aucIno")  int aucIno, @Param("oPrice") String oPrice)throws Exception;
+	
+	int apricenowSelect(int ino) throws Exception;
 }
