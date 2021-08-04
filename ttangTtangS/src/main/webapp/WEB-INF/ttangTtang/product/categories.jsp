@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
-
+<script>
+	var likeproductArr = new Array();
+	<c:forEach var="likeproduct" items="${likeproduct}">
+		likeproductArr.push("<c:out value='${likeproduct}'/>");
+	</c:forEach>
+	
+	var iNoArr = new Array();
+	var endTimeArr = new Array();
+	<c:forEach var="aucProduct" items="${categoryProduct}">
+		<c:if test="${aucProduct.auctioncheck == 'Y'}">
+			iNoArr.push("<c:out value='${aucProduct.ino}'/>");
+			endTimeArr.push("<fmt:formatDate value='${aucProduct.endtime}' pattern='yyyy-MM-dd HH:mm:ss'/>");
+		</c:if>
+	</c:forEach>
+</script>
+<style>
+.aucTimer {
+	font-size: 15px;
+	padding-bottom: 10px;
+}
+</style>
     <!-- Featured Section Begin -->
     <section class="featured spad" style="padding-top: 0px;">
         <div class="container">
@@ -32,22 +52,26 @@
 	                    <div class="featured__item" onclick="location.href='/product/productDetail?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
 	                        <div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface1}">
 	                            <ul class="featured__item__pic__hover">
-	                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+		                            <c:if test="${allProduct.auctioncheck == 'Y'}">
+										<li><h3 class="aucTimer" id="all${allProduct.ino}" style="background-color: white;"></h3></li><br>
+									</c:if>
+	                                <li class="like${allProduct.ino}" onclick="likeProductFunc(${allProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 	                            </ul>
 	                        </div>
 	                        <div class="featured__item__text">
 	                            <h6><a href="#">${allProduct.iname}</a></h6>
 	                            <c:choose>
-	                            	<c:when test="${allProduct.auctioncheck == 'B'}">
-		                            	<h5>${allProduct.price}원</h5>
-		                            </c:when>
-		                            <c:when test="${allProduct.auctioncheck == 'N'}">
-		                            	<h5>${allProduct.price}원</h5>
-		                            </c:when>
-		                            <c:when test="${allProduct.auctioncheck == 'Y'}">
-		                            	<h5>${allProduct.minprice}원</h5>
-		                            </c:when>
-	                            </c:choose>
+									<c:when test="${allProduct.auctioncheck != 'Y'}">
+										<h5>
+											<fmt:formatNumber pattern="#,###" value="${allProduct.price}" />원
+										</h5>
+									</c:when>
+									<c:when test="${allProduct.auctioncheck == 'Y'}">
+										<h5>
+											현재가 <fmt:formatNumber pattern="#,###" value="${allProduct.apricenow}" />원
+										</h5>
+									</c:when>
+								</c:choose>
 	                        </div>
 	                    </div>
 	                </div>
@@ -58,12 +82,14 @@
 		                    <div class="featured__item" onclick="location.href='/product/productDetail?ino=${norProduct.ino}&aucChk=${norProduct.auctioncheck}'">
 		                        <div class="featured__item__pic set-bg" data-setbg="${norProduct.imageface1}">
 		                            <ul class="featured__item__pic__hover">
-		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+		                                <li class="like${norProduct.ino}" onclick="likeProductFunc(${norProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
 		                            <h6><a href="#">${norProduct.iname}</a></h6>
-		                            <h5>${norProduct.price}원</h5>
+		                            <h5>
+										<fmt:formatNumber pattern="#,###" value="${norProduct.price}" />원
+									</h5>
 		                        </div>
 		                    </div>
 		                </div>
@@ -75,12 +101,15 @@
 		                    <div class="featured__item" onclick="location.href='/product/productDetail?ino=${aucProduct.ino}&aucChk=${aucProduct.auctioncheck}'">
 		                        <div class="featured__item__pic set-bg" data-setbg="${aucProduct.imageface1}">
 		                            <ul class="featured__item__pic__hover">
-		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+		                            	<li><h3 class="aucTimer" id="auc${aucProduct.ino}" style="background-color: white;"></h3></li><br>
+		                                <li class="like${aucProduct.ino}" onclick="likeProductFunc(${aucProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
 		                            <h6><a href="#">${aucProduct.iname}</a></h6>
-		                            <h5>${aucProduct.minprice}원</h5>
+		                            <h5>
+										현재가 <fmt:formatNumber pattern="#,###" value="${aucProduct.apricenow}" />원
+									</h5>
 		                        </div>
 		                    </div>
 		                </div>
@@ -92,12 +121,14 @@
 		                    <div class="featured__item" onclick="location.href='/product/productDetail?ino=${buyProduct.ino}'">
 		                        <div class="featured__item__pic set-bg" data-setbg="${buyProduct.imageface1}">
 		                            <ul class="featured__item__pic__hover">
-		                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+		                                <li class="like${buyProduct.ino}" onclick="likeProductFunc(${buyProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 		                            </ul>
 		                        </div>
 		                        <div class="featured__item__text">
 		                            <h6><a href="#">${buyProduct.iname}</a></h6>
-		                            <h5>${buyProduct.price}원</h5>
+		                            <h5>
+										<fmt:formatNumber pattern="#,###" value="${buyProduct.price}" />원
+									</h5>
 		                        </div>
 		                    </div>
 		                </div>
@@ -107,5 +138,6 @@
         </div>
     </section>
     <!-- Featured Section End -->
-    
+   
+<script src="/resources/js/product/index.js"></script>
 <%@ include file="../include/footer.jsp" %>
