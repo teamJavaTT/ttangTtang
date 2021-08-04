@@ -91,6 +91,7 @@ function productWrite() {
 	var price = document.InsertForm.price.value;
 	var maxPrice = document.InsertForm.maxPrice.value;
 	var minPrice = document.InsertForm.minPrice.value; // document는 웹페이지에 접근하기위한 객체.. form1에 있는 상품의 값을 반환해서 price에 저장함
+		var uad = document.InsertForm.uad.value; 
 	var endDay = document.InsertForm.endDay.value;
 	var endTime = document.InsertForm.endTime.value;
 	var priceText = document.InsertForm.priceText.value;
@@ -121,7 +122,13 @@ function productWrite() {
 		alert("최소가격을 입력하세요");
 		document.InsertForm.minPrice.focus(); //form1페이지에 있는 "가격을 입력하세요" 에 커서를 올려둔다.
 		return;
+		}
+if (uad == "") {
+		alert("주소를 선택 하세요");
+		document.InsertForm.uad.focus();
+		return;
 	}
+	
 	if (endDay == "0" && endTime == "0" && auctioncheck == "Y") { //상품설명이 입력되어 있지 않으면
 		alert("경매시간을 설정하세요");
 		return;
