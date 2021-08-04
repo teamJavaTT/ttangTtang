@@ -67,8 +67,8 @@ public class ProductController {
 
 	// 상세페이지
 	@RequestMapping(value = "/productDetail", method = RequestMethod.GET)
-	public String productDetail(Model model, @RequestParam(value = "ino", required = true, defaultValue = "0") int ino,
-			HttpServletRequest req) throws Exception {
+	public String productDetail(Model model, @RequestParam(value = "ino", required = true, defaultValue = "0") int ino, @RequestParam(value = "aucOk", required = false) String aucOk, HttpServletRequest req) throws Exception {
+		productService.viewCountUpdate(ino);
 		HttpSession session = req.getSession(false);
 		User user;
 		if(session == null) {
@@ -87,13 +87,12 @@ public class ProductController {
 
 		String ibo = Integer.toString(ino);
 		List<ProductDTO> productUser = productService.productUser(productDetail.getUserid(), ibo);
-
 		model.addAttribute("category", category);
 		model.addAttribute("iNo", iNo);
 		model.addAttribute("allPro", productDetail);
 		model.addAttribute("user", user);
 		model.addAttribute("productUser", productUser);
-		productService.viewCountUpdate(ino);
+		model.addAttribute("aucOk", aucOk);
 		return "product/productDetail";
 	}
 
@@ -152,38 +151,38 @@ public class ProductController {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
-		boolean like;
 		
 		int iNo = productService.likeProductUser(userid, ino);
 		if (iNo == 0) {
 			productService.likeProductCountInsert(userid, ino);
 			productService.likeCountUpdate(userid, ino);
-			like = true;
 		} else {
 			productService.likeCountDelete(userid, ino);
 			productService.likeCountSubtract(user.getUserid(), ino);
-			like = false;
 		}
-		int likeCount = productService.likeProductCount(user.getUserid());
-
-		pw.print(likeCount+",");
-		pw.print(like);
+		ProductDetail product = productService.selectProduct(ino);
+		pw.print(product.getLikecount()+",");
+		pw.print(iNo);
 		return null;
 	}
 
 	// 경매 가격 제시
 	@RequestMapping(value = "/auctionPart")
-	public String auctionPart(HttpServletRequest req, HttpServletResponse res,
-			@RequestParam(value = "aucIno", required = true) int aucIno,
-			@RequestParam(value = "oPrice", required = true) String oPrice) throws Exception {
-		HttpSession session = req.getSession(false);
-		User user = (User) session.getAttribute("memberUser");
-
-		productService.auctionPartInsert(user.getUserid(), aucIno, oPrice);
-		productService.updateAucPart(user.getUserid(), aucIno, oPrice);
-
-		req.setAttribute("aucOk", 1);
-		res.sendRedirect("productDetail?ino=" + aucIno + "&aucChk=Y");
+	public String auctionPart(HttpServletRequest req, HttpServletResponse res, @RequestParam(value = "aucIno", required = true) int aucIno, @RequestParam(value = "oPrice", required = true) String oPrice) throws Exception {
+		int apricenow = productService.apricenowSelect(aucIno);
+		String aucOk;
+		if(apricenow >= Integer.parseInt(oPrice)) {
+			aucOk = "false";
+		}else {
+			HttpSession session = req.getSession(false);
+			User user = (User) session.getAttribute("memberUser");
+	
+			productService.auctionPartInsert(user.getUserid(), aucIno, oPrice);
+			productService.updateAucPart(user.getUserid(), aucIno, oPrice);
+	
+			aucOk = "true";
+		}
+		res.sendRedirect("productDetail?ino=" + aucIno + "&aucChk=Y&aucOk="+aucOk);
 		return null;
 	}
 }

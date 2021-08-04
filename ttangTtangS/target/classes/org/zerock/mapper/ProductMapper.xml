@@ -91,11 +91,11 @@
 	</insert>
 
 	<insert id="likeProductCountInsert">
-			<![CDATA[
+		<![CDATA[
 			insert into likeproduct 
-	values(
-	#{userid},
-	 #{ino})
+			values(
+			#{userid},
+			 #{ino})
 	 
 		]]>
 	</insert>
@@ -107,16 +107,15 @@
 		#{userid},
 		#{aucIno},
 		#{oPrice},
-	'N')
+		'N')
 
 	</insert>
 
 	<!-- select -->
-	<select id="selectProduct"
-		resultType="org.zerock.domain.ProductDetail">
+	<select id="selectProduct" resultType="org.zerock.domain.ProductDetail">
 		<![CDATA[
-select * from product where ino =#{ino}
-	]]>
+			select * from product where ino =#{ino}
+		]]>
 	</select>
 	<select id="selectCname" resultType="String">
 		select cname from category
@@ -136,6 +135,7 @@ select * from product where ino =#{ino}
 		likeproduct where userid =#{userid}
 		and ino =#{ino}
 	</select>
+	
 	<select id="likeProductCount" resultType="int">
 		select count(ino) from
 		likeproduct where userid = #{userid}
@@ -155,9 +155,11 @@ select * from product where ino =#{ino}
 				uad = #{uad},
 				pricetext =
 				#{priceText},
-				imageface1 = #{imageface1}, imageface2 = #{imageface2}, imageface3
+				imageface1 = #{imageface1}, imageface2 = #{imageface2},
+				imageface3
 				= #{imageface3}, imageface4 = #{imageface4}
-				where ino = #{ino}
+				where ino =
+				#{ino}
 			</when>
 			<when test='auctioncheck=="Y"'>
 				iname = #{iname},
@@ -188,7 +190,8 @@ select * from product where ino =#{ino}
 
 	<update id="likeCountUpdate">
 		update product set likecount=likecount +1 where ino
-		= #{ino}
+		=
+		#{ino}
 	</update>
 
 
@@ -197,9 +200,9 @@ select * from product where ino =#{ino}
 		=#{ino}
 	</update>
 
-<update id="updateAucPart">
-update product set apricenow = #{oPrice} where ino = #{aucIno}
-</update>
+	<update id="updateAucPart">
+		update product set apricenow = #{oPrice} where ino = #{aucIno}
+	</update>
 	<!-- Delete -->
 	<delete id="productDelete">
 		delete from product where ino = #{ino}
@@ -217,5 +220,11 @@ update product set apricenow = #{oPrice} where ino = #{aucIno}
 		delete from likeproduct where userid=#{userid} and
 		ino= #{ino}
 	</delete>
+	
+	<select id="apricenowSelect" resultType="int">
+		select apricenow 
+		from product 
+		where ino = #{ino}
+	</select>
 
 </mapper>

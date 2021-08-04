@@ -40,7 +40,9 @@
 
 <script src="/resources/js/jquery-3.3.1.min.js"></script>
 </head>
-
+<script>
+	const sessionUser = ${!empty memberUser};
+</script>
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
