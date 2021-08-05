@@ -22,10 +22,10 @@
 		<form id="InsertForm" name="InsertForm" action="productModify"
 			method="post" style="margin-top: 20px; margin-bottom: 10px;">
 			<input type="hidden" name="ino" value="${allPro.ino}" /> <input
-				type="hidden" name="imageface1" id="imageface1"> <input
-				type="hidden" name="imageface2" id="imageface2"> <input
-				type="hidden" name="imageface3" id="imageface3"> <input
-				type="hidden" name="imageface4" id="imageface4"> <input
+				type="hidden" name="imageface1" id="imageface1" value="${allPro.imageface1}"> <input
+				type="hidden" name="imageface2" id="imageface2" value="${allPro.imageface2}"> <input
+				type="hidden" name="imageface3" id="imageface3" value="${allPro.imageface3}"> <input
+				type="hidden" name="imageface4" id="imageface4" value="${allPro.imageface4}"> <input
 				type="hidden" name="auctioncheck" value="${allPro.auctioncheck}" />
 			<!-- 파일업로드를 위해 추가하는 타입 -->
 			<table>
@@ -112,38 +112,35 @@
 				</tr>
 				<tr>
 					<td>
-						<input class="upload-name" value="이미지 등록" disabled="disabled" />
-						<label for="imageFile">업로드</label>
-						<form id="fileUpload" name="fileUpload"
-							enctype="multipart/form-data">
-							<input type="file" accept="image/jpg, image/jpeg, image/png"
-								name="imageFile" id="imageFile" class="upload-hidden"
-								multiple="multiple">
+						<form id="fileUpload" name="fileUpload" enctype="multipart/form-data">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imageFile" id="imageFile" class="upload-hidden">
 						</form>
+						<label id="imageLabel" for="imageFile">이미지 등록</label>
+
 						<div id="preview" class="preview">
 							<ul>
 								<c:if test="${!empty allPro.imageface1}">
-									<li style="float: left; list-style: none; position: relative;">
+									<li>
 										<img src="${allPro.imageface1}">
-										<button type="button" class="fa fa-close" onclick="deletePreview($(this))" style="position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);"></button>
+										<button type="button" class="fa fa-close" onclick="deletePreview($(this),1)"></button>
 									</li>
 								</c:if>
 								<c:if test="${!empty allPro.imageface2}">
-									<li style="float: left; list-style: none; position: relative;">
+									<li>
 										<img src="${allPro.imageface2}">
-										<button type="button" class="fa fa-close" onclick="deletePreview($(this))" style="position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);"></button>
+										<button type="button" class="fa fa-close" onclick="deletePreview($(this),1)"></button>
 									</li>
 								</c:if>
 								<c:if test="${!empty allPro.imageface3}">
-									<li style="float: left; list-style: none; position: relative;">
+									<li>
 										<img src="${allPro.imageface3}">
-										<button type="button" class="fa fa-close" onclick="deletePreview($(this))" style="position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);"></button>
+										<button type="button" class="fa fa-close" onclick="deletePreview($(this),1)"></button>
 									</li>
 								</c:if>
 								<c:if test="${!empty allPro.imageface4}">
-									<li style="float: left; list-style: none; position: relative;">
+									<li>
 										<img src="${allPro.imageface4}">
-										<button type="button" class="fa fa-close" onclick="deletePreview($(this))" style="position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);"></button>
+										<button type="button" class="fa fa-close" onclick="deletePreview($(this),1)"></button>
 									</li>
 								</c:if>
 							</ul>

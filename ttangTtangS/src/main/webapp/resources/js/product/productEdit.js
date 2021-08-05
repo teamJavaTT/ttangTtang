@@ -1,11 +1,14 @@
+const imageArrData = [];
+var previewLang;
+
 $(document).ready(function() {
-	
-	var previewLang = $('#preview ul li').length;
+	previewLang = $('#preview ul li').length;
 	$('#imageTbl small').empty().append("(" + previewLang + "/4)");
 	
 	// 태그에 onchange를 부여한다.
 	$('#imageFile').change(function() {
-		if ($('#imageFile')[0].files.length > 4 || imageLeng >= 4 || $('#imageFile')[0].files.length + imageLeng > 4) {
+		previewLang = $('#preview ul li').length;
+		if (previewLang >= 4) {
 			alert("사진 첨부는 최대 4장까지 가능합니다.");
 			return false;
 		} else {
@@ -13,38 +16,35 @@ $(document).ready(function() {
 		}
 	});
 
-
-	// image preview 기능 구현
-	// input = file object[]
-
-	function addPreview(input) {
-		if (input[0].files) {
-			//파일 선택이 여러개였을 시의 대응
-			for (var fileIndex = 0; fileIndex < input[0].files.length; fileIndex++) {
-				var file = input[0].files[fileIndex];
-				var reader = new FileReader();
-
-				reader.onload = function(img) {
-					//div id="preview" 내에 동적코드추가.
-					//이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
-
-					$("#preview ul").append("<li style='float:left;list-style:none;position:relative;'><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' onclick='deletePreview($(this))' style='position:absolute;right:0px;background:none;border:none;border-radius:50%;height:1.5em;background-color:rgba(255,255,255,0.5);'></button></li>");
-					imageLeng = $('#preview li').length;
-					$('#imageTbl small').empty().append("(" + imageLeng + "/4)");
-
-				};
-
-				reader.readAsDataURL(file);
-			}
-		} else
-			alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
-	}
 });
 
-function getFileUpload() {
+function addPreview(input) {
+	if (input[0].files) {
+		//파일 선택이 여러개였을 시의 대응
+		for (var fileIndex = 0; fileIndex < input[0].files.length; fileIndex++) {
+			imageArrData.push($('#imageFile')[0].files[fileIndex]);
+			
+			var file = input[0].files[fileIndex];
+			var reader = new FileReader();
 
-	var form = $('#fileUpload')[0];
-	var formData = new FormData(form);
+			reader.onload = function(img) {
+				//div id="preview" 내에 동적코드추가.
+				//이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
+				$("#preview ul").append("<li><img src=\"" + img.target.result + "\"\/><button type='button' class='fa fa-close' onclick='deletePreview($(this), 0)'></button></li>");
+				previewLang = $('#preview ul li').length;
+				$('#imageTbl small').empty().append("(" + previewLang + "/4)");
+			};
+			reader.readAsDataURL(file);
+		}
+	} else
+		alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
+}
+
+function getFileUpload() {
+	var formData = new FormData();
+	imageArrData.forEach(f => {
+		formData.append('imageFile', f, f.name);
+	});
 
 	$.ajax({
 		url: "/uploadImage",
@@ -55,9 +55,15 @@ function getFileUpload() {
 		success: function(data) {
 			const imageArr = data.split(",");
 			var name = "";
-			for (var i = 0; i < imageArr.length; i++) {
+			var nameArr = [];
+			for (var i = 0; i < 4; i++) {
 				name = "#imageface" + (i + 1);
-				$(name).val("/resources/file/" + imageArr[i]);
+				if($(name).val() == ""){
+					nameArr.push(name);
+				}
+			}
+			for (var j = 0; j < imageArr.length; j++) {
+				$(nameArr[j]).val("/resources/file/" + imageArr[j]);
 			}
 			document.InsertForm.submit();
 		}, error: function() {
@@ -109,25 +115,34 @@ function productUpdate() {
 	if (document.fileUpload.imageFile.value == null || document.fileUpload.imageFile.value == "") {
 		document.InsertForm.submit();
 	} else {
-		getFileUpload("#fileUpload");
+		getFileUpload();
 	}
 };
 
-/*$(changImg).change(function(){
-	if(this.files&&this.files[0]){
-				var reader = new FileReader;
-				reader.onload=function(date){
-				$(".select_img img").attr("src",data.target.result).width(500);	
-				}
-				reader.readAsDataURL(this.files[0]);
-				}
-});*/
-
-var imageLeng;
-
-function deletePreview(input) {
+function deletePreview(input, chk) {
+	if(chk == 0){
+		imageArrData.splice($(input).parent('li').index(), 1)
+	}else{
+		var imageNum = $(input).parent('li').index();
+		if(imageNum == 0){
+			$('#imageface1').val($('#imageface2').val());
+			$('#imageface2').val($('#imageface3').val());
+			$('#imageface3').val($('#imageface4').val());
+			$('#imageface4').val("");
+		}else if(imageNum == 1){
+			$('#imageface2').val($('#imageface3').val());
+			$('#imageface3').val($('#imageface4').val());
+			$('#imageface4').val("");
+		}else if(imageNum == 2){
+			$('#imageface3').val($('#imageface4').val());
+			$('#imageface4').val("");
+		}else{
+			$('#imageface4').val("");
+		}
+	}
 	$(input).parent('li').remove();
-	imageLeng -= 1;
-	$('#imageTbl small').empty().append("(" + imageLeng + "/4)");
+	
+	previewLang = $('#preview ul li').length;
+	$('#imageTbl small').empty().append("(" + previewLang + "/4)");
 	
 }

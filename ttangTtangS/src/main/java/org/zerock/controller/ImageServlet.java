@@ -50,7 +50,7 @@ public class ImageServlet {
 	private String uploadFile(String originalName, byte[] fileData, HttpServletRequest req) throws Exception {
 		String path = req.getSession().getServletContext().getRealPath("resources/file");
 		UUID uid = UUID.randomUUID();
-	    String savedName = uid.toString() + "_" + originalName;
+	    String savedName = uid.toString() + ".jpg";
 	    File target = new File(path, savedName);
 	    FileCopyUtils.copy(fileData, target);
 

@@ -65,7 +65,7 @@
 				<tr>
 					<td>판매지역</td>
 					<td colspan="2"><c:if test="${!empty address[1]}">
-							<input type="radio" name="uad" value="${address[1]}">
+							<input type="radio" name="uad" value="${address[1]}" checked>
 							<span>${address[1]}</span>
 						</c:if></td>
 				</tr>
@@ -141,14 +141,10 @@
 				</tr>
 				<tr>
 					<td>
-						<input class="upload-name" value="이미지 등록" disabled="disabled" />
-						<label for="imageFile">업로드</label>
-						<form id="fileUpload" name="fileUpload"
-							enctype="multipart/form-data">
-							<input type="file" accept="image/jpg, image/jpeg, image/png"
-								name="imageFile" id="imageFile" class="upload-hidden"
-								multiple="multiple">
+						<form id="fileUpload" name="fileUpload" enctype="multipart/form-data">
+							<input type="file" accept="image/jpg, image/jpeg, image/png" name="imageFile" id="imageFile" class="upload-hidden">
 						</form>
+						<label id="imageLabel" for="imageFile">이미지 등록</label>
 						<div id="preview" class="preview">
 							<ul></ul>
 						</div> 
