@@ -154,13 +154,30 @@ public class AdminController {
 	}
 
 	// Qna 글읽기
-	@RequestMapping(value = "/qnaread")
+	@RequestMapping(value = "/qnaread", method = RequestMethod.GET)
 	public void qnaReadPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal)
 			throws Exception {
 		int no = Integer.parseInt(numVal);
 		List<Qna> qna = adminService.selectQnaRead(no);
 		model.addAttribute("category", InitController.category);
 		model.addAttribute("qna", qna);
+	}
+	
+	@RequestMapping(value = "/qnaread", method = RequestMethod.POST)
+	public String qnaPwReadPage(Model model, @RequestParam(value = "no", defaultValue = "0") String numVal, @RequestParam(value="qnaPwd") String pw)
+			throws Exception {
+		int no = Integer.parseInt(numVal);
+		String qnaPw = adminService.checkQnaPw(no);
+		if(pw.equals(qnaPw)) {
+			List<Qna> qna = adminService.selectQnaRead(no);
+			model.addAttribute("category", InitController.category);
+			model.addAttribute("qna", qna);
+			model.addAttribute("ment", "비밀번호가 일치합니다.");
+		}else {
+			model.addAttribute("ment", "비밀번호가 틀렸습니다.");
+			model.addAttribute("href", "/admin/qna");
+		}
+		return "/successPage";
 	}
 
 	// Qna 글수정

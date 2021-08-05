@@ -26,6 +26,7 @@ public interface AdminMapper {
 	List<Qna> selectQnaList(Criteria cri) throws Exception;
 	int selectQnaListCount() throws Exception;
 	List<QnaColumn> insertQnaWrite(QnaColumn qnaColumn) throws Exception;
+	String checkQnaPw(int no) throws Exception;
 	List<Qna> selectQnaRead(int no) throws Exception;
 	List<QnaColumn> updateQnaModify(QnaColumn qnaColumn) throws Exception;
 	List<Qna> deleteQna(int no) throws Exception;

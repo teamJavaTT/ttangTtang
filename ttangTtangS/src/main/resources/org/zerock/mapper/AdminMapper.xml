@@ -82,6 +82,11 @@
 		select * from qna where qno = #{no}
 		]]>
 	</select>
+	<select id="checkQnaPw" resultType="String">
+		<![CDATA[
+		select qpw from qna where qno = #{no}
+		]]>
+	</select>
 	<!-- Update -->
 	<select id="updateQnaModify">
 		<![CDATA[

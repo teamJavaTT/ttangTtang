@@ -88,6 +88,10 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.selectQnaRead(no);
 	}
 	
+	public String checkQnaPw(int no) throws Exception{
+		return adminMapper.checkQnaPw(no);
+	}
+	
 	@Override
 	@Transactional
 	public List<QnaColumn> updateQnaModify(QnaColumn qnaColumn) throws Exception {

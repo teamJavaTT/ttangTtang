@@ -49,7 +49,7 @@
 												<td>
 													<form action ="qnaread?no=${qna.qno}" id="pwdForm" method="post">
 														<a <c:if test="${qna.qpw ne null}">class="qnaRead"</c:if><c:if test="${qna.qpw eq null}">href="qnaread?no=${qna.qno}"</c:if>>${qna.qpw eq null ? qna.qtit : '비밀글 입니다.'}</a>
-														<input type="password"  name="qnaPwd${qna.qno}" style="display:none">
+														<input type="password" name="qnaPwd" style="display:none">
 														<input type="submit" value="확인" style="display:none">
 													</form>
 												</td>
@@ -59,17 +59,17 @@
 										</c:forEach>
 											<tr>
 												<td colspan="4">
-													<ul style="text-align:center;">
+													<ul class="pageMaker">
 														<c:if test="${pageMaker.prev}">
-														   <li style="display:inline;"><a href="qna?page=${pageMaker.startPage - 1}">이전</a></li>
+														   <li><a href="qna?page=${pageMaker.startPage - 1}">이전</a></li>
 														  </c:if> 
 														  
 														  <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-														   <li style="display:inline;"><a href="qna?page=${(idx)}">${idx}</a></li>
+														   <li><a href="qna?page=${(idx)}">${idx}</a></li>
 														  </c:forEach>
 														    
 														  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-														   <li style="display:inline;"><a href="qna?page=${pageMaker.endPage + 1}">다음</a></li>
+														   <li><a href="qna?page=${pageMaker.endPage + 1}">다음</a></li>
 														  </c:if>
 													</ul> 
 												</td>
