@@ -12,7 +12,7 @@ public interface InitMapper {
 	void auctionEndUpdate(String ino) throws Exception;
 	int auctionEndInoCount(String ino) throws Exception;
 	Map<String, String> aucAlimUserIdSelect(String ino) throws Exception;
-	void alimInsert(@Param("userid") String userid, @Param("lText") String lText) throws Exception;
+	void alimInsert(@Param("userid") String userid, @Param("lText") String lText, @Param("ino") String ino) throws Exception;
 	void auctioConnUpdate(String ino) throws Exception;
 	String aucConnUserIdSelect(String ino) throws Exception;
 }

@@ -40,6 +40,7 @@ public interface MypageMainService {
 	int selectDclrBlckListCount(String userid, String blockChk) throws Exception;
 	
 	//알림
-	List<Alim> alimAllSelect(String userid) throws Exception;
+	List<Alim> alimAllSelect(String userid, int pageStart, int pageEnd) throws Exception;
+	int selectAlimCount(@Param("userid") String userid) throws Exception;
 	void alimChkUpdate(String userid) throws Exception;
 }

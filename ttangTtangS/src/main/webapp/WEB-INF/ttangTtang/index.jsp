@@ -17,12 +17,6 @@
 		</c:if>
 	</c:forEach>
 </script>
-<style>
-.aucTimer {
-	font-size: 15px;
-	padding-bottom: 10px;
-}
-</style>
 
 <!-- Categories Section Begin -->
 <section class="categories">
@@ -71,7 +65,7 @@
 						<div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface1}">
 							<ul class="featured__item__pic__hover">
 								<c:if test="${allProduct.auctioncheck == 'Y'}">
-									<li><h3 class="aucTimer" id="all${allProduct.ino}" style="background-color: white;"></h3></li><br>
+									<li><h3 class="aucTimer" id="all${allProduct.ino}"></h3></li><br>
 								</c:if>
 								<li class="like${allProduct.ino}" onclick="likeProductFunc(${allProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 							</ul>
@@ -128,7 +122,7 @@
 							<div class="featured__item__pic set-bg"
 								data-setbg="${aucProduct.imageface1}">
 								<ul class="featured__item__pic__hover">
-									<li><h3 class="aucTimer" id="auc${aucProduct.ino}" style="background-color: white;"></h3></li><br>
+									<li><h3 class="aucTimer" id="auc${aucProduct.ino}"></h3></li><br>
 									<li class="like${aucProduct.ino}" onclick="likeProductFunc(${aucProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 								</ul>
 							</div>

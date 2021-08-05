@@ -33,16 +33,16 @@ public class InitServiceImpl implements InitService {
 				if(aucPartCnt == 0) {
 					Map<String, String> noMachUserId = initMapper.aucAlimUserIdSelect(likeProduct.get(i));
 					lText = noMachUserId.get("INAME") + " 상품이 기간 내에 경매에 참여한 사람이 없어 종료되었습니다.";
-					initMapper.alimInsert(noMachUserId.get("USERID"), lText);
+					initMapper.alimInsert(noMachUserId.get("USERID"), lText, likeProduct.get(i));
 				}else {
 					Map<String, String> machAlimUserId = initMapper.aucAlimUserIdSelect(likeProduct.get(i));
 					lText = machAlimUserId.get("INAME") + " 상품이 구매자와 매칭되었습니다.";
-					initMapper.alimInsert(machAlimUserId.get("USERID"), lText);
+					initMapper.alimInsert(machAlimUserId.get("USERID"), lText, likeProduct.get(i));
 					
 					initMapper.auctioConnUpdate(likeProduct.get(i));
 					String connUserId = initMapper.aucConnUserIdSelect(likeProduct.get(i));
 					lText = machAlimUserId.get("INAME") + " 상품 경매에 매칭되었습니다.";
-					initMapper.alimInsert(connUserId, lText);
+					initMapper.alimInsert(connUserId, lText, likeProduct.get(i));
 				}
 			}
 		}

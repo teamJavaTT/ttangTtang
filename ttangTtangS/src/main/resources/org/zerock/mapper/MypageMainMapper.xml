@@ -13,14 +13,10 @@
          select dno 
          from declaration 
          where userid=#{userid}
-         ]]>
-		<![CDATA[
       ) order by dno desc) 
 		where num between #{pageStart} and #{pageEnd}
 		]]>
 	</select>
-
-
 
 	<select id="selectBlockUser"
 		resultType="org.zerock.domain.BlockUser">
@@ -31,8 +27,6 @@
          select bno 
          from block 
          where userid=#{userid}
-         ]]>
-		<![CDATA[
       ) order by bno desc) 
 		where num between #{pageStart} and #{pageEnd}
 		]]>
@@ -129,11 +123,25 @@
 		]]>
 	</select>
 
-	<select id="alimAllSelect" resultType="org.zerock.domain.Alim">
-		select *
+	<select id="alimAllSelect" resultType="org.zerock.domain.Alim" parameterType="map">
+		select * from 
+			(select row_number() over (order by lno desc) num, A.* 
+			from alim A 
+			where userid =#{userid} 
+			order by lno desc) 
+		where num between #{pageStart} and #{pageEnd}
+	</select>
+	
+	<select id="imageSelect" resultType="String">
+		select imageface1
+		from product
+		where ino = #{ino}
+	</select>
+	
+	<select id="selectAlimCount" resultType="int">
+		select count(*) 
 		from alim
-		where userid = #{userid}
-		order by lno desc
+		where userid=#{userid}
 	</select>
 
 	<update id="alimChkUpdate">

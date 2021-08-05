@@ -39,7 +39,7 @@
 	</select>
 	
 	<insert id="alimInsert" parameterType="map">
-		insert into alim values(alim_seq.nextval, #{userid}, #{lText}, sysdate, 'N')
+		insert into alim values(alim_seq.nextval, #{userid}, #{lText}, sysdate, 'N', #{ino})
 	</insert>
 	
 	<update id="auctioConnUpdate">

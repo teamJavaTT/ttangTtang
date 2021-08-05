@@ -58,7 +58,7 @@
 												<c:forEach var="product" items="${sellList}">
 													<tr>
 														<!-- 상품 사진  -->
-														<td  style="height:100px;"><img class="preview" style="width: 100px; height: aucto;"
+														<td  style="height:100px;"><img class="preview" style="width: 100px; height: aucto;cursor:pointer;"
 															 src="${product.imageface1}"
 															data-setbg="${product.imageface1}"
 															onclick="location.href='/product/productDetail?ino=${product.ino}&aucChk=${product.auctioncheck}'">
@@ -72,9 +72,9 @@
 														<!-- 경매/일반 -->
 														<td>${product.auctioncheck eq 'N'? '일반' : '경매'}</td>
 														<!-- 상품명 -->
-														<td><a
+														<td><b><a
 															href="/product/productDetail?ino=${product.ino}&aucChk=${product.auctioncheck}"><c:out
-																	value="${product.iname}" /></a></td>
+																	value="${product.iname}" /></a></b></td>
 														<!-- 등록날짜 -->
 														<td><fmt:formatDate value="${product.pdate}"
 																pattern="yyyy-MM-dd HH:mm" /></td>
@@ -83,21 +83,21 @@
 													</tr>
 												</c:forEach>
 												<tr>
-													<td colspan="5">
-														<ul style="text-align: center;">
+													<td colspan="6">
+														<ul class="pageMaker" style="text-align: center;">
 															<c:if test="${pageMaker.prev}">
-																<li style="display: inline;"><a
+																<li><a
 																	href="sellcheck?page=${pageMaker.startPage - 1}">이전</a></li>
 															</c:if>
 
 															<c:forEach begin="${pageMaker.startPage}"
 																end="${pageMaker.endPage}" var="idx">
-																<li style="display: inline;"><a
+																<li><a
 																	href="sellcheck?page=${(idx)}&sellChk=${param.sellChk}">${idx}</a></li>
 															</c:forEach>
 
 															<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-																<li style="display: inline;"><a
+																<li><a
 																	href="sellcheck?page=${pageMaker.endPage + 1}">다음</a></li>
 															</c:if>
 														</ul>

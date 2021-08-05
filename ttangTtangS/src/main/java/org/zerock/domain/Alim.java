@@ -15,4 +15,6 @@ public class Alim {
 	private String ltext;
 	private Date ldate;
 	private String alimchk;
+	private int ino;
+	private String imageface1;
 }

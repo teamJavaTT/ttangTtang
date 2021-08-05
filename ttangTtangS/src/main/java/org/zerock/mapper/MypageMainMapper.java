@@ -37,6 +37,8 @@ public interface MypageMainMapper {
 	int selectDclrBlckListCount(@Param("userid") String userid, @Param("blockChk") String blockChk) throws Exception;
 
 	// 알림
-	List<Alim> alimAllSelect(String userid) throws Exception;
+	List<Alim> alimAllSelect(@Param("userid") String userid, @Param("pageStart") int pageStart, @Param("pageEnd") int pageEnd) throws Exception;
+	String imageSelect(int ino) throws Exception;
+	int selectAlimCount(@Param("userid") String userid) throws Exception;
 	void alimChkUpdate(String userid) throws Exception;
 }

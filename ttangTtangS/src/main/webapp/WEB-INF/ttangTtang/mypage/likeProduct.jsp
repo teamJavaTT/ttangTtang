@@ -40,7 +40,7 @@
 											<td>${declaration.auctionCheck eq 'N'? '신고' : '차단'}</td> --%>
 													<!-- 신고 아이디 -->
 
-											<td style="height:100px;"><img class="preview" style="width: aucto; height: 100px;"
+											<td style="height:100px;"><img class="preview" style="width: aucto;height: 100px;cursor: pointer;"
 															src="${likeProduct.imageface1}"
 															data-setbg="${likeProduct.imageface1}"
 															onclick="location.href='/product/productDetail?ino=${likeProduct.ino}&aucChk=${likeProduct.auctioncheck}'">
@@ -58,20 +58,20 @@
 											</c:forEach>
 											<tr>
 												<td colspan="5">
-													<ul style="text-align: center;">
+													<ul class="pageMaker">
 														<c:if test="${pageMaker.prev}">
-															<li style="display: inline;"><a
+															<li><a
 																href="likeProduct?page=${pageMaker.startPage - 1}">이전</a></li>
 														</c:if>
 
 														<c:forEach begin="${pageMaker.startPage}"
 															end="${pageMaker.endPage}" var="idx">
-															<li style="display: inline;"><a
+															<li><a
 																href="likeProduct?page=${(idx)}">${idx}</a></li>
 														</c:forEach>
 
 														<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-															<li style="display: inline;"><a
+															<li><a
 																href="likeProduct?page=${pageMaker.endPage + 1}">다음</a></li>
 														</c:if>
 													</ul>

@@ -168,8 +168,7 @@ public class MypageMainController {
 
 	// 관심 상품
 	@RequestMapping(value = "/likeProduct")
-	public void likeProductPage(Criteria cri, Model model, HttpServletRequest req,
-			@RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+	public void likeProductPage(Criteria cri, Model model, HttpServletRequest req) throws Exception {
 
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
@@ -189,9 +188,7 @@ public class MypageMainController {
 
 	// 판매내역
 	@RequestMapping(value = "/sellcheck")
-	public void sellcheckPagePOST(Criteria cri, Model model,
-			@RequestParam(value = "sellChk", required = false) String sellchk, HttpServletRequest req,
-			@RequestParam(value = "pageNo", defaultValue = "0") String numVal) throws Exception {
+	public void sellcheckPagePOST(Criteria cri, Model model, @RequestParam(value = "sellChk", required = false) String sellchk, HttpServletRequest req) throws Exception {
 
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
@@ -238,13 +235,23 @@ public class MypageMainController {
 
 	// 알림내역
 	@RequestMapping(value = "/alimList")
-	public void alimList(Model model, HttpServletRequest req) throws Exception {
+	public void alimList(Criteria cri, Model model, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-		List<Alim> alimAll = mypagemainService.alimAllSelect(user.getUserid());
+		
+		int pageStart = cri.getPageStart();
+		int pageEnd = cri.getPageEnd();
+		
+		List<Alim> alimAll = mypagemainService.alimAllSelect(user.getUserid(), pageStart, pageEnd);
 		model.addAttribute("alimAll", alimAll);
+		
 		mypagemainService.alimChkUpdate(user.getUserid());
-		model.addAttribute("alim", null);
+		req.getSession().setAttribute("alim", null);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(mypagemainService.selectAlimCount(user.getUserid()));
+		model.addAttribute("pageMaker", pageMaker);
 
 	}
 

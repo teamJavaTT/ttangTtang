@@ -129,8 +129,7 @@
 				<div class="col-lg-5">
 					<div class="header__cart">
 						<ul>
-							<li><a href="/product/productWrite"
-								style="color: black; cursor: pointer;"><i
+							<li><a href="/product/productWrite"><i
 									class="fa fa-buysellads"></i> 판매하기</a></li>
 							<!-- onclick="sessionCheck()" -->
 							<li><a href="/mypage/likeProduct"><i class="fa fa-heart"></i>

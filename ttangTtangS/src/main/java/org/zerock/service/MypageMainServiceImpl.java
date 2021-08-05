@@ -19,8 +19,6 @@ import org.zerock.mapper.MypageMainMapper;
 public class MypageMainServiceImpl implements MypageMainService {
 	@Autowired
 	private MypageMainMapper mypageMainMapper;
-	private List<BlockUser> blockUser;
-	private List<AccountDeclaration> product;
 
 	@Override  //신고
 	@Transactional
@@ -95,8 +93,19 @@ public class MypageMainServiceImpl implements MypageMainService {
 
 
 	//알림
-	public List<Alim> alimAllSelect(String userid) throws Exception {
-		return mypageMainMapper.alimAllSelect(userid);
+	public List<Alim> alimAllSelect(String userid, int pageStart, int pageEnd) throws Exception {
+		List<Alim> alimAll = mypageMainMapper.alimAllSelect(userid, pageStart, pageEnd);
+		for(int i=0;i<alimAll.size();i++) {
+			String imageface1 = mypageMainMapper.imageSelect(alimAll.get(i).getIno());
+			alimAll.get(i).setImageface1(imageface1);
+		}
+		
+		return alimAll;
+	}
+	
+	@Override
+	public int selectAlimCount(String userid) throws Exception {
+		return mypageMainMapper.selectAlimCount(userid);
 	}
 	
 	public void alimChkUpdate(String userid) throws Exception {
