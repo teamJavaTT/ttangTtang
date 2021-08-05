@@ -6,7 +6,34 @@
 	var auctionChk = "${allPro.auctioncheck}";
 	var date = "<fmt:formatDate value='${allPro.endtime}' pattern='yyyy-MM-dd HH:mm:ss'/>";
 </script>
+<style>
+div.product__details__pic__item{
+	overflow: hidden;
+	height: 550px;
+	position: relative;
+}
 
+div.product__details__pic__item img{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+div.owl-item{
+	width: 97.5px;
+	margin-right: 20px;
+	overflow: hidden;
+	height:125px;
+}
+div.owl-item img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+</style>
 
 <!-- Breadcrumb Section Begin -->
 
@@ -31,55 +58,28 @@
 			<div class="col-lg-6 col-md-6">
 				<div class="product__details__pic">
 					<div class="product__details__pic__item">
-						<img class="product__details__pic__item--large"
-							src="${allPro.imageface1}"
-							style="height: fit-content; width: auto;">
+						<img class="product__details__pic__item--large" src="${allPro.imageface1}">
 					</div>
-					<div
-						class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
+					<div class="product__details__pic__slider owl-carousel owl-loaded">
 						<div class="owl-stage-outer">
-							<div class="owl-stage" style="transform: translate3d(-822px, 0px, 0px); transition: all 1.2s ease 0s; width: 1410px;">
+							<div class="owl-stage">
 								<c:if test="${!empty allPro.imageface1}">
-									<div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;">
-										<img data-imgbigurl="${allPro.imageface1}"
-											src="${allPro.imageface1}" alt="">
-									</div>
-								</c:if>
-								<c:if test="${!empty allPro.imageface2}">
-									<div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;">
-										<img data-imgbigurl="${allPro.imageface2}"
-											src="${allPro.imageface2}" alt="">
-									</div>
-								</c:if>
-								<c:if test="${!empty allPro.imageface3}">
-									<div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;">
-										<img data-imgbigurl="${allPro.imageface3}"
-											src="${allPro.imageface3}" alt="">
-									</div>
-								</c:if>
-								<c:if test="${!empty allPro.imageface4}">
-									<div class="owl-item cloned" style="width: 97.5px; margin-right: 20px;">
-										<img data-imgbigurl="${allPro.imageface4}"
-											src="${allPro.imageface4}" alt="">
-									</div>
-								</c:if>
-								<c:if test="${!empty allPro.imageface1}">
-									<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<div class="owl-item">
 										<img data-imgbigurl="${allPro.imageface1}" src="${allPro.imageface1}" alt="">
 									</div>
 								</c:if>
 								<c:if test="${!empty allPro.imageface2}">
-									<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<div class="owl-item">
 										<img data-imgbigurl="${allPro.imageface2}" src="${allPro.imageface2}" alt="">
 									</div>
 								</c:if>
 								<c:if test="${!empty allPro.imageface3}">
-									<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<div class="owl-item">
 										<img data-imgbigurl="${allPro.imageface3}" src="${allPro.imageface3}" alt="">
 									</div>
 								</c:if>
 								<c:if test="${!empty allPro.imageface4}">
-									<div class="owl-item" style="width: 97.5px; margin-right: 20px;">
+									<div class="owl-item">
 										<img data-imgbigurl="${allPro.imageface4}" src="${allPro.imageface4}" alt="">
 									</div>
 								</c:if>
@@ -173,13 +173,9 @@
 						</c:if>
 						<li><b>판매자</b><span>${allPro.userid}</span></li>
 						<li><b>판매 지역</b><span>${allPro.uad}</span></li>
-						<li><b>공유</b>
-							<div class="share">
-								<a href="#"><i class="fa fa-link"></i></a>
-							</div></li>
-						<li><b>조회수</b> <span id="view_count">${allPro.viewcount}</span>
+						<li><b>조회수</b><i class="fa fa-eye"></i>&nbsp;&nbsp;<span id="view_count">${allPro.viewcount}</span>
 						</li>
-						<li><b>찜한 수</b><i class="fa fa-heart"></i><span class="likeCount">${allPro.likecount}</span></li>
+						<li><b>찜한 수</b><i class="fa fa-heart"></i>&nbsp;&nbsp;<span class="likeCount">${allPro.likecount}</span></li>
 					</ul>
 					<c:if test="${memberUser.userid eq allPro.userid}">
 						<input type="button" class="btn btn-outline-dark" value="상품수정"
@@ -207,14 +203,6 @@
 						<div class="product__details__tab__desc">
 							<h6>제품 설명</h6>
 							<p>${allPro.pricetext}</p>
-
-							<img src="${allPro.imageface1}"
-								style="height: 400px; width: auto;"> <img
-								src="${allPro.imageface2}" style="height: 400px; width: auto;">
-							<img src="${allPro.imageface3}"
-								style="height: 400px; width: auto;"> <img
-								src="${allPro.imageface4}" style="height: 400px; width: auto;">
-
 						</div>
 					</div>
 				</div>
