@@ -8,11 +8,10 @@
 </script>
 <style>
 div.product__details__pic__item{
+	position: relative;
 	overflow: hidden;
 	height: 550px;
-	position: relative;
 }
-
 div.product__details__pic__item img{
 	position: absolute;
 	width: 100%;
@@ -20,15 +19,15 @@ div.product__details__pic__item img{
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
-
 div.owl-item{
-	width: 97.5px;
-	margin-right: 20px;
+	position: relative;
 	overflow: hidden;
 	height:125px;
+	margin-right: 20px;
 }
 div.owl-item img{
     position: absolute;
+    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

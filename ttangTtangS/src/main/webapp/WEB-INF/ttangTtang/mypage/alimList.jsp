@@ -2,7 +2,22 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/mypage/mypagemain.css">
-
+<style>
+td.imgTd{
+	position: relative;
+	overflow: hidden;
+	height:100px;
+    width: 100px;
+}
+td.imgTd img{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor:pointer;
+}
+</style>
 <!-- Hero Section Begin -->
 <section class="hero">
 	<div class="container">
@@ -34,8 +49,8 @@
 											<c:forEach var="alimList" items="${alimAll}">
 												<c:if test="${alimList.alimchk eq 'N'}">
 													<tr style="height: 50px;">
-														<td  style="height:100px;">
-															<img class="preview" style="width: 100px; height: aucto;cursor:pointer;" src="${alimList.imageface1}" data-setbg="${alimList.imageface1}"
+														<td class="imgTd">
+															<img class="preview" src="${alimList.imageface1}" data-setbg="${alimList.imageface1}"
 															onclick="location.href='/product/productDetail?ino=${alimList.ino}&aucChk=Y'">
 														</td>
 														<td style="font-size: 1.1em;"><b><a href="/product/productDetail?ino=${alimList.ino}&aucChk=Y">${alimList.ltext}</a></b></td>
@@ -44,8 +59,8 @@
 												</c:if>
 												<c:if test="${alimList.alimchk eq 'Y'}">
 													<tr style="height: 50px;">
-														<td  style="height:100px;">
-															<img class="preview" style="width: 100px; height: aucto;cursor:pointer;" src="${alimList.imageface1}" data-setbg="${alimList.imageface1}"
+														<td class="imgTd">
+															<img class="preview" src="${alimList.imageface1}" data-setbg="${alimList.imageface1}"
 															onclick="location.href='/product/productDetail?ino=${alimList.ino}&aucChk=Y'">
 														</td>
 														<td><a href="/product/productDetail?ino=${alimList.ino}&aucChk=Y">${alimList.ltext}</a></td>
