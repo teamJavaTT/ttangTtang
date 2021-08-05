@@ -151,7 +151,7 @@ public class MemberController {
 				String encodeUpw = aes256Util.encrypt(upw);
 				memberService.updatePassword(encodeUpw, userid);
 				model.addAttribute("ment", "TTang TTang Market 비밀번호 변경 성공!");
-				model.addAttribute("href", "/mypage/mypageMain");
+				model.addAttribute("href", "/member/login");
 				return "/successPage";
 			} else {
 				model.addAttribute("userExist", "Y");
