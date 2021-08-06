@@ -63,11 +63,13 @@
 				<div class="col-lg-3 col-md-4 col-sm-6 mix allProduct">
 					<div class="featured__item" onclick="location.href='/product/productDetail?ino=${allProduct.ino}&aucChk=${allProduct.auctioncheck}'">
 						<div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface1}">
+							<c:if test="${allProduct.auctioncheck == 'Y'}">
+								<h3 class="aucTimer" id="all${allProduct.ino}"></h3>
+							</c:if>
 							<ul class="featured__item__pic__hover">
-								<c:if test="${allProduct.auctioncheck == 'Y'}">
-									<li style="width: 100%;"><h3 class="aucTimer" id="all${allProduct.ino}"></h3></li><br>
+								<c:if test="${memberUser.userid ne allProduct.userid}">
+									<li class="like${allProduct.ino}" onclick="likeProductFunc(${allProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 								</c:if>
-								<li class="like${allProduct.ino}" onclick="likeProductFunc(${allProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 							</ul>
 						</div>
 						<div class="featured__item__text">
@@ -98,7 +100,9 @@
 							onclick="location.href='/product/productDetail?ino=${norProduct.ino}&aucChk=${norProduct.auctioncheck}'">
 							<div class="featured__item__pic set-bg" data-setbg="${norProduct.imageface1}">
 								<ul class="featured__item__pic__hover">
-									<li class="like${norProduct.ino}" onclick="likeProductFunc(${norProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
+									<c:if test="${memberUser.userid ne norProduct.userid}">
+										<li class="like${norProduct.ino}" onclick="likeProductFunc(${norProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
+									</c:if>
 								</ul>
 							</div>
 							<div class="featured__item__text">
@@ -119,11 +123,12 @@
 						style="display: none;">
 						<div class="featured__item"
 							onclick="location.href='/product/productDetail?ino=${aucProduct.ino}&aucChk=${aucProduct.auctioncheck}'">
-							<div class="featured__item__pic set-bg"
-								data-setbg="${aucProduct.imageface1}">
+							<div class="featured__item__pic set-bg" data-setbg="${aucProduct.imageface1}">
+								<h3 class="aucTimer" id="auc${aucProduct.ino}"></h3>
 								<ul class="featured__item__pic__hover">
-									<li style="width: 100%;"><h3 class="aucTimer" id="auc${aucProduct.ino}"></h3></li><br>
-									<li class="like${aucProduct.ino}" onclick="likeProductFunc(${aucProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
+									<c:if test="${memberUser.userid ne aucProduct.userid}">
+										<li class="like${aucProduct.ino}" onclick="likeProductFunc(${aucProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
+									</c:if>
 								</ul>
 							</div>
 							<div class="featured__item__text">
@@ -147,7 +152,9 @@
 							<div class="featured__item__pic set-bg"
 								data-setbg="${buyProduct.imageface1}">
 								<ul class="featured__item__pic__hover">
-									<li class="like${buyProduct.ino}" onclick="likeProductFunc(${buyProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
+									<c:if test="${memberUser.userid ne buyProduct.userid}">
+										<li class="like${buyProduct.ino}" onclick="likeProductFunc(${buyProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
+									</c:if>
 								</ul>
 							</div>
 							<div class="featured__item__text">
