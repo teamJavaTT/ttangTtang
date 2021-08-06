@@ -48,7 +48,7 @@
 												<!-- 내용 -->
 												<td>
 													<form action ="qnaread?no=${qna.qno}" id="pwdForm" method="post">
-														<a <c:if test="${qna.qpw ne null}">class="qnaRead"</c:if><c:if test="${qna.qpw eq null}">href="qnaread?no=${qna.qno}"</c:if>>${qna.qpw eq null ? qna.qtit : '비밀글 입니다.'}</a>
+														<a <c:if test="${qna.qpw ne null}">class="qnaRead"</c:if><c:if test="${qna.qpw eq null || memberUser.userid eq 'admin'}">href="qnaread?no=${qna.qno}"</c:if>>${qna.qpw eq null || memberUser.userid eq 'admin' ? qna.qtit : '비밀글 입니다.'}</a>
 														<input type="password" name="qnaPwd" style="display:none">
 														<input type="submit" value="확인" style="display:none">
 													</form>
