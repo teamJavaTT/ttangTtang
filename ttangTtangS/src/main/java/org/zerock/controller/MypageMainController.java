@@ -39,12 +39,13 @@ public class MypageMainController {
 	// 메인
 	@RequestMapping(value = "/mypageMain")
 	public void mypageMainPage(Model model) throws Exception {
+		model.addAttribute("category", category);
 	}
 
 	// 신고
 	@RequestMapping(value = "/accountDeclaration", method = RequestMethod.GET)
 	public void accountDeclarationPageGET(Model model, HttpServletRequest req) throws Exception {
-
+		model.addAttribute("category", category);
 	}
 
 	@RequestMapping(value = "/accountDeclaration", method = RequestMethod.POST)
@@ -90,7 +91,7 @@ public class MypageMainController {
 	// 차단
 	@RequestMapping(value = "/blockUser", method = RequestMethod.GET)
 	public void blockUserPageGET(Model model, HttpServletRequest req) throws Exception {
-
+		model.addAttribute("category", category);
 	}
 
 	@RequestMapping(value = "/blockUser", method = RequestMethod.POST)
@@ -165,7 +166,7 @@ public class MypageMainController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(mypagemainService.selectDclrBlckListCount(userid, tblName));
 		model.addAttribute("pageMaker", pageMaker);
-
+		model.addAttribute("category", category);
 	}
 
 	// 관심 상품
@@ -186,6 +187,7 @@ public class MypageMainController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(mypagemainService.selectLikeProductListCount(userid));
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("category", category);
 	}
 
 	// 판매내역
@@ -276,7 +278,7 @@ public class MypageMainController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(mypagemainService.selectAlimCount(user.getUserid()));
 		model.addAttribute("pageMaker", pageMaker);
-
+		model.addAttribute("category", category);
 	}
 
 }
