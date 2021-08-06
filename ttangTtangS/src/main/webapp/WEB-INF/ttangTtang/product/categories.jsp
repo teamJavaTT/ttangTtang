@@ -46,7 +46,7 @@
 	                        <div class="featured__item__pic set-bg" data-setbg="${allProduct.imageface1}">
 	                            <ul class="featured__item__pic__hover">
 		                            <c:if test="${allProduct.auctioncheck == 'Y'}">
-										<li><h3 class="aucTimer" id="all${allProduct.ino}"></h3></li><br>
+										<li style="width: 100%;"><h3 class="aucTimer" id="all${allProduct.ino}"></h3></li><br>
 									</c:if>
 	                                <li class="like${allProduct.ino}" onclick="likeProductFunc(${allProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 	                            </ul>
@@ -94,7 +94,7 @@
 		                    <div class="featured__item" onclick="location.href='/product/productDetail?ino=${aucProduct.ino}&aucChk=${aucProduct.auctioncheck}'">
 		                        <div class="featured__item__pic set-bg" data-setbg="${aucProduct.imageface1}">
 		                            <ul class="featured__item__pic__hover">
-		                            	<li><h3 class="aucTimer" id="auc${aucProduct.ino}"></h3></li><br>
+		                            	<li style="width: 100%;"><h3 class="aucTimer" id="auc${aucProduct.ino}"></h3></li><br>
 		                                <li class="like${aucProduct.ino}" onclick="likeProductFunc(${aucProduct.ino})"><a href="#"><i class="fa fa-heart"></i></a></li>
 		                            </ul>
 		                        </div>
