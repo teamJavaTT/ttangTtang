@@ -124,10 +124,11 @@
 
 	<select id="productUserSelect"
 		resultType="org.zerock.dto.ProductDTO">
-		select * from product where userid = #{userid} and
-		ino !=
-		#{ino} order by
-		ino desc
+		select * from product 
+		where userid = #{userid} 
+		and sellcheck='N' 
+		and ino != #{ino} 
+		order by ino desc
 	</select>
 
 	<select id="likeProductUser" resultType="int">

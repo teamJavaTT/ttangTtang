@@ -59,12 +59,19 @@ public class MemberController {
 		try {
 			String upwd = aes256Util.encrypt(upw);
 			User user = memberService.memberLogin(userid, upwd);
-			req.getSession().setAttribute("memberUser", user);
 			
-			int likeCount = memberService.likeProductCount(user.getUserid());
-			ArrayList<Alim> alimList = memberService.alimSelect(user.getUserid());
-			req.getSession().setAttribute("likeCount", likeCount);
-			req.getSession().setAttribute("alim", alimList);
+			if(user.getMemberChk() != 1) {
+				errors.put("resignMem", Boolean.TRUE);
+				req.setAttribute("login", false);
+				return "/member/login";
+			}else {
+				req.getSession().setAttribute("memberUser", user);
+				
+				int likeCount = memberService.likeProductCount(user.getUserid());
+				ArrayList<Alim> alimList = memberService.alimSelect(user.getUserid());
+				req.getSession().setAttribute("likeCount", likeCount);
+				req.getSession().setAttribute("alim", alimList);
+			}
 		} catch (LoginFailException e) {
 			errors.put("idNotMatch", Boolean.TRUE);
 			req.setAttribute("login", false);

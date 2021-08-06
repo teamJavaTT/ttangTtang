@@ -15,7 +15,7 @@
 <body>
 	<div class="main-container">
 		<div class="main-wrap">
-			<c:if test="${memberChk == 2 || memberChk eq 2}">
+			<c:if test="${errors.resignMem}">
 				<script>
 					alert("탈퇴 처리된 회원입니다.");
 				</script>
@@ -65,13 +65,12 @@
 					</div>
 
 					<div class="flex-col-c p-t-170 p-b-40">
-						<span class="txt1 p-b-9"> 계정이 없으십니까? </span> <a href="/member/join"
-							class="txt3"> 회원가입 </a>
+						<span class="txt1 p-b-9"> 계정이 없으십니까? </span> <a href="/member/join" class="txt3"> 회원가입 </a>
 					</div>
 				</c:if>
 				<c:if test="${login eq true}">
-				 <h1>로그인 상태입니다.</h1><br>
-				 <div class="login-button-wrap">
+				 	<h1>로그인 상태입니다.</h1><br>
+				 	<div class="login-button-wrap">
 						<button onclick="location.href='/'">메인으로 바로가기</button>
 					</div>
 				</c:if>

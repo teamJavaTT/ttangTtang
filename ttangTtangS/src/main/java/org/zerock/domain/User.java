@@ -20,7 +20,6 @@ public class User {
 	private int memberChk;
 
 	public boolean matchPassword(String inputUpw) {
-		System.out.println("mem"+memberChk);
 		return upw.equals(inputUpw);
 	}
 }

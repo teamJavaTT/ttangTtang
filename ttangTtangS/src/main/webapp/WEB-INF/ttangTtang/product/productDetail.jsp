@@ -228,27 +228,23 @@ div.owl-item img{
 						onclick="location.href='/product/productDetail?ino=${productUser.ino}&aucChk=${productUser.auctioncheck}'">
 						<div class="product__item__pic set-bg"
 							data-setbg="${productUser.imageface1}">
-							<ul class="product__item__pic__hover">
-								<li><a href="#"><i class="fa fa-heart"></i></a></li>
-							</ul>
 						</div>
 						<div class="product__item__text">
 							<h6>
 								<a href="#">${productUser.iname}</a>
 							</h6>
-							<c:if test="${productUser.auctioncheck eq 'Y'}">
-								<h5>
-									<fmt:formatNumber pattern="#,###"
-										value="${productUser.apricenow}" />
-									원
-								</h5>
-							</c:if>
-							<c:if test="${productUser.auctioncheck ne 'Y'}">
-								<h5>
-									<fmt:formatNumber pattern="#,###" value="${productUser.price}" />
-									원
-								</h5>
-							</c:if>
+							<c:choose>
+								<c:when test="${productUser.auctioncheck != 'Y'}">
+									<h5>
+										<fmt:formatNumber pattern="#,###" value="${productUser.price}" />원
+									</h5>
+								</c:when>
+								<c:when test="${productUser.auctioncheck == 'Y'}">
+									<h5>
+										현재가 <fmt:formatNumber pattern="#,###" value="${productUser.apricenow}" />원
+									</h5>
+								</c:when>
+							</c:choose>
 						</div>
 					</div>
 				</div>
