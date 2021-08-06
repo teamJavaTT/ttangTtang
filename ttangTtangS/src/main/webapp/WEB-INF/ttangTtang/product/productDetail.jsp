@@ -54,7 +54,16 @@ div.owl-item img {
 	</div>
 </section>
 <!-- Breadcrumb Section End -->
-
+<c:if test="${aucOk eq false}">
+	<script>
+		alert("현재가보다 높은 금액만 제시할 수 있습니다.");
+	</script>
+</c:if>
+<c:if test="${aucOk eq true}">
+	<script>
+		alert("가격 제시 성공!");
+	</script>
+</c:if>
 <!-- Product Details Section Begin -->
 <section class="product-details spad">
 	<div class="container">
@@ -114,61 +123,48 @@ div.owl-item img {
 			<div class="col-lg-6 col-md-6">
 				<div class="product__details__text">
 					<h3>${allPro.iname }</h3>
-						<div class="product__details__price">
-							<c:choose>
-								<c:when test="${allPro.auctioncheck=='Y'}">
-									<span style="font-size: 50px;" id="now_price"><fmt:formatNumber value="${allPro.apricenow}" pattern="#,###" /></span>&nbsp;원
-								</c:when>
-								<c:when test="${allPro.auctioncheck=='N'}">
-									<span style="font-size: 50px;"><fmt:formatNumber pattern="#,###" value="${allPro.price}" /></span>&nbsp;원
-								</c:when>
-							</c:choose>
-						</div>
+					<div class="product__details__price">
+						<c:choose>
+							<c:when test="${allPro.auctioncheck=='Y'}">
+								<span style="font-size: 50px;" id="now_price"><fmt:formatNumber value="${allPro.apricenow}" pattern="#,###" /></span>&nbsp;원
+							</c:when>
+							<c:when test="${allPro.auctioncheck=='N'}">
+								<span style="font-size: 50px;"><fmt:formatNumber pattern="#,###" value="${allPro.price}" /></span>&nbsp;원
+							</c:when>
+						</c:choose>
+					</div>
+					<div>
 						<c:if test="${memberUser.userid ne allPro.userid}">
-							<button type="button" id="likeBtn"
-								class="btn btn-outline-danger <c:if test="${iNo!= 0}">active</c:if>"
-								onclick="likeProductFunc(${allPro.ino})">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-										<path
-										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
-									</svg>
+							<button type="button" id="likeBtn"class="btn btn-outline-danger <c:if test="${iNo!= 0}">active</c:if>" 
+							onclick="likeProductFunc(${allPro.ino})" style="float:left;margin-right:15px;margin-bottom: 10px;">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+									<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+								</svg>
 								&nbsp;찜&nbsp;<span class="likeCount">${allPro.likecount}</span>
 							</button>
 						</c:if>
-					<c:if test="${aucOk eq false}">
-						<script>
-							alert("현재가보다 높은 금액만 제시할 수 있습니다.");
-						</script>
-					</c:if>
-					<c:if test="${aucOk eq true}">
-						<script>
-							alert("가격 제시 성공!");
-						</script>
-					</c:if>
-					<c:if test="${user ne null}">
-						<c:choose>
-							<c:when test="${allPro.auctioncheck=='Y'}">
-								<form action="/product/auctionPart" name="auctionPart"
-									method="post">
-									<input type="hidden" name="aucIno" value="${allPro.ino}">
-									<c:if test="${allPro.userid ne memberUser.userid}">
-										<c:if test="${allPro.sellcheck eq 'N'}">
-											<div class="product__details__quantity">
-												가격제시 <input type="text" name="oPrice" id="oPrice"> <input
-													type="submit" class="btn btn-outline-dark" value="등록">
-											</div>
-										</c:if>
-									</c:if>
-								</form>
-							</c:when>
-							<%-- <c:when test="${allPro.auctioncheck == 'N'}">
-								<input type="button" value="판매자와 연락하기" class="primary-btn"
-									onclick="matchingwindow()" />
-							</c:when> --%>
-						</c:choose>
-					</c:if>
-					
+						<form action="/product/auctionPart" name="auctionPart" method="post">
+							<div class="product__details__quantity">
+								<c:if test="${user ne null}">
+									<c:choose>
+										<c:when test="${allPro.auctioncheck=='Y'}">
+											<input type="hidden" name="aucIno" value="${allPro.ino}">
+											<c:if test="${allPro.userid ne memberUser.userid}">
+												<c:if test="${allPro.sellcheck eq 'N'}">
+													<input type="text" name="oPrice" id="oPrice" style=" height: 38px;">
+													<input type="submit" class="btn btn-outline-dark" value="입찰">
+												</c:if>
+											</c:if>	
+										</c:when>
+										<%-- <c:when test="${allPro.auctioncheck == 'N'}">
+											<input type="button" value="판매자와 연락하기" class="primary-btn"
+												onclick="matchingwindow()" />
+										</c:when> --%>
+									</c:choose>
+								</c:if>
+							</div>
+						</form>
+					</div>
 					<ul>
 						<c:if test="${allPro.auctioncheck=='Y' }">
 							<li><b>시작가격</b> <span id="minprice"><fmt:formatNumber
