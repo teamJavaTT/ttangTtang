@@ -39,8 +39,8 @@ public class MemberController {
 
 		if (session.getAttribute("memberUser") == null) {
 			String referrer = req.getHeader("Referer");
-			if(referrer == "http://localhost:8081/member/join" || referrer.equals("http://localhost:8081/member/join")) {
-				referrer = "http://localhost:8081/";
+			if(referrer == "http://localhost:8082/member/join" || referrer.equals("http://localhost:8082/member/join")) {
+				referrer = "http://localhost:8082/";
 			}
 			req.getSession().setAttribute("prevPage", referrer);
 			req.setAttribute("login", false);

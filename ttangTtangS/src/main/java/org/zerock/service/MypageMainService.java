@@ -12,6 +12,7 @@ import org.zerock.domain.Product;
 import org.zerock.domain.Secession;
 import org.zerock.dto.AccountDeclarationDTO;
 import org.zerock.dto.BlockUserDTO;
+import org.zerock.dto.Member;
 import org.zerock.dto.NoticeColumn;
 
 public interface MypageMainService {
@@ -34,7 +35,8 @@ public interface MypageMainService {
 	int selectSellListCount(@Param("userid") String userid, @Param("sellchk") String sellchk) throws Exception;
 
 	// 회원탈퇴
-	List<Secession> selectDeleteForm() throws Exception;
+	void memberDeleteForm(String userid, String stext) throws Exception;
+
 
 	// 신고 및 차단 리스트
 	int selectDclrBlckListCount(String userid, String blockChk) throws Exception;

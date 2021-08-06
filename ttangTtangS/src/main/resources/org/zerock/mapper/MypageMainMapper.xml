@@ -91,14 +91,21 @@
 		]]>
 	</select>
 
-	<select id="selectDeleteForm"
-		resultType="org.zerock.domain.Secession">
+
+
+	<update id="updateDeleteForm">
+		
 		<![CDATA[
-		select * 
-		from Secession 
-		order by sno desc
+		update member set memberChk = 2 where userid = #{userid}
 		]]>
-	</select>
+	</update>
+
+	<insert id="insertDeleteForm" parameterType="map">
+		insert into secession values
+		(secession_seq.NEXTVAL, #{userid}, #{stext}, sysdate, sysdate+7)
+	</insert>
+
+
 
 	<insert id="insertAccountDeclaration">
 		insert into declaration values
@@ -123,23 +130,25 @@
 		]]>
 	</select>
 
-	<select id="alimAllSelect" resultType="org.zerock.domain.Alim" parameterType="map">
-		select * from 
-			(select row_number() over (order by lno desc) num, A.* 
-			from alim A 
-			where userid =#{userid} 
-			order by lno desc) 
+	<select id="alimAllSelect" resultType="org.zerock.domain.Alim"
+		parameterType="map">
+		select * from
+		(select row_number() over (order by lno desc) num, A.*
+		from alim A
+		where userid =#{userid}
+		order by lno desc)
 		where num between #{pageStart} and #{pageEnd}
 	</select>
-	
+
 	<select id="imageSelect" resultType="String">
 		select imageface1
-		from product
+		from
+		product
 		where ino = #{ino}
 	</select>
-	
+
 	<select id="selectAlimCount" resultType="int">
-		select count(*) 
+		select count(*)
 		from alim
 		where userid=#{userid}
 	</select>
@@ -148,7 +157,8 @@
 		update alim
 		set alimchk = 'Y'
 		where alimchk = 'N'
-		and userid = #{userid}
+		and
+		userid = #{userid}
 	</update>
 
 </mapper>

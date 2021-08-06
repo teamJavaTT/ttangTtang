@@ -13,6 +13,7 @@ import org.zerock.domain.Product;
 import org.zerock.domain.Secession;
 import org.zerock.dto.AccountDeclarationDTO;
 import org.zerock.dto.BlockUserDTO;
+import org.zerock.dto.Member;
 import org.zerock.mapper.MypageMainMapper;
 
 @Service
@@ -65,10 +66,13 @@ public class MypageMainServiceImpl implements MypageMainService {
 	}
 
 	
-	@Override  //회원 탈퇴
-	public List<Secession> selectDeleteForm() throws Exception {
-		return mypageMainMapper.selectDeleteForm();
+	@Override //회원탈퇴 insert
+	public void memberDeleteForm(@Param("userid") String userid, @Param("stext") String stext) throws Exception {
+		mypageMainMapper.insertDeleteForm(userid, stext);
+		mypageMainMapper.updateDeleteForm(userid);
 	}
+	
+	
 	
 	
 	@Override //신고 insert

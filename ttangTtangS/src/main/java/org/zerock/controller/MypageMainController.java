@@ -18,12 +18,13 @@ import org.zerock.domain.Category;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.Product;
-import org.zerock.domain.Secession;
 import org.zerock.domain.User;
 import org.zerock.dto.AccountDeclarationDTO;
 import org.zerock.dto.BlockUserDTO;
 import org.zerock.service.MemberService;
 import org.zerock.service.MypageMainService;
+
+import AES256.AES256Util;
 
 @Controller
 @RequestMapping(value = "/mypage")
@@ -34,7 +35,7 @@ public class MypageMainController {
 	private MypageMainService mypagemainService;
 	@Inject
 	private MemberService memberService;
-	
+
 	// 메인
 	@RequestMapping(value = "/mypageMain")
 	public void mypageMainPage(Model model) throws Exception {
@@ -142,7 +143,7 @@ public class MypageMainController {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
-		String tblName ;
+		String tblName;
 		int pageStart = cri.getPageStart();
 		int pageEnd = cri.getPageEnd();
 
@@ -151,7 +152,8 @@ public class MypageMainController {
 		}
 		if (blockChk.equals("D")) {
 			tblName = "declaration";
-			List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration(userid, pageStart, pageEnd);
+			List<AccountDeclaration> accountDeclaration = mypagemainService.selectAccountDeclaration(userid, pageStart,
+					pageEnd);
 			model.addAttribute("accountDeclaration", accountDeclaration);
 		} else {
 			tblName = "block";
@@ -188,12 +190,14 @@ public class MypageMainController {
 
 	// 판매내역
 	@RequestMapping(value = "/sellcheck")
-	public void sellcheckPagePOST(Criteria cri, Model model, @RequestParam(value = "sellChk", required = false) String sellchk, HttpServletRequest req) throws Exception {
+	public void sellcheckPagePOST(Criteria cri, Model model,
+			@RequestParam(value = "sellChk", required = false) String sellchk, HttpServletRequest req)
+			throws Exception {
 
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
-		
+
 		int pageStart = cri.getPageStart();
 		int pageEnd = cri.getPageEnd();
 
@@ -216,15 +220,35 @@ public class MypageMainController {
 	}
 
 	// 회원 탈퇴
-	@RequestMapping(value = "/deleteForm")
-	public void deleteFormPage(Model model, HttpServletRequest req) throws Exception {
+	@RequestMapping(value = "/deleteForm", method = RequestMethod.GET)
+	public void deleteFormPageGET(Model model, HttpServletRequest req) throws Exception {
+
+	}
+
+	@RequestMapping(value = "/deleteForm", method = RequestMethod.POST)
+	public String deleteFormPagePOST(Model model, HttpServletRequest req,
+			@RequestParam(value = "stext", required = false) String stext,
+			@RequestParam(value = "upw", required = false) String upw) throws Exception {
 
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
 		String userid = user.getUserid();
+		user.getUpw();
 
-		List<Secession> deleteForm = mypagemainService.selectDeleteForm();
-		model.addAttribute("deleteForm", deleteForm);
+		AES256Util aes256Util = new AES256Util();
+		String upwd = aes256Util.encrypt(upw);
+		if (upwd == user.getUpw() || upwd.equals(user.getUpw())) {
+			mypagemainService.memberDeleteForm(userid, stext);
+
+			if (session != null) {
+				session.invalidate();
+			}
+			return "/index";
+		} else {
+			model.addAttribute("pwdNotMatch", true);
+			return "/mypage/deleteForm";
+		}
+
 	}
 
 	// 고객 센터
@@ -238,16 +262,16 @@ public class MypageMainController {
 	public void alimList(Criteria cri, Model model, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("memberUser");
-		
+
 		int pageStart = cri.getPageStart();
 		int pageEnd = cri.getPageEnd();
-		
+
 		List<Alim> alimAll = mypagemainService.alimAllSelect(user.getUserid(), pageStart, pageEnd);
 		model.addAttribute("alimAll", alimAll);
-		
+
 		mypagemainService.alimChkUpdate(user.getUserid());
 		req.getSession().setAttribute("alim", null);
-		
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(mypagemainService.selectAlimCount(user.getUserid()));
