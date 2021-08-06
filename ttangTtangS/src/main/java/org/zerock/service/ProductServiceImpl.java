@@ -130,5 +130,11 @@ public class ProductServiceImpl implements ProductService {
 		int apricenow = productMapper.apricenowSelect(ino);
 		return apricenow;
 	}
+	
+	@Override
+	@Transactional
+	public void updateSellChk(int ino) throws Exception {
+		productMapper.updateSellChk(ino);
+	}
 
 }

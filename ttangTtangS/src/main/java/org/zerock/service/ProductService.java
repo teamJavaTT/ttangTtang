@@ -39,4 +39,6 @@ public interface ProductService {
 	
 	int apricenowSelect(int ino) throws Exception;
 	
+	void updateSellChk(int ino)throws Exception;
+	
 }

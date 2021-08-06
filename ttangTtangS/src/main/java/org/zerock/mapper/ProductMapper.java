@@ -51,4 +51,6 @@ public interface ProductMapper {
 	void updateAucPart(@Param("userid")String userid,@Param("aucIno")  int aucIno, @Param("oPrice") String oPrice)throws Exception;
 	
 	int apricenowSelect(int ino) throws Exception;
+	
+	void updateSellChk(int ino)throws Exception;
 }

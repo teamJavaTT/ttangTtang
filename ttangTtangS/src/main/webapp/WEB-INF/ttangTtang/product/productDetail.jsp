@@ -21,6 +21,18 @@ div.product__details__pic__item img {
 	transform: translate(-50%, -50%);
 }
 
+div.product__details__pic__item span {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    padding-top: 43%;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.3);
+}
+
 div.owl-item {
 	position: relative;
 	overflow: hidden;
@@ -71,8 +83,10 @@ div.owl-item img {
 			<div class="col-lg-6 col-md-6">
 				<div class="product__details__pic">
 					<div class="product__details__pic__item">
-						<img class="product__details__pic__item--large"
-							src="${allPro.imageface1}">
+						<img class="product__details__pic__item--large" src="${allPro.imageface1}">
+						<c:if test="${allPro.sellcheck=='Y'}">
+							<span style="position: absolute;">판매완료</span>
+						</c:if>
 					</div>
 					<div class="product__details__pic__slider owl-carousel owl-loaded">
 						<div class="owl-stage-outer">
@@ -181,6 +195,7 @@ div.owl-item img {
 					<c:if test="${memberUser.userid eq allPro.userid}">
 						<input type="hidden" value="${allPro.ino}" id="delNo">
 						<input type="button" class="btn btn-outline-danger" value="삭제" onclick="productDel()" id="productDel" style="float: right;">
+						<input type="button" class="btn btn-outline-dark" value="판매완료" onclick="location.href='/product/updateSellChk?ino=${allPro.ino}'" style="float: right;">
 						<input type="button" class="btn btn-outline-dark" value="상품수정" onclick="location.href='/product/productModify?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'" style="float: right;">
 					</c:if>
 

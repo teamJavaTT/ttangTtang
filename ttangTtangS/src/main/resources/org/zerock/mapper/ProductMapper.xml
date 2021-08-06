@@ -227,5 +227,9 @@
 		from product 
 		where ino = #{ino}
 	</select>
+	
+	<update id="updateSellChk">
+		update product set sellcheck = 'Y' where ino = #{ino}
+	</update>
 
 </mapper>

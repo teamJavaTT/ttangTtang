@@ -185,4 +185,12 @@ public class ProductController {
 		res.sendRedirect("productDetail?ino=" + aucIno + "&aucChk=Y&aucOk="+aucOk);
 		return null;
 	}
+	
+	// 경매 가격 제시
+		@RequestMapping(value = "/updateSellChk")
+		public void updateSellChk(Model model, HttpServletRequest req, HttpServletResponse res, @RequestParam(value = "ino", required = true) int ino) throws Exception {
+			productService.updateSellChk(ino);
+			String referrer = req.getHeader("Referer");
+			res.sendRedirect(referrer);
+		}
 }
