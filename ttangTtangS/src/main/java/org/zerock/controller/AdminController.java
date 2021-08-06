@@ -70,7 +70,7 @@ public class AdminController {
 		List<NoticeColumn> notice = adminService.insertNoticeWrite(noticeColumn);
 		model.addAttribute("notice", notice);
 
-		model.addAttribute("ment", "성공적으로 삭제했습니다.");
+		model.addAttribute("ment", "성공적으로 게시글을 작성했습니다.");
 		model.addAttribute("href", "/admin/notice");
 		return "/successPage";
 	}
@@ -101,7 +101,7 @@ public class AdminController {
 		List<NoticeColumn> notice = adminService.updateNoticeModify(noticeColumn);
 		model.addAttribute("notice", notice);
 		model.addAttribute("ment", "성공적으로 게시글을 수정했습니다.");
-		model.addAttribute("href", "/notice");
+		model.addAttribute("href", "/admin/notice");
 		return "/successPage";
 	}
 
