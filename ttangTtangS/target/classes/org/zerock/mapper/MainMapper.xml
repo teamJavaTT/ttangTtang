@@ -16,8 +16,12 @@
 	<select id="selectProductToday" resultType="org.zerock.domain.ProductToday">
 		<![CDATA[
 		select * 
-		from (select row_number() over (order by viewcount desc, ino) num, A.* from product A where sellcheck='N' order by viewcount desc, ino) 
-		where num <=20
+		from (select row_number() over (order by viewcount desc, ino) num, A.* 
+				from product A 
+				where sellcheck='N' 
+				and pdate between sysdate-14 and sysdate 
+				order by viewcount desc, ino) 
+		where num <=10
 		]]>
 	</select>
 	
