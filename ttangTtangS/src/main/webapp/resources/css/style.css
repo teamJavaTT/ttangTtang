@@ -67,8 +67,11 @@ h3.aucTimer{
 	font-weight: 600;
 	background-color: rgba(255,255,255, 0.5);
 	height: 29px;
+	width: 100%;
 	margin-bottom: 10px;
 	padding-top: 5px;
+	color: black;
+    text-align: center;
 }
 
 h4 {
