@@ -47,6 +47,21 @@ div.owl-item img {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+div#detailMenu{
+	position: relative;
+}
+
+div#detailMenu ul{
+    position: absolute;
+    right: 0;
+}
+
+div#detailMenu ul li{
+	float:left;
+	margin-right: 10px;
+	list-style: none;
+}
 </style>
 
 <!-- Breadcrumb Section Begin -->
@@ -179,7 +194,7 @@ div.owl-item img {
 							</div>
 						</form>
 					</div>
-					<ul>
+					<ul id="detailList">
 						<c:if test="${allPro.auctioncheck=='Y' }">
 							<li><b>시작가격</b> <span id="minprice"><fmt:formatNumber
 										value="${allPro.minprice}" pattern="#,###" /></span>원</li>
@@ -194,15 +209,16 @@ div.owl-item img {
 					</ul>
 					<c:if test="${memberUser.userid eq allPro.userid}">
 						<input type="hidden" value="${allPro.ino}" id="delNo">
-						<input type="button" class="btn btn-outline-danger" value="삭제" onclick="productDel()" id="productDel" style="float: right;">
-						<input type="button" class="btn btn-outline-dark" value="판매완료" onclick="location.href='/product/updateSellChk?ino=${allPro.ino}'" style="float: right;">
-						<input type="button" class="btn btn-outline-dark" value="상품수정" onclick="location.href='/product/productModify?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'" style="float: right;">
 					</c:if>
-
 				</div>
-
+				<div id="detailMenu">
+					<ul>
+						<li><input type="button" class="btn btn-outline-dark" value="상품수정" onclick="location.href='/product/productModify?ino=${allPro.ino}&aucChk=${allPro.auctioncheck}'"></li>
+						<li><input type="button" class="btn btn-outline-dark" value="판매완료" onclick="location.href='/product/updateSellChk?ino=${allPro.ino}'"></li>
+						<li><input type="button" class="btn btn-outline-danger" value="삭제" onclick="productDel()" id="productDel"></li>
+					</ul>
+				</div>
 			</div>
-
 		</div>
 		<div class="col-lg-12">
 			<div class="product__details__tab">

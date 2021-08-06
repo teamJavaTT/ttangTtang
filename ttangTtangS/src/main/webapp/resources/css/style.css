@@ -1756,7 +1756,7 @@ ul.pageMaker li{
 	background: #f5f5f5;
 }
 
-.product__details__text ul {
+.product__details__text ul#detailList {
 	border-top: 1px solid #ebebeb;
 	padding-top: 40px;
 	margin-top: 45px;
