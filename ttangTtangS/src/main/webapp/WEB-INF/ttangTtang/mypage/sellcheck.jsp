@@ -54,7 +54,6 @@
 												</tr>
 											</thead>
 											<tbody>
-												<%-- sellCehckData.product.userId --%>
 												<c:forEach var="product" items="${sellList}">
 													<tr>
 														<!-- 상품 사진  -->

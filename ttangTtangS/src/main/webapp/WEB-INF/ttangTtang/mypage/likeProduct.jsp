@@ -36,9 +36,6 @@
 										<tbody>
 											<c:forEach var="likeProduct" items="${likeProduct}">
 												<tr>
-													<%-- <!-- 신고/차단 -->
-											<td>${declaration.auctionCheck eq 'N'? '신고' : '차단'}</td> --%>
-													<!-- 신고 아이디 -->
 
 											<td style="height:100px;"><img class="preview" style="width: aucto;height: 100px;cursor: pointer;"
 															src="${likeProduct.imageface1}"
